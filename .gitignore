@@ -5,6 +5,9 @@
 *.gz
 *.txt
 *.asv
+*.bbl
+*.blg
+
 
 # Windows image file caches
 Thumbs.db
