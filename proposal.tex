@@ -1,0 +1,92 @@
+\documentclass[11pt,fleqn]{article}
+\linespread{1.3}
+\usepackage{parskip}
+\setlength{\parindent}{0pt} %no paragraph indentation
+\setlength{\parskip}{2.1ex plus 0.2ex minus 0.2ex} %3x paragraph spacing
+\usepackage{geometry}
+\geometry{a4paper,left=30mm,right=25mm,top=20mm,bottom=20mm} %margin spacing
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+
+\usepackage[pdftex]{graphicx} %so that eps files may be included
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{float}
+
+\title{Research Plan}
+\author{St. Elmo Wilken}
+\setcounter{section}{0}
+
+\begin{document}
+\maketitle
+
+\section{Overview}
+The end goal of my masters is to implement an MPC controller which takes into account uncertainty in system conditions when evaluating the optimal control strategy. I will assume that I have a graphical model structure representing my system and the required prior and conditional distributions. Thus, the main focus will be applying the inference algorithms and combining them with a controller.
+
+To achieve this goal I will spend most of my time working on inference strategies of dynamical systems. I will follow the book by Barber (and to a lesser extent the work by Murphy) closely. Only near the end will I incorporate the controller aspects. I'll be writing up as I proceed.
+
+\subsection{February}
+Get large parts of the background written up.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=1.0]{./imgs/hmm_diagram}
+\label{fig_hmm}
+\end{figure}
+\begin{enumerate}
+\item
+Hidden Markov Model - discrete: filtering, smoothing and prediction on a toy problem.
+\item 
+Kalman Filter Model - continuous: filtering, smoothing and prediction on a toy problem.
+\end{enumerate}
+\pagebreak
+
+\subsection{March}
+Complex PGMs - modelling + inference.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=1.0]{./imgs/switch}
+\caption{Switching Kalman Filter}
+\label{fig_switch}
+\end{figure}
+The aim of this section is to study PF and GSF methods on a switching Kalman model. These two filtering algorithms are closely related. Could be nice to compare them in the control scheme eventually.
+\begin{enumerate}
+\item
+Particle Filter: importance sampling with resampling.
+\item
+Gaussian Sum Filter: as described by Barber.
+\end{enumerate}
+\pagebreak
+
+\subsection{April}
+In this section we combine the preceding work. I think I'll stick to linear test problems in the beginning and venture into nonlinear problems later. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=1.0]{./imgs/controller}
+\label{fig_cont_u}
+\end{figure}
+Note that I make room for model uncertainty and controller uncertainty... Perhaps they can be lumped? Will consider later. Try Wood Berry column in Huang's paper - uses BNs... Will look for a nice univariate problem as well.
+\begin{enumerate}
+\item
+No switching states + deterministic controller: basically emulate PdV's Ph.D.
+\item
+Investigate uncertain controller? 
+\item
+Incorporate switching state
+\end{enumerate}
+
+\subsection{May}
+
+\subsection{June}
+
+\subsection{July}
+
+\subsection{August}
+USA? Maybe not?
+
+
+\end{document}

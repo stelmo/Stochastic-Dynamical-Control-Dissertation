@@ -1,0 +1,53 @@
+\documentclass[11pt,fleqn]{article}
+\linespread{1.3}
+\usepackage{parskip}
+\setlength{\parindent}{0pt} %no paragraph indentation
+\setlength{\parskip}{2.1ex plus 0.2ex minus 0.2ex} %3x paragraph spacing
+\usepackage{geometry}
+\geometry{a4paper,left=30mm,right=25mm,top=20mm,bottom=20mm} %margin spacing
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+
+\usepackage[pdftex]{graphicx} %so that eps files may be included
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}} % so that \indep works :)
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{float}
+
+% Theorems, definitions etc.
+\newtheoremstyle{defstyle}
+  {10pt} % Space above
+  {0pt} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {0.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{defstyle}
+\newtheorem{defn}{Definition}[subsection]
+\newtheorem{rmrk}{Remark}[subsection]
+\newtheorem{thrm}{Theorem}[subsection]
+\newtheorem{ax}{Axiom}[subsection]
+
+
+\usepackage{subfiles}
+
+\begin{document}
+%Title page
+\subfile{./docs/title_page_mod.tex}
+\subfile{./docs/introduction.tex}
+\subfile{./docs/literature.tex}
+
+
+
+%References
+\newpage
+\bibliographystyle{plain}
+\bibliography{./docs/research}
+
+\end{document}
