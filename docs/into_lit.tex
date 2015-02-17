@@ -148,14 +148,48 @@ A = \begin{pmatrix}
 A detailed analysis of Graph Theory may be found in \cite{deo}.
 
 \subsection{Probabilistic Graphical Models}
-Probabilistic graphical models is the union between Probability Theory and Graph Theory. Consider why it is in general infeasible to determine an arbitrary joint probability distribution
+Probabilistic graphical models are the union between Probability Theory and Graph Theory. Consider why, in general, it is infeasible to determine an arbitrary joint probability distribution. Suppose you have a set of $n$ binary random variables and wish to determine their joint. This equates to finding $P(X_1,X_2,...,X_n)$. To fully specify this model we would need to find $2^n-1$ probabilities. For even moderately big $n$ this is impractical, and this was for the simple case of a binary valued random variable. Clearly we require a more efficient way to represent the joint probability distribution.
 
 \subsubsection{Bayesian Networks}
+A Bayesian Network is a representation of the joint probability distribution of a set of random variables parametrised by:
+\begin{enumerate}
+\item
+A graph depicting local independence relationships.
+\item
+Conditional probability distributions.
+\end{enumerate}  
+The fundamental assumption behind Bayesian Networks, and more generally probabilistic graphical models, is that there is a useful underlying structure to the problem being modelled which can be captured by the Bayesian network. This underlying structure is available via conditional independence relationships between the variables.
 
-\subsubsection{d-separation}
+Suppose $P$ is the joint distribution of some set of random variables we require to do inference on.
+\begin{defn}
+\textbf{I-Map} The I-Map of $P$, denoted by $\mathcal{I}(P)$, is the set of independence assertions of the form $X \indep Y | Z$ which hold over $P$.
+\end{defn} 
+Let $G$ be a Bayesian Network graph over the random variables $X_1, X_2,...,X_n$. We say that the distribution $P$ factorises over the same space if $P$ can be expressed as the product defined by the chain rule for Bayesian Networks.
+\begin{defn}
+\textbf{Chain Rule for Bayesian Networks} The chain rule for Bayesian Networks specifies that the joint factorises according to $P(X_1,...,X_n) = \Pi_{i=1}^n P(X_i | \text{Parents}(X_i))$.
+\end{defn}
+Each of the individual factors of $P$, as factorised by the chain rule for Bayesian Networks, represents the conditional probability distributions required to parametrise the Bayesian Network. It can be shown that a Bayesian Network graph $G$ over which $P$ factorises is not unique. However, if the graph explicitly models the causality inherent in the system being modelled the representation is often much sparser \cite{koller}. A Bayesian network is then defined as the tuple $(G, P)$ such that the joint $P$ factorises over the graph $G$. We state without proof Theorem \ref{thrm_bayesnets}. 
+\begin{thrm}
+Let $G$ be a Bayesian Network graph over a set of random variables $\chi$ and let $P$ be a joint distribution over the same space. If $P$ factorises according to $G$ then $G$ is an I-Map for P. Conversely, if $G$ is an I-Map for $P$ then $P$ factorises according to $G$.
+\label{thrm_bayesnets}
+\end{thrm}
+Thus, the conditional independences imply factorisation of $P$. Conversely, factorisation according to $G$ implies the associated conditional independences.
+
+To illustrate computational benefit of using Bayesian networks, consider again our simple system of $n$ binary random variables $X_1,X_2,...,X_n$. Suppose the Bayesian Network in Figure \ref{fig_bnet} models the system.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=1.0]{bayes_net.pdf}
+\caption{Example simple Bayesian Network}
+\label{fig_bnet}
+\end{figure}
+Without knowing any structure $2^{n}-1$ parameters were needed to specify the joint. However, using the chain rule for Bayesian Networks we can factorise the joint $P(X_1,...,X_n) = P(X_1)P(X_2|X_1)...P(X_n|X_n-1)$. This implies that we only require $2n-1$ parameters. From a modelling perspective this is an incredible gain.
+
+The primary reason we would want to have a model of the joint distribution of a set of random variables is to reason with. To achieve this we invariably manipulate the joint distribution by either some form of marginalisation or optimisation. To make inference computationally tractable it is desirable to leverage the independence assertions implied by the network graph.
 
 \subsubsection{Dynamic Bayesian Networks}
-Chapter 13 in Bishop! HMM and then KFs
+Dynamical systems
+
+\subsection{Model Predictive Control}
 
 \bibliographystyle{plain}
 \bibliography{research}
