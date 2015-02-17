@@ -13,7 +13,7 @@
 
 \usepackage[pdftex]{graphicx} %so that eps files may be included
 \newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}} % so that \indep works :)
-\usepackage{amsmath}
+\usepackage[fleqn]{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{float}
@@ -40,6 +40,8 @@
 
 \begin{document}
 %Title page
+\tableofcontents
+
 \subfile{./docs/title_page_mod.tex}
 \subfile{./docs/into_lit.tex}
 \subfile{./docs/linear_models.tex}

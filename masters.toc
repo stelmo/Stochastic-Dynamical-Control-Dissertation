@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}Background Literature}{1}
+\contentsline {subsection}{\numberline {2.1}Probability Theory}{1}
+\contentsline {subsubsection}{\numberline {2.1.1}Bayes' Theorem: Example}{3}
+\contentsline {subsection}{\numberline {2.2}Probabilistic Graphical Models}{5}
+\contentsline {subsubsection}{\numberline {2.2.1}Bayesian Networks}{5}
+\contentsline {subsubsection}{\numberline {2.2.2}d-separation}{5}
+\contentsline {subsubsection}{\numberline {2.2.3}Dynamic Bayesian Networks}{5}
+\contentsline {section}{\numberline {3}Linear Models}{5}
+\contentsline {subsection}{\numberline {3.1}Discrete Models}{5}
+\contentsline {subsection}{\numberline {3.2}Continuous Models}{5}

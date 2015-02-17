@@ -1,6 +1,7 @@
 \documentclass[../masters.tex]{subfiles}
 
 \begin{document}
+\graphicspath{{./imgs/}{../imgs/}} %look for images
 
 \section{Introduction}
 Insert the introduction.
@@ -76,18 +77,78 @@ So far in our discussion we have implicitly only used discrete random variables,
 To fully describe a system of random variables it is only necessary to know the joint distribution $P(X_1,X_2,...,X_n)$. Given the joint probability distribution inference (reasoning about the variables under uncertainty) may be performed. Common probabilistic queries involve computing posterior beliefs $P(X|Y=y)$ i.e. the probability function of $X$ given we have some information about $Y$. Other queries involve find the most probable explanation (called a MAP query) of some evidence i.e. finding $X$ which maximises $P(X, Y=y)$. More on this later. 
 
 \subsubsection{Bayes' Theorem: Example}
-This section will attempt to develop some intuition behind Theorem \ref{thrm_bayes}. We quote an excerpt from an article in the Economist \cite{eco1} and illustrate the use of Bayes' Rule in a canonical medical example.
+This section will attempt to develop some intuition behind Theorem \ref{thrm_bayes}. We quote an excerpt from an article in the Economist \cite{eco1} and illustrate the use of Bayes' Rule in a canonical medical example \cite{korb}.
 
 \textit{``The essence of the Bayesian approach is to provide a mathematical rule explaining how you should change your existing beliefs in the light of new evidence. In other words, it allows scientists to combine new data with their existing knowledge or expertise. The canonical example is to imagine that a precocious newborn observes his first sunset, and wonders whether the sun will rise again or not. He assigns equal prior probabilities to both possible outcomes, and represents this by placing one white and one black marble into a bag. The following day, when the sun rises, the child places another white marble in the bag. The probability that a marble plucked randomly from the bag will be white (ie, the child's degree of belief in future sunrises) has thus gone from a half to two-thirds. After sunrise the next day, the child adds another white marble, and the probability (and thus the degree of belief) goes from two-thirds to three-quarters. And so on. Gradually, the initial belief that the sun is just as likely as not to rise each morning is modified to become a near-certainty that the sun will always rise."}
 
-Consider a doctor who needs to determine whether a woman has breast cancer given a screening. He is given the following information:
+Suppose you get tested for a certain disease. You know the disease affects 1 in 100 people. You also know that the false positive rate for the test is 20\% and the false negative rate for the test is is 10\%. Your test comes back positive. What are the chances of you having the disease given this information?
+
+The information may be summarised as shown below. Let $D$ be a binary random variable indicating the presence of the disease and $\neg D$ indicates the absence. Let $T$ be a binary random variable indicating a positive test and $\neg T$ indicates a negative test. 
 \begin{enumerate}
 \item
-
+The prior of the disease is $P(D) = 0.01$.
+\item
+False positive rate $P(T|\neg D) = 0.2 \implies P(\neg T|\neg D) = 0.8$.
+\item
+False negative rate $P(\neg T|D) = 0.1 \implies P(T|D) = 0.9$.
 \end{enumerate}
+A naive approach would conclude that since $P(T|D) = 0.9$ you are 90\% likely to have the disease. However, using Bayesian inference/reasoning we have: 
+\begin{equation*}
+\begin{aligned}
+P(D|T) &= \frac{P(T|D)P(D)}{P(T)} \\
+&=  \frac{P(T|D)P(D)}{\sum_D P(D,T)} \\
+&= \frac{P(T|D)P(D)}{\sum_D P(D)P(T|D)} \\
+& = \frac{0.9 \times 0.01}{0.01 \times 0.99 + 0.99 \times 0.2} \\
+&\approx 0.04
+\end{aligned}
+\end{equation*}
+Clearly there is a big difference between the naive approach and the Bayesian approach. The power of Bayesian inference lies in the ability to correctly reason about events under uncertainty given evidence.
+
+\subsection{Graph Theory}
+A graph, $G$, is a data structure consisting of a set of nodes $\chi$ and edges $\xi$. A pair of nodes $X_i, X_j \in \chi$ can be connected by an edge. We will only consider directed graphs in this dissertation. This implies that every edge in $\xi$ has a direction associated between the two nodes it connects i.e. $X_i \rightarrow X_j$ if there is an edge from $X_i$ to $X_j$.
+
+We now define some basic concepts which we will rely upon to further describe the types of graphs we will consider.
+\begin{defn}
+\textbf{Directed Path} We say that the nodes $X_1, X_2, X_3,..., X_n \in \chi$ form a directed path if $X_i \rightarrow X_{i+1}$ for $1 \leq i \leq n-1$. 
+\end{defn}
+\begin{defn}
+\textbf{Directed Cycle} A directed cycle is a non-singleton directed path which starts and ends at the same node.
+\end{defn}
+\begin{defn}
+\textbf{Directed Acyclic Graph (DAG)} A graph $G$ is a DAG if it is directed and has no directed cycles.
+\end{defn}
+In this dissertation we will only concern ourselves with DAGs. Figure \ref{fig_dag} is an example of a DAG.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=1.0]{dag.pdf}
+\caption{Example of a Directed Acyclic Graph}
+\label{fig_dag}
+\end{figure}
+Next we define some nomenclature to further describe the nodes of a graph $G$.
+\begin{defn}
+\textbf{Parents} We say that the set of nodes $\kappa \subset \chi$ are the parents of node $X_i$ if, for each node in $\kappa$, there exists an edge going to $X_i$.
+\end{defn}
+\begin{defn}
+\textbf{Children} We say that the set of nodes $\tau \subset \chi$ are the children of node $X_i$ if, for each node in $\tau$, there exists an edge going from $X_i$ to that node.
+\end{defn}
+We also briefly define a structured approach to encoding a graph.
+\begin{defn}
+\textbf{Adjacency Matrix} For a graph $G$ with $n$ nodes, the adjacency matrix $A$ is an $n \times n$ matrix where $A_{ij} = 1$ if there is an edge from node $i$ to node $j$ and $A_{ij} = 0$ otherwise. 
+\end{defn}
+The adjacency matrix A for Figure \ref{fig_dag} is shown below:
+\begin{equation*}
+A = \begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\end{equation*}
+
+A detailed analysis of Graph Theory may be found in \cite{deo}.
 
 \subsection{Probabilistic Graphical Models}
-introduce graph theory concisely.
+Probabilistic graphical models is the union between Probability Theory and Graph Theory. Consider why it is in general infeasible to determine an arbitrary joint probability distribution
 
 \subsubsection{Bayesian Networks}
 
