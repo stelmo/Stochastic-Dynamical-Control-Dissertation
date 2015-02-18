@@ -15,15 +15,12 @@
   <graph edgedefault="directed" id="G">
     <data key="d0"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-135.0" y="-3.1200000000000614"/>
           <y:Fill color="#C0C0C0" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.0" modelName="custom" textColor="#000000" visible="true" width="17.0" x="6.5" y="0.5">&lt;html&gt;
-x&lt;sub&gt;1&lt;/sub&gt;
-&lt;/html&gt;<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.0" modelName="custom" textColor="#000000" visible="true" width="17.0" x="6.5" y="0.5">&lt;html&gt; x&lt;sub&gt;1&lt;/sub&gt; &lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -35,7 +32,6 @@ x&lt;sub&gt;1&lt;/sub&gt;
       </data>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="15.0" y="-3.1200000000000614"/>
@@ -55,7 +51,6 @@ x&lt;sub&gt;2&lt;/sub&gt;
       </data>
     </node>
     <node id="n2">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-135.0" y="112.87999999999994"/>
@@ -75,7 +70,6 @@ y&lt;sub&gt;1&lt;/sub&gt;
       </data>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="15.0" y="112.87999999999994"/>
@@ -95,7 +89,6 @@ y&lt;sub&gt;2&lt;/sub&gt;
       </data>
     </node>
     <edge id="e0" source="n0" target="n2">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -106,7 +99,6 @@ y&lt;sub&gt;2&lt;/sub&gt;
       </data>
     </edge>
     <edge id="e1" source="n1" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -117,7 +109,6 @@ y&lt;sub&gt;2&lt;/sub&gt;
       </data>
     </edge>
     <edge id="e2" source="n0" target="n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

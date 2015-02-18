@@ -148,7 +148,7 @@ A = \begin{pmatrix}
 A detailed analysis of Graph Theory may be found in \cite{deo}.
 
 \subsection{Probabilistic Graphical Models}
-Probabilistic graphical models are the union between Probability Theory and Graph Theory. Consider why, in general, it is infeasible to determine an arbitrary joint probability distribution. Suppose you have a set of $n$ binary random variables and wish to determine their joint. This equates to finding $P(X_1,X_2,...,X_n)$. To fully specify this model we would need to find $2^n-1$ probabilities. For even moderately big $n$ this is impractical, and this was for the simple case of a binary valued random variable. Clearly we require a more efficient way to represent the joint probability distribution.
+Probabilistic graphical models are the union between Probability Theory and Graph Theory. Consider why, in general, it is infeasible to determine an arbitrary joint probability distribution. Suppose you have a set of $n$ binary random variables and wish to determine their joint. This equates to finding $P(X_1,X_2,...,X_n)$. To fully specify this model we would need to find and store $2^n-1$ probabilities. For even moderately big $n$ this is impractical, and this was for the simple case of a binary valued random variable. Clearly we require a more efficient way to represent the joint probability distribution.
 
 \subsubsection{Bayesian Networks}
 A Bayesian Network is a representation of the joint probability distribution of a set of random variables parametrised by:
@@ -182,7 +182,7 @@ To illustrate computational benefit of using Bayesian networks, consider again o
 \caption{Example simple Bayesian Network}
 \label{fig_bnet}
 \end{figure}
-Without knowing any structure $2^{n}-1$ parameters were needed to specify the joint. However, using the chain rule for Bayesian Networks we can factorise the joint $P(X_1,...,X_n) = P(X_1)P(X_2|X_1)...P(X_n|X_n-1)$. This implies that we only require $2n-1$ parameters. From a modelling perspective this is an incredible gain.
+Without knowing any structure $2^{n}-1$ parameters were needed to specify the joint. However, using the chain rule for Bayesian Networks we can factorise the joint $P(X_1,...,X_n) = P(X_1)P(X_2|X_1)...P(X_n|X_{n-1})$. This implies that we only require $2n-1$ parameters. From a modelling perspective this is a significant gain.
 
 The primary reason we would want to have a model of the joint distribution of a set of random variables is to reason with. To achieve this we invariably manipulate the joint distribution by either some form of marginalisation or optimisation. To make inference computationally tractable it is desirable to leverage the independence assertions implied by the network graph. To this end we expand on the independence assertions implied by the graph. Recall Theorem \ref{thrm_bayesnetsiff}: since we have that the joint factorises over the graph we also have that any independence assertions implied by the graph's connectivity also apply to the joint.
 
@@ -211,11 +211,59 @@ To shed some more light on d-separation consider Figure \ref{fig_dsep}. The firs
 \caption{Examples of d-separation}
 \label{fig_dsep}
 \end{figure}
+Using d-separation we can efficiently reason about the conditional independences implied by the graph and the observed variables ($E$). This becomes incredibly useful when one attempts to apply inference techniques because it can simplify the joint calculations significantly. More on this later.
 
-
+Bayesian Networks are commonly used to model situations which are not time dependent. We will primarily restrict ourselves to time series modelling in this dissertation. As such we will not delve deeper into static Bayesian Network theory.
 
 \subsubsection{Dynamic Bayesian Networks}
-Dynamical Bayesian Networks generalise the conventional static Bayesian Networks of the previous section. Dynamic, or Temporal, Bayesian Networks model systems which evolve temporally. 
+Dynamical Bayesian Networks generalise the conventional static Bayesian Networks of the previous section. Dynamic, or Temporal, Bayesian Networks model systems which evolve temporally. Since sequential, or temporal, data is abundant in most engineering applications we will only concern ourselves with such models. Notationally we denote a time dependent vector by $x_{1:t}=x_1,x_2,...,x_t$, for example the joint $P(x_{1:3})=P(x_1,x_2,x_3)$.
+
+There are two important classes of analysis one may perform on sequential data using graphical models. On-line analysis, including prediction and filtering and off-line analysis, including smoothing and the most probable explanation (sometimes called Viterbi decoding). In both cases we are generally interested in learning something about a sets of hidden state variables by performing inference on some set of observed variables. 
+
+A state space model assumes that there is some underlying hidden state ($X_t$) of the world which generates observations ($Y_t$). These hidden states may evolve with time or may be functions of some inputs ($U_t$). The hidden states and observations are most generally assumed to be random variables. Any state space model is fully parametrised by the following information:
+\begin{enumerate}
+\item
+A prior probability distribution over the states: $P(X_1)$
+\item
+A state transition function: $P(X_t|X_{t-1}, U_t)$
+\item
+An observation function: $P(Y_t|X_t, U_t)$
+\end{enumerate} 
+For the purposes of this dissertation we will assume that the state space model is known. If this model is not known many machine learning techniques may be used find these models \cite{murphy1}.
+
+We will assume that all the systems we model satisfy the first order Markov assumption.
+\begin{defn}
+\textbf{N\textsuperscript{th}-order Markov assumption} A system satisfies the N\textsuperscript{th} Markov assumption if $P(X_t|X_{1:t})=P(X_t|X_{t-n:t-1})$. For example, a first order Markov system satisfies  $P(X_t|X_{1:t})=P(X_t|X_{t-1})$ 
+\end{defn}
+This is not as restrictive as it may seem at first. It is always possible to transform an N\textsuperscript{th}-order Markov system into a first order Markov system by modifying the state space \cite{murphy1}. We also assume that the state and observation functions remain the same for all time i.e. they are time invariant or homogeneous.
+
+Intuitively, a state space model is a model of how $X_t$ generates or causes $Y_t$ and $X_{t+1}$. The goal of inference is to invert this mapping. The four types of inference we will consider in this dissertation are:
+\begin{enumerate}
+\item
+Filtering: we attempt to infer $P(X_t|y_{1:t})$, i.e. we attempt to estimate the current state given all past observations.
+\item
+Smoothing: we attempt to infer $P(X_{t-m}|y_{1:t})$ with $m > 0$, i.e. we attempt to estimate some past state given all the past and future observations. A more apt description of this process is applying hindsight to state estimation.
+\item
+Prediction: we attempt to infer either $P(X_{t+m}|y_{1:t})$ or $P(Y_{t+m}|y_{1:t})$ with $m>0$, i.e. we attempt to estimate the future hidden states or observations given all the past observations.
+\item
+Viterbi Decoding: we attempt to perform $x_{1:t}^* = \underset{x_{1:t}}{\text{arg max }} P(x_{1:t}|y_{1:t})$, i.e. we attempt to infer the most likely sequence of states which best explain the observations.
+\end{enumerate}
+It is customary to denote hidden variables by a shaded node and observed (visible) variables by a clear node. Additionally, it is also customary to separate the input, state and observation variables from each other: $Z_t = (U_t, X_t, Y_t)$. 
+
+To fully specify a Dynamic Bayesian Network we require the pair $(B_1, B_{\rightarrow})$. The Bayesian Network $B_1$ defines the prior over the random variables being modelled and $B_{\rightarrow}$ defines the transition and observation functions by means of a Bayesian Network graph. This Bayesian Network graph may be factorised according to the Bayesian Network chain rule such that at each time slice:
+\begin{equation}
+P(Z_t|Z_{t-1}) = \Pi_{i=1}^{N}P(Z_t^i| \text{Parents} (Z^i_t))
+\end{equation}
+A dynamic Bayesian Network may be unrolled (temporally) into a (long) Bayesian Network. If one views Dynamic Bayesian Networks as an extension of Bayesian Networks all the previous theory applies. Using the chain rule for Bayesian Networks again we can specify the joint as:
+\begin{equation}
+P(Z_{1:T}) = \Pi_{t=1}^{T}\Pi_{i=1}^{N}P(Z_t^i| \text{Parents} (Z^i_t))
+\end{equation}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.8]{general_dbn.pdf}
+\caption{Example of a DBN unrolled for 3 time slices}
+\label{fig_gen_dbn}
+\end{figure}
 
 \subsection{Model Predictive Control}
 
