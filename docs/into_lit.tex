@@ -4,10 +4,10 @@
 \graphicspath{{./imgs/}{../imgs/}} %look for images
 
 \section{Introduction}
-Insert the introduction.
+Insert the introduction. We know what we don't know.
 
 \section{Background Literature}
-Insert lit background
+Insert lit summary.
 
 \subsection{Probability Theory}
 The calculus of Probability Theory was developed by Fermat and Pascal in order to better understand the problems introduced by uncertainty in gambling. From this dubious genesis a rich and incredibly powerful field has developed. We start our brief introduction of probability theory by restating Kolmogorov's three probability axioms - these axioms underpin the entire theory of probability.
@@ -235,7 +235,7 @@ We will assume that all the systems we model satisfy the first order Markov assu
 \begin{defn}
 \textbf{N\textsuperscript{th}-order Markov assumption} A system satisfies the N\textsuperscript{th} Markov assumption if $P(X_t|X_{1:t})=P(X_t|X_{t-n:t-1})$. For example, a first order Markov system satisfies  $P(X_t|X_{1:t})=P(X_t|X_{t-1})$ 
 \end{defn}
-This is not as restrictive as it may seem at first. It is always possible to transform an N\textsuperscript{th}-order Markov system into a first order Markov system by modifying the state space \cite{murphy1}. We also assume that the state and observation functions remain the same for all time i.e. they are time invariant or homogeneous.
+This is not as restrictive as it may seem at first. It is always possible to transform an N\textsuperscript{th}-order Markov system into a first order Markov system by modifying the state space \cite{murphy1}. We also assume that the state and observation functions remain the same for all time i.e. they are time invariant or homogeneous or stationary.
 
 Intuitively, a state space model is a model of how $X_t$ generates or causes $Y_t$ and $X_{t+1}$. The goal of inference is to invert this mapping. The four types of inference we will consider in this dissertation are:
 \begin{enumerate}
@@ -263,6 +263,13 @@ P(Z_{1:T}) = \Pi_{t=1}^{T}\Pi_{i=1}^{N}P(Z_t^i| \text{Parents} (Z^i_t))
 \includegraphics[scale=0.8]{general_dbn.pdf}
 \caption{Example of a DBN unrolled for 3 time slices}
 \label{fig_gen_dbn}
+\end{figure}
+To make the notation clear, the variable $X_t$ represents a Bayesian Network, for example like the arbitrary one shown in Figure \ref{fig_spec_dbn}. Similarly with $U_t$ and $Y_t$. The representation used in Figure \ref{fig_gen_dbn} is just more compact than showing the entire network as in Figure \ref{fig_spec_dbn}.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.4]{spec_dbn.pdf}
+\caption{Complete expanded Dynamic Bayesian Network}
+\label{fig_spec_dbn}
 \end{figure}
 
 \subsection{Model Predictive Control}
