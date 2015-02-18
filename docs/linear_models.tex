@@ -66,7 +66,7 @@ P(X_t, y_{1:t}) &= \sum_{x_{t-1}} P(X_t, x_{t-1}, v_{1:t-1},v_t)\\
 \end{aligned}
 \label{eq_forward_no_recur}
 \end{equation}
-Where the expansions followed from the chain rule and the cancellations followed from the conditional independence assumptions of the transition and observation functions. Now we define $\alpha(X_t)=P(X_t,y_{1:t})$. Then (\ref{eq_forward_recur}) follows from (\ref{eq_forward_no_recur}).
+Where the expansions followed from the chain rule and the cancellations followed from the conditional independence assumptions of the transition and observation functions. Now we define $\alpha(X_t) \equiv P(X_t,y_{1:t})$. Then (\ref{eq_forward_recur}) follows from (\ref{eq_forward_no_recur}).
 \begin{equation}
 \begin{aligned}
 &\alpha(X_t) = P(y_t|X_t)\sum_{x_{t-1}}P(X_t|X_{t-1})\alpha(X_{t-1}) \text{ for } t>1\\
@@ -82,13 +82,52 @@ P(X_t|y_{1:t}) = \frac{P(X_t, y_{1:t})}{P(y_{1:t})} = \frac{\alpha(X_t)}{P(y_{1:
 Noting that $P(y_{1:t})$ is just a normalisation constant it suffices to normalise $\alpha(X_t)$ to find the filtered distribution of $X_t$ given the observations $y_{1:t})$. One often uses logarithms to perform the filter calculations as machine precision errors become a problem for large $t$ due to the multiplication of small fractions \cite{barber}.
 
 \textbf{Smoothing:} $P(X_t|y_{1:T})$ for $t<T$\\
-The smoothing algorithm we study here is called the parallel smoothing algorithm and is often called the Backwards algorithm in literature \cite{murphy1}.
+The smoothing algorithm we study here is called the parallel smoothing algorithm. The recursion expression we derive first is often called the Backwards algorithm in literature \cite{murphy1}.
 
+We start by splitting the joint $P(X_t, y_{1:T}) = P(X_t, y_{1:t})P(y_{t+1:T}|X_t,y_{1:t})$ by the chain rule and using d-separation to reduce it further $P(X_t, y_{1:T}) = P(X_t, y_{1:t})P(y_{t+1:T}|X_t) = \alpha(X_t)\beta(X_t)$. Effectively the last step implies that future observations are independent of past observations given the current state. We have defined $\beta(X_t)\equiv P(y_{t+1:T}|X_t)$ and continue the derivation in (\ref{eq_backwards_no_recur}).
+\begin{equation}
+\begin{aligned}
+P(y_{t:T}|X_{t-1}) &= \sum_{x_t} P(y_t, y_{t+1:T}, X_t|X_{t-1}) \\
+&= \sum_{x_t} P(y_{t+1:T}, X_t | X_{t-1})P(y_t| y_{t+1:T}, X_t, X_{t-1}) \\
+&= \sum_{x_t} P(y_{t+1:T}, X_t | X_{t-1})P(y_t| X_t) \\
+&= \sum_{x_t} P(X_t | X_{t-1})P(y_{t+1:T}| X_t,X_{t-1})P(y_t| X_t) \\
+&= \sum_{x_t} P(X_t | X_{t-1})P(y_{t+1:T}| X_t)P(y_t| X_t) \\
+\end{aligned}
+\label{eq_backwards_no_recur}
+\end{equation}
+We have made judicious use of the implied independence assertions (via d-separation) of Figure \ref{fig_linmod}. Making use of the definition of $\beta$ we have (\ref{eq_backwards_recur}).
+\begin{equation}
+\begin{aligned}
+&\beta(X_{t-1}) = \sum_{x_t} P(X_t | X_{t-1})\beta(X_t)P(y_t| X_t) \text{ for } 2 \leq t \leq T \\
+&\text{with } \beta(X_T) = 1
+\end{aligned}
+\label{eq_backwards_recur}
+\end{equation}
+The recursion initial condition $\beta(X_T) = 1$ stems from Bayes' Theorem and the definition of $\alpha$ as shown in (\ref{eq_backwards_recur_initial}).
+\begin{equation}
+\begin{aligned}
+P(X_t|y_{1:T}) &= \frac{P(X_t, y_{1:T})}{P(y_{1:T})} \\
+&= \frac{\alpha(X_t)\beta(X_t)}{P(y_{1:T})}\\
+&= \frac{P(X_t, y_{1:T})\beta(X_t)}{P(y_{1:T})}\\
+&\implies \beta(X_T) = 1
+\end{aligned}
+\label{eq_backwards_recur_initial}
+\end{equation}
+The smoothed posterior is given by applying Bayes' Theorem as shown in (\ref{eq_smooth}).
+\begin{equation}
+P(X_t|y_{1:T}) = \frac{\alpha(X_t)\beta(X_t)}{\sum_{x_t}\alpha(x_t)\beta(x_t)}
+\label{eq_smooth}
+\end{equation}
+Together the $\alpha - \beta$ recursions are called the Forwards-Backwards algorithm and find extensive use in general purpose inference of Dynamic Bayesian Networks \cite{murphy1}.
+
+Numerical issues may also become problematic due to the multiplication of small positive numbers. In practice it is often necessary to work in the log space to attenuate these problems \cite{barber}. 
 
 \textbf{Viterbi Decoding:} \\
+dfgf
+
 
 \textbf{Prediction:} \\
-
+dfg
 
 \textbf{Burglar Localisation Problem} \\
 xgd
