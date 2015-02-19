@@ -212,9 +212,11 @@ It is interesting to note that smoothed posterior converges to the filtered post
 Hidden Markov Models are very powerful and have found many uses e.g. speech recognition, object tracking and bio-informatics \cite{barber}. Many extensions of the basic model (see Figure \ref{fig_linmod}) exist which are much more expressive. However, we are interested in modelling and reasoning about continuous random variables. For such applications the Hidden Markov Model, due to the discrete assumption, is inappropriate. Fortunately, the techniques investigated in this section carry over to the continuous case as we will see next.  
 
 \subsection{Continuous Models}
-In the previous section we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous data because
+In the previous section we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous data. The reason is that one would invariably need to discretise the state domain and this would result in an intractably large state space if one requires reasonable resolution. To address this issue we extend the previous model to include both continuous states and observations. 
 
-\bibliographystyle{plain}
-\bibliography{research}
+We assume linearity and that all the distributions are Gaussian. While these are strong assumptions they form the building blocks of much more expressive models as we will discover in the next section. 
+
+%\bibliographystyle{plain}
+%\bibliography{research}
 
 \end{document}

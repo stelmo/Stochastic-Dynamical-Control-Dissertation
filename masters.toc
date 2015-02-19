@@ -11,4 +11,4 @@
 \contentsline {subsection}{\numberline {3.1}Discrete Models}{13}
 \contentsline {subsubsection}{\numberline {3.1.1}Markov Models}{13}
 \contentsline {subsubsection}{\numberline {3.1.2}Hidden Markov Models}{14}
-\contentsline {subsection}{\numberline {3.2}Continuous Models}{17}
+\contentsline {subsection}{\numberline {3.2}Continuous Models}{20}
