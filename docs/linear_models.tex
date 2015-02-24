@@ -3,15 +3,15 @@
 \begin{document}
 \graphicspath{{./imgs/}{../imgs/}} %look for images
 
-\section{Linear Models}
-In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. Firstly we investigate a model where the states ($X$) and observations ($Y$) are discrete. Models of this form are classically called Hidden Markov Models (HMMs). Secondly we generalise the model to include continuous states and observations. Models of this form are called Latent Linear Dynamical Systems (the famous Kalman Filter model falls into this category).
+\section{Minimally Connected Models}
+In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. Firstly, we investigate a model where the states ($X$) and observations ($Y$) are discrete and the input nodes ($U$) are absent. Models of this form are classically called Hidden Markov Models (HMMs). Secondly, we generalise the model to include continuous states and observations with deterministic inputs. Models of this form are called Latent Linear Dynamical Systems (the famous Kalman Filter model falls into this category).
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=1.0]{linear_model.pdf}
+\includegraphics[scale=1.0]{simple_model.pdf}
 \caption{Linear Graphical Model}
 \label{fig_linmod}
 \end{figure}
-Intuitively, this model represents the situation where we are not sure about the state of the world but we have some idea represented by the prior $P(X_1)$. At each time step our state changes according to the transition function and we attempt to, amongst other things, infer the new state, perhaps given some observations related to the past and current state.
+Intuitively, this model represents the situation where we are not sure about the state of the world but can observe some facet of it. At each time step our state changes according to the transition function and, optionally, some input. Generally, we attempt to infer the state of the world given the observations and inputs. 
 
 \subsection{Discrete Models}
 In this section we briefly describe Markov Models because they link back to previous work done by the Chemical Engineering Department at the University of Pretoria. We focus on Hidden Markov Models for the remainder of the section because they generalise to Latent Linear Dynamical Systems. 
@@ -57,34 +57,33 @@ We assume that the transition and observation probability functions are stationa
 For the purposes of this dissertation we will always assume that the model parameters are known. In the previous section the four primary inference techniques were briefly mentioned. We now derive recursive expressions for each inference technique for discrete models of the form of Figure \ref{fig_linmod}. In the next section we show that these derivations also hold for the continuous case with some minor modifications.
 
 \textbf{Filter:} $P(X_t|y_{1:t})$\\
-We start the derivation by noting that $X_{t-1}$ d-separates $X_t$ from $X_{1:t-2}$. Thus $X_{t-1}$ contains all the hidden state information of the system up to and including $t-1$ - this is not surprising since we have assumed a first order Markov system. This is why we consider the reduced state joint $P(X_t, X_{t-1},y_{1:t})$.
+We start the derivation by noting that $X_{t-1}$ d-separates $X_t$ from $X_{1:t-2}$. Thus $X_{t-1}$ contains all the hidden state information of the system up to and including $t-1$ - this is not surprising since we have assumed a first order Markov system. This is why we only marginalise over the reduced state joint $P(X_t, X_{t-1}|y_{1:t})$.
 \begin{equation}
 \begin{aligned}
-P(X_t, y_{1:t}) &= \sum_{x_{t-1}} P(X_t, x_{t-1}, v_{1:t-1},v_t)\\
-&= \sum_{x_{t-1}} P(y_{1:t-1}, x_{t-1})P(X_t, y_t|y_{1:t}, x_{t-1})\\  & = \sum_{x_{t-1}} P(y_{1:t-1}, x_{t-1})P(X_t|y_{1:t}, x_{t-1})P(y_t|X_t,y_{1:t}, x_{t-1}) \\
-&= \sum_{x_{t-1}} P(y_{1:t-1}, x_{t-1})P(X_t|x_{t-1})P(y_t|X_t) \\
+P(X_t| y_{1:t-1}) &= \sum_{x_{t-1}} P(X_t, x_{t-1}| y_{1:t-1})\\
+&= \sum_{x_{t-1}} P(x_{t-1}|y_{1:t-1})P(X_t|y_{1:t-1}, x_{t-1})\\  
+& = \sum_{x_{t-1}} P(x_{t-1}|y_{1:t-1})P(X_t|x_{t-1}) \\
 \end{aligned}
 \label{eq_forward_no_recur}
 \end{equation}
-Where the expansions followed from the chain rule and the cancellations followed from the conditional independence assumptions of the transition and observation functions. Now we define $\alpha(X_t) \equiv P(X_t,y_{1:t})$. Then (\ref{eq_forward_recur}) follows from (\ref{eq_forward_no_recur}).
+Where the expansion followed from the chain rule and the cancellation followed from the conditional independence assumption of the transition function. Now we define $\alpha(X_t) \equiv P(X_t | y_{1:t})$. Then (\ref{eq_forward_recur}) follows from (\ref{eq_forward_no_recur}) and by application of Bayes' Theorem.
 \begin{equation}
 \begin{aligned}
-&\alpha(X_t) = P(y_t|X_t)\sum_{x_{t-1}}P(X_t|X_{t-1})\alpha(X_{t-1}) \text{ for } t>1\\
-&\text{with } \alpha(X_1) = P(X_1, y_1) = P(X_1)P(y_1|X_1)
+\alpha(X_t) &= \frac{P(y_t|X_t, y_{1:t-1})P(X_t|y_{1:t-1})}{P(y_t|y_{1:t-1})} \\
+& = \frac{P(y_t|X_t)P(X_t|y_{1:t-1})}{P(y_t|y_{1:t-1})} \\
+& = \frac{P(y_t|X_t) \sum_{x_{t-1}} P(x_{t-1}|y_{1:t-1})P(X_t|x_{t-1})}{P(y_t|y_{1:t-1})} \\
+& = \frac{P(y_t|X_t) \sum_{x_{t-1}} \alpha(x_{t-1})P(X_t|x_{t-1})}{P(y_t|y_{1:t-1})} \\
 \end{aligned}
 \label{eq_forward_recur}
 \end{equation}
-Clearly we have just derived a recursive expression for the joint distribution $P(X_t, y_{1:t})$. This recursion is called forward recursion in graphical model literature \cite{barber}. To complete our task of estimating $P(X_t|y_{1:t})$ we recall Bayes' Theorem as shown in (\ref{eq_forward_filter}).
-\begin{equation}
-P(X_t|y_{1:t}) = \frac{P(X_t, y_{1:t})}{P(y_{1:t})} = \frac{\alpha(X_t)}{P(y_{1:t})}
-\label{eq_forward_filter}
-\end{equation}
-Noting that $P(y_{1:t})$ is just a normalisation constant it suffices to normalise $\alpha(X_t)$ to find the filtered distribution of $X_t$ given the observations $y_{1:t})$. One often uses logarithms to perform the filter calculations as machine precision errors become a problem for large $t$ due to the multiplication of small fractions \cite{barber}.
+Note that it is not actually necessary to calculate $p(y_t|y_{1:t-1})$ as it is only a normalisation constant. We thus have a recursion relation for the filtered posterior distribution $X_t$ with initial condition $\alpha(X_1) = P(X_1, y_1) = P(X_1)P(y_1|X_1)$.
+
+One often uses logarithms to perform the filter calculations as machine precision errors become a problem for large $t$ due to the multiplication of small fractions. The recursive filtering algorithm we derived is oftenc called the Forwards algorithm in literature \cite{barber}.
 
 \textbf{Smoothing:} $P(X_t|y_{1:T})$ for $t<T$\\
 The smoothing algorithm we study here is called the parallel smoothing algorithm. The recursion expression we derive first is often called the Backwards algorithm in literature \cite{murphy1}.
 
-We start by splitting the joint $P(X_t, y_{1:T}) = P(X_t, y_{1:t})P(y_{t+1:T}|X_t,y_{1:t})$ by the chain rule and using d-separation to reduce it further $P(X_t, y_{1:T}) = P(X_t, y_{1:t})P(y_{t+1:T}|X_t) = \alpha(X_t)\beta(X_t)$. Effectively the last step implies that future observations are independent of past observations given the current state. We have defined $\beta(X_t)\equiv P(y_{t+1:T}|X_t)$ and continue the derivation in (\ref{eq_backwards_no_recur}).
+We start by splitting the joint $P(X_t, y_{1:T}) = P(X_t, y_{1:t})P(y_{t+1:T}|X_t,y_{1:t})$ by the chain rule and using d-separation to reduce it further $P(X_t, y_{1:T}) = P(X_t, y_{1:t})P(y_{t+1:T}|X_t)$. Effectively the last step implies that future observations are independent of past observations given the current state. We have defined $\beta(X_t)\equiv P(y_{t+1:T}|X_t)$ and continue the derivation in (\ref{eq_backwards_no_recur}).
 \begin{equation}
 \begin{aligned}
 P(y_{t:T}|X_{t-1}) &= \sum_{x_t} P(y_t, y_{t+1:T}, x_t|X_{t-1}) \\
@@ -106,9 +105,9 @@ We have made judicious use of the implied independence assertions (via d-separat
 The recursion initial condition $\beta(X_T) = 1$ stems from Bayes' Theorem and the definition of $\alpha$ as shown in (\ref{eq_backwards_recur_initial}).
 \begin{equation}
 \begin{aligned}
-P(X_t|y_{1:T}) &= \frac{P(X_t, y_{1:T})}{P(y_{1:T})} \\
-&= \frac{\alpha(X_t)\beta(X_t)}{P(y_{1:T})}\\
-&= \frac{P(X_t, y_{1:T})\beta(X_t)}{P(y_{1:T})}\\
+P(X_T|y_{1:T}) &= \frac{P(X_T, y_{1:T})}{P(y_{1:T})} \\
+&= \alpha(X_T) \beta(X_T)\\
+&= P(X_T| y_{1:T}) \beta(X_T)\\
 &\implies \beta(X_T) = \mathbf{1}
 \end{aligned}
 \label{eq_backwards_recur_initial}
@@ -215,7 +214,7 @@ Hidden Markov Models are very powerful and have found many uses e.g. speech reco
 In the previous section we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous data. The reason is that one would invariably need to discretise the state domain and this would result in an intractably large state space if one requires reasonable resolution. To address this issue we extend the previous model to include both continuous states and observations. 
 
 We assume linearity and that all the distributions are Gaussian. While these are strong assumptions they form the building blocks of much more expressive models as we will discover in the next section. 
-
+%
 %\bibliographystyle{plain}
 %\bibliography{research}
 
