@@ -28,6 +28,8 @@ $\forall \alpha, \beta \in \Omega, P(\alpha \cup \beta) = P(\alpha) + P(\beta) +
 \label{thrm_prob_union_intersect}
 \end{thrm}
 
+\subsubsection{Discrete Random Variables}
+
 We now make precise what we mean by random variables: a random variable is a non-deterministic variable which is characterised by some uncertainty in its measurement. Semantically we indicate a specific value taken on by the random variable $X$ as $X=x$ or just denote it $x$. Thus the function $P(X=x)=P(x) \in \mathbb{R}$ indicates the probability of event $x$ occurring with respect to the random variable $X$. We denote $P(X)$ as the probability function of the random variable $X$.
 
 Before we proceed let us briefly discuss how we can interpret the function $P$ for any random variable $X$. If $P(X=x)=1$ we are certain of event $x$ occurring, i.e. $X$ will only take on the value $x$. If $P(x)=0$ we are certain that event $x$ will not occur, i.e. $X$ will never take on the value $x$. Thus our certainty of event $x$ occurring is reflected by the magnitude of $P(x)$. Attempting to make the statement ``our certainty of event $x$ occurring" more precise leads us to two different physical interpretations of $P(x)$. The first is the frequentist interpretation: to the frequentist a probability is a long term average of the observations of event $x$ occurring in the event space. While this interpretation is satisfying if one deals with something which is easily measured e.g. the probability of a fair die rolling a 6, it fails to explain statements like: ``the probability of it raining tomorrow is 50\%". The reason the last statement is problematic is because the time span is ill defined. If we rather understand probabilities to mean subjective degrees of belief in event $x$ occurring this is no longer a problem. To ensure that these subjective beliefs are rational can be problematic. One way to ensure this is by requiring that if the probabilities were used in a betting game it is impossible to exploit them to one's advantage (or disadvantage). If this is possible then there is no difference between the interpretations described above. 
@@ -72,10 +74,6 @@ Intuitively, if $X$ is conditionally independent of $Y$ given $Z$ then by observ
 \end{thrm}
 Under the Bayesian interpretation of Theorem \ref{thrm_bayes} we see that the posterior probability of some hypothesis $X$ given some evidence $Y$ being true is just the likelihood $P(Y|X)$ of the hypothesis supporting the evidence multiplied by the prior probability of the hypothesis $P(X)$ normalised by the prior of the evidence $P(Y)$. 
 
-So far in our discussion we have implicitly only used discrete random variables, that is our probability space consisted out of a finite number of events or states. However, it is also necessary to make precise what we mean by a continuous random variable. A continuous random variable is characterised by a density function $f$ which assigns a weight to each possible value of the variable. Although the density function is itself not a probability function, if it satisfies $f(x) \geq 0~\forall x$ and $\int_{-\infty}^{+\infty} f(x)dx = 1$ then it can be used to generate one. The cumulative probability function $P(X \leq x)=\int_{x\prime \leq x}f(x\prime)dx\prime$ is one such example. 
-
-To fully describe a system of random variables it is only necessary to know the joint distribution $P(X_1,X_2,...,X_n)$. Given the joint probability distribution inference (reasoning about the variables under uncertainty) may be performed. Common probabilistic queries involve computing posterior beliefs $P(X|Y=y)$ i.e. the probability function of $X$ given we have some information about $Y$. Other queries involve find the most probable explanation (called a MAP query) of some evidence i.e. finding $X$ which maximises $P(X, Y=y)$. More on this later. 
-
 \subsubsection{Bayes' Theorem: Example}
 This section will attempt to develop some intuition behind Theorem \ref{thrm_bayes}. We quote an excerpt from an article in the Economist \cite{eco1} and illustrate the use of Bayes' Rule in a canonical medical example \cite{korb}.
 
@@ -104,6 +102,28 @@ P(D|T) &= \frac{P(T|D)P(D)}{P(T)} \\
 \end{equation*}
 Clearly there is a big difference between the naive approach and the Bayesian approach. The power of Bayesian inference lies in the ability to correctly reason about events under uncertainty given evidence.
 
+\subsubsection{Continuous Random Variables}
+
+So far in our discussion we have implicitly only used discrete random variables; that is, our probability space consisted out of a finite number of events or states. However, it is also necessary to make precise what we mean by a continuous random variable. A continuous random variable is characterised by a density function $p$ which assigns a weight to each possible value of the variable. Although the density function is itself not a probability function, if it satisfies $p(x) \geq 0~\forall x$ and $\int_{-\infty}^{+\infty} p(x)dx = 1$ then it can be used to generate one. The cumulative probability function $P(X \leq x)=\int_{x\prime \leq x} p(x\prime)dx\prime$ is one such example. 
+
+Arguably the most well known continuous probability density distribution is the Gaussian or Normal distribution. The Gaussian distribution arises naturally from a variety of different contexts and settings. For example, the central limit theorem, together with some mild assumptions, tells us that the sum of a set of $N$ random  variables is itself a random variable and in the limit can be described by a Gaussian distribution \cite{bishop}. The Gaussian is often used because it has some very appealing analytical properties which we will investigate in some depth. 
+
+\begin{defn}
+\textbf{Gaussian Distribution} The univariate Gaussian or Normal distribution is shown in (\ref{eq_norm_uni}). We call $\mu$ the mean and $\sigma^2$ the variance of the distribution.
+\begin{equation}
+\mathcal{N}(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right)
+\label{eq_norm_uni}
+\end{equation}
+The multivariate Gaussian is shown in (\ref{eq_norm_multi}) where $\mu$ is a $D$ dimensional mean vector and $\Sigma$ is a $D \times D$ dimensional covariance matrix.
+\begin{equation}
+\mathcal{N}(x|\mu, \Sigma) = \frac{1}{\sqrt{2\pi^{\frac{D}{2}}}}\frac{1}{|\Sigma|^{\frac{1}{2}}}\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)
+\label{eq_norm_multi}
+\end{equation}
+\end{defn}
+
+
+To fully describe a system of random variables it is only necessary to know the joint distribution $P(X_1,X_2,...,X_n)$. Given the joint probability distribution inference (reasoning about the variables under uncertainty) may be performed. Common probabilistic queries involve computing posterior beliefs $P(X|Y=y)$ i.e. the probability function of $X$ given we have some information about $Y$. Other queries involve find the most probable explanation (called a MAP query) of some evidence i.e. finding $X$ which maximises $P(X, Y=y)$. More on this later. 
+
 \subsection{Graph Theory}
 A graph, $G$, is a data structure consisting of a set of nodes $\chi$ and edges $\xi$. A pair of nodes $X_i, X_j \in \chi$ can be connected by an edge. We will only consider directed graphs in this dissertation. This implies that every edge in $\xi$ has a direction associated between the two nodes it connects i.e. $X_i \rightarrow X_j$ if there is an edge from $X_i$ to $X_j$.
 
@@ -130,6 +150,9 @@ Next we define some nomenclature to further describe the nodes of a graph $G$.
 \end{defn}
 \begin{defn}
 \textbf{Children} We say that the set of nodes $\tau \subset \chi$ are the children of node $X_i$ if, for each node in $\tau$, there exists an edge going from $X_i$ to that node.
+\end{defn}
+\begin{defn}
+\textbf{Descendants} We say that the set of nodes $\gamma \subset \chi$ are the descendants of node $X_i$ if, for each node in $\gamma$, there exists a directed path from $X_i$ to that node.
 \end{defn}
 We also briefly define a structured approach to encoding a graph.
 \begin{defn}
@@ -164,7 +187,7 @@ Suppose $P$ is the joint distribution of some set of random variables we require
 \begin{defn}
 \textbf{I-Map} The I-Map of $P$, denoted by $\mathcal{I}(P)$, is the set of independence assertions of the form $X \indep Y | Z$ which hold over $P$.
 \end{defn} 
-Let $G$ be a Bayesian Network graph over the random variables $X_1, X_2,...,X_n$. We say that the distribution $P$ factorises over the same space if $P$ can be expressed as the product defined by the chain rule for Bayesian Networks.
+Let $G$ be a Bayesian Network graph over the random variables $X_1, X_2,...,X_n$ where each random variable is a node. We say that the distribution $P$ factorises over the same space if $P$ can be expressed as the product defined by the chain rule for Bayesian Networks.
 \begin{defn}
 \textbf{Chain Rule for Bayesian Networks} The chain rule for Bayesian Networks specifies that the joint factorises according to $P(X_1,...,X_n) = \Pi_{i=1}^n P(X_i | \text{Parents}(X_i))$.
 \end{defn}
@@ -216,24 +239,24 @@ Using d-separation we can efficiently reason about the conditional independences
 Bayesian Networks are commonly used to model situations which are not time dependent. We will primarily restrict ourselves to time series modelling in this dissertation. As such we will not delve deeper into static Bayesian Network theory.
 
 \subsubsection{Dynamic Bayesian Networks}
-Dynamical Bayesian Networks generalise the conventional static Bayesian Networks of the previous section. Dynamic, or Temporal, Bayesian Networks model systems which evolve temporally. Since sequential, or temporal, data is abundant in most engineering applications we will only concern ourselves with such models. Notationally we denote a time dependent vector by $x_{1:t}=x_1,x_2,...,x_t$, for example the joint $P(x_{1:3})=P(x_1,x_2,x_3)$.
+Dynamical Bayesian Networks generalise the conventional static Bayesian Networks of the previous section. Dynamic, or Temporal, Bayesian Networks model systems which evolve temporally. Since sequential, or temporal, data is abundant in most engineering applications we will primarily concern ourselves with such models. Notationally we denote a time dependent vector by $x_{1:t}=x_1,x_2,...,x_t$, for example the joint $P(x_{1:3})=P(x_1,x_2,x_3)$.
 
 There are two important classes of analysis one may perform on sequential data using graphical models. On-line analysis, including prediction and filtering and off-line analysis, including smoothing and the most probable explanation (sometimes called Viterbi decoding). In both cases we are generally interested in learning something about a sets of hidden state variables by performing inference on some set of observed variables. 
 
-A state space model assumes that there is some underlying hidden state ($X_t$) of the world which generates observations ($Y_t$). These hidden states may evolve with time or may be functions of some inputs ($U_t$). The hidden states and observations are most generally assumed to be random variables. Any state space model is fully parametrised by the following information:
+A state space model assumes that there is some underlying hidden state ($X_t$) of the world which generates observations ($Y_t$). These hidden states may evolve with time and may be functions of some inputs ($U_t$). The hidden states and observations are most generally assumed to be random variables. Any state space model is fully parametrised by the following information:
 \begin{enumerate}
 \item
 A prior probability distribution over the states: $P(X_1)$
 \item
-A state transition function: $P(X_t|X_{t-1}, U_t)$
+A state transition function: $P(X_t|X_{1:t-1}, U_{1:t-1})$
 \item
-An observation function: $P(Y_t|X_t, U_t)$
+An observation function: $P(Y_t|X_{1:t}, U_{1:t-1})$
 \end{enumerate} 
-For the purposes of this dissertation we will assume that the state space model is known. If this model is not known many machine learning techniques may be used find these models \cite{murphy1}.
+For the purposes of this dissertation we will assume that the state space model is known. If this model is not known many machine learning techniques may be used find these models \cite{murphy1}. To simplify notation we will sometimes omit the dependence of the probability functions on the inputs $U_{1:t}$.
 
 We will assume that all the systems we model satisfy the first order Markov assumption.
 \begin{defn}
-\textbf{N\textsuperscript{th}-order Markov assumption} A system satisfies the N\textsuperscript{th} Markov assumption if $P(X_t|X_{1:t})=P(X_t|X_{t-n:t-1})$. For example, a first order Markov system satisfies  $P(X_t|X_{1:t})=P(X_t|X_{t-1})$ 
+\textbf{N\textsuperscript{th}-order Markov assumption} A system satisfies the N\textsuperscript{th} Markov assumption if $P(X_t|X_{1:t})=P(X_t|X_{t-n:t-1})$. For example, a first order Markov system satisfies  $P(X_t|X_{1:t})=P(X_t|X_{t-1})$. Similarly with the observation function.
 \end{defn}
 This is not as restrictive as it may seem at first. It is always possible to transform an N\textsuperscript{th}-order Markov system into a first order Markov system by modifying the state space \cite{murphy1}. We also assume that the state and observation functions remain the same for all time i.e. they are time invariant or homogeneous or stationary.
 
@@ -250,7 +273,7 @@ Viterbi Decoding: we attempt to perform $x_{1:t}^* = \underset{x_{1:t}}{\text{ar
 \end{enumerate}
 It is customary to denote hidden variables by a shaded node and observed (visible) variables by a clear node. Additionally, it is also customary to separate the input, state and observation variables from each other: $Z_t = (U_t, X_t, Y_t)$. 
 
-To fully specify a Dynamic Bayesian Network we require the pair $(B_1, B_{\rightarrow})$. The Bayesian Network $B_1$ defines the prior over the random variables being modelled and $B_{\rightarrow}$ defines the transition and observation functions by means of a Bayesian Network graph. This Bayesian Network graph may be factorised according to the Bayesian Network chain rule such that at each time slice:
+To fully specify a Dynamic Bayesian Network we require the pair $(B_1, B_{\rightarrow})$. The Bayesian Network $B_1$ defines the prior over the random variables being modelled and $B_{\rightarrow}$ defines the transition and observation functions by means of a Bayesian Network graph, typically over two time slices. This Bayesian Network graph may be factorised according to the Bayesian Network chain rule such that at each time slice:
 \begin{equation}
 P(Z_t|Z_{t-1}) = \Pi_{i=1}^{N}P(Z_t^i| \text{Parents} (Z^i_t))
 \end{equation}
@@ -274,7 +297,7 @@ To make the notation clear, the variable $X_t$ represents a Bayesian Network, fo
 
 \subsection{Model Predictive Control}
 
-%\bibliographystyle{plain}
-%\bibliography{research}
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}
