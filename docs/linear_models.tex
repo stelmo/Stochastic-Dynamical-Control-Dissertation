@@ -11,11 +11,17 @@ In this section we consider probabilistic graphical models of the form shown in 
 \caption{Graphical model of this section}
 \label{fig_linmod}
 \end{figure}
-In the previous section we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous data. The reason is that one would invariably need to discretise the state domain and this would result in an intractably large state space if one requires reasonable resolution. To address this issue we extend the previous model to include both continuous states and observations. 
+In the previous section we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous data. The reason is that one would invariably need to discretise the domain of the continuous random variable under consideration. This would result in an intractably large discrete systems if one requires fine resolution. To address this issue we extend the previous model to include both continuous states and observations. 
 
-We assume linearity and that all the distributions are Gaussian. While these are strong assumptions they form the building blocks of much more expressive models as we will discover in the next section. 
-%
-%\bibliographystyle{plain}
-%\bibliography{research}
+We assume linearity and that all the random variables are Gaussian. While these are strong assumptions they form the building blocks of much more expressive models as we will discover in the next section. Finally, we also assume that the transition and emission functions are time invariant. The state space model is then of the form
+\begin{equation}
+\begin{aligned}
+x_{t+1} = Ax_t + Bu_t + 
+\end{aligned}
+\end{equation}
+
+
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}
