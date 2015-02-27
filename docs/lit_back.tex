@@ -134,10 +134,10 @@ By expanding out the square we have the familiar formulate $\text{var}[f] = \mat
 \end{defn}
 Note that $\text{cov}[x,x]=\text{cov}[x]=\text{var}[x]$. Covariance is a measure of how much two random variables vary together. If $x$ is a $D$ dimensional Gaussian random variable then $\text{cov}[x] = \Sigma$.  
 
-Now we are in a position to perform some manipulations assuming we are using Gaussian random variables. We state one theorem and prove another. The proof for the first theorem uses the same techniques as the proof for the second one.
+Now we are in a position to perform some manipulations assuming we are using Gaussian random variables. We state without proof Theorem \ref{thrm_joint_gaussians}.
 \begin{thrm}
 \textbf{Partitioned Joint Gaussians}
-Given a joint Gaussian distribution $\mathcal{N}(x|\mu,\Sigma)$ with $\Lambda \equiv \Sigma^{-1}$ and $x=\begin{pmatrix}
+Given a Gaussian distribution $\mathcal{N}(x|\mu,\Sigma)$ with $\Lambda \equiv \Sigma^{-1}$ and $x=\begin{pmatrix}
 x_a \\ x_b
 \end{pmatrix}$, $\mu=\begin{pmatrix}
 \mu_a \\ \mu_b
@@ -145,17 +145,47 @@ x_a \\ x_b
 \Sigma_{aa} & \Sigma_{ab} \\ \Sigma_{ba} & \Sigma_{bb}
 \end{pmatrix}$ and $\lambda = \begin{pmatrix}
 \Lambda_{aa} & \Lambda_{ab} \\ \Lambda_{ba} & \Lambda_{bb}
-\end{pmatrix}$ then we have
+\end{pmatrix}$ then we have the conditional distribution in (\ref{eq_part_joint_gauss1}) and the marginal distribution in (\ref{eq_part_joint_gauss2}).
+\begin{equation}
+\begin{aligned}
+&p(x_a|x_b) = \mathcal{N}(x_a|\mu_{a|b}, \Lambda_{aa}^{-1}) \\
+&\text{with } \mu_{a|b} = \mu_a - \Lambda_{aa}^{-1}\Lambda_{ab}(x_b-\mu_b)
+\end{aligned}
+\label{eq_part_joint_gauss1}
+\end{equation}
+\begin{equation}
+p(x_a) = \mathcal{N}(x_a|\mu_a,\Sigma_{aa})
+\label{eq_part_joint_gauss2}
+\end{equation}
 \label{thrm_joint_gaussians}
 \end{thrm}
-
+Next we state and then prove Theorem \ref{thrm_bayes_gaussians} which we will use extensively.
 \begin{thrm}
 \textbf{Bayes' Theorem for Linear Gaussian Models}
-
+Suppose we have a marginal Gaussian distribution for $x$ and a conditional Gaussian distribution for $y$ in the form shown in (\ref{eq_bayes_gauss_suppose}).
+\begin{equation}
+\begin{aligned}
+p(x) &= \mathcal{N}(x|\mu,\Lambda^{-1}) \\
+p(y|x) &= \mathcal{N}(y|Ax + b, L^{-1}) 
+\end{aligned}
+\label{eq_bayes_gauss_suppose}
+\end{equation} 
+Then the marginal distribution for $y$ is given by (\ref{eq_bayes_gauss1}) and the conditional distribution for $x$ given $y$ is (\ref{eq_bayes_gauss2}).
+\begin{equation}
+p(y) = \mathcal{N}(y|A\mu + b, L^{-1}+A\Lambda^{-1}A^T)
+\label{eq_bayes_gauss1}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+&p(x|y) = \mathcal{N}(x|\Sigma(A^TL(y-b)+\Lambda\mu), \Sigma) \\
+&\text{with } \Sigma = (\Lambda + A^TLA)^{-1}
+\end{aligned}
+\label{eq_bayes_gauss2}
+\end{equation}
 \label{thrm_bayes_gaussians}
 \end{thrm}
 \begin{proof}
-
+We begin our proof
 \end{proof}
 
 To fully describe a system of random variables it is only necessary to know the joint distribution $P(X_1,X_2,...,X_n)$. Given the joint probability distribution inference (reasoning about the variables under uncertainty) may be performed. Common probabilistic queries involve computing posterior beliefs $P(X|Y=y)$ i.e. the probability function of $X$ given we have some information about $Y$. Other queries involve find the most probable explanation (called a MAP query) of some evidence i.e. finding $X$ which maximises $P(X, Y=y)$. More on this later. 
