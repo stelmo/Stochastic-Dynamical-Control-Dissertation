@@ -185,7 +185,14 @@ p(y) = \mathcal{N}(y|A\mu + b, L^{-1}+A\Lambda^{-1}A^T)
 \label{thrm_bayes_gaussians}
 \end{thrm}
 \begin{proof}
-We begin our proof
+We begin our proof by noticing that for a general Gaussian $\mathcal{N}(\gamma|\alpha, \beta)$ we can write the exponent as in (\ref{eq_bg1}), note $const$ is some real number which does not depend on $\gamma$.
+\begin{equation}
+-\frac{1}{2}\left(\gamma-\alpha \right)^T\beta^{-1}\left(\gamma-\alpha \right) = -\frac{1}{2}\gamma^T\beta^{-1}\gamma +\gamma^T\beta^{-1}\alpha + const
+\label{eq_bg1} 
+\end{equation}
+Because Gaussian distributions are closed under multiplication, i.e. if one multiplies two Gaussian distributions the product is still a Gaussian distribution (of a higher dimension), we can find the joint distribution $z = \begin{pmatrix}
+x \\ y
+\end{pmatrix}$. 
 \end{proof}
 
 To fully describe a system of random variables it is only necessary to know the joint distribution $P(X_1,X_2,...,X_n)$. Given the joint probability distribution inference (reasoning about the variables under uncertainty) may be performed. Common probabilistic queries involve computing posterior beliefs $P(X|Y=y)$ i.e. the probability function of $X$ given we have some information about $Y$. Other queries involve find the most probable explanation (called a MAP query) of some evidence i.e. finding $X$ which maximises $P(X, Y=y)$. More on this later. 
