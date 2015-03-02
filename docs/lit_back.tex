@@ -71,6 +71,8 @@ Intuitively, if $X$ is conditionally independent of $Y$ given $Z$ then by observ
 \end{thrm}
 Under the Bayesian interpretation of Theorem \ref{thrm_bayes} we see that the posterior probability of some hypothesis $X$ given some evidence $Y$ being true is just the likelihood $P(Y|X)$ of the hypothesis supporting the evidence multiplied by the prior probability of the hypothesis $P(X)$ normalised by the prior of the evidence $P(Y)$. It is also convenient to notice that $P(Y)$ is a normalising constant and thus  $P(X|Y) \propto P(Y|X)P(X)$.
 
+To fully describe a system of random variables it is only necessary to know the joint distribution $P(X_1,X_2,...,X_n)$. Given the joint probability distribution inference (reasoning about the variables under uncertainty) may be performed. Common probabilistic queries involve computing posterior beliefs $P(X|Y=y)$ i.e. the probability function of $X$ given we have some information about $Y$. Other queries involve find the most probable explanation (called a MAP query) of some evidence i.e. finding $X$ which maximises $P(X, Y=y)$. More on this later. 
+
 \textbf{Bayes' Theorem: Example}\\
 This section will attempt to develop some intuition behind Theorem \ref{thrm_bayes}. We quote an excerpt from an article in the Economist \cite{eco1} and illustrate the use of Bayes' Rule in a canonical medical example \cite{korb}.
 
@@ -101,21 +103,23 @@ Clearly there is a big difference between the naive approach and the Bayesian (c
 
 \subsubsection{Continuous Random Variables}
 
-So far in our discussion we have implicitly only used discrete random variables; that is, our probability space consisted out of a finite number of events or states. However, it is also necessary to make precise what we mean by a continuous random variable. A continuous random variable is characterised by a density function $p$ which assigns a weight to each possible value of the variable. Intuitively this weight is \underline{related} to the ``probability" of that value occurring\footnote{Please note that strictly speaking $P(x)=0$ for a specific point $x$ in the domain of $p$. Technically it is correct to say that the probability of $P(x \in [a,b]) = \int_a^b p(y)dy$, thus if we want the probability of $x$ occurring we just make $[a,b]$ small.}. Although the density function is itself not a probability function, if it satisfies $p(x) \geq 0~\forall x$ and $\int p(x)dx = 1$, where we have implicitly integrated over the domain of $p$, then it can be used to generate one. The cumulative probability function $P(x \leq z)=\int_{y \leq z} p(y)dy$ is one such example. 
+So far in our discussion we have implicitly only used discrete random variables; that is, our probability space consisted out of a finite number of events or states. However, it is also necessary to make precise what we mean by a continuous random variable. A continuous random variable is characterised by a density function $p$ which assigns a weight to each possible value of the variable. Intuitively this weight is \underline{related} to the ``probability" of that value occurring\footnote{Please note that strictly speaking $P(x)=0$ for a specific point $x$ in the domain of $p$. Technically it is correct to say that the probability of $P(x \in [a,b]) = \int_a^b p(y)dy$; thus, if we want the probability of $x$ occurring we could just make $[a,b]$ small.}. Although the density function is itself not a probability function, if it satisfies $p(x) \geq 0~\forall x \in X$ and $\int p(x)dx = 1$, where we have implicitly integrated over the domain of $p$, then it can be used to generate one. The cumulative probability function $P(X \leq a)=\int^a_{-\infty} p(x)dx$ is one such example\footnote{We have assumed that the domain of $X$ is the entire real line.}. 
 
 Arguably the most well known continuous probability density distribution is the Gaussian or Normal distribution. The Gaussian distribution arises naturally from a variety of different contexts and settings. For example, the central limit theorem, together with some mild assumptions, tells us that the sum of a set of $N$ random  variables is itself a random variable and in the limit can be described by a Gaussian distribution \cite{bishop}. The Gaussian is often used because it has some very appealing analytical properties which we will investigate in some depth. 
 
+Since the probability of a specific value does not have meaning in the setting of continuous probability functions we abuse our notation and denote the random variable $X$ by $x$. We also do not indicate vector quantities in boldface because it should be clear from the text when we are referring to such expressions. 
 \begin{defn}
 \textbf{Gaussian Distribution} The univariate Gaussian or Normal distribution of a random variable $x$ is shown in (\ref{eq_norm_uni}). We call $\mu$ the mean and $\sigma^2$ the variance of the distribution.
 \begin{equation}
 \mathcal{N}(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right)
 \label{eq_norm_uni}
 \end{equation}
-The multivariate Gaussian is shown in (\ref{eq_norm_multi}) where $\mu$ is a $D$ dimensional mean vector and $\Sigma$ is a $D \times D$ dimensional covariance matrix. Note that we often use the inverse of the covariance matrix, called the precision matrix and define it $\Lambda \equiv \Sigma^{-1}$.
+The multivariate Gaussian distribution is shown in (\ref{eq_norm_multi}) where $\mu$ is a $D$ dimensional mean vector and $\Sigma$ is a $D \times D$ dimensional covariance matrix. Note that we often use the inverse of the covariance matrix, called the precision matrix and define it $\Lambda \equiv \Sigma^{-1}$.
 \begin{equation}
 \mathcal{N}(x|\mu, \Sigma) = \frac{1}{\sqrt{2\pi^{\frac{D}{2}}}}\frac{1}{|\Sigma|^{\frac{1}{2}}}\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)
 \label{eq_norm_multi}
 \end{equation}
+\label{defn_gauss}
 \end{defn}
 It is also appropriate to define some functions which apply equally well to the discrete case as to the continuous case (just replace the integration with summation in the setting of discrete random variables). We define the expectation (or mean or average) in Definition \ref{def_expectation}, the variance in Definition \ref{def_variance} and the covariance in Definition \ref{def_covariance}. 
 \begin{defn}
@@ -132,7 +136,7 @@ By expanding out the square we have the familiar formulate $\text{var}[f] = \mat
 \textbf{Covariance} For two random variables $x,y$ (which may be vectors) we define the covariance matrix $\text{cov}[x,y] = \mathbb{E}[xy^T] - \mathbb{E}[x]\mathbb{E}[y]$.
 \label{def_covariance}
 \end{defn}
-Note that $\text{cov}[x,x]=\text{cov}[x]=\text{var}[x]$. Covariance is a measure of how much two random variables vary together. If $x$ is a $D$ dimensional Gaussian random variable then $\text{cov}[x] = \Sigma$.  
+Note that $\text{cov}[x,x]=\text{cov}[x]=\text{var}[x]$. Covariance is a measure of how much two random variables vary together. If $x$ is a $D$ dimensional Gaussian random variable then $\text{cov}[x] = \Sigma$ as defined in Definition \ref{defn_gauss}.  
 
 Now we are in a position to perform some manipulations assuming we are using Gaussian random variables. We state without proof Theorem \ref{thrm_joint_gaussians}.
 \begin{thrm}
@@ -158,8 +162,9 @@ p(x_a) = \mathcal{N}(x_a|\mu_a,\Sigma_{aa})
 \label{eq_part_joint_gauss2}
 \end{equation}
 \label{thrm_joint_gaussians}
+Note that for the conditional distribution it is easier to work with the precision matrix. 
 \end{thrm}
-Next we state and then prove Theorem \ref{thrm_bayes_gaussians} which we will use extensively.
+Next we state and then prove Theorem \ref{thrm_bayes_gaussians} which we will use extensively. The proof for Theorem \ref{thrm_joint_gaussians} uses the same techniques and can be found in \cite{bishop}.
 \begin{thrm}
 \textbf{Bayes' Theorem for Linear Gaussian Models}
 Suppose we have a marginal Gaussian distribution for $x$ and a conditional Gaussian distribution for $y$ in the form shown in (\ref{eq_bayes_gauss_suppose}).
@@ -183,6 +188,7 @@ p(y) = \mathcal{N}(y|A\mu + b, L^{-1}+A\Lambda^{-1}A^T)
 \label{eq_bayes_gauss2}
 \end{equation}
 \label{thrm_bayes_gaussians}
+Note that $b$ is a known vector. Given a deterministic function $u$ we can also write $b = Bu + e$ where $B$ is some conforming matrix and $e$ is some constant vector. 
 \end{thrm}
 \begin{proof}
 We begin our proof by noticing that for a general Gaussian $\mathcal{N}(\gamma|\alpha, \beta)$ we can write the exponent as in (\ref{eq_bg1}), note $const$ is some real number which does not depend on $\gamma$.
@@ -190,12 +196,51 @@ We begin our proof by noticing that for a general Gaussian $\mathcal{N}(\gamma|\
 -\frac{1}{2}\left(\gamma-\alpha \right)^T\beta^{-1}\left(\gamma-\alpha \right) = -\frac{1}{2}\gamma^T\beta^{-1}\gamma +\gamma^T\beta^{-1}\alpha + const
 \label{eq_bg1} 
 \end{equation}
-Because Gaussian distributions are closed under multiplication, i.e. if one multiplies two Gaussian distributions the product is still a Gaussian distribution (of a higher dimension), we can find the joint distribution $z = \begin{pmatrix}
+Also note that Gaussian distributions are closed under multiplication, i.e. if one multiplies two Gaussian distributions the product is still a Gaussian distribution (of a higher dimension). To find the joint distribution we let $z = \begin{pmatrix}
 x \\ y
-\end{pmatrix}$. 
+\end{pmatrix}$ and consider the log of the joint in (\ref{eq_log_gauss_joint}).
+\begin{equation}
+\begin{aligned}
+\log(z) &= \log(p(x)) + \log(p(y|x))\\
+&=  -\frac{1}{2}(x-\mu)^T\Lambda(x-\mu) -\frac{1}{2}(y-Ax-b)^T L(y-Ax-b) + const
+\end{aligned}
+\label{eq_log_gauss_joint}
+\end{equation}
+Here $const$ denotes constant terms which are independent of $x$ and $y$. Now we make use of (\ref{eq_bg1}) to find the mean and covariance of $z$. Continuing, we consider only the second order terms when (\ref{eq_log_gauss_joint}) is expanded, as shown in (\ref{eq_gauss_joint_precision}).
+\begin{equation}
+\begin{aligned}
+&-\frac{1}{2}x^T(\Lambda+A^TLA)x-\frac{1}{2}y^TLy + \frac{1}{2}y^TLAx+\frac{1}{2}x^TA^TLy \\
+&= -\frac{1}{2}\begin{pmatrix}
+x \\ y
+\end{pmatrix}^T \begin{pmatrix}
+\Lambda+A^TLA & -A^TL \\ -LA & L
+\end{pmatrix}\begin{pmatrix}
+x \\ y
+\end{pmatrix} \\
+&= -\frac{1}{2}z^TRz
+\end{aligned}
+\label{eq_gauss_joint_precision}
+\end{equation}
+From this we immediately have the precision of $z$: the matrix $R$; we also use a matrix inversion formula found in \cite{bishop} to find the covariance. This is shown in (\ref{eq_gauss_covar}).
+\begin{equation}
+\text{cov}[z] = R^{-1} = \begin{pmatrix}
+\Lambda^{-1} & \Lambda^{-1}A^T \\ A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A^T
+\end{pmatrix}
+\label{eq_gauss_covar}
+\end{equation}
+We now proceed in exactly the same way to find mean of $z$. By expanding \ref{eq_log_gauss_joint} and only considering the first order terms in $x$ and $y$ we have (\ref{eq_gauss_mean1}).
+\begin{equation}
+x^T\Lambda\mu-x^TA^TLb+y^TLb = \begin{pmatrix}
+x \\ y
+\end{pmatrix}\begin{pmatrix}
+\Lambda\mu - A^TLb \\Lb
+\end{pmatrix}
+\label{eq_gauss_mean1}
+\end{equation}
+Again, by making use of (\ref{eq_bg1}) and the fact that the covariance of $z$ is $R^{-1}$ it is possible to show that $\mathbb{E}[z]=\begin{pmatrix}
+\mu \\ A\mu +b
+\end{pmatrix}$ as shown in \cite{bishop}. By using Theorem \ref{thrm_joint_gaussians} we immediately have the marginal and conditional distributions as required.
 \end{proof}
-
-To fully describe a system of random variables it is only necessary to know the joint distribution $P(X_1,X_2,...,X_n)$. Given the joint probability distribution inference (reasoning about the variables under uncertainty) may be performed. Common probabilistic queries involve computing posterior beliefs $P(X|Y=y)$ i.e. the probability function of $X$ given we have some information about $Y$. Other queries involve find the most probable explanation (called a MAP query) of some evidence i.e. finding $X$ which maximises $P(X, Y=y)$. More on this later. 
 
 \subsection{Graph Theory}
 A graph, $G$, is a data structure consisting of a set of nodes $\chi$ and edges $\xi$. A pair of nodes $X_i, X_j \in \chi$ can be connected by an edge. We will only consider directed graphs in this dissertation. This implies that every edge in $\xi$ has a direction associated between the two nodes it connects i.e. $X_i \rightarrow X_j$ if there is an edge from $X_i$ to $X_j$.
