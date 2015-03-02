@@ -31,23 +31,135 @@ p(y_{t+1}|x_t) &= \mathcal{N}(y_{t+1}|Cx_{t+1}, R)
 \end{equation}
 We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $R$ being the covariance of the noise associated with state measurements and $Q$ being the uncertainty (plant-model mismatch) associated with the linear model of the plant. Additionally, $Q$ can also model any unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $R$ and $Q$ indicate more uncertainty in the system. 
 
+To fully specify the system we require the transition and emission functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod}) as well as the prior (initial) distribution of $x_1$.
+
 \subsection{Filtering}
-The goal of filtering is to find the posterior distribution $p(x_{t}|y_{1:t}, u_{1:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in the Hidden Markov Model section albeit with continuous Gaussian distributions. Thus, the motivation for taking the joint of only the preceding hidden time step is the same. We start with the prediction expression in (\ref{eq_filter_pred}) and assume, due to the closure of linear conditional Gaussian distributions, that $\alpha(x_{t-1}) = p(x_{t-1}|y_{1:t-1}, u_{1:t-2}) = \mathcal{N}(x_{t}|\mu_t, \Sigma_t) $. 
+The goal of filtering is to find the posterior distribution $p(x_{t}|y_{1:t}, u_{1:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in the Hidden Markov Model section albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. 
+
+We start with the prediction expression in (\ref{eq_filter_pred}) and assume, due to the closure of linear conditional Gaussian distributions, that $\alpha(x_{t-1}) = p(x_{t-1}|y_{1:t-1}, u_{1:t-2}) = \mathcal{N}(x_{t}|\mu_t, \Sigma_t) $. 
 \begin{equation}
 \begin{aligned}
-p(x_t|y_{1:t-1}, u_{1:t-1}) &= \int p(x_t,x_{t-1}|y_{1:t-1}, u_{1:t-1}) dx_{t-1} \\
-&= \int p(x_{t-1}|y_{1:t-1}, u_{1:t-1})p(x_{t}|x_{t-1}, y_{1:t-1}, u_{1:t-1}) dx_{t-1} \\
-&= \int p(x_{t-1}|y_{1:t-1}, u_{1:t-2})p(x_{t}|x_{t-1}, u_{1:t-1}) dx_{t-1} \\
-&= \int \alpha(x_{t-1})\mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, Q) dx_{t-1} \\
-&= \int \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, Q) dx_{t-1} \\
+p(x_t|y_{1:t-1}, u_{1:t-1}) &= \int_{x_{t-1}} p(x_t,x_{t-1}|y_{1:t-1}, u_{1:t-1}) \\
+&= \int_{x_{t-1}} p(x_{t-1}|y_{1:t-1}, u_{1:t-1})p(x_{t}|x_{t-1}, y_{1:t-1}, u_{1:t-1}) \\
+&= \int_{x_{t-1}} p(x_{t-1}|y_{1:t-1}, u_{1:t-2})p(x_{t}|x_{t-1}, u_{1:t-1}) \\
+&= \int_{x_{t-1}} \alpha(x_{t-1})\mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, Q) \\
+&= \int_{x_{t-1}} \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, Q) \\
 \end{aligned}
 \label{eq_filter_pred}
 \end{equation} 
-Now we use Bayes' Theorem for Linear Gaussian Models to evaluate the marginal expression as shown in ().
+Now we use Bayes' Theorem for Linear Gaussian Models to evaluate the marginal expression as shown in (\ref{eq_filter_pred2}).
 \begin{equation}
-\int \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, Q) dx_{t-1}
+\begin{aligned}
+\int_{x_{t-1}} \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, Q) &= \mathcal{N}(x_t|A\mu_{t-1}+Bu_{t-1
+}, Q+ A^T\Sigma_{t-1}A) \\
+&= \mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})
+\end{aligned}
+\label{eq_filter_pred2}
 \end{equation}
+Intuitively, (\ref{eq_filter_pred2}) is the one step ahead prediction for the hidden state given all the past observations and the past and present inputs. Now we make use of Bayes' Theorem to update our view of $x_t$ given the current observation as shown in (\ref{eq_filter_update}).
+\begin{equation}
+\begin{aligned}
+p(x_t|y_{1:t},u_{1:t-1}) &= p(x_t|y_{t},y_{1:t-1},u_{1:t-1}) \\
+&= \frac{p(y_t|x_t,y_{1:t-1},u_{1:t-1})p(x_t|y_{1:t-1},u_{1:t-2}, u_{t-1})}{p(y_t|y_{1:t-1},u_{1:t-1})} \\
+&= \frac{p(y_t|x_t)p(x_t|y_{1:t-1},u_{1:t-1})}{p(y_t|y_{1:t-1},u_{1:t-1})} \\
+&\propto p(y_t|x_t)p(x_t|y_{1:t-1},u_{1:t-1})\\
+&= p(y_t|x_t)\mathcal{N}(x_t|A\mu_{t-1}+Bu_{t-1
+}, Q+ A^T\Sigma_{t-1}A) \\
+&= \mathcal{N}(y_{t}|Cx_{t}, R)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})
+\end{aligned}
+\label{eq_filter_update}
+\end{equation}
+Now we again make use of Bayes' Theorem for Linear Gaussian Models to evaluate the conditional expression as shown in (\ref{eq_filter_update2}).
+\begin{equation}
+\begin{aligned}
+p(x_t|y_{1:t},u_{1:t-1}) &=\mathcal{N}(y_{t}|Cx_{t}, R)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})\\ 
+&= \mathcal{N}(x_t|\Gamma(C^TR^{-1}y + \Sigma_{t|t-1}^{-1}\mu_{t|t-1}), \Gamma) \\
+&\text{with } \Gamma = (\Sigma_{t|t-1}^{-1}+C^TR^{-1}C)^{-1} 
+\end{aligned}
+\label{eq_filter_update2}
+\end{equation} 
+By using the matrix identity $(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1}$ and defining $K_t = \Sigma_{t|t-1}C^T(C\Sigma_{t|t-1}C^T+R)^{-1}$ we can simplify $\Gamma$ to the recursive posterior covariance estimate shown in (\ref{eq_filter_covar}). Similarly, using the same matrix identity together with $(P^{-1} B^TR^{-1}B)^{-1})^{-1}B^TR^{-1} = PB^T(BPB^T+R^{-1})$ and the definition of $K_t$ we have the posterior mean estimate as shown in (\ref{eq_filter_mean}). Together (\ref{eq_filter_covar}) and (\ref{eq_filter_mean}) are known as the Kalman Filter equations.
+\begin{align}
+\Sigma_t &= (I-K_tC)\Sigma_{t|t-1} 
+\label{eq_filter_covar} \\
+\mu_t &= \mu_{t|t-1} + K_t(y_t - C\mu_{t|t-1})
+\label{eq_filter_mean}
+\end{align}
+Note that for the first time step only the update expression is evaluated as the prediction is the prior of $x_1$. 
 
+Intuitively, the Kalman Filter equations use the state space model to predict the new state distribution and then adjust it by a correction factor $K_t(y_t - C\mu_{t|t-1})$. This factor depends on the difference between the actual observation and the predicted observation. The Kalman gain, $K_t$, represents the inferred confidence of the model. If the model is deemed accurate then the predictions make up most of $\mu_t$ but if the model is bad at predicting the observations then the observations play a bigger part in the next mean estimate. 
+
+\subsection{Prediction}
+The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{1:t}, u_{1:t+h})$ and $p(y_{t+h}|y_{1:t}, u_{1:t+h})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). 
+
+We start the derivation by considering the one step ahead state prediction in (\ref{eq_pred_state}).
+\begin{equation}
+\begin{aligned}
+p(x_{t+1}|y_{1:t}, u_{1:t+1}) &= \int_{x_t} p(x_{t+1},x_t|y_{1:t}, u_{1:t+1}) \\
+&= \int_{x_t} p(x_t|y_{1:t}, u_{1:t+1}) p(x_{t+1}|x_t,y_{1:t}, u_{1:t+1}) \\
+&= \int_{x_t} p(x_t|y_{1:t}, u_{1:t}) p(x_{t+1}|x_t, u_{t+1}) \\
+&= \int_{x_t} \alpha(x_t) p(x_{t+1}|x_t, u_{t+1}) \\
+&= \int_{x_t} \mathcal{N}(x_t|\mu_t, \Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t, Q) \\
+&= \mathcal{N}(x_{t+1}|Ax_t+Bu_t, Q+A\Sigma A^T) \\
+&= \mathcal{N}(x_{t+1}|\mu_{t+1|t}, \Sigma_{t+1|t})
+\end{aligned}
+\label{eq_pred_state}
+\end{equation}
+Note that $\mu_t$ and $\Sigma_t$ is the filtered mean and covariance. We have again relied upon Bayes' Theorem for Linear Gaussian Models to evaluate the marginal integral. We now consider the two step ahead state prediction in (\ref{eq_pred_state2}).
+\begin{equation}
+\begin{aligned}
+p(x_{t+2}|y_{1:t}, u_{1:t+2}) &= \int_{x_{t+1}} p(x_{t+2},x_{t+1}|y_{1:t}, u_{1:t+2}) \\
+&= \int_{x_{t+1}} p(x_{t+1}|y_{1:t}, u_{1:t+1}) p(x_{t+2}|x_{t+1},y_{1:t}, u_{1:t+2}) \\
+&= \int_{x_{t+1}} p(x_{t+1}|y_{1:t}, u_{1:t+1}) p(x_{t+2}|x_{t+1}, u_{t+2}) \\
+&= \int_{x_t} \mathcal{N}(x_{t+1}|\mu_{t+1|t}, \Sigma_{t+1|t})\mathcal{N}(x_{t+2}|Ax_{t+1}+Bu_{t+1}, Q) \\
+&= \mathcal{N}(x_{t+2}|A\mu_{t+1|t}+Bu_{t+1}, Q+A\Sigma_{t+1|t} A^T) \\
+&= \mathcal{N}(x_{t+2}|\mu_{t+2|t}, \Sigma_{t+2|t})
+\end{aligned}
+\label{eq_pred_state2}
+\end{equation}
+It is clear that we have derived a recursive algorithm to estimate the $h^{th}$-step ahead state prediction as shown in (\ref{eq_pred_state_recur}).
+\begin{equation}
+\begin{aligned}
+&p(x_{t+h}|y_{1:t}, u_{1:t+h}) = \mathcal{N}(x_{t+h}|\mu_{t+h|t}, \Sigma_{t+h|t}) \\
+&\text{with } \mu_{t+h|t} = A\mu_{t+h-1|t}+Bu_{t+h} \\
+&\text{and } \Sigma_{t+h|t} = Q+A\Sigma_{t+h-1|t} A^T \\
+&\text{and } \mu_{t+1|t} = A\mu_t+Bu_{t+1} \\
+&\text{and } \Sigma_{t+1|t} = Q+A\Sigma_t A^T \\ 
+\end{aligned}
+\label{eq_pred_state_recur}
+\end{equation}
+Inspecting (\ref{eq_pred_state_recur}) we see that the predictive distribution is just the forward projection, using the transition function, of the filtered distribution.
+
+Next we consider the observation prediction, $p(y_{t+h}|y_{1:t}, u_{1:t+h})$. Again consider the one step ahead prediction as shown in (\ref{eq_pred_obs}).
+\begin{equation}
+\begin{aligned}
+p(y_{t+1}|y_{1:t}, u_{1:t+1}) &= \int_{x_t, x_{t+1}} p(y_{t+1},x_{t+1},x_t|y_{1:t}, u_{1:t+1}) \\
+&= \int_{x_t, x_{t+1}} p(x_t|y_{1:t}, u_{1:t+1})p(y_{t+1},x_{t+1}|x_t, y_{1:t}, u_{1:t+1}) \\
+&= \int_{x_t, x_{t+1}} p(x_t|y_{1:t}, u_{1:t+1}) p(x_{t+1}|x_t, y_{1:t}, u_{1:t+1})p(y_{t+1}|x_{t+1}, x_t, y_{1:t}, u_{1:t+1}) \\
+&= \int_{x_t, x_{t+1}} \alpha(x_t) p(x_{t+1}|x_t, u_{t+1}) p(y_{t+1}|x_{t+1}) \\
+&= \int_{x_t, x_{t+1}} \mathcal{N}(x_t|\mu_t,\Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t, Q) \mathcal{N}(y_{t+1}|Cx_{t+1}, R) \\
+&= \mathcal{N}(y_{t+1}|C\mu_{t+1|t}, R+C\Sigma_{t+1|t}C^T)
+\end{aligned}
+\label{eq_pred_obs}
+\end{equation}
+We have again used Bayes' Theorem for Linear Gaussian Models and used the nomenclature of the one step ahead state prediction derivation. For the sake of brevity we trust that the reader will see the similarity between the two derivations and allow us to conclude, without proof, that the $h^{th}$-step ahead observation prediction is given by (\ref{eq_pred_obs_recur}).
+\begin{equation}
+\begin{aligned}
+&p(y_{t+h}|y_{1:t}, u_{1:t+h}) = \mathcal{N}(y_{t+h}|C\mu_{t+h|t}, R+C\Sigma_{t+h|t}C^T) \\
+\end{aligned}
+\label{eq_pred_obs_recur}
+\end{equation}
+It is reassuring to note that the observation prediction is just the state prediction transformed by the observation function.
+
+\subsection{Smoothing and Viterbi Decoding}
+For the sake of completeness we state the Kalman Smoothing equations and briefly discuss Viterbi Decoding within the context of conditional linear Gaussian systems. 
+
+The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we again make use of Bayes' Theorem for Linear Gaussian Models. We are also primarily interested in filtering and prediction as they are important for the purposes of control which is the main aim of this dissertation.
+
+
+
+
+\subsection{Filtering the CSTR}
 
 
 \bibliographystyle{plain}

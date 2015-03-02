@@ -1,19 +1,22 @@
 \contentsline {section}{\numberline {1}Background Literature}{2}
 \contentsline {subsection}{\numberline {1.1}Probability Theory}{2}
 \contentsline {subsubsection}{\numberline {1.1.1}Discrete Random Variables}{2}
-\contentsline {subsubsection}{\numberline {1.1.2}Bayes' Theorem: Example}{4}
-\contentsline {subsubsection}{\numberline {1.1.3}Continuous Random Variables}{5}
-\contentsline {subsection}{\numberline {1.2}Graph Theory}{6}
-\contentsline {subsection}{\numberline {1.3}Probabilistic Graphical Models}{7}
-\contentsline {subsubsection}{\numberline {1.3.1}Bayesian Networks}{8}
-\contentsline {subsubsection}{\numberline {1.3.2}Dynamic Bayesian Networks}{10}
-\contentsline {subsection}{\numberline {1.4}Model Predictive Control}{13}
-\contentsline {section}{\numberline {2}Hidden Markov Models}{14}
-\contentsline {subsection}{\numberline {2.1}Markov Models}{14}
-\contentsline {subsection}{\numberline {2.2}Hidden Markov Models}{15}
-\contentsline {subsubsection}{\numberline {2.2.1}Filtering}{16}
-\contentsline {subsubsection}{\numberline {2.2.2}Smoothing}{17}
-\contentsline {subsubsection}{\numberline {2.2.3}Viterbi Decoding}{18}
-\contentsline {subsubsection}{\numberline {2.2.4}Prediction}{19}
-\contentsline {subsubsection}{\numberline {2.2.5}Burglar Localisation Problem}{20}
-\contentsline {section}{\numberline {3}Linear Models}{23}
+\contentsline {subsubsection}{\numberline {1.1.2}Continuous Random Variables}{5}
+\contentsline {subsection}{\numberline {1.2}Graph Theory}{8}
+\contentsline {subsection}{\numberline {1.3}Probabilistic Graphical Models}{10}
+\contentsline {subsubsection}{\numberline {1.3.1}Bayesian Networks}{10}
+\contentsline {subsubsection}{\numberline {1.3.2}Dynamic Bayesian Networks}{12}
+\contentsline {subsection}{\numberline {1.4}Model Predictive Control}{15}
+\contentsline {section}{\numberline {2}Hidden Markov Models}{16}
+\contentsline {subsection}{\numberline {2.1}Markov Models}{16}
+\contentsline {subsection}{\numberline {2.2}Hidden Markov Models}{17}
+\contentsline {subsubsection}{\numberline {2.2.1}Filtering}{18}
+\contentsline {subsubsection}{\numberline {2.2.2}Smoothing}{19}
+\contentsline {subsubsection}{\numberline {2.2.3}Viterbi Decoding}{20}
+\contentsline {subsubsection}{\numberline {2.2.4}Prediction}{21}
+\contentsline {subsubsection}{\numberline {2.2.5}Burglar Localisation Problem}{22}
+\contentsline {section}{\numberline {3}Linear Models}{25}
+\contentsline {subsection}{\numberline {3.1}Filtering}{26}
+\contentsline {subsection}{\numberline {3.2}Prediction}{27}
+\contentsline {subsection}{\numberline {3.3}Smoothing and Viterbi Decoding}{29}
+\contentsline {subsection}{\numberline {3.4}Filtering the CSTR}{29}
