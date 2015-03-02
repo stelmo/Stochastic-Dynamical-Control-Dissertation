@@ -128,7 +128,7 @@ It is clear that we have derived a recursive algorithm to estimate the $h^{th}$-
 \end{aligned}
 \label{eq_pred_state_recur}
 \end{equation}
-Inspecting (\ref{eq_pred_state_recur}) we see that the predictive distribution is just the forward projection, using the transition function, of the filtered distribution. Note that it is possible for $\Sigma_{t+h|t}$ to become smaller for increasing $h$ (obviously bounded by $Q$ below). For, if the eigenvalues of $A$ are less than one we have that $A\Sigma_{t+h-1|t}A^T \leq A\Sigma_{t+h|t}A^T$.
+Inspecting (\ref{eq_pred_state_recur}) we see that the predictive distribution is just the forward projection, using the transition function, of the filtered distribution. Note that it is possible for $\Sigma_{t+h|t}$ to become smaller for increasing $h$ (obviously bounded by $Q$ below). For, if the eigenvalues of $A$ are less than one we have that $A\Sigma_{t+h|t}A^T \leq A\Sigma_{t+h-1|t}A^T$.
 
 Next we consider the observation prediction, $p(y_{t+h}|y_{1:t}, u_{1:t+h})$. Again consider the one step ahead prediction as shown in (\ref{eq_pred_obs}).
 \begin{equation}
@@ -154,9 +154,9 @@ It is reassuring to note that the observation prediction is just the state predi
 \subsection{Smoothing and Viterbi Decoding}
 For the sake of completeness we state the Kalman Smoothing equations and briefly discuss Viterbi Decoding within the context of conditional linear Gaussian systems. 
 
-The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we again make use of Bayes' Theorem for Linear Gaussian Models. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the main aim of this dissertation.
+The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we again make use of Bayes' Theorem for Linear Gaussian Models. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the focus of this dissertation.
 
-The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{1:T},u_{1:T})$ is also a Gaussian distribution of the form $\mathcal{N}()$. The recursion expressions for the posterior mean and covariance are shown in (\ref{eq_smooth}).
+The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{1:T},u_{1:T})$ is also a Gaussian distribution of the form $\mathcal{N}(\hat{\mu}_t, \hat{\Sigma}_t)$. The recursion expressions for the posterior mean and covariance are shown in (\ref{eq_smooth}).
 \begin{equation}
 \begin{aligned}
 \hat{\mu}_t &= \mu_t + J_t\left(\hat{\mu}_{t+1}-(A\mu_t+Bu_{t-1})\right) \\
@@ -168,6 +168,8 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 \end{aligned}
 \label{eq_smooth}
 \end{equation}
+
+Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same due to the Partitioned Joint Gaussian Theorem \cite{bishop}. \textbf{Check this - I would like to include a proof here??}
 
 \subsection{Filtering the CSTR}
 
