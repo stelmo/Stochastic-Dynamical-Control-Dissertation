@@ -100,7 +100,7 @@ p(x_{t+1}|y_{1:t}, u_{1:t+1}) &= \int_{x_t} p(x_{t+1},x_t|y_{1:t}, u_{1:t+1}) \\
 &= \int_{x_t} p(x_t|y_{1:t}, u_{1:t}) p(x_{t+1}|x_t, u_{t+1}) \\
 &= \int_{x_t} \alpha(x_t) p(x_{t+1}|x_t, u_{t+1}) \\
 &= \int_{x_t} \mathcal{N}(x_t|\mu_t, \Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t, Q) \\
-&= \mathcal{N}(x_{t+1}|Ax_t+Bu_t, Q+A\Sigma A^T) \\
+&= \mathcal{N}(x_{t+1}|Ax_t+Bu_t, Q+A\Sigma_t A^T) \\
 &= \mathcal{N}(x_{t+1}|\mu_{t+1|t}, \Sigma_{t+1|t})
 \end{aligned}
 \label{eq_pred_state}
@@ -128,7 +128,7 @@ It is clear that we have derived a recursive algorithm to estimate the $h^{th}$-
 \end{aligned}
 \label{eq_pred_state_recur}
 \end{equation}
-Inspecting (\ref{eq_pred_state_recur}) we see that the predictive distribution is just the forward projection, using the transition function, of the filtered distribution.
+Inspecting (\ref{eq_pred_state_recur}) we see that the predictive distribution is just the forward projection, using the transition function, of the filtered distribution. Note that it is possible for $\Sigma_{t+h|t}$ to become smaller for increasing $h$ (obviously bounded by $Q$ below). For, if the eigenvalues of $A$ are less than one we have that $A\Sigma_{t+h-1|t}A^T \leq A\Sigma_{t+h|t}A^T$.
 
 Next we consider the observation prediction, $p(y_{t+h}|y_{1:t}, u_{1:t+h})$. Again consider the one step ahead prediction as shown in (\ref{eq_pred_obs}).
 \begin{equation}
@@ -154,13 +154,24 @@ It is reassuring to note that the observation prediction is just the state predi
 \subsection{Smoothing and Viterbi Decoding}
 For the sake of completeness we state the Kalman Smoothing equations and briefly discuss Viterbi Decoding within the context of conditional linear Gaussian systems. 
 
-The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we again make use of Bayes' Theorem for Linear Gaussian Models. We are also primarily interested in filtering and prediction as they are important for the purposes of control which is the main aim of this dissertation.
+The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we again make use of Bayes' Theorem for Linear Gaussian Models. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the main aim of this dissertation.
 
-
-
+The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{1:T},u_{1:T})$ is also a Gaussian distribution of the form $\mathcal{N}()$. The recursion expressions for the posterior mean and covariance are shown in (\ref{eq_smooth}).
+\begin{equation}
+\begin{aligned}
+\hat{\mu}_t &= \mu_t + J_t\left(\hat{\mu}_{t+1}-(A\mu_t+Bu_{t-1})\right) \\
+\hat{\Sigma}_t &= \Sigma_t + J_t(\hat{\Sigma}_{t+1}-P_t)J^T_t \\
+&\text{with } P_t = A\Sigma_tA^T + Q \\
+&\text{and } J_t = \Sigma_t A^T (P_t)^{-1}\\
+&\text{and } \hat{\mu}_T = \mu_T\\
+&\text{and } \hat{\Sigma}_T = \Sigma_T
+\end{aligned}
+\label{eq_smooth}
+\end{equation}
 
 \subsection{Filtering the CSTR}
 
+\subsection{Controlling the CSTR}
 
 \bibliographystyle{plain}
 \bibliography{research}
