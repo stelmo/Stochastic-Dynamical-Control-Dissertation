@@ -15,8 +15,12 @@
 \contentsline {subsubsection}{\numberline {2.2.3}Viterbi Decoding}{20}
 \contentsline {subsubsection}{\numberline {2.2.4}Prediction}{21}
 \contentsline {subsubsection}{\numberline {2.2.5}Burglar Localisation Problem}{22}
-\contentsline {section}{\numberline {3}Linear Models}{25}
-\contentsline {subsection}{\numberline {3.1}Filtering}{26}
-\contentsline {subsection}{\numberline {3.2}Prediction}{27}
-\contentsline {subsection}{\numberline {3.3}Smoothing and Viterbi Decoding}{29}
-\contentsline {subsection}{\numberline {3.4}Filtering the CSTR}{29}
+\contentsline {section}{\numberline {3}CSTR Model}{25}
+\contentsline {subsection}{\numberline {3.1}Qualitative Analysis}{26}
+\contentsline {subsection}{\numberline {3.2}Linearised Models}{27}
+\contentsline {section}{\numberline {4}Linear Models}{32}
+\contentsline {subsection}{\numberline {4.1}Filtering}{33}
+\contentsline {subsection}{\numberline {4.2}Prediction}{34}
+\contentsline {subsection}{\numberline {4.3}Smoothing and Viterbi Decoding}{36}
+\contentsline {subsection}{\numberline {4.4}Filtering the CSTR}{37}
+\contentsline {subsection}{\numberline {4.5}Controlling the CSTR}{37}

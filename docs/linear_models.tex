@@ -4,12 +4,12 @@
 \graphicspath{{./imgs/}{../imgs/}} %look for images
 
 \section{Linear Models}
-In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. This model is a generalisation of the graphical model seen in the Hidden Markov Model section. We now assume that the states ($X = x_1,x_2,...$) and observations ($Y=y_1,y_2,...$) are continuous random variables but the inputs ($U=u_1,u_2,...$) are deterministic. Models of this form are called Latent Linear Dynamical Systems (the famous Kalman Filter model falls into this category).
+In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in the Hidden Markov Model section. We now assume that the states ($X = x_1,x_2,...$) and observations ($Y=y_1,y_2,...$) are continuous random variables but the inputs ($U=u_1,u_2,...$) are deterministic. Models of this form are called Latent Linear Dynamical Systems (the famous Kalman Filter model falls into this category).
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=1.0]{linear_model.pdf}
 \caption{Graphical model of this section}
-\label{fig_linmod}
+\label{fig_linmod2}
 \end{figure}
 In the previous section we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous data. The reason is that one would invariably need to discretise the domain of the continuous random variable under consideration. This would result in intractably large discrete systems if one requires fine resolution. To address this issue we extend the previous model to include both continuous states and observations. 
 
@@ -31,7 +31,7 @@ p(y_{t+1}|x_t) &= \mathcal{N}(y_{t+1}|Cx_{t+1}, R)
 \end{equation}
 We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $R$ being the covariance of the noise associated with state measurements and $Q$ being the uncertainty (plant-model mismatch) associated with the linear model of the plant. Additionally, $Q$ can also model any unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $R$ and $Q$ indicate more uncertainty in the system. 
 
-To fully specify the system we require the transition and emission functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod}) as well as the prior (initial) distribution of $x_1$.
+To fully specify the system we require the transition and emission functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution of $x_1$.
 
 \subsection{Filtering}
 The goal of filtering is to find the posterior distribution $p(x_{t}|y_{1:t}, u_{1:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in the Hidden Markov Model section albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. 
@@ -156,7 +156,7 @@ For the sake of completeness we state the Kalman Smoothing equations and briefly
 
 The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we again make use of Bayes' Theorem for Linear Gaussian Models. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the focus of this dissertation.
 
-The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{1:T},u_{1:T})$ is also a Gaussian distribution of the form $\mathcal{N}(\hat{\mu}_t, \hat{\Sigma}_t)$. The recursion expressions for the posterior mean and covariance are shown in (\ref{eq_smooth}).
+The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{1:T},u_{1:T})$ is also a Gaussian distribution of the form $\mathcal{N}(\hat{\mu}_t, \hat{\Sigma}_t)$. The recursion expressions for the posterior mean and covariance are shown in (\ref{eq_smooth2}).
 \begin{equation}
 \begin{aligned}
 \hat{\mu}_t &= \mu_t + J_t\left(\hat{\mu}_{t+1}-(A\mu_t+Bu_{t-1})\right) \\
@@ -166,16 +166,16 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 &\text{and } \hat{\mu}_T = \mu_T\\
 &\text{and } \hat{\Sigma}_T = \Sigma_T
 \end{aligned}
-\label{eq_smooth}
+\label{eq_smooth2}
 \end{equation}
 
-Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same due to the Partitioned Joint Gaussian Theorem \cite{bishop}. \textbf{Check this - I would like to include a proof here??}
+Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same due to the Partitioned Joint Gaussian Theorem \cite{bishop}. \textbf{Check this - I would like to include a proof here??}
 
 \subsection{Filtering the CSTR}
 
 \subsection{Controlling the CSTR}
 
-\bibliographystyle{plain}
-\bibliography{research}
+%\bibliographystyle{plain}
+%\bibliography{research}
 
 \end{document}
