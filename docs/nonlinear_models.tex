@@ -4,25 +4,25 @@
 \graphicspath{{./imgs/}{../imgs/}} %look for images
 
 \section{Nonlinear Models}
-In this section we still consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. The variables retain their meaning as before but we generalise the model by dropping the linearity assumption. Unfortunately, this generalisation, although allowing us to expand our investigation to a much more expressive class of models, makes closed form solutions to the inference problem intractable in general.   
+In this section we still consider probabilistic graphical models of the form shown in Figure \ref{fig_nlmod}. The variables retain their meaning as before but we generalise the model by dropping the linearity assumption. Unfortunately, this generalisation, although allowing us to expand our investigation to a much more expressive class of models, makes closed form solutions to the inference problem intractable in general.   
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=1.0]{linear_model.pdf}
 \caption{Graphical model of this section}
-\label{fig_linmod}
+\label{fig_nlmod}
 \end{figure}
-We again assume that the transition and emission functions are time invariant. The state space model is now of the form (\ref{eq_statespace}).
+We again assume that the transition and emission functions are time invariant. The state space model is now of the form (\ref{eq_nlstatespace}).
 \begin{equation}
 \begin{aligned}
 x_{t+1} &= f(x_t, u_t, w_{t+1}) \\
 y_{t+1} &= g(x_{t+1}, v_{t+1})
 \end{aligned}
-\label{eq_statespace}
+\label{eq_nlstatespace}
 \end{equation}
 Note that we make no assumption about the functional form of the noise terms $w_t,v_t$. In practice it is customary to assume that they have zero mean but otherwise are not restricted.
 
 \subsection{Sequential Monte Carlo Methods}
-Many approximate inference techniques exist in literature but we shall focus only on Sequential Monte Carlo (SMC) methods because it is simple to implement and generalises well (and easily) to more complex graphical models. 
+Many approximate inference techniques exist in literature, the most notable ones include Gaussian Sum Filters \cite{gsf1} and Particle based methods. We shall focus only on Sequential Monte Carlo (SMC) methods, of which Particle based methods are a subset, because it is simple to implement and generalises well (and easily) to more complex graphical models. 
 
 SMC methods are a general class of Monte Carlo methods which sample sequentially from the growing target distribution $\pi_t(x_{1:t})$. By only requiring that $\gamma_t$ be known point-wise we have the framework of SMC methods as shown in (\ref{eq_SMC1}). Note that $Z_t$ is some normalisation constant \cite{pftut}.
 \begin{equation}
@@ -83,12 +83,13 @@ We overcome this problem by resampling and thus introduce the Sequential Importa
 
 The benefit of resampling is that it allows us to remove particles with low weight and thus keeps the variance of the estimate in check. We are finally ready to consider the general SIR  algorithm:
 
+\textbf{SIR Algorithm} \\
 For $t=1$:
 \begin{enumerate}
 \item
 Sample $X^i_1 \backsim q_1(x_1)$.
 \item
-Compute the weights $w_1(X_1)$ and $W^i_1 \propto w_1(X^i_1)$.
+Compute the weights $w_1(X_1^i)$ and $W^i_1 \propto w_1(X^i_1)$.
 \item
 Resample $(W^i_1, X^i_1)$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_1)$.
 \end{enumerate}
@@ -118,12 +119,13 @@ We attempt to get the benefit of both worlds by only performing resampling when 
 \end{equation} 
 If the ESS becomes smaller than some threshold (typically $\frac{N}{2}$) we resample to cull low weight particles and replace them with high weight particles. In this manner we have a computationally feasible method. This is called adaptive resampling and is a straightforward extension of the SMC algorithm as shown below.
 
+\textbf{Adaptive SIR Algorithm}\\
 For $t=1$:
 \begin{enumerate}
 \item
 Sample $X^i_1 \backsim q_1(x_1)$.
 \item
-Compute the weights $w_1(X_1)$ and $W^i_1 \propto w_1(X^i_1)$.
+Compute the weights $w_1(X_1^i)$ and $W^i_1 \propto w_1(X^i_1)$.
 \item
 If resample criterion is satisfied then resample $(W^i_1, X^i_1)$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_1)$ and set $(\bar{W}^i_1, \bar{X}^i_1) \leftarrow (\frac{1}{N}, \bar{X}^i_1)$ otherwise set $(\bar{W}^i_1, \bar{X}^i_1) \leftarrow ({W}^i_1, {X}^i_1)$.
 \end{enumerate}
@@ -151,18 +153,44 @@ w_t(x_{1:t}) &= \frac{\gamma_t(x_{1:t})}{q_t(x_{1:t}|y_{1:t})} \\
 \end{aligned}
 \label{eq_pf_weights}
 \end{equation}
-For filtering we only care about $p(x_t|y_{1:t})$ and thus we do not need the entire trajectory $x_{1:t}$. The proposal distribution then simplifies to $q_t(x_t|x_{1:t-1}, y_{1:t}) = q_t(x_{t}|x_{t-1}y_{t})$. In this case the incremental weight $\alpha_t$ simplifies according to (\ref{eq_pf_simpweights}).
+For filtering we only care about $p(x_t|y_{1:t})$ and thus we do not need the entire trajectory $x_{1:t}$. The proposal distribution then simplifies $q_t(x_t|x_{1:t-1}, y_{1:t}) = q_t(x_{t}|x_{t-1}y_{t})$. In this case the incremental weight $\alpha_t$ simplifies to (\ref{eq_pf_simpweights}).
 \begin{equation}
 \alpha_t(x_t) = \frac{p(y_t|x_t)p(x_t|x_{t-1})}{q_t(x_t|x_{t-1}, y_{t})} 
 \label{eq_pf_simpweights}
 \end{equation}
 The most common proposal distribution is, the suboptimal, $q_t(x_t|x_{t-1}|y_t) = p(x_t|x_{t-1})$ because it is easy to sample from. This implies that the incremental weights simplify to $\alpha_t(x_t) = p(y_t|x_t)$. Using such a proposal distribution was initially proposed in \cite{gordon} in the setting of the non-adaptive SIR method. 
 
-For general purpose filtering this is not very efficient because it amounts to ``guessing until you hit". If the transitions are very stochastic such a scheme can be improved by using the optimal proposal distribution $q_t(x_t|x_{t-1}, y_t) = p(x_t|x_{t-1}, y_t)$. While this is optimal it introduces some difficulty because, in general, it is more difficult to sample from. The focus of dissertation is not on optimal filtering and for the purposes of prediction the suggested proposal distribution is sufficiently good \cite{murphy1}. We thus will restrict ourselves to the proposal distribution $p(x_t|x_{t-1})$.
+For general purpose filtering this is not very efficient because it amounts to ``guessing until you hit". If the transitions are very stochastic inference can be improved by using the optimal proposal distribution $q_t(x_t|x_{t-1}, y_t) = p(x_t|x_{t-1}, y_t)$. While this is optimal it introduces some difficulty because, in general, it is more difficult to sample from. The focus of dissertation is not on optimal filtering and for the purposes of prediction the suggested proposal distribution is sufficiently good \cite{murphy1}. We thus will restrict ourselves to the proposal distribution $p(x_t|x_{t-1})$.
 
- 
+Finally, we have mentioned that resampling kills off unlikely particles. An unfortunate consequence of this is that some particle diversity is lost. An empirical method used to attenuate this is to resample from a kernel around the particle selected by the resampling process. This is called roughening in \cite{gordon}. We thus make a final modification to the adaptive SIR algorithm. We select a particle from the population in the standard way but resample from a Normal distribution centred around that particle and with a diagonal covariance matrix where the standard deviation of each diagonal is $KEN^{-\frac{1}{d}}$. We define $E$ as the range of the particle's relevant component, $N$ as the number of particles and $d$ as the dimension of the problem. $K$ is a tuning factor which specifies how broad the kernel we sample from should be. 
 
-\bibliographystyle{plain}
-\bibliography{research}
+For the sake of completeness we present the Particle Filter algorithm we used here. Recall that $f$ and $g$ are the transition and observation functions respectively. The algorithm is applied to each particle $i=1,2,...,N$.
+
+\textbf{Particle Filter Algorithm}\\
+For $t=1$:
+\begin{enumerate}
+\item
+Sample $X^i_1 \backsim p(x_1)$.
+\item
+Compute the weights $w_1(X_1^i) = p(Y^*_1|X_1^i) = \mathcal{N}(Y^*_1|g(X^i_1), \text{covar}[v_1])$ where $Y^*_1$ is the observation. Normalise $W^i_1 \propto w_1(X^i_1)$.
+\item
+If the number of effective particles is below some threshold apply resampling with roughening $(W^i_1, X^i_1)$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_1)$ and set $(\bar{W}^i_1, \bar{X}^i_1) \leftarrow (\frac{1}{N}, \bar{X}^i_1)$ otherwise set $(\bar{W}^i_1, \bar{X}^i_1) \leftarrow ({W}^i_1, {X}^i_1)$
+\end{enumerate}
+For $t \geq 2$:
+\begin{enumerate}
+\item
+Sample $X^i_t = f(\bar{X}^i_{t-1}, w_t) \backsim p(x_t|\bar{X}^i_{t-1})$.
+\item
+Compute the weights $\alpha_t(X^i_{t}) = p(Y^*_t|X_1^i) = \mathcal{N}(Y^*_t|g(X^i_1), \text{covar}[v_1])$ and normalise $W^i_t \propto \bar{W}^i_{t-1}\alpha_t(X^i_{t})$.
+\item
+If the number of effective particles is below some threshold apply resampling with roughening $(W^i_t, X^i_{t})$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_{t})$ and set $(\bar{W}^i_1, \bar{X}^i_t) \leftarrow (\frac{1}{N}, \bar{X}^i_t)$ otherwise set $(\bar{W}^i_t, \bar{X}^i_t) \leftarrow ({W}^i_t, {X}^i_t)$.
+\end{enumerate}
+The algorithm presented above is a slight generalisation of the bootstrap Particle Filter as initially proposed by Gordon et. al.
+
+\subsection{Filtering the CSTR}
+In this section we apply the Particle Filter to the nonlinear CSTR problem.
+
+%\bibliographystyle{plain}
+%\bibliography{research}
 
 \end{document}

@@ -1,26 +1,33 @@
-\contentsline {section}{\numberline {1}Background Literature}{2}
-\contentsline {subsection}{\numberline {1.1}Probability Theory}{2}
-\contentsline {subsubsection}{\numberline {1.1.1}Discrete Random Variables}{2}
-\contentsline {subsubsection}{\numberline {1.1.2}Continuous Random Variables}{5}
-\contentsline {subsection}{\numberline {1.2}Graph Theory}{8}
-\contentsline {subsection}{\numberline {1.3}Probabilistic Graphical Models}{10}
-\contentsline {subsubsection}{\numberline {1.3.1}Bayesian Networks}{10}
-\contentsline {subsubsection}{\numberline {1.3.2}Dynamic Bayesian Networks}{12}
-\contentsline {subsection}{\numberline {1.4}Model Predictive Control}{15}
-\contentsline {section}{\numberline {2}Hidden Markov Models}{16}
-\contentsline {subsection}{\numberline {2.1}Markov Models}{16}
-\contentsline {subsection}{\numberline {2.2}Hidden Markov Models}{17}
-\contentsline {subsubsection}{\numberline {2.2.1}Filtering}{18}
-\contentsline {subsubsection}{\numberline {2.2.2}Smoothing}{19}
-\contentsline {subsubsection}{\numberline {2.2.3}Viterbi Decoding}{20}
-\contentsline {subsubsection}{\numberline {2.2.4}Prediction}{21}
-\contentsline {subsubsection}{\numberline {2.2.5}Burglar Localisation Problem}{22}
-\contentsline {section}{\numberline {3}CSTR Model}{25}
-\contentsline {subsection}{\numberline {3.1}Qualitative Analysis}{26}
-\contentsline {subsection}{\numberline {3.2}Linearised Models}{27}
-\contentsline {section}{\numberline {4}Linear Models}{32}
-\contentsline {subsection}{\numberline {4.1}Filtering}{33}
-\contentsline {subsection}{\numberline {4.2}Prediction}{34}
-\contentsline {subsection}{\numberline {4.3}Smoothing and Viterbi Decoding}{36}
-\contentsline {subsection}{\numberline {4.4}Filtering the CSTR}{37}
-\contentsline {subsection}{\numberline {4.5}Controlling the CSTR}{37}
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}Background Literature}{3}
+\contentsline {subsection}{\numberline {2.1}Probability Theory}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Discrete Random Variables}{3}
+\contentsline {subsubsection}{\numberline {2.1.2}Continuous Random Variables}{6}
+\contentsline {subsection}{\numberline {2.2}Graph Theory}{9}
+\contentsline {subsection}{\numberline {2.3}Probabilistic Graphical Models}{11}
+\contentsline {subsubsection}{\numberline {2.3.1}Bayesian Networks}{11}
+\contentsline {subsubsection}{\numberline {2.3.2}Dynamic Bayesian Networks}{13}
+\contentsline {subsection}{\numberline {2.4}Model Predictive Control}{16}
+\contentsline {section}{\numberline {3}Hidden Markov Models}{17}
+\contentsline {subsection}{\numberline {3.1}Markov Models}{17}
+\contentsline {subsection}{\numberline {3.2}Hidden Markov Models}{18}
+\contentsline {subsubsection}{\numberline {3.2.1}Filtering}{19}
+\contentsline {subsubsection}{\numberline {3.2.2}Smoothing}{20}
+\contentsline {subsubsection}{\numberline {3.2.3}Viterbi Decoding}{21}
+\contentsline {subsubsection}{\numberline {3.2.4}Prediction}{22}
+\contentsline {subsubsection}{\numberline {3.2.5}Burglar Localisation Problem}{23}
+\contentsline {section}{\numberline {4}CSTR Model}{26}
+\contentsline {subsection}{\numberline {4.1}Qualitative Analysis}{27}
+\contentsline {subsection}{\numberline {4.2}Linearised Models}{28}
+\contentsline {section}{\numberline {5}Linear Models}{33}
+\contentsline {subsection}{\numberline {5.1}Filtering}{34}
+\contentsline {subsection}{\numberline {5.2}Prediction}{35}
+\contentsline {subsection}{\numberline {5.3}Smoothing and Viterbi Decoding}{37}
+\contentsline {subsection}{\numberline {5.4}Filtering the CSTR}{38}
+\contentsline {subsection}{\numberline {5.5}Controlling the CSTR}{38}
+\contentsline {section}{\numberline {6}Nonlinear Models}{39}
+\contentsline {subsection}{\numberline {6.1}Sequential Monte Carlo Methods}{39}
+\contentsline {subsection}{\numberline {6.2}Particle Filter}{43}
+\contentsline {subsection}{\numberline {6.3}Filtering the CSTR}{44}
+\contentsline {section}{\numberline {7}Nonlinear Models}{45}
+\contentsline {section}{\numberline {8}Conclusion}{46}

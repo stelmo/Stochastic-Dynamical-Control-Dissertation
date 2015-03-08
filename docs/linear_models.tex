@@ -169,14 +169,14 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 \label{eq_smooth2}
 \end{equation}
 
-Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same due to the Partitioned Joint Gaussian Theorem \cite{bishop}. \textbf{Check this - I would like to include a proof here??}
+Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same because the mean and the mode of a Gaussian distribution coincide \cite{barber}.
 
 \subsection{Filtering the CSTR}
-
+In this section we apply the Kalman Filter to the CSTR introduced earlier. 
 
 \subsection{Controlling the CSTR}
 
-\bibliographystyle{plain}
-\bibliography{research}
+%\bibliographystyle{plain}
+%\bibliography{research}
 
 \end{document}
