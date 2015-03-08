@@ -172,7 +172,7 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same because the mean and the mode of a Gaussian distribution coincide \cite{barber}.
 
 \subsection{Filtering the CSTR}
-In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A, T_R)_0^2$ as shown explained in \textbf{Section 4} and shown in (\ref{eq_linmodel}) for convenience. Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for each different $h$. To make things concrete we have used $h=0.01$ here.
+In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A, T_R)_0^2$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.001$ here.
 \begin{equation}
 \begin{aligned}
 &\begin{pmatrix}
@@ -181,19 +181,35 @@ C_A \\ T_R
 C_A \\ T_R
 \end{pmatrix}_{t} + BQ_t + b \\
 &\text{with } A = \begin{pmatrix}
-0.982559 & -2.72988\times 10^-4 \\
-1.48817 & 1.0446
+0.998256 & -2.72988\times 10^-5 \\
+0.148817 & 1.0446
 \end{pmatrix} \\
 &\text{and } B = \begin{pmatrix}
 0.0 \\ 0.041841
 \end{pmatrix} \\
 &\text{and } b = \begin{pmatrix}
-0.0 \\ 0.041841
+0.0117919 \\ -1.84839
 \end{pmatrix}
 \end{aligned}
 \label{eq_linmodel}
 \end{equation}
-By applying the Kalman Filter we have
+In Figure \ref{fig_kftimeseries} we illustrate the strengths and weaknesses of the Kalman Filter. Since we derived the recursion equations analytically it is computationally efficient to use, the biggest cost is a matrix inversion which needs to be computed at each time step. During the initial part of the simulation the filter very accurately estimates the current system states because the model is accurate in this region. Thus the filter is able to infer the true state in the presence of noisy measurements. 
+
+Unfortunately the recursion equations assumed the system can be described by a linear model. With time the trajectories move away from the linearisation point and thus the linear model becomes less accurate. This has a detrimental effect on the quality of the Kalman filter estimate as the filter effectively starts to solely rely on the measurements to infer the states. This works for measured states ($T_R$), but since we do not measure concentration the filter is forced to incorporate the linear model prediction which is grossly inaccurate. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.30]{kalman_filter_timeseries.pdf}
+\caption{Kalman Filter superimposed on the time series evolution of the CSTR}
+\label{fig_kftimeseries}
+\end{figure}
+In Figure \ref{fig_kfphase} we see another interesting property of Kalman Filters. The posterior covariance quickly converges to a constant value which is independent of the observations. This is a general property of linear Gaussian systems \cite{barber} and is evident from the recursion expression. The modelled system dynamics and noise are the only factors affecting the covariance. If the model is accurate this is not a problem but we see that as the model becomes less accurate the filter maintains the same level of confidence in its estimate. This is quite undesirable behaviour because your confidence in the estimate is not a function of the observations. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.30]{kalman_filter_phase.pdf}
+\caption{Phase plane of the hidden states of the CSTR with mean and one-sigma ellipses superimposed thereupon.}
+\label{fig_kfphase}
+\end{figure}
+It can be shown that for linear systems with Gaussian noise the Kalman Filter is the optimal state estimator \cite{shalom}. 
 
 \subsection{Controlling the CSTR}
 
