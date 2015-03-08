@@ -95,7 +95,7 @@ C_A \\ T_R
 \end{pmatrix}Q
 \label{eq_linearmodels}
 \end{equation}
-At this stage it is interesting to quantitatively evaluate the accuracy of each approximation. We use the Forward Euler finite difference scheme to discretise (\ref{eq_linearmodels}) as shown in (\ref{eq_discretemodels}). While the Forward Euler method is only conditionally stable, and hence convergent because the system is linear, it is easy to apply and the resultant models are of a form amenable to our purposes in later sections. The drawback of using Forward Euler is that a small time step, $h$, must be used.
+At this stage it is interesting to quantitatively evaluate the accuracy of each approximation. We use the Forward Euler finite difference scheme to discretise (\ref{eq_linearmodels}) as shown in (\ref{eq_discretemodels}). While the Forward Euler method is only conditionally stable, and hence conditionally convergent because the system is linear, it is easy to apply and the resultant models are of a form amenable to our purposes in later sections. The drawback of using Forward Euler is that a small time step, $h$, must be used.
 \begin{equation}
 \begin{pmatrix}
 C_A \\ T_R
@@ -143,7 +143,7 @@ Now we attempt predict the Euclidean error of the state vector based on the Eucl
 \caption{Euclidean distance for each linear model from the linearisation point. Euclidean error for each model from the non-linear trajectory.}
 \label{fig_cstr_op5}
 \end{figure}
-This problem is general in nature: it is better (and easier) to choose which model to use based on the observed difference between the actual system and the set of possible linear models. It is also easy to hypothesise that using more linear models is better than using less. In our example we used 3 because there were 3 operating points, but there is no theoretical reason why one cannot linearise a system about an arbitrary point in the state space.
+This problem is general in nature: it is better (and easier) to choose which model to use based on the observed difference between the actual system and the set of possible linear models. It is also easy to hypothesise that using more linear models is better than using less. In our example we used 3 because there were 3 operating points but here is no theoretical reason why one cannot linearise a system about an arbitrary number of points in the state space.
 
 Thus, if it is desirable to use a set of linear models for control we require a systematic method to infer which model best describes the system based on the current observation. Ideally the control policy should then be based upon this model. If we add measurement noise and plant uncertainty into the equation it becomes clear that advanced methods will be required. 
 

@@ -78,7 +78,7 @@ p(x_t|y_{1:t},u_{1:t-1}) &=\mathcal{N}(y_{t}|Cx_{t}, R)\mathcal{N}(x_t|\mu_{t|t-
 \end{aligned}
 \label{eq_filter_update2}
 \end{equation} 
-By using the matrix identity $(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1}$ and defining $K_t = \Sigma_{t|t-1}C^T(C\Sigma_{t|t-1}C^T+R)^{-1}$ we can simplify $\Gamma$ to the recursive posterior covariance estimate shown in (\ref{eq_filter_covar}). Similarly, using the same matrix identity together with $(P^{-1} B^TR^{-1}B)^{-1})^{-1}B^TR^{-1} = PB^T(BPB^T+R^{-1})$ and the definition of $K_t$ we have the posterior mean estimate as shown in (\ref{eq_filter_mean}). Together (\ref{eq_filter_covar}) and (\ref{eq_filter_mean}) are known as the Kalman Filter equations.
+By using the matrix identity $(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1}$ and defining $K_t = \Sigma_{t|t-1}C^T(C\Sigma_{t|t-1}C^T+R)^{-1}$ we can simplify $\Gamma$ to the recursive posterior covariance estimate shown in (\ref{eq_filter_covar}). Similarly, using the same matrix identity together with $(P^{-1} B^TR^{-1}B)^{-1})^{-1}B^TR^{-1} = PB^T(BPB^T+R^{-1})$ and the definition of $K_t$ we have the posterior mean estimate as shown in (\ref{eq_filter_mean}). Together (\ref{eq_filter_covar}) and (\ref{eq_filter_mean}) are known as the Kalman Filter equations \cite{murphy2}.
 \begin{align}
 \Sigma_t &= (I-K_tC)\Sigma_{t|t-1} 
 \label{eq_filter_covar} \\
@@ -87,7 +87,7 @@ By using the matrix identity $(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}C
 \end{align}
 Note that for the first time step only the update expression is evaluated as the prediction is the prior of $x_1$. 
 
-Intuitively, the Kalman Filter equations use the state space model to predict the new state distribution and then adjust it by a correction factor $K_t(y_t - C\mu_{t|t-1})$. This factor depends on the difference between the actual observation and the predicted observation. The Kalman gain, $K_t$, represents the inferred confidence of the model. If the model is deemed accurate then the predictions make up most of $\mu_t$ but if the model is bad at predicting the observations then the observations play a bigger part in the next mean estimate. 
+Intuitively, the Kalman Filter equations use the state space model to predict the new state distribution and then adjust it by a correction factor $K_t(y_t - C\mu_{t|t-1})$. This factor depends on the difference between the actual observation and the predicted observation. The Kalman gain, $K_t$, represents the inferred confidence of the model. If the model is deemed accurate then the predictions make up most of $\mu_t$ but if the model is bad at predicting the observations then the observations play a bigger part in the next mean estimate \cite{bishop}. 
 
 \subsection{Prediction}
 The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{1:t}, u_{1:t+h})$ and $p(y_{t+h}|y_{1:t}, u_{1:t+h})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). 
@@ -172,11 +172,32 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same because the mean and the mode of a Gaussian distribution coincide \cite{barber}.
 
 \subsection{Filtering the CSTR}
-In this section we apply the Kalman Filter to the CSTR introduced earlier. 
+In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A, T_R)_0^2$ as shown explained in \textbf{Section 4} and shown in (\ref{eq_linmodel}) for convenience. Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for each different $h$. To make things concrete we have used $h=0.01$ here.
+\begin{equation}
+\begin{aligned}
+&\begin{pmatrix}
+C_A \\ T_R
+\end{pmatrix}_{t+1} =  A \begin{pmatrix}
+C_A \\ T_R
+\end{pmatrix}_{t} + BQ_t + b \\
+&\text{with } A = \begin{pmatrix}
+0.982559 & -2.72988\times 10^-4 \\
+1.48817 & 1.0446
+\end{pmatrix} \\
+&\text{and } B = \begin{pmatrix}
+0.0 \\ 0.041841
+\end{pmatrix} \\
+&\text{and } b = \begin{pmatrix}
+0.0 \\ 0.041841
+\end{pmatrix}
+\end{aligned}
+\label{eq_linmodel}
+\end{equation}
+By applying the Kalman Filter we have
 
 \subsection{Controlling the CSTR}
 
-%\bibliographystyle{plain}
-%\bibliography{research}
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}
