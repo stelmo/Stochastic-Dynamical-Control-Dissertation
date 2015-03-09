@@ -19,7 +19,7 @@ y_{t+1} &= g(x_{t+1}, v_{t+1})
 \end{aligned}
 \label{eq_nlstatespace}
 \end{equation}
-Note that we make no assumption about the functional form of the noise terms $w_t,v_t$. In practice it is customary to assume that they have zero mean but otherwise are not restricted.
+Note that we make no assumption about the functional form of the noise terms $w_t,v_t$. In practice it is customary to assume that they have zero mean but otherwise are not restricted. Additionally, to simplify notation we will omit the dependence on $u$ of $f$ and $g$ and their associated distributions. Since $u$ is a deterministic variable, by assumption, it is straightforward to incorporate it into later analysis. 
 
 \subsection{Sequential Monte Carlo Methods}
 Many approximate inference techniques exist in literature, the most notable ones include Gaussian Sum Filters \cite{gsf1} and Particle based methods. We shall focus only on Sequential Monte Carlo (SMC) methods, of which Particle based methods are a subset, because it is simple to implement and generalises well (and easily) to more complex graphical models. 
@@ -192,29 +192,17 @@ Intuitively the algorithm may be summarised like this. Particle Filters predict 
 \subsection{Particle Prediction}
 We are primarily interested in predicting the future hidden states but we also show how the future visible states may be predicted within the framework of Particle methods. Recalling the prediction derivations of the Hidden Markov Model section and the Linear Models section we expect the hidden state prediction to merely be an $n$ step ahead projection of the current filtered particles. Likewise, we expect the visible state prediction to just be transformation of the predicted hidden states under the emission function. 
 
-Inspecting the bootstrap Particle Filter algorithm presented in the previous subsection we are relieved to find that this is the case. One just removes the observation update steps (steps 2 and 3) from the algorithm because we cannot observe the future.
+Inspecting the bootstrap Particle Filter algorithm presented in the previous subsection we are relieved to find that this is the case. One just removes the observation update steps (steps 2 and 3) from the algorithm because we cannot observe the future. We illustrate the two step ahead predictions and trust that the reader understand what we mean.
 
-For completeness we show the algorithm here.
-\textbf{Particle Prediction Algorithm}\\
-For $t=1$:
+\textbf{Particle Prediction Algorithm}
 \begin{enumerate}
 \item
-Sample $X^i_1 \backsim p(x_1)$.
+Sample $X_{t+1}^i = f(\bar{X}_t^i, w_{t+1}) \backsim p(x_{t+1}^i|y_t, \bar{X}_t^i)$ 
 \item
-Compute the weights $w_1(X_1^i) = p(Y^*_1|X_1^i) = \mathcal{N}(Y^*_1|g(X^i_1), \text{covar}[v_1])$ where $Y^*_1$ is the observation. Normalise $W^i_1 \propto w_1(X^i_1)$.
+Project $X_{t+2}^i = f(X_{t+1}^i, w_{t+2}) \backsim p(x_{t+2}^i|y_t, X_{t:t+1}^i)$ 
 \item
-If the number of effective particles is below some threshold apply resampling with roughening $(W^i_1, X^i_1)$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_1)$ and set $(\bar{W}^i_1, \bar{X}^i_1) \leftarrow (\frac{1}{N}, \bar{X}^i_1)$ otherwise set $(\bar{W}^i_1, \bar{X}^i_1) \leftarrow ({W}^i_1, {X}^i_1)$
+Project $Y_{t+2}^i = g(X_{t+2}^i, v_{t+2}) \backsim p(y_{t+2}^i|y_t, X_{t:t+1}^i)$ 
 \end{enumerate}
-For $t \geq 2$:
-\begin{enumerate}
-\item
-Sample $X^i_t = f(\bar{X}^i_{t-1}, w_t) \backsim p(x_t|\bar{X}^i_{t-1})$.
-\item
-Compute the weights $\alpha_t(X^i_{t}) = p(Y^*_t|X_t^i) = \mathcal{N}(Y^*_t|g(X^i_t), \text{covar}[v_t])$ and normalise $W^i_t \propto \bar{W}^i_{t-1}\alpha_t(X^i_{t})$.
-\item
-If the number of effective particles is below some threshold apply resampling with roughening $(W^i_t, X^i_{t})$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_{t})$ and set $(\bar{W}^i_1, \bar{X}^i_t) \leftarrow (\frac{1}{N}, \bar{X}^i_t)$ otherwise set $(\bar{W}^i_t, \bar{X}^i_t) \leftarrow ({W}^i_t, {X}^i_t)$.
-\end{enumerate}
- 
 
 \subsection{Smoothing and Viterbi Decoding}
 In the context of nonlinear transition and emission functions smoothing and Viterbi decoding are much more difficult than before. For the purposes of this dissertation it is not important to consider inferences of that type and thus we merely refer the reader to literature where this is discussed \cite{pftut}\cite{gsf1}\cite{murphy1}\cite{murphy2}\cite{barber}.
