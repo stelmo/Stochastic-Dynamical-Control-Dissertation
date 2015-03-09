@@ -24,10 +24,12 @@
 \contentsline {subsection}{\numberline {5.2}Prediction}{35}
 \contentsline {subsection}{\numberline {5.3}Smoothing and Viterbi Decoding}{37}
 \contentsline {subsection}{\numberline {5.4}Filtering the CSTR}{38}
-\contentsline {subsection}{\numberline {5.5}Controlling the CSTR}{38}
-\contentsline {section}{\numberline {6}Nonlinear Models}{39}
-\contentsline {subsection}{\numberline {6.1}Sequential Monte Carlo Methods}{39}
-\contentsline {subsection}{\numberline {6.2}Particle Filter}{43}
-\contentsline {subsection}{\numberline {6.3}Filtering the CSTR}{44}
-\contentsline {section}{\numberline {7}Nonlinear Models}{45}
-\contentsline {section}{\numberline {8}Conclusion}{46}
+\contentsline {subsection}{\numberline {5.5}Controlling the CSTR}{40}
+\contentsline {section}{\numberline {6}Nonlinear Models}{41}
+\contentsline {subsection}{\numberline {6.1}Sequential Monte Carlo Methods}{41}
+\contentsline {subsection}{\numberline {6.2}Particle Filter}{45}
+\contentsline {subsection}{\numberline {6.3}Particle Prediction}{47}
+\contentsline {subsection}{\numberline {6.4}Smoothing and Viterbi Decoding}{47}
+\contentsline {subsection}{\numberline {6.5}Filtering the CSTR}{47}
+\contentsline {section}{\numberline {7}Hybrid Models}{51}
+\contentsline {section}{\numberline {8}Conclusion}{52}
