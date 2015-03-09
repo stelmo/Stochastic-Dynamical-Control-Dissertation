@@ -187,6 +187,38 @@ If the number of effective particles is below some threshold apply resampling wi
 \end{enumerate}
 The algorithm presented above is a slight generalisation of the bootstrap Particle Filter as initially proposed by Gordon et. al. \cite{gordon}.
 
+Intuitively the algorithm may be summarised like this. Particle Filters predict the next hidden state (using the current state estimate) by projecting all the current particles forward using the transition function. For each particle the likelihood of the observation is calculated given the particle and measurement noise. This likelihood is related to the weight of each particle. Particles with a relatively high weight are then deemed to more accurately represent the posterior distribution and thus we infer the posterior based on the relative weights of each particle.
+
+\subsection{Particle Prediction}
+We are primarily interested in predicting the future hidden states but we also show how the future visible states may be predicted within the framework of Particle methods. Recalling the prediction derivations of the Hidden Markov Model section and the Linear Models section we expect the hidden state prediction to merely be an $n$ step ahead projection of the current filtered particles. Likewise, we expect the visible state prediction to just be transformation of the predicted hidden states under the emission function. 
+
+Inspecting the bootstrap Particle Filter algorithm presented in the previous subsection we are relieved to find that this is the case. One just removes the observation update steps (steps 2 and 3) from the algorithm because we cannot observe the future.
+
+For completeness we show the algorithm here.
+\textbf{Particle Prediction Algorithm}\\
+For $t=1$:
+\begin{enumerate}
+\item
+Sample $X^i_1 \backsim p(x_1)$.
+\item
+Compute the weights $w_1(X_1^i) = p(Y^*_1|X_1^i) = \mathcal{N}(Y^*_1|g(X^i_1), \text{covar}[v_1])$ where $Y^*_1$ is the observation. Normalise $W^i_1 \propto w_1(X^i_1)$.
+\item
+If the number of effective particles is below some threshold apply resampling with roughening $(W^i_1, X^i_1)$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_1)$ and set $(\bar{W}^i_1, \bar{X}^i_1) \leftarrow (\frac{1}{N}, \bar{X}^i_1)$ otherwise set $(\bar{W}^i_1, \bar{X}^i_1) \leftarrow ({W}^i_1, {X}^i_1)$
+\end{enumerate}
+For $t \geq 2$:
+\begin{enumerate}
+\item
+Sample $X^i_t = f(\bar{X}^i_{t-1}, w_t) \backsim p(x_t|\bar{X}^i_{t-1})$.
+\item
+Compute the weights $\alpha_t(X^i_{t}) = p(Y^*_t|X_t^i) = \mathcal{N}(Y^*_t|g(X^i_t), \text{covar}[v_t])$ and normalise $W^i_t \propto \bar{W}^i_{t-1}\alpha_t(X^i_{t})$.
+\item
+If the number of effective particles is below some threshold apply resampling with roughening $(W^i_t, X^i_{t})$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_{t})$ and set $(\bar{W}^i_1, \bar{X}^i_t) \leftarrow (\frac{1}{N}, \bar{X}^i_t)$ otherwise set $(\bar{W}^i_t, \bar{X}^i_t) \leftarrow ({W}^i_t, {X}^i_t)$.
+\end{enumerate}
+ 
+
+\subsection{Smoothing and Viterbi Decoding}
+In the context of nonlinear transition and emission functions smoothing and Viterbi decoding are much more difficult than before. For the purposes of this dissertation it is not important to consider inferences of that type and thus we merely refer the reader to literature where this is discussed \cite{pftut}\cite{gsf1}\cite{murphy1}\cite{murphy2}\cite{barber}.
+
 \subsection{Filtering the CSTR}
 In this section we apply the Particle Filter to the nonlinear CSTR problem. We first demonstrate the effectiveness of the Particle Filter by performing inference using the full nonlinear CSTR model. We then apply the Particle Filter to the CSTR using the linear model to discuss some shortcomings of the technique.
 
@@ -209,7 +241,24 @@ We see that initially, due to the vague prior, the filter is quite uncertain abo
 
 We now reduce the system and measurement noise to $\text{var}[w_t] = \begin{pmatrix}
 1\times 10^{-6} & 0 \\ 0 & 4.0 
-\end{pmatrix}$  and  $\text{var}[v_t] = 2$ respectively. We compare the Particle Filter to the Kalman Filter using the linear model (about the unstable operating point). 
+\end{pmatrix}$  and  $\text{var}[v_t] = 2$ respectively. We compare the Particle Filter to the Kalman Filter using the linear model (about the unstable operating point) in Figure \ref{fig_pflintime} and \ref{fig_pflinphase}. Note that we use the smaller time step $h=0.001$ and the same parameters as were used in the Linear Model section where we introduced the Kalman Filter. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.30]{pf_lin_time.pdf}
+\caption{Time series state estimates using the Particle Filter and Kalman Filter on the linear CSTR model with initial condition $(0.57, 395)$.}
+\label{fig_pflintime}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.30]{pf_lin_phase.pdf}
+\caption{Phase plane of the hidden states of the CSTR with mean and one-sigma ellipses superimposed thereupon for the linear model comparison.}
+\label{fig_pflinphase}
+\end{figure}
+Upon close inspection of the figures above it seems as though the filters perform equally well. Analysis of conditionally linear Gaussian systems shows that the Kalman Filter is the optimal state estimator given the assumptions of linearity and Gaussian noise \cite{shalom}. It is pleasing to note that the Particle Filter, using only 100 particles, closely approximates the Kalman Filter. 
+
+We also see the same problem as before in the figures. Since the linear model is only accurate in a restricted domain the unmeasured estimates rapidly become inaccurate - for both filters. In the setting of Particle Filters we have that the observations reduce the weight of the particles which do not support the observation, but unfortunately this reweighing does not take into account particles which are very unlikely in the unmeasured state. Thus we see that the measured state is still closely followed but the unmeasured state estimate diverges at a rate related to the rate of divergence of the linear model. 
+
+Like the Kalman Filter, the Particle Filter is also grossly overconfident in its estimate even though it has diverged from an accurate concentration measurement. The fault lies in our simplistic linear model. It is desirable to extend the graphical model such that different models may be used in case our current model is insufficient. 
 
 \bibliographystyle{plain}
 \bibliography{research}
