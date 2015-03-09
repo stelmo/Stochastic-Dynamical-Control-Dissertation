@@ -160,9 +160,9 @@ For filtering we only care about $p(x_t|y_{1:t})$ and thus we do not need the en
 \end{equation}
 The most common proposal distribution is, the suboptimal, $q_t(x_t|x_{t-1}|y_t) = p(x_t|x_{t-1})$ because it is easy to sample from. This implies that the incremental weights simplify to $\alpha_t(x_t) = p(y_t|x_t)$. Using such a proposal distribution was initially proposed in \cite{gordon} in the setting of the non-adaptive SIR method. 
 
-For general purpose filtering this is not very efficient because it amounts to ``guessing until you hit". If the transitions are very stochastic inference can be improved by using the optimal proposal distribution $q_t(x_t|x_{t-1}, y_t) = p(x_t|x_{t-1}, y_t)$. While this is optimal it introduces some difficulty because, in general, it is more difficult to sample from. The focus of dissertation is not on optimal filtering and for the purposes of prediction the suggested proposal distribution is sufficiently good \cite{murphy1}. We thus will restrict ourselves to the proposal distribution $p(x_t|x_{t-1})$.
+For general purpose filtering this is not very efficient because it amounts to ``guessing until you hit". If the transitions are very stochastic inference can be improved by using the optimal proposal distribution $q_t(x_t|x_{t-1}, y_t) = p(x_t|x_{t-1}, y_t)$. While this is optimal it introduces some difficulty because, in general, it is more difficult to sample from. The focus of dissertation is not on optimal filtering and for the purposes of prediction the suggested proposal distribution is sufficiently good \cite{murphy1}. We thus restrict ourselves to the proposal distribution $p(x_t|x_{t-1})$ for simplicity.
 
-Finally, we have mentioned that resampling kills off unlikely particles. An unfortunate consequence of this is that some particle diversity is lost. An empirical method used to attenuate this is to resample from a kernel around the particle selected by the resampling process. This is called roughening in \cite{gordon}. We thus make a final modification to the adaptive SIR algorithm. We select a particle from the population in the standard way but resample from a Normal distribution centred around that particle and with a diagonal covariance matrix where the standard deviation of each diagonal is $KEN^{-\frac{1}{d}}$. We define $E$ as the range of the particle's relevant component, $N$ as the number of particles and $d$ as the dimension of the problem. $K$ is a tuning factor which specifies how broad the kernel we sample from should be. 
+Finally, we have mentioned that resampling kills off unlikely particles. An unfortunate consequence of this is that some particle diversity is lost. An empirical method used to attenuate this problem is to resample from a kernel around the particle selected by the resampling process. This is called roughening in \cite{gordon}. We thus make a final modification to the adaptive SIR algorithm. We select a particle from the population in the standard way but resample from a Normal distribution centred around that particle and with a diagonal covariance matrix where the standard deviation of each diagonal is $KEN^{-\frac{1}{d}}$. We define $E$ as the range of the particle's relevant component, $N$ as the number of particles and $d$ as the dimension of the problem. $K$ is a tuning factor which specifies how broad the kernel we sample from should be. 
 
 For the sake of completeness we present the Particle Filter algorithm we used here. Recall that $f$ and $g$ are the transition and observation functions respectively. The algorithm is applied to each particle $i=1,2,...,N$.
 
@@ -181,16 +181,37 @@ For $t \geq 2$:
 \item
 Sample $X^i_t = f(\bar{X}^i_{t-1}, w_t) \backsim p(x_t|\bar{X}^i_{t-1})$.
 \item
-Compute the weights $\alpha_t(X^i_{t}) = p(Y^*_t|X_1^i) = \mathcal{N}(Y^*_t|g(X^i_1), \text{covar}[v_1])$ and normalise $W^i_t \propto \bar{W}^i_{t-1}\alpha_t(X^i_{t})$.
+Compute the weights $\alpha_t(X^i_{t}) = p(Y^*_t|X_t^i) = \mathcal{N}(Y^*_t|g(X^i_t), \text{covar}[v_t])$ and normalise $W^i_t \propto \bar{W}^i_{t-1}\alpha_t(X^i_{t})$.
 \item
 If the number of effective particles is below some threshold apply resampling with roughening $(W^i_t, X^i_{t})$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{X}^i_{t})$ and set $(\bar{W}^i_1, \bar{X}^i_t) \leftarrow (\frac{1}{N}, \bar{X}^i_t)$ otherwise set $(\bar{W}^i_t, \bar{X}^i_t) \leftarrow ({W}^i_t, {X}^i_t)$.
 \end{enumerate}
-The algorithm presented above is a slight generalisation of the bootstrap Particle Filter as initially proposed by Gordon et. al.
+The algorithm presented above is a slight generalisation of the bootstrap Particle Filter as initially proposed by Gordon et. al. \cite{gordon}.
 
 \subsection{Filtering the CSTR}
-In this section we apply the Particle Filter to the nonlinear CSTR problem.
+In this section we apply the Particle Filter to the nonlinear CSTR problem. We first demonstrate the effectiveness of the Particle Filter by performing inference using the full nonlinear CSTR model. We then apply the Particle Filter to the CSTR using the linear model to discuss some shortcomings of the technique.
 
-%\bibliographystyle{plain}
-%\bibliography{research}
+Although it is not necessary we assume that the process and measurement noise is white Gaussian with $\text{cov}[w_t] = \begin{pmatrix}
+1\times 10^{-4} & 0 \\ 0 & 4.0 
+\end{pmatrix}$ and $\text{cov}[v_t] = 4$. The meaning of the noise is the same as before. Note that we incorporate much more uncertainty into this model to illustrate its robustness. We also assume a vague prior with mean at the initial condition and covariance $Q$. The nonlinear model was discretised using the 4$^{\text{th}}$ order Runge Kutta method \cite{edwardsandpenny} with time step $h=0.01$. We now demonstrate the effectiveness of the Particle Filter (using 50 particles) on the nonlinear CSTR model as shown in Figures \ref{fig_pfnltime} and \ref{fig_pfnlphase}.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.30]{pf_nl_time.pdf}
+\caption{Time series state estimates using the Particle Filter on the nonlinear CSTR model with initial condition $(0.57, 395)$.}
+\label{fig_pfnltime}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.30]{pf_nl_phase.pdf}
+\caption{Phase plane of the hidden states of the CSTR with mean and one-sigma ellipses superimposed thereupon.}
+\label{fig_pfnlphase}
+\end{figure}
+We see that initially, due to the vague prior, the filter is quite uncertain about the hidden states. As time progresses we see that the filter rapidly converges to the true states for both concentration and temperature. The benefit of using the nonlinear model is apparent here. At the price of somewhat more computational expense we have a state estimator which is accurate throughout the domain of the CSTR.
+
+We now reduce the system and measurement noise to $\text{var}[w_t] = \begin{pmatrix}
+1\times 10^{-6} & 0 \\ 0 & 4.0 
+\end{pmatrix}$  and  $\text{var}[v_t] = 2$ respectively. We compare the Particle Filter to the Kalman Filter using the linear model (about the unstable operating point). 
+
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}
