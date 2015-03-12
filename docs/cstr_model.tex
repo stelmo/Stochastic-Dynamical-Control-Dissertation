@@ -156,7 +156,7 @@ C_A^* \\ T_R^*
 \end{pmatrix}
 \label{eq_lin}
 \end{equation}
-It is possible to apply the Runge-Kutta method to (\ref{eq_lin}) and reduce the system, for a given $h$, into the standard linear state space form as shown in (\ref{eq_rkss}). 
+It is possible to apply the Runge-Kutta method to (\ref{eq_lin}) and reduce the system, for a given $h$, into the standard linear discrete state space form as shown in (\ref{eq_rkss}). 
 \begin{equation}
 \begin{pmatrix}
 C_A \\ T_R
@@ -167,7 +167,48 @@ C_A \\ T_R
 \end{equation}
 Where $Q$ is the heat input to the system and comes from the first term on the right hand side of the equals sign in (\ref{eq_lin}). The algebra is quite involved so we merely state that it is possible and refer the reader to the programmatic implementation for further details: see the function \textit{linearise} in the module \textit{Reactor\_functions} in the folder \textit{CSTR\_Model}.
 
+Figure \ref{fig_cstr_lin_1} shows the state space response of the linear model which was linearised around the high temperature, low concentration stable operating point $(C_A^1,T_R^1)$ as defined in Table \ref{tab_nominalstats}.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_lin_1.pdf}
+\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^1,T_R^1)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
+\label{fig_cstr_lin_1}
+\end{figure}
+We see that the linear approximation is quite accurate if the initial condition is close to the linearisation point (as expected). If the initial condition is further away the approximation is less accurate.
 
+In Figure \ref{fig_cstr_lin_2} we see the state space response of the CSTR using the linear model linearised around the unstable operating point. Clearly this approximation is less accurate because the system tend to move away from operating point rather than towards it. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_lin_2.pdf}
+\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^2,T_R^2)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
+\label{fig_cstr_lin_2}
+\end{figure}
+If we want to use the linear model around the unstable operating point we will need to effect control to keep it within some region where the model is accurate.
+
+In Figure \ref{fig_cstr_lin_3} we have the state space response of the CSTR under nominal conditions, like before, except that we have now linearised around the low temperature high concentration operating point. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_lin_3.pdf}
+\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^3,T_R^3)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
+\label{fig_cstr_lin_3}
+\end{figure}
+Out of the 3 linear models we have considered so far, this one seems to be the most accurate for initial conditions near it. This could possibly be because the system dynamics are quite slow and thus more linear. However, we do not expect this linear model to be accurate in regions of the state space where the dynamics are faster e.g. near the high temperature operating point. This is shown in Figure \ref{fig_cstr_lin_4}. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_lin_4.pdf}
+\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^3,T_R^3)$ with initial condition far away from the linearisation point.}
+\label{fig_cstr_lin_4}
+\end{figure}
+Based on the general linearisation formula in (\ref{eq_lin}) there is no reason why one cannot linearise about an arbitrary point in the state space. It stands to reason that the more linear models at different linearisation points one has, the better one will be able to model the reactor. For example, suppose one has 3 linear models. Each model will be more accurate in different regions of the state space. By selecting a model to use based on some metric taking into account the current location in the state space, it is reasonable to suppose that one will be able to more accurately model the system. 
+
+In later sections we make precise which metric we will use in this dissertation. For now we merely illustrate this idea as shown in Figure \ref{fig_cstr_many}. Here we have 10 different linear models with linearisation points chosen at random in the state space. We also include the 3 linear models with linearisation points at the nominal critical points of the system. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_lin_many.pdf}
+\caption{State space response of the CSTR under nominal operating conditions with 13 different linear models. Each linear model has an different initial condition located near the point of linearisation.}
+\label{fig_cstr_many}
+\end{figure}
+Based on Figure \ref{fig_cstr_many} we can see that, at least initially, the linear models describe the nonlinear evolution well (the red and black lines overlap). Inevitably they diverge but we suppose that it is possible to switch linear models when this happens. Ideally we would then switch to a linear model which better describes the dynamics. 
 
 \bibliographystyle{plain}
 \bibliography{research}
