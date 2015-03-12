@@ -14,8 +14,8 @@ In this section we introduce the model we will use to illustrate the techniques 
 The state space equations describing the reactor are shown in (\ref{eq_cstrmodel}) with parameters shown in Table \ref{tab_params}. The meaning of the variables is what one would expect from an intuitive understanding: $C_A$ is the concentration of species $A$, $T_R$ is the temperature of the CSTR and $Q$ is the heat added (or removed for negative $Q$) from the CSTR.
 \begin{equation}
 \begin{aligned}
-\dot{C_A} &= \frac{F}{V}\left( C_{A0}-C_A \right) - k_0e^{\frac{-E}{RT_R}}C_A \\
-\dot{T_R} &= \frac{F}{V}\left(T_{A0}-T_A\right) + \frac{-\triangle H}{\rho C_p}k_0e^{\frac{-E}{RT_R}}C_A + \frac{Q}{\rho C_p V}
+\dot{C_A} &= f(C_A, T_R) =  \frac{F}{V}\left( C_{A0}-C_A \right) - k_0e^{\frac{-E}{RT_R}}C_A \\
+\dot{T_R} &= g(C_A, T_R) = \frac{F}{V}\left(T_{A0}-T_A\right) + \frac{-\triangle H}{\rho C_p}k_0e^{\frac{-E}{RT_R}}C_A + \frac{Q}{\rho C_p V}
 \end{aligned}
 \label{eq_cstrmodel}
 \end{equation}
@@ -52,9 +52,9 @@ In this section we use standard mathematical tools, as found in \cite{edwardsand
 \hline
 Critical Point & $C_A$ & $T_R$ & Stability\\
 \hline
-$\left(C_A, T_R\right)_0^1$ & 0.0097 & 508.0562 & Stable Improper Node\\
-$\left(C_A, T_R\right)_0^2$ & 0.4893 & 412.1302 & Unstable Saddle Point \\
-$\left(C_A, T_R \right)_0^3$ & 0.9996 & 310.0709 & Stable Improper Node \\
+$\left(C_A^1, T_R^1\right)$ & 0.0097 & 508.0562 & Stable Improper Node\\
+$\left(C_A^2, T_R^2\right)$ & 0.4893 & 412.1302 & Unstable Saddle Point \\
+$\left(C_A^3, T_R^3 \right)$ & 0.9996 & 310.0709 & Stable Improper Node \\
 \hline
 \end{tabular}
 \caption{Nominal operating points for  the CSTR}
@@ -69,19 +69,104 @@ J(C_A, T_R) = \begin{pmatrix}
 \end{pmatrix}
 \label{eq_jacobian}
 \end{equation}
-In Figure \ref{fig_cstr_op_curve} we see the operating curve for the CSTR. The curve resembles the classical CSTR operating curve with all the associated potential control complexity e.g. input multiplicity etc. \cite{luyben}.
+In Figure \ref{fig_cstr_op_curve} we see the operating curve for the CSTR. The curve resembles the classical CSTR operating curve with all the associated potential control complexity e.g. it is possible for one set of control inputs to result in two stable operating points. This occurs due to the two stable critical points (for $Q\in (-906, 1145)$) of the system and is called input multiplicity \cite{luyben}. 
+
+Also note that the obvious bifurcation parameter for this system is the heat input $Q$. For $Q = -906$ kJ/min we see that we no longer have three critical points but only two, and for $Q < -906$ kJ/min we only have one critical point. Likewise, for $Q = 1145$ kJ/min we see that we only have two critical points and for $Q > 1145$ kJ/min we only have one critical point. The stability of these points are shown in Table \ref{tab_bifurc}.  
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{cstr_model_op_curve.pdf}
-\caption{CSTR operating curve. Lower heat input to the CSTR drives the system to the low temperature stable operating point and higher heat input drives the CSTR to the higher temperature stable operating point.}
+\caption{CSTR operating curve with different input curves. Nominal operating conditions are $Q=0$ kJ/min.}
 \label{fig_cstr_op_curve}
 \end{figure}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c c c c}
+\hline
+Heat Input & $C_A$ & $T_R$ & Stability\\
+\hline
+$Q = -906$ kJ/min & 0.1089 & 450.3531 & Stable Improper Node\\
+$Q = -906$ kJ/min & 0.9999 & 272.1346 & Stable Improper Node \\
+$Q < -906$ kJ/min & $\backsim$ & $\backsim$ & Stable Improper Node \\
+\hline
+$Q = 1145$ kJ/min & 0.0017 & 557.5243 & Stable Improper Node\\
+$Q = 1145$ kJ/min & 0.9263 & 372.5959 & Stable Improper Node \\
+$Q > 1145$ kJ/min & $\backsim$ & $\backsim$ & Stable Improper Node \\
+\hline
+\end{tabular}
+\caption{Bifurcation analysis of the CSTR at different heat input values.}
+\label{tab_bifurc}
+\end{center}
+\end{table}
+The multiple stable critical points for $Q\in [-906, 1145]$ kJ/min makes control of this system challenging. For example consider a situation where one starts at some point on the black line, below the green line in Figure \ref{fig_cstr_op_curve}. If one wishes to move to the high temperature low concentration stable operating point large, non-smooth, controller action will be required. By slowly heating up the CSTR the green line will gradually move to the right and this will push the system, somewhat counter-intuitively, towards the low temperature high concentration critical point. It is necessary to quickly heat up the CSTR so that the green line is below the current operating point on the black line. The self-regulatory nature of the CSTR will then move the system to the desired operating point.   
 
 \subsection{Nonlinear Model}
-In this section we simulate the CSTR
+In this section we evaluate the transient response of the CSTR. The nonlinear differential equation shown in (\ref{eq_cstrmodel}) is intractably difficult to solve analytically. For this reason we will use a numerical method, specifically the Runge-Kutta method \cite{edwardsandpenny}, to simulate the transient response. We chose the Runge-Kutta method because it is an explicit, fourth order accurate method which is easy to implement. The explicit nature of the method will also be useful later when it is necessary to discretise the system in the standard linear state space form.
+
+For completeness we show the method here. Suppose we have an autonomous ordinary differential equation as shown in (\ref{eq_ode}) and we require its solution over $[t_a, t_b]$. This is an initial value problem; for the sake of brevity we assume that a unique solution always exists.
+\begin{equation}
+\begin{aligned}
+&\dot{x}(t) = f(x(t)) \\
+&\text{with } x(t) = x_a \text{ for } t=t_a
+\end{aligned}
+\label{eq_ode}
+\end{equation}
+Furthermore, suppose we discretise the time domain such that $[t_a, t_b] = [t_0=t_a, t_1= t_a+ h, t_2=t_a+ 2h,...,t_T = t_b]$. Then the scheme shown in (\ref{eq_rk}) is called the Runge-Kutta method. We assume that for sufficiently small time steps, $h$, the method is stable and convergent.
+\begin{equation}
+\begin{aligned}
+x_{t+1} &= x_{t} + \frac{h}{6}\left(k_1 + 2k_2 + 2k_3 +k4\right) \\
+k_1 &= f(x_t) \\
+k_2 &= f(x_t + \frac{h}{2}k_1) \\
+k_3 &= f(x_t+ \frac{h}{2}k_2) \\
+k_4 &= f(x_t+ hk_3) \\
+\end{aligned}
+\label{eq_rk}
+\end{equation}  
+By applying the Runge-Kutta method to the CSTR we have Figures \ref{fig_cstr_nl_1} and \ref{fig_cstr_nl_2}. It is clear that the dynamics are faster (almost two orders of magnitude) when moving to the higher temperature operating point than they are when moving to the lower temperature operating point. The impact of the nonlinear kinetics is seen here. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_nl_1.pdf}
+\caption{Transient response of the CSTR under nominal operating conditions with initial condition $(0.5, 450)$ and $h=0.001$.}
+\label{fig_cstr_nl_1}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_nl_2.pdf}
+\caption{Transient response of the CSTR under nominal operating conditions with initial condition $(0.5, 400)$ and $h=0.001$.}
+\label{fig_cstr_nl_2}
+\end{figure}
+It is often desirable to linearise a nonlinear system about some point, usually the operating point, to simplify the model. Computationally this is advantageous because many control techniques have been designed specifically for linear systems. Practically linearisation is only valid in a small region around the point of linearisation. If the system moves away from the linearisation point the linear approximation can become grossly inaccurate. 
+
+Based on Figure \ref{fig_cstr_nl_1}, where the dynamics are fast, we can venture a guess that linearisation will be a bad approximation, except for a very small time period, of plant behaviour because the states will rapidly move away from the point of linearisation.
+
+On the other hand, based on Figure \ref{fig_cstr_nl_2}, we can venture a guess that linearisation will be a fair approximation of plant behaviour for a meaningful period of time because the dynamics are slow.
 
 \subsection{Linearised Models}
-The approach of using piecewise affine (linear) functions for control, based on linearisation around critical points, has been investigated in literature \cite{du}\cite{kvasnica}. Typically the state domain is discretised into regimes and the linear approximation of the model in each regime is used for control. The benefit of this approach is that the non-linear problem  can then be handled by linear methods for which efficient algorithms exist. A potential drawback of this approach is computational complexity \cite{du}.
+The approach of using piecewise affine (linear) functions for control, based on linearisation around critical points, has been investigated in literature \cite{du}\cite{kvasnica}. Typically the state domain is discretised into regimes and the linear approximation of the model in each regime is used for control. The benefit of this approach is that the non-linear problem  can then be handled by linear methods for which efficient algorithms exist. Drawbacks of this approach are computational complexity \cite{du} and poor control performance because the models are inaccurate.
+
+We will also attempt to use linear models for the purposes of control. First we present a general linearisation technique. Consider an arbitrary point in the state space $(C_A^*, T_R^*)$. Then (\ref{eq_lin}) is the general linearised model around $(C_A^*, T_R^*)$.
+\begin{equation}
+\begin{pmatrix}
+\dot{C_A} \\ \dot{T_R}
+\end{pmatrix} = \begin{pmatrix}
+f(C_A^*, T_R^*) \\ g(C_A^*, T_R^*)
+\end{pmatrix} + J(C_A^*, T_R^*)\begin{pmatrix}
+C_A \\ T_R
+\end{pmatrix} - J(C_A^*, T_R^*)\begin{pmatrix}
+C_A^* \\ T_R^*
+\end{pmatrix}
+\label{eq_lin}
+\end{equation}
+It is possible to apply the Runge-Kutta method to (\ref{eq_lin}) and reduce the system, for a given $h$, into the standard linear state space form as shown in (\ref{eq_rkss}). 
+\begin{equation}
+\begin{pmatrix}
+C_A \\ T_R
+\end{pmatrix}_{t+1} = A(C_A^*, T_R^*) \begin{pmatrix}
+C_A \\ T_R
+\end{pmatrix}_{t} + B(C_A^*, T_R^*)Q + b(C_A^*, T_R^*)
+\label{eq_rkss}
+\end{equation}
+Where $Q$ is the heat input to the system and comes from the first term on the right hand side of the equals sign in (\ref{eq_lin}). The algebra is quite involved so we merely state that it is possible and refer the reader to the programmatic implementation for further details: see the function \textit{linearise} in the module \textit{Reactor\_functions} in the folder \textit{CSTR\_Model}.
+
 
 
 \bibliographystyle{plain}
