@@ -210,6 +210,24 @@ In later sections we make precise which metric we will use in this dissertation.
 \end{figure}
 Based on Figure \ref{fig_cstr_many} we can see that, at least initially, the linear models describe the nonlinear evolution well (the red and black lines overlap). Inevitably they diverge but we suppose that it is possible to switch linear models when this happens. Ideally we would then switch to a linear model which better describes the dynamics. 
 
+However, Figure \ref{fig_cstr_many} is misleading in the sense that we do not show the rate at which the linear models diverge from the nonlinear model. Overlap of the black and red lines do not indicate a one to one correspondence with respect to the time evolution of the two systems. The linear models in the upper half of the state space (the high temperature region)``move" much faster than the nonlinear system. In Figure \ref{fig_cstr_many} we see that these models rapidly become unbounded. We expect this to be problematic if we are to use linear models for prediction (i.e. control) of the system.
+
+To illustrate this divergence we plot the maximum absolute relative difference between the linear models and the nonlinear model at $t = 0.5$ min in Figure \ref{fig_cstr_regions1} and $t = 50$ min in Figure \ref{fig_cstr_regions2} . 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_regions1.pdf}
+\caption{Maximum absolute relative difference between the linear models and the nonlinear model at $t=0.5$ min. Each value in the state space serves as the linearisation point for the respective linear model. The linearisation points was also used as the respective initial conditions.}
+\label{fig_cstr_regions1}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{cstr_regions2.pdf}
+\caption{Maximum absolute relative difference between the linear models and the nonlinear model at $t=50$ min. Each value in the state space serves as the linearisation point for the respective linear model. The linearisation points was also used as the respective initial conditions.}
+\label{fig_cstr_regions2}
+\end{figure}
+We see that in both figures the high temperature region of the state space has the worst linear model accuracy. This could be attributed to the exponential term in (\ref{eq_cstrmodel}) which is more pronounced in this area and consequently the model is more nonlinear. We also see that the high temperature linear models quickly become much less accurate with time when compared to the low temperature models.
+
+
 \bibliographystyle{plain}
 \bibliography{research}
 
