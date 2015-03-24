@@ -59,6 +59,9 @@ Compute the weights $\alpha_t(S_t^i, X_t^i) = p(Y^*_t|S_t^i, X_t^i)$ where $Y^*_
 If the number of effective particles is below some threshold apply resampling with roughening $(W^i_1, S^i_t, X^i_t)$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{S}^i_t, \bar{X}^i_t)$ and set $(\bar{W}^i_t, \bar{S}^i_t,\bar{X}^i_t) \leftarrow (\frac{1}{N}, \bar{S}^i_t, \bar{X}^i_t)$ otherwise set $(\bar{W}^i_t,\bar{S}^i_t, \bar{X}^i_t) \leftarrow ({W}^i_t, S_t^i, {X}^i_t)$
 \end{enumerate} 
 
+\subsection{Particle Prediction}
+The prediction of the hybrid states follows in an analogous manner to the prediction of the Nonlinear Models seen in the previous sections.  
+
 \subsection{Filtering the CSTR}
 
 \subsection{Controlling the CSTR}
