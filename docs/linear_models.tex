@@ -172,18 +172,18 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same because the mean and the mode of a Gaussian distribution coincide \cite{barber}.
 
 \subsection{Filtering the CSTR}
-In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.001$ here. Note that we only measure temperature for now.
+In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.01$ here. Note that we only measure temperature for now.
 \begin{equation}
 \begin{aligned}
 A &= \begin{pmatrix}
-0.9999 & -6.0131\times 10^{-7} \\
-0.0041 & 1.0001
+0.9996 & -6.0147\times 10^{-6} \\
+0.0417 & 1.0010
 \end{pmatrix} \\
 B &= \begin{pmatrix}
-0 \\ 8.3686\times 10^{-7}
+0 \\ 8.3724\times 10^{-6}
 \end{pmatrix} \\
 b &= \begin{pmatrix}
-0.0002 \\ -0.0433
+0.0026 \\ -0.4337
 \end{pmatrix} \\
 C &= \begin{pmatrix}
 0 & 1
@@ -204,8 +204,8 @@ In Figure \ref{fig_kftimeseries} we illustrate the strengths and weaknesses of t
 Unfortunately the recursion equations assumed the system can be described by a linear model. With time the trajectories move away from the linearisation point (because the linearisation point is unstable) and thus the linear model becomes less accurate. This has a detrimental effect on the quality of the Kalman filter estimate as the filter effectively starts to solely rely on the measurements to infer the states. This works reasonably well for the measured states ($T_R$), but since we do not measure concentration the filter is forced to incorporate the linear model prediction which is grossly inaccurate. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.30]{kalman_filter_timeseries.pdf}
-\caption{Kalman Filter superimposed on the time series evolution of the CSTR with initial condition $(0.57, 395)$}
+\includegraphics[scale=0.30]{kalman_filter_timeseries_M1.pdf}
+\caption{Kalman Filter superimposed on the time series evolution of the CSTR with initial condition $(0.50, 400)$ and measuring only temperature.}
 \label{fig_kftimeseries}
 \end{figure}
 In Figure \ref{fig_kfphase} we see another interesting property of Kalman Filters. The posterior covariance quickly converges to a constant value which is independent of the observations. This is a general property of linear Gaussian systems \cite{barber} and is evident from the recursion expression. The modelled system dynamics and noise are the only factors affecting the covariance. If the model is accurate this is not a problem but we see that as the model becomes less accurate the filter maintains the same level of confidence in its estimate. This is quite undesirable behaviour because the confidence in the estimate is not a function of the observations. 
@@ -213,7 +213,7 @@ In Figure \ref{fig_kfphase} we see another interesting property of Kalman Filter
 It is also interesting to consider the shape of the error ellipses. Notice how they are short vertically - indicating less uncertainty in the temperature state dimension but wide horizontally - indicating more uncertainty in the concentration state dimension. Intuitively this is plausible because, since we do not measure concentration, we are much less sure about the underlying state. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.30]{kalman_filter_phase.pdf}
+\includegraphics[scale=0.30]{kalman_filter_phase_M1.pdf}
 \caption{Phase plane of the hidden states of the CSTR with mean and one-sigma ellipses superimposed thereupon. Only temperature is measured.}
 \label{fig_kfphase}
 \end{figure}
@@ -222,15 +222,21 @@ However, the root of the problem lies in the unsuitability of the model rather t
 Based on our discussion where the CSTR example was introduced we know that the linear models will not always be very accurate. We therefore modify (\ref{eq_linmodel}) to also incorporate concentration measurements. In this case we have that $C = \begin{pmatrix}
 1 & 0\\0 &1
 \end{pmatrix}$ and $R = \begin{pmatrix}
-1\times 10^{-4} & 0\\0 & 10
-\end{pmatrix}$ with everything else the same. The state space representation is shown in Figure \ref{fig_kfphase2}. 
+1\times 10^{-3} & 0\\0 & 10
+\end{pmatrix}$ with everything else the same. The time evolution of the states is shown in Figure \ref{fig_kftime2} and the state space representation is shown in Figure \ref{fig_kfphase2}. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.30]{kalman_filter_timeseries_M2.pdf}
+\caption{Kalman Filter superimposed on the time series evolution of the CSTR with initial condition $(0.50, 400)$ and measuring both temperature and concentration.}
+\label{fig_kftime2}
+\end{figure}
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.30]{kalman_filter_phase_M2.pdf}
 \caption{State space diagram of the CSTR with mean and one-sigma ellipses superimposed thereupon. Both concentration and temperature are measured.}
 \label{fig_kfphase2}
 \end{figure}
-Comparing Figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorporating the state measurement the state estimation is much more accurate. It is not necessary to directly measure concentration as we have done: any measurement which depends on $C_A$ (or even both $C_A$ and $T_R$) would suffice. The second measurement reduces our uncertainty in the concentration state estimate because we have more to based our inference on than just a bad model.  
+Comparing Figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorporating the state measurement the state estimation is much more accurate. It is not necessary to directly measure concentration as we have done: any measurement which depends on $C_A$ (or even both $C_A$ and $T_R$) would suffice. The second measurement reduces our uncertainty in the concentration state estimate because we have more to base our inference on than just a bad model.  
 
 \subsection{Controlling the CSTR}
 
