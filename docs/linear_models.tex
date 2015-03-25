@@ -172,24 +172,24 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same because the mean and the mode of a Gaussian distribution coincide \cite{barber}.
 
 \subsection{Filtering the CSTR}
-In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.01$ here. Note that we only measure temperature for now.
+In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that we only measure temperature for now.
 \begin{equation}
 \begin{aligned}
 A &= \begin{pmatrix}
-0.9996 & -6.0147\times 10^{-6} \\
-0.0417 & 1.0010
+0.9959 & -6.0308\times 10^{-5} \\
+0.4186 & 1.0100
 \end{pmatrix} \\
 B &= \begin{pmatrix}
-0 \\ 8.3724\times 10^{-6}
+0 \\ 8.4102\times 10^{-6}
 \end{pmatrix} \\
 b &= \begin{pmatrix}
-0.0026 \\ -0.4337
+0.0268 \\ -4.3524
 \end{pmatrix} \\
 C &= \begin{pmatrix}
 0 & 1
 \end{pmatrix} \\
 Q &= \begin{pmatrix}
-1\times 10^{-6} & 0 \\ 0 & 4
+1\times 10^{-5} & 0 \\ 0 & 4
 \end{pmatrix} \\
 R &= \begin{pmatrix}
 10
@@ -208,16 +208,18 @@ Unfortunately the recursion equations assumed the system can be described by a l
 \caption{Kalman Filter superimposed on the time series evolution of the CSTR with initial condition $(0.50, 400)$ and measuring only temperature.}
 \label{fig_kftimeseries}
 \end{figure}
-In Figure \ref{fig_kfphase} we see another interesting property of Kalman Filters. The posterior covariance quickly converges to a constant value which is independent of the observations. This is a general property of linear Gaussian systems \cite{barber} and is evident from the recursion expression. The modelled system dynamics and noise are the only factors affecting the covariance. If the model is accurate this is not a problem but we see that as the model becomes less accurate the filter maintains the same level of confidence in its estimate. This is quite undesirable behaviour because the confidence in the estimate is not a function of the observations. 
+In Figure \ref{fig_kfphase} we see another interesting property of Kalman Filters. The posterior covariance quickly converges to a constant value (the error ellipses quickly stop changing shape) which is independent of the observations. This is a general property of linear Gaussian systems \cite{barber} and is evident from the recursion expression. The modelled system dynamics and noise are the only factors affecting the covariance. If the model is accurate this is not a problem but we see that as the model becomes less accurate the filter maintains the same level of confidence in its estimate. This is quite undesirable behaviour because the confidence in the estimate is not a function of the observations. 
 
-It is also interesting to consider the shape of the error ellipses. Notice how they are short vertically - indicating less uncertainty in the temperature state dimension but wide horizontally - indicating more uncertainty in the concentration state dimension. Intuitively this is plausible because, since we do not measure concentration, we are much less sure about the underlying state. 
+It is also interesting to consider the shape of the error ellipses. Notice how they are short vertically - indicating less uncertainty in the temperature state dimension but wide horizontally - indicating more uncertainty in the concentration state dimension. Intuitively this is plausible because, since we do not measure concentration, we are less sure about the underlying state. 
+
+In Figure \ref{fig_kfphase} we see that while the temperature estimate is still trustworthy (the black crosses line up horizontally with the red crosses) the concentration estimate diverges.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.30]{kalman_filter_phase_M1.pdf}
 \caption{Phase plane of the hidden states of the CSTR with mean and one-sigma ellipses superimposed thereupon. Only temperature is measured.}
 \label{fig_kfphase}
 \end{figure}
-However, the root of the problem lies in the unsuitability of the model rather than our inference technique. It can be shown that for linear systems with Gaussian noise the Kalman Filter is the optimal state estimator \cite{shalom}. 
+The root of the problem lies in the unsuitability of the model rather than our inference technique. It can be shown that for linear systems with Gaussian noise the Kalman Filter is the optimal state estimator \cite{shalom}. 
 
 Based on our discussion where the CSTR example was introduced we know that the linear models will not always be very accurate. We therefore modify (\ref{eq_linmodel}) to also incorporate concentration measurements. In this case we have that $C = \begin{pmatrix}
 1 & 0\\0 &1

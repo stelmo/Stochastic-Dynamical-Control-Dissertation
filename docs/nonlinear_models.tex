@@ -208,72 +208,52 @@ Project $Y_{t+2}^i = g(X_{t+2}^i, v_{t+2}) \backsim p(y_{t+2}^i|y_t, X_{t:t+1}^i
 In the context of nonlinear transition and emission functions smoothing and Viterbi decoding are much more difficult than before. For the purposes of this dissertation it is not important to consider inferences of that type and thus we merely refer the reader to literature where this is discussed \cite{pftut}\cite{gsf1}\cite{murphy1}\cite{murphy2}\cite{barber}.
 
 \subsection{Filtering the CSTR}
-In this section we apply the Particle Filter to the nonlinear CSTR problem. We first demonstrate the effectiveness of the Particle Filter by performing inference using the full nonlinear CSTR model (measuring both the temperature and concentration). Next we use the full nonlinear model again but only measure temperature. Finally, we apply the Particle Filter to the CSTR using the linear model and compare it to the Kalman Filter.
+In this section we apply the Particle Filter to the nonlinear CSTR problem. We first demonstrate the effectiveness of the Particle Filter by performing inference using the full nonlinear CSTR model measuring only temperature. Next we use the full nonlinear model again but measure both temperature and concentration. Finally, we apply the Particle Filter to the CSTR using the linear model and compare it to the Kalman Filter.
 
-In Figure \ref{fig_pf_m2_time} we see the Particle Filter state estimates given  $\text{cov}[w_t] = \begin{pmatrix}
-5\times 10^{-4} & 0 \\ 0 & 10
-\end{pmatrix}$ and $\text{cov}[v_t] = \begin{pmatrix}
-5\times 10^{-3} & 0 \\ 0 & 15
-\end{pmatrix}$. The noise covariances are appreciably more than what we used in the linear case to illustrate the robustness of the filter. We have used 500 particles to represent the estimated state posterior.
-\begin{figure}[H] 
-\centering
-\includegraphics[scale=0.30]{pf_m2_time.pdf}
-\caption{Time series state estimates using the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 450)$ and measuring both states.}
-\label{fig_pf_m2_time}
-\end{figure}
-It is clear that that the filter reliably tracks the state evolution even in the presence of significant plant and measurement noise. For completeness we also show the state space evolution of the state estimate in Figure \ref{fig_pf_m2_phase}. 
-\begin{figure}[H] 
-\centering
-\includegraphics[scale=0.30]{pf_m2_phase.pdf}
-\caption{State space evolution of the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 450)$ and measuring both states.}
-\label{fig_pf_m2_phase}
-\end{figure}
-It is clear that the Particle Filter, using both measurements, is a robust and reliable state estimator. We now investigate if the Particle Filter, using the nonlinear model, performs well if only one measurement is made. We adjust the noise terms to $\text{cov}[w_t] = \begin{pmatrix}
-1\times 10^{-4} & 0 \\ 0 & 4
-\end{pmatrix}$ and $\text{cov}[v_t] = \begin{pmatrix} 10
-\end{pmatrix}$ because we expect this inference task to be harder. In Figure \ref{fig_pf_m1_time} we see the state estimates as a function of time. Note that we have used 100 particles to represent the estimated state posterior.
+Although it is not necessary we assume that the process and measurement noise is Gaussian with the same distributions as in the previous section. Unless otherwise noted we use the same parameters (e.g. $h=0.1$) as before. We have used 100 particles to represent the state posterior. In Figure \ref{fig_pf_m1_time} we see the state estimates as a function of time.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.30]{pf_m1_time.pdf}
-\caption{Time series state estimates using the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 450)$ and measuring only temperature.}
+\caption{Time series state estimates using the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 400)$ and measuring only temperature.}
 \label{fig_pf_m1_time}
 \end{figure}
-It seems as if the Filter struggles initially but soon weeds out and replaces the particles which do not support the state observations. This is reflected in the state space evolution curve in Figure \ref{fig_pf_m1_phase}.
+The filter tracks both states reasonable well with a little more variance evident in the unmeasured state. The benefit of using the full nonlinear model is evident here - since the model is more accurate than the previously used linear model the filter infers the concentration more accurately. This is also reflected in the state space evolution curve in Figure \ref{fig_pf_m1_phase}.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.30]{pf_m1_phase.pdf}
 \caption{State space evolution of the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 450)$ and measuring only temperature.}
 \label{fig_pf_m1_phase}
 \end{figure}
-Unfortunately, as Figures \ref{fig_pf_m1_time_bad} and \ref{fig_pf_m1_phase_bad} show, Particle Filters are not a magic bullet for state estimation. In this case we see that the filter tracks the temperature well, as we expect because it is measured, but very poorly estimates the concentration state.
+We also see in Figure \ref{fig_pf_m1_phase} that the variance of the estimates is quite high (the ellipses are quite big). We expect that by also measuring concentration this will decrease. In Figures \ref{fig_pf_m2_time} and \ref{fig_pf_m2_phase} we incorporate a concentration measurement to aid inference. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.30]{pf_m1_time_bad.pdf}
-\caption{Time series state estimates using the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 400)$ and measuring only temperature.}
-\label{fig_pf_m1_time_bad}
+\includegraphics[scale=0.30]{pf_m2_time.pdf}
+\caption{Time series state estimates using the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 450)$ and measuring both states.}
+\label{fig_pf_m2_time}
 \end{figure}
+It is clear that that the Particle Filter reliably tracks the state evolution in the presence of plant and measurement noise. We see that by also measuring the concentration the size of the error ellipses decrease in Figure \ref{fig_pf_m2_phase}. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.30]{pf_m1_phase_bad.pdf}
-\caption{State space evolution of the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 400)$ and measuring only temperature.}
-\label{fig_pf_m1_phase_bad}
+\includegraphics[scale=0.30]{pf_m2_phase.pdf}
+\caption{State space evolution of the Particle Filter on the nonlinear CSTR model with initial condition $(0.5, 450)$ and measuring both states.}
+\label{fig_pf_m2_phase}
 \end{figure}
-The problem we have is that the particles which inaccurately estimate the concentration are not replaced (resampled) because they do not necessarily estimate the temperature poorly. This causes the filter to erroneously believe that all the particles which estimate the temperature correctly are part of the posterior state estimate (should have high weight). This manifests itself in wildly inaccurate state estimates. Since we do not measure the concentration this problem is inherent to the current set up. Therefore we again see that it is better to measure a state (or some effect thereof) than not! 
-
-Finally we compare the Particle Filter to the Kalman filter, using both temperature and concentration measurements. In Figure \ref{fig_pf_kf_time} we see that both the Particle Filter and the Kalman Filter are able to accurately estimate the posterior state distribution. Note that we have used 500 particles to meaningfully compare the distribution estimates.
+Finally we compare the Particle Filter to the Kalman filter, using both temperature and concentration measurements and the linear model linearised around the unstable operating point. In Figure \ref{fig_pf_kf_time} we see that both the Particle Filter and the Kalman Filter are able to accurately estimate the posterior state distribution. Note that we have used 500 particles to meaningfully compare the distribution estimates (the Particle Filter should converge to the Kalman Filter as the number of particles get big).
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.30]{pf_kf_time.pdf}
-\caption{Time series state estimates using the Particle Filter and the Kalman Filter on the linear CSTR model (around the unstable operating point) with initial condition $(0.5, 400)$ and measuring only temperature.}
+\caption{Time series state estimates using the Particle Filter and the Kalman Filter on the linear CSTR model (around the unstable operating point) with initial condition $(0.5, 400)$ and measuring both temperature and concentration.}
 \label{fig_pf_kf_time}
 \end{figure}
-In Figure \ref{fig_pf_kf_phase} we see empirical proof of the assertion that the Kalman Filter is the optimum state estimator for conditionally linear Gaussian systems \cite{shalom}: the $1\sigma$ ellipses for the Kalman Filter are much smaller than the corresponding ellipses for the Particle Filter. 
+In Figure \ref{fig_pf_kf_phase} we see empirical proof of the assertion that the Kalman Filter is the optimum state estimator for conditionally linear Gaussian systems \cite{shalom}: the $1\sigma$ ellipses for the Kalman Filter are smaller than the corresponding ellipses for the Particle Filter and they track the true states better than the Particle Filter. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.30]{pf_kf_phase.pdf}
-\caption{State space evolution of the Particle Filter and the Kalman Filter on the linear CSTR model (around the unstable operating point) with initial condition $(0.5, 400)$ and measuring only temperature.}
+\caption{State space evolution of the Particle Filter and the Kalman Filter on the linear CSTR model (around the unstable operating point) with initial condition $(0.5, 400)$ and measuring both temperature and concentration.}
 \label{fig_pf_kf_phase}
 \end{figure}
+It is clear that if one only has access to linear models it makes sense from both a computational and accuracy point of view to use the Kalman Filter. However, if one needs to perform inference on a system better descibed by a nonlinear model the Particle Filter becomes more useful.
+
 
 \bibliographystyle{plain}
 \bibliography{research}

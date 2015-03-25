@@ -4,7 +4,7 @@
 \graphicspath{{./imgs/}{../imgs/}} %look for images
 
 \section{Linear Hybrid Models}
-In this section we generalise the graphical models of the previous sections as shown in Figure \ref{fig_hybridmod1}. We include the discrete random variables, $s_1, s_2,...$ where each variable has $N$ states, which we will call the switching variables. The goal of adding switching variables is to allow our graphical models to switch (or more precisely, choose based on the observation) between $N$ different dynamical models. For the moment we restrict ourselves to linear transition functions i.e. we use linear state space models. The other variables retain their meaning as before.     
+In this section we generalise the graphical models of the previous sections as shown in Figure \ref{fig_hybridmod1}. We include the discrete random variables, $s_1, s_2,...$ where each variable has $N$ states, which we will call the switching variables. The goal of adding switching variables is to allow our graphical models to switch (or more precisely, choose based on the observation) between $N$ different dynamical models. For the moment we restrict ourselves to linear transition functions i.e. we use linear state space models. The other variables retain their meaning as before. Models of this form are usually called Switching Kalman Filter models \cite{murphy1}. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=1.0]{hybrid_model.pdf}
@@ -13,7 +13,7 @@ In this section we generalise the graphical models of the previous sections as s
 \end{figure}
 One of the benefits of combining discrete switching variables with linear dynamical models is that it allows us to model nonlinear processes with linear models. Intuitively, we can glue together linear models which each describe a nonlinear model in some region and use the switch to determine which one to use. The switch assigns a weight to each model based on its ability to explain the evidence. 
 
-We model this system as follows. Let $s_t=1,2,..., N$ denote a discrete, time homogeneous $N$ state first order Markov chain with transition matrix $P$ as discussed in the Hidden Markov Model section. Let each state $s_t=i$ be associated with a parameter set $\left(A_i, B_i, b_i, Q_i, C_i, R_i \right)$ used to evaluate the dynamical model shown in (\ref{eq_smodel}). If $s_t$ were observed then (\ref{eq_smodel}) would simplify to a set of linear latent dynamical systems we could perform inference on using the methods investigated in the Linear Models section. However, we assume that $s_t$ is a hidden random variable.
+We model this system as follows. Let $s_t \in (1,2,..., N)$ denote a discrete, time homogeneous $N$ state first order Markov chain with transition matrix $P$ as discussed in the Hidden Markov Model section. Let each state $s_t=i$ be associated with a parameter set $\left(A_i, B_i, b_i, Q_i, C_i, R_i \right)$ used to evaluate the dynamical model shown in (\ref{eq_smodel}). If $s_t$ were observed then (\ref{eq_smodel}) would simplify to a set of linear latent dynamical systems we could perform inference on using the methods investigated in the Linear Models section. However, we assume that $s_t$ is a hidden random variable.
 \begin{equation}
 \begin{aligned}
 x_{t+1} &= A_ix_t + B_iu_t + b_i + w_{t+1} \text{ with } \mathcal{N}(w_{t+1}|0,Q_i) \\
@@ -21,14 +21,14 @@ y_{t+1} &= C_ix_{t+1} + v_{t+1}  \text{ with } \mathcal{N}(v_{t+1}|0,R_i)
 \end{aligned}
 \label{eq_smodel}
 \end{equation}
-To fully specify the system we require the prior distributions $p(s_1)$ and $p(x_1|s_1)$.
+To fully specify the system we also require the prior distributions $p(s_1)$ and $p(x_1|s_1)$ as well as the transition matrix $P$. For the purposes of this dissertation we calculate the transition matrix based on the Euclidean distance between the linearisation points of the linear models. Suppose there are $N$ linear models. The transition from the model to itself is $\frac{N}{\sum_{i=1}^N i}$. The transition from the model to the next closest model is $\frac{N-1}{\sum_{i=1}^N i}$. Continuing in this way we can construct the stochastic matrix $P$.
 
-\subsection{Exact Inference}
+\subsection{Exact Filtering}
 The switching variables ($s_1, s_2,...$) are discrete random variables exactly like the ones seen in the Hidden Markov Model section. There we derived recursive analytic expressions for inference which were computationally inexpensive. The stochastic linear dynamical system ($x_1,x_2,...$ and $y_1, y_2,...$) is exactly the same as the section on Linear Models. There we derived the famous Kalman Filter equations which were also analytic, recursive and computationally inexpensive. Taking this into consideration it seems plausible to believe that inference, specifically filtering, for hybrid systems like (\ref{eq_smodel}) can be formulated in a computationally feasible manner. 
 
 Unfortunately, it can be shown that this is not possible in general \cite{lerner}\cite{murphy3} because the memory requirements scale exponentially with time. Loosely speaking one can see this by noting that at the first time step the system is described by a weighted set of $N$ Kalman Filter models (due to the linear assumption and the $N$ switching indices). At time step two the system is described by a weighted set of $N^2$ Kalman Filter models. Continuing in this manner we see that at time step $t$ the memory requirement is $N^t$. Clearly this is computationally infeasible and calls for approximate methods to be used. 
 
-In literature many approximate filtering algorithms exist and it is not clear which is best. Two of the more popular methods include Gaussian Sum Filtering \cite{barber2} and Particle Filtering based methods (specifically the Rao-Blackwellisation approach). Both of these methods take advantage of the Gaussian structure of the system and operate in a fixed memory space making them computationally attractive. We focus on the Particle based methods because it can be extended to nonlinear systems with ease.   
+In literature many approximate filtering algorithms exist and it is not clear which is best. Two of the more popular methods include Gaussian Sum Filtering \cite{barber2} and Particle Filtering based methods (specifically the Rao-Blackwellisation approach, see \cite{chen}\cite{doucet}). Both of these methods take advantage of the Gaussian structure of the system and operate in a fixed memory space making them computationally attractive. We focus on the Particle based methods because it can be extended to nonlinear systems with ease.   
 
 \subsection{Rao-Blackwellised Particle Filter}
 It is our objective to find the joint posterior distribution $p(s_{1:t}, x_{1:t}|y_{1:t})$. This joint posterior admits filtering of Figure \ref{fig_hybridmod1} if we discard the trajectory and focus only in $s_t,x_t$. By the chain rule we immediately have that $p(s_{1:t}, x_{1:t}|y_{1:t}) = p(s_{1:t}|y_{1:t})p(x_{1:t}|y_{1:t}, s_{1:t})$. Given $s_{1:t}$ we see that $p(x_{1:t}|y_{1:t}, s_{1:t})$ can be evaluated using the Kalman Filter equations and thus we are only concerned with finding some approximation for $p(s_{1:t}|y_{1:t})$. This is the essence of the Rao-Blackwellised Particle Filter - taking advantage of the Gaussian nature of the system to analytically evaluate a part of the posterior distribution \cite{doucet}.
@@ -44,7 +44,7 @@ w_t(s_{1:t}) &= \frac{\gamma_t(s_{1:t},y_{1:t})}{q_t(s_{1:t}|y_{1:t})} \\
 \end{aligned}
 \label{eq_rbweight1}
 \end{equation}
-As before, we are not interested in the whole trajectory of the switching variable because we only need to perform filtering. Thus our proposal distribution can be chosen to be the prior i.e. $q_t(s_t|s_{1:t-1},y_{1:t}) = p(s_t|s_{t-1})$. This is suboptimal but easy to sample from \cite{doucet}. The incremental weight then simplifies to $\alpha_t(s_{1:t}) = p(y_t|s_t)$. We can evaluate this distribution by marginalising out $x_t$ \cite{murphy1} and using the properties of the Gaussian distributions as before (\ref{eq_rbweight2}).
+As before, we are not interested in the whole trajectory of the switching variable because we only need to perform filtering. Thus our proposal distribution can be chosen to be the prior i.e. $q_t(s_t|s_{1:t-1},y_{1:t}) = p(s_t|s_{t-1})$. This is suboptimal but easy to sample from \cite{doucet}. The incremental weight then simplifies to $\alpha_t(s_{1:t}) = p(y_t|s_t)$. We can evaluate this distribution by marginalising out $x_t$ and using the properties of the Gaussian distributions as before (\ref{eq_rbweight2}).
 \begin{equation}
 \begin{aligned}
 \alpha_t(s_{1:t}) &= p(y_t|s_t) \\
@@ -54,7 +54,7 @@ As before, we are not interested in the whole trajectory of the switching variab
 \end{aligned}
 \label{eq_rbweight2}
 \end{equation} 
-Where $s_t$ is denotes a specific state of the switching variable. Upon inspection we see that (\ref{eq_rbweight2}) is just the one step ahead prediction likelihood as discussed in the Linear Models section on prediction \cite{murphy1}. Note that we will still need to resample $s_t$ from $P$ periodically to prevent sample impoverishment. 
+Where $s_t$ is denotes a specific state of the switching variable \cite{murphy1}. Upon inspection we see that (\ref{eq_rbweight2}) is just the one step ahead prediction likelihood as discussed in the Linear Models section on prediction \cite{murphy1}. Note that we will still need to resample $s_t$ from $P$ periodically to prevent sample impoverishment. 
 
 We now have an efficient particle approximation of $p(s_t|y_t)$. To find the filtered posterior distribution as desired we note that $p(s_t,x_t|y_{1:t}) = \sum_i w_t^i(S_t^i)\delta(S_t^i, s_t)p(x_t|y_{1:t}, S_t^i)$ where $S_t^i$ is the i$^{\text{th}}$ particle. Each particle thus consists of a weight, a switch sample and the sufficient statistics generated by the Kalman Filter for a Gaussian i.e. a mean and covariance. The complete algorithm is shown below.
 
@@ -83,9 +83,105 @@ If the number of effective particles is below some threshold apply resampling wi
 \end{enumerate} 
 
 \subsection{Rao-Blackwellised Particle Prediction}
-Like the Particle Predictor studied in the previous section, performing prediction using Rao-Blackwellisation is straightforward because there is no weighting (updating the particles based on the observation) step. Each particle's switching state is merely propagated forward using the transition matrix $P$ and the Kalman prediction algorithm is used to evaluate the predicted mean and covariance.
+Like the Particle Predictor studied in the previous section, performing prediction using Rao-Blackwellisation is straightforward because there is no weighting (updating the particles based on the observation) step. Each particle's switching state is merely propagated forward using the proposal distribution (the transition matrix $P$) and the Kalman prediction algorithm is used to evaluate the predicted mean and covariance. For the sake of brevity we do not supply an algorithm because it is a straightforward simplification of the Rao-Blackwellised Particle Filter Algorithm as shown above.
 
-\subsection{Filter the CSTR}
+\subsection{Smoothing and Viterbi Decoding}
+It is also possible to take advantage of the Gaussian structure in Figure \ref{fig_hybridmod1} to derive a so-called Rao-Blackwellised Smoothing Algorithm. We do not include it here because it is not necessary for the aims of this dissertation. We refer the reader to the relevant literature \cite{chen}\cite{doucet}. 
+
+Viterbi decoding is likewise not within the scope of this dissertation and as such we refer the reader to \cite{murphy1} for more information. Suffice to say, by increasing the complexity of Figure \ref{fig_hybridmod1} we increase the difficulty of inference in general.
+
+\subsection{Filtering the CSTR}
+We now apply the Rao-Blackwellised Particle Filter to the CSTR introduced earlier. We first perform filtering on the CSTR by only measuring temperature. Since we are using linear models we compare the performance of the Switching Kalman Filter to that of the standard Kalman Filter which only uses one linear model. We then extend our system to measure both temperature and concentration and perform the same comparisons.
+
+We use the same parameters as before and 500 particles unless otherwise stated. To illustrate how the Switching Kalman Filter works we initially only use 3 linear models to perform inference. Figures \ref{fig_3mod_ss} to \ref{fig_3mod_t} show how  the filter performs using three linear models corresponding to the nominal operating points for the CSTR. We only measure temperature for the moment.
+
+Figure \ref{fig_3mod_ss} shows where the linearisation points are with respect to the state space evolution of the system.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s3_s.pdf}
+\caption{State space evolution and linearisation points of the three linear models used. The system starts at the black circle and ends at the black cross.}
+\label{fig_3mod_ss}
+\end{figure}
+Figure \ref{fig_3mod_w} shows the weight of each model as time progresses. We see that the second model (S::2) has the highest weight initially but after about 2 minutes the system switches models so that the first model (S::1) has the highest weight. Intuitively the system has moved away from the region where the second model describes the system best into a region where the first model is a better descriptor. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s3_w.pdf}
+\caption{Weight of each switching index as time progresses.}
+\label{fig_3mod_w}
+\end{figure}
+In Figure \ref{fig_3mod_t} we see the time series response of the system. Note that only temperature is measured but the system manages to track both states reasonably well. This is a vast improvement over the situation where only one linear model was used as in the section on Linear Models.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s3_t.pdf}
+\caption{Time series evolution of the states with initial condition $(0.5, 450)$.}
+\label{fig_3mod_t}
+\end{figure}
+Unfortunately, using only these three linear models is not adequate for this system. Since the models are far apart in the state space it sometimes happens that most of the particles are propagated forward using the wrong model. By not measuring a state this problem is exacerbated. Some models may predict the right temperature but the wrong concentration; they are not weeded out by the weighting procedure because the concentration is not observed. The filter then fails to switch and this causes the filter to diverge from the true states. Problems like this can be attenuated by using more particles or more linear models (or both). By trial and error we found that 7 linear models and 500 particles describes the system as well as possible while only measuring one state.
+
+We now use 7 linear models to perform inference. Figure 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_s_m1.pdf}
+\caption{State space evolution and linearisation points of the three linear models used. The system starts at the black circle and ends at the black cross.}
+\label{fig_7mod_ss_m1}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_w_m1.pdf}
+\caption{Weight of each switching index as time progresses.}
+\label{fig_7mod_w_m1}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_t_m1.pdf}
+\caption{Time series evolution of the states with initial condition $(0.5, 400)$.}
+\label{fig_7mod_t_m1}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_p_m1.pdf}
+\caption{State space evolution of the Switching Kalman Filter and the standard Kalman filter which only uses one linear model.}
+\label{fig_7mod_p_m1}
+\end{figure}
+
+
+
+
+
+
+
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_s_m2.pdf}
+\caption{State space evolution and linearisation points of the three linear models used. The system starts at the black circle and ends at the black cross.}
+\label{fig_7mod_ss_m2}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_w_m2.pdf}
+\caption{Weight of each switching index as time progresses.}
+\label{fig_7mod_w_m2}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_t_m2.pdf}
+\caption{Time series evolution of the states with initial condition $(0.5, 400)$.}
+\label{fig_7mod_t_m2}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_p_m2.pdf}
+\caption{State space evolution of the Switching Kalman Filter and the standard Kalman filter which only uses one linear model.}
+\label{fig_7mod_p_m2}
+\end{figure}
+
+
+
+
+
+
+
+
 
 \subsection{Controlling the CSTR}
 
