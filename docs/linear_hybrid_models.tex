@@ -83,7 +83,7 @@ If the number of effective particles is below some threshold apply resampling wi
 \end{enumerate} 
 
 \subsection{Rao-Blackwellised Particle Prediction}
-Like the Particle Predictor studied in the previous section, performing prediction using Rao-Blackwellisation is straightforward because there is no weighting step. Each particle's switching state is merely propogated forward using the transition matrix $P$ and the Kalman prediction algorithm is used to evaluate the predicted mean and covariance.
+Like the Particle Predictor studied in the previous section, performing prediction using Rao-Blackwellisation is straightforward because there is no weighting (updating the particles based on the observation) step. Each particle's switching state is merely propogated forward using the transition matrix $P$ and the Kalman prediction algorithm is used to evaluate the predicted mean and covariance.
 
 \subsection{Filter the CSTR}
 
