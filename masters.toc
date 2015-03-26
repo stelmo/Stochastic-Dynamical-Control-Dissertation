@@ -1,35 +1,48 @@
-\contentsline {section}{\numberline {1}Introduction}{2}
-\contentsline {section}{\numberline {2}Background Literature}{3}
-\contentsline {subsection}{\numberline {2.1}Probability Theory}{3}
-\contentsline {subsubsection}{\numberline {2.1.1}Discrete Random Variables}{3}
-\contentsline {subsubsection}{\numberline {2.1.2}Continuous Random Variables}{6}
-\contentsline {subsection}{\numberline {2.2}Graph Theory}{9}
-\contentsline {subsection}{\numberline {2.3}Probabilistic Graphical Models}{11}
-\contentsline {subsubsection}{\numberline {2.3.1}Bayesian Networks}{11}
-\contentsline {subsubsection}{\numberline {2.3.2}Dynamic Bayesian Networks}{13}
-\contentsline {subsection}{\numberline {2.4}Model Predictive Control}{16}
-\contentsline {section}{\numberline {3}Hidden Markov Models}{17}
-\contentsline {subsection}{\numberline {3.1}Markov Models}{17}
-\contentsline {subsection}{\numberline {3.2}Hidden Markov Models}{18}
-\contentsline {subsubsection}{\numberline {3.2.1}Filtering}{19}
-\contentsline {subsubsection}{\numberline {3.2.2}Smoothing}{20}
-\contentsline {subsubsection}{\numberline {3.2.3}Viterbi Decoding}{21}
-\contentsline {subsubsection}{\numberline {3.2.4}Prediction}{22}
-\contentsline {subsubsection}{\numberline {3.2.5}Burglar Localisation Problem}{23}
-\contentsline {section}{\numberline {4}CSTR Model}{26}
-\contentsline {subsection}{\numberline {4.1}Qualitative Analysis}{27}
-\contentsline {subsection}{\numberline {4.2}Linearised Models}{28}
-\contentsline {section}{\numberline {5}Linear Models}{33}
-\contentsline {subsection}{\numberline {5.1}Filtering}{34}
-\contentsline {subsection}{\numberline {5.2}Prediction}{35}
-\contentsline {subsection}{\numberline {5.3}Smoothing and Viterbi Decoding}{37}
-\contentsline {subsection}{\numberline {5.4}Filtering the CSTR}{38}
-\contentsline {subsection}{\numberline {5.5}Controlling the CSTR}{40}
-\contentsline {section}{\numberline {6}Nonlinear Models}{41}
-\contentsline {subsection}{\numberline {6.1}Sequential Monte Carlo Methods}{41}
-\contentsline {subsection}{\numberline {6.2}Particle Filter}{45}
-\contentsline {subsection}{\numberline {6.3}Particle Prediction}{47}
-\contentsline {subsection}{\numberline {6.4}Smoothing and Viterbi Decoding}{47}
-\contentsline {subsection}{\numberline {6.5}Filtering the CSTR}{47}
-\contentsline {section}{\numberline {7}Hybrid Models}{51}
-\contentsline {section}{\numberline {8}Conclusion}{52}
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Background Literature}{4}
+\contentsline {subsection}{\numberline {2.1}Probability Theory}{4}
+\contentsline {subsubsection}{\numberline {2.1.1}Discrete Random Variables}{4}
+\contentsline {subsubsection}{\numberline {2.1.2}Continuous Random Variables}{7}
+\contentsline {subsection}{\numberline {2.2}Graph Theory}{10}
+\contentsline {subsection}{\numberline {2.3}Probabilistic Graphical Models}{12}
+\contentsline {subsubsection}{\numberline {2.3.1}Bayesian Networks}{12}
+\contentsline {subsubsection}{\numberline {2.3.2}Dynamic Bayesian Networks}{14}
+\contentsline {subsection}{\numberline {2.4}Model Predictive Control}{17}
+\contentsline {section}{\numberline {3}Hidden Markov Models}{18}
+\contentsline {subsection}{\numberline {3.1}Markov Models}{18}
+\contentsline {subsection}{\numberline {3.2}Hidden Markov Models}{19}
+\contentsline {subsubsection}{\numberline {3.2.1}Filtering}{20}
+\contentsline {subsubsection}{\numberline {3.2.2}Smoothing}{21}
+\contentsline {subsubsection}{\numberline {3.2.3}Viterbi Decoding}{22}
+\contentsline {subsubsection}{\numberline {3.2.4}Prediction}{23}
+\contentsline {subsubsection}{\numberline {3.2.5}Burglar Localisation Problem}{24}
+\contentsline {section}{\numberline {4}CSTR Model}{27}
+\contentsline {subsection}{\numberline {4.1}Qualitative Analysis}{28}
+\contentsline {subsection}{\numberline {4.2}Nonlinear Model}{29}
+\contentsline {subsection}{\numberline {4.3}Linearised Models}{31}
+\contentsline {section}{\numberline {5}Linear Models}{38}
+\contentsline {subsection}{\numberline {5.1}Filtering}{39}
+\contentsline {subsection}{\numberline {5.2}Prediction}{40}
+\contentsline {subsection}{\numberline {5.3}Smoothing and Viterbi Decoding}{42}
+\contentsline {subsection}{\numberline {5.4}Filtering the CSTR}{43}
+\contentsline {subsection}{\numberline {5.5}Controlling the CSTR}{46}
+\contentsline {section}{\numberline {6}Nonlinear Models}{47}
+\contentsline {subsection}{\numberline {6.1}Sequential Monte Carlo Methods}{47}
+\contentsline {subsection}{\numberline {6.2}Particle Filter}{51}
+\contentsline {subsection}{\numberline {6.3}Particle Prediction}{53}
+\contentsline {subsection}{\numberline {6.4}Smoothing and Viterbi Decoding}{53}
+\contentsline {subsection}{\numberline {6.5}Filtering the CSTR}{53}
+\contentsline {section}{\numberline {7}Linear Hybrid Models}{58}
+\contentsline {subsection}{\numberline {7.1}Exact Filtering}{59}
+\contentsline {subsection}{\numberline {7.2}Rao-Blackwellised Particle Filter}{59}
+\contentsline {subsection}{\numberline {7.3}Rao-Blackwellised Particle Prediction}{61}
+\contentsline {subsection}{\numberline {7.4}Smoothing and Viterbi Decoding}{61}
+\contentsline {subsection}{\numberline {7.5}Filtering the CSTR}{61}
+\contentsline {subsection}{\numberline {7.6}Controlling the CSTR}{71}
+\contentsline {section}{\numberline {8}Nonlinear Hybrid Models}{72}
+\contentsline {subsection}{\numberline {8.1}Exact Inference}{73}
+\contentsline {subsection}{\numberline {8.2}Approximate Inference}{73}
+\contentsline {subsection}{\numberline {8.3}Particle Prediction}{74}
+\contentsline {subsection}{\numberline {8.4}Filtering the CSTR}{74}
+\contentsline {subsection}{\numberline {8.5}Controlling the CSTR}{77}
+\contentsline {section}{\numberline {9}Conclusion}{78}
