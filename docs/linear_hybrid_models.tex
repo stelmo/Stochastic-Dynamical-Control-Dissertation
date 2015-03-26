@@ -93,16 +93,16 @@ Viterbi decoding is likewise not within the scope of this dissertation and as su
 \subsection{Filtering the CSTR}
 We now apply the Rao-Blackwellised Particle Filter to the CSTR introduced earlier. We first perform filtering on the CSTR by only measuring temperature. Since we are using linear models we compare the performance of the Switching Kalman Filter to that of the standard Kalman Filter which only uses one linear model. We then extend our system to measure both temperature and concentration and perform the same comparisons.
 
-We use the same parameters as before and 500 particles unless otherwise stated. To illustrate how the Switching Kalman Filter works we initially only use 3 linear models to perform inference. Figures \ref{fig_3mod_ss} to \ref{fig_3mod_t} show how  the filter performs using three linear models corresponding to the nominal operating points for the CSTR. We only measure temperature for the moment.
+We use the same parameters as before and 500 particles unless otherwise stated. We also assume that the measurement and plant noise covariance matrices ($R,Q$) are the same across all the models. To illustrate how the Switching Kalman Filter works we initially only use 3 linear models to perform inference. Figures \ref{fig_3mod_ss} to \ref{fig_3mod_t} show how  the filter performs using three linear models corresponding to the nominal operating points for the CSTR. We only measure temperature for the moment.
 
-Figure \ref{fig_3mod_ss} shows where the linearisation points are with respect to the state space evolution of the system.
+Figure \ref{fig_3mod_ss} shows where the linearisation points are with respect to the state space evolution of the system. We expect the Switching Kalman Filter to switch to models in the vicinity of its current position in the state space.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s3_s.pdf}
 \caption{State space evolution and linearisation points of the three linear models used. The system starts at the black circle and ends at the black cross.}
 \label{fig_3mod_ss}
 \end{figure}
-Figure \ref{fig_3mod_w} shows the weight of each model as time progresses. We see that the second model (S::2) has the highest weight initially but after about 2 minutes the system switches models so that the first model (S::1) has the highest weight. Intuitively the system has moved away from the region where the second model describes the system best into a region where the first model is a better descriptor. 
+Figure \ref{fig_3mod_w} shows the weight of each model as time progresses. We see that the second model (S::2 aka switch 2) has the highest weight initially but after about 2 minutes the system switches models so that the first model (S::1 aka switch 1) has the highest weight. Intuitively the system has moved away from the region where the second model describes the system best into a region where the first model is a better descriptor. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s3_w.pdf}
@@ -116,67 +116,109 @@ In Figure \ref{fig_3mod_t} we see the time series response of the system. Note t
 \caption{Time series evolution of the states with initial condition $(0.5, 450)$.}
 \label{fig_3mod_t}
 \end{figure}
-Unfortunately, using only these three linear models is not adequate for this system. Since the models are far apart in the state space it sometimes happens that most of the particles are propagated forward using the wrong model. By not measuring a state this problem is exacerbated. Some models may predict the right temperature but the wrong concentration; they are not weeded out by the weighting procedure because the concentration is not observed. The filter then fails to switch and this causes the filter to diverge from the true states. Problems like this can be attenuated by using more particles or more linear models (or both). By trial and error we found that 7 linear models and 500 particles describes the system as well as possible while only measuring one state.
+Unfortunately, using only these three linear models is not adequate for this system. Since the models are far apart in the state space it sometimes happens that most of the particles are propagated forward using the wrong model. By not measuring a state this problem is exacerbated. Some of these incorrect models may predict the right temperature but the wrong concentration; consequently they are not weeded out by the weighting procedure because the concentration is not observed. The filter then fails to switch and this causes the filter to diverge from the true states. 
 
-We now use 7 linear models to perform inference. Figure 
+We illustrate this in Figures \ref{fig_3mod_s_w} to \ref{fig_3mod_t_w}. In Figure \ref{fig_3mod_s_w} we see the regions the CSTR traverses in the state space i.e. which switches we expect to be active. We expect switch 2 and 3 to be the most active.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s3_s_w.pdf}
+\caption{State space evolution and linearisation points of the three linear models used. The system starts at the black circle and ends at the black cross.}
+\label{fig_3mod_s_w}
+\end{figure}
+Contrary to Figure \ref{fig_3mod_s_w} we see in Figure \ref{fig_3mod_w_w} that switch 1 and 2 are the most active. This causes filter divergence as seen in Figure \ref{fig_3mod_t_w}.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s3_w_w.pdf}
+\caption{Weight of each switching index as time progresses.}
+\label{fig_3mod_w_w}
+\end{figure}
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s3_t_w.pdf}
+\caption{Time series evolution of the states with initial condition $(0.3, 400)$.}
+\label{fig_3mod_t_w}
+\end{figure}
+Problems like this can be attenuated by using more particles or more linear models (or both). By trial and error we found that 7 linear models and 500 particles describes the system well while only measuring one state.
+
+We now use 7 linear models to perform inference using the same initial conditions as Figure \ref{fig_3mod_t_w} to illustrate how increasing the number of linear models is beneficial to filtering accuracy. Figure \ref{fig_7mod_ss_m1} indicates that the lower temperature switches (models 1,3,6,7) should be most prominent during the run.  
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s7_s_m1.pdf}
-\caption{State space evolution and linearisation points of the three linear models used. The system starts at the black circle and ends at the black cross.}
+\caption{State space evolution and linearisation points of the seven linear models used. The system starts at the black circle and ends at the black cross.}
 \label{fig_7mod_ss_m1}
 \end{figure}
+In Figure \ref{fig_7mod_w_m1} we see that models 1,3,6 and 7 are indeed the most prominent models. This is reassuring because it indicates the filter correctly ``pick" the models which should best describe the system at each time step. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s7_w_m1.pdf}
 \caption{Weight of each switching index as time progresses.}
 \label{fig_7mod_w_m1}
 \end{figure}
+In Figure \ref{fig_7mod_t_m1} we see the filtered states as a function of time. We note that the temperature is accurately tracked but that there is almost a 20\% error in the concentration estimate. This is due to our single state measurement. Models 1 and 3 both predict the temperature of the system well but only model 3 predicts the concentration well. Since we do not measure concentration the filter has no way of knowing this and therefore includes a significant contribution of model 1 into the posterior state estimate. This causes the error we see in Figure \ref{fig_7mod_t_m1}.  
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s7_t_m1.pdf}
-\caption{Time series evolution of the states with initial condition $(0.5, 400)$.}
+\caption{Time series evolution of the states with initial condition $(0.3, 400)$.}
 \label{fig_7mod_t_m1}
 \end{figure}
+The only way to eliminate the type  of error we see in Figure \ref{fig_7mod_t_m1} is to measure some facet of the concentration. In Figure \ref{fig_7mod_p_m1} we see the benefit of using the Switching Kalman Filter even when only measuring one state. The standard Kalman Filter used here was linearised about the unsteady operating point (model 6).
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s7_p_m1.pdf}
 \caption{State space evolution of the Switching Kalman Filter and the standard Kalman filter which only uses one linear model.}
 \label{fig_7mod_p_m1}
 \end{figure}
+As discussed before, the standard Kalman Filter poorly estimates the unmeasured state because the linear model is uses is not accurate throughout the state space. However, the Switching Kalman Filter can switch models so that poor models do not form part of its state estimate. Thus it is better able to track the unmeasured state estimate.  
 
+As mentioned in the preceding discussion, measuring only one state can cause inaccurate state estimates. It is always better (perhaps not in an economic sense) to measure as much as possible for the purposes of inference. In Figures \ref{fig_7mod_ss_m2} to \ref{fig_7mod_p_m2} we incorporate a concentration measurement to improve inference. 
 
-
-
-
-
-
+In Figure \ref{fig_7mod_ss_m2} we see the trajectory of the state evolution in state space. From this we expect models 1,3,6 and 7 to be active. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s7_s_m2.pdf}
 \caption{State space evolution and linearisation points of the three linear models used. The system starts at the black circle and ends at the black cross.}
 \label{fig_7mod_ss_m2}
 \end{figure}
+In Figure \ref{fig_7mod_w_m2} we see that indeed models 1,3,6 and 7 are active. This indicates that the filter is likely to track the states well because the more accurate models are used for inference.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s7_w_m2.pdf}
 \caption{Weight of each switching index as time progresses.}
 \label{fig_7mod_w_m2}
 \end{figure}
+In Figure \ref{fig_7mod_t_m2} we see that indeed the filter accurately tracks both concentration and temperature. At this stage it becomes important to question if the Switching Kalman Filter increased the accuracy of the state estimate. After all, the standard Kalman Filter also accurately tracked both states given both measurements and was computationally much less intensive than the Switching Kalman Filter. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s7_t_m2.pdf}
 \caption{Time series evolution of the states with initial condition $(0.5, 400)$.}
 \label{fig_7mod_t_m2}
 \end{figure}
+In Figure \ref{fig_7mod_p_m2} we compare the Switching Kalman Filter to the standard Kalman Filter which uses only model 6.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{skf_s7_p_m2.pdf}
 \caption{State space evolution of the Switching Kalman Filter and the standard Kalman filter which only uses one linear model.}
 \label{fig_7mod_p_m2}
 \end{figure}
+Based on Figure \ref{fig_7mod_p_m2} we see that there is some benefit in using the Switching Kalman Filter. However, this is less pronounced than when only one state is measured (see Figure \ref{fig_7mod_p_m1}). The reason is: the standard Kalman Filter eventually only uses the measurements to infer the posterior state estimates because the model is bad. Thus the accuracy of the standard Kalman Filter will depend strongly the magnitude of the measurement noise. However, the Switching Kalman Filter can depend on the models to a much greater extent and we thus expect large measurement noise to not affect the quality of the state estimate as much. 
 
-
-
+To illustrate this effect we increase the measurement noise significantly: $R=\begin{pmatrix}
+0.1 & 0 \\ 0 & 100
+\end{pmatrix}$. The results are shown in Figures  \ref{fig_7mod_t_m2_b} to \ref{fig_7mod_p_m2_b}. We see in Figure \ref{fig_7mod_t_m2_b} that the measurement noise is significantly worse but the filter still tracks the states reliably.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_t_m2_b.pdf}
+\caption{Time series evolution of the states with initial condition $(0.5, 400)$ and using a much larger noise covariance.}
+\label{fig_7mod_t_m2_b}
+\end{figure}
+However, in Figure \ref{fig_7mod_p_m2_b} we see that the standard Kalman Filter does not track the states well. Since the model is bad the standard Kalman Filter has to rely on measurements which are also bad, hence the poor performance. The Switching Kalman Filter does not have this problem and is significantly more reliable.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{skf_s7_p_m2_b.pdf}
+\caption{State space evolution of the Switching Kalman Filter and the standard Kalman filter which only uses one linear model.}
+\label{fig_7mod_p_m2_b}
+\end{figure}
+The primary benefit of the Switching Kalman Filter is its ability to choose which models to use based on the observations. Although the technique is significantly more computationally intensive it is beneficial in situations where a single linear model does not adequately describe the system. 
 
 
 
