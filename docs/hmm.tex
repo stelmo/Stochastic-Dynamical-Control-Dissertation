@@ -4,14 +4,14 @@
 \graphicspath{{./imgs/}{../imgs/}} %look for images
 
 \section{Hidden Markov Models}
-In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. We assume that the states ($X$) and observations ($Y$) are discrete random variables. Models of this form are classically called Hidden Markov Models (HMMs).
+In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. We assume that the  $n$ state state random variable $X$ and the $m$ state observation random variable $Y$ are discrete random variables. Models of this form are classically called Hidden Markov Models (HMMs).
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=1.0]{hmm_model.pdf}
 \caption{Graphical model of this section}
 \label{fig_linmod}
 \end{figure}
-Intuitively, this model represents the situation where we are not sure about the state of the world but we can observe some facet of it. At each time step our state changes stochastically according to the transition function. A new observation is (stochastically) generated from our new state. Generally, we attempt to infer the state of the world given the observations. 
+Intuitively, this model represents the situation where we are not sure about the state of the world but we can observe some facet of it. At each time step our state changes stochastically according to the transition function. A new observation is (stochastically) generated from our new state. Generally, we attempt to infer the state of the world given the observations. Note that at each new time step we create two new random variables $X_t, Y_t$.
 
 In this section we briefly describe Markov Models because they link back to previous work done by the Chemical Engineering Department at the University of Pretoria. We focus on Hidden Markov Models for the remainder of the section because the techniques we develop here generalise to Latent Linear Dynamical Systems which is the next section. 
 
@@ -27,7 +27,7 @@ P(X_{1:T}) = \Pi_{t=1}^T P(X_t|X_{t-1}) \text{ with } P(X_1|X_{0}) = P(X_1)
 \caption{First Order Markov Chain}
 \label{fig_markov_chain}
 \end{figure}
-This model describes the forward propagation of a discrete random variable through time. It is interesting to study the marginal distribution of $P(X_t)$ as it evolves through time. By d-separation we know that $X_t \indep X_{1:t-2} | X_t$. Thus, we only have to marginalise out the previous time step to compute the required distribution as shown in (\ref{eq_markov_chain_marg}).
+This model describes the forward propagation of a discrete random variable through time. It is interesting to study the marginal distribution of $P(X_t)$ as it evolves through time. By d-separation we know that $X_t \indep X_{1:t-2} | X_{t-1}$. Thus, we only have to marginalise out the previous time step to compute the required distribution as shown in (\ref{eq_markov_chain_marg}).
 \begin{equation}
 P(X_t) = \sum_{x_{t-1}} P(X_t, x_{t-1}) = \sum_{x_{t-1}} P(x_{t-1})P(X_t|x_{t-1})
 \label{eq_markov_chain_marg}
