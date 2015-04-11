@@ -105,9 +105,9 @@ Clearly there is a big difference between the naive approach and the Bayesian (c
 
 So far in our discussion we have implicitly only used discrete random variables; that is, our probability space consisted out of a finite number of events or states. However, it is also necessary to make precise what we mean by a continuous random variable. A continuous random variable is characterised by a density function $p$ which assigns a weight to each possible value of the variable. Intuitively this weight is \underline{related} to the ``probability" of that value occurring\footnote{Please note that strictly speaking $P(x)=0$ for a specific point $x$ in the domain of $p$. Technically it is correct to say that the probability of $P(x \in [a,b]) = \int_a^b p(y)dy$; thus, if we want the probability of $x$ occurring we could just make $[a,b]$ small.}. Although the density function is itself not a probability function, if it satisfies $p(x) \geq 0~\forall x \in X$ and $\int p(x)dx = 1$, where we have implicitly integrated over the domain of $p$, then it can be used to generate one. The cumulative probability function $P(X \leq a)=\int^a_{-\infty} p(x)dx$ is one such example\footnote{We have assumed that the domain of $X$ is the entire real line.}. 
 
-Arguably the most well known continuous probability density distribution is the Gaussian or Normal distribution. The Gaussian distribution arises naturally from a variety of different contexts and settings. For example, the central limit theorem, together with some mild assumptions, tells us that the sum of a set of $N$ random  variables is itself a random variable and in the limit can be described by a Gaussian distribution \cite{bishop}. The Gaussian is often used because it has some very appealing analytical properties which we will investigate in some depth. 
+Arguably the most well known continuous probability density distribution is the Gaussian or Normal distribution. The Gaussian distribution arises naturally from a variety of different contexts and settings. For example, the central limit theorem, together with some mild assumptions, tells us that the sum of a set of $N$ random  variables is itself a random variable and in the limit can be described by a Gaussian distribution \cite{bishop}. The Gaussian is regularly used because it has some very appealing analytical properties (and often also because it is physically meaningful) which we will investigate in some depth. 
 
-Since the probability of a specific value does not have meaning in the setting of continuous probability functions we abuse our notation and denote the random variable $X$ by $x$. We also do not indicate vector quantities in boldface because it should be clear from the text when we are referring to such expressions. 
+Since the probability of a specific value is not meaningful in the setting of continuous probability functions we abuse our notation and denote the random variable $X$ by $x$. We also do not indicate vector quantities in boldface. We will concern ourselves mostly with vector quantities and it will be obvious when we deal with non-vector valued variables. 
 \begin{defn}
 \textbf{Gaussian Distribution} The univariate Gaussian or Normal distribution of a random variable $x$ is shown in (\ref{eq_norm_uni}). We call $\mu$ the mean and $\sigma^2$ the variance of the distribution.
 \begin{equation}
@@ -136,7 +136,22 @@ By expanding out the square we have the familiar formulate $\text{var}[f] = \mat
 \textbf{Covariance} For two random variables $x,y$ (which may be vectors) we define the covariance matrix $\text{cov}[x,y] = \mathbb{E}[xy^T] - \mathbb{E}[x]\mathbb{E}[y]$.
 \label{def_covariance}
 \end{defn}
-Note that $\text{cov}[x,x]=\text{cov}[x]=\text{var}[x]$. Covariance is a measure of how much two random variables vary together. If $x$ is a $D$ dimensional Gaussian random variable then $\text{cov}[x] = \Sigma$ as defined in Definition \ref{defn_gauss}.  
+Note that $\text{cov}[x,x]=\text{cov}[x]=\text{var}[x]$. Covariance is a measure of how much two random variables vary together. If $x$ is a $D$ dimensional Gaussian random variable then $\text{cov}[x] = \Sigma$ as defined in Definition \ref{defn_gauss}.
+
+The identities in Theorem \ref{thrm_gaussian_identities} will be useful in later sections. We refer the reader to \cite{davidian} for justification.
+\begin{thrm}
+\textbf{Gaussian Expected Value Identities}
+Suppose there exist constants $c \in \mathbb{R}^n$ and $C \in \mathbb{R}^{n \times n}$ and $X$ is a normal random variable with statistics $(\mu, \Sigma)$. Then the following identities hold:
+\begin{enumerate}
+\item
+$\mathbb{E}[c^TX] = c^T\mu$
+\item
+$\mathbb{E}[CX+c] = C\mu + c$
+\item
+$\mathbb{E}[X^TCX] = \text{tr}(C\Sigma) + \mu^TC\mu$
+\end{enumerate}
+\label{thrm_gaussian_identities}
+\end{thrm}  
 
 Now we are in a position to perform some manipulations assuming we are using Gaussian random variables. We state without proof Theorem \ref{thrm_joint_gaussians}.
 \begin{thrm}
@@ -357,9 +372,9 @@ Using d-separation we can efficiently reason about the conditional independences
 Bayesian Networks are commonly used to model situations which are not time dependent. We will primarily restrict ourselves to time series modelling in this dissertation. As such we will not delve deeper into static Bayesian Network theory.
 
 \subsubsection{Dynamic Bayesian Networks}
-Dynamical Bayesian Networks generalise the conventional static Bayesian Networks of the previous section. Dynamic, or Temporal, Bayesian Networks model systems which evolve temporally. Since sequential, or temporal, data is abundant in most engineering applications we will primarily concern ourselves with such models. Notationally we denote a time dependent vector by $x_{1:t}=x_1,x_2,...,x_t$, for example the joint $P(x_{1:3})=P(x_1,x_2,x_3)$.
+Dynamical Bayesian Networks generalise the conventional static Bayesian Networks of the previous section. Dynamic, or Temporal, Bayesian Networks model systems which evolve with time. Since sequential, or temporal, data is abundant in most engineering applications we will primarily concern ourselves with such models. Notationally we denote a time dependent vector by $x_{1:t}=x_1,x_2,...,x_t$, for example the joint $P(x_{1:3})=P(x_1,x_2,x_3)$.
 
-There are two important classes of analysis one may perform on sequential data using graphical models. On-line analysis, including prediction and filtering and off-line analysis, including smoothing and the most probable explanation (sometimes called Viterbi decoding). In both cases we are generally interested in learning something about a sets of hidden state variables by performing inference on some set of observed variables. 
+There are two important classes of analysis one may perform on sequential data using graphical models. On-line analysis, including prediction and filtering and off-line analysis, including smoothing and the most probable explanation (sometimes called Viterbi decoding). In both cases we are generally interested in learning something about a set of hidden state variables by performing inference on some set of observed variables. 
 
 A state space model assumes that there is some underlying hidden state ($X_t$) of the world which generates observations ($Y_t$). These hidden states may evolve with time and may be functions of some inputs ($U_t$). The hidden states and observations are most generally assumed to be random variables. Any state space model is fully parametrised by the following information:
 \begin{enumerate}
@@ -413,9 +428,81 @@ To make the notation clear, the variable $X_t$ represents a Bayesian Network, fo
 \label{fig_spec_dbn}
 \end{figure}
 
-\subsection{Model Predictive Control}
+\subsection{Control}
 
-%\bibliographystyle{plain}
-%\bibliography{research}
+\subsubsection{Linear Quadratic Regulator Control}
+We start our analysis by assuming we have an accurate, linear discrete time state space representation of a system shown in (\ref{eq_lqr_ss}).
+\begin{equation}
+\begin{aligned}
+x_{t+1} &= Ax_t+ Bu_t \\
+y_t &= Cx_t
+\end{aligned}
+\label{eq_lqr_ss}
+\end{equation}
+We also assume that the states are measured i.e. $C=I$ and the control sequence $N$ steps into the future is denoted $\mathbf{u}=(u_0, u_1,...,u_N)$. It is our goal to derive a Linear Quadratic Regulator (controller) given the system in (\ref{eq_lqr_ss}).
+\begin{defn}
+\textbf{Linear Quadratic Regulator (LQR)} The controller minimising the quadratic objective function, shown in (\ref{eq_lqr_obj}), is called the LQR controller. 
+\begin{equation}
+V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N
+\label{eq_lqr_obj}
+\end{equation}
+The optimisation of (\ref{eq_lqr_obj}) is implicitly subject to the state dynamics. The matrices $Q$ and $R$ are tuning parameters affecting the relative importance of the state and control inputs to the objective function respectively. We also assume that $Q, P_f$ and $R$ are real and symmetric matrices with the additional assumption that $Q, P_f$ are positive semidefinite and $R$ is positive definite.
+\label{def_lqr}
+\end{defn}
+We assume the reader is familiar with Dynamic Programming and present Theorem \ref{thrm_lqr_q} because it will be useful later. The proof may be found in \cite{raw} and follows from algebraic manipulations.
+\begin{thrm}
+\textbf{Sum of Quadratics} Suppose two quadratic functions $V_1(x) = \frac{1}{2}(x-a)^TA(x-a)$ and $V_2(x) = \frac{1}{2}(x-b)^TB(x-b)$ are given. Then the sum $V_1(x) + V_2(x) = V(x)$ is also quadratic and $V(x) = \frac{1}{2}(x-v)^TH(x-v)+d$ with $H = A+B$, $v = H^{-1}(Aa+Bb)$ and $d = V_1(v) + V_2(v)$.
+\label{thrm_lqr_q}
+\end{thrm}
+We now state the complete LQR problem in (\ref{eq_lqr_problem}) and analytically solve it using backward Dynamic Programming. 
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t
+\end{aligned}
+\label{eq_lqr_problem}
+\end{equation}
+Expanding the objective function to examine its structure we have (\ref{eq_lqr_expand_obj}). Note that given $x_0$ and the system dynamics all succeeding states are unknown only in the control input.
+\begin{equation}
+\begin{aligned}
+\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) &= \underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^tRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
+&= \underset{u_0, u_1,...,u_{N-1}}{\text{min }}  \frac{1}{2}\left( x_0^TQx_0 + u_0^TRu_0 +x_1^TQx_1 + u_1^TRu_1 + ... + x_N^TP_fx_N \right) \\
+&= \underset{u_0, u_1,...,u_{N-2}}{\text{min }}  \frac{1}{2}\left( x_0^TQx_0 + u_0^TRu_0 + ... + x_{N-2}^TQx_{N-2} + u_{N-2}^TRu_{N-2} \right)... \\
+& + \underset{u_{N-1}}{\text{min }} \frac{1}{2} \left(x_{N-1}^TQx_{N-1}+ u_{N-1}^TRu_{N-1} + x_N^TP_fx_N\right)
+\end{aligned}
+\label{eq_lqr_expand_obj}
+\end{equation}
+By using Theorem \ref{thrm_lqr_q} and the constraint $x_N=Ax_{N-1}+Bu_{N-1}$ we can sum the last term in the separated minimisation problem of (\ref{eq_lqr_obj}) as shown in (\ref{eq_lqr_sum_q}).
+\begin{equation}
+\begin{aligned}
+&V_{N-1}(x_{N-1}, x_N, u_{N-1}) = \frac{1}{2} \left(x_{N-1}^TQx_{N-1}+ u_{N-1}^TRu_{N-1} + x_N^TP_fx_N\right) &\\ 
+&\hspace{110pt} = \frac{1}{2} \left(x_{N-1}^TQx_{N-1} + (u_{N-1}-v)^TH(u_{N-1}-v\right) + d \\
+&\text{with } H = R+B^TP_fB \\
+&\text{and } v = K_{N-1}x_{N-1} \\
+&\text{and } d = \frac{1}{2}x_{N-1}^T\left(K_{N-1}^TRK_{N-1}+(A+BK_{N-1})^TP_f(A+BK_{N-1})  \right)x_{N-1}\\
+&\text{and } K_{N-1} = -(B^TP_fB+R)^{-1}B^TP_fA
+\end{aligned}
+\label{eq_lqr_sum_q}
+\end{equation}
+Given the form of the objective function we see that the optimal input $u_{N-1}$ is $v$ and consequently that the optimal control law at time $N-1$ is a linear function, $K_{N-1}$, of $x_{N-1}$. We also see that the cost function of the last stage
+
+
+
+
+
+
+\subsubsection{Linear Quadratic Gaussian Control}
+LQR  + KF done.
+
+\subsubsection{Model Predictive Control}
+Add constraints.
+
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}
