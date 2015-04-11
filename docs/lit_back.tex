@@ -454,7 +454,7 @@ We assume the reader is familiar with Dynamic Programming and present Theorem \r
 \textbf{Sum of Quadratics} Suppose two quadratic functions $V_1(x) = \frac{1}{2}(x-a)^TA(x-a)$ and $V_2(x) = \frac{1}{2}(x-b)^TB(x-b)$ are given. Then the sum $V_1(x) + V_2(x) = V(x)$ is also quadratic and $V(x) = \frac{1}{2}(x-v)^TH(x-v)+d$ with $H = A+B$, $v = H^{-1}(Aa+Bb)$ and $d = V_1(v) + V_2(v)$.
 \label{thrm_lqr_q}
 \end{thrm}
-We now state the complete LQR problem in (\ref{eq_lqr_problem}) and analytically solve it using backward Dynamic Programming. 
+We now state the complete LQR problem for finite horizon linear systems in (\ref{eq_lqr_problem}) and analytically solve it using backward Dynamic Programming. 
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
@@ -468,15 +468,15 @@ Expanding the objective function to examine its structure we have (\ref{eq_lqr_e
 \underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) &= \underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^tRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
 &= \underset{u_0, u_1,...,u_{N-1}}{\text{min }}  \frac{1}{2}\left( x_0^TQx_0 + u_0^TRu_0 +x_1^TQx_1 + u_1^TRu_1 + ... + x_N^TP_fx_N \right) \\
 &= \underset{u_0, u_1,...,u_{N-2}}{\text{min }}  \frac{1}{2}\left( x_0^TQx_0 + u_0^TRu_0 + ... + x_{N-2}^TQx_{N-2} + u_{N-2}^TRu_{N-2} \right)... \\
-& + \underset{u_{N-1}}{\text{min }} \frac{1}{2} \left(x_{N-1}^TQx_{N-1}+ u_{N-1}^TRu_{N-1} + x_N^TP_fx_N\right)
+& \hspace{18pt} + \underset{u_{N-1}}{\text{min }} \frac{1}{2} \left(x_{N-1}^TQx_{N-1}+ u_{N-1}^TRu_{N-1} + x_N^TP_fx_N\right)
 \end{aligned}
 \label{eq_lqr_expand_obj}
 \end{equation}
-By using Theorem \ref{thrm_lqr_q} and the constraint $x_N=Ax_{N-1}+Bu_{N-1}$ we can sum the last term in the separated minimisation problem of (\ref{eq_lqr_obj}) as shown in (\ref{eq_lqr_sum_q}).
+By using Theorem \ref{thrm_lqr_q} and the constraint $x_N=Ax_{N-1}+Bu_{N-1}$ we can simplify the last term in the separated minimisation problem of (\ref{eq_lqr_obj}) as shown in (\ref{eq_lqr_sum_q}). This is the first step of backward Dynamic Programming used to solve the problem.
 \begin{equation}
 \begin{aligned}
-&V_{N-1}(x_{N-1}, x_N, u_{N-1}) = \frac{1}{2} \left(x_{N-1}^TQx_{N-1}+ u_{N-1}^TRu_{N-1} + x_N^TP_fx_N\right) &\\ 
-&\hspace{110pt} = \frac{1}{2} \left(x_{N-1}^TQx_{N-1} + (u_{N-1}-v)^TH(u_{N-1}-v\right) + d \\
+&\underset{u_{N-1}}{\text{min }}V_{N-1}(x_N, u_{N-1}) =\underset{u_{N-1}}{\text{min }} \frac{1}{2} \left(x_{N-1}^TQx_{N-1}+ u_{N-1}^TRu_{N-1} + x_N^TP_fx_N\right) &\\ 
+&\hspace{130pt} = \underset{u_{N-1}}{\text{min }}\frac{1}{2} \left(x_{N-1}^TQx_{N-1} + (u_{N-1}-v)^TH(u_{N-1}-v)\right) + d \\
 &\text{with } H = R+B^TP_fB \\
 &\text{and } v = K_{N-1}x_{N-1} \\
 &\text{and } d = \frac{1}{2}x_{N-1}^T\left(K_{N-1}^TRK_{N-1}+(A+BK_{N-1})^TP_f(A+BK_{N-1})  \right)x_{N-1}\\
@@ -484,18 +484,100 @@ By using Theorem \ref{thrm_lqr_q} and the constraint $x_N=Ax_{N-1}+Bu_{N-1}$ we 
 \end{aligned}
 \label{eq_lqr_sum_q}
 \end{equation}
-Given the form of the objective function we see that the optimal input $u_{N-1}$ is $v$ and consequently that the optimal control law at time $N-1$ is a linear function, $K_{N-1}$, of $x_{N-1}$. We also see that the cost function of the last stage
-
-
-
-
+Given the form of the objective function we see that the optimal input $u_{N-1}$ is $v$ and consequently that the optimal control law at time $N-1$ is a linear function, $K_{N-1}$, of $x_{N-1}$. We also see that the cost function of the last stage is quadratic. We summarise the optimal stage cost, after some simplifications, in (\ref{eq_lqr_stage1}).
+\begin{equation}
+\begin{aligned}
+&u^0_{N-1}(x) = K_{N-1}x \\
+&x^0_{N-1}(x) = (A+BK_{N-1})x \\
+&V^0_{N-1}(x) = \frac{1}{2}x^T\Pi_{N-1}x \\
+&K_{N-1} = -(B^TP_fB+R)^{-1}B^TP_fA \\
+&\Pi_{N-1} = Q + A^TP_fA-A^TP_fB(B^TP_FB+R)^{-1}B^TP_fA 
+\end{aligned}
+\label{eq_lqr_stage1}
+\end{equation} 
+The function $V^0_{N-1}(x)$ defines the optimal cost to go from state $x$ for the last stage under the optimal control law $u^0_{N-1}(x)$. Now we proceed with the backward Dynamic Programming and solve (\ref{eq_lqr_stage2_obj}).
+\begin{equation}
+\underset{u_{N-2}}{\text{min }}  \frac{1}{2}\left(x_{N-2}^TQx_{N-2} + u_{N-2}^TRu_{N-2} \right) + V^0_{N-1}(x_{N-1})
+\label{eq_lqr_stage2_obj}
+\end{equation}
+But now we note the similarity between (\ref{eq_lqr_sum_q}) and (\ref{eq_lqr_stage2_obj}). Using $x_{N-1}=Ax_{N-2}+Bu_{N-2}$ and the same procedure as before we have (\ref{eq_lqr_stage2}). 
+\begin{equation}
+\begin{aligned}
+&u^0_{N-2}(x) = K_{N-2}x \\
+&x^0_{N-2}(x) = (A+BK_{N-2})x \\
+&V^0_{N-2}(x) = \frac{1}{2}x^T\Pi_{N-2}x \\
+&K_{N-2} = -(B^T\Pi_{N-1}B+R)^{-1}B^T\Pi_{N-1}A \\
+&\Pi_{N-2} = Q + A^T\Pi_{N-1}A-A^T\Pi_{N-1}B(B^T\Pi_{N-1}B+R)^{-1}B^T\Pi_{N-1}A 
+\end{aligned}
+\label{eq_lqr_stage2}
+\end{equation} 
+The recursion to go from $\Pi_{N-1}$ to $\Pi_{N-2}$ is known as backward Ricatti iteration and is defined in (\ref{eq_ricatti}).
+\begin{equation}
+\Pi_{k-1} = Q + A^T\Pi_{k}A-A^T\Pi_{k}B(B^T\Pi_{k}B+R)^{-1}B^T\Pi_{k}A  
+\label{eq_ricatti}
+\end{equation}
+With terminal condition $\Pi_N = P_f$. We see that to find the optimal control policy we need to continue with the backward Dynamic Programming recursion relationships until $k = 1$. We summarise the fundamental result in Optimal Control theory in Theorem \ref{thrm_lqr_sol}.
+\begin{thrm}
+\textbf{Solution of the LQR control problem} Given a finite horizon $N$ and a discrete linear system as shown in (\ref{eq_lqr_ss}) the optimal control policy which minimises the LQR objective function of defintion \ref{def_lqr} is given by iterating (\ref{eq_lqr_opt_control}) backwards for $k=N-1, N-2, ..., 1$ using backward Ricatti iteration as shown in (\ref{eq_ricatti}). 
+\begin{equation}
+\begin{aligned}
+&u^0_{k}(x) = K_{k}x \\
+&K_k = -(B^T\Pi_{k+1}B+R)^{-1}B^T\Pi_{k+1}A
+\end{aligned}
+\label{eq_lqr_opt_control}
+\end{equation}
+The optimal cost to go from time $k$ to time $N$ is $V^0_{k}(x)=\frac{1}{2}x^T\Pi_{k}x$.
+\label{thrm_lqr_sol}
+\end{thrm}
+Unfortunately optimal control in the setting described above does not guarantee stable control \cite{raw}. It can be shown that the finite horizon problem is not unconditionally stable i.e. there exist non-trivial systems for which the controller is unstable. This problem is fixed by considering the infinite horizon LQR problem. 
+\begin{defn}
+\textbf{Infinite Horizon LQR problem} Find the optimal control sequence $\mathbf{u}$ which solves (\ref{eq_inf_lqr_problem}).
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} V(x, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{\infty} \left( x_k^TQx_k + u_k^TRu_k \right) \\
+&\text{subject to } x_{t+1} = Ax_t+Bu_t \\
+&\text{and } x_0 = x
+\end{aligned}
+\label{eq_inf_lqr_problem}
+\end{equation}
+The same restrictions on the tuning parameters apply as before.
+\label{def_inf_lqr}
+\end{defn}
+By assuming that the system under consideration is controllable it is possible to show that the infinite horizon LQR solution shown in Theorem  is convergent and stabilising.
+\begin{defn}
+\textbf{Controllability} A system is controllable is, for any pair of states $x,z$ in the state space, $z$ can be reached in finite time from $x$. That is, $x$ can be controlled to $z$. It is possible to characterise a controllable system further. A system is controllable if and only if $\text{rank}\begin{pmatrix}
+\lambda I- A & B
+\end{pmatrix} = n$ for all $\lambda \in \text{eig}(A)$ where $n$ is the number of states one wants to control. 
+\end{defn}
+\begin{thrm}
+\textbf{Solution of the Infinite Horizon LQR control problem} Given the Infinite Horizon LQR problem of definition \ref{def_inf_lqr} it can be shown that the optimal control is given by (\ref{eq_lqr_inf_opt_control}).
+\begin{equation}
+\begin{aligned}
+&u^0_{k}(x) = Kx \\
+&K = -(B^T\Pi B+R)^{-1}B^T\Pi A \\
+&\Pi = Q + A^T\Pi A-A^T\Pi B(B^T\Pi B+R)^{-1}B^T\Pi A  
+\end{aligned}
+\label{eq_lqr_inf_opt_control}
+\end{equation}
+The optimal cost is given by $V^0(x) = \frac{1}{2}x^TKx$. The matrix $\Pi$ can be found by iterating the Ricatti equation. This solution is stabilising if the system is controllable.
+\end{thrm}
 
 
 \subsubsection{Linear Quadratic Gaussian Control}
-LQR  + KF done.
+Next we analyse stochastic systems of the form (\ref{eq_lqg_ss}) 
+\begin{equation}
+\begin{aligned}
+x_{t+1} &= Ax_t+ Bu_t + w_t \\
+y_t &= Cx_t +v_t \\
+\end{aligned}
+\label{eq_lqg_ss}
+\end{equation}
+With  $w_t \sim \mathcal{N}(0, W)$ and $v_t \sim \mathcal{N}(0, V)$. 
+
+
 
 \subsubsection{Model Predictive Control}
-Add constraints.
+
 
 
 
