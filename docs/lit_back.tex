@@ -610,6 +610,15 @@ V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx
 \end{equation}
 The restrictions on the tuning parameters are the same as before.
 \end{defn}
+It is indeed possible to solve this controller analytically using stochastic Dynamic Programming but the derivation is tedious. We rather employ the Separation Principle \cite{lqg}.
+\begin{defn}
+\textbf{Separation Principle} The solution of the LQG problem is obtained by combining the solution of the deterministic LQR problem and the optimal state estimation problem.
+\end{defn}
+The optimal state estimate of linear systems under Gaussian noise (such as \ref{eq_lqg_ss}) is known as the Kalman Filter. In later sections we devote much time to its derivation but for know we merely introduce it loosely.
+\begin{defn}
+\textbf{Kalman Filter} Given a linear system like \ref{eq_lqg_ss} under the influence of white Gaussian noise, the Kalman Filter is the optimal state estimator
+\end{defn}
+
 
 \subsubsection{Model Predictive Control}
 
