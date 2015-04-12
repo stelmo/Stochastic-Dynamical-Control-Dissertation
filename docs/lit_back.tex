@@ -439,7 +439,7 @@ y_t &= Cx_t
 \end{aligned}
 \label{eq_lqr_ss}
 \end{equation}
-We also assume that the states are measured i.e. $C=I$ and the control sequence $N$ steps into the future is denoted $\mathbf{u}=(u_0, u_1,...,u_N)$. It is our goal to derive a Linear Quadratic Regulator (controller) given the system in (\ref{eq_lqr_ss}).
+We also assume that the states are measured i.e. $C=I$ and the control sequence $N$ steps into the future is denoted $\mathbf{u}=(u_0, u_1,...,u_{N-1})$. It is our goal to derive a Linear Quadratic Regulator (controller) given the system in (\ref{eq_lqr_ss}).
 \begin{defn}
 \textbf{Linear Quadratic Regulator (LQR)} The controller minimising the quadratic objective function, shown in (\ref{eq_lqr_obj}), is called the LQR controller. 
 \begin{equation}
@@ -529,6 +529,8 @@ With terminal condition $\Pi_N = P_f$. We see that to find the optimal control p
 The optimal cost to go from time $k$ to time $N$ is $V^0_{k}(x)=\frac{1}{2}x^T\Pi_{k}x$.
 \label{thrm_lqr_sol}
 \end{thrm}
+After the optimal input $\mathbf{u}$ is found only $u_0$ is applied. For a treatment of the continuous case see \cite{robust}.
+
 Unfortunately optimal control in the setting described above does not guarantee stable control \cite{raw}. It can be shown that the finite horizon problem is not unconditionally stable i.e. there exist non-trivial systems for which the controller is unstable. This problem is fixed by considering the infinite horizon LQR problem. 
 \begin{defn}
 \textbf{Infinite Horizon LQR problem} Find the optimal control sequence $\mathbf{u}$ which solves (\ref{eq_inf_lqr_problem}).
@@ -543,7 +545,7 @@ Unfortunately optimal control in the setting described above does not guarantee 
 The same restrictions on the tuning parameters apply as before.
 \label{def_inf_lqr}
 \end{defn}
-By assuming that the system under consideration is controllable it is possible to show that the infinite horizon LQR solution shown in Theorem  is convergent and stabilising.
+By assuming that the system under consideration is controllable it is possible to show that the infinite horizon LQR solution shown in Theorem \ref{thrm_lqr_inf} is convergent and stabilising.
 \begin{defn}
 \textbf{Controllability} A system is controllable is, for any pair of states $x,z$ in the state space, $z$ can be reached in finite time from $x$. That is, $x$ can be controlled to $z$. It is possible to characterise a controllable system further. A system is controllable if and only if $\text{rank}\begin{pmatrix}
 \lambda I- A & B
@@ -560,11 +562,37 @@ By assuming that the system under consideration is controllable it is possible t
 \label{eq_lqr_inf_opt_control}
 \end{equation}
 The optimal cost is given by $V^0(x) = \frac{1}{2}x^TKx$. The matrix $\Pi$ can be found by iterating the Ricatti equation. This solution is stabilising if the system is controllable.
+\label{thrm_lqr_inf}
 \end{thrm}
+The LQR control problem, as discussed in this section, applies to deterministic systems where the goal is to drive the controlled variables to the origin. It is straightforward to extend this approach to systems where it is desired to drive the states to a reference (set) point $r_{sp}$.
 
+To achieve this we simply redefine the objective function in terms of deviation variables as shown in (\ref{eq_dev_vars}). The constants $x_{sp}$ and $u_{sp}$ are the state set point and corresponding controller set point one would like to drive the system to.
+\begin{equation}
+\begin{aligned}
+&\tilde{x}_t = x_t-x_{sp} \\
+&\tilde{u}_t = u_t-u_{sp}
+\end{aligned}
+\label{eq_dev_vars}
+\end{equation} 
+The deviation variables are then used in the objective function as opposed to $x_t$ and $u_t$ as shown in (\ref{eq_lqr_problem_dev}). Note that the system dynamics remain the same \cite{raw}. 
+\begin{equation}
+\begin{aligned}
+&\underset{\tilde{\mathbf{u}}}{\text{min }} V(x_0, \tilde{\mathbf{u}}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( \tilde{x}_k^TQ\tilde{x}_k + \tilde{u}_k^TR\tilde{u}_k \right) + \frac{1}{2}\tilde{x}_N^TP_f\tilde{x}_N \\
+& \text{subject to } \tilde{x}_{t+1}=A\tilde{x}_t+B\tilde{u}_t
+\end{aligned}
+\label{eq_lqr_problem_dev}
+\end{equation}
+As before only $\tilde{u}_0$ is used. We apply $u_0 = \tilde{u}_0 + u_{sp}$ to the system.
 
 \subsubsection{Linear Quadratic Gaussian Control}
-Next we analyse stochastic systems of the form (\ref{eq_lqg_ss}) 
+The LQR problem dealt with deterministic systems where the states were known exactly. Howeverm this is problematic from a practical perspective because:
+\begin{enumerate}
+\item
+The system model is almost never known exactly.
+\item
+The state measurements are almost always noisy.
+\end{enumerate}
+The Linear Quadratic Gaussian (LQG) controller deals with a performance measure for stochastic systems stochastic systems of the form (\ref{eq_lqg_ss}).
 \begin{equation}
 \begin{aligned}
 x_{t+1} &= Ax_t+ Bu_t + w_t \\
@@ -572,9 +600,16 @@ y_t &= Cx_t +v_t \\
 \end{aligned}
 \label{eq_lqg_ss}
 \end{equation}
-With  $w_t \sim \mathcal{N}(0, W)$ and $v_t \sim \mathcal{N}(0, V)$. 
-
-
+With  $w_t \sim \mathcal{N}(0, W)$ and $v_t \sim \mathcal{N}(0, V)$ which are independent white noise terms. 
+Because the states and measurements are stochastic variables we cannot use the LQR objective function as before. Instead we use the LQG objective function which is a generalisation of the former as shown in (\ref{eq_lqg_obj}).
+\begin{defn}
+\textbf{Linear Quadratic Gaussian (LQG)} The controller minimising the quadratic objective function, shown in (\ref{eq_lqg_obj}), is called the LQG controller. 
+\begin{equation}
+V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right]
+\label{eq_lqg_obj}
+\end{equation}
+The restrictions on the tuning parameters are the same as before.
+\end{defn}
 
 \subsubsection{Model Predictive Control}
 
