@@ -549,7 +549,7 @@ By assuming that the system under consideration is controllable it is possible t
 \begin{defn}
 \textbf{Controllability} A system is controllable is, for any pair of states $x,z$ in the state space, $z$ can be reached in finite time from $x$. That is, $x$ can be controlled to $z$. It is possible to characterise a controllable system further. A system is controllable if and only if $\text{rank}\begin{pmatrix}
 \lambda I- A & B
-\end{pmatrix} = n$ for all $\lambda \in \text{eig}(A)$ where $n$ is the number of states one wants to control. 
+\end{pmatrix} = n$ for all $\lambda \in \text{eig}(A)$. 
 \end{defn}
 \begin{thrm}
 \textbf{Solution of the Infinite Horizon LQR control problem} Given the Infinite Horizon LQR problem of definition \ref{def_inf_lqr} it can be shown that the optimal control is given by (\ref{eq_lqr_inf_opt_control}).
@@ -610,18 +610,35 @@ V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx
 \end{equation}
 The restrictions on the tuning parameters are the same as before.
 \end{defn}
+The full LQG control problem is stated in (\ref{eq_lqg_problem}). Note that we observe noisy $y_t$ and that $C \neq I$ in general.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
+& \text{and } y_{t}= Cx_t + v_t \\
+\end{aligned}
+\label{eq_lqg_problem}
+\end{equation}
+
 It is indeed possible to solve this controller analytically using stochastic Dynamic Programming but the derivation is tedious. We rather employ the Separation Principle \cite{lqg}.
 \begin{defn}
-\textbf{Separation Principle} The solution of the LQG problem is obtained by combining the solution of the deterministic LQR problem and the optimal state estimation problem.
+\textbf{Separation Principle} The solution of the LQG problem is obtained by combining the solution of the deterministic LQR problem and the optimal state estimation problem. The optimal current state estimate is used as the current deterministic state within the framework of the LQR controller. 
 \end{defn}
-The optimal state estimate of linear systems under Gaussian noise (such as \ref{eq_lqg_ss}) is known as the Kalman Filter. In later sections we devote much time to its derivation but for know we merely introduce it loosely.
+The optimal state estimate of linear systems under Gaussian noise is known as the Kalman Filter. In later sections we devote much time to its derivation but for now we merely introduce it loosely.
 \begin{defn}
-\textbf{Kalman Filter} Given a linear system like \ref{eq_lqg_ss} under the influence of white Gaussian noise, the Kalman Filter is the optimal state estimator
+\textbf{Kalman Filter} Given a linear system like (\ref{eq_lqg_ss}) under the influence of white Gaussian noise, the Kalman Filter is the optimal state estimator.
 \end{defn}
-
+A schematic diagram of the solution of LQG control problem is shown  in Figure \ref{fig_lqg}.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=1.0]{LQG.pdf}
+\caption{LQG control schematic}
+\label{fig_lqg}
+\end{figure}
+The LQR and LQG controllers are two of the most fundamental results in Optimal Control theory \cite{robust}. In the next section we discuss Model Predictive Control (MPC) which is a generalisation of the controllers we have discussed so far.
 
 \subsubsection{Model Predictive Control}
-
+Model Predictive Control
 
 
 
