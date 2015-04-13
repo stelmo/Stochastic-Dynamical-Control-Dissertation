@@ -441,7 +441,7 @@ y_t &= Cx_t
 \end{equation}
 We also assume that the states are measured i.e. $C=I$ and the control sequence $N$ steps into the future is denoted $\mathbf{u}=(u_0, u_1,...,u_{N-1})$. It is our goal to derive a Linear Quadratic Regulator (controller) given the system in (\ref{eq_lqr_ss}).
 \begin{defn}
-\textbf{Linear Quadratic Regulator (LQR)} The controller minimising the quadratic objective function, shown in (\ref{eq_lqr_obj}), is called the LQR controller. 
+\textbf{Linear Quadratic Regulator (LQR) Objective Function} The controller minimising the quadratic objective function, shown in (\ref{eq_lqr_obj}), is called the LQR controller. 
 \begin{equation}
 V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N
 \label{eq_lqr_obj}
@@ -462,7 +462,7 @@ We now state the complete LQR problem for finite horizon linear systems in (\ref
 \end{aligned}
 \label{eq_lqr_problem}
 \end{equation}
-Expanding the objective function to examine its structure we have (\ref{eq_lqr_expand_obj}). Note that given $x_0$ and the system dynamics all succeeding states are unknown only in the control input.
+Expanding the objective function to examine its structure we have (\ref{eq_lqr_expand_obj}). Note that given $x_0$ and the system dynamics all succeeding states are unknown only in the control input. The expansion of the objective function is recursive; this structure motivates the use of Dynamic Programming.
 \begin{equation}
 \begin{aligned}
 \underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) &= \underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^tRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
@@ -484,7 +484,7 @@ By using Theorem \ref{thrm_lqr_q} and the constraint $x_N=Ax_{N-1}+Bu_{N-1}$ we 
 \end{aligned}
 \label{eq_lqr_sum_q}
 \end{equation}
-Given the form of the objective function we see that the optimal input $u_{N-1}$ is $v$ and consequently that the optimal control law at time $N-1$ is a linear function, $K_{N-1}$, of $x_{N-1}$. We also see that the cost function of the last stage is quadratic. We summarise the optimal stage cost, after some simplifications, in (\ref{eq_lqr_stage1}).
+Given the form of the objective function we see that the optimal input $u_{N-1}$ is $v$ and consequently that the optimal control law at time $N-1$ is a linear function, $K_{N-1}$, of $x_{N-1}$. We also see that the cost function of the last stage is quadratic. We summarise the optimal stage cost and controller action, after some simplifications, in (\ref{eq_lqr_stage1}).
 \begin{equation}
 \begin{aligned}
 &u^0_{N-1}(x) = K_{N-1}x \\
@@ -516,9 +516,9 @@ The recursion to go from $\Pi_{N-1}$ to $\Pi_{N-2}$ is known as backward Ricatti
 \Pi_{k-1} = Q + A^T\Pi_{k}A-A^T\Pi_{k}B(B^T\Pi_{k}B+R)^{-1}B^T\Pi_{k}A  
 \label{eq_ricatti}
 \end{equation}
-With terminal condition $\Pi_N = P_f$. We see that to find the optimal control policy we need to continue with the backward Dynamic Programming recursion relationships until $k = 1$. We summarise the fundamental result in Optimal Control theory in Theorem \ref{thrm_lqr_sol}.
+With terminal condition $\Pi_N = P_f$. We see that to find the optimal control policy we need to continue with the backward Dynamic Programming recursion relationships until $k = 1$. We summarise one of the most fundamental results in Optimal Control theory in Theorem \ref{thrm_lqr_sol}.
 \begin{thrm}
-\textbf{Solution of the LQR control problem} Given a finite horizon $N$ and a discrete linear system as shown in (\ref{eq_lqr_ss}) the optimal control policy which minimises the LQR objective function of defintion \ref{def_lqr} is given by iterating (\ref{eq_lqr_opt_control}) backwards for $k=N-1, N-2, ..., 1$ using backward Ricatti iteration as shown in (\ref{eq_ricatti}). 
+\textbf{Solution of the Finite Horizon LQR control problem} Given a finite horizon $N$ and a discrete linear system as shown in (\ref{eq_lqr_ss}) the optimal control policy which minimises the LQR objective function of defintion \ref{def_lqr} is given by iterating (\ref{eq_lqr_opt_control}) backwards for $k=N-1, N-2, ..., 1$ using backward Ricatti iteration as shown in (\ref{eq_ricatti}). 
 \begin{equation}
 \begin{aligned}
 &u^0_{k}(x) = K_{k}x \\
@@ -531,7 +531,7 @@ The optimal cost to go from time $k$ to time $N$ is $V^0_{k}(x)=\frac{1}{2}x^T\P
 \end{thrm}
 After the optimal input $\mathbf{u}$ is found only $u_0$ is applied. For a treatment of the continuous case see \cite{robust}.
 
-Unfortunately optimal control in the setting described above does not guarantee stable control \cite{raw}. It can be shown that the finite horizon problem is not unconditionally stable i.e. there exist non-trivial systems for which the controller is unstable. This problem is fixed by considering the infinite horizon LQR problem. 
+Unfortunately optimal control in the setting described above does not guarantee stable control \cite{raw}. It can be shown that the finite horizon controller is not guaranteed to be stable i.e. there exist non-trivial systems for which the controller is unstable. This problem is fixed by considering the infinite horizon LQR problem. 
 \begin{defn}
 \textbf{Infinite Horizon LQR problem} Find the optimal control sequence $\mathbf{u}$ which solves (\ref{eq_inf_lqr_problem}).
 \begin{equation}
@@ -547,7 +547,7 @@ The same restrictions on the tuning parameters apply as before.
 \end{defn}
 By assuming that the system under consideration is controllable it is possible to show that the infinite horizon LQR solution shown in Theorem \ref{thrm_lqr_inf} is convergent and stabilising.
 \begin{defn}
-\textbf{Controllability} A system is controllable is, for any pair of states $x,z$ in the state space, $z$ can be reached in finite time from $x$. That is, $x$ can be controlled to $z$. It is possible to characterise a controllable system further. A system is controllable if and only if $\text{rank}\begin{pmatrix}
+\textbf{Controllability} A system is controllable is, for any pair of states $x,z$ in the state space, $z$ can be reached in finite time from $x$. That is, $x$ can be controlled to $z$. It is possible to characterise a controllable system further. A system with $n$ variables (which require control) is controllable if and only if $\text{rank}\begin{pmatrix}
 \lambda I- A & B
 \end{pmatrix} = n$ for all $\lambda \in \text{eig}(A)$. 
 \end{defn}
@@ -582,17 +582,28 @@ The deviation variables are then used in the objective function as opposed to $x
 \end{aligned}
 \label{eq_lqr_problem_dev}
 \end{equation}
-As before only $\tilde{u}_0$ is used. We apply $u_0 = \tilde{u}_0 + u_{sp}$ to the system.
-
+As before only $\tilde{u}_0$ is used. We apply $u_0 = \tilde{u}_0 + u_{sp}$ to the system. All that is required is that we specify $x_{sp}$ and $u_{sp}$. This is done by solving (\ref{eq_setpoints}). Note that $H$ relates the observed variables to the controlled variables.
+\begin{equation}
+\begin{pmatrix}
+I-A &- B \\ HC & 0
+\end{pmatrix} \begin{pmatrix}
+x_{sp}\\u_{sp}
+\end{pmatrix} = \begin{pmatrix}
+0 \\ r_{sp}
+\end{pmatrix}
+\label{eq_setpoints}
+\end{equation}
+It is possible to cast (\ref{eq_setpoints}) into an optimisation problem if there are more controlled variables than inputs. We refer the reader to \cite{raw} for a full treatise on the subject.
+ 
 \subsubsection{Linear Quadratic Gaussian Control}
-The LQR problem dealt with deterministic systems where the states were known exactly. Howeverm this is problematic from a practical perspective because:
+The LQR problem dealt with deterministic systems where the states were known exactly. However, this is problematic from a practical perspective because:
 \begin{enumerate}
 \item
 The system model is almost never known exactly.
 \item
 The state measurements are almost always noisy.
 \end{enumerate}
-The Linear Quadratic Gaussian (LQG) controller deals with a performance measure for stochastic systems stochastic systems of the form (\ref{eq_lqg_ss}).
+The Linear Quadratic Gaussian (LQG) controller deals with a performance measure for stochastic systems of the form (\ref{eq_lqg_ss}).
 \begin{equation}
 \begin{aligned}
 x_{t+1} &= Ax_t+ Bu_t + w_t \\
@@ -601,16 +612,17 @@ y_t &= Cx_t +v_t \\
 \label{eq_lqg_ss}
 \end{equation}
 With  $w_t \sim \mathcal{N}(0, W)$ and $v_t \sim \mathcal{N}(0, V)$ which are independent white noise terms. 
-Because the states and measurements are stochastic variables we cannot use the LQR objective function as before. Instead we use the LQG objective function which is a generalisation of the former as shown in (\ref{eq_lqg_obj}).
+Because the states and measurements are stochastic variables we cannot use the LQR objective function as before. Instead we use the LQG objective function which is a generalisation of the former as shown in definition \ref{def_lqg_obj}.
 \begin{defn}
-\textbf{Linear Quadratic Gaussian (LQG)} The controller minimising the quadratic objective function, shown in (\ref{eq_lqg_obj}), is called the LQG controller. 
+\textbf{Linear Quadratic Gaussian (LQG) Objective Function} The controller minimising the quadratic objective function, shown in (\ref{eq_lqg_obj}), is called the LQG controller. 
 \begin{equation}
 V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right]
 \label{eq_lqg_obj}
 \end{equation}
 The restrictions on the tuning parameters are the same as before.
+\label{def_lqg_obj}
 \end{defn}
-The full LQG control problem is stated in (\ref{eq_lqg_problem}). Note that we observe noisy $y_t$ and that $C \neq I$ in general.
+The full LQG control problem is stated in (\ref{eq_lqg_problem}). Note that we only observe noisy $y_t$ and that $C \neq I$ in general.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -620,7 +632,7 @@ The full LQG control problem is stated in (\ref{eq_lqg_problem}). Note that we o
 \label{eq_lqg_problem}
 \end{equation}
 
-It is indeed possible to solve this controller analytically using stochastic Dynamic Programming but the derivation is tedious. We rather employ the Separation Principle \cite{lqg}.
+It is indeed possible to solve this controller analytically using stochastic Dynamic Programming but the derivation is tedious. We rather employ the Separation Principle \cite{lqg}. We do however re-derive the optimal controller in a later section.
 \begin{defn}
 \textbf{Separation Principle} The solution of the LQG problem is obtained by combining the solution of the deterministic LQR problem and the optimal state estimation problem. The optimal current state estimate is used as the current deterministic state within the framework of the LQR controller. 
 \end{defn}
