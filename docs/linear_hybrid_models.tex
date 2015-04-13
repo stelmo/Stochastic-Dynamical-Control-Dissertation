@@ -16,8 +16,8 @@ One of the benefits of combining discrete switching variables with linear dynami
 We model this system as follows. Let $s_t \in (1,2,..., N)$ denote a discrete, time homogeneous $N$ state first order Markov chain with transition matrix $P$ as discussed in the Hidden Markov Model section. Let each state $s_t=i$ be associated with a parameter set $\left(A_i, B_i, b_i, Q_i, C_i, R_i \right)$ used to evaluate the dynamical model shown in (\ref{eq_smodel}). If $s_t$ were observed then (\ref{eq_smodel}) would simplify to a set of linear latent dynamical systems we could perform inference on using the methods investigated in the Linear Models section. However, we assume that $s_t$ is a hidden random variable.
 \begin{equation}
 \begin{aligned}
-x_{t+1} &= A_ix_t + B_iu_t + b_i + w_{t+1} \text{ with } \mathcal{N}(w_{t+1}|0,Q_i) \\
-y_{t+1} &= C_ix_{t+1} + v_{t+1}  \text{ with } \mathcal{N}(v_{t+1}|0,R_i)
+x_{t+1} &= A_ix_t + B_iu_t + w_{t+1} \text{ with } \mathcal{N}(w_{t+1}|0,W_i) \\
+y_{t+1} &= C_ix_{t+1} + v_{t+1}  \text{ with } \mathcal{N}(v_{t+1}|0,V_i)
 \end{aligned}
 \label{eq_smodel}
 \end{equation}
@@ -93,7 +93,7 @@ Viterbi decoding is likewise not within the scope of this dissertation and as su
 \subsection{Filtering the CSTR}
 We now apply the Rao-Blackwellised Particle Filter to the CSTR introduced earlier. We first perform filtering on the CSTR by only measuring temperature. Since we are using linear models we compare the performance of the Switching Kalman Filter to that of the standard Kalman Filter which only uses one linear model. We then extend our system to measure both temperature and concentration and perform the same comparisons.
 
-We use the same parameters as before and 500 particles unless otherwise stated. We also assume that the measurement and plant noise covariance matrices ($R,Q$) are the same across all the models. To illustrate how the Switching Kalman Filter works we initially only use 3 linear models to perform inference. Figures \ref{fig_3mod_ss} to \ref{fig_3mod_t} show how  the filter performs using three linear models corresponding to the nominal operating points for the CSTR. We only measure temperature for the moment.
+We use the same parameters as before and 500 particles unless otherwise stated. We also assume that the measurement and plant noise covariance matrices ($V,W$) are the same across all the models. To illustrate how the Switching Kalman Filter works we initially only use 3 linear models to perform inference. Figures \ref{fig_3mod_ss} to \ref{fig_3mod_t} show how  the filter performs using three linear models corresponding to the nominal operating points for the CSTR. We only measure temperature for the moment.
 
 Figure \ref{fig_3mod_ss} shows where the linearisation points are with respect to the state space evolution of the system. We expect the Switching Kalman Filter to switch to models in the vicinity of its current position in the state space.
 \begin{figure}[H] 
@@ -228,7 +228,7 @@ The primary benefit of the Switching Kalman Filter is its ability to choose whic
 \subsection{Controlling the CSTR}
 
 
-%\bibliographystyle{plain}
-%\bibliography{research}
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}

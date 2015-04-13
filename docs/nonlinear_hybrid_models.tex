@@ -13,11 +13,11 @@ In this section we generalise the graphical model (shown in Figure \ref{fig_hybr
 \end{figure}
 Intuitively we are now using the switching variables to decide which nonlinear model better describes the observed system behaviour. At each time point we desire a weighted set of nonlinear models with the weight proportional to the ability of the model to explain the plant behaviour. Such a system could be used to describe significant model changes e.g. catalyst degradation in our CSTR or a reactor which breaks suddenly etc... 
 
-We model this system as follows. Let $s_t=1,2,..., N$ denote a discrete, time homogeneous $N$ state first order Markov chain with transition matrix $P$ as discussed in the previous section. Let each state $s_t=i$ be associated with a model set $\left(f_i, g_i, Q_i, R_i \right)$ used to evaluate the dynamical model shown in (\ref{eq_smodel2}).
+We model this system as follows. Let $s_t=1,2,..., N$ denote a discrete, time homogeneous $N$ state first order Markov chain with transition matrix $P$ as discussed in the previous section. Let each state $s_t=i$ be associated with a model set $\left(f_i, g_i, W_i, V_i \right)$ used to evaluate the dynamical model shown in (\ref{eq_smodel2}).
 \begin{equation}
 \begin{aligned}
-x_{t+1} &= f_i(x_t, u_t, w_{t+1}) \text{ with } w_{t+1} \backsim \mathcal{N}(0, Q_i)\\
-y_{t+1} &= g_i(x_{t+1}, v_{t+1}) \text{ with } v_{t+1} \backsim \mathcal{N}(0,R_i)
+x_{t+1} &= f_i(x_t, u_t, w_{t+1}) \text{ with } w_{t+1} \backsim \mathcal{N}(0, W_i)\\
+y_{t+1} &= g_i(x_{t+1}, v_{t+1}) \text{ with } v_{t+1} \backsim \mathcal{N}(0,V_i)
 \end{aligned}
 \label{eq_smodel2}
 \end{equation}
@@ -118,7 +118,7 @@ Based on Figure \ref{fig_spf_m1_m2} it is clear that the second measurement does
 
 \subsection{Controlling the CSTR}
 
-%\bibliographystyle{plain}
-%\bibliography{research}
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}

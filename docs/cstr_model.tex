@@ -149,24 +149,48 @@ We will also attempt to use linear models for the purposes of control. First we 
 \dot{C_A} \\ \dot{T_R}
 \end{pmatrix} = \begin{pmatrix}
 f(C_A^*, T_R^*) \\ g(C_A^*, T_R^*)
-\end{pmatrix} + J(C_A^*, T_R^*)\begin{pmatrix}
+\end{pmatrix} + J(C_A^*, T_R^*) \left( \begin{pmatrix}
 C_A \\ T_R
-\end{pmatrix} - J(C_A^*, T_R^*)\begin{pmatrix}
-C_A^* \\ T_R^*
-\end{pmatrix}
+\end{pmatrix} - \begin{pmatrix}
+C_A^* \\ T_R^* 
+\end{pmatrix}\right)
 \label{eq_lin}
 \end{equation}
-It is possible to apply the Runge-Kutta method to (\ref{eq_lin}) and reduce the system, for a given $h$, into the standard linear discrete state space form as shown in (\ref{eq_rkss}). 
+It is often desirable to change the variables such that (\ref{eq_lin}) has no constant terms. This change of variables, which holds even if the linearisation point is not a critical point of the model, is shown in (\ref{eq_change_vars}). 
 \begin{equation}
 \begin{pmatrix}
+\tilde{C}_A \\ \tilde{T}_R
+\end{pmatrix} = \begin{pmatrix}
 C_A \\ T_R
+\end{pmatrix} - J(C_A^*, T_R^*)^{-1}\left(J(C_A^*, T_R^*)\begin{pmatrix}
+C_A^* \\ T_R^* 
+\end{pmatrix} - \begin{pmatrix}
+f(C_A^*, T_R^*) \\ g(C_A^*, T_R^*)
+\end{pmatrix}_{Q=0} \right)
+\label{eq_change_vars}
+\end{equation}
+We then have (\ref{eq_lin2}). Note that the input term $B$ originates from $\begin{pmatrix}
+f(C_A^*, T_R^*) \\ g(C_A^*, T_R^*)
+\end{pmatrix}$ and in (\ref{eq_change_vars}) we specifically set it to zero so that it is not removed.
+\begin{equation}
+\frac{d}{dx}\begin{pmatrix}
+\tilde{C_A} \\ \tilde{T_R}
+\end{pmatrix} =  J(C_A^*, T_R^*)\begin{pmatrix}
+\tilde{C}_A \\ \tilde{T}_R
+\end{pmatrix} + B(C_A^*, T_R^*)Q
+\label{eq_lin2}
+\end{equation}
+We now use the Bilinear Transform (also known as Tustin's Transform) to convert (\ref{eq_lin2}) into the discrete equation (\ref{eq_rkss}). Note that (\ref{eq_rkss}) implicitly depends on the sampling time.
+\begin{equation}
+\begin{pmatrix}
+\tilde{C}_A \\ \tilde{T}_R
 \end{pmatrix}_{t+1} = A(C_A^*, T_R^*) \begin{pmatrix}
-C_A \\ T_R
-\end{pmatrix}_{t} + B(C_A^*, T_R^*)Q + b(C_A^*, T_R^*)
+\tilde{C}_A \\ \tilde{T}_R
+\end{pmatrix}_{t} + B(C_A^*, T_R^*)Q 
 \label{eq_rkss}
 \end{equation}
-Where $Q$ is the heat input to the system and comes from the first term on the right hand side of the equals sign in (\ref{eq_lin}). The algebra is quite involved so we merely state that it is possible and refer the reader to the programmatic implementation for further details: see the function \textit{linearise} in the module \textit{Reactor\_functions} in the folder \textit{CSTR\_Model}.
-
+Where $Q$ is the heat input to the system. Note that we need to add back the offset we removed in the change of variables step (\ref{eq_change_vars}) when we want to inspect the results of applying (\ref{eq_rkss}).
+ 
 Figure \ref{fig_cstr_lin_1} shows the state space response of the linear model which was linearised around the high temperature, low concentration stable operating point $(C_A^1,T_R^1)$ as defined in Table \ref{tab_nominalstats}.
 \begin{figure}[H] 
 \centering
@@ -234,7 +258,7 @@ To illustrate this divergence we plot the maximum absolute relative difference b
 We see that in both figures the high temperature region of the state space has the worst linear model accuracy. This could be attributed to the exponential term in (\ref{eq_cstrmodel}) which is more pronounced in this area and consequently the model is more nonlinear. We also see that the high temperature linear models quickly become much less accurate with time when compared to the low temperature models.
 
 
-%\bibliographystyle{plain}
-%\bibliography{research}
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}

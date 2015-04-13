@@ -16,20 +16,20 @@ In the previous section we developed inference algorithms but assumed that the t
 We assume linearity and that all the random variables are Gaussian. While these are strong assumptions they form the building blocks of much more expressive models as we will discover in the next section. We also assume that the transition and emission functions are time invariant and that the state space model is of the form (\ref{eq_statespace}).
 \begin{equation}
 \begin{aligned}
-x_{t+1} &= Ax_t + Bu_t + b + w_{t+1} \text{ with } \mathcal{N}(w_{t+1}|0,Q) \\
-y_{t+1} &= Cx_{t+1} + v_{t+1}  \text{ with } \mathcal{N}(v_{t+1}|0,R)
+x_{t+1} &= Ax_t + Bu_t + w_{t+1} \text{ with } \mathcal{N}(w_{t+1}|0,W) \\
+y_{t+1} &= Cx_{t+1} + v_{t+1}  \text{ with } \mathcal{N}(v_{t+1}|0,V)
 \end{aligned}
 \label{eq_statespace}
 \end{equation}
 Rewriting the state space model we see that the transition and emission probability density functions are given by (\ref{eq_trans_emiss}). Note that we also assume that the system is first order Markov.
 \begin{equation}
 \begin{aligned}
-p(x_{t+1}|x_t, u_t)&= \mathcal{N}(x_{t+1}|Ax_t+Bu_t +b, Q) \\
-p(y_{t+1}|x_t) &= \mathcal{N}(y_{t+1}|Cx_{t+1}, R)
+p(x_{t+1}|x_t, u_t)&= \mathcal{N}(x_{t+1}|Ax_t+Bu_t, W) \\
+p(y_{t+1}|x_t) &= \mathcal{N}(y_{t+1}|Cx_{t+1}, V)
 \end{aligned}
 \label{eq_trans_emiss}
 \end{equation}
-We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $R$ as the noise associated with state measurements and $Q$ being the uncertainty (plant-model mismatch) associated with the linear model of the plant. Additionally, $Q$ can also model any unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $R$ and $Q$ indicate more uncertainty in the system. 
+We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $V$ as the noise associated with state measurements and $W$ being the uncertainty (plant-model mismatch) associated with the linear model of the plant. Additionally, $W$ can also model any unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $V$ and $W$ indicate more uncertainty in the system. 
 
 To fully specify the system we require the transition and emission probability density functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution of $x_1$.
 
@@ -42,16 +42,16 @@ We start with the prediction expression in (\ref{eq_filter_pred}) and assume, du
 p(x_t|y_{1:t-1}, u_{1:t-1}) &= \int_{x_{t-1}} p(x_t,x_{t-1}|y_{1:t-1}, u_{1:t-1}) \\
 &= \int_{x_{t-1}} p(x_{t-1}|y_{1:t-1}, u_{1:t-1})p(x_{t}|x_{t-1}, y_{1:t-1}, u_{1:t-1}) \\
 &= \int_{x_{t-1}} p(x_{t-1}|y_{1:t-1}, u_{1:t-2})p(x_{t}|x_{t-1}, u_{1:t-1}) \\
-&= \int_{x_{t-1}} \alpha(x_{t-1})\mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1} +b, Q) \\
-&= \int_{x_{t-1}} \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1} +b, Q) \\
+&= \int_{x_{t-1}} \alpha(x_{t-1})\mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, W) \\
+&= \int_{x_{t-1}} \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, W) \\
 \end{aligned}
 \label{eq_filter_pred}
 \end{equation} 
 Now we use Bayes' Theorem for Linear Gaussian Models to evaluate the marginal expression as shown in (\ref{eq_filter_pred2}).
 \begin{equation}
 \begin{aligned}
-\int_{x_{t-1}} \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1} +b, Q) &= \mathcal{N}(x_t|A\mu_{t-1}+Bu_{t-1
-}+b, Q+ A^T\Sigma_{t-1}A) \\
+\int_{x_{t-1}} \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, W) &= \mathcal{N}(x_t|A\mu_{t-1}+Bu_{t-1
+}, W+ A^T\Sigma_{t-1}A) \\
 &= \mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})
 \end{aligned}
 \label{eq_filter_pred2}
@@ -64,21 +64,21 @@ p(x_t|y_{1:t},u_{1:t-1}) &= p(x_t|y_{t},y_{1:t-1},u_{1:t-1}) \\
 &= \frac{p(y_t|x_t)p(x_t|y_{1:t-1},u_{1:t-1})}{p(y_t|y_{1:t-1},u_{1:t-1})} \\
 &\propto p(y_t|x_t)p(x_t|y_{1:t-1},u_{1:t-1})\\
 &= p(y_t|x_t)\mathcal{N}(x_t|A\mu_{t-1}+Bu_{t-1
-}+b, Q+ A^T\Sigma_{t-1}A) \\
-&= \mathcal{N}(y_{t}|Cx_{t}, R)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})
+}, W+ A^T\Sigma_{t-1}A) \\
+&= \mathcal{N}(y_{t}|Cx_{t}, V)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})
 \end{aligned}
 \label{eq_filter_update}
 \end{equation}
 Now we again make use of Bayes' Theorem for Linear Gaussian Models to evaluate the conditional expression as shown in (\ref{eq_filter_update2}).
 \begin{equation}
 \begin{aligned}
-p(x_t|y_{1:t},u_{1:t-1}) &=\mathcal{N}(y_{t}|Cx_{t}, R)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})\\ 
-&= \mathcal{N}(x_t|\Gamma(C^TR^{-1}y + \Sigma_{t|t-1}^{-1}\mu_{t|t-1}), \Gamma) \\
-&\text{with } \Gamma = (\Sigma_{t|t-1}^{-1}+C^TR^{-1}C)^{-1} 
+p(x_t|y_{1:t},u_{1:t-1}) &=\mathcal{N}(y_{t}|Cx_{t}, V)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})\\ 
+&= \mathcal{N}(x_t|\Gamma(C^TV^{-1}y + \Sigma_{t|t-1}^{-1}\mu_{t|t-1}), \Gamma) \\
+&\text{with } \Gamma = (\Sigma_{t|t-1}^{-1}+C^TV^{-1}C)^{-1} 
 \end{aligned}
 \label{eq_filter_update2}
 \end{equation} 
-By using the matrix identity $(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1}$ and defining $K_t = \Sigma_{t|t-1}C^T(C\Sigma_{t|t-1}C^T+R)^{-1}$ we can simplify $\Gamma$ to the recursive posterior covariance estimate shown in (\ref{eq_filter_covar}). Similarly, using the same matrix identity together with $(P^{-1} B^TR^{-1}B)^{-1})^{-1}B^TR^{-1} = PB^T(BPB^T+R^{-1})$ and the definition of $K_t$ we have the posterior mean estimate as shown in (\ref{eq_filter_mean}). Together (\ref{eq_filter_covar}) and (\ref{eq_filter_mean}) are known as the Kalman Filter equations \cite{murphy2}.
+By using the matrix identity $(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}CA^{-1}$ and defining $K_t = \Sigma_{t|t-1}C^T(C\Sigma_{t|t-1}C^T+V)^{-1}$ we can simplify $\Gamma$ to the recursive posterior covariance estimate shown in (\ref{eq_filter_covar}). Similarly, using the same matrix identity together with $(P^{-1} B^TR^{-1}B)^{-1})^{-1}B^TR^{-1} = PB^T(BPB^T+R^{-1})$ and the definition of $K_t$ we have the posterior mean estimate as shown in (\ref{eq_filter_mean}). Together (\ref{eq_filter_covar}) and (\ref{eq_filter_mean}) are known as the Kalman Filter equations \cite{murphy2}.
 \begin{align}
 \Sigma_t &= (I-K_tC)\Sigma_{t|t-1} 
 \label{eq_filter_covar} \\
@@ -99,8 +99,8 @@ p(x_{t+1}|y_{1:t}, u_{1:t}) &= \int_{x_t} p(x_{t+1},x_t|y_{1:t}, u_{1:t}) \\
 &= \int_{x_t} p(x_t|y_{1:t}, u_{1:t-1}) p(x_{t+1}|x_t,y_{1:t}, u_{1:t}) \\
 &= \int_{x_t} p(x_t|y_{1:t}, u_{1:t-1}) p(x_{t+1}|x_t, u_{t}) \\
 &= \int_{x_t} \alpha(x_t) p(x_{t+1}|x_t, u_{t}) \\
-&= \int_{x_t} \mathcal{N}(x_t|\mu_t, \Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t+b, Q) \\
-&= \mathcal{N}(x_{t+1}|Ax_t+Bu_t+b, Q+A\Sigma_t A^T) \\
+&= \int_{x_t} \mathcal{N}(x_t|\mu_t, \Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t, W) \\
+&= \mathcal{N}(x_{t+1}|Ax_t+Bu_t, W+A\Sigma_t A^T) \\
 &= \mathcal{N}(x_{t+1}|\mu_{t+1|t}, \Sigma_{t+1|t})
 \end{aligned}
 \label{eq_pred_state}
@@ -111,8 +111,8 @@ Note that $\mu_t$ and $\Sigma_t$ is the filtered mean and covariance. We have ag
 p(x_{t+2}|y_{1:t}, u_{1:t+1}) &= \int_{x_{t+1}} p(x_{t+2},x_{t+1}|y_{1:t}, u_{1:t+1}) \\
 &= \int_{x_{t+1}} p(x_{t+1}|y_{1:t}, u_{1:t}) p(x_{t+2}|x_{t+1},y_{1:t}, u_{1:t+1}) \\
 &= \int_{x_{t+1}} p(x_{t+1}|y_{1:t}, u_{1:t}) p(x_{t+2}|x_{t+1}, u_{t+1}) \\
-&= \int_{x_t} \mathcal{N}(x_{t+1}|\mu_{t+1|t}, \Sigma_{t+1|t})\mathcal{N}(x_{t+2}|Ax_{t+1}+Bu_{t+1}+b, Q) \\
-&= \mathcal{N}(x_{t+2}|A\mu_{t+1|t}+Bu_{t+1}+b, Q+A\Sigma_{t+1|t} A^T) \\
+&= \int_{x_t} \mathcal{N}(x_{t+1}|\mu_{t+1|t}, \Sigma_{t+1|t})\mathcal{N}(x_{t+2}|Ax_{t+1}+Bu_{t+1}, W) \\
+&= \mathcal{N}(x_{t+2}|A\mu_{t+1|t}+Bu_{t+1}, W+A\Sigma_{t+1|t} A^T) \\
 &= \mathcal{N}(x_{t+2}|\mu_{t+2|t}, \Sigma_{t+2|t})
 \end{aligned}
 \label{eq_pred_state2}
@@ -121,10 +121,10 @@ It is clear that we have derived a recursive algorithm to estimate the $h^{th}$-
 \begin{equation}
 \begin{aligned}
 &p(x_{t+h}|y_{1:t}, u_{1:t+h}) = \mathcal{N}(x_{t+h}|\mu_{t+h|t}, \Sigma_{t+h|t}) \\
-&\text{with } \mu_{t+h|t} = A\mu_{t+h-1|t}+Bu_{t+h-1} +b \\
-&\text{and } \Sigma_{t+h|t} = Q+A\Sigma_{t+h-1|t} A^T \\
-&\text{and } \mu_{t+1|t} = A\mu_t+Bu_{t}+b \\
-&\text{and } \Sigma_{t+1|t} = Q+A\Sigma_t A^T \\ 
+&\text{with } \mu_{t+h|t} = A\mu_{t+h-1|t}+Bu_{t+h-1} \\
+&\text{and } \Sigma_{t+h|t} = W+A\Sigma_{t+h-1|t} A^T \\
+&\text{and } \mu_{t+1|t} = A\mu_t+Bu_{t} \\
+&\text{and } \Sigma_{t+1|t} = W+A\Sigma_t A^T \\ 
 \end{aligned}
 \label{eq_pred_state_recur}
 \end{equation}
@@ -137,8 +137,8 @@ p(y_{t+1}|y_{1:t}, u_{1:t}) &= \int_{x_t, x_{t+1}} p(y_{t+1},x_{t+1},x_t|y_{1:t}
 &= \int_{x_t, x_{t+1}} p(x_t|y_{1:t}, u_{1:t-1})p(y_{t+1},x_{t+1}|x_t, y_{1:t}, u_{1:t}) \\
 &= \int_{x_t, x_{t+1}} p(x_t|y_{1:t}, u_{1:t-1}) p(x_{t+1}|x_t, y_{1:t}, u_{1:t})p(y_{t+1}|x_{t+1}, x_t, y_{1:t}, u_{1:t}) \\
 &= \int_{x_t, x_{t+1}} \alpha(x_t) p(x_{t+1}|x_t, u_{t}) p(y_{t+1}|x_{t+1}) \\
-&= \int_{x_t, x_{t+1}} \mathcal{N}(x_t|\mu_t,\Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t+b, Q) \mathcal{N}(y_{t+1}|Cx_{t+1}, R) \\
-&= \mathcal{N}(y_{t+1}|C\mu_{t+1|t}, R+C\Sigma_{t+1|t}C^T)
+&= \int_{x_t, x_{t+1}} \mathcal{N}(x_t|\mu_t,\Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t, W) \mathcal{N}(y_{t+1}|Cx_{t+1}, V) \\
+&= \mathcal{N}(y_{t+1}|C\mu_{t+1|t}, V+C\Sigma_{t+1|t}C^T)
 \end{aligned}
 \label{eq_pred_obs}
 \end{equation}
@@ -159,9 +159,9 @@ The reason we do not go into detail with the smoothing algorithm is because it f
 The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{1:T},u_{1:T-1})$ is also a Gaussian distribution of the form $\mathcal{N}(\hat{\mu}_t, \hat{\Sigma}_t)$. The recursion expressions for the posterior mean and covariance are shown in (\ref{eq_smooth2}).
 \begin{equation}
 \begin{aligned}
-\hat{\mu}_t &= \mu_t + J_t\left(\hat{\mu}_{t+1}-(A\mu_t+Bu_{t-1}+b)\right) \\
-\hat{\Sigma}_t &= \Sigma_t + J_t(\hat{\Sigma}_{t+1}-P_t)J^T_t \\
-&\text{with } P_t = A\Sigma_tA^T + Q \\
+&\hat{\mu}_t = \mu_t + J_t\left(\hat{\mu}_{t+1}-(A\mu_t+Bu_{t-1})\right) \\
+&\hat{\Sigma}_t = \Sigma_t + J_t(\hat{\Sigma}_{t+1}-P_t)J^T_t \\
+&\text{with } P_t = A\Sigma_tA^T + W \\
 &\text{and } J_t = \Sigma_t A^T (P_t)^{-1}\\
 &\text{and } \hat{\mu}_T = \mu_T\\
 &\text{and } \hat{\Sigma}_T = \Sigma_T
@@ -182,22 +182,19 @@ A &= \begin{pmatrix}
 B &= \begin{pmatrix}
 0 \\ 8.4102\times 10^{-6}
 \end{pmatrix} \\
-b &= \begin{pmatrix}
-0.0268 \\ -4.3524
-\end{pmatrix} \\
 C &= \begin{pmatrix}
 0 & 1
 \end{pmatrix} \\
-Q &= \begin{pmatrix}
+W &= \begin{pmatrix}
 1\times 10^{-5} & 0 \\ 0 & 4
 \end{pmatrix} \\
-R &= \begin{pmatrix}
+V &= \begin{pmatrix}
 10
 \end{pmatrix}
 \end{aligned}
 \label{eq_linmodel}
 \end{equation}
-The system noise $Q$ indicates that the standard deviation of the concentration component of the model is 0.001 kmol/m$^{-3}$ and the temperature component is 2 $K$. This indicates that we are quite uncertain about the accuracy of the linear model. The measurement noise implies that 68\% of the measurements will fall between $\pm\sqrt{10}$ of the actual state. We use a vague initial state with mean at the initial condition and covariance $Q$.
+The system noise $W$ indicates that the standard deviation of the concentration component of the model is 0.001 kmol/m$^{-3}$ and the temperature component is 2 K. This indicates that we are quite uncertain about the accuracy of the linear model. The measurement noise implies that 68\% of the measurements will fall between $\pm\sqrt{10}$ of the actual state. We use a vague initial state with mean at the initial condition and covariance $W$.
 
 In Figure \ref{fig_kftimeseries} we illustrate the strengths and weaknesses of the Kalman Filter. Since we derived the recursion equations analytically it is computationally efficient to use, the biggest cost is a matrix inversion which needs to be computed at each time step. During the initial part of the simulation the filter very accurately estimates the current system states because the model is accurate in this region. Thus the filter is able to infer the true state in the presence of noisy measurements. 
 
@@ -223,7 +220,7 @@ The root of the problem lies in the unsuitability of the model rather than our i
 
 Based on our discussion where the CSTR example was introduced we know that the linear models will not always be very accurate. We therefore modify (\ref{eq_linmodel}) to also incorporate concentration measurements. In this case we have that $C = \begin{pmatrix}
 1 & 0\\0 &1
-\end{pmatrix}$ and $R = \begin{pmatrix}
+\end{pmatrix}$ and $V = \begin{pmatrix}
 1\times 10^{-3} & 0\\0 & 10
 \end{pmatrix}$ with everything else the same. The time evolution of the states is shown in Figure \ref{fig_kftime2} and the state space representation is shown in Figure \ref{fig_kfphase2}. 
 \begin{figure}[H] 
@@ -242,7 +239,7 @@ Comparing Figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorp
 
 \subsection{Controlling the CSTR}
 
-%\bibliographystyle{plain}
-%\bibliography{research}
+\bibliographystyle{plain}
+\bibliography{research}
 
 \end{document}
