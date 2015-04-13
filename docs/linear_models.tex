@@ -244,6 +244,7 @@ Comparing Figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorp
 
 \begin{thrm}
 \textbf{Unconstrained Optimisation Equivalence} Suppose we have two real valued objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them over the same space (where they are defined) $\mathbf{u}\in \mathcal{U}$ given $x_0$. Furthermore, suppose there exists $k\in \mathbb{R}$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$.
+\label{thrm_optim_eq}
 \end{thrm}
 \begin{proof}
 This proof hold over differentiable and non-differentiable objective functions. Suppose not i.e. there exists  $\mathbf{u}_g \in \mathcal{U}$ such that $g(x_0, \mathbf{u}_g) < g(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$ but $f(x_0, \mathbf{u}_g) \nless f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. This implies that for $\mathbf{u}_f \in \mathcal{U}$ the global minimiser of $f$  we have $f(x_0, \mathbf{u}_f) \leq f(x_0, \mathbf{u}_g)$. 
@@ -256,29 +257,66 @@ It must then hold that $f(x_0, \mathbf{u}_g) < f(x_0, \mathbf{u})$ $\forall \mat
 \end{proof}
 
 \begin{thrm}
-\textbf{LQR and LQG Objective Difference} Consider the LQR and LQG Objective Functions in (\ref{eq_lqr_obj_func}) and (\ref{eq_lqg_obj_func}) respectively. 
+\textbf{LQR and LQG Objective Function Difference} Consider the LQR and LQG Objective Functions in (\ref{eq_lqr_obj_func}) and (\ref{eq_lqg_obj_func}) respectively. 
 \begin{align}
 J_{LQR}(x_0, \mathbf{u}) &= \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \label{eq_lqr_obj_func}\\
 \text{with } x_{t+1} &= Ax_t +Bu_t \nonumber\\
 J_{LQG}(x_0, \mathbf{u}) &=  \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \label{eq_lqg_obj_func} \\
 \text{with } x_{t+1} &= Ax_t +Bu_t + w_{t+1} \nonumber
 \end{align}
-Suppose $x_0$ is the mean of the state estimate supplied by the Kalman Filter given the latest observation in the stochastic case. Given any input sequence $\mathbf{u} \in \mathcal{U}$, where $\mathcal{U}$ is the admissible input space, we have that $J_{LQR}(x_0, \mathbf{u}) + k = J_{LQG}(x_0, \mathbf{u})$.
+Suppose $x_0$ is the state estimate supplied by the Kalman Filter given the latest observation in the stochastic case. In the deterministic case we have that $x_0 = \mathbb{E}[x_0] = \mu_0$ because we exactly observe the state. Given any input sequence $\mathbf{u} \in \mathcal{U}$, where $\mathcal{U}$ is the shared admissible input space, we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ where $ \Sigma_{t+1} = W+A\Sigma_t A^T$ and $\Sigma_0$ is the covariance matrix of the current state given by the Kalman Filter.
+\label{thrm_lqr_lqg_diff}
 \end{thrm}
 \begin{proof}
-Expanding the LQG objective function and noting that $\mathbf{u}$ is deterministic we have (\ref{eq_expanded_obj}).
+Expanding the LQG objective function and noting that $\mathbf{u}$ is deterministic we have (\ref{eq_expanded_obj}). Note that the conditional expectations in the expansion originate from the graphical model in Figure \ref{fig_linmod2} (due to the first order Markov assumption). 
 \begin{equation}
 \begin{aligned}
-J_{LQG}(x_0, \mathbf{u}) &= \frac{1}{2} \mathbb{E}\left[x_0^TQx_0 + u_0^TRu_0 \right] + \frac{1}{2} \mathbb{E}\left[x_1^TQx_1 + u_1^TRu_1 \right] + ... \\ &+ \frac{1}{2} \mathbb{E}\left[x_{N-1}^TQx_{N-1} + u_{N-1}^TRu_{N-1} \right] + \frac{1}{2} \mathbb{E}\left[x_N^TP_fx_N \right] \\
-&= \frac{1}{2} \mathbb{E}\left[x_0^TQx_0\right] + u_0^TRu_0 + \frac{1}{2} \mathbb{E}\left[x_1^TQx_1\right] + u_1^TRu_1 + ... \\ &+ \frac{1}{2} \mathbb{E}\left[x_{N-1}^TQx_{N-1} \right]+ u_{N-1}^TRu_{N-1} + \frac{1}{2} \mathbb{E}\left[x_N^TP_fx_N \right]
+J_{LQG}(x_0, \mathbf{u}) &= \frac{1}{2} \mathbb{E}\left[x_0^TQx_0 + u_0^TRu_0 \right] + \frac{1}{2} \mathbb{E}\left[x_1^TQx_1 + u_1^TRu_1 |x_0\right] + ... \\ &+ \frac{1}{2} \mathbb{E}\left[x_{N-1}^TQx_{N-1} + u_{N-1}^TRu_{N-1}|x_{N-2} \right] + \frac{1}{2} \mathbb{E}\left[x_N^TP_fx_N|x_{N-1} \right] \\
+&= \frac{1}{2} \mathbb{E}\left[x_0^TQx_0\right] +\frac{1}{2} u_0^TRu_0 + \frac{1}{2} \mathbb{E}\left[x_1^TQx_1|x_0\right] + \frac{1}{2}u_1^TRu_1 + ... \\ &+ \frac{1}{2} \mathbb{E}\left[x_{N-1}^TQx_{N-1}|x_{N-2} \right]+ \frac{1}{2}u_{N-1}^TRu_{N-1} + \frac{1}{2} \mathbb{E}\left[x_N^TP_fx_N |x_{N-1}\right]
 \end{aligned}
 \label{eq_expanded_obj}
 \end{equation}
-%We know that $x_0=\mu_0$ by assumption. Referring back to Section \ref{sec_lin_prediction} we also know that given the current state estimate the optimal $h$ step ahead prediction is given by $&\text{with } \mu_{t+h|t} = A\mu_{t+h-1|t}+Bu_{t+h-1} \\
-%&\text{and } \Sigma_{t+h|t} = W+A\Sigma_{t+h-1|t} A^T \\
-%&\text{and } \mu_{t+1|t} = A\mu_t+Bu_{t} \\
-%&\text{and } \Sigma_{t+1|t} = W+A\Sigma_t A^T \\ $
+We know that $x_0\sim \mathcal{N}(\mu_0, \Sigma_0)$ because the current state estimate comes from the Kalman Filter. This means that we can evaluate the first expected value in (\ref{eq_expanded_obj}) using Theorem \ref{thrm_gaussian_identities} as shown in (\ref{eq_exp1}).
+\begin{equation}
+\mathbb{E}\left[x_0^TQx_0\right] = \text{tr}(Q\Sigma_0) + \mu_0^TQ\mu_0
+\label{eq_exp1}
+\end{equation} 
+Now we turn out attention to the second expected value in (\ref{eq_expanded_obj}). First note that because we have $x_0$ and $\mathbf{u}$ we can use the result from Section \ref{sec_lin_prediction} to predict (optimally) the distribution of $x_1$. Therefore we know that $x_1 \sim \mathcal{N}(A\mu_0+Bu_0, W+A\Sigma_0 A^T)$. Now we let $\mu_1 = A\mu_0+Bu_0$ and $\Sigma_0 = W+A\Sigma_0 A^T$. Then by using Theorem \ref{thrm_gaussian_identities} as before we have (\ref{eq_exp2}).
+\begin{equation}
+\mathbb{E}\left[x_1^TQx_1|x_0\right] = \text{tr}(Q\Sigma_1) + \mu_1^TQ\mu_1
+\label{eq_exp2}
+\end{equation} 
+Note that $\text{tr}(Q\Sigma_1)$ does not depend on $u_0$ but only on the initial state estimate $x_0$ which is independent of the future inputs $\mathbf{u}$. Notice that we can continue in this manner to simplify the LQG objective function to (\ref{eq_simpl_obj_func}).
+\begin{equation}
+\begin{aligned}
+&J_{LQG}(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
+&\text{with } \mu_{t+1} = A\mu_t +Bu_t \\
+&\text{and } \Sigma_{t+1} = W+A\Sigma_t A^T 
+\end{aligned}
+\label{eq_simpl_obj_func}
+\end{equation}
+Now note that except for the last term $J_{LQG}(x_0, \mathbf{u})$ is exactly the same as $J_{LQR}(x_0, \mathbf{u})$. The conclusion follows because $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$ is independent of $\mathbf{u}$. 
 \end{proof}
+
+\begin{thrm}
+\textbf{Solution of the Finite Horizon LQG control problem} We wish to solve the LQG control problem within the framework of this dissertation. The full problem is shown in (\ref{eq_lqg_problem_full}).
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
+& \text{and } y_{t}= Cx_t + v_t \\
+\end{aligned}
+\label{eq_lqg_problem_full}
+\end{equation}
+We assume that we have the Kalman Filter state estimate for $x_0$. We use Theorem \ref{thrm_lqr_lqg_diff} to prove that given $x_0$ and $\forall \mathbf{u} \in \mathcal{U}$ we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ with $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \in \mathbb{R}$ a constant depending only on $x_0$. Thus we can use Theorem \ref{thrm_optim_eq} to prove that we only need to solve for the optimal controller input $\mathbf{u}^0$ using the LQR objective function. Thus we can use Theorem \ref{thrm_lqr_sol} to find $\mathbf{u}$.
+\label{thrm_lqg_sol}
+\end{thrm}
+As we have mentioned before, the Separation Theorem states that the solution of the LQG control problem is achieved by using the Kalman Filter to optimally estimate the current state and then feeding that state estimate into the optimal LQR controller. It is reassuring that Theorem \ref{thrm_lqg_sol} confirms this result.
+
+\begin{thrm}
+\textbf{Solution of the Infinite Horizon LQG control problem} Using either the Separation Theorem \cite{robust} or using, with some minor adjustments, Theorems \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} it is possible to show that the infinite horizon LQG problem is solved in a similar manner. The Kalman Filter state estimate is used in conjunction with the infinite horizon LQR solution.
+\end{thrm}
+
 
 
 \subsubsection{Constrained Control}
