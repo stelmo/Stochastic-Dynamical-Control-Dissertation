@@ -90,6 +90,7 @@ Note that for the first time step only the update expression is evaluated as the
 Intuitively, the Kalman Filter equations use the state space model to predict the new state distribution and then adjust it by a correction factor $K_t(y_t - C\mu_{t|t-1})$. This factor depends on the difference between the actual observation and the predicted observation. The Kalman gain, $K_t$, represents the inferred confidence of the model. If the model is deemed accurate then the predictions make up most of $\mu_t$ but if the model is bad at predicting the observations then the observations play a bigger part in the next mean estimate \cite{bishop}. 
 
 \subsection{Prediction}
+\label{sec_lin_prediction}
 The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{1:t}, u_{1:t+h-1})$ and $p(y_{t+h}|y_{1:t}, u_{1:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). 
 
 We start the derivation by considering the one step ahead state prediction in (\ref{eq_pred_state}).
@@ -238,6 +239,61 @@ Based on our discussion where the CSTR example was introduced we know that the l
 Comparing Figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorporating the state measurement the state estimation is much more accurate. It is not necessary to directly measure concentration as we have done: any measurement which depends on $C_A$ (or even both $C_A$ and $T_R$) would suffice. The second measurement reduces our uncertainty in the concentration state estimate because we have more to base our inference on than just a bad model.  
 
 \subsection{Controlling the CSTR}
+
+\subsubsection{Unconstrained Control}
+
+\begin{thrm}
+\textbf{Unconstrained Optimisation Equivalence} Suppose we have two real valued objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them over the same space (where they are defined) $\mathbf{u}\in \mathcal{U}$ given $x_0$. Furthermore, suppose there exists $k\in \mathbb{R}$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$.
+\end{thrm}
+\begin{proof}
+This proof hold over differentiable and non-differentiable objective functions. Suppose not i.e. there exists  $\mathbf{u}_g \in \mathcal{U}$ such that $g(x_0, \mathbf{u}_g) < g(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$ but $f(x_0, \mathbf{u}_g) \nless f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. This implies that for $\mathbf{u}_f \in \mathcal{U}$ the global minimiser of $f$  we have $f(x_0, \mathbf{u}_f) \leq f(x_0, \mathbf{u}_g)$. 
+
+Consider the case where $f(x_0, \mathbf{u}_f) = f(x_0, \mathbf{u}_g)$. This implies that both $\mathbf{u}_f$ and $\mathbf{u}_g$ are global minimisers of $f$ and contradicts our assumption that the global minimiser is unique.
+
+Consider the case where $f(x_0, \mathbf{u}_f) < f(x_0, \mathbf{u}_g)$. Since $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$ this implies that $g(x_0, \mathbf{u}_f) < g(x_0, \mathbf{u}_g)$. But this contradicts our assumption that $\mathbf{u}_g$ is the global minimiser of $g$.
+
+It must then hold that $f(x_0, \mathbf{u}_g) < f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. Therefore the global minimiser $\mathbf{u}_g$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$. 
+\end{proof}
+
+\begin{thrm}
+\textbf{LQR and LQG Objective Difference} Consider the LQR and LQG Objective Functions in (\ref{eq_lqr_obj_func}) and (\ref{eq_lqg_obj_func}) respectively. 
+\begin{align}
+J_{LQR}(x_0, \mathbf{u}) &= \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \label{eq_lqr_obj_func}\\
+\text{with } x_{t+1} &= Ax_t +Bu_t \nonumber\\
+J_{LQG}(x_0, \mathbf{u}) &=  \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \label{eq_lqg_obj_func} \\
+\text{with } x_{t+1} &= Ax_t +Bu_t + w_{t+1} \nonumber
+\end{align}
+Suppose $x_0$ is the mean of the state estimate supplied by the Kalman Filter given the latest observation in the stochastic case. Given any input sequence $\mathbf{u} \in \mathcal{U}$, where $\mathcal{U}$ is the admissible input space, we have that $J_{LQR}(x_0, \mathbf{u}) + k = J_{LQG}(x_0, \mathbf{u})$.
+\end{thrm}
+\begin{proof}
+Expanding the LQG objective function and noting that $\mathbf{u}$ is deterministic we have (\ref{eq_expanded_obj}).
+\begin{equation}
+\begin{aligned}
+J_{LQG}(x_0, \mathbf{u}) &= \frac{1}{2} \mathbb{E}\left[x_0^TQx_0 + u_0^TRu_0 \right] + \frac{1}{2} \mathbb{E}\left[x_1^TQx_1 + u_1^TRu_1 \right] + ... \\ &+ \frac{1}{2} \mathbb{E}\left[x_{N-1}^TQx_{N-1} + u_{N-1}^TRu_{N-1} \right] + \frac{1}{2} \mathbb{E}\left[x_N^TP_fx_N \right] \\
+&= \frac{1}{2} \mathbb{E}\left[x_0^TQx_0\right] + u_0^TRu_0 + \frac{1}{2} \mathbb{E}\left[x_1^TQx_1\right] + u_1^TRu_1 + ... \\ &+ \frac{1}{2} \mathbb{E}\left[x_{N-1}^TQx_{N-1} \right]+ u_{N-1}^TRu_{N-1} + \frac{1}{2} \mathbb{E}\left[x_N^TP_fx_N \right]
+\end{aligned}
+\label{eq_expanded_obj}
+\end{equation}
+%We know that $x_0=\mu_0$ by assumption. Referring back to Section \ref{sec_lin_prediction} we also know that given the current state estimate the optimal $h$ step ahead prediction is given by $&\text{with } \mu_{t+h|t} = A\mu_{t+h-1|t}+Bu_{t+h-1} \\
+%&\text{and } \Sigma_{t+h|t} = W+A\Sigma_{t+h-1|t} A^T \\
+%&\text{and } \mu_{t+1|t} = A\mu_t+Bu_{t} \\
+%&\text{and } \Sigma_{t+1|t} = W+A\Sigma_t A^T \\ $
+\end{proof}
+
+
+\subsubsection{Constrained Control}
+
+
+
+
+
+
+
+
+
+
+
+
 
 \bibliographystyle{plain}
 \bibliography{research}
