@@ -18,36 +18,39 @@
 \contentsline {subsubsection}{\numberline {3.2.2}Smoothing}{27}
 \contentsline {subsubsection}{\numberline {3.2.3}Viterbi Decoding}{28}
 \contentsline {subsubsection}{\numberline {3.2.4}Prediction}{29}
-\contentsline {subsubsection}{\numberline {3.2.5}Burglar Localisation Problem}{30}
+\contentsline {subsection}{\numberline {3.3}Burglar Localisation Problem}{30}
 \contentsline {section}{\numberline {4}CSTR Model}{33}
 \contentsline {subsection}{\numberline {4.1}Qualitative Analysis}{34}
 \contentsline {subsection}{\numberline {4.2}Nonlinear Model}{35}
 \contentsline {subsection}{\numberline {4.3}Linearised Models}{37}
-\contentsline {section}{\numberline {5}Linear Models}{44}
+\contentsline {section}{\numberline {5}Inference using Linear Models}{44}
 \contentsline {subsection}{\numberline {5.1}Filtering}{45}
 \contentsline {subsection}{\numberline {5.2}Prediction}{46}
 \contentsline {subsection}{\numberline {5.3}Smoothing and Viterbi Decoding}{48}
 \contentsline {subsection}{\numberline {5.4}Filtering the CSTR}{49}
-\contentsline {subsection}{\numberline {5.5}Controlling the CSTR}{52}
-\contentsline {subsubsection}{\numberline {5.5.1}Unconstrained Control}{52}
-\contentsline {subsubsection}{\numberline {5.5.2}Constrained Control}{53}
-\contentsline {section}{\numberline {6}Nonlinear Models}{54}
-\contentsline {subsection}{\numberline {6.1}Sequential Monte Carlo Methods}{54}
-\contentsline {subsection}{\numberline {6.2}Particle Filter}{58}
-\contentsline {subsection}{\numberline {6.3}Particle Prediction}{60}
-\contentsline {subsection}{\numberline {6.4}Smoothing and Viterbi Decoding}{60}
-\contentsline {subsection}{\numberline {6.5}Filtering the CSTR}{60}
-\contentsline {section}{\numberline {7}Linear Hybrid Models}{65}
-\contentsline {subsection}{\numberline {7.1}Exact Filtering}{66}
-\contentsline {subsection}{\numberline {7.2}Rao-Blackwellised Particle Filter}{66}
-\contentsline {subsection}{\numberline {7.3}Rao-Blackwellised Particle Prediction}{68}
-\contentsline {subsection}{\numberline {7.4}Smoothing and Viterbi Decoding}{68}
-\contentsline {subsection}{\numberline {7.5}Filtering the CSTR}{68}
-\contentsline {subsection}{\numberline {7.6}Controlling the CSTR}{78}
-\contentsline {section}{\numberline {8}Nonlinear Hybrid Models}{79}
-\contentsline {subsection}{\numberline {8.1}Exact Inference}{80}
-\contentsline {subsection}{\numberline {8.2}Approximate Inference}{80}
-\contentsline {subsection}{\numberline {8.3}Particle Prediction}{81}
-\contentsline {subsection}{\numberline {8.4}Filtering the CSTR}{81}
-\contentsline {subsection}{\numberline {8.5}Controlling the CSTR}{84}
-\contentsline {section}{\numberline {9}Conclusion}{85}
+\contentsline {section}{\numberline {6}Inference using Nonlinear Models}{53}
+\contentsline {subsection}{\numberline {6.1}Sequential Monte Carlo Methods}{53}
+\contentsline {subsection}{\numberline {6.2}Particle Filter}{57}
+\contentsline {subsection}{\numberline {6.3}Particle Prediction}{59}
+\contentsline {subsection}{\numberline {6.4}Smoothing and Viterbi Decoding}{59}
+\contentsline {subsection}{\numberline {6.5}Filtering the CSTR}{59}
+\contentsline {section}{\numberline {7}Stochastic Linear Control}{64}
+\contentsline {subsection}{\numberline {7.1}Current Literature}{64}
+\contentsline {subsection}{\numberline {7.2}Unconstrained Stochastic Control}{64}
+\contentsline {subsection}{\numberline {7.3}Chance Constrained Stochastic Control}{66}
+\contentsline {section}{\numberline {8}Inference using Linear Hybrid Models}{67}
+\contentsline {subsection}{\numberline {8.1}Exact Filtering}{68}
+\contentsline {subsection}{\numberline {8.2}Rao-Blackwellised Particle Filter}{68}
+\contentsline {subsection}{\numberline {8.3}Rao-Blackwellised Particle Prediction}{70}
+\contentsline {subsection}{\numberline {8.4}Smoothing and Viterbi Decoding}{70}
+\contentsline {subsection}{\numberline {8.5}Filtering the CSTR}{71}
+\contentsline {section}{\numberline {9}Inference using Nonlinear Hybrid Models}{81}
+\contentsline {subsection}{\numberline {9.1}Exact Inference}{82}
+\contentsline {subsection}{\numberline {9.2}Approximate Inference}{82}
+\contentsline {subsection}{\numberline {9.3}Particle Prediction}{83}
+\contentsline {subsection}{\numberline {9.4}Filtering the CSTR}{83}
+\contentsline {section}{\numberline {10}Stochastic Switching Linear Control}{87}
+\contentsline {subsection}{\numberline {10.1}Current Literature}{87}
+\contentsline {subsection}{\numberline {10.2}Unconstrained Control}{87}
+\contentsline {subsection}{\numberline {10.3}Constrained Control}{87}
+\contentsline {section}{\numberline {11}Conclusion}{88}

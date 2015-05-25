@@ -1,8 +1,3 @@
-\documentclass[../masters.tex]{subfiles}
-
-\begin{document}
-\graphicspath{{./imgs/}{../imgs/}} %look for images
-
 \section{Hidden Markov Models}
 In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. We assume that the  $n$ state state random variable $X$ and the $m$ state observation random variable $Y$ are discrete random variables. Models of this form are classically called Hidden Markov Models (HMMs).
 \begin{figure}[H] 
@@ -190,7 +185,7 @@ Clearly the observation prediction is just an extension of the state prediction.
 
 It is pleasing that the prediction expressions are closely related to each other and effectively only depend on the filtered state estimate and the transition or observation functions. This realisation hold for more general problems and will become important when we consider controlling the system. More on this later.
 
-\subsubsection{Burglar Localisation Problem}
+\subsection{Burglar Localisation Problem}
 While the focus of this dissertation is not on HMM type problems it is nevertheless instructive to consider a simple example to build some intuition about inference of random variables. Thus, it is desirable to conduct a numerical experiment using the previously derived inference techniques. The type of problem we consider here is a localisation problem. This type of problem (and its extensions) has many applications in robotics and object tracking.
 
 The problem is taken from Chapter 23 in Barber's book \textit{Bayesian Reasoning and Machine Learning} \cite{barber}. Briefly, it is necessary to infer the location of a burglar in your house given observations (noises) you perceive from an adjoining room. You discretise the room the burglar is in into $n^2$ blocks. The room is then the discrete random variable $X$. You observe two distinct types of noises: creaks and bumps. From the knowledge of your house you know which blocks are likely to creak and which are likely to bump if the burglar is on that block i.e. if the random variable $X$ is in a specific state. This is shown in Figure \ref{fig_burlgar_observations}: a dark block indicates it is likely to emit a noise with probility 0.9 and a light block will emit a noise with probability 0.01 if the burglar is on that block. The noises are independent of each other.
@@ -216,8 +211,3 @@ It is also interesting to note that the prediction algorithm is very much depend
 Finally, it is important to understand the benefit of using this approach as opposed to the exhaustive ``if this then that" approach. Firstly, the latter approach scales exponentially with the number of variables because one would need to fully consider all the possibilities to infer any sort of belief. Secondly, the former approach has an associated probability distribution: the certainty of our inferred belief is automatically quantified e.g. the darker the blocks the more sure we are about our inference. Thus, the techniques we developed make room for uncertainty about the correctness of the answer.
 
 Hidden Markov Models are very powerful and have found many uses e.g. speech recognition, object tracking and bio-informatics \cite{barber}. Many extensions of the basic model (see Figure \ref{fig_linmod}) exist which are much more expressive. However, we are interested in modelling and reasoning about continuous random variables. For such applications the Hidden Markov Model, due to the discrete assumption, is inappropriate. Fortunately, the techniques investigated in this section carry over to the continuous case as we will see next.  
-
-%\bibliographystyle{plain}
-%\bibliography{research}
-
-\end{document}

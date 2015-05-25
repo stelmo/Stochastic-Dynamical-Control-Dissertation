@@ -1,9 +1,4 @@
-\documentclass[../masters.tex]{subfiles}
-
-\begin{document}
-\graphicspath{{./imgs/}{../imgs/}} %look for images
-
-\section{Nonlinear Hybrid Models}
+\section{Inference using Nonlinear Hybrid Models}
 In this section we generalise the graphical model (shown in Figure \ref{fig_hybridmod2} for convenience) of the previous section by dropping the assumption that the dynamic models are linear. The variables retain their meaning as before.     
 \begin{figure}[H] 
 \centering
@@ -111,14 +106,3 @@ Generally speaking the second measurement will increase the filter accuracy if t
 \label{fig_spf_m1_m2}
 \end{figure}
 Based on Figure \ref{fig_spf_m1_m2} it is clear that the second measurement does indeed increase the accuracy of the posterior state estimate. This is not unexpected because the second measurement allows the filter to weed out even more particles which do not support the observation i.e. are representative of the true underlying state.
-
-
-
-
-
-\subsection{Controlling the CSTR}
-
-\bibliographystyle{plain}
-\bibliography{research}
-
-\end{document}

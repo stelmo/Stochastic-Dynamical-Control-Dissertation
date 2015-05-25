@@ -30,38 +30,32 @@
   {0.5em} % Space after theorem head
   {} % Theorem head spec (can be left empty, meaning `normal')
 \theoremstyle{defstyle}
-\newtheorem{defn}{Definition}[subsection]
-\newtheorem{rmrk}{Remark}[subsection]
-\newtheorem{thrm}{Theorem}[subsection]
-\newtheorem{ax}{Axiom}[subsection]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{rmrk}{Remark}[section]
+\newtheorem{thrm}{Theorem}[section]
+\newtheorem{ax}{Axiom}[section]
 
-
-\usepackage{subfiles}
 \usepackage{comment}
 
+\includeonly{./docs/linear_control}
+
 \begin{document}
+\graphicspath{{./imgs/}{../imgs/}} %look for images
+
 %Title page
-\subfile{./docs/title_page_mod.tex}
+\include{./docs/title_page_mod}
 \tableofcontents
-\newpage
-\subfile{./docs/introduction.tex}
-\newpage
-\subfile{./docs/lit_back.tex}
-\newpage
-\subfile{./docs/hmm.tex}
-\newpage
-\subfile{./docs/cstr_model.tex}
-\newpage
-\subfile{./docs/linear_models.tex}
-\newpage
-\subfile{./docs/nonlinear_models.tex}
-\newpage
-\subfile{./docs/linear_hybrid_models.tex}
-\newpage
-\subfile{./docs/nonlinear_hybrid_models.tex}
-\newpage
-\subfile{./docs/conclusion.tex}
-\newpage
+\include{./docs/introduction}
+\include{./docs/lit_back}
+\include{./docs/hmm}
+\include{./docs/cstr_model}
+\include{./docs/linear_models}
+\include{./docs/nonlinear_models}
+\include{./docs/linear_control}
+\include{./docs/linear_hybrid_models}
+\include{./docs/nonlinear_hybrid_models}
+\include{./docs/switching_linear_control}
+\include{./docs/conclusion}
 
 %References
 \newpage

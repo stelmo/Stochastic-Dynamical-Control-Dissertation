@@ -1,0 +1,170 @@
+\begin{thebibliography}{10}
+
+\bibitem{shalom}
+Y.~Bar-Shalom, X.R. Li, and T.~Kirubarajan.
+\newblock {\em Estimation with applications to tracking and navigation}.
+\newblock John Wiley and Sons, 2001.
+
+\bibitem{barber2}
+D.~Barber.
+\newblock Expectation correction for smoothed inference in switching linear
+  dynamical systems.
+\newblock {\em Journal of Machine Learning}, 7:2515--2540, 2006.
+
+\bibitem{barber}
+D.~Barber.
+\newblock {\em {Bayesian Reasoning and Machine Learning}}.
+\newblock {Cambridge University Press}, 2012.
+
+\bibitem{bishop}
+C.M. Bishop.
+\newblock {\em Pattern Recognition and Machine Learning}.
+\newblock Springer, 2006.
+
+\bibitem{cervantes}
+A.L. Cervantes, O.E. Agamennoni, and J.L Figueroa.
+\newblock A nonlinear model predictive control system based on weiner piecewise
+  linear models.
+\newblock {\em Journal of Process Control}, 13:655--666, 2003.
+
+\bibitem{chen}
+R.~Chen and J.S. Liu.
+\newblock Mixture kalman filters.
+\newblock {\em Journal of Royal Statistical Society}, 62(3):493--508, 2000.
+
+\bibitem{lqg}
+B.N. Datta.
+\newblock {\em Numerical Methods for Linear Control Systems - Design and
+  Analysis}.
+\newblock Elsevier, 2004.
+
+\bibitem{davidian}
+M.~Davidian.
+\newblock Applied longitudinal data analysis.
+\newblock North Carolina State University, 2005.
+
+\bibitem{deo}
+N.~Deo.
+\newblock {\em Graph Theory with Applications to Engineering and Computer
+  Science}.
+\newblock Prentice-Hall, 1974.
+
+\bibitem{pftut}
+A.~Doucet and A.M. Johansen.
+\newblock A tutorial on particle filtering and smoothing: fifteen years later.
+\newblock Technical report, The Institute of Statistical Mathematics, 2008.
+
+\bibitem{doucet}
+A.D. Doucet, N.J. Gordon, and V.~Krishnamurthy.
+\newblock Particle filters for state estimation of jump markov linear systems.
+\newblock {\em IEEE Transactions on Signal Processing}, 49(3):613--624, March
+  2001.
+
+\bibitem{du}
+J.~Du, C.~Song, and P.~Li.
+\newblock Modeling and control of a continuous stirred tank reactor based on a
+  mixed logical dynamical model.
+\newblock {\em Chinese Journal of Chemical Engineering}, 15(4):533--538, 2007.
+
+\bibitem{eco1}
+The Economist.
+\newblock In praise of bayes.
+\newblock Article in Magazine, September 2000.
+
+\bibitem{edwardsandpenny}
+H.C. Edwards and D.E. Penny.
+\newblock {\em Elementary Differential Equations}.
+\newblock Pearson, 6th edition edition, 2009.
+
+\bibitem{robust}
+O.R. Gonzalez and A.G. Kelkar.
+\newblock {\em Electrical Engineering Handbook}.
+\newblock Academic Press, 2005.
+
+\bibitem{gordon}
+N.J. Gordon, D.J. Salmond, and A.F.M. Smith.
+\newblock Novel approach to nonlinear/non-gaussian bayesian state estimation.
+\newblock {\em IEE Proceedings-F}, 140(2):107--113, 1993.
+
+\bibitem{gsf1}
+K.~Ito and K.~Xiong.
+\newblock Gaussian filters for nonlinear filtering problems.
+\newblock {\em IEEE Transactions on Automatic Control}, 45(5):910--928, 2000.
+
+\bibitem{koller}
+D.~Koller and N.~Friedman.
+\newblock {\em Probabilistic Graphical Models}.
+\newblock MIT Press, 2009.
+
+\bibitem{korb}
+K.~B. Korb and A.~E. Nicholson.
+\newblock {\em Bayesian Artificial Intelligence}.
+\newblock Series in Computer Science and Data Analysis. Chapman \& Hall, first
+  edition edition, 2004.
+
+\bibitem{kvasnica}
+M.~Kvasnica, M.~Herceg, L.~Cirka, and M.~Fikar.
+\newblock Model predictive control of a cstr: a hybrid modeling approach.
+\newblock {\em Chemical Papers}, 64(3):301--309, 2010.
+
+\bibitem{lerner}
+U.N. Lerner.
+\newblock {\em Hybrid Bayesian Networks for Reasoning about Complex Systems}.
+\newblock PhD thesis, Stanford Univesity, 2002.
+
+\bibitem{luyben}
+W.L. Luyben.
+\newblock {\em Process Modeling, Simulation and Control for Chemical
+  Engineers}.
+\newblock McGraw-Hill, 2nd edition edition, 1990.
+
+\bibitem{cstrmodel}
+P.~Mhaskar, N.H. El-Farra, and P.D. Christofides.
+\newblock Stabilization of nonlinear systems with state and control constraints
+  using lyapunov-based predictive control.
+\newblock {\em Systems and Control Letters}, 55:650--659, 2006.
+
+\bibitem{murphy3}
+K.P. Murphy.
+\newblock Switching kalman filters.
+\newblock Technical report, Compaq Cambridge Research Lab, 1998.
+
+\bibitem{murphy1}
+K.P. Murphy.
+\newblock {\em Dynamic Bayesian Networks: Representation, Inference and
+  Learning}.
+\newblock PhD thesis, University of California, Berkeley, 2002.
+
+\bibitem{murphy2}
+K.P. Murphy.
+\newblock {\em {Machine Learning: A Probabilistic Perspective}}.
+\newblock MIT Press, 2012.
+
+\bibitem{pan}
+T.~Pan, S.~Li, and W.J. Cai.
+\newblock Lazy learning based online identification and adaptive pid control: a
+  case study for cstr process.
+\newblock {\em Industrial Engineering Chemical Research}, 46:472--480, 2007.
+
+\bibitem{raw}
+J.B. Rawlings and D.Q. Mayne.
+\newblock {\em Model Predictive Control}.
+\newblock Nob Hill Publishing, 2009.
+
+\bibitem{streicher}
+S.J. Streicher, S.E. Wilken, and C.~Sandrock.
+\newblock Eigenvector analysis for the ranking of control loop importance.
+\newblock {\em Computer Aided Chemical Engineering}, 33:835--840, 2014.
+
+\bibitem{google}
+R.S. Wills.
+\newblock Google's pagerank: the math behind the search engine.
+\newblock Technical report, North Carolina State University, 2006.
+
+\bibitem{yazdi}
+M.B. Yazdi and M.R. Jahed-Motlagh.
+\newblock Stabilization of a cstr with two arbitrarily switching modes using
+  model state feedback linearisation.
+\newblock {\em Chemical Engineering Journal}, 155(3):838--843, 2009.
+
+\end{thebibliography}

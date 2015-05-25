@@ -1,9 +1,5 @@
-\documentclass[../masters.tex]{subfiles}
-
-\begin{document}
-\graphicspath{{./imgs/}{../imgs/}} %look for images
-
-\section{Nonlinear Models}
+\section{Inference using Nonlinear Models}
+\label{sec_inf_nonlin_mods}
 In this section we still consider probabilistic graphical models of the form shown in Figure \ref{fig_nlmod}. The variables retain their meaning as before but we generalise the model by dropping the linearity assumption. Unfortunately, this generalisation, although allowing us to expand our investigation to a much more expressive class of models, makes closed form solutions to the inference problem intractable in general.   
 \begin{figure}[H] 
 \centering
@@ -253,9 +249,3 @@ In Figure \ref{fig_pf_kf_phase} we see empirical proof of the assertion that the
 \label{fig_pf_kf_phase}
 \end{figure}
 It is clear that if one only has access to linear models it makes sense from both a computational and accuracy point of view to use the Kalman Filter. However, if one needs to perform inference on a system better descibed by a nonlinear model the Particle Filter becomes more useful.
-
-
-%\bibliographystyle{plain}
-%\bibliography{research}
-
-\end{document}
