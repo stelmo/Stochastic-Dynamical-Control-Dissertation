@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  25 MAY 2015 21:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  26 MAY 2015 14:40
 entering extended mode
 **masters.tex
 
@@ -337,15 +337,15 @@ docs\linear_control.tex" [64
 
 
 
-] [65]) [66]
+] [65] [66]) [67]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-masters.bbl" [89
+masters.bbl" [90
 
 
 
 
 
-]) [90]
+] [91]) [92]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 masters.aux"
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
@@ -373,13 +373,13 @@ docs\switching_linear_control.aux")
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\conclusion.aux")) ) 
 Here is how much of TeX's memory you used:
- 3244 strings out of 493921
- 47609 string characters out of 3144868
- 112472 words of memory out of 3000000
- 6433 multiletter control sequences out of 15000+200000
+ 3247 strings out of 493921
+ 47662 string characters out of 3144868
+ 113498 words of memory out of 3000000
+ 6436 multiletter control sequences out of 15000+200000
  10773 words of font info for 40 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,14n,43p,697b,270s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,14n,43p,1128b,270s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
@@ -392,9 +392,9 @@ fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masters.pdf (7 pages, 167229 bytes).
+Output written on masters.pdf (9 pages, 170542 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
+ 80 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

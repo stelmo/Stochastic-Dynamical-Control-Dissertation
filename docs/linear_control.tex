@@ -23,7 +23,18 @@ y_{t+1} &= Cx_{t+1} + v_{t+1}
 We will endeavour to develop predictive controllers using the Graphical Models of Section \ref{sec_inf_lin_mods} and \ref{sec_inf_nonlin_mods}.
 
 \subsection{Current Literature}
+Linear unconstrained stochastic control subject to white additive Gaussian noise is well studied in literature. The Linear Quadratic Gaussian (LQG) controller introduced in Section \ref{sec_lit_control} is one of the most fundamental results in Optimal Control Theory \cite{lqg}. A significant drawback of the LQG controller, and by extension the LQR controller, is that it is inherently unconstrained.
 
+Conventional deterministic MPC is very well studied in literature \cite{raw} and can be seen as the constrained generalisation of the LQR controller. A further generalisation of deterministic MPC is stochastic MPC whereby either the variables, the constraints or both have stochastic elements. In current literature the trend is to convert all the stochastic elements of the control problem into deterministic ones. This usually makes the problem somewhat more tractable from a computational point of view.
+
+This conversion is usually achieved via two distinct approaches. In the first approach, which is also the one we employ, the probability distributions are assumed Gaussian and the systems linear. This allows one to greatly simplify the problem at the cost of those relatively strong assumptions. The second approach is to use a particle/sampling approach. Here the distributions are approximated by particles (much like the Particle Filter of Section \ref{sec_inf_nonlin_mods}) and no assumptions are made of form of the distributions. It is also not necessary to assume linear dynamics. The major practical drawback of this approach is that it can quickly become computationally intractable.
+
+Indeed, this is the approach taken by \cite{blackmore}. They attempt to solve the stochastic MPC problem with stochastic (chance) constraints and variables by approximating the current and predicted distributions with particles. Referring back to Section \ref{sec_particle_prediction} we see that this is indeed possible. By using the particle approach to model distributions it is possible to convert the resultant stochastic optimisation problem into a deterministic one. In the case where linear dynamics are used this becomes a Mixed Integer Linear or Quadratic Programming problem depending on the objective function. Their algorithm is appealing because it is not necessary to assume Gaussian distributions. However, it is possible that the algorithm could become computationally intractable due to the integer constraints which are used to approximate the chance constraints: it is necessary to include an integer variable for each particle at each time step in the prediction horizon. For large problems with long prediction horizons this can be problematic. 
+
+The approach taken by \cite{li} is related to the sampling approach. They convert the stochastic chance constrained optimisation problem into a deterministic nonlinear optimisation problem. They then use a simulation approach to ensure that the chance constraints are satisfied. 
+
+
+ 
 
 \subsection{Unconstrained Stochastic Control}
 
