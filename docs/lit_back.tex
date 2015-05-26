@@ -428,6 +428,7 @@ To make the notation clear, the variable $X_t$ represents a Bayesian Network, fo
 In this section we briefly introduce three fundamental control strategies. First, the Linear Quadratic Regulator (LQR) which deals with the optimal control of linear discrete time invariant systems. Second, we deal with the stochastic generalisation of the LQR controller: the famous Linear Quadratic Gaussian (LQG) controller. Third and finally, we introduce Model Predictive Control (MPC). The aim of this section is to introduce and illustrate the relationship between these controllers.
 
 \subsubsection{Linear Quadratic Regulator Control}
+\label{sec_lqr_lit}
 We start our analysis by assuming we have an accurate, linear, discrete, time invariant state space representation of a system shown in (\ref{eq_lqr_ss}).
 \begin{equation}
 \begin{aligned}
@@ -593,6 +594,7 @@ x_{sp}\\u_{sp}
 It is possible to cast (\ref{eq_setpoints}) into an optimisation problem if there are more controlled variables than inputs. We refer the reader to \cite{raw} for a full treatise on the subject.
  
 \subsubsection{Linear Quadratic Gaussian Control}
+\label{sec_lqg_lit}
 The LQR problem dealt with deterministic systems where the states were known exactly. However, this is problematic from a practical perspective because:
 \begin{enumerate}
 \item

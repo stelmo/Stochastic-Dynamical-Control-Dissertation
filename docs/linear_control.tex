@@ -42,13 +42,31 @@ Although \cite{yan1} and \cite{yan2} primarily deal with a univariate problem th
 In this work we show that by starting the MPC design from the graphical model shown in Figure \ref{fig_nlmod} it is possible to easily and intuitively re-derive the LQG controller. During that derivation we naturally arrive at the conclusions reached by \cite{yan1} and \cite{yan2}. Next we generalise our method to incorporate stochastic constraints. We use a method related to the ellipsoidal approximation technique to handle the stochastic constraints. We show that our method replaces the chance constraints with linear constraints. This is highly desirable because it allows one to rewrite the full stochastic MPC problem as a conventional deterministic Quadratic Programming MPC problem. All of these results are underpinned by the realisation that Graphical Models, as used in the field of Machine Learning, are closely related to predictive control. 
 
 \subsection{Unconstrained Stochastic Control}
+Our goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$. If the system is controllable and linear the Stochastic Reference Tracking Goal will be satisfied.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} J_{LQG}(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
+& \text{and } y_{t}= Cx_t + v_t \\
+\end{aligned}
+\label{eq_mpc_unconstrained_linmod}
+\end{equation}
+Note that the future inputs $\mathbf{u}=(u_0, u_1,...,u_{T-1})$ are denoted in boldface to emphasise that it could be a vector of vectors. Inspecting (\ref{eq_mpc_unconstrained_linmod}) we see that this is none other than the LQG control problem of Section \ref{sec_lqg_lit}. Therefore we know what the optimal solution should look like.
 
+We start out analysis using the results of Section \ref{sec_inf_lin_mods}. We immediately realise that the optimal linear state estimator is the Kalman Filter. We assume that at every sequential time step we have the current state estimate, supplied by the Kalman Filter, and denote this by $x_0$. Since we are using the Kalman Filter the mean and covariance of the state estimate is well defined. 
+
+Inspecting \textbf{insert GM pic} we note that the state prediction equations derived in Subsection \ref{sec_lin_prediction} are applicable. Thus we can predict the state distributions given the future inputs $\mathbf{u}$.
+
+Before we proceed we prove a very intuitive result in Theorem \ref{thrm_optim_eq}. We will use this to link the predictive controller derived using the results of Section \ref{sec_inf_lin_mods} to the LQR controller derived in Section \ref{sec_lqr_lit}. We provide two proofs, the second of which is more general than the first.
 \begin{thrm}
-\textbf{Unconstrained Optimisation Equivalence} Suppose we have two real valued objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them over the same space where they are defined: $\mathbf{u}\in \mathcal{U}$ and $x_0 \in \mathcal{X}$. Furthermore, suppose there exists a real number $k > 0$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$.
+\textbf{Unconstrained Optimisation Equivalence} Suppose we have two real valued objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them with respect to $\mathbf{u}$ over the same space where they are both defined: $\mathbf{u}\in \mathcal{U}$ and $x_0 \in \mathcal{X}$. Furthermore, suppose there exists a real number $k \geq 0$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$.
 \label{thrm_optim_eq}
 \end{thrm}
 \begin{proof}
-This proof hold over differentiable and non-differentiable objective functions. Suppose not i.e. there exists  $\mathbf{u}_g \in \mathcal{U}$ such that $g(x_0, \mathbf{u}_g) < g(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$ but $f(x_0, \mathbf{u}_g) \nless f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. This implies that for $\mathbf{u}_f \in \mathcal{U}$ the global minimiser of $f$  we have $f(x_0, \mathbf{u}_f) \leq f(x_0, \mathbf{u}_g)$. 
+This proof only holds over functions which are at least twice differentiable and convex. By assumption we know that $\mathbf{u}^*$ is the minimiser of $g(x_0, \mathbf{u})$ given $x_0$. By the necessary conditions for optimality \cite{forst} we know that $\nabla g(x_0, \mathbf{u}^*) = 0$ and that $\nabla ^2 g(x_0, \mathbf{u}^*)$ is positive semi-definite. Since $f$ and $g$ are both twice differentiable and  $g(x_0, \mathbf{u}^*) + k = f(x_0, \mathbf{u}^*)$ it must hold that $\nabla g(x_0, \mathbf{u}^*) = \nabla f(x_0, \mathbf{u}^*)$ and  $\nabla ^2 g(x_0, \mathbf{u}^*) = \nabla ^2 f(x_0, \mathbf{u}^*)$. Since $\nabla ^2 g(x_0, \mathbf{u}^*)$ is positive semi-definite it must be that $\nabla ^2 f(x_0, \mathbf{u}^*)$ is also positive semi-definite. Therefore $\mathbf{u}^*$ is necessarily a minimum of $f$. Since $f$ is convex the minimum must also be a global minimum.
+\end{proof}
+\begin{proof}
+This proof hold over differentiable and non-differentiable objective functions which are not necessarily convex. Suppose not i.e. there exists  $\mathbf{u}_g \in \mathcal{U}$ such that $g(x_0, \mathbf{u}_g) < g(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$ but $f(x_0, \mathbf{u}_g) \nless f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. This implies that for $\mathbf{u}_f \in \mathcal{U}$ the global minimiser of $f$  we have $f(x_0, \mathbf{u}_f) \leq f(x_0, \mathbf{u}_g)$. 
 
 Consider the case where $f(x_0, \mathbf{u}_f) = f(x_0, \mathbf{u}_g)$. This implies that both $\mathbf{u}_f$ and $\mathbf{u}_g$ are global minimisers of $f$ and contradicts our assumption that the global minimiser is unique.
 
@@ -56,7 +74,7 @@ Consider the case where $f(x_0, \mathbf{u}_f) < f(x_0, \mathbf{u}_g)$. Since $g(
 
 It must then hold that $f(x_0, \mathbf{u}_g) < f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. Therefore the global minimiser $\mathbf{u}_g$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$. 
 \end{proof}
-
+Now we are in a position to show the equivalence between the LQR control problem and the LQG control problem using the results of Section \ref{sec_inf_lin_mods}. Theorem \ref{thrm_lqr_lqg_diff} shows how this is possible. It is quite reassuring to note that by starting within the framework of Graphical Models we arrive at the most important contribution of \cite{yan1} and \cite{yan2} in an intuitively simple manner.
 \begin{thrm}
 \textbf{LQR and LQG Objective Function Difference} Consider the LQR and LQG Objective Functions in (\ref{eq_lqr_obj_func}) and (\ref{eq_lqg_obj_func}) respectively. 
 \begin{align}
@@ -98,9 +116,9 @@ Note that $\text{tr}(Q\Sigma_1)$ does not depend on $u_0$ but only on the initia
 \end{equation}
 Now note that except for the last term $J_{LQG}(x_0, \mathbf{u})$ is exactly the same as $J_{LQR}(x_0, \mathbf{u})$. The conclusion follows because $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$ is independent of $\mathbf{u}$. 
 \end{proof}
-
+Finally we combine Theorem \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} to produce Theorem \ref{thrm_lqg_sol} which is the main result of this subsection.
 \begin{thrm}
-\textbf{Solution of the Finite Horizon LQG control problem} We wish to solve the LQG control problem within the framework of this dissertation. The full problem is shown in (\ref{eq_lqg_problem_full}).
+\textbf{Solution of the Finite Horizon LQG control problem} We wish to solve the LQG control problem within the framework of Graphical Models. The full problem is shown in (\ref{eq_lqg_problem_full}).
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -109,15 +127,31 @@ Now note that except for the last term $J_{LQG}(x_0, \mathbf{u})$ is exactly the
 \end{aligned}
 \label{eq_lqg_problem_full}
 \end{equation}
-We assume that we have the Kalman Filter state estimate for $x_0$. We use Theorem \ref{thrm_lqr_lqg_diff} to prove that given $x_0$ and $\forall \mathbf{u} \in \mathcal{U}$ we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ with $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \in \mathbb{R}$ a constant depending only on $x_0$. Thus we can use Theorem \ref{thrm_optim_eq} to prove that we only need to solve for the optimal controller input $\mathbf{u}^0$ using the LQR objective function. Thus we can use Theorem \ref{thrm_lqr_sol} to find $\mathbf{u}$.
+We assume that we have the Kalman Filter state estimate for $x_0$. We use Theorem \ref{thrm_lqr_lqg_diff} to prove that given $x_0$ and $\forall \mathbf{u} \in \mathcal{U}$ we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ with $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \in \mathbb{R}$ a constant depending only on $x_0$. Thus we can use Theorem \ref{thrm_optim_eq} to prove that we only need to solve for the optimal controller input $\mathbf{u}^0$ using the LQR objective function. Thus we can use Theorem \ref{thrm_lqr_sol} to find $\mathbf{u}$. 
 \label{thrm_lqg_sol}
 \end{thrm}
-As we have mentioned before, the Separation Theorem states that the solution of the LQG control problem is achieved by using the Kalman Filter to optimally estimate the current state and then feeding that state estimate into the optimal LQR controller. It is reassuring that Theorem \ref{thrm_lqg_sol} confirms this result.
+As we have mentioned before, the Separation Theorem implies that the solution of the LQG control problem is achieved by using the Kalman Filter to optimally estimate the current state and then using that state estimate in the optimal LQR controller. It is reassuring that Theorem \ref{thrm_lqg_sol} is confirmed by this result. The primary benefit of the Graphical Model approach is clear: we have solved the LQG problem without resorting to Stochastic Dynamical Programming.
 
+Under some circumstances it is also possible to extend the result of Theorem \ref{thrm_lqg_sol} to the infinite horizon case as shown in Theorem \ref{thrm_lqg_sol_inf}.
 \begin{thrm}
-\textbf{Solution of the Infinite Horizon LQG control problem} Using either the Separation Theorem \cite{robust} or using, with some minor adjustments, Theorems \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} it is possible to show that the infinite horizon LQG problem is solved in a similar manner. The Kalman Filter state estimate is used in conjunction with the infinite horizon LQR solution.
+\textbf{Solution of the Infinite Horizon LQG control problem} If the linear model of (\ref{eq_lin_system_control}) is stable then, using, with some minor adjustments, Theorems \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} it is possible to show that the infinite horizon LQG problem is solved in a similar manner: the Kalman Filter state estimate is used in conjunction with the infinite horizon LQR solution. This result can also be obtained by using the Separation Theorem. \label{thrm_lqg_sol_inf}
 \end{thrm}
+To clarify why it is important that the linear system, i.e. the matrix $A$, is stable, consider the quantity $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$. If it is unbounded the optimisation minimum will tend to infinity. Inspecting $\Sigma_{t+1} = W+A\Sigma_t A^T$ we see that $||\Sigma_{\infty}||$ will be unbounded if $||A\Sigma_t A^T||$ becomes unbounded ($W$ is a constant). Note that $||\cdot||$ is some matrix norm. It can be shown that if the eigenvalues of $A$ are less than unity i.e. the linear model is stable, then $||A\Sigma_{t+1}A^T|| \leq ||A\Sigma_{t+1}A^T||$ which implies that $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$ is bounded and the optimisation is reasonable.
 
 
+\subsection{Constrained Stochastic Control}
+The goal of this section is to solve the stochastic constrained optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear but drop this assumption later. We also restrict our analysis to affine constraints.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
+& \text{and } y_{t}= Cx_t + v_t \\
+& \text{and } \mathbb{E}[dx_t + e] \geq 0 ~\forall ~t=1,...,N \\
+& \text{and } \text{Pr}(dx_t + e \geq 0) \geq k ~\forall ~t=1,...,N\\
+\end{aligned}
+\label{eq_mpc_constrained_linmod}
+\end{equation}
+It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states are above the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $k$.
 
-\subsection{Chance Constrained Stochastic Control}
+\subsection{Discussion}
+Use the nonlinear underlying model.

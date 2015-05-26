@@ -25,7 +25,7 @@ p(y_{t+1}|x_t) &= \mathcal{N}(y_{t+1}|Cx_{t+1}, V)
 \end{aligned}
 \label{eq_trans_emiss}
 \end{equation}
-We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $V$ as the noise associated with state measurements and $W$ being the uncertainty (plant-model mismatch) associated with the linear model of the plant. Additionally, $W$ can also model any unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $V$ and $W$ indicate more uncertainty in the system. 
+We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $V$ as the noise associated with state measurements and $W$ being a form of the uncertainty associated with the linear model of the plant. Additionally, $W$ can also model any unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $V$ and $W$ indicate more uncertainty in the system. 
 
 To fully specify the system we require the transition and emission probability density functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution of $x_1$.
 
