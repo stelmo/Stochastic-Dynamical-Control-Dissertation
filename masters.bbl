@@ -16,6 +16,13 @@ D.~Barber.
 \newblock {\em {Bayesian Reasoning and Machine Learning}}.
 \newblock {Cambridge University Press}, 2012.
 
+\bibitem{batina}
+I.~Batina, A.A. Stoorvogel, and S.~Weiland.
+\newblock Optimal control of linear, stochastic systems with state and input
+  constraints.
+\newblock In {\em Proceedings of the 41st IEEE Conference on Decision and
+  Control}, 2002.
+
 \bibitem{bishop}
 C.M. Bishop.
 \newblock {\em Pattern Recognition and Machine Learning}.
@@ -26,6 +33,12 @@ L.~Blackmore, O.~Masahiro, A.~Bektassov, and B.C. Williams.
 \newblock A probabilistic particle-control approximation of chance-constrained
   stochastic predictive control.
 \newblock {\em IEEE Transactions on Robotics}, 26, 2010.
+
+\bibitem{cannon}
+M.~Cannon, B.~Kouvaritakis, and X.~Wu.
+\newblock Probabilistic constrained mpc for multiplicative and additive
+  stochastic uncertainty.
+\newblock {\em IEEE Transactions on Automatic Control}, 54(7), 2009.
 
 \bibitem{cervantes}
 A.L. Cervantes, O.E. Agamennoni, and J.L Figueroa.
@@ -118,11 +131,28 @@ U.N. Lerner.
 \newblock {\em Hybrid Bayesian Networks for Reasoning about Complex Systems}.
 \newblock PhD thesis, Stanford Univesity, 2002.
 
+\bibitem{li2}
+P.~Li, M.~Wendt, H.~Arellano-Garcia, and G.~Wozny.
+\newblock Optimal operation of distrillation processes under uncertain inflows
+  accumulated in a feed tank.
+\newblock {\em American Institute of Chemical Engineers}, 2002.
+
+\bibitem{li}
+P.~Li, M.~Wendt, and G.~Wozny.
+\newblock A probabilistically constrained model predictive controller.
+\newblock {\em Automatica}, 38:1171--1176, 2002.
+
 \bibitem{luyben}
 W.L. Luyben.
 \newblock {\em Process Modeling, Simulation and Control for Chemical
   Engineers}.
 \newblock McGraw-Hill, 2nd edition edition, 1990.
+
+\bibitem{masahiro}
+O.~Masahiro.
+\newblock Joint chance-constrained model predictive control with probabilistic
+  resolvability.
+\newblock {\em American Control Conference}, 2012.
 
 \bibitem{cstrmodel}
 P.~Mhaskar, N.H. El-Farra, and P.D. Christofides.
@@ -157,15 +187,45 @@ J.B. Rawlings and D.Q. Mayne.
 \newblock {\em Model Predictive Control}.
 \newblock Nob Hill Publishing, 2009.
 
+\bibitem{schwarm}
+A.T. Schwarm and Nikolaou.
+\newblock Chance constrained model predictive control.
+\newblock Technical report, University of Houston and Texas A\&M University,
+  1999.
+
 \bibitem{streicher}
 S.J. Streicher, S.E. Wilken, and C.~Sandrock.
 \newblock Eigenvector analysis for the ranking of control loop importance.
 \newblock {\em Computer Aided Chemical Engineering}, 33:835--840, 2014.
 
+\bibitem{vanhessem2}
+D.H. van Hessem and O.H. Bosgra.
+\newblock Closed-loop stochastic dynamic process optimisation under input and
+  state constraints.
+\newblock In {\em Proceedings of the American Control Conference}, 2002.
+
+\bibitem{vanhessem1}
+D.H. van Hessem, C.W. Scherer, and O.H. Bosgra.
+\newblock Lmi-based closed-loop economic optimisation of stochastic process
+  operation under state and input constraints.
+\newblock In {\em Proceedings of the 40th IEEE Conference on Decision and
+  Control}, 2001.
+
 \bibitem{google}
 R.S. Wills.
 \newblock Google's pagerank: the math behind the search engine.
 \newblock Technical report, North Carolina State University, 2006.
+
+\bibitem{yan1}
+J.~Yan and R.R. Bitmead.
+\newblock Model predictive control and state estimation: a network example.
+\newblock In {\em 15th Triennial World Conference of IFAC}, 2002.
+
+\bibitem{yan2}
+J.~Yan and R.R. Bitmead.
+\newblock Incorporating state estimation into model predictive control and its
+  application to network traffic control.
+\newblock {\em Automatica}, 41:595--604, 2005.
 
 \bibitem{yazdi}
 M.B. Yazdi and M.R. Jahed-Motlagh.
