@@ -35,7 +35,7 @@ The approach taken by \cite{li} is related to the sampling approach. They conver
 
 In the paper \cite{li2} the stochastic variables are assumed to be Gaussian and the stochastic optimisation problem is transformed into a nonlinear optimisation problem. Using the Gaussian assumption they are able to ensure feasibility and constraint satisfaction albeit conservatively. In \cite{masahiro} the feasibility of stochastically constrained predictive control is considered. An algorithm enforcing joint chance constraints and recursive feasibility is discussed using a risk allocation approach.
 
-While \cite{schwarm} mainly concerns stochastic parameters in the optimisation problem it is shown that chance constraints can, in theory, be rewritten as deterministic constraints if the probability distributions are known and affine constraints are used. In \cite{vanhessem1} and \cite{vanhessem2} an ellipsoidal approximation is used to ensure constraint satisfaction. Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a nonlinear optimisation problem. The approach of using confidence ellipsoids is refined in \cite{cannon}.
+While \cite{schwarm} mainly concerns stochastic parameters in the optimisation problem it is shown that chance constraints can, in theory, be rewritten as deterministic constraints if the probability distributions are known and affine constraints are used. In \cite{vanhessem1} and \cite{vanhessem2} an ellipsoidal approximation is used to ensure constraint satisfaction. Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a second order conic optimisation problem. The approach of using confidence ellipsoids is refined in \cite{cannon}.
 
 Although \cite{yan1} and \cite{yan2} primarily deal with a univariate problem they show that if the underlying system is linear and Gaussian it is possible to manipulate the constrained stochastic problem into a deterministic problem without any approximations. Their analysis allows the stochastic objective function and constraints to be rewritten as deterministic expressions using the properties of conditionally linear Gaussian distributions.
 
@@ -147,11 +147,88 @@ The goal of this section is to solve the stochastic constrained optimisation pro
 & \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
 & \text{and } y_{t}= Cx_t + v_t \\
 & \text{and } \mathbb{E}[dx_t + e] \geq 0 ~\forall ~t=1,...,N \\
-& \text{and } \text{Pr}(dx_t + e \geq 0) \geq k ~\forall ~t=1,...,N\\
+& \text{and } \text{Pr}(dx_t + e \geq 0) \geq p ~\forall ~t=1,...,N\\
 \end{aligned}
 \label{eq_mpc_constrained_linmod}
 \end{equation}
-It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states are above the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $k$.
+It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$.
+
+\begin{thrm}
+\textbf{Affine Expected Value Constraints} Suppose
+\end{thrm}
+
+\begin{thrm}
+\textbf{Shortest Mahalanobis Distance between a Hyperplane and a Point} Suppose we are given a positive semi-definite matrix $S$ and a point $y$. The shortest Mahalanobis Distance between $y$ and the hyperplane $b^Tx+c=0$ is given by $\frac{|b^Ty+c|}{\sqrt{b^TSb}}$.
+\label{thrm_mahala_dist}
+\end{thrm}
+\begin{proof}
+It is natural to formulate Theorem \ref{thrm_mahala_dist} as an optimisation problem as shown in (\ref{eq_mahala_optim}). Note that we have squared the Mahalanobis distance function to simplify the analysis.
+\begin{equation}
+\begin{aligned}
+&\underset{x}{\text{min }} (x-y)^TS^{-1}(x-y)\\
+& \text{subject to } b^Tx+c = 0\\
+\end{aligned}
+\label{eq_mahala_optim}
+\end{equation}
+Note that $S$ and therefore also $S^{-1}$ is symmetric. Using conventional calculus we have $\nabla f(x) = (S^{-1} + {S^{-1}}^T)x - 2S^{-1}y = 2S^{-1}x - 2S^{-1}y$ and $\nabla g(x) = b^T$. Using the method of Lagrangian Multipliers \cite{forst} we have the system of equations (\ref{eq_lagrange_eqs})
+\begin{equation}
+\begin{aligned}
+2S^{-1}x - 2S^{-1}y + \lambda b^T = 0 \\
+b^Tx+c = 0
+\end{aligned}
+\label{eq_lagrange_eqs}
+\end{equation}
+This can be rewritten in block matrix form as shown in (\ref{eq_lagrange_block}).
+\begin{equation}
+\begin{pmatrix}
+2S^{-1} & b \\ b^T & 0
+\end{pmatrix} \begin{pmatrix}
+x \\ \lambda
+\end{pmatrix} = \begin{pmatrix}
+2S^{-1}y \\ -c
+\end{pmatrix}
+\label{eq_lagrange_block}
+\end{equation}
+The special structure of the left hand side matrix in (\ref{eq_lagrange_block}) allows us to analytically compute the inverse \cite{jang} as shown in (\ref{eq_lagrance_block_inverse}).
+\begin{equation}
+\begin{pmatrix}
+2S^{-1} & b \\ b^T & 0
+\end{pmatrix}^{-1} = \begin{pmatrix}
+\frac{1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{b^TSb} & -\frac{2}{b^TSb}
+\end{pmatrix}
+\label{eq_lagrance_block_inverse}
+\end{equation}
+To find the arguments which satisfy (\ref{eq_lagrange_eqs}) we solve (\ref{eq_lagrange_args}) which is equivalent to solving the system of linear equations in (\ref{eq_lagrange_block}).
+\begin{equation}
+\begin{pmatrix}
+\frac{1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{b^TSb} & -\frac{2}{b^TSb} \end{pmatrix} \begin{pmatrix}
+2S^{-1}y \\ -c
+\end{pmatrix} = \begin{pmatrix}
+S(I-\frac{bb^TS}{b^TSb})S^{-1}y - c\frac{Sb}{b^TSb} \\
+2(\frac{b^TS}{b^TSb} + \frac{c}{b^TSb})
+\end{pmatrix}
+\label{eq_lagrange_args}
+\end{equation}
+Therefore, the arguments which minimise (\ref{eq_mahala_optim}) are $x^* = S(I-\frac{bb^TS}{b^TSb})S^{-1}y - c\frac{Sb}{b^TSb}$. Substituting this into the objective function we have (\ref{eq_lagrange_min}).
+\begin{equation}
+\begin{aligned}
+&\left(x^*-y\right)^TS^{-1}\left(x^*-y\right) \\ 
+&= \left(S\left(I-\frac{bb^TS}{b^TSb}\right)S^{-1}y - c\frac{Sb}{b^TSb}-y\right)^TS^{-1}\left( S \left(I-\frac{bb^TS}{b^TSb}\right)S^{-1}y - c \frac{Sb}{b^TSb}-y\right) \\ 
+&= \left(\frac{Sbb^Ty}{b^TSb} + c\frac{Sb}{b^TSb}\right)^TS^{-1}\left(\frac{Sbb^Ty}{b^TSb}+ c\frac{Sb}{b^TSb}\right) \\
+&= \frac{(Sb)^T}{b^TSb}\left( b^Ty+c \right)^TS^{-1}\frac{Sb}{b^TSb}\left(b^Ty+c\right) \\
+&= \frac{b^TS}{b^TSb}\left(b^Ty+c\right)^T\frac{b}{b^TSb}\left(b^Ty+c\right) \\
+&= \left(b^Ty+c\right)^T\frac{b^TSb}{(b^TSb)^2}\left(b^Ty+c\right) \\
+&= \frac{(b^Ty+c)^T(b^Ty+c)}{b^TSb} \\
+&= \frac{(b^Ty+c)^2}{b^TSb}
+\end{aligned}
+\label{eq_lagrange_min}
+\end{equation}
+Recalling that the objective function was squared we can then conclude that the shortest Mahalanobis Distance between a point $y$ and the constraints of (\ref{eq_mahala_optim}) is $\frac{\sqrt{(b^Ty+c)^2}}{\sqrt{b^TSb}} = \frac{|b^Ty+c|}{\sqrt{b^TSb}}$.
+\end{proof}
+
+\begin{thrm}
+\textbf{Affine Chance Constraints}
+\end{thrm}
 
 \subsection{Discussion}
 Use the nonlinear underlying model.

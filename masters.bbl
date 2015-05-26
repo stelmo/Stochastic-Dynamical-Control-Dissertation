@@ -115,6 +115,12 @@ K.~Ito and K.~Xiong.
 \newblock Gaussian filters for nonlinear filtering problems.
 \newblock {\em IEEE Transactions on Automatic Control}, 45(5):910--928, 2000.
 
+\bibitem{jang}
+R.~J. Jang and C.T. Sun.
+\newblock {\em Neuro-fuzzy and soft computing: a computational approach to
+  learning and machine intelligence}.
+\newblock Prentice-Hall, 1996.
+
 \bibitem{koller}
 D.~Koller and N.~Friedman.
 \newblock {\em Probabilistic Graphical Models}.
