@@ -140,7 +140,7 @@ To clarify why it is important that the linear system, i.e. the matrix $A$, is s
 
 
 \subsection{Constrained Stochastic Control}
-The goal of this section is to solve the stochastic constrained optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear but drop this assumption later. We also restrict our analysis to affine constraints.
+The goal of this section is to solve the stochastic constrained optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian\footnote{From the results of Section \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible.}. We also restrict our analysis to affine constraints.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -151,19 +151,21 @@ The goal of this section is to solve the stochastic constrained optimisation pro
 \end{aligned}
 \label{eq_mpc_constrained_linmod}
 \end{equation}
-It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$.
+It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$. The reason both constraints are required will become clear later.
 
 \begin{thrm}
-\textbf{Affine Expected Value Constraints} Suppose
+\textbf{Affine Expected Value Constraints} Suppose we have a stochastic variable $x$ with a known Gaussian distribution. Then the stochastic constraint $\mathbb{E}[dx + e] \geq 0$ simplifies to the deterministic constraint $d\mu + e \geq 0$ where $\mathbb{E}[x]= \mu$ is the mean of the stochastic variable.
 \end{thrm}
+\begin{proof}
+We know that $x$ is a Gaussian stochastic variable. By the results of Section \ref{thrm_gaussian_identities} we know that $\mathbb{E}[dx + e] =d\mu + e$. This immediately implies the Theorem.
+\end{proof}
 
 \begin{thrm}
-\textbf{Shortest Mahalanobis Distance between a Hyperplane and a Point} Suppose we are given a positive semi-definite matrix $S$ and a point $y$. The shortest Mahalanobis Distance between $y$ and the hyperplane $b^Tx+c=0$ is given by $\frac{|b^Ty+c|}{\sqrt{b^TSb}}$.
+\textbf{Shortest Squared Mahalanobis Distance between a Hyperplane and a Point} Suppose we are given a symmetric positive semi-definite matrix $S$ and a point $y$. The shortest squared Mahalanobis Distance between $y$ and the hyperplane $b^Tx+c=0$ is given by $\frac{(b^Ty+c)^2}{b^TSb}$.
 \label{thrm_mahala_dist}
 \end{thrm}
 \begin{proof}
-It is natural to formulate Theorem \ref{thrm_mahala_dist} as an optimisation problem as shown in (\ref{eq_mahala_optim}). Note that we have squared the Mahalanobis distance function to simplify the analysis.
-\begin{equation}
+It is natural to formulate Theorem \ref{thrm_mahala_dist} as an optimisation problem as shown in (\ref{eq_mahala_optim}). \begin{equation}
 \begin{aligned}
 &\underset{x}{\text{min }} (x-y)^TS^{-1}(x-y)\\
 & \text{subject to } b^Tx+c = 0\\
@@ -223,11 +225,11 @@ Therefore, the arguments which minimise (\ref{eq_mahala_optim}) are $x^* = S(I-\
 \end{aligned}
 \label{eq_lagrange_min}
 \end{equation}
-Recalling that the objective function was squared we can then conclude that the shortest Mahalanobis Distance between a point $y$ and the constraints of (\ref{eq_mahala_optim}) is $\frac{\sqrt{(b^Ty+c)^2}}{\sqrt{b^TSb}} = \frac{|b^Ty+c|}{\sqrt{b^TSb}}$.
+We can conclude that the shortest squared Mahalanobis Distance between a point $y$ and the constraints of (\ref{eq_mahala_optim}) is $\frac{(b^Ty+c)^2}{b^TSb}$.
 \end{proof}
 
 \begin{thrm}
-\textbf{Affine Chance Constraints}
+\textbf{Gaussian Affine Chance Constraints} 
 \end{thrm}
 
 \subsection{Discussion}

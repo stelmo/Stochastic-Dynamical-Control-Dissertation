@@ -159,6 +159,11 @@ W.L. Luyben.
   Engineers}.
 \newblock McGraw-Hill, 2nd edition edition, 1990.
 
+\bibitem{mac}
+J.M. Maciejowski.
+\newblock {\em Predictive Control with constraints}.
+\newblock Prentice-Hall, 2002.
+
 \bibitem{masahiro}
 O.~Masahiro.
 \newblock Joint chance-constrained model predictive control with probabilistic
