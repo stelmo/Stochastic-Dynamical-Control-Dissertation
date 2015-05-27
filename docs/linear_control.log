@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  27 MAY 2015 00:07
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  27 MAY 2015 11:35
 entering extended mode
 **linear_control.tex
 
@@ -9048,21 +9048,6 @@ Overfull \hbox (10.86105pt too wide) in paragraph at lines 60--70
  []
 
 
-Overfull \hbox (19.06934pt too wide) in paragraph at lines 60--70
-\OT1/cmr/bx/n/10 Un-
- []
-
-
-Overfull \hbox (21.08322pt too wide) in paragraph at lines 60--70
-\OT1/cmr/bx/n/10 con-
- []
-
-
-Overfull \hbox (40.57755pt too wide) in paragraph at lines 60--70
-\OT1/cmr/bx/n/10 strained
- []
-
-
 Overfull \hbox (18.86101pt too wide) in paragraph at lines 60--70
 \OT1/cmr/bx/n/10 Op-
  []
@@ -15047,32 +15032,524 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no r in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
 Missing character: There is no d in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no d in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no s in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no b in font nullfont!
 Missing character: There is no u in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no l in font nullfont!
+Missing character: There is no s in font nullfont!
 Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no G in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+! Undefined control sequence.
+\@footnotetext ...tins {\reset@font \footnotesize 
+                                                  \interlinepenalty \interfo...
+l.143 ...ity introduced by the MPC is negligible.}
+                                                  . We also restrict our ana...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@footnotetext ...}\color@begingroup \@makefntext 
+                                                  {\rule \z@ \footnotesep \i...
+l.143 ...ity introduced by the MPC is negligible.}
+                                                  . We also restrict our ana...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<write> ...ce `sec_inf_lin_mods' on page \thepage 
+                                                  \space undefined\on@line .
+l.143 ...ity introduced by the MPC is negligible.}
+                                                  . We also restrict our ana...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `sec_inf_lin_mods' on page  undefined on input line 14
+3.
+
+\citation{mac}
+! Undefined control sequence.
+<write> ...: Citation `\@citeb ' on page \thepage 
+                                                  \space undefined\on@line .
+l.143 ...ity introduced by the MPC is negligible.}
+                                                  . We also restrict our ana...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Citation `mac' on page  undefined on input line 143.
+
+
+Overfull \hbox (22.9445pt too wide) in paragraph at lines 143--143
+[][]\OT1/cmr/m/n/10 From
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (11.69444pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 re-
+ []
+
+
+Overfull \hbox (20.11115pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 sults
+ []
+
+
+Overfull \hbox (8.05559pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 of
+ []
+
+
+Overfull \hbox (17.77779pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 Sec-
+ []
+
+
+Overfull \hbox (17.22227pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 tion
+ []
+
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 143--143
+[]
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (23.36116pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 prob-
+ []
+
+
+Overfull \hbox (8.33334pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 a-
+ []
+
+
+Overfull \hbox (14.44447pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 bil-
+ []
+
+
+Overfull \hbox (11.6667pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 ity
+ []
+
+
+Overfull \hbox (15.61113pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 dis-
+ []
+
+
+Overfull \hbox (13.91669pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 tri-
+ []
+
+
+Overfull \hbox (14.44447pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 bu-
+ []
+
+
+Overfull \hbox (21.16672pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 tions
+ []
+
+
+Overfull \hbox (15.55559pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 will
+ []
+
+
+Overfull \hbox (10.2778pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 be
+ []
+
+
+Overfull \hbox (25.68059pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 Gaus-
+ []
+
+
+Overfull \hbox (17.27782pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 sian
+ []
+
+
+Overfull \hbox (5.83336pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 if
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (16.50002pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 sys-
+ []
+
+
+Overfull \hbox (16.6667pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 tem
+ []
+
+
+Overfull \hbox (14.1667pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 dy-
+ []
+
+
+Overfull \hbox (22.22227pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 nam-
+ []
+
+
+Overfull \hbox (11.16667pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 ics
+ []
+
+
+Overfull \hbox (13.36113pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 are
+ []
+
+
+Overfull \hbox (14.44447pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 lin-
+ []
+
+
+Overfull \hbox (16.13892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 ear.
+ []
+
+
+Overfull \hbox (22.7778pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 How-
+ []
+
+
+Overfull \hbox (20.58336pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 ever,
+ []
+
+
+Overfull \hbox (6.66669pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 it
+ []
+
+
+Overfull \hbox (6.72223pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 is
+ []
+
+
+Overfull \hbox (16.94446pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 well
+ []
+
+
+Overfull \hbox (28.3334pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 known
+ []
+
+
+Overfull \hbox (10.9861pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 [[]]
+ []
+
+
+Overfull \hbox (18.33339pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 that
+ []
+
+
+Overfull \hbox (23.19449pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 MPC
+ []
+
+
+Overfull \hbox (6.72223pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 is
+ []
+
+
+Overfull \hbox (14.44449pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 not
+ []
+
+
+Overfull \hbox (8.33336pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 in
+ []
+
+
+Overfull \hbox (18.33336pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 gen-
+ []
+
+
+Overfull \hbox (16.13892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 eral
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 a
+ []
+
+
+Overfull \hbox (14.44447pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 lin-
+ []
+
+
+Overfull \hbox (13.36113pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 ear
+ []
+
+
+Overfull \hbox (18.33336pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 con-
+ []
+
+
+Overfull \hbox (29.50006pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 troller.
+ []
+
+
+Overfull \hbox (22.9445pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 From
+ []
+
+
+Overfull \hbox (10.55559pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 an
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 an-
+ []
+
+
+Overfull \hbox (8.33334pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 a-
+ []
+
+
+Overfull \hbox (15.27782pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 lyt-
+ []
+
+
+Overfull \hbox (6.11111pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 i-
+ []
+
+
+Overfull \hbox (12.22224pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 cal
+ []
+
+
+Overfull \hbox (22.77785pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 point
+ []
+
+
+Overfull \hbox (8.05559pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 of
+ []
+
+
+Overfull \hbox (19.72226pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 view
+ []
+
+
+Overfull \hbox (16.1667pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 this
+ []
+
+
+Overfull \hbox (6.72223pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 is
+ []
+
+
+Overfull \hbox (23.36116pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 prob-
+ []
+
+
+Overfull \hbox (18.88892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 lem-
+ []
+
+
+Overfull \hbox (18.88893pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 atic.
+ []
+
+
+Overfull \hbox (13.8889pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 We
+ []
+
+
+Overfull \hbox (12.27779pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 as-
+ []
+
+
+Overfull \hbox (22.27782pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 sume
+ []
+
+
+Overfull \hbox (18.33339pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 that
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (19.44449pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 non-
+ []
+
+
+Overfull \hbox (14.44447pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 lin-
+ []
+
+
+Overfull \hbox (16.69446pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 ear-
+ []
+
+
+Overfull \hbox (11.6667pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 ity
+ []
+
+
+Overfull \hbox (11.66669pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 in-
+ []
+
+
+Overfull \hbox (16.13892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 tro-
+ []
+
+
+Overfull \hbox (25.5556pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 duced
+ []
+
+
+Overfull \hbox (10.55559pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 by
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (23.19449pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 MPC
+ []
+
+
+Overfull \hbox (6.72223pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 is
+ []
+
+
+Overfull \hbox (18.33336pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 neg-
+ []
+
+
+Overfull \hbox (8.8889pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 li-
+ []
+
+
+Overfull \hbox (11.11113pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 gi-
+ []
+
+
+Overfull \hbox (15.55559pt too wide) in paragraph at lines 143--143
+\OT1/cmr/m/n/10 ble.| 
+ []
+
 Missing character: There is no . in font nullfont!
 Missing character: There is no W in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -15126,6 +15603,11 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 142--144
 
 
 Overfull \hbox (10.86105pt too wide) in paragraph at lines 142--144
+[]
+ []
+
+
+Overfull \hbox (4.48613pt too wide) in paragraph at lines 142--144
 []
  []
 
@@ -15625,9 +16107,65 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no . in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no q in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no . in font nullfont!
 
 Overfull \hbox (5.03125pt too wide) in paragraph at lines 153--155
-                                                     $\OML/cmm/m/it/10 p$ 
+                                                     $\OML/cmm/m/it/10 p$
  []
 
 
@@ -15651,7 +16189,8 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.157 \textbf{Affine Expected Value Constraints}
-                                                 Suppose
+                                                 Suppose we have a stochasti...
+
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -15662,6 +16201,187 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no G in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+! Undefined control sequence.
+<recently read> \mathbb 
+                        
+l.157 .... Then the stochastic constraint $\mathbb
+                                                  {E}[dx + e] \geq 0$ simpli...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+! Undefined control sequence.
+<recently read> \mathbb 
+                        
+l.157 ...nstraint $d\mu + e \geq 0$ where $\mathbb
+                                                  {E}[x]= \mu$ is the mean o...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no . in font nullfont!
 
 ! LaTeX Error: \begin{document} ended by \end{thrm}.
 
@@ -15669,40 +16389,272 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.158 \end{thrm}
+l.159 \end{thrm}
                 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (49.93735pt too wide) in paragraph at lines 157--159
+! LaTeX Error: Environment proof undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.160 \begin{proof}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+Missing character: There is no W in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no G in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no B in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+! Undefined control sequence.
+<write> ..._gaussian_identities' on page \thepage 
+                                                  \space undefined\on@line .
+l.161 ...of Section \ref{thrm_gaussian_identities}
+                                                   we know that $\mathbb{E}[...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `thrm_gaussian_identities' on page  undefined on input
+ line 161.
+
+Missing character: There is no w in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+! Undefined control sequence.
+<recently read> \mathbb 
+                        
+l.161 ...aussian_identities} we know that $\mathbb
+                                                  {E}[dx + e] =d\mu + e$. Th...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no . in font nullfont!
+
+! LaTeX Error: \begin{document} ended by \end{proof}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.162 \end{proof}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (49.93735pt too wide) in paragraph at lines 157--163
 []\OT1/cmr/bx/n/10 Affine
  []
 
 
-Overfull \hbox (17.45824pt too wide) in paragraph at lines 157--159
+Overfull \hbox (17.45824pt too wide) in paragraph at lines 157--163
 \OT1/cmr/bx/n/10 Ex-
  []
 
 
-Overfull \hbox (33.22206pt too wide) in paragraph at lines 157--159
+Overfull \hbox (33.22206pt too wide) in paragraph at lines 157--163
 \OT1/cmr/bx/n/10 pected
  []
 
 
-Overfull \hbox (28.18039pt too wide) in paragraph at lines 157--159
+Overfull \hbox (28.18039pt too wide) in paragraph at lines 157--163
 \OT1/cmr/bx/n/10 Value
  []
 
 
-Overfull \hbox (24.27765pt too wide) in paragraph at lines 157--159
+Overfull \hbox (24.27765pt too wide) in paragraph at lines 157--163
 \OT1/cmr/bx/n/10 Con-
  []
 
 
-Overfull \hbox (37.6067pt too wide) in paragraph at lines 157--159
+Overfull \hbox (37.6067pt too wide) in paragraph at lines 157--163
 \OT1/cmr/bx/n/10 straints
+ []
+
+
+Overfull \hbox (5.71527pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 x$
+ []
+
+
+Overfull \hbox (29.43404pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 dx \OT1/cmr/m/n/10 +$
+ []
+
+
+Overfull \hbox (17.98956pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 e\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10 $
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 157--163
+$\OT1/cmr/m/n/10 0$
+ []
+
+
+Overfull \hbox (19.00815pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 d \OT1/cmr/m/n/10 +$
+ []
+
+
+Overfull \hbox (15.21178pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 e \OMS/cmsy/m/n/10 $
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 157--163
+$\OT1/cmr/m/n/10 0$
+ []
+
+
+Overfull \hbox (29.78467pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ] =$
+ []
+
+
+Overfull \hbox (6.02548pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 $
+ []
+
+
+Overfull \hbox (5.71527pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 x$
+ []
+
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 157--163
+[]
+ []
+
+
+Overfull \hbox (29.43404pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 dx \OT1/cmr/m/n/10 +$
+ []
+
+
+Overfull \hbox (17.98956pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 e\OT1/cmr/m/n/10 ] =$
+ []
+
+
+Overfull \hbox (19.00815pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 d \OT1/cmr/m/n/10 +$
+ []
+
+
+Overfull \hbox (4.65627pt too wide) in paragraph at lines 157--163
+$\OML/cmm/m/it/10 e$
  []
 
 
@@ -15712,7 +16664,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.160 \begin{thrm}
+l.164 \begin{thrm}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -15725,8 +16677,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.161 ...istance between a Hyperplane and a Point}
-                                                   Suppose we are given a po...
+l.165 ...istance between a Hyperplane and a Point}
+                                                   Suppose we are given a sy...
 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -15749,6 +16701,15 @@ Missing character: There is no v in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no s in font nullfont!
@@ -15797,6 +16758,13 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no q in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
 Missing character: There is no M in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no h in font nullfont!
@@ -15856,7 +16824,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.163 \end{thrm}
+l.167 \end{thrm}
                 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -15869,7 +16837,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.164 \begin{proof}
+l.168 \begin{proof}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -15907,7 +16875,7 @@ Missing character: There is no m in font nullfont!
 ! Undefined control sequence.
 <write> ...ce `thrm_mahala_dist' on page \thepage 
                                                   \space undefined\on@line .
-l.165 ... formulate Theorem \ref{thrm_mahala_dist}
+l.169 ... formulate Theorem \ref{thrm_mahala_dist}
                                                    as an optimisation proble...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -15917,7 +16885,7 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Reference `thrm_mahala_dist' on page  undefined on input line 16
-5.
+9.
 
 Missing character: There is no a in font nullfont!
 Missing character: There is no s in font nullfont!
@@ -15955,8 +16923,8 @@ Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
 <write> ...nce `eq_mahala_optim' on page \thepage 
                                                   \space undefined\on@line .
-l.165 ...roblem as shown in (\ref{eq_mahala_optim}
-                                                  ). Note that we have squar...
+l.169 ...roblem as shown in (\ref{eq_mahala_optim}
+                                                  ). \begin{equation}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -15964,202 +16932,134 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Reference `eq_mahala_optim' on page  undefined on input line 165
+LaTeX Warning: Reference `eq_mahala_optim' on page  undefined on input line 169
 .
 
 Missing character: There is no ) in font nullfont!
 Missing character: There is no . in font nullfont!
-Missing character: There is no N in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no w in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no v in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no q in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no M in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no . in font nullfont!
 
-Overfull \hbox (62.01506pt too wide) in paragraph at lines 161--166
+Overfull \hbox (62.01506pt too wide) in paragraph at lines 165--169
 []\OT1/cmr/bx/n/10 Shortest
  []
 
 
-Overfull \hbox (20.34015pt too wide) in paragraph at lines 161--166
+Overfull \hbox (40.83311pt too wide) in paragraph at lines 165--169
+\OT1/cmr/bx/n/10 Squared
+ []
+
+
+Overfull \hbox (20.34015pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 Ma-
  []
 
 
-Overfull \hbox (15.8124pt too wide) in paragraph at lines 161--166
+Overfull \hbox (15.8124pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 ha-
  []
 
 
-Overfull \hbox (35.04283pt too wide) in paragraph at lines 161--166
+Overfull \hbox (35.04283pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 lanobis
  []
 
 
-Overfull \hbox (20.38321pt too wide) in paragraph at lines 161--166
+Overfull \hbox (20.38321pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 Dis-
  []
 
 
-Overfull \hbox (26.83318pt too wide) in paragraph at lines 161--166
+Overfull \hbox (26.83318pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 tance
  []
 
 
-Overfull \hbox (15.81242pt too wide) in paragraph at lines 161--166
+Overfull \hbox (15.81242pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 be-
  []
 
 
-Overfull \hbox (29.0693pt too wide) in paragraph at lines 161--166
+Overfull \hbox (29.0693pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 tween
  []
 
 
-Overfull \hbox (5.59023pt too wide) in paragraph at lines 161--166
+Overfull \hbox (5.59023pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 a
  []
 
 
-Overfull \hbox (18.90268pt too wide) in paragraph at lines 161--166
+Overfull \hbox (18.90268pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 Hy-
  []
 
 
-Overfull \hbox (20.54852pt too wide) in paragraph at lines 161--166
+Overfull \hbox (20.54852pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 per-
  []
 
 
-Overfull \hbox (26.83318pt too wide) in paragraph at lines 161--166
+Overfull \hbox (26.83318pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 plane
  []
 
 
-Overfull \hbox (18.36794pt too wide) in paragraph at lines 161--166
+Overfull \hbox (18.36794pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 and
  []
 
 
-Overfull \hbox (5.59023pt too wide) in paragraph at lines 161--166
+Overfull \hbox (5.59023pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 a
  []
 
 
-Overfull \hbox (27.02763pt too wide) in paragraph at lines 161--166
+Overfull \hbox (27.02763pt too wide) in paragraph at lines 165--169
 \OT1/cmr/bx/n/10 Point
  []
 
 
-Overfull \hbox (6.70831pt too wide) in paragraph at lines 161--166
+Overfull \hbox (6.70831pt too wide) in paragraph at lines 165--169
 $\OML/cmm/m/it/10 S$
  []
 
 
-Overfull \hbox (5.2616pt too wide) in paragraph at lines 161--166
+Overfull \hbox (5.2616pt too wide) in paragraph at lines 165--169
 $\OML/cmm/m/it/10 y$
  []
 
 
-Overfull \hbox (5.2616pt too wide) in paragraph at lines 161--166
+Overfull \hbox (5.2616pt too wide) in paragraph at lines 165--169
 $\OML/cmm/m/it/10 y$
  []
 
 
-Overfull \hbox (24.08438pt too wide) in paragraph at lines 161--166
+Overfull \hbox (24.08438pt too wide) in paragraph at lines 165--169
 $\OML/cmm/m/it/10 b[]x \OT1/cmr/m/n/10 +$
  []
 
 
-Overfull \hbox (14.88307pt too wide) in paragraph at lines 161--166
+Overfull \hbox (14.88307pt too wide) in paragraph at lines 165--169
 $\OML/cmm/m/it/10 c \OT1/cmr/m/n/10 =$
  []
 
 
-Overfull \hbox (5.00002pt too wide) in paragraph at lines 161--166
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 165--169
 $\OT1/cmr/m/n/10 0$
  []
 
 
-Overfull \hbox (30.21565pt too wide) in paragraph at lines 161--166
+Overfull \hbox (35.61852pt too wide) in paragraph at lines 165--169
 $[]$
  []
 
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 161--166
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 165--169
 []
  []
 
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 161--166
-[]
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 165--169
+[] 
  []
 
 
@@ -16169,14 +17069,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.167 \begin{aligned}
+l.170 \begin{aligned}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.168 &
+l.171 &
        \underset{x}{\text{min }} (x-y)^TS^{-1}(x-y)\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -16186,7 +17086,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.168 &\underset
+l.171 &\underset
                 {x}{\text{min }} (x-y)^TS^{-1}(x-y)\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16195,7 +17095,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.168 &\underset{x}{\text
+l.171 &\underset{x}{\text
                          {min }} (x-y)^TS^{-1}(x-y)\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16206,8 +17106,8 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 <recently read> &
                  
-l.169 &
-        \text{subject to } b^tx+c = 0\\
+l.172 &
+        \text{subject to } b^Tx+c = 0\\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -16216,8 +17116,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Undefined control sequence.
-l.169 & \text
-             {subject to } b^tx+c = 0\\
+l.172 & \text
+             {subject to } b^Tx+c = 0\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -16225,20 +17125,20 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-! LaTeX Error: \begin{equation} on input line 166 ended by \end{aligned}.
+! LaTeX Error: \begin{equation} on input line 169 ended by \end{aligned}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.170 \end{aligned}
+l.173 \end{aligned}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (185.16582pt too wide) detected at line 172
+Overfull \hbox (187.94463pt too wide) detected at line 175
 \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10   \OML
 /cmm/m/it/10 y\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 S[]\OT1/cmr/m/n/10 (\OML/cmm/
 m/it/10 x \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 y\OT1/cmr/m/n/10 )[] []\OML/cmm/m
@@ -16358,7 +17258,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.173 ...od of Lagrangian Multipliers \cite{forst}
+l.176 ...od of Lagrangian Multipliers \cite{forst}
                                                    we have the system of equ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16367,7 +17267,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `forst' on page  undefined on input line 173.
+LaTeX Warning: Citation `forst' on page  undefined on input line 176.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no w in font nullfont!
@@ -16400,7 +17300,7 @@ Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
 <write> ...nce `eq_lagrange_eqs' on page \thepage 
                                                   \space undefined\on@line .
-l.173 ...ystem of equations (\ref{eq_lagrange_eqs}
+l.176 ...ystem of equations (\ref{eq_lagrange_eqs}
                                                   )
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16409,69 +17309,69 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Reference `eq_lagrange_eqs' on page  undefined on input line 173
+LaTeX Warning: Reference `eq_lagrange_eqs' on page  undefined on input line 176
 .
 
 Missing character: There is no ) in font nullfont!
 
-Overfull \hbox (6.70831pt too wide) in paragraph at lines 172--174
+Overfull \hbox (6.70831pt too wide) in paragraph at lines 175--177
   $\OML/cmm/m/it/10 S$
  []
 
 
-Overfull \hbox (17.44446pt too wide) in paragraph at lines 172--174
+Overfull \hbox (17.44446pt too wide) in paragraph at lines 175--177
 $\OML/cmm/m/it/10 S[]$
  []
 
 
-Overfull \hbox (38.3542pt too wide) in paragraph at lines 172--174
+Overfull \hbox (38.3542pt too wide) in paragraph at lines 175--177
 $\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cm
 r/m/n/10 ) =$
  []
 
 
-Overfull \hbox (29.11116pt too wide) in paragraph at lines 172--174
+Overfull \hbox (29.11116pt too wide) in paragraph at lines 175--177
 $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S[] \OT1/cmr/m/n/10 +$
  []
 
 
-Overfull \hbox (41.12608pt too wide) in paragraph at lines 172--174
+Overfull \hbox (41.12608pt too wide) in paragraph at lines 175--177
 $[][]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10  $
  []
 
 
-Overfull \hbox (38.26158pt too wide) in paragraph at lines 172--174
+Overfull \hbox (38.26158pt too wide) in paragraph at lines 175--177
 $\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 S[]y \OT1/cmr/m/n/10 =$
  []
 
 
-Overfull \hbox (35.93755pt too wide) in paragraph at lines 172--174
+Overfull \hbox (35.93755pt too wide) in paragraph at lines 175--177
 $\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 S[]x \OMS/cmsy/m/n/10  $
  []
 
 
-Overfull \hbox (27.70607pt too wide) in paragraph at lines 172--174
+Overfull \hbox (27.70607pt too wide) in paragraph at lines 175--177
 $\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 S[]y$
  []
 
 
-Overfull \hbox (37.5104pt too wide) in paragraph at lines 172--174
+Overfull \hbox (37.5104pt too wide) in paragraph at lines 175--177
 $\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 g\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cm
 r/m/n/10 ) =$
  []
 
 
-Overfull \hbox (10.59131pt too wide) in paragraph at lines 172--174
+Overfull \hbox (10.59131pt too wide) in paragraph at lines 175--177
 $\OML/cmm/m/it/10 b[]$
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 172--174
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 175--177
 []
  []
 
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 172--174
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 175--177
 [] 
  []
 
@@ -16482,27 +17382,27 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.175 \begin{aligned}
+l.178 \begin{aligned}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-! LaTeX Error: \begin{equation} on input line 174 ended by \end{aligned}.
+! LaTeX Error: \begin{equation} on input line 177 ended by \end{aligned}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.178 \end{aligned}
+l.181 \end{aligned}
                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (152.9245pt too wide) detected at line 180
+Overfull \hbox (152.9245pt too wide) detected at line 183
 \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 S[]x \OMS/cmsy/m/n/10   \OT1/cmr/m/n/10 2\OML
 /cmm/m/it/10 S[]y \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 b[] \OT1/cmr/m/n/10 = 0[]
  \OML/cmm/m/it/10 b[]x \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 c \OT1/cmr/m/n/10 = 0
@@ -16557,7 +17457,7 @@ Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
 <write> ...e `eq_lagrange_block' on page \thepage 
                                                   \space undefined\on@line .
-l.181 ...form as shown in (\ref{eq_lagrange_block}
+l.184 ...form as shown in (\ref{eq_lagrange_block}
                                                   ).
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16567,17 +17467,17 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Reference `eq_lagrange_block' on page  undefined on input line 1
-81.
+84.
 
 Missing character: There is no ) in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 180--182
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 183--185
            [] 
  []
 
 ! Misplaced alignment tab character &.
-l.184 2S^{-1} &
+l.187 2S^{-1} &
                 b \\ b^T & 0
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -16587,7 +17487,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.184 2S^{-1} & b \\ b^T &
+l.187 2S^{-1} & b \\ b^T &
                            0
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -16597,7 +17497,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (147.0204pt too wide) detected at line 191
+Overfull \hbox (147.0204pt too wide) detected at line 194
 [] \OML/cmm/m/it/10 S[]b[] b[]\OT1/cmr/m/n/10 0 [] [] \OML/cmm/m/it/10  \OT1/c
 mr/m/n/10 = [] \OML/cmm/m/it/10 S[]y[]  \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 c[]
 
@@ -16651,7 +17551,7 @@ Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
 <write> ...e `eq_lagrange_block' on page \thepage 
                                                   \space undefined\on@line .
-l.192 ...d side matrix in (\ref{eq_lagrange_block}
+l.195 ...d side matrix in (\ref{eq_lagrange_block}
                                                   ) allows us to analyticall...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16661,7 +17561,7 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Reference `eq_lagrange_block' on page  undefined on input line 1
-92.
+95.
 
 Missing character: There is no ) in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -16708,7 +17608,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.192 ...lytically compute the inverse \cite{jang}
+l.195 ...lytically compute the inverse \cite{jang}
                                                    as shown in (\ref{eq_lagr...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16717,7 +17617,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `jang' on page  undefined on input line 192.
+LaTeX Warning: Citation `jang' on page  undefined on input line 195.
 
 Missing character: There is no ] in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -16733,7 +17633,7 @@ Missing character: There is no ( in font nullfont!
 ! Undefined control sequence.
 <write> ...grance_block_inverse' on page \thepage 
                                                   \space undefined\on@line .
-l.192 ...shown in (\ref{eq_lagrance_block_inverse}
+l.195 ...shown in (\ref{eq_lagrance_block_inverse}
                                                   ).
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16743,27 +17643,27 @@ and I'll forget about whatever was undefined.
 
 
 LaTeX Warning: Reference `eq_lagrance_block_inverse' on page  undefined on inpu
-t line 192.
+t line 195.
 
 Missing character: There is no ) in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 191--193
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 194--196
           []
  []
 
 
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 191--193
+Overfull \hbox (5.43053pt too wide) in paragraph at lines 194--196
 []
  []
 
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 191--193
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 194--196
 [] 
  []
 
 ! Misplaced alignment tab character &.
-l.195 2S^{-1} &
+l.198 2S^{-1} &
                 b \\ b^T & 0
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -16773,7 +17673,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.195 2S^{-1} & b \\ b^T &
+l.198 2S^{-1} & b \\ b^T &
                            0
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -16785,7 +17685,7 @@ might try typing `S' now just to see what is salvageable.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16794,7 +17694,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16805,7 +17705,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16814,7 +17714,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16825,7 +17725,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16834,7 +17734,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16845,7 +17745,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16854,7 +17754,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16865,7 +17765,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16874,7 +17774,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16885,7 +17785,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16894,7 +17794,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16905,7 +17805,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16914,7 +17814,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16925,7 +17825,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16934,7 +17834,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16945,7 +17845,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16954,7 +17854,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16965,7 +17865,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16974,7 +17874,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -16985,7 +17885,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -16994,7 +17894,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17005,7 +17905,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17014,7 +17914,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17025,7 +17925,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17034,7 +17934,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17045,7 +17945,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17054,7 +17954,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17065,7 +17965,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17074,7 +17974,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17085,7 +17985,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17094,7 +17994,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17105,7 +18005,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17114,7 +18014,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17125,7 +18025,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17134,7 +18034,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17145,7 +18045,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17154,7 +18054,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17165,7 +18065,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17174,7 +18074,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17185,7 +18085,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17194,7 +18094,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17205,7 +18105,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17214,7 +18114,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17225,7 +18125,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17234,7 +18134,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17245,7 +18145,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17254,7 +18154,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17265,7 +18165,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17274,7 +18174,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17285,7 +18185,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17294,7 +18194,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17305,7 +18205,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17314,7 +18214,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17325,7 +18225,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17334,7 +18234,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17345,7 +18245,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17354,7 +18254,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17365,7 +18265,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17374,7 +18274,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17385,7 +18285,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17394,7 +18294,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17405,7 +18305,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17414,7 +18314,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17425,7 +18325,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17434,7 +18334,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17445,7 +18345,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17454,7 +18354,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17465,7 +18365,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17474,7 +18374,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17485,7 +18385,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17494,7 +18394,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17505,7 +18405,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -17514,7 +18414,7 @@ Try to go on, since this might almost work.
 ! Extra }, or forgotten \endgroup.
 <inserted text> }
                  
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -17525,16 +18425,16 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.197 \frac
+l.200 \frac
            {1}{2}S(I-\frac{bb^TS}{b^TSb}) & \frac{Sb}{b^TSb} \\ \frac{b^TS}{...
 (That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
- 78 strings out of 493921
- 1270 string characters out of 3144868
- 68031 words of memory out of 3000000
- 3466 multiletter control sequences out of 15000+200000
+ 79 strings out of 493921
+ 1275 string characters out of 3144868
+ 71031 words of memory out of 3000000
+ 3467 multiletter control sequences out of 15000+200000
  4567 words of font info for 17 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 19i,10n,21p,1113b,115s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 19i,10n,21p,1113b,118s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 !  ==> Fatal error occurred, no output PDF file produced!

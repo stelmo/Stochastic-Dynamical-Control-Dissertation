@@ -39,7 +39,7 @@ While \cite{schwarm} mainly concerns stochastic parameters in the optimisation p
 
 Although \cite{yan1} and \cite{yan2} primarily deal with a univariate problem they show that if the underlying system is linear and Gaussian it is possible to manipulate the constrained stochastic problem into a deterministic problem without any approximations. Their analysis allows the stochastic objective function and constraints to be rewritten as deterministic expressions using the properties of conditionally linear Gaussian distributions.
 
-In this work we show that by starting the MPC design from the graphical model shown in Figure \ref{fig_nlmod} it is possible to easily and intuitively re-derive the LQG controller. During that derivation we naturally arrive at the conclusions reached by \cite{yan1} and \cite{yan2}. Next we generalise our method to incorporate stochastic constraints. We use a method related to the ellipsoidal approximation technique to handle the stochastic constraints. We show that our method replaces the chance constraints with linear constraints. This is highly desirable because it allows one to rewrite the full stochastic MPC problem as a conventional deterministic Quadratic Programming MPC problem. All of these results are underpinned by the realisation that Graphical Models, as used in the field of Machine Learning, are closely related to predictive control. 
+In this work we show that by starting the MPC design from the graphical model shown in Figure \ref{fig_nlmod} it is possible to easily and intuitively re-derive the LQG controller. During that derivation we naturally arrive at the conclusions reached by \cite{yan1} and \cite{yan2}. Next we generalise our method to incorporate stochastic constraints. We use a method related to the ellipsoidal approximation technique to handle the stochastic constraints. We show that our method replaces the chance constraints with linear constraints. This is highly desirable because it allows one to rewrite the full stochastic MPC problem as a conventional deterministic Quadratic Programming (QP) MPC problem. All of these results are underpinned by the realisation that Graphical Models, as used in the field of Machine Learning, are closely related to predictive control. 
 
 \subsection{Unconstrained Stochastic Control}
 Our goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$. If the system is controllable and linear the Stochastic Reference Tracking Goal will be satisfied.
@@ -146,21 +146,22 @@ The goal of this section is to solve the stochastic constrained optimisation pro
 &\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
 & \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
 & \text{and } y_{t}= Cx_t + v_t \\
-& \text{and } \mathbb{E}[dx_t + e] \geq 0 ~\forall ~t=1,...,N \\
-& \text{and } \text{Pr}(dx_t + e \geq 0) \geq p ~\forall ~t=1,...,N\\
+& \text{and } \mathbb{E}[d^Tx_t + e] \geq 0 ~\forall ~t=1,...,N \\
+& \text{and } \text{Pr}(d^Tx_t + e \geq 0) \geq p ~\forall ~t=1,...,N\\
 \end{aligned}
 \label{eq_mpc_constrained_linmod}
 \end{equation}
 It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$. The reason both constraints are required will become clear later.
 
+Theorem \ref{thrm_affine_expected_const} succinctly shows that it is simple to convert the first stochastic constraint in (\ref{eq_mpc_constrained_linmod}) to a linear deterministic constraint.
 \begin{thrm}
-\textbf{Affine Expected Value Constraints} Suppose we have a stochastic variable $x$ with a known Gaussian distribution. Then the stochastic constraint $\mathbb{E}[dx + e] \geq 0$ simplifies to the deterministic constraint $d\mu + e \geq 0$ where $\mathbb{E}[x]= \mu$ is the mean of the stochastic variable.
+\textbf{Affine Expected Value Constraints} Suppose we have a stochastic variable $x$ with a known Gaussian distribution. Then the stochastic constraint $\mathbb{E}[d^Tx + e] \geq 0$ simplifies to the deterministic constraint $d^T\mu + e \geq 0$ where $\mathbb{E}[x]= \mu$ is the mean of the stochastic variable.
 \label{thrm_affine_expected_const}
 \end{thrm}
 \begin{proof}
-We know that $x$ is a Gaussian stochastic variable. By the results of Section \ref{thrm_gaussian_identities} we know that $\mathbb{E}[dx + e] =d\mu + e$. This immediately implies the Theorem.
+We know that $x$ is a Gaussian stochastic variable. By the results of Section \ref{thrm_gaussian_identities} we know that $\mathbb{E}[d^Tx + e] =d^T\mu + e$. This immediately implies the Theorem.
 \end{proof}
-
+Theorem \ref{thrm_mahala_dist} is a necessary step before we can convert the last stochastic inequality constraint of (\ref{eq_mpc_constrained_linmod}) into a nonlinear deterministic constraint.
 \begin{thrm}
 \textbf{Shortest Squared Mahalanobis Distance between a Hyperplane and a Point} Suppose we are given a symmetric positive semi-definite matrix $S$ and a point $y$. The shortest squared Mahalanobis Distance between $y$ and the hyperplane $b^Tx+c=0$ is given by $\frac{(b^Ty+c)^2}{b^TSb}$.
 \label{thrm_mahala_dist}
@@ -228,15 +229,15 @@ Therefore, the arguments which minimise (\ref{eq_mahala_optim}) are $x^* = S(I-\
 \end{equation}
 We can conclude that the shortest squared Mahalanobis Distance between a point $y$ and the constraints of (\ref{eq_mahala_optim}) is $\frac{(b^Ty+c)^2}{b^TSb}$.
 \end{proof}
-
+In Theorem \ref{thrm_chance_cons} we apply Theorem \ref{thrm_mahala_dist} to convert the stochastic constraints into nonlinear deterministic constraints.
 \begin{thrm}
-\textbf{Gaussian Affine Chance Constraints} If the underlying distribution of a random variable $x$ is Gaussian then the chance constraint $\text{Pr}(dx + e \geq 0) \geq p$ can be rewritten as the deterministic constraint $\frac{(d^T\mu+e)^2}{d^TSd} \geq k^2$ where $k^2$ is the critical value of the inverse cumulative Chi-Squared Distribution with the degrees of freedom equal to the dimensionality of $x$ such that $\text{Pr}(\mathcal{X} \leq k^2) = p$. 
+\textbf{Gaussian Affine Chance Constraints} If the underlying distribution of a random variable $x$ is Gaussian then the chance constraint $\text{Pr}(d^Tx + e \geq 0) \geq p$ can be rewritten as the deterministic constraint $\frac{(d^T\mu+e)^2}{d^TSd} \geq k^2$ where $k^2$ is the (constant) critical value of the inverse cumulative Chi-Squared Distribution with the degrees of freedom equal to the dimensionality of $x$ such that $\text{Pr}(\mathcal{X} \leq k^2) = p$. 
 \label{thrm_chance_cons}
 \end{thrm}
 \begin{proof}
-Intuitively Theorem \ref{thrm_chance_cons} posits that if the shortest squared Mahalanobis distance is further away than some threshold $k^2$ the chance constraint $\text{Pr}(dx + e \geq 0) \geq p$ will be satisfied. It is well known that for Gaussian distributions the probability of an observation is uniquely determined by the Mahalanobis distance. 
+Intuitively Theorem \ref{thrm_chance_cons} posits that if the shortest squared Mahalanobis distance is further away than some threshold $k^2$ the chance constraint $\text{Pr}(dx + e \geq 0) \geq p$ will be satisfied. Since $x$ is a Gaussian stochastic variable we have that $\mathbb{E}[x] =\mu$ and $\text{var}[x]=\Sigma$. Let $\Omega = \{x \in \mathbb{R}^n~|~(x-\mu)^T\Sigma^{-1}(x-\mu) \leq k^2\}$ and $k^2$ be the critical value such that for the Chi-Squared Distribution with degrees of freedom equal to the dimension of $x$ we have that $\text{Pr}(\mathcal{X} \leq k^2) = p$. Then it is well known \cite{mahala2} that $\int_{\Omega}p(x|\mu, \Sigma)dx = p$ where $p(\cdot|\mu, \Sigma)$ is the multivariate Gaussian probability distribution function of $x$. If the shortest squared Mahalanobis Distance from the mean of $x$ is further away from the affine constraint $d^Tz+e=0$ than $k^2$ it implies that the curve of the function $h(z) = (z-\mu)^T\Sigma^{-1}(z-\mu) = k^2$ does not intersect with the constraint. This implies, with at least a probability of $p$, that the chance constraint will not be violated because the ``confidence ellipse" does not intersect the constraint. See Figure for a diagram of the principle behind Theorem \ref{thrm_chance_cons} \cite{mahala1}. \textbf{insert picture}
 \end{proof}
-
+It is interesting to note the striking similarity between the work in \cite{vanhessem1} and \cite{vanhessem2} and Theorem \ref{thrm_chance_cons} given that we started analysing the problem within the framework of Graphical Models. In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \cite{yan1}, \cite{vanhessem1} to yield a QP MPC which exactly satisfies the stochastic MPC in (\ref{eq_mpc_constrained_linmod}) given the assumptions. Note that the dimensionality of the problem is arbitrary.
 \begin{thrm}
 \textbf{Conversion of the Stochastic MPC formulation to the standard deterministic QP MPC formulation} Under the assumptions of linearity and Gaussian distributions we can reformulate the stochastic MPC problem shown in (\ref{eq_mpc_constrained_linmod}) as a standard deterministic QP MPC problem shown in (\ref{eq_mpc_constrained_linmod_deter}).
 \begin{equation}
@@ -244,17 +245,26 @@ Intuitively Theorem \ref{thrm_chance_cons} posits that if the shortest squared M
 &\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
 & \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
 & \text{and } \Sigma_{t+1} = W+A\Sigma_t A^T \\
-& \text{and } d\mu_t + e \geq 0 ~\forall ~t=1,...,N \\
-& \text{and } d\mu_t + e \geq k\sqrt{d^T \Sigma_t d} ~\forall ~t=1,...,N\\
+& \text{and } d^T\mu_t + e \geq 0 ~\forall ~t=1,...,N \\
+& \text{and } d^T\mu_t + e \geq k\sqrt{d^T \Sigma_t d} ~\forall ~t=1,...,N\\
 \end{aligned}
 \label{eq_mpc_constrained_linmod_deter}
 \end{equation}
 \label{thrm_mpc_stoch_to_det}
+Other deterministic constraints, e.g. on the input, can be added as usual. Note that we have assumed that the initial state estimate $x_0$ is available in the form of its mean, $\mu_0$,  and covariance, $\Sigma_0$.
 \end{thrm}
 \begin{proof}
-Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the first inequality constraint follows. The last inequality constraint follows from Theorem \ref{thrm_chance_cons}. 
+Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the first inequality constraint follows. The last inequality constraint follows from Theorem \ref{thrm_chance_cons} as shown in (\ref{eq_chance_to_lin}).
+\begin{equation}
+\begin{aligned}
+\frac{(d^T\mu+e)^2}{d^TSd} \geq k^2 &\implies (d^T\mu+e)^2 \geq k^2 {d^TSd} \\
+&\implies d^T\mu+e \geq k \sqrt{d^TSd}
+\end{aligned}
+\label{eq_chance_to_lin}
+\end{equation}
+The first line of (\ref{eq_chance_to_lin}) follows because $S$ is positive semi-definite and $d \neq 0$ (otherwise it would not be a constraint), therefore it can be multiplied over the inequality sign. The second line follows because of the first inequality constraint in (\ref{eq_mpc_constrained_linmod_deter}): we know that $d^T\mu+e \geq 0$ and therefore we can square root both sides of the inequality constraint.
 \end{proof}
-The beauty of Theorem \ref{thrm_mpc_stoch_to_det} is that no new theory is necessary to analyse the stability and convergence results of the new MPC. This is highly desirable because it allows one to merely ``add" the last inequality constraint to your existing MPC formulation. Most practical MPCs will have some form of state estimation and thus no new parameters are introduced either. Finally, since the problem is in standard QP form it is straightforward to implement and even more importantly computationally fast. 
+The beauty of Theorem \ref{thrm_mpc_stoch_to_det} is that no new theory is necessary to analyse the stability and convergence results of the new MPC. This is highly desirable because it allows one to merely ``add" the last inequality constraint to your existing MPC formulation. Most practical MPCs will have some form of state estimation and thus no new parameters are introduced either. Finally, since the problem is in standard QP form it is straightforward to implement and, even more importantly, it is computationally fast because the problem is trivially convex. 
 
 \subsection{Discussion}
 Use the nonlinear underlying model.

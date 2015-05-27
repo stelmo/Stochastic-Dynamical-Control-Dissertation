@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  27 MAY 2015 11:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  27 MAY 2015 12:38
 entering extended mode
 **masters.tex
 
@@ -337,7 +337,7 @@ docs\linear_control.tex" [64
 
 
 
-] [65] [66] [67] [68] [69] [70] [71]) [72]
+] [65] [66] [67] [68] [69] [70] [71] [72]) [73]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 masters.bbl" [93
 
@@ -345,7 +345,7 @@ masters.bbl" [93
 
 
 
-] [94]) [95]
+] [94] [95]) [96]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 masters.aux"
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
@@ -373,13 +373,13 @@ docs\switching_linear_control.aux")
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\conclusion.aux")) ) 
 Here is how much of TeX's memory you used:
- 3295 strings out of 493921
- 48275 string characters out of 3144868
- 116729 words of memory out of 3000000
- 6476 multiletter control sequences out of 15000+200000
+ 3298 strings out of 493921
+ 48311 string characters out of 3144868
+ 115748 words of memory out of 3000000
+ 6479 multiletter control sequences out of 15000+200000
  13580 words of font info for 51 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,14n,43p,1138b,270s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,14n,43p,1368b,270s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
@@ -395,9 +395,9 @@ ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masters.pdf (14 pages, 233368 bytes).
+Output written on masters.pdf (16 pages, 239861 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
+ 114 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

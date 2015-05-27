@@ -38,7 +38,7 @@
 \contentsline {subsection}{\numberline {7.1}Current Literature}{64}
 \contentsline {subsection}{\numberline {7.2}Unconstrained Stochastic Control}{66}
 \contentsline {subsection}{\numberline {7.3}Constrained Stochastic Control}{69}
-\contentsline {subsection}{\numberline {7.4}Discussion}{72}
+\contentsline {subsection}{\numberline {7.4}Discussion}{73}
 \contentsline {section}{\numberline {8}Inference using Linear Hybrid Models}{71}
 \contentsline {subsection}{\numberline {8.1}Exact Filtering}{72}
 \contentsline {subsection}{\numberline {8.2}Rao-Blackwellised Particle Filter}{72}
