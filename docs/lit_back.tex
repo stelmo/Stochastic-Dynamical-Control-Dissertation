@@ -98,11 +98,11 @@ Clearly there is a big difference between the naive approach and the Bayesian (c
 
 \subsubsection{Continuous Random Variables}
 
-So far in our discussion we have implicitly only used discrete random variables; that is, our probability space consisted out of a finite number of events or states. However, it is also necessary to make precise what we mean by a continuous random variable. A continuous random variable is characterised by a density function $p$ which assigns a weight to each possible value of the variable. Intuitively this weight is \underline{related} to the ``probability" of that value occurring\footnote{Please note that strictly speaking $P(x)=0$ for a specific point $x$ in the domain of $p$. Technically it is correct to say that the probability of $P(x \in [a,b]) = \int_a^b p(y)dy$; thus, if we want the probability of $x$ occurring we could just make $[a,b]$ small.}. Although the density function is itself not a probability function, if it satisfies $p(x) \geq 0~\forall x \in X$ and $\int p(x)dx = 1$, where we have implicitly integrated over the domain of $p$, then it can be used to generate one. The cumulative probability function $P(X \leq a)=\int^a_{-\infty} p(x)dx$ is one such example\footnote{We have assumed that the domain of $X$ is the entire real line.}. 
+So far in our discussion we have implicitly only used discrete random variables; that is, our probability space consisted out of a finite number of events or states. However, it is also necessary to make precise what we mean by a continuous random variable. A continuous random variable is characterised by a density function $p$ which assigns a weight to each possible value of the variable. Intuitively this weight is \underline{related} to the probability of that value occurring\footnote{Please note that strictly speaking $P(x)=0$ for a specific point $x$ in the domain of $p$. Technically it is correct to say that the probability of $P(x \in [a,b]) = \int_a^b p(y)dy$; thus, if we want the probability of $x$ occurring we could just make $[a,b]$ small.}. Although the density function is itself not a probability function, if it satisfies $p(x) \geq 0~\forall x \in X$ and $\int p(x)dx = 1$, where we have implicitly integrated over the domain of $p$, then it can be used to generate one. The cumulative probability function $P(X \leq a)=\int^a_{-\infty} p(x)dx$ is one such example\footnote{We have assumed that the domain of $X$ is the entire real line.}. 
 
-Arguably the most well known continuous probability density distribution is the Gaussian or Normal distribution. The Gaussian distribution arises naturally from a variety of different contexts and settings. For example, the central limit theorem, together with some mild assumptions, tells us that the sum of a set of $N$ random  variables is itself a random variable and in the limit can be described by a Gaussian distribution \cite{bishop}. The Gaussian is regularly used because it has some very appealing analytical properties (and often also because it is physically meaningful) which we will investigate in some depth. 
+Arguably the most well known continuous probability density distribution is the Gaussian or Normal distribution. The Gaussian distribution arises naturally from a variety of different contexts and settings. For example, the central limit theorem, together with some mild assumptions, tells us that the sum of a set of $N$ random  variables is itself a random variable and in the limit can be described by a Gaussian distribution \cite{bishop}. The Gaussian is regularly used because it has some very appealing analytical properties (and also often because it is physically meaningful) which we will investigate in some depth. 
 
-Since the probability of a specific value is not meaningful in the setting of continuous probability functions we abuse our notation and denote the random variable $X$ by $x$. We also do not indicate vector quantities in boldface. We will concern ourselves mostly with vector quantities and it will be obvious when we deal with non-vector valued variables. 
+Since the probability of a specific value is not meaningful in the setting of continuous probability functions we abuse our notation and interchangeably denote the random variable $X$ by $x$. We also do not indicate vector quantities in boldface; it can be assumed that all numbers are vectors unless otherwise noted. We will concern ourselves mostly with vector quantities and it will be obvious when we deal with non-vector valued variables. 
 \begin{defn}
 \textbf{Gaussian Distribution} The univariate Gaussian or Normal distribution of a random variable $x$ is shown in (\ref{eq_norm_uni}). We call $\mu$ the mean and $\sigma^2$ the variance of the distribution.
 \begin{equation}
@@ -251,7 +251,22 @@ Again, by making use of (\ref{eq_bg1}) and the fact that the covariance of $z$ i
 \mu \\ A\mu +b
 \end{pmatrix}$ as shown in \cite{bishop}. By using Theorem \ref{thrm_joint_gaussians} we immediately have the marginal and conditional distributions as required.
 \end{proof}
-
+We also introduce a useful metric for measuring the similarity between two distributions in Definition \ref{def_kl}. 
+\begin{defn}
+\textbf{Kullback-Leibler Divergence} Consider some unknown distribution $p(x)$ and suppose we have modelled this distribution by $q(x)$. Kullback-Leibler Divergence, also known as relative entropy, is defined $\text{KL}(p||q) = -\int p(x)\text{ln}\left(\frac{q(x)}{p(x)}\right)dx$ and measures the additional amount of information, in \textit{nats}, needed to specify the value of $x$ \cite{bishop}. 
+\label{def_kl}
+\end{defn}
+Kullback-Leibler Divergence can be used to measure the dissimilarity between two distributions. If the measure is zero the distributions are identical; care needs to be taken when using Kullback-Leibler Divergence because the measure is not symmetric. We introduce Theorem to measure the dissimilarity between a known distribution and a sampled approximation thereof. See \cite{bishop} for the motivation.
+\begin{thrm}
+Suppose we observe a finite set of points $x_n$ for $n=1,2,..., N$ drawn from $p(x)$. Furthermore, suppose we would like to measure the information loss when $p$ is approximated by $q$. We can measure this by $\text{KL}(p||q) \approx \frac{1}{N}\sum_{n=1}^N\left(-\text{ln}(q(x_n)) + \text{ln}(p(x_n))\right)$. This measurement is bounded below by zero. If, as $N \rightarrow \infty$, the information loss is zero $p$ and $q$ are functionally equivalent.
+\label{thrm_kl_sample}
+\end{thrm}
+We also briefly introduce the Mahalanobis Distance in Definition \ref{def_mahala}.
+\begin{defn}
+\textbf{Mahalanobis Distance} The Mahalanobis Distance, given $y$ and $S$, is defined by $D_M(x|y, S) = \sqrt{(x-y)^TS^{-1}(x-y)}$. 
+\label{def_mahala}
+\end{defn}
+The Mahalanobis Distance is a distance metric which reduces to the Euclidean Distance metric if $S=I$. It is found in the exponent of the Gaussian distribution density function and can be used to measure the ``closeness" of points between distributions. We will study it in more detail later.
 \subsection{Graph Theory}
 A graph, $G$, is a data structure consisting of a set of nodes $\chi$ and edges $\xi$. A pair of nodes $X_i, X_j \in \chi$ can be connected by an edge. We will only consider directed graphs in this dissertation. This implies that every edge in $\xi$ has a direction associated between the two nodes it connects i.e. $X_i \rightarrow X_j$ if there is an edge from $X_i$ to $X_j$.
 
@@ -425,7 +440,7 @@ To make the notation clear, the variable $X_t$ represents a Bayesian Network, fo
 
 \subsection{Control}
 \label{sec_lit_control}
-In this section we briefly introduce three fundamental control strategies. First, the Linear Quadratic Regulator (LQR) which deals with the optimal control of linear discrete time invariant systems. Second, we deal with the stochastic generalisation of the LQR controller: the famous Linear Quadratic Gaussian (LQG) controller. Third and finally, we introduce Model Predictive Control (MPC). The aim of this section is to introduce and illustrate the relationship between these controllers.
+In this section we briefly introduce three fundamental control strategies. First, the Linear Quadratic Regulator (LQR) which deals with the optimal control of linear discrete time invariant systems. Second, we deal with the stochastic generalisation of the LQR controller: the famous Linear Quadratic Gaussian (LQG) controller. Third and finally, we introduce deterministic Model Predictive Control (MPC). The aim of this section is to introduce and illustrate the relationship between these controllers.
 
 \subsubsection{Linear Quadratic Regulator Control}
 \label{sec_lqr_lit}
@@ -562,9 +577,12 @@ By assuming that the system under consideration is controllable it is possible t
 The optimal cost is given by $V^0(x) = \frac{1}{2}x^TKx$. The matrix $\Pi$ can be found by iterating the Ricatti equation. This solution is stabilising if the system is controllable.
 \label{thrm_lqr_inf}
 \end{thrm}
-The LQR control problem, as discussed in this section, applies to deterministic systems where the goal is to drive the controlled variables to the origin. It is straightforward to extend this approach to systems where it is desired to drive the states to a reference (set) point $r_{sp}$.
 
-To achieve this we simply redefine the objective function in terms of deviation variables as shown in (\ref{eq_dev_vars}). The constants $x_{sp}$ and $u_{sp}$ are the state set point and corresponding controller set point one would like to drive the system to.
+\subsubsection{Reference Tracking}
+\label{sec_lit_ref_track}
+The LQR control problem, as discussed in the previous subsection, applies to deterministic systems where the goal is to drive the controlled variables to the origin. It is straightforward to extend this approach to systems where it is desired to drive the states to a reference (set) point $r_{sp}$.
+
+To achieve this we simply redefine the objective function in terms of deviation variables as shown in (\ref{eq_dev_vars}). The constants $x_{sp}$ and $u_{sp}$ are the state and corresponding controller set point one would like to drive the system to.
 \begin{equation}
 \begin{aligned}
 &\tilde{x}_t = x_t-x_{sp} \\
@@ -591,7 +609,7 @@ x_{sp}\\u_{sp}
 \end{pmatrix}
 \label{eq_setpoints}
 \end{equation}
-It is possible to cast (\ref{eq_setpoints}) into an optimisation problem if there are more controlled variables than inputs. We refer the reader to \cite{raw} for a full treatise on the subject.
+If there are more measured outputs than manipulated variables (\ref{eq_setpoints}) cannot be solved directly. It is possible to cast (\ref{eq_setpoints}) into an optimisation problem. We refer the reader to \cite{raw} for a full treatise on the subject.
  
 \subsubsection{Linear Quadratic Gaussian Control}
 \label{sec_lqg_lit}
@@ -637,7 +655,7 @@ It is indeed possible to solve this controller analytically using stochastic Dyn
 \end{defn}
 The optimal state estimate of linear systems under Gaussian noise is known as the Kalman Filter. In later sections we devote much time to its derivation but for now we merely introduce it loosely.
 \begin{defn}
-\textbf{Kalman Filter} Given a linear system like (\ref{eq_lqg_ss}) under the influence of white Gaussian noise, the Kalman Filter is the optimal state estimator.
+\textbf{Kalman Filter} The optimal linear state estimator for Gaussian random variables is called the Kalman Filter.
 \end{defn}
 A schematic diagram of the solution of LQG control problem is shown  in Figure \ref{fig_lqg}.
 \begin{figure}[H] 
@@ -649,4 +667,38 @@ A schematic diagram of the solution of LQG control problem is shown  in Figure \
 The LQR and LQG controllers are two of the most fundamental results in Optimal Control theory \cite{robust}. In the next section we discuss Model Predictive Control (MPC) which is a generalisation of the controllers we have discussed so far.
 
 \subsubsection{Model Predictive Control}
-Model Predictive Control
+Model Predictive Control (MPC) is the constrained generalisation of the LQR controller. It is widely used industry and has been the subject of a significant amount of scholarly research. We introduce the classic deterministic linear MPC in (\ref{eq_mpc_problem}).
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
+& \text{subject to } x_{t+1} = Ax_t+Bu_t \\
+& \text{and } d^Tx_t + e \geq 0 ~\forall~t=1, 2,...,N \\
+\end{aligned}
+\label{eq_mpc_problem}
+\end{equation}
+It is straightforward to incorporate more constraints of the form $d_i^Tx_t + e_i \geq 0$ if required. The structure of (\ref{eq_mpc_problem}) is important: the objective function is quadratic and the constraints are linear. There are two primary benefits of this structure. Firstly, the problem is provably convex which means that if a minimum is found it is the global minimum. Secondly, (and as a consequence of the first benefit) this allows for the use of specialised Quadratic Programming (QP) techniques which are fast and reliable. 
+
+Recent advances in QP algorithms, like the Interior Point algorithm, have made it possible to solve QP problems almost as fast as Linear Programming (LP) problems. These solvers typically exploit the sparseness structure inherent in problems like (\ref{eq_mpc_problem}) \cite{mac}. Thus, it is desirable to make use of these solvers wherever possible by ensuring that the underlying QP structure is not lost when modifications are made to the algorithm.
+
+Finally, the stability and robustness of deterministic linear MPC is well studied and understood in modern literature. See \cite{raw} and \cite{mac} for details. Thus, it is likewise desirable to exploit this knowledge rather than attempt to derive an MPC with completely different or new characteristics.
+
+We will continue our study of linear MPC in later sections.
+
+\subsection{Matrix Identities}
+\label{sec_block}
+It will be useful in a later section to have access to a block matrix inversion formula. We state the result without proof and refer the reader to \cite{jang} for more details.
+\begin{thrm}
+\textbf{Block Matrix Inversion} Suppose we have a square block matrix of the form $\begin{pmatrix}
+A & b \\ c^T & d
+\end{pmatrix}
+$ where $A$ is an invertible matrix; $b$ and $c$ are conforming vectors; and $d$ is a real number. Then the identity in (\ref{eq_block2}) holds with $p = (d-c^TA^{-1}b)$.
+\begin{equation}
+\begin{pmatrix}
+A & b \\ c^T & d
+\end{pmatrix}^{-1} = \begin{pmatrix}
+A^{-1}(I+p^{-1}bc^TA^{-1}) & -p^{-1}A^{-1}b \\ -p^{-1}c^TA^{-1} & p^{-1}
+\end{pmatrix}
+\label{eq_block2}
+\end{equation}
+\label{thrm_block_inv}
+\end{thrm}

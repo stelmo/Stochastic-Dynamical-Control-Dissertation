@@ -193,7 +193,7 @@ x \\ \lambda
 \end{pmatrix}
 \label{eq_lagrange_block}
 \end{equation}
-The special structure of the left hand side matrix in (\ref{eq_lagrange_block}) allows us to analytically compute the inverse \cite{jang} as shown in (\ref{eq_lagrance_block_inverse}).
+The special structure of the left hand side matrix in (\ref{eq_lagrange_block}) allows us to analytically compute the inverse (see Theorem \ref{thrm_block_inv} in Section \ref{sec_block}) as shown in (\ref{eq_lagrance_block_inverse}).
 \begin{equation}
 \begin{pmatrix}
 2S^{-1} & b \\ b^T & 0
@@ -266,5 +266,11 @@ The first line of (\ref{eq_chance_to_lin}) follows because $S$ is positive semi-
 \end{proof}
 The beauty of Theorem \ref{thrm_mpc_stoch_to_det} is that no new theory is necessary to analyse the stability and convergence results of the new MPC. This is highly desirable because it allows one to merely ``add" the last inequality constraint to your existing MPC formulation. Most practical MPCs will have some form of state estimation and thus no new parameters are introduced either. Finally, since the problem is in standard QP form it is straightforward to implement and, even more importantly, it is computationally fast because the problem is trivially convex. 
 
-\subsection{Discussion}
-Use the nonlinear underlying model.
+\subsection{Reference Tracking}
+So far we have only dealt with controllers which would drive the system to the origin. The more general situation we are interested in is arbitrary reference point tracking. Fortunately, Section \ref{sec_lit_ref_track} applies without modification because we managed to cast the Stochastic MPC problem into a deterministic MPC problem. 
+
+\subsection{Linear System}
+
+\subsection{Nonlinear System}
+
+
