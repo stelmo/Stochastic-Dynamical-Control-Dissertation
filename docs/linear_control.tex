@@ -177,7 +177,7 @@ It is natural to formulate Theorem \ref{thrm_mahala_dist} as an optimisation pro
 Note that $S$ and therefore also $S^{-1}$ is symmetric. Using conventional calculus we have $\nabla f(x) = (S^{-1} + {S^{-1}}^T)x - 2S^{-1}y = 2S^{-1}x - 2S^{-1}y$ and $\nabla g(x) = b^T$. Using the method of Lagrangian Multipliers \cite{forst} we have the system of equations (\ref{eq_lagrange_eqs})
 \begin{equation}
 \begin{aligned}
-2S^{-1}x - 2S^{-1}y + \lambda b^T = 0 \\
+2S^{-1}x - 2S^{-1}y + \lambda b = 0 \\
 b^Tx+c = 0
 \end{aligned}
 \label{eq_lagrange_eqs}
@@ -227,7 +227,7 @@ Therefore, the arguments which minimise (\ref{eq_mahala_optim}) are $x^* = S(I-\
 \end{aligned}
 \label{eq_lagrange_min}
 \end{equation}
-We can conclude that the shortest squared Mahalanobis Distance between a point $y$ and the constraints of (\ref{eq_mahala_optim}) is $\frac{(b^Ty+c)^2}{b^TSb}$.
+We can conclude that the shortest squared Mahalanobis Distance between a point $y$ and the constraint of (\ref{eq_mahala_optim}) is $\frac{(b^Ty+c)^2}{b^TSb}$.
 \end{proof}
 In Theorem \ref{thrm_chance_cons} we apply Theorem \ref{thrm_mahala_dist} to convert the stochastic constraints into nonlinear deterministic constraints.
 \begin{thrm}
@@ -254,7 +254,7 @@ It is interesting to note the striking similarity between the work in \cite{vanh
 Other deterministic constraints, e.g. on the input, can be added as usual. Note that we have assumed that the initial state estimate $x_0$ is available in the form of its mean, $\mu_0$,  and covariance, $\Sigma_0$.
 \end{thrm}
 \begin{proof}
-Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the first inequality constraint follows. The last inequality constraint follows from Theorem \ref{thrm_chance_cons} as shown in (\ref{eq_chance_to_lin}).
+Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Furthermore, let the current state estimate $x_0$ be given. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the first inequality constraint follows. The last inequality constraint follows from Theorem \ref{thrm_chance_cons} as shown in (\ref{eq_chance_to_lin}).
 \begin{equation}
 \begin{aligned}
 \frac{(d^T\mu+e)^2}{d^TSd} \geq k^2 &\implies (d^T\mu+e)^2 \geq k^2 {d^TSd} \\

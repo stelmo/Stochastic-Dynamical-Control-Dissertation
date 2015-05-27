@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  27 MAY 2015 12:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  27 MAY 2015 15:12
 entering extended mode
 **masters.tex
 
@@ -375,7 +375,7 @@ docs\conclusion.aux")) )
 Here is how much of TeX's memory you used:
  3298 strings out of 493921
  48311 string characters out of 3144868
- 115748 words of memory out of 3000000
+ 116748 words of memory out of 3000000
  6479 multiletter control sequences out of 15000+200000
  13580 words of font info for 51 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -395,7 +395,7 @@ ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fil
 es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masters.pdf (16 pages, 239861 bytes).
+Output written on masters.pdf (16 pages, 239919 bytes).
 PDF statistics:
  114 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
