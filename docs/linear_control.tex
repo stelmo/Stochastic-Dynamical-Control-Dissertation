@@ -59,7 +59,7 @@ Inspecting \textbf{insert GM pic} we note that the state prediction equations de
 
 Before we proceed we prove a very intuitive result in Theorem \ref{thrm_optim_eq}. We will use this to link the predictive controller derived using the results of Section \ref{sec_inf_lin_mods} to the LQR controller derived in Section \ref{sec_lqr_lit}. We provide two proofs, the second of which is more general than the first.
 \begin{thrm}
-\textbf{Unconstrained Optimisation Equivalence} Suppose we have two real valued objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them with respect to $\mathbf{u}$ over the same space where they are both defined: $\mathbf{u}\in \mathcal{U}$ and $x_0 \in \mathcal{X}$. Furthermore, suppose there exists a real number $k \geq 0$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$.
+\textbf{Optimisation Equivalence} Suppose we have two real valued objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them with respect to $\mathbf{u}$ over the same space where they are both defined: $\mathbf{u}\in \mathcal{U}$ and $x_0 \in \mathcal{X}$. Furthermore, suppose there exists a real number $k \geq 0$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$.
 \label{thrm_optim_eq}
 \end{thrm}
 \begin{proof}
@@ -155,6 +155,7 @@ It might seem that the last constraint is a duplicate of the preceding one. Clos
 
 \begin{thrm}
 \textbf{Affine Expected Value Constraints} Suppose we have a stochastic variable $x$ with a known Gaussian distribution. Then the stochastic constraint $\mathbb{E}[dx + e] \geq 0$ simplifies to the deterministic constraint $d\mu + e \geq 0$ where $\mathbb{E}[x]= \mu$ is the mean of the stochastic variable.
+\label{thrm_affine_expected_const}
 \end{thrm}
 \begin{proof}
 We know that $x$ is a Gaussian stochastic variable. By the results of Section \ref{thrm_gaussian_identities} we know that $\mathbb{E}[dx + e] =d\mu + e$. This immediately implies the Theorem.
@@ -229,8 +230,31 @@ We can conclude that the shortest squared Mahalanobis Distance between a point $
 \end{proof}
 
 \begin{thrm}
-\textbf{Gaussian Affine Chance Constraints} 
+\textbf{Gaussian Affine Chance Constraints} If the underlying distribution of a random variable $x$ is Gaussian then the chance constraint $\text{Pr}(dx + e \geq 0) \geq p$ can be rewritten as the deterministic constraint $\frac{(d^T\mu+e)^2}{d^TSd} \geq k^2$ where $k^2$ is the critical value of the inverse cumulative Chi-Squared Distribution with the degrees of freedom equal to the dimensionality of $x$ such that $\text{Pr}(\mathcal{X} \leq k^2) = p$. 
+\label{thrm_chance_cons}
 \end{thrm}
+\begin{proof}
+Intuitively Theorem \ref{thrm_chance_cons} posits that if the shortest squared Mahalanobis distance is further away than some threshold $k^2$ the chance constraint $\text{Pr}(dx + e \geq 0) \geq p$ will be satisfied. It is well known that for Gaussian distributions the probability of an observation is uniquely determined by the Mahalanobis distance. 
+\end{proof}
+
+\begin{thrm}
+\textbf{Conversion of the Stochastic MPC formulation to the standard deterministic QP MPC formulation} Under the assumptions of linearity and Gaussian distributions we can reformulate the stochastic MPC problem shown in (\ref{eq_mpc_constrained_linmod}) as a standard deterministic QP MPC problem shown in (\ref{eq_mpc_constrained_linmod_deter}).
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
+& \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
+& \text{and } \Sigma_{t+1} = W+A\Sigma_t A^T \\
+& \text{and } d\mu_t + e \geq 0 ~\forall ~t=1,...,N \\
+& \text{and } d\mu_t + e \geq k\sqrt{d^T \Sigma_t d} ~\forall ~t=1,...,N\\
+\end{aligned}
+\label{eq_mpc_constrained_linmod_deter}
+\end{equation}
+\label{thrm_mpc_stoch_to_det}
+\end{thrm}
+\begin{proof}
+Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the first inequality constraint follows. The last inequality constraint follows from Theorem \ref{thrm_chance_cons}. 
+\end{proof}
+The beauty of Theorem \ref{thrm_mpc_stoch_to_det} is that no new theory is necessary to analyse the stability and convergence results of the new MPC. This is highly desirable because it allows one to merely ``add" the last inequality constraint to your existing MPC formulation. Most practical MPCs will have some form of state estimation and thus no new parameters are introduced either. Finally, since the problem is in standard QP form it is straightforward to implement and even more importantly computationally fast. 
 
 \subsection{Discussion}
 Use the nonlinear underlying model.
