@@ -27,7 +27,7 @@ p(y_{t+1}|x_t) &= \mathcal{N}(y_{t+1}|Cx_{t+1}, V)
 \end{equation}
 We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $V$ as the noise associated with state measurements and $W$ being a form of the uncertainty associated with the linear model of the plant. Additionally, $W$ can also model any unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $V$ and $W$ indicate more uncertainty in the system. 
 
-To fully specify the system we require the transition and emission probability density functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution of $x_1$.
+To fully specify the system we require the transition and emission probability density functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution of $x_0$.
 
 \subsection{Filtering}
 The goal of filtering is to find the posterior distribution $p(x_{t}|y_{1:t}, u_{1:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in the Hidden Markov Model section albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. 
@@ -81,7 +81,7 @@ By using the matrix identity $(A+BD^{-1}C)^{-1}=A^{-1}-A^{-1}B(D+CA^{-1}B)^{-1}C
 \mu_t &= \mu_{t|t-1} + K_t(y_t - C\mu_{t|t-1})
 \label{eq_filter_mean}
 \end{align}
-Note that for the first time step only the update expression is evaluated as the prediction is the prior of $x_1$. 
+Note that for the first time step only the update expression is evaluated as the prediction is the prior of $x_0$. 
 
 Intuitively, the Kalman Filter equations use the state space model to predict the new state distribution and then adjust it by a correction factor $K_t(y_t - C\mu_{t|t-1})$. This factor depends on the difference between the actual observation and the predicted observation. The Kalman gain, $K_t$, represents the inferred confidence of the model. If the model is deemed accurate then the predictions make up most of $\mu_t$ but if the model is bad at predicting the observations then the observations play a bigger part in the next mean estimate \cite{bishop}. 
 
@@ -177,13 +177,13 @@ A &= \begin{pmatrix}
 0.4186 & 1.0100
 \end{pmatrix} \\
 B &= \begin{pmatrix}
-0 \\ 8.4102\times 10^{-6}
+0 \\ 8.4102\times 10^{-5}
 \end{pmatrix} \\
 C &= \begin{pmatrix}
 0 & 1
 \end{pmatrix} \\
 W &= \begin{pmatrix}
-1\times 10^{-5} & 0 \\ 0 & 4
+1\times 10^{-6} & 0 \\ 0 & 0.1
 \end{pmatrix} \\
 V &= \begin{pmatrix}
 10
@@ -191,7 +191,7 @@ V &= \begin{pmatrix}
 \end{aligned}
 \label{eq_linmodel}
 \end{equation}
-The system noise $W$ indicates that the standard deviation of the concentration component of the model is 0.001 kmol/m$^{-3}$ and the temperature component is 2 K. This indicates that we are quite uncertain about the accuracy of the linear model. The measurement noise implies that 68\% of the measurements will fall between $\pm\sqrt{10}$ of the actual state. We use a vague initial state with mean at the initial condition and covariance $W$.
+The system noise $W$ indicates that the standard deviation of the concentration component of the model is 0.001 kmol/m$^{-3}$ and the temperature component is 0.32 K. While these variances may seem small, bear in mind that noise is added at each time step which compounds its effect. The measurement noise implies that 68\% of the measurements will fall between $\pm\sqrt{10}$ of the actual state. We use an initial state with mean at the initial condition and covariance $W$.
 
 In Figure \ref{fig_kftimeseries} we illustrate the strengths and weaknesses of the Kalman Filter. Since we derived the recursion equations analytically it is computationally efficient to use, the biggest cost is a matrix inversion which needs to be computed at each time step. During the initial part of the simulation the filter very accurately estimates the current system states because the model is accurate in this region. Thus the filter is able to infer the true state in the presence of noisy measurements. 
 
