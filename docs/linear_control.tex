@@ -55,7 +55,30 @@ Note that the future inputs $\mathbf{u}=(u_0, u_1,...,u_{T-1})$ are denoted in b
 
 We start out analysis using the results of Section \ref{sec_inf_lin_mods}. We immediately realise that the optimal linear state estimator is the Kalman Filter. We assume that at every sequential time step we have the current state estimate, supplied by the Kalman Filter, and denote this by $x_0$. Since we are using the Kalman Filter the mean and covariance of the state estimate is well defined. 
 
-Inspecting \textbf{insert GM pic} we note that the state prediction equations derived in Subsection \ref{sec_lin_prediction} are applicable. Thus we can predict the state distributions given the future inputs $\mathbf{u}$.
+\begin{figure}[H] 
+\centering
+\begin{tikzpicture}[thick,scale=1.5, every node/.style={transform shape}]
+
+  % Define nodes
+  \node[obs] (ya) {$y_{0}$};
+  \node[latent, above=of ya]  (xa) {$x_{0}$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, right=of xb]  (xc) {$x_{2}$};
+  \node[det, above=of xa] (da) {$u_{0}$};
+  \node[det, above=of xb] (db) {$u_{1}$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  
+\end{tikzpicture}
+\caption{Graphical model of this section}
+\label{fig_gm_mpc}
+\end{figure}
+Inspecting Figure \ref{fig_gm_mpc} we note that the state prediction equations derived in Subsection \ref{sec_lin_prediction} are applicable. Thus we can predict the state distributions given the future inputs $\mathbf{u}$.
 
 Before we proceed we prove a very intuitive result in Theorem \ref{thrm_optim_eq}. We will use this to link the predictive controller derived using the results of Section \ref{sec_inf_lin_mods} to the LQR controller derived in Section \ref{sec_lqr_lit}. We provide two proofs, the second of which is more general than the first.
 \begin{thrm}

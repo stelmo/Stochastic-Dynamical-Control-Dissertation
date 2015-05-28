@@ -49,24 +49,48 @@
 \begin{document}
 \graphicspath{{./imgs/}{../imgs/}} %look for images
 
-%Title page
-\include{./docs/title_page_mod}
-\tableofcontents
-\include{./docs/introduction}
-\include{./docs/lit_back}
-\include{./docs/hmm}
-\include{./docs/cstr_model}
-\include{./docs/linear_models}
-\include{./docs/nonlinear_models}
-\include{./docs/linear_control}
-\include{./docs/linear_hybrid_models}
-\include{./docs/nonlinear_hybrid_models}
-\include{./docs/switching_linear_control}
-\include{./docs/conclusion}
+\section{Test Tikz}
 
-%References
-\newpage
-\bibliographystyle{plain}
-\bibliography{./docs/research}
+\begin{figure}[H] 
+\centering
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs]                               (y) {$y$};
+  \node[latent, above=of y, xshift=-1.2cm] (w) {$\mathbf{w}$};
+  \node[latent, above=of y, xshift=1.2cm]  (x) {$\mathbf{x}$};
+  \node[latent, right=2cm of y]            (t) {$\tau$};
+
+  % Connect the nodes
+  \edge {x,w,t} {y} ; %
+
+  % Plates
+  \plate {yx} {(x)(y)} {$N$} ;
+  \plate {} {(w)(y)(yx.north west)(yx.south west)} {$M$} ;
+
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[H] 
+\centering
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$y_0$};
+  \node[obs, right=of ya] (yb) {$y_1$};
+  \node[obs, right=of yb] (yc) {$y_2$};
+  \node[latent, above=of ya]  (xa) {$x_0$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_2$};
+  
+  % Connect the nodes
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  
+\end{tikzpicture}
+\end{figure}
 
 \end{document}

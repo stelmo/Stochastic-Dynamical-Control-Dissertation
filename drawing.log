@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  29 MAY 2015 00:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  29 MAY 2015 00:17
 entering extended mode
-**masters.tex
+**drawing.tex
 
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-masters.tex"
+drawing.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -612,31 +612,7 @@ File: pgflibraryarrows.code.tex 2013/09/23 v3.0.0 (rcs-revision 1.16)
 \arrowsize=\dimen170
 )))
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-masters.aux"
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\title_page_mod.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\introduction.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\lit_back.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\hmm.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\cstr_model.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\linear_models.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\nonlinear_models.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\linear_control.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\linear_hybrid_models.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\nonlinear_hybrid_models.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\switching_linear_control.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\conclusion.aux"))
+drawing.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
 LaTeX Font Info:    ... okay on input line 49.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
@@ -698,270 +674,60 @@ LaTeX Font Info:    ... okay on input line 49.
 \makeMPintoPDFobject=\count133
 \everyMPtoPDFconversion=\toks43
 ) ABD: EveryShipout initializing macros
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-masters.toc"
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+LaTeX Font Info:    Try loading font information for U+msa on input line 59.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+LaTeX Font Info:    Try loading font information for U+msb on input line 59.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [1
 
-
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}])
-\tf@toc=\write5
- [2]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\linear_models.tex"
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [45
-
-
-
-
-
-] [46] [47] [48] [49]
-<./imgs/kalman_filter_timeseries_M1.pdf, id=41, 1445.4pt x 708.24597pt>
-File: ./imgs/kalman_filter_timeseries_M1.pdf Graphic file (type pdf)
-
-<use ./imgs/kalman_filter_timeseries_M1.pdf>
-Package pdftex.def Info: ./imgs/kalman_filter_timeseries_M1.pdf used on input l
-ine 222.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
- [50]
-<./imgs/kalman_filter_phase_M1.pdf, id=45, 1445.4pt x 708.24597pt>
-File: ./imgs/kalman_filter_phase_M1.pdf Graphic file (type pdf)
-
-<use ./imgs/kalman_filter_phase_M1.pdf>
-Package pdftex.def Info: ./imgs/kalman_filter_phase_M1.pdf used on input line 2
-33.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
- [51 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
-ion/imgs/kalman_filter_timeseries_M1.pdf>] <./imgs/kalman_filter_timeseries_M2.
-pdf, id=104, 1445.4pt x 708.24597pt>
-File: ./imgs/kalman_filter_timeseries_M2.pdf Graphic file (type pdf)
-
-<use ./imgs/kalman_filter_timeseries_M2.pdf>
-Package pdftex.def Info: ./imgs/kalman_filter_timeseries_M2.pdf used on input l
-ine 246.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
-
-<./imgs/kalman_filter_phase_M2.pdf, id=105, 1445.4pt x 708.24597pt>
-File: ./imgs/kalman_filter_phase_M2.pdf Graphic file (type pdf)
-
-<use ./imgs/kalman_filter_phase_M2.pdf>
-Package pdftex.def Info: ./imgs/kalman_filter_phase_M2.pdf used on input line 2
-52.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
- [52 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
-ion/imgs/kalman_filter_phase_M1.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stocha
-stic-Dynamical-Control-Dissertation/imgs/kalman_filter_timeseries_M2.pdf
-
-pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
-namical-Control-Dissertation/imgs/kalman_filter_timeseries_M2.pdf): PDF inclusi
-on: multiple pdfs with page group included in a single page
->]) [53 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Disser
-tation/imgs/kalman_filter_phase_M2.pdf>]
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\nonlinear_models.tex"
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [54
-
-
-] [55] [56] [57] [58] [59]
-<./imgs/pf_m1_time.pdf, id=305, 1445.4pt x 708.24597pt>
-File: ./imgs/pf_m1_time.pdf Graphic file (type pdf)
-
-<use ./imgs/pf_m1_time.pdf>
-Package pdftex.def Info: ./imgs/pf_m1_time.pdf used on input line 234.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
- [60]
-<./imgs/pf_m1_phase.pdf, id=309, 1445.4pt x 708.24597pt>
-File: ./imgs/pf_m1_phase.pdf Graphic file (type pdf)
-
-<use ./imgs/pf_m1_phase.pdf>
-Package pdftex.def Info: ./imgs/pf_m1_phase.pdf used on input line 241.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
-
-<./imgs/pf_m2_time.pdf, id=310, 1445.4pt x 708.24597pt>
-File: ./imgs/pf_m2_time.pdf Graphic file (type pdf)
-
-<use ./imgs/pf_m2_time.pdf>
-Package pdftex.def Info: ./imgs/pf_m2_time.pdf used on input line 248.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
- [61 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
-ion/imgs/pf_m1_time.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamic
-al-Control-Dissertation/imgs/pf_m1_phase.pdf
-
-pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
-namical-Control-Dissertation/imgs/pf_m1_phase.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
->] <./imgs/pf_m2_phase.pdf, id=428, 1445.4pt x 708.24597pt>
-File: ./imgs/pf_m2_phase.pdf Graphic file (type pdf)
-
-<use ./imgs/pf_m2_phase.pdf>
-Package pdftex.def Info: ./imgs/pf_m2_phase.pdf used on input line 255.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
-
-<./imgs/pf_kf_time.pdf, id=429, 1445.4pt x 708.24597pt>
-File: ./imgs/pf_kf_time.pdf Graphic file (type pdf)
-
-<use ./imgs/pf_kf_time.pdf>
-Package pdftex.def Info: ./imgs/pf_kf_time.pdf used on input line 262.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
- [62 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
-ion/imgs/pf_m2_time.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamic
-al-Control-Dissertation/imgs/pf_m2_phase.pdf
-
-pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
-namical-Control-Dissertation/imgs/pf_m2_phase.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
->] <./imgs/pf_kf_phase.pdf, id=546, 1445.4pt x 708.24597pt>
-File: ./imgs/pf_kf_phase.pdf Graphic file (type pdf)
-
-<use ./imgs/pf_kf_phase.pdf>
-Package pdftex.def Info: ./imgs/pf_kf_phase.pdf used on input line 269.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
-) [63 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Disserta
-tion/imgs/pf_kf_time.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynami
-cal-Control-Dissertation/imgs/pf_kf_phase.pdf
-
-pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
-namical-Control-Dissertation/imgs/pf_kf_phase.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
->] [64]
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\linear_control.tex" [65
-
-
-] [66]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [67] [68] [69] [70] [71] [72] [73] [74])
-[75]
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-masters.bbl" [97
-
-
-
-
-
-] [98] [99]) [100]
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-masters.aux"
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\title_page_mod.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\introduction.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\lit_back.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\hmm.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\cstr_model.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\linear_models.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\nonlinear_models.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\linear_control.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\linear_hybrid_models.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\nonlinear_hybrid_models.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\switching_linear_control.aux")
-("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\conclusion.aux"))
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+drawing.aux") ) 
 Here is how much of TeX's memory you used:
- 15745 strings out of 493921
- 333922 string characters out of 3144868
- 398279 words of memory out of 3000000
- 18644 multiletter control sequences out of 15000+200000
- 15252 words of font info for 58 fonts, out of 3000000 for 9000
+ 15369 strings out of 493921
+ 322671 string characters out of 3144868
+ 379887 words of memory out of 3000000
+ 18359 multiletter control sequences out of 15000+200000
+ 10893 words of font info for 42 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,15n,78p,1368b,844s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masters.pdf (37 pages, 727633 bytes).
+ 55i,11n,78p,414b,814s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
+9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+Output written on drawing.pdf (1 page, 51580 bytes).
 PDF statistics:
- 777 PDF objects out of 1000 (max. 8388607)
+ 33 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 63 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -3,7 +3,28 @@
 In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in the Hidden Markov Model section. We now assume that the states ($x_1,x_2,...$) and observations ($y_1,y_2,...$) are continuous random variables but the inputs ($u_1,u_2,...$) are deterministic. Models of this form are called Latent Linear Dynamical Systems (the famous Kalman Filter model falls into this category).
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=1.0]{linear_model.pdf}
+\begin{tikzpicture}[thick,scale=1.5, every node/.style={transform shape}]
+
+  % Define nodes
+  \node[obs] (ya) {$y_0$};
+  \node[obs, right=of ya] (yb) {$y_1$};
+  \node[obs, right=of yb] (yc) {$y_2$};
+  \node[latent, above=of ya]  (xa) {$x_0$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_2$};
+  \node[det, above=of xa] (da) {$u_0$};
+  \node[det, above=of xb] (db) {$u_1$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  
+\end{tikzpicture}
 \caption{Graphical model of this section}
 \label{fig_linmod2}
 \end{figure}

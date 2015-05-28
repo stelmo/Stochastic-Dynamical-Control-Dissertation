@@ -39,10 +39,10 @@
 \contentsline {section}{\numberline {7}Stochastic Linear Control}{65}
 \contentsline {subsection}{\numberline {7.1}Current Literature}{65}
 \contentsline {subsection}{\numberline {7.2}Unconstrained Stochastic Control}{67}
-\contentsline {subsection}{\numberline {7.3}Constrained Stochastic Control}{70}
-\contentsline {subsection}{\numberline {7.4}Reference Tracking}{74}
-\contentsline {subsection}{\numberline {7.5}Linear System}{74}
-\contentsline {subsection}{\numberline {7.6}Nonlinear System}{74}
+\contentsline {subsection}{\numberline {7.3}Constrained Stochastic Control}{71}
+\contentsline {subsection}{\numberline {7.4}Reference Tracking}{75}
+\contentsline {subsection}{\numberline {7.5}Linear System}{75}
+\contentsline {subsection}{\numberline {7.6}Nonlinear System}{75}
 \contentsline {section}{\numberline {8}Inference using Linear Hybrid Models}{75}
 \contentsline {subsection}{\numberline {8.1}Exact Filtering}{76}
 \contentsline {subsection}{\numberline {8.2}Rao-Blackwellised Particle Filter}{76}
