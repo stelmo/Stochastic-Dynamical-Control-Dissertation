@@ -193,20 +193,20 @@ Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_l
 In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that we only measure temperature for now.
 \begin{equation}
 \begin{aligned}
-A &= \begin{pmatrix}
+&A = \begin{pmatrix}
 0.9959 & -6.0308\times 10^{-5} \\
 0.4186 & 1.0100
-\end{pmatrix} \\
-B &= \begin{pmatrix}
+\end{pmatrix} ~~
+B = \begin{pmatrix}
 0 \\ 8.4102\times 10^{-5}
-\end{pmatrix} \\
-C &= \begin{pmatrix}
+\end{pmatrix} ~~
+C = \begin{pmatrix}
 0 & 1
 \end{pmatrix} \\
-W &= \begin{pmatrix}
+&W = \begin{pmatrix}
 1\times 10^{-6} & 0 \\ 0 & 0.1
-\end{pmatrix} \\
-V &= \begin{pmatrix}
+\end{pmatrix} ~~
+V = \begin{pmatrix}
 10
 \end{pmatrix}
 \end{aligned}
