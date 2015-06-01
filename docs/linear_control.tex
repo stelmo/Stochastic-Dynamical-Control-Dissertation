@@ -54,10 +54,9 @@ Our goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given th
 Note that the future inputs $\mathbf{u}=(u_0, u_1,...,u_{T-1})$ are denoted in boldface to emphasise that it could be a vector of vectors. Inspecting (\ref{eq_mpc_unconstrained_linmod}) we see that this is none other than the LQG control problem of Section \ref{sec_lqg_lit}. Therefore we know what the optimal solution should look like.
 
 We start out analysis using the results of Section \ref{sec_inf_lin_mods}. We immediately realise that the optimal linear state estimator is the Kalman Filter. We assume that at every sequential time step we have the current state estimate, supplied by the Kalman Filter, and denote this by $x_0$. Since we are using the Kalman Filter the mean and covariance of the state estimate is well defined. 
-
 \begin{figure}[H] 
 \centering
-\begin{tikzpicture}[thick,scale=1.5, every node/.style={transform shape}]
+\begin{tikzpicture}
 
   % Define nodes
   \node[obs] (ya) {$y_{0}$};

@@ -1,96 +1,38 @@
-\documentclass[11pt,fleqn]{article}
-\linespread{1.3}
-\usepackage{parskip}
-\setlength{\parindent}{0pt} %no paragraph indentation
-\setlength{\parskip}{2.1ex plus 0.2ex minus 0.2ex} %3x paragraph spacing
-\usepackage{geometry}
-\geometry{a4paper,left=30mm,right=25mm,top=20mm,bottom=20mm} %margin spacing
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\rfoot{\thepage}
-
-\usepackage[pdftex]{graphicx} %so that eps files may be included
-\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}} % so that \indep works :)
-\usepackage[fleqn]{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{float}
-\usepackage[bottom]{footmisc}
-
-% Theorems, definitions etc.
-\newtheoremstyle{defstyle}
-  {10pt} % Space above
-  {0pt} % Space below
-  {} % Body font
-  {} % Indent amount
-  {\bfseries} % Theorem head font
-  {.} % Punctuation after theorem head
-  {0.5em} % Space after theorem head
-  {} % Theorem head spec (can be left empty, meaning `normal')
-\theoremstyle{defstyle}
-\newtheorem{defn}{Definition}[section]
-\newtheorem{rmrk}{Remark}[section]
-\newtheorem{thrm}{Theorem}[section]
-\newtheorem{ax}{Axiom}[section]
-
-\usepackage{comment}
+\documentclass{article}
 
 \usepackage{tikz}
-\usetikzlibrary{bayesnet}
-
-\includeonly{./docs/linear_models,./docs/nonlinear_models,./docs/linear_control}
-%\includeonly{./docs/linear_models,./docs/linear_control}
-%\includeonly{./docs/lit_back,./docs/linear_control}
-%\includeonly{./docs/linear_control}
-%\includeonly{./docs/lit_back}
-
+\usetikzlibrary{shapes,arrows}
 \begin{document}
-\graphicspath{{./imgs/}{../imgs/}} %look for images
 
-\section{Test Tikz}
 
-\begin{figure}[H] 
-\centering
-\begin{tikzpicture}
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
 
-  % Define nodes
-  \node[obs]                               (y) {$y$};
-  \node[latent, above=of y, xshift=-1.2cm] (w) {$\mathbf{w}$};
-  \node[latent, above=of y, xshift=1.2cm]  (x) {$\mathbf{x}$};
-  \node[latent, right=2cm of y]            (t) {$\tau$};
+% The block diagram code is probably more verbose than necessary
+\begin{tikzpicture}[auto, node distance=2cm]
+    % We start by placing the blocks
+    \node [input, name=input] {};
+    \node [sum, right of=input] (sum) {};
+    \node [block, right of=sum] (controller) {Controller};
+    \node [block, right of=controller, pin={[pinstyle]above:Disturbances},
+            node distance=3cm] (system) {System};
+    % We draw an edge between the controller and system block to 
+    % calculate the coordinate u. We need it to place the measurement block. 
+    \draw [->] (controller) -- node[name=u] {$u$} (system);
+    \node [output, right of=system] (output) {};
+    \node [block, below of=u] (measurements) {Measurements};
 
-  % Connect the nodes
-  \edge {x,w,t} {y} ; %
-
-  % Plates
-  \plate {yx} {(x)(y)} {$N$} ;
-  \plate {} {(w)(y)(yx.north west)(yx.south west)} {$M$} ;
-
+    % Once the nodes are placed, connecting them is easy. 
+    \draw [draw,->] (input) -- node {$r$} (sum);
+    \draw [->] (sum) -- node {$e$} (controller);
+    \draw [->] (system) -- node [name=y] {$y$}(output);
+    \draw [->] (y) |- (measurements);
+    \draw [->] (measurements) -| node[pos=0.99] {$-$} 
+        node [near end] {$y_m$} (sum);
 \end{tikzpicture}
-\end{figure}
-
-\begin{figure}[H] 
-\centering
-\begin{tikzpicture}
-
-  % Define nodes
-  \node[obs] (ya) {$y_0$};
-  \node[obs, right=of ya] (yb) {$y_1$};
-  \node[obs, right=of yb] (yc) {$y_2$};
-  \node[latent, above=of ya]  (xa) {$x_0$};
-  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
-  \node[latent, above=of yc, right=of xb]  (xc) {$x_2$};
-  
-  % Connect the nodes
-  \edge {xa} {ya};
-  \edge {xb} {yb};
-  \edge {xc} {yc};
-  \edge {xa} {xb};
-  \edge {xb} {xc};
-  
-\end{tikzpicture}
-\end{figure}
 
 \end{document}

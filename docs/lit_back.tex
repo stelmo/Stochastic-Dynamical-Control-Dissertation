@@ -1,7 +1,10 @@
 \section{Background Literature}
-Summary. This section deals with literature found in books.
+This section is composed of five subsections which introduce the main concepts and results used throughout the rest of the document. Section \ref{sec_prob_theory} introduces Probability Theory and Section \ref{sec_graph_theory} very briefly introduces some useful nomenclature from Graph Theory. These two sections serve as an entry point for Section \ref{sec_graphical_models_theory} which deals with Probabilistic Graphical Models. Section \ref{sec_lit_control} deals with Control Theory and Section \ref{sec_block} introduces an important result from matrix linear algebra.
+
+It would seem as if Sections \ref{sec_prob_theory} to \ref{sec_graphical_models_theory} and Section \ref{sec_lit_control} are not related to each other. However, the foundational theory introduced here is expanded upon later and the relationship then becomes clear.
 
 \subsection{Probability Theory}
+\label{sec_prob_theory}
 The calculus of Probability Theory was developed by Fermat and Pascal in order to better understand the problems introduced by uncertainty in gambling. From this dubious genesis a rich and incredibly powerful field has developed. We start our brief introduction of probability theory by restating Kolmogorov's three probability axioms - these axioms underpin the entire theory of probability.
 
 Let the set $\Omega$ be the universe of possible events, also called the event space; that is, if we are uncertain about which of a number of possibilities are true then we let $\Omega$ represent all of them collectively. Let $P$ be some real valued function which satisfies the three axioms stated below.
@@ -263,11 +266,13 @@ Suppose we observe a finite set of points $x_n$ for $n=1,2,..., N$ drawn from $p
 \end{thrm}
 We also briefly introduce the Mahalanobis Distance in Definition \ref{def_mahala}.
 \begin{defn}
-\textbf{Mahalanobis Distance} The Mahalanobis Distance, given $y$ and $S$, is defined by $D_M(x|y, S) = \sqrt{(x-y)^TS^{-1}(x-y)}$. 
+\textbf{Mahalanobis Distance} The Mahalanobis Distance between $x$ and a reference point $y \in \mathbb{R}^n$ given a covariance matrix $S \in \mathbb{R}^{n\times
+n}$, is defined by $D_M(x|y, S) = \sqrt{(x-y)^TS^{-1}(x-y)}$. 
 \label{def_mahala}
 \end{defn}
-The Mahalanobis Distance is a distance metric which reduces to the Euclidean Distance metric if $S=I$. It is found in the exponent of the Gaussian distribution density function and can be used to measure the ``closeness" of points between distributions. We will study it in more detail later.
+The Mahalanobis Distance is a distance metric which reduces to the Euclidean Distance metric if $S=I$. It is found in the exponent of the Gaussian distribution density function and can be used to measure the ``closeness" of points between distributions with a common covariance matrix. We will study it in more detail later.
 \subsection{Graph Theory}
+\label{sec_graph_theory}
 A graph, $G$, is a data structure consisting of a set of nodes $\chi$ and edges $\xi$. A pair of nodes $X_i, X_j \in \chi$ can be connected by an edge. We will only consider directed graphs in this dissertation. This implies that every edge in $\xi$ has a direction associated between the two nodes it connects i.e. $X_i \rightarrow X_j$ if there is an edge from $X_i$ to $X_j$.
 
 We now define some basic concepts which we will rely upon to further describe the types of graphs we will consider.
@@ -283,7 +288,18 @@ We now define some basic concepts which we will rely upon to further describe th
 In this dissertation we will only concern ourselves with DAGs. Figure \ref{fig_dag} is an example of a DAG.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=1.0]{dag.pdf}
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[latent]  (xa) {$X_{0}$};
+  \node[latent, right=of xa]  (xb) {$X_{1}$};
+  \node[latent, below=of xa]  (xc) {$X_{2}$};
+  \node[latent, below=of xb]  (xd) {$X_{3}$};
+  % Connect the nodes
+  \edge {xa} {xb};
+  \edge {xc} {xb};
+  \edge {xb} {xd};
+\end{tikzpicture}
 \caption{Example of a Directed Acyclic Graph}
 \label{fig_dag}
 \end{figure}
@@ -314,6 +330,7 @@ A = \begin{pmatrix}
 A detailed analysis of Graph Theory may be found in \cite{deo}.
 
 \subsection{Probabilistic Graphical Models}
+\label{sec_graphical_models_theory}
 Probabilistic graphical models are the union between Probability Theory and Graph Theory. Consider why, in general, it is infeasible to determine an arbitrary joint probability distribution. Suppose you have a set of $n$ binary random variables and wish to determine their joint. This equates to finding $P(X_1,X_2,...,X_n)$. To fully specify this model we would need to find and store $2^n-1$ probabilities. For even moderately big $n$ this is impractical, and this was for the simple case of a binary valued random variable. Clearly we require a more efficient way to represent the joint probability distribution.
 
 \subsubsection{Bayesian Networks}
@@ -344,7 +361,20 @@ Thus, the conditional independences imply factorisation of $P$. Conversely, fact
 To illustrate computational benefit of using Bayesian networks, consider again our simple system of $n$ binary random variables $X_1,X_2,...,X_n$. Suppose the Bayesian Network in Figure \ref{fig_bnet} models the system.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=1.0]{bayes_net.pdf}
+\begin{tikzpicture}[thick]
+
+  % Define nodes
+  \node[latent]  (xa) {$X_{0}$};
+  \node[latent, right=of xa]  (xb) {$X_{1}$};
+  \node[latent, right=of xb]  (xc) {$\hdots$};
+  \node[latent, right=of xc]  (xd) {$X_{N-1}$};
+  \node[latent, right=of xd]  (xe) {$X_{N}$};
+  % Connect the nodes
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  \edge {xc} {xd};
+  \edge {xd} {xe};
+\end{tikzpicture}
 \caption{Example simple Bayesian Network}
 \label{fig_bnet}
 \end{figure}
@@ -373,7 +403,44 @@ Neither $Z$ nor any descendant of $Z$ is in $E$ and both path edges lead into $Z
 To shed some more light on d-separation consider Figure \ref{fig_dsep}. The first diagram depicts the first blocked condition, i.e. a causal chain. Node $E$ blocks relevance of $X$ to $Y$. The second diagram illustrates the second blocked condition, i.e. a common cause. Node $E$ blocks $X$ from being relevant to $Y$. Finally, the third diagram illustrates the third blocked condition or, more aptly, illustrates how lack of knowledge of the nodes in the path from $X$ to $Y$ implies that they are conditionally independent \cite{korb}.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.5]{dsep.pdf}
+\begin{tikzpicture}[]
+
+	% pic 1
+	\node[const] (ca) {$(1)$};  
+	\node[latent, right=of ca]  (xa) {$X$};
+	\node[latent, right=of xa]  (xb) {$E$};
+	\node[latent, right=of xb]  (xc) {$Y$};
+	\edge {xa} {xb};
+	\edge {xb} {xc};
+  
+	% pic 2
+	\node[const, below=of ca] (cb) {$(2)$};
+	\node[latent, below=of xa, right=of cb] (ya) {$X$};
+	\node[latent, right=of ya] (yb) {$\hdots$};
+	\node[latent, right=of yb] (yc) {$E$};
+	\node[latent, right=of yc] (yd) {$\hdots$};
+	\node[latent, right=of yd] (ye) {$Y$};
+	\edge {yb} {ya}
+	\edge {yc} {yb}
+	\edge {yc} {yd}
+	\edge {yd} {ye}
+	
+	% pic 3
+	\node[const, below=of cb] (cc) {$(3)$};
+	\node[latent, below=of ya, right=of cc] (za) {$X$};
+	\node[latent, right=of za] (zb) {$\hdots$};
+	\node[latent, right=of zb] (zc) {$\hdots$};
+	\node[latent, below=of zc] (zd) {$\hdots$};
+	\node[latent, right=of zc] (ze) {$Y$};
+	\node[latent, right=of ze] (zf) {$E$};
+	
+	\edge {za} {zb}
+	\edge {zb} {zc}
+	\edge {zc} {zd}
+	\edge {zf} {ze}
+	\edge {ze} {zc}
+  
+\end{tikzpicture}
 \caption{Examples of d-separation}
 \label{fig_dsep}
 \end{figure}
@@ -386,58 +453,71 @@ Dynamical Bayesian Networks generalise the conventional static Bayesian Networks
 
 There are two important classes of analysis one may perform on sequential data using graphical models. On-line analysis, including prediction and filtering and off-line analysis, including smoothing and the most probable explanation (sometimes called Viterbi decoding). In both cases we are generally interested in learning something about a set of hidden state variables by performing inference on some set of observed variables. 
 
-A state space model assumes that there is some underlying hidden state ($X_t$) of the world which generates observations ($Y_t$). These hidden states may evolve with time and may be functions of some inputs ($U_t$). The hidden states and observations are most generally assumed to be random variables. Any state space model is fully parametrised by the following information:
+A state space model assumes that there is some underlying hidden state ($x_t$) of the world which generates observations ($y_t$). These hidden states may evolve with time and may be functions of some inputs ($u_t$). The hidden states and observations are most generally assumed to be random variables. Any state space model is fully parametrised by the following information:
 \begin{enumerate}
 \item
-A prior probability distribution over the states: $P(X_1)$
+A prior probability distribution over the states: $P(x_0)$
 \item
-A state transition function: $P(X_t|X_{1:t-1}, U_{1:t-1})$
+A state transition function: $P(x_t|x_{0:t-1}, u_{0:t-1})$
 \item
-An observation function: $P(Y_t|X_{1:t}, U_{1:t-1})$
+An observation function: $P(y_t|x_{0:t}, u_{0:t-1})$
 \end{enumerate} 
-For the purposes of this dissertation we will assume that the state space model is known. If this model is not known many machine learning techniques may be used find these models \cite{murphy1}. To simplify notation we will sometimes omit the dependence of the probability functions on the inputs $U_{1:t}$.
+For the purposes of this dissertation we will assume that the state space model is known. If this model is not known machine learning techniques may be used find these models \cite{murphy1}. To simplify notation we will sometimes omit the dependence of the probability functions on the inputs $u_{0:t}$.
 
 We will assume that all the systems we model satisfy the first order Markov assumption.
 \begin{defn}
-\textbf{N\textsuperscript{th}-order Markov assumption} A system satisfies the N\textsuperscript{th} Markov assumption if $P(X_t|X_{1:t})=P(X_t|X_{t-n:t-1})$. For example, a first order Markov system satisfies  $P(X_t|X_{1:t})=P(X_t|X_{t-1})$. Similarly with the observation function.
+\textbf{N\textsuperscript{th}-order Markov assumption} A system satisfies the N\textsuperscript{th} Markov assumption if $P(x_t|x_{0:t})=P(x_t|x_{t-n:t-1})$. For example, a first order Markov system satisfies  $P(x_t|x_{0:t})=P(x_t|x_{t-1})$. Similarly with the observation function.
 \end{defn}
 This is not as restrictive as it may seem at first. It is always possible to transform an N\textsuperscript{th}-order Markov system into a first order Markov system by modifying the state space \cite{murphy1}. We also assume that the state and observation functions remain the same for all time i.e. they are time invariant or homogeneous or stationary.
 
-Intuitively, a state space model is a model of how $X_t$ generates or causes $Y_t$ and $X_{t+1}$. The goal of inference is to invert this mapping. The four types of inference we will consider in this dissertation are:
+Intuitively, a state space model is a model of how $x_t$ generates or causes $y_t$ and $x_{t+1}$. The goal of inference is to invert this mapping. The four types of inference we will consider in this dissertation are:
 \begin{enumerate}
 \item
-Filtering: we attempt to infer $P(X_t|y_{1:t})$, i.e. we attempt to estimate the current state given all past observations.
+Filtering: we attempt to infer $P(x_t|y_{0:t})$, i.e. we attempt to estimate the current state given all past observations.
 \item
-Smoothing: we attempt to infer $P(X_{t-m}|y_{1:t})$ with $m > 0$, i.e. we attempt to estimate some past state given all the past and future observations. A more apt description of this process is applying hindsight to state estimation.
+Smoothing: we attempt to infer $P(x_{t-m}|y_{0:t})$ with $m > 0$, i.e. we attempt to estimate some past state given all the past and future observations. A more apt description of this process is applying hindsight to state estimation.
 \item
-Prediction: we attempt to infer either $P(X_{t+m}|y_{1:t})$ or $P(Y_{t+m}|y_{1:t})$ with $m>0$, i.e. we attempt to estimate the future hidden states or observations given all the past observations.
+Prediction: we attempt to infer either $P(x_{t+m}|y_{0:t})$ or $P(y_{t+m}|y_{0:t})$ with $m>0$, i.e. we attempt to estimate the future hidden states or observations given all the past observations.
 \item
 Viterbi Decoding: we attempt to perform $x_{1:t}^* = \underset{x_{1:t}}{\text{arg max }} P(x_{1:t}|y_{1:t})$, i.e. we attempt to infer the most likely sequence of states which best explain the observations.
 \end{enumerate}
-It is customary to denote hidden variables by a shaded node and observed (visible) variables by a clear node. Additionally, it is also customary to separate the input, state and observation variables from each other: $Z_t = (U_t, X_t, Y_t)$. 
+It is customary to denote hidden (latent) variables by a clear node, observed (visible) variables by a shaded node and deterministic variables by a diamond shaped node. Additionally, it is also customary to separate the input, state and observation variables from each other: $z_t = (u_t, x_t, y_t)$. 
 
-To fully specify a Dynamic Bayesian Network we require the pair $(B_1, B_{\rightarrow})$. The Bayesian Network $B_1$ defines the prior over the random variables being modelled and $B_{\rightarrow}$ defines the transition and observation functions by means of a Bayesian Network graph, typically over two time slices. This Bayesian Network graph may be factorised according to the Bayesian Network chain rule such that at each time slice:
+To fully specify a Dynamic Bayesian Network we require the pair $(B_0, B_{\rightarrow})$. The Bayesian Network $B_0$ defines the prior over the random variables being modelled and $B_{\rightarrow}$ defines the transition and observation functions by means of a Bayesian Network graph, typically over two time slices. This Bayesian Network graph may be factorised according to the Bayesian Network chain rule such that at each time slice:
 \begin{equation}
-P(Z_t|Z_{t-1}) = \Pi_{i=1}^{N}P(Z_t^i| \text{Parents} (Z^i_t))
+P(z_t|z_{t-1}) = \Pi_{i=1}^{N}P(z_t^i| \text{Parents} (z^i_t))
 \end{equation}
-A dynamic Bayesian Network may be unrolled (temporally) into a (long) Bayesian Network. If one views Dynamic Bayesian Networks as an extension of Bayesian Networks all the previous theory applies. Using the chain rule for Bayesian Networks again we can specify the joint as:
+A dynamic Bayesian Network may be unrolled (temporally) into a (long) Bayesian Network. If one views Dynamic Bayesian Networks as an extension of Bayesian Networks all the previous theory applies. Using the chain rule for Bayesian Networks again we can specify the full joint over time as:
 \begin{equation}
-P(Z_{1:T}) = \Pi_{t=1}^{T}\Pi_{i=1}^{N}P(Z_t^i| \text{Parents} (Z^i_t))
+P(z_{0:T}) = \Pi_{t=1}^{T}\Pi_{i=1}^{N}P(z_t^i| \text{Parents} (z^i_t))
 \end{equation}
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.8]{general_dbn.pdf}
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$y_{0}$};
+  \node[latent, above=of ya]  (xa) {$x_{0}$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, right=of xb]  (xc) {$x_{2}$};
+  \node[det, above=of xa] (da) {$u_{0}$};
+  \node[det, above=of xb] (db) {$u_{1}$};
+  \node[obs, below=of xb] (yb) {$y_{1}$};
+  \node[obs, below=of xc] (yc) {$y_{2}$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  
+\end{tikzpicture}
 \caption{Example of a DBN unrolled for 3 time slices}
 \label{fig_gen_dbn}
 \end{figure}
-To make the notation clear, the variable $X_t$ represents a Bayesian Network, for example like the arbitrary one shown in Figure \ref{fig_spec_dbn}. Similarly with $U_t$ and $Y_t$. The representation used in Figure \ref{fig_gen_dbn} is just more compact than showing the entire network as in Figure \ref{fig_spec_dbn}.
-\begin{figure}[H] 
-\centering
-\includegraphics[scale=0.4]{spec_dbn.pdf}
-\caption{Complete expanded Dynamic Bayesian Network}
-\label{fig_spec_dbn}
-\end{figure}
-
 \subsection{Control}
 \label{sec_lit_control}
 In this section we briefly introduce three fundamental control strategies. First, the Linear Quadratic Regulator (LQR) which deals with the optimal control of linear discrete time invariant systems. Second, we deal with the stochastic generalisation of the LQR controller: the famous Linear Quadratic Gaussian (LQG) controller. Third and finally, we introduce deterministic Model Predictive Control (MPC). The aim of this section is to introduce and illustrate the relationship between these controllers.

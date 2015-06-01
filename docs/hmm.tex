@@ -2,7 +2,20 @@
 In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. We assume that the  $n$ state state random variable $X$ and the $m$ state observation random variable $Y$ are discrete random variables. Models of this form are classically called Hidden Markov Models (HMMs).
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=1.0]{hmm_model.pdf}
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$Y_{1}$};
+  \node[latent, above=of ya]  (xa) {$X_{1}$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$X_2$};
+  \node[obs, below=of xb] (yb) {$Y_{2}$};
+  
+  % Connect the nodes
+  \edge {xa} {ya};
+  \edge {xa} {xb};
+  \edge {xb} {yb};
+  
+\end{tikzpicture}
 \caption{Graphical model of this section}
 \label{fig_linmod}
 \end{figure}
@@ -18,7 +31,20 @@ P(X_{1:T}) = \Pi_{t=1}^T P(X_t|X_{t-1}) \text{ with } P(X_1|X_{0}) = P(X_1)
 \end{equation}  
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=1.0]{markov_chain.pdf}
+\begin{tikzpicture}[thick]
+
+  % Define nodes
+  \node[latent]  (xa) {$X_{1}$};
+  \node[latent, right=of xa]  (xb) {$X_{2}$};
+  \node[latent, right=of xb]  (xc) {$\hdots$};
+  \node[latent, right=of xc]  (xd) {$X_{T-1}$};
+  \node[latent, right=of xd]  (xe) {$X_{T}$};
+  % Connect the nodes
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  \edge {xc} {xd};
+  \edge {xd} {xe};
+\end{tikzpicture}
 \caption{First Order Markov Chain}
 \label{fig_markov_chain}
 \end{figure}
