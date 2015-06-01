@@ -361,7 +361,7 @@ Thus, the conditional independences imply factorisation of $P$. Conversely, fact
 To illustrate computational benefit of using Bayesian networks, consider again our simple system of $n$ binary random variables $X_1,X_2,...,X_n$. Suppose the Bayesian Network in Figure \ref{fig_bnet} models the system.
 \begin{figure}[H] 
 \centering
-\begin{tikzpicture}[thick]
+\begin{tikzpicture}
 
   % Define nodes
   \node[latent]  (xa) {$X_{0}$};
@@ -403,7 +403,7 @@ Neither $Z$ nor any descendant of $Z$ is in $E$ and both path edges lead into $Z
 To shed some more light on d-separation consider Figure \ref{fig_dsep}. The first diagram depicts the first blocked condition, i.e. a causal chain. Node $E$ blocks relevance of $X$ to $Y$. The second diagram illustrates the second blocked condition, i.e. a common cause. Node $E$ blocks $X$ from being relevant to $Y$. Finally, the third diagram illustrates the third blocked condition or, more aptly, illustrates how lack of knowledge of the nodes in the path from $X$ to $Y$ implies that they are conditionally independent \cite{korb}.
 \begin{figure}[H] 
 \centering
-\begin{tikzpicture}[]
+\begin{tikzpicture}
 
 	% pic 1
 	\node[const] (ca) {$(1)$};  

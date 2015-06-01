@@ -35,14 +35,14 @@ The approach taken by \cite{li} is related to the sampling approach. They conver
 
 In the paper \cite{li2} the stochastic variables are assumed to be Gaussian and the stochastic optimisation problem is transformed into a nonlinear optimisation problem. Using the Gaussian assumption they are able to ensure feasibility and constraint satisfaction albeit conservatively. In \cite{masahiro} the feasibility of stochastically constrained predictive control is considered. An algorithm enforcing joint chance constraints and recursive feasibility is discussed using a risk allocation approach.
 
-While \cite{schwarm} mainly concerns stochastic parameters in the optimisation problem it is shown that chance constraints can, in theory, be rewritten as deterministic constraints if the probability distributions are known and affine constraints are used. In \cite{vanhessem1} and \cite{vanhessem2} an ellipsoidal approximation is used to ensure constraint satisfaction. Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a second order conic optimisation problem. The approach of using confidence ellipsoids is refined in \cite{cannon}.
+While \cite{schwarm} mainly concerns stochastic parameters in the optimisation problem it is shown that chance constraints can, in theory, be rewritten as deterministic constraints if the probability distributions are known and affine constraints are used. In \cite{vanhessem1} and \cite{vanhessem2} an ellipsoidal approximation is used to ensure constraint satisfaction. Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a second order conic optimisation problem. The approach of using confidence ellipsoids is refined in \cite{cannon}. The ellipsoidal approximation technique is further investigated in \cite{blackmore2}; they show that is is possible to reformulate joint chance constraints using univariate Gaussian distributions.
 
 Although \cite{yan1} and \cite{yan2} primarily deal with a univariate problem they show that if the underlying system is linear and Gaussian it is possible to manipulate the constrained stochastic problem into a deterministic problem without any approximations. Their analysis allows the stochastic objective function and constraints to be rewritten as deterministic expressions using the properties of conditionally linear Gaussian distributions.
 
-In this work we show that by starting the MPC design from the graphical model shown in Figure \ref{fig_nlmod} it is possible to easily and intuitively re-derive the LQG controller. During that derivation we naturally arrive at the conclusions reached by \cite{yan1} and \cite{yan2}. Next we generalise our method to incorporate stochastic constraints. We use a method related to the ellipsoidal approximation technique to handle the stochastic constraints. We show that our method replaces the chance constraints with linear constraints. This is highly desirable because it allows one to rewrite the full stochastic MPC problem as a conventional deterministic Quadratic Programming (QP) MPC problem. All of these results are underpinned by the realisation that Graphical Models, as used in the field of Machine Learning, are closely related to predictive control. 
+In this work we show that by starting the MPC design from the graphical model shown in Figure \ref{fig_nlmod} it is possible to easily and intuitively re-derive the LQG controller. During that derivation we naturally arrive at the conclusions reached by \cite{yan1} and \cite{yan2}. Next we generalise our method to incorporate stochastic constraints. We use a method related to the ellipsoidal approximation technique to handle the stochastic constraints. We show that our method replaces the chance constraints with linear constraints. This is highly desirable because it allows one to rewrite the full stochastic MPC problem as a conventional deterministic Quadratic Programming (QP) MPC problem. All of these results are underpinned by the realisation that Graphical Models, as used in the field of Machine Learning, are closely related to predictive control. As far as the authors are aware there does not exist any literature dealing with stochastic MPC where noise exists in both the system states and the measurements, and where chance constraints are efficiently handled using standard optimisation algorithms.
 
 \subsection{Unconstrained Stochastic Control}
-Our goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$. If the system is controllable and linear the Stochastic Reference Tracking Goal will be satisfied.
+Our first goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$. If the system is controllable then solving (\ref{eq_mpc_unconstrained_linmod}) will satisfy the linear unconstrained Stochastic Reference Tracking Goal.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} J_{LQG}(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -60,8 +60,8 @@ We start out analysis using the results of Section \ref{sec_inf_lin_mods}. We im
 
   % Define nodes
   \node[obs] (ya) {$y_{0}$};
-  \node[latent, above=of ya]  (xa) {$x_{0}$};
-  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of ya] (xa) {$x_{0}$};
+  \node[latent, right=of xa] (xb) {$x_1$};
   \node[latent, right=of xb]  (xc) {$x_{2}$};
   \node[det, above=of xa] (da) {$u_{0}$};
   \node[det, above=of xb] (db) {$u_{1}$};
@@ -81,11 +81,11 @@ Inspecting Figure \ref{fig_gm_mpc} we note that the state prediction equations d
 
 Before we proceed we prove a very intuitive result in Theorem \ref{thrm_optim_eq}. We will use this to link the predictive controller derived using the results of Section \ref{sec_inf_lin_mods} to the LQR controller derived in Section \ref{sec_lqr_lit}. We provide two proofs, the second of which is more general than the first.
 \begin{thrm}
-\textbf{Optimisation Equivalence} Suppose we have two real valued objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them with respect to $\mathbf{u}$ over the same space where they are both defined: $\mathbf{u}\in \mathcal{U}$ and $x_0 \in \mathcal{X}$. Furthermore, suppose there exists a real number $k \geq 0$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$.
+\textbf{Optimisation Equivalence} Suppose we have two real valued convex objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them with respect to $\mathbf{u}$ over the same space where they are both defined: $\mathbf{u}\in \mathcal{U}$ and $x_0 \in \mathcal{X}$. Furthermore, suppose there exists a real number $k \geq 0$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ is also the global minimiser of $f(x_0, \mathbf{u})$.
 \label{thrm_optim_eq}
 \end{thrm}
 \begin{proof}
-This proof only holds over functions which are at least twice differentiable and convex. By assumption we know that $\mathbf{u}^*$ is the minimiser of $g(x_0, \mathbf{u})$ given $x_0$. By the necessary conditions for optimality \cite{forst} we know that $\nabla g(x_0, \mathbf{u}^*) = 0$ and that $\nabla ^2 g(x_0, \mathbf{u}^*)$ is positive semi-definite. Since $f$ and $g$ are both twice differentiable and  $g(x_0, \mathbf{u}^*) + k = f(x_0, \mathbf{u}^*)$ it must hold that $\nabla g(x_0, \mathbf{u}^*) = \nabla f(x_0, \mathbf{u}^*)$ and  $\nabla ^2 g(x_0, \mathbf{u}^*) = \nabla ^2 f(x_0, \mathbf{u}^*)$. Since $\nabla ^2 g(x_0, \mathbf{u}^*)$ is positive semi-definite it must be that $\nabla ^2 f(x_0, \mathbf{u}^*)$ is also positive semi-definite. Therefore $\mathbf{u}^*$ is necessarily a minimum of $f$. Since $f$ is convex the minimum must also be a global minimum.
+This proof only holds over functions which are at least twice differentiable. By assumption we know that $\mathbf{u}^*$ is the minimiser of $g(x_0, \mathbf{u})$ given $x_0$. By the necessary conditions for optimality \cite{forst} we know that $\nabla g(x_0, \mathbf{u}^*) = 0$ and that $\nabla ^2 g(x_0, \mathbf{u}^*)$ is positive semi-definite. Since $f$ and $g$ are both twice differentiable and  $g(x_0, \mathbf{u}^*) + k = f(x_0, \mathbf{u}^*)$ it must hold that $\nabla g(x_0, \mathbf{u}^*) = \nabla f(x_0, \mathbf{u}^*)$ and  $\nabla ^2 g(x_0, \mathbf{u}^*) = \nabla ^2 f(x_0, \mathbf{u}^*)$. Since $\nabla ^2 g(x_0, \mathbf{u}^*)$ is positive semi-definite it must be that $\nabla ^2 f(x_0, \mathbf{u}^*)$ is also positive semi-definite. Therefore $\mathbf{u}^*$ is necessarily a minimum of $f$. Since $f$ is convex the minimum must also be a global minimum.
 \end{proof}
 \begin{proof}
 This proof hold over differentiable and non-differentiable objective functions which are not necessarily convex. Suppose not i.e. there exists  $\mathbf{u}_g \in \mathcal{U}$ such that $g(x_0, \mathbf{u}_g) < g(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$ but $f(x_0, \mathbf{u}_g) \nless f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. This implies that for $\mathbf{u}_f \in \mathcal{U}$ the global minimiser of $f$  we have $f(x_0, \mathbf{u}_f) \leq f(x_0, \mathbf{u}_g)$. 
@@ -94,7 +94,7 @@ Consider the case where $f(x_0, \mathbf{u}_f) = f(x_0, \mathbf{u}_g)$. This impl
 
 Consider the case where $f(x_0, \mathbf{u}_f) < f(x_0, \mathbf{u}_g)$. Since $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$ this implies that $g(x_0, \mathbf{u}_f) < g(x_0, \mathbf{u}_g)$. But this contradicts our assumption that $\mathbf{u}_g$ is the global minimiser of $g$.
 
-It must then hold that $f(x_0, \mathbf{u}_g) < f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. Therefore the global minimiser $\mathbf{u}_g$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$. 
+It must then hold that $f(x_0, \mathbf{u}_g) < f(x_0, \mathbf{u})$ $\forall \mathbf{u} \in \mathcal{U}$. Therefore the global minimiser $\mathbf{u}_g$ of $g(x_0, \mathbf{u})$ also minimises $f(x_0, \mathbf{u})$. Since $f$ is convex the minimum must also be a global minimum.
 \end{proof}
 Now we are in a position to show the equivalence between the LQR control problem and the LQG control problem using the results of Section \ref{sec_inf_lin_mods}. Theorem \ref{thrm_lqr_lqg_diff} shows how this is possible. It is quite reassuring to note that by starting within the framework of Graphical Models we arrive at the most important contribution of \cite{yan1} and \cite{yan2} in an intuitively simple manner.
 \begin{thrm}
@@ -109,7 +109,7 @@ Suppose $x_0$ is the state estimate supplied by the Kalman Filter given the late
 \label{thrm_lqr_lqg_diff}
 \end{thrm}
 \begin{proof}
-Expanding the LQG objective function and noting that $\mathbf{u}$ is deterministic we have (\ref{eq_expanded_obj}). Note that the conditional expectations in the expansion originate from the graphical model in Figure \ref{fig_linmod2} (due to the first order Markov assumption). 
+Expanding the LQG objective function and noting that $\mathbf{u}$ is deterministic we have (\ref{eq_expanded_obj}). Note that the conditional expectations in the expansion originate from the graphical model in Figure \ref{fig_gm_mpc} due to the first order Markov assumption. 
 \begin{equation}
 \begin{aligned}
 J_{LQG}(x_0, \mathbf{u}) &= \frac{1}{2} \mathbb{E}\left[x_0^TQx_0 + u_0^TRu_0 \right] + \frac{1}{2} \mathbb{E}\left[x_1^TQx_1 + u_1^TRu_1 |x_0\right] + ... \\ &+ \frac{1}{2} \mathbb{E}\left[x_{N-1}^TQx_{N-1} + u_{N-1}^TRu_{N-1}|x_{N-2} \right] + \frac{1}{2} \mathbb{E}\left[x_N^TP_fx_N|x_{N-1} \right] \\
@@ -173,7 +173,7 @@ The goal of this section is to solve the stochastic constrained optimisation pro
 \end{aligned}
 \label{eq_mpc_constrained_linmod}
 \end{equation}
-It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$. The reason both constraints are required will become clear later.
+It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$.
 
 Theorem \ref{thrm_affine_expected_const} succinctly shows that it is simple to convert the first stochastic constraint in (\ref{eq_mpc_constrained_linmod}) to a linear deterministic constraint.
 \begin{thrm}
@@ -259,7 +259,7 @@ In Theorem \ref{thrm_chance_cons} we apply Theorem \ref{thrm_mahala_dist} to con
 \begin{proof}
 Intuitively Theorem \ref{thrm_chance_cons} posits that if the shortest squared Mahalanobis distance is further away than some threshold $k^2$ the chance constraint $\text{Pr}(dx + e \geq 0) \geq p$ will be satisfied. Since $x$ is a Gaussian stochastic variable we have that $\mathbb{E}[x] =\mu$ and $\text{var}[x]=\Sigma$. Let $\Omega = \{x \in \mathbb{R}^n~|~(x-\mu)^T\Sigma^{-1}(x-\mu) \leq k^2\}$ and $k^2$ be the critical value such that for the Chi-Squared Distribution with degrees of freedom equal to the dimension of $x$ we have that $\text{Pr}(\mathcal{X} \leq k^2) = p$. Then it is well known \cite{mahala2} that $\int_{\Omega}p(x|\mu, \Sigma)dx = p$ where $p(\cdot|\mu, \Sigma)$ is the multivariate Gaussian probability distribution function of $x$. If the shortest squared Mahalanobis Distance from the mean of $x$ is further away from the affine constraint $d^Tz+e=0$ than $k^2$ it implies that the curve of the function $h(z) = (z-\mu)^T\Sigma^{-1}(z-\mu) = k^2$ does not intersect with the constraint. This implies, with at least a probability of $p$, that the chance constraint will not be violated because the ``confidence ellipse" does not intersect the constraint. See Figure for a diagram of the principle behind Theorem \ref{thrm_chance_cons} \cite{mahala1}. \textbf{insert picture}
 \end{proof}
-It is interesting to note the striking similarity between the work in \cite{vanhessem1} and \cite{vanhessem2} and Theorem \ref{thrm_chance_cons} given that we started analysing the problem within the framework of Graphical Models. In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \cite{yan1}, \cite{vanhessem1} to yield a QP MPC which exactly satisfies the stochastic MPC in (\ref{eq_mpc_constrained_linmod}) given the assumptions. Note that the dimensionality of the problem is arbitrary.
+It is interesting to note the striking similarity between the work in \cite{vanhessem1} and \cite{vanhessem2} and Theorem \ref{thrm_chance_cons} given that we started analysing the problem within the framework of Graphical Models. In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \cite{yan1}, \cite{vanhessem1} to yield a QP MPC which exactly satisfies the stochastic MPC in (\ref{eq_mpc_constrained_linmod}) given the assumptions of linearity and normality. Note that the dimensionality of the problem is arbitrary.
 \begin{thrm}
 \textbf{Conversion of the Stochastic MPC formulation to the standard deterministic QP MPC formulation} Under the assumptions of linearity and Gaussian distributions we can reformulate the stochastic MPC problem shown in (\ref{eq_mpc_constrained_linmod}) as a standard deterministic QP MPC problem shown in (\ref{eq_mpc_constrained_linmod_deter}).
 \begin{equation}
@@ -286,12 +286,23 @@ Let the admissible set of controller inputs $\mathcal{U}$ be the same for both t
 \end{equation}
 The first line of (\ref{eq_chance_to_lin}) follows because $S$ is positive semi-definite and $d \neq 0$ (otherwise it would not be a constraint), therefore it can be multiplied over the inequality sign. The second line follows because of the first inequality constraint in (\ref{eq_mpc_constrained_linmod_deter}): we know that $d^T\mu+e \geq 0$ and therefore we can square root both sides of the inequality constraint.
 \end{proof}
+Inspecting the inequality constraints of (\ref{eq_mpc_constrained_linmod_deter}) we see that (\ref{eq_mpc_constrained_linmod}) can more succinctly be replaced by (\ref{eq_mpc_constrained_linmod_deter2}) because the first inequality constraint is automatically satisfied by the second.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
+& \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
+& \text{and } \Sigma_{t+1} = W+A\Sigma_t A^T \\
+& \text{and } d^T\mu_t + e \geq k\sqrt{d^T \Sigma_t d} ~\forall ~t=1,...,N\\
+\end{aligned}
+\label{eq_mpc_constrained_linmod_deter2}
+\end{equation} 
 The beauty of Theorem \ref{thrm_mpc_stoch_to_det} is that no new theory is necessary to analyse the stability and convergence results of the new MPC. This is highly desirable because it allows one to merely ``add" the last inequality constraint to your existing MPC formulation. Most practical MPCs will have some form of state estimation and thus no new parameters are introduced either. Finally, since the problem is in standard QP form it is straightforward to implement and, even more importantly, it is computationally fast because the problem is trivially convex. 
 
 \subsection{Reference Tracking}
 So far we have only dealt with controllers which would drive the system to the origin. The more general situation we are interested in is arbitrary reference point tracking. Fortunately, Section \ref{sec_lit_ref_track} applies without modification because we managed to cast the Stochastic MPC problem into a deterministic MPC problem. 
 
 \subsection{Linear System}
+
 
 \subsection{Nonlinear System}
 

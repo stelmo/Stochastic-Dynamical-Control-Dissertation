@@ -28,6 +28,12 @@ C.M. Bishop.
 \newblock {\em Pattern Recognition and Machine Learning}.
 \newblock Springer, 2006.
 
+\bibitem{blackmore2}
+L.~Blackmore, Hui Li, and B.~Williams.
+\newblock A probabilistic approach to optimal robust path planning with
+  obstacles.
+\newblock In {\em American Control Conference}, June 2006.
+
 \bibitem{blackmore}
 L.~Blackmore, O.~Masahiro, A.~Bektassov, and B.C. Williams.
 \newblock A probabilistic particle-control approximation of chance-constrained
