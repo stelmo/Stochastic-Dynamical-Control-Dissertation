@@ -25,7 +25,7 @@ We will endeavour to develop predictive controllers using the Graphical Models o
 \subsection{Current Literature}
 Linear unconstrained stochastic control subject to white additive Gaussian noise is well studied in literature. The Linear Quadratic Gaussian (LQG) controller introduced in Section \ref{sec_lit_control} is one of the most fundamental results in Optimal Control Theory \cite{lqg}. A significant drawback of the LQG controller, and by extension the LQR controller, is that it is inherently unconstrained.
 
-Conventional deterministic MPC is very well studied in literature \cite{raw} and can be seen as the constrained generalisation of the LQR controller. A further generalisation of deterministic MPC is stochastic MPC whereby either the variables, the constraints or both have stochastic elements. In current literature the trend is to convert all the stochastic elements of the control problem into deterministic ones. This usually makes the problem somewhat more tractable from a computational point of view.
+Conventional deterministic MPC is very well studied in literature \cite{raw} and can be seen as the constrained generalisation of the LQR controller. A further generalisation of deterministic MPC is stochastic MPC whereby either the variables, the constraints or both have stochastic elements. In current literature the trend is to convert all the stochastic elements of the control problem into deterministic ones. This usually makes the problem somewhat more tractable from an analytic and computational point of view.
 
 This conversion is usually achieved via two distinct approaches. In the first approach, which is also the one we employ, the probability distributions are assumed Gaussian and the systems linear. This allows one to greatly simplify the problem at the cost of those relatively strong assumptions. The second approach is to use a particle/sampling approach. Here the distributions are approximated by particles (much like the Particle Filter of Section \ref{sec_inf_nonlin_mods}) and no assumptions are made of form of the distributions. It is also not necessary to assume linear dynamics. The major practical drawback of this approach is that it can quickly become computationally intractable.
 
@@ -33,13 +33,13 @@ Indeed, this is the approach taken by \cite{blackmore}. They attempt to solve th
 
 The approach taken by \cite{li} is related to the sampling approach. They convert the stochastic chance constrained optimisation problem into a deterministic nonlinear optimisation problem. They then use a simulation approach to ensure that the chance constraints are satisfied. The approach taken by \cite{batina} uses a randomized optimisation algorithm in concert with the empirical mean of the variables. A penalty method is used to enforce constraints. The latter paper takes a step in the direction of simplifying the problem without sampling. 
 
-In the paper \cite{li2} the stochastic variables are assumed to be Gaussian and the stochastic optimisation problem is transformed into a nonlinear optimisation problem. Using the Gaussian assumption they are able to ensure feasibility and constraint satisfaction albeit conservatively. In \cite{masahiro} the feasibility of stochastically constrained predictive control is considered. An algorithm enforcing joint chance constraints and recursive feasibility is discussed using a risk allocation approach.
+In \cite{li2} the stochastic variables are assumed to be Gaussian and the stochastic optimisation problem is transformed into a nonlinear optimisation problem. Using the Gaussian assumption they are able to ensure feasibility and constraint satisfaction albeit conservatively. In \cite{masahiro} the feasibility of stochastically constrained predictive control is considered. An algorithm enforcing joint chance constraints and recursive feasibility is discussed using a risk allocation approach.
 
 While \cite{schwarm} mainly concerns stochastic parameters in the optimisation problem it is shown that chance constraints can, in theory, be rewritten as deterministic constraints if the probability distributions are known and affine constraints are used. In \cite{vanhessem1} and \cite{vanhessem2} an ellipsoidal approximation is used to ensure constraint satisfaction. Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a second order conic optimisation problem. The approach of using confidence ellipsoids is refined in \cite{cannon}. The ellipsoidal approximation technique is further investigated in \cite{blackmore2}; they show that is is possible to reformulate joint chance constraints using univariate Gaussian distributions.
 
 Although \cite{yan1} and \cite{yan2} primarily deal with a univariate problem they show that if the underlying system is linear and Gaussian it is possible to manipulate the constrained stochastic problem into a deterministic problem without any approximations. Their analysis allows the stochastic objective function and constraints to be rewritten as deterministic expressions using the properties of conditionally linear Gaussian distributions.
 
-In this work we show that by starting the MPC design from the graphical model shown in Figure \ref{fig_nlmod} it is possible to easily and intuitively re-derive the LQG controller. During that derivation we naturally arrive at the conclusions reached by \cite{yan1} and \cite{yan2}. Next we generalise our method to incorporate stochastic constraints. We use a method related to the ellipsoidal approximation technique to handle the stochastic constraints. We show that our method replaces the chance constraints with linear constraints. This is highly desirable because it allows one to rewrite the full stochastic MPC problem as a conventional deterministic Quadratic Programming (QP) MPC problem. All of these results are underpinned by the realisation that Graphical Models, as used in the field of Machine Learning, are closely related to predictive control. As far as the authors are aware there does not exist any literature dealing with stochastic MPC where noise exists in both the system states and the measurements, and where chance constraints are efficiently handled using standard optimisation algorithms.
+In this work we show that by starting the MPC design from the graphical model shown in Figure \ref{fig_nlmod} it is possible to easily and intuitively re-derive the LQG controller. During that derivation we naturally arrive at the conclusions reached by \cite{yan1} and \cite{yan2}. Next we generalise our method to incorporate stochastic constraints. We use a method related to the ellipsoidal approximation technique to handle the stochastic constraints. We show that our method replaces the chance constraints with linear constraints. This is highly desirable because it allows one to rewrite the full stochastic MPC problem as a conventional deterministic Quadratic Programming (QP) MPC problem. All of these results are underpinned by the realisation that Graphical Models, as used in the field of Machine Learning, are closely related to predictive control. As far as the authors are aware there does not exist any literature dealing with stochastic MPC where noise exists in both the system states and the measurements, and where chance constraints are efficiently handled using standard QP optimisation algorithms.
 
 \subsection{Unconstrained Stochastic Control}
 Our first goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$. If the system is controllable then solving (\ref{eq_mpc_unconstrained_linmod}) will satisfy the linear unconstrained Stochastic Reference Tracking Goal.
@@ -290,7 +290,7 @@ The beauty of Theorem \ref{thrm_mpc_stoch_to_det} is that no new theory is neces
 So far we have only dealt with controllers which would drive the system to the origin. The more general situation we are interested in is arbitrary reference point tracking. Fortunately, Section \ref{sec_lit_ref_track} applies without modification because we managed to cast the Stochastic MPC problem into a deterministic MPC problem. 
 
 \subsection{Linear System}
-In this section we consider the problem of controlling a linear system using the stochastic MPC formulation of Theorem \ref{thrm_mpc_stoch_to_det}. More precisely, we assume the linear model linearised about the unsteady operating point of our CSTR example from Section \ref{sec_cstr} accurately represents the underlying system. For the purposes of illustration we will only use the (somewhat unrealistic) system where both states are measured. However, there is no theoretical reason why we cannot use the system where only temperature is measured. The drawback of using the latter system is that inference, as discussed previously, will be worse. The control goal is to steer the concentration, in the sense of Definition \ref{def_stoch_ref_track_goal}, to the unsteady operating point about which the system was linearised. See Section \ref{sec_cstr} for more details.
+In this section we consider the problem of controlling a linear system using the stochastic MPC formulation of Theorem \ref{thrm_mpc_stoch_to_det}. More precisely, we assume the linear model linearised about the unsteady operating point of our CSTR example from Section \ref{sec_cstr} accurately represents the underlying system. For the purposes of illustration we will only use the (somewhat unrealistic) system where both states are measured. However, there is no theoretical reason why we cannot use the system where only temperature is measured. The drawback of using the latter system is that inference, as discussed previously, will be worse. The control goal is to steer the concentration, in the sense of Definition \ref{def_stoch_ref_track_goal}, to the unsteady operating point ($C_A = 0.49$ kmol.m$^{-3}$) about which the system was linearised. See Section \ref{sec_cstr} for more details.
 
 We repeat the relevant system dynamics in (\ref{eq_linmod_params}) using a time step $h=0.1$. 
 \begin{equation}
@@ -314,7 +314,7 @@ V = \begin{pmatrix}
 \end{aligned}
 \label{eq_linmod_params}
 \end{equation}
-The MPC tuning parameters used in this and all subsequent sections are shown in (\ref{eq_mpc_tuning}). Note that the magnitude difference between the components of $Q$ and $R$ is necessary because the units of concentration and heat input are not scaled.
+The tuning parameters used in this and all subsequent sections are shown in (\ref{eq_mpc_tuning}). Note that the magnitude difference between the components of $Q$ and $R$ is necessary because the units of concentration and heat input are not scaled. Additionally, we assume a zero order hold of 1 min between controller inputs.
 \begin{equation}
 \begin{aligned}
 Q = \begin{pmatrix}
@@ -326,9 +326,43 @@ Q = \begin{pmatrix}
 \end{aligned}
 \label{eq_mpc_tuning}
 \end{equation}
-Firstly we consider the approach of using 
+Firstly we illustrate the approach of using only the result of Theorem \ref{thrm_lqg_sol} i.e. we apply the LQG regulator to the system. Figure shows that the system does indeed converge, noisily, to the set point. The primary drawback of this method is that there is no easy way to constrain the system. From a practical perspective this can be problematic. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{lin_mod_lqg.pdf}
+\caption{LQG regulator tracking with initial condition $(0.55, 450)$ and measuring both states.}
+\label{fig_lin_mod_lqg}
+\end{figure} 
+Next we illustrate the approach of using conventional deterministic MPC to control the stochastic system. The MPC formulation is shown in (\ref{eq_mpc_constrained_det1}). Using MPC allows us to easily add state and input constraints; this is a significant improvement over conventional LQG as discussed previously.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N \\
+& \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
+& d^T\mu_t + e \geq 0 ~\forall ~t=1,...,N\\
+&  |u_t| \leq 11000 ~\forall ~t=0,...,N-1\\
+&  |u_t-u_t{-1}| \leq 1000 ~\forall ~t=1,...,N-1
+\end{aligned}
+\label{eq_mpc_constrained_det1}
+\end{equation}
+We only use a single state constraint in this dissertation but the extension to multiple constraints is straightforward. We have that $d^T = (10, 1)$ and $e=(412)$. The prediction and control horizon is equal and set at 150 time steps i.e. 15 minutes into the future. We additionally constrain the magnitude and rate of change of the inputs.
 
+We assume that a Kalman Filter supplies the initial state estimate $x_0$ and that the mean $\mu_0$ of that estimate is used for control. Since we have assumed normality the deterministic inequality constraint can also be seen as an affine expected value constraint as shown in Theorem \ref{thrm_affine_expected_const}.
 
+In Figure \ref{fig_lin_mod_kf_mean_track} we see the reference tracking and controller input for the deterministic MPC as shown in (\ref{eq_mpc_constrained_det1}).
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{lin_mod_kf_mean_track.pdf}
+\caption{Deterministic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states.}
+\label{fig_lin_mod_kf_mean_track}
+\end{figure}
+It is clear that we have noisy convergence to the set point. As mentioned previously we will never be able to achieve zero set point offset because of the noise term in the system dynamics (\ref{eq_lin_system}). 
+
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{lin_mod_kf_mean_ss.pdf}
+\caption{Deterministic MPC tracking with initial condition $(0.55, 450)$ and measuring both states.}
+\label{fig_lin_mod_kf_mean_ss}
+\end{figure}
 
 
 \subsection{Nonlinear System}
