@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  2 JUN 2015 16:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  2 JUN 2015 22:22
 entering extended mode
 **masters.tex
 
@@ -752,7 +752,7 @@ File: ./imgs/lin_mod_kf_mean_track.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_mean_track.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kf_mean_track.pdf used on input line 36
-3.
+7.
 (pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [76 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
 ion/imgs/lin_mod_lqg.pdf>]
@@ -760,7 +760,7 @@ ion/imgs/lin_mod_lqg.pdf>]
 File: ./imgs/lin_mod_kf_mean_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_mean_ss.pdf>
-Package pdftex.def Info: ./imgs/lin_mod_kf_mean_ss.pdf used on input line 372.
+Package pdftex.def Info: ./imgs/lin_mod_kf_mean_ss.pdf used on input line 376.
 (pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [77 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
 ion/imgs/lin_mod_kf_mean_track.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochas
@@ -769,15 +769,62 @@ tic-Dynamical-Control-Dissertation/imgs/lin_mod_kf_mean_ss.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/lin_mod_kf_mean_ss.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
->]) [78]
+>] <./imgs/lin_mod_kf_var90_track.pdf, id=124, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_var90_track.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_var90_track.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_var90_track.pdf used on input line 3
+98.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/lin_mod_kf_var90_ss.pdf, id=125, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_var90_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_var90_ss.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_var90_ss.pdf used on input line 405.
+
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [78 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_kf_var90_track.pdf>]
+<./imgs/lin_mod_kf_var999_track.pdf, id=144, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_var999_track.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_var999_track.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_var999_track.pdf used on input line 
+416.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [79 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_kf_var90_ss.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochasti
+c-Dynamical-Control-Dissertation/imgs/lin_mod_kf_var999_track.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/lin_mod_kf_var999_track.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>] <./imgs/lin_mod_kf_var999_ss.pdf, id=178, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_var999_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_var999_ss.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_var999_ss.pdf used on input line 425
+.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/lin_mod_kl.pdf, id=179, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kl.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kl.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kl.pdf used on input line 436.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [80 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_kf_var999_ss.pdf>]) [81 <C:/Users/St. Elmo/Documents/GitHub/St
+ochastic-Dynamical-Control-Dissertation/imgs/lin_mod_kl.pdf>]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-masters.bbl" [99
+masters.bbl" [103
 
 
 
 
 
-] [100] [101]) [102]
+] [104] [105]) [106]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 masters.aux"
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
@@ -805,10 +852,10 @@ docs\switching_linear_control.aux")
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\conclusion.aux")) ) 
 Here is how much of TeX's memory you used:
- 15700 strings out of 493921
- 332453 string characters out of 3144868
- 398358 words of memory out of 3000000
- 18610 multiletter control sequences out of 15000+200000
+ 15730 strings out of 493921
+ 333382 string characters out of 3144868
+ 398412 words of memory out of 3000000
+ 18635 multiletter control sequences out of 15000+200000
  15252 words of font info for 58 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,15n,78p,1368b,810s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -831,9 +878,9 @@ s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masters.pdf (20 pages, 1836595 bytes).
+Output written on masters.pdf (23 pages, 2171096 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
+ 275 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 28 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
