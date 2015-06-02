@@ -314,10 +314,10 @@ V = \begin{pmatrix}
 \end{aligned}
 \label{eq_linmod_params}
 \end{equation}
-The tuning parameters used in this and all subsequent sections are shown in (\ref{eq_mpc_tuning}). Note that the magnitude difference between the components of $Q$ and $R$ is necessary because the units of concentration and heat input are not scaled. Additionally, we assume a zero order hold of 1 min between controller inputs.
+The tuning parameters used in this and all subsequent sections are shown in (\ref{eq_mpc_tuning}). Note that the magnitude difference between the components of $Q$, $P_f$ and $R$ is necessary because the units of concentration and heat input are not scaled. 
 \begin{equation}
 \begin{aligned}
-Q = \begin{pmatrix}
+Q = P_f = \begin{pmatrix}
 1\times 10^{4} & 0 \\ 0 & 0
 \end{pmatrix} 
 ~~R = \begin{pmatrix}
@@ -326,7 +326,17 @@ Q = \begin{pmatrix}
 \end{aligned}
 \label{eq_mpc_tuning}
 \end{equation}
-Firstly we illustrate the approach of using only the result of Theorem \ref{thrm_lqg_sol} i.e. we apply the LQG regulator to the system. Figure shows that the system does indeed converge, noisily, to the set point. The primary drawback of this method is that there is no easy way to constrain the system. From a practical perspective this can be problematic. 
+We assume that a Kalman Filter supplies the initial state estimate $x_0$ and that the mean $\mu_0$ of that estimate is used for control. Additionally, we assume a zero order hold of 1 min between controller inputs.
+
+Firstly we illustrate the approach of using only the result of Theorem \ref{thrm_lqg_sol} i.e. we apply the LQG regulator to the system. Based on our previous results we know that given the Kalman Filter state estimate mean $\mu_0$ we only need to solve the LQR as shown in (\ref{eq_lqg_linmod}) to solve the LQG problem. 
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N \\
+& \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
+\end{aligned}
+\label{eq_lqg_linmod}
+\end{equation}
+Figure \ref{fig_lin_mod_lqg} shows that the system does indeed converge, noisily, to the set point. The primary drawback of this method is that there is no easy way to constrain the system. From a practical perspective this can be problematic. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{lin_mod_lqg.pdf}
@@ -338,31 +348,57 @@ Next we illustrate the approach of using conventional deterministic MPC to contr
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N \\
 & \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
-& d^T\mu_t + e \geq 0 ~\forall ~t=1,...,N\\
-&  |u_t| \leq 11000 ~\forall ~t=0,...,N-1\\
-&  |u_t-u_t{-1}| \leq 1000 ~\forall ~t=1,...,N-1
+& (10, 1)\mu_t + 412 \geq 0 ~\forall ~t=1,...,N\\
+&  |u_t| \leq 10000 ~\forall ~t=0,...,N-1\\
 \end{aligned}
 \label{eq_mpc_constrained_det1}
 \end{equation}
-We only use a single state constraint in this dissertation but the extension to multiple constraints is straightforward. We have that $d^T = (10, 1)$ and $e=(412)$. The prediction and control horizon is equal and set at 150 time steps i.e. 15 minutes into the future. We additionally constrain the magnitude and rate of change of the inputs.
+We only use a single state constraint in this dissertation but the extension to multiple constraints is straightforward. The prediction and control horizon are equal to each other and set at 150 time steps i.e. 15 minutes into the future. We additionally constrain the magnitude of the inputs.
 
-We assume that a Kalman Filter supplies the initial state estimate $x_0$ and that the mean $\mu_0$ of that estimate is used for control. Since we have assumed normality the deterministic inequality constraint can also be seen as an affine expected value constraint as shown in Theorem \ref{thrm_affine_expected_const}.
+Since we have assumed normality the deterministic inequality constraint can also be seen as an affine expected value constraint as shown in Theorem \ref{thrm_affine_expected_const}.
 
-In Figure \ref{fig_lin_mod_kf_mean_track} we see the reference tracking and controller input for the deterministic MPC as shown in (\ref{eq_mpc_constrained_det1}).
+In Figure \ref{fig_lin_mod_kf_mean_track} we see the reference tracking and controller input for the deterministic MPC.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{lin_mod_kf_mean_track.pdf}
 \caption{Deterministic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states.}
 \label{fig_lin_mod_kf_mean_track}
 \end{figure}
-It is clear that we have noisy convergence to the set point. As mentioned previously we will never be able to achieve zero set point offset because of the noise term in the system dynamics (\ref{eq_lin_system}). 
+Like the LQG controller, it is clear that we have noisy convergence to the set point. As mentioned previously we will never be able to achieve zero set point offset because of the noise term in the system dynamics (\ref{eq_lin_system}). Note that we have constrained the maximum magnitude of the inputs such that $|u_t| \leq 10000$ kJ/min. In the unconstrained case the controller required a maximum absolute input magnitude of over $12000$ kJ/min; the ability to naturally constrain the input can be practically very useful. The benefit of MPC is apparent here.
 
+In Figure \ref{fig_lin_mod_kf_mean_ss} we see the corresponding state space trajectory of the system together with the state constraint.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{lin_mod_kf_mean_ss.pdf}
-\caption{Deterministic MPC tracking with initial condition $(0.55, 450)$ and measuring both states.}
+\caption{Deterministic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states.}
 \label{fig_lin_mod_kf_mean_ss}
 \end{figure}
+It is clear that while the mean estimates of the states do not violate the constraint the actual underlying system does. This is clearly seen if one inspects the confidence region around the state estimates. The confidence region violates the constraint which implies that it is likely that the underlying system might. This is clearly a problem from a control point of view; the deterministic MPC cannot ensure that the constraint is satisfied.
+
+We remedy this situation by introducing the stochastic MPC as discussed in Theorem \ref{thrm_mpc_stoch_to_det} and shown in (\ref{eq_mpc_linmod_kf_cons}) for convenience. Note that $d^T = (10, 1)$ and $e=412$ as before. By consulting the Chi-Squared Distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
+& \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
+& \text{and } \Sigma_{t+1} = W+A\Sigma_t A^T \\
+& \text{and } d^T\mu_t + e \geq k\sqrt{d^T \Sigma_t d} ~\forall ~t=1,...,N\\
+&  |u_t| \leq 15000 ~\forall ~t=0,...,N-1\\
+\end{aligned}
+\label{eq_mpc_linmod_kf_cons}
+\end{equation}
+Note that we have increased the input magnitude constraint. This is because problem (\ref{eq_mpc_linmod_kf_cons}) is harder than (\ref{eq_mpc_constrained_det1}) due to the added constraint. Thus we expect that the system will require more greater controller input to satisfy the constraint. 
+
+In Figure \ref{
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{lin_mod_kf_mean_ss.pdf}
+\caption{Deterministic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states.}
+\label{fig_lin_mod_kf_mean_ss}
+\end{figure}
+
+
+
+
 
 
 \subsection{Nonlinear System}

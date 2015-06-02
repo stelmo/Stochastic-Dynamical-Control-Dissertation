@@ -42,7 +42,7 @@
 \contentsline {subsection}{\numberline {7.3}Constrained Stochastic Control}{71}
 \contentsline {subsection}{\numberline {7.4}Reference Tracking}{75}
 \contentsline {subsection}{\numberline {7.5}Linear System}{75}
-\contentsline {subsection}{\numberline {7.6}Nonlinear System}{77}
+\contentsline {subsection}{\numberline {7.6}Nonlinear System}{78}
 \contentsline {section}{\numberline {8}Inference using Linear Hybrid Models}{77}
 \contentsline {subsection}{\numberline {8.1}Exact Filtering}{78}
 \contentsline {subsection}{\numberline {8.2}Rao-Blackwellised Particle Filter}{78}
