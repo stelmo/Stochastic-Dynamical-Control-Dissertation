@@ -345,7 +345,7 @@ Figure \ref{fig_lin_mod_lqg} shows that the system does indeed converge, noisily
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{lin_mod_lqg.pdf}
-\caption{LQG regulator tracking with initial condition $(0.55, 450)$ and measuring both states.}
+\caption{Unconstrained LQG regulator tracking with initial condition $(0.55, 450)$ and measuring both states.}
 \label{fig_lin_mod_lqg}
 \end{figure}
 The average heat energy usage (controller input) over the simulation run is 214 kJ/min. The average set point error is 2.38\% over the same 40 min time period.
@@ -419,7 +419,7 @@ In Figure \ref{fig_lin_mod_kf_var999_track} we see that the stochastic MPC still
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{lin_mod_kf_var999_track.pdf}
-\caption{Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states.}
+\caption{Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. The chance constraint is set at 90\%.}
 \label{fig_lin_mod_kf_var999_track}
 \end{figure}
 The average heat input and average set point error is 3.73\% and 351 kJ/min. The added conservativeness of the MPC prevents it from attempting to get to the set point as fast as the previous stochastic MPC; this causes the higher average error but the constraints are satisfied more robustly. As before, the control problem is harder and thus requires more energy.
@@ -428,7 +428,7 @@ In Figure \ref{fig_lin_mod_kf_var999_ss} we see the 90\% confidence region is ab
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{lin_mod_kf_var999_ss.pdf}
-\caption{Stochastic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states.}
+\caption{Stochastic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. The chance constraint is set at 99.9\%.}
 \label{fig_lin_mod_kf_var999_ss}
 \end{figure}
 It would also be correct to infer that $k$ can be used as an empirical measure of the inherent stochastic conservativeness of the resulting controller. That is, lower values of $k$ indicate a more aggressive controller which may violate the chance constraints and higher values of $k$ indicate a more conservative controller. This can be useful for systems where the normal assumption is not valid but one would still like to enforce stochastic constraints in some empirical sense. 
@@ -454,7 +454,59 @@ In this section we consider the problem of controlling the full non-linear syste
 
 The linear control model and noise parameters are the same as (\ref{eq_linmod_params}). The control tuning parameters are the same as (\ref{eq_mpc_tuning}).
 
-As before we first investigate the LQG controller. The control problem is the same as (\ref{eq_lqg_linmod}) but this time the underlying system is non-linear.
+As before we first investigate the LQG controller. The control problem is the same as (\ref{eq_lqg_linmod}) but this time the underlying system is non-linear. Figure \ref{fig_nonlin_lqg} shows the unconstrained reference tracking results.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{nonlin_mod_lqg.pdf}
+\caption{LQG regulator tracking with initial condition (0.55, 450) and measuring both states.}
+\label{fig_nonlin_lqg}
+\end{figure}
+The average energy usage and concentration error was 302 kJ/min and 10.94\% respectively over the 80 min simulation time. Comparing Figures \ref{fig_lin_mod_lqg} and \ref{fig_nonlin_lqg} we see that the maximum absolute input energy is much greater with the non-linear underlying dynamics. This is not unexpected because the controller in both cases is linear: one expects that the plant-model mismatch to have a detrimental effect on control.
 
+In the previous section we had a linear underlying model and linear control. Figure \ref{fig_lin_mod_kl} also demonstrated that the posterior state distributions were approximately Gaussian. Thus there was no reason to use non-linear inference algorithms like the Particle Filter introduced in Section \ref{sec_inf_nonlin_mods}. However, in this section we are using a non-linear underlying model and it might be advantageous to use a more sophisticated inference tool. We investigate using both a Kalman Filter and a Particle Filter for inference. In the setting of the Particle Filter we approximate the samples as Gaussian and use that for control.
 
+As before we first investigate the deterministic MPC. The control problem is shown in (\ref{eq_mpc_constrained_det2}). Note that the constraints are different due to the expected extra difficulty introduced by the non-linear underlying model. 
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N \\
+& \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
+&\text{and } \begin{pmatrix}
+10 \\ 1
+\end{pmatrix}^T \mu_t + 400 \geq 0 ~\forall ~t=1,...,N\\
+& \text{and } |u_t| \leq 20000 ~\forall ~t=0,...,N-1\\
+\end{aligned}
+\label{eq_mpc_constrained_det2}
+\end{equation}
+In Figure \ref{fig_nonlin_mod_kf_mean_track} we see that the deterministic MPC using the Kalman Filter for state inference does converge to the set point. The ability to naturally constrain the system is again highlighted in the input: as opposed to the -25 000 kJ/min required by the LQG controller the MPC manages to control the system while never requiring more than $|20000|$ kJ/min. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{lin_mod_kf_mean_track.pdf}
+\caption{Deterministic constrained MPC reference tracking with initial condition $(0.55, 450)$ and measuring both states. The Kalman Filter is used for inference.}
+\label{fig_nonlin_mod_kf_mean_track}
+\end{figure} 
+In Figure \ref{fig_nonlin_mod_kf_mean_ss} we see that the state constraint is violated just like Figure \ref{fig_lin_mod_kf_mean_ss}. We also see a somewhat unrealistic jagged state trajectory but this is just a numerical artefact. The average energy input and concentration error over the simulation run is 413 kJ/min and 14.53\% respectively. Once again the added constraints explain why the performance is degraded when compared to the LQG controller.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{nonlin_mod_kf_mean_ss.pdf}
+\caption{Deterministic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. The Kalman Filter is used for inference.}
+\label{fig_nonlin_mod_kf_mean_ss}
+\end{figure}
+Since we are not using a stochastic MPC the state constraint violation is not surprising in Figure \ref{fig_nonlin_mod_kf_mean_ss}. However, a more significant issue is the inability of the Kalman Filter to accurately track the states throughout the simulation (the underlying system briefly diverges from the state estimates). This can be significantly problematic if a constraint existed in the left hand side of the state space: the controller wouldn't know that it was violating the constraint because the state estimate is poor. This behaviour is caused by the linear model used by the Kalman Filter. The state trajectory moves away from the region close to the linearisation point and thus, as explained in Section \ref{sec_inf_lin_mods}, the state estimate becomes poor.
 
+We can remedy this situation by using a more sophisticated inference algorithm. In Figure \ref{fig_nonlin_mod_pf_mean_track} we see the deterministic MPC using a Particle Filter with 200 particles for inference. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{nonlin_mod_pf_mean_track.pdf}
+\caption{Deterministic constrained MPC reference tracking with initial condition $(0.55, 450)$ and measuring both states. A Particle Filter with 200 particles is used for inference.}
+\label{fig_nonlin_mod_pf_mean_track}
+\end{figure} 
+The average energy input and concentration error is 218 kJ/min and 4.80\% respectively. This is a vast improvement over the same controller where the Kalman Filter was used for inference. The benefit of accurate state estimation is apparent here and also in Figure \ref{fig_nonlin_mod_pf_mean_ss}.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{nonlin_mod_pf_mean_ss.pdf}
+\caption{Deterministic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Particle Filter with 200 particles is used for inference.}
+\label{fig_nonlin_mod_pf_mean_ss}
+\end{figure}
+In Figure \ref{fig_nonlin_mod_kf_mean_ss} we saw significant estimation deviation from the true underlying model, while in Figure \ref{fig_nonlin_mod_pf_mean_ss} the deviation is negligible. We still have that the state constraint is violated but this is due to the stochastic nature of the underlying system.
+
+ 
