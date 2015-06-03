@@ -74,16 +74,16 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Deterministic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states.}}{77}}
 \newlabel{fig_lin_mod_kf_mean_ss}{{37}{77}}
 \newlabel{eq_mpc_linmod_kf_cons}{{110}{78}}
-\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states.}}{78}}
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 90\%.}}{78}}
 \newlabel{fig_lin_mod_kf_var90_track}{{38}{78}}
-\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Stochastic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states.}}{79}}
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 90\%.}}{79}}
 \newlabel{fig_lin_mod_kf_var90_ss}{{39}{79}}
-\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. The chance constraint is set at 90\%.}}{79}}
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 99.9\%.}}{79}}
 \newlabel{fig_lin_mod_kf_var999_track}{{40}{79}}
 \citation{mac}
-\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces Stochastic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. The chance constraint is set at 99.9\%.}}{80}}
+\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 99.9\%.}}{80}}
 \newlabel{fig_lin_mod_kf_var999_ss}{{41}{80}}
-\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces Kullback-Leibler Divergence between the assumed Gaussian distribution and actual distribution using 5000 particles.}}{81}}
+\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces Kullback-Leibler Divergence between the assumed Gaussian distribution and actual distribution using 5000 particles. The underlying model is linear.}}{81}}
 \newlabel{fig_lin_mod_kl}{{42}{81}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.6}Nonlinear System}{81}}
 \@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces LQG regulator tracking with initial condition (0.55, 450) and measuring both states.}}{82}}
@@ -97,9 +97,25 @@
 \newlabel{fig_nonlin_mod_pf_mean_track}{{46}{84}}
 \@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces Deterministic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Particle Filter with 200 particles is used for inference.}}{84}}
 \newlabel{fig_nonlin_mod_pf_mean_ss}{{47}{84}}
+\newlabel{eq_mpc_nonlin_mod_cons}{{112}{85}}
+\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 90\%.}}{85}}
+\newlabel{fig_nonlin_mod_kf_var90_track}{{48}{85}}
+\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 90\%.}}{86}}
+\newlabel{fig_nonlin_mod_kf_var90_ss}{{49}{86}}
+\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 99.9\%.}}{86}}
+\newlabel{fig_nonlin_mod_kf_var999_track}{{50}{86}}
+\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 99.9\%.}}{87}}
+\newlabel{fig_nonlin_mod_kf_var999_ss}{{51}{87}}
+\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Particle Filter with 200 particles is used for inference and the chance constraint is set at 90\%.}}{87}}
+\newlabel{fig_nonlin_mod_pf_var90_track}{{52}{87}}
+\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Particle Filter with 200 particles is used for inference and the chance constraint is set at 90\%.}}{88}}
+\newlabel{fig_nonlin_mod_pf_var90_ss}{{53}{88}}
+\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces Kullback-Leibler Divergence between the assumed Gaussian distribution and actual distribution using 5000 particles. The underlying model is non-linear.}}{88}}
+\newlabel{fig_nonlin_mod_kl}{{54}{88}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion}{89}}
 \@setckpt{./docs/linear_control}{
-\setcounter{page}{85}
-\setcounter{equation}{111}
+\setcounter{page}{90}
+\setcounter{equation}{112}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -107,18 +123,18 @@
 \setcounter{footnote}{5}
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
-\setcounter{section}{7}
-\setcounter{subsection}{6}
+\setcounter{section}{8}
+\setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{47}
+\setcounter{figure}{54}
 \setcounter{table}{3}
 \setcounter{parentequation}{0}
 \setcounter{float@type}{4}
 \setcounter{pp@next@reset}{0}
-\setcounter{defn}{1}
+\setcounter{defn}{0}
 \setcounter{rmrk}{0}
-\setcounter{thrm}{8}
+\setcounter{thrm}{0}
 \setcounter{ax}{0}
 }
