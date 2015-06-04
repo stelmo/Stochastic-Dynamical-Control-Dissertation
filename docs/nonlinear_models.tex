@@ -227,6 +227,7 @@ Once again, the Graphical Model depicting this situation is exactly the same as 
 In the context of nonlinear transition and emission functions smoothing and Viterbi decoding are much more difficult than before. For the purposes of this dissertation it is not important to consider inferences of that type and thus we merely refer the reader to literature where this is discussed \cite{barber}\cite{pftut}\cite{gsf1}\cite{murphy1}\cite{murphy2}.
 
 \subsection{Filtering the CSTR}
+\label{sec_nonlinmods_filtering}
 In this section we apply the Particle Filter to the nonlinear CSTR problem introduce in Section \ref{sec_cstr}. We first demonstrate the effectiveness of the Particle Filter by performing inference using the full nonlinear CSTR model measuring only temperature. Next we use the full nonlinear model again but measure both temperature and concentration. Finally, we compare the Particle Filter and the Kalman Filter measuring both states.
 
 Although it is not necessary we assume that the process and measurement noise is Gaussian with the same distributions as in Section \ref{sec_filtering_linmods}. Unless otherwise noted we use the same parameters (e.g. $h=0.1$) as before. We have used 200 particles to represent the state posterior. In Figure \ref{fig_pf_m1_time} we see the state estimates as a function of time.

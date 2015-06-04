@@ -507,7 +507,7 @@ The average energy input and concentration error is 218 kJ/min and 4.80\% respec
 \caption{Deterministic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Particle Filter with 200 particles is used for inference.}
 \label{fig_nonlin_mod_pf_mean_ss}
 \end{figure}
-In Figure \ref{fig_nonlin_mod_kf_mean_ss} we saw significant estimation deviation from the true underlying state, while in Figure \ref{fig_nonlin_mod_pf_mean_ss} the deviation is negligible. We still have that the state constraint is violated but this is due to the stochastic nature of the underlying system. It is clear that the Particle Filter MPC combination is superior to the Kalman Filter MPC combination in this case. However, the benefit of using the Particle Filter should be weighed against the cost of the algorithm especially in higher dimensions where it is known that the Particle Filter does not perform well.
+In Figure \ref{fig_nonlin_mod_kf_mean_ss} we saw significant estimation deviation from the true underlying state, while in Figure \ref{fig_nonlin_mod_pf_mean_ss} the deviation is negligible. We still have that the state constraint is violated but this is due to the stochastic nature of the underlying system. It is clear that the Particle Filter MPC combination is superior to the Kalman Filter MPC combination in this case. However, the benefit of using the Particle Filter should be weighed against the cost of the algorithm especially in higher dimensions where it is known that the Particle Filter does not perform well (recall the discussion following Figure \ref{fig_pf_kf_phase2}).
 
 Now we introduce the stochastically constrained MPC in (\ref{eq_mpc_nonlin_mod_cons}). Note that the constraints are different than (\ref{eq_mpc_linmod_kf_cons}) for the same reason as (\ref{eq_mpc_constrained_det2}). We have $d^T = (10, 1)$ and $e=400$ as before. By consulting a Chi-Squared Distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$ exactly as in the previous section.
 \begin{equation}
@@ -559,6 +559,8 @@ Figures \ref{fig_nonlin_mod_kf_var90_track} to \ref{fig_nonlin_mod_kf_var999_ss}
 \caption{Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Particle Filter with 200 particles is used for inference and the chance constraint is set at 90\%.}
 \label{fig_nonlin_mod_pf_var90_track}
 \end{figure}
+One could see the discussion in Section \ref{sec_nonlinmods_filtering} as a justification for using the Particle Filter instead of the Kalman Filter for state estimation. Since the underlying model is non-linear we expect the Particle Filter to outperform the Kalman Filter (recall the discussion following Figure \ref{fig_pf_kf_phase2}).
+
 The average input energy and average concentration error is 178 kJ/min and 2.98\% over the course of the simulation. This is a vast improvement over the Kalman Filter MPC combination. Clearly the more accurate state estimation is immensely beneficial for control.
 
 Figure \ref{fig_nonlin_mod_pf_var90_ss} also illustrates that the stochastic constraint is easily satisfied using the more accurate estimator.
