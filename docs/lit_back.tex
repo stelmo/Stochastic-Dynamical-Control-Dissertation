@@ -1,5 +1,5 @@
 \section{Background Literature}
-This section is composed of five subsections which introduce the main concepts and results used throughout the rest of the document. Section \ref{sec_prob_theory} introduces Probability Theory and Section \ref{sec_graph_theory} very briefly introduces some useful nomenclature from Graph Theory. These two sections serve as an entry point for Section \ref{sec_graphical_models_theory} which deals with Probabilistic Graphical Models. Section \ref{sec_lit_control} deals with Control Theory and Section \ref{sec_block} introduces an important result from matrix linear algebra.
+This section is composed of five subsections which introduce the main concepts and results used throughout the rest of the document. Section \ref{sec_prob_theory} introduces Probability Theory. Section \ref{sec_graph_theory} very briefly introduces some useful nomenclature from Graph Theory. These two sections serve as an entry point for Section \ref{sec_graphical_models_theory} which deals with Probabilistic Graphical Models. Section \ref{sec_lit_control} deals with Control Theory and Section \ref{sec_block} introduces an important result from matrix linear algebra.
 
 It would seem as if Sections \ref{sec_prob_theory} to \ref{sec_graphical_models_theory} and Section \ref{sec_lit_control} are not related to each other. However, the foundational theory introduced here is expanded upon later and the relationship then becomes clear.
 
@@ -750,7 +750,7 @@ A schematic diagram of the solution of LQG control problem is shown  in Figure \
 The LQR and LQG controllers are two of the most fundamental results in Optimal Control theory \cite{robust}. In the next section we discuss Model Predictive Control (MPC) which is a generalisation of the controllers we have discussed so far.
 
 \subsubsection{Model Predictive Control}
-Model Predictive Control (MPC) is the constrained generalisation of the LQR controller. It is widely used industry and has been the subject of a significant amount of scholarly research. We introduce the classic deterministic linear MPC in (\ref{eq_mpc_problem}).
+Model Predictive Control (MPC) is the constrained generalisation of the LQR controller. It is widely used industry and has been the subject of a significant amount of scholarly research. We introduce the classic deterministic linear MPC in (\ref{eq_mpc_problem}) with control/prediction horizon $N$.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\

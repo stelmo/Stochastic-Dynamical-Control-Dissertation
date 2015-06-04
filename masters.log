@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  4 JUN 2015 19:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  4 JUN 2015 19:55
 entering extended mode
 **masters.tex
 
@@ -637,18 +637,18 @@ docs\nonlinear_hybrid_models.aux")
 docs\switching_linear_control.aux")
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\conclusion.aux"))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1081,6 +1081,15 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
  [47]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1098,7 +1107,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
  [48] [49] [50]
-Overfull \hbox (2.23401pt too wide) in paragraph at lines 238--239
+Overfull \hbox (2.23401pt too wide) in paragraph at lines 246--247
 \OT1/cmr/m/n/10.95 that the joint dis-tri-bu-tion for $\OML/cmm/m/it/10.95 p\OT
 1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]; y[]; u[]\OT1/cmr/m/n/10.95 ) = \OML/c
 mm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 )\
@@ -1114,7 +1123,7 @@ File: ./imgs/kalman_filter_timeseries_M1.pdf Graphic file (type pdf)
 
 <use ./imgs/kalman_filter_timeseries_M1.pdf>
 Package pdftex.def Info: ./imgs/kalman_filter_timeseries_M1.pdf used on input l
-ine 273.
+ine 281.
 (pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [52]
 <./imgs/kalman_filter_phase_M1.pdf, id=1296, 1445.4pt x 708.24597pt>
@@ -1122,7 +1131,7 @@ File: ./imgs/kalman_filter_phase_M1.pdf Graphic file (type pdf)
 
 <use ./imgs/kalman_filter_phase_M1.pdf>
 Package pdftex.def Info: ./imgs/kalman_filter_phase_M1.pdf used on input line 2
-84.
+92.
 (pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [53 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
 ion/imgs/kalman_filter_timeseries_M1.pdf>] <./imgs/kalman_filter_timeseries_M2.
@@ -1131,7 +1140,7 @@ File: ./imgs/kalman_filter_timeseries_M2.pdf Graphic file (type pdf)
 
 <use ./imgs/kalman_filter_timeseries_M2.pdf>
 Package pdftex.def Info: ./imgs/kalman_filter_timeseries_M2.pdf used on input l
-ine 297.
+ine 305.
 (pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
 
 <./imgs/kalman_filter_phase_M2.pdf, id=1324, 1445.4pt x 708.24597pt>
@@ -1139,7 +1148,7 @@ File: ./imgs/kalman_filter_phase_M2.pdf Graphic file (type pdf)
 
 <use ./imgs/kalman_filter_phase_M2.pdf>
 Package pdftex.def Info: ./imgs/kalman_filter_phase_M2.pdf used on input line 3
-03.
+11.
 (pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [54 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
 ion/imgs/kalman_filter_phase_M1.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stocha
@@ -1722,10 +1731,10 @@ docs\switching_linear_control.aux")
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\conclusion.aux")) ) 
 Here is how much of TeX's memory you used:
- 16201 strings out of 493921
- 345906 string characters out of 3144868
+ 16207 strings out of 493921
+ 345978 string characters out of 3144868
  399085 words of memory out of 3000000
- 19022 multiletter control sequences out of 15000+200000
+ 19028 multiletter control sequences out of 15000+200000
  21144 words of font info for 80 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,15n,78p,1533b,808s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1759,7 +1768,7 @@ nts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
 ype1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on masters.pdf (118 pages, 15057205 bytes).
+Output written on masters.pdf (118 pages, 15057590 bytes).
 PDF statistics:
  4681 PDF objects out of 5155 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

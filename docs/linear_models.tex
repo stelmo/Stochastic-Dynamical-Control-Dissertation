@@ -57,14 +57,19 @@ The goal of filtering is to find the posterior distribution $p(x_{t}|y_{0:t}, u_
 \begin{tikzpicture}
 
   % Define nodes
-  \node[obs] (ya) {$y_{t-2}$};
-  \node[obs, right=of ya] (yb) {$y_{t-1}$};
-  \node[obs, right=of yb] (yc) {$y_t$};
-  \node[latent, above=of ya]  (xa) {$x_{t-2}$};
-  \node[latent, above=of yb, right=of xa]  (xb) {$x_{t-1}$};
-  \node[latent, above=of yc, right=of xb]  (xc) {$x_t$};
-  \node[det, above=of xa] (da) {$u_{t-2}$};
-  \node[det, above=of xb] (db) {$u_{t-1}$};
+  \node[obs] (ya) {$y_{0}$};
+  \node[obs, right=of ya] (yb) {$y_1$};
+  \node[obs, right=of yb] (yc) {$\cdots$};
+  \node[latent, above=of ya]  (xa) {$x_{0}$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$\cdots$};
+  \node[det, above=of xa] (da) {$u_{0}$};
+  \node[det, above=of xb] (db) {${\cdots}$};
+  
+  \node[obs, right=of yc] (yd) {$y_t$};
+  \node[latent, above=of yd, right=of xc]  (xd) {$x_t$};
+  \node[det, above=of xc] (dc) {$u_{t-1}$};
+  
   
   % Connect the nodes
   \edge {da} {xb};
@@ -74,6 +79,9 @@ The goal of filtering is to find the posterior distribution $p(x_{t}|y_{0:t}, u_
   \edge {xc} {yc};
   \edge {xa} {xb};
   \edge {xb} {xc};
+  \edge {xc} {xd};
+  \edge {xd} {yd};
+  \edge {dc} {xd};
   
 \end{tikzpicture}
 \caption{Graphical Model for filtering}
@@ -134,7 +142,7 @@ Intuitively, the Kalman Filter equations use the state space model to predict th
 
 \subsection{Prediction}
 \label{sec_lin_prediction}
-The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{0:t}, u_{0:t+h-1})$ and $p(y_{t+h}|y_{0:t}, u_{0:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). The graphical model corresponding to state prediction is shown in Figure \ref{fig_gm_linmods_prediction}.
+The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{0:t}, u_{0:t+h-1})$ and $p(y_{t+h}|y_{0:t}, u_{0:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). The graphical model corresponding to  the two step ahead state prediction is shown in Figure \ref{fig_gm_linmods_prediction}.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}

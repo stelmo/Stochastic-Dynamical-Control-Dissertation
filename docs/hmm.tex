@@ -27,7 +27,7 @@ In this section we briefly describe Markov Models because they link back to prev
 \subsection{Markov Models}
 A first order Markov Model (sometimes called a Markov Chain) is shown in Figure \ref{fig_markov_chain}. Using the chain rule for Bayesian Networks (Definition \ref{def_chain_rule_bayes}) we can immediately write down the joint probability distribution as shown in (\ref{eq_markov_chain_joint}).
 \begin{equation}
-P(X_{0:T}) = \Pi_{t=1}^T P(X_t|X_{t-1}) \text{ with } P(X_0|X_{-1}) = P(X_0)
+P(X_{0:T}) = \Pi_{t=0}^T P(X_t|X_{t-1}) \text{ with } P(X_0|X_{-1}) = P(X_0)
 \label{eq_markov_chain_joint}
 \end{equation}  
 \begin{figure}[H] 
