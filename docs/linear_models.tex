@@ -1,6 +1,6 @@
 \section{Inference using Linear Models}
 \label{sec_inf_lin_mods}
-In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in the Hidden Markov Model section. We now assume that the states ($x_1,x_2,...$) and observations ($y_1,y_2,...$) are continuous random variables but the inputs ($u_1,u_2,...$) are deterministic. Models of this form are called Latent Linear Dynamical Systems (the famous Kalman Filter model falls into this category).
+In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in Section \ref{sec_hmm}. We now assume that the states ($x_0,x_1,x_2,...$) and observations ($y_0,y_1,y_2,...$) are continuous random variables but the inputs ($u_0,u_1,u_2,...$) are continuous deterministic variables. Models of this form are called Latent Dynamical Systems (the famous Kalman Filter model falls into this category).
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -25,7 +25,7 @@ In this section we consider probabilistic graphical models of the form shown in 
   \edge {xb} {xc};
   
 \end{tikzpicture}
-\caption{Graphical model of this section}
+\caption{Graphical Model considered in this section}
 \label{fig_linmod2}
 \end{figure}
 In the previous section we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous data. The reason is that one would invariably need to discretise the domain of the continuous random variable under consideration. This would result in intractably large discrete systems if one requires fine resolution. To address this issue we extend the previous model to include both continuous states and observations. 
@@ -46,25 +46,51 @@ p(y_{t+1}|x_t) &= \mathcal{N}(y_{t+1}|Cx_{t+1}, V)
 \end{aligned}
 \label{eq_trans_emiss}
 \end{equation}
-We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $V$ as the noise associated with state measurements and $W$ being a form of the uncertainty associated with the linear model of the plant. Additionally, $W$ can also model any unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $V$ and $W$ indicate more uncertainty in the system. 
+We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $V$ as the noise associated with state measurements and $W$ being a form of the uncertainty associated with the linear model of the plant. Additionally, $W$ can also model any zero mean unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $V$ and $W$ indicate more uncertainty in the system. 
 
 To fully specify the system we require the transition and emission probability density functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution of $x_0$.
 
 \subsection{Filtering}
-The goal of filtering is to find the posterior distribution $p(x_{t}|y_{1:t}, u_{1:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in the Hidden Markov Model section albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. 
+The goal of filtering is to find the posterior distribution $p(x_{t}|y_{0:t}, u_{0:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in the Hidden Markov Model section albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. The Graphical Model corresponding to filtering is shown in Figure \ref{fig_gm_linmods_filtering}.
+\begin{figure}[H] 
+\centering
+\begin{tikzpicture}
 
-We start with the prediction expression in (\ref{eq_filter_pred}) and assume, due to the closure of linear conditional Gaussian distributions, that $\alpha(x_{t-1}) = p(x_{t-1}|y_{1:t-1}, u_{1:t-2}) = \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) $. 
+  % Define nodes
+  \node[obs] (ya) {$y_{t-2}$};
+  \node[obs, right=of ya] (yb) {$y_{t-1}$};
+  \node[obs, right=of yb] (yc) {$y_t$};
+  \node[latent, above=of ya]  (xa) {$x_{t-2}$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_{t-1}$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_t$};
+  \node[det, above=of xa] (da) {$u_{t-2}$};
+  \node[det, above=of xb] (db) {$u_{t-1}$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  
+\end{tikzpicture}
+\caption{Graphical Model for filtering}
+\label{fig_gm_linmods_filtering}
+\end{figure}
+We start with the prediction expression in (\ref{eq_filter_pred}) and assume, due to the closure of linear conditional Gaussian distributions, that $\alpha(x_{t-1}) = p(x_{t-1}|y_{0:t-1}, u_{0:t-2}) = \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) $ is available. 
 \begin{equation}
 \begin{aligned}
-p(x_t|y_{1:t-1}, u_{1:t-1}) &= \int_{x_{t-1}} p(x_t,x_{t-1}|y_{1:t-1}, u_{1:t-1}) \\
-&= \int_{x_{t-1}} p(x_{t-1}|y_{1:t-1}, u_{1:t-1})p(x_{t}|x_{t-1}, y_{1:t-1}, u_{1:t-1}) \\
-&= \int_{x_{t-1}} p(x_{t-1}|y_{1:t-1}, u_{1:t-2})p(x_{t}|x_{t-1}, u_{1:t-1}) \\
+p(x_t|y_{0:t-1}, u_{0:t-1}) &= \int_{x_{t-1}} p(x_t,x_{t-1}|y_{0:t-1}, u_{0:t-1}) \\
+&= \int_{x_{t-1}} p(x_{t-1}|y_{0:t-1}, u_{0:t-1})p(x_{t}|x_{t-1}, y_{0:t-1}, u_{0:t-1}) \\
+&= \int_{x_{t-1}} p(x_{t-1}|y_{0:t-1}, u_{0:t-2})p(x_{t}|x_{t-1}, u_{t-1}) \\
 &= \int_{x_{t-1}} \alpha(x_{t-1})\mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, W) \\
 &= \int_{x_{t-1}} \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, W) \\
 \end{aligned}
 \label{eq_filter_pred}
 \end{equation} 
-Now we use Bayes' Theorem for Linear Gaussian Models to evaluate the marginal expression as shown in (\ref{eq_filter_pred2}).
+Now we use Theorem \ref{thrm_bayes_lin_gauss_mod} (Bayes' Theorem for Linear Gaussian Models) to evaluate the marginal expression as shown in (\ref{eq_filter_pred2}).
 \begin{equation}
 \begin{aligned}
 \int_{x_{t-1}} \mathcal{N}(x_{t-1}|\mu_{t-1}, \Sigma_{t-1}) \mathcal{N}(x_{t}|Ax_{t-1}+Bu_{t-1}, W) &= \mathcal{N}(x_t|A\mu_{t-1}+Bu_{t-1
@@ -73,23 +99,23 @@ Now we use Bayes' Theorem for Linear Gaussian Models to evaluate the marginal ex
 \end{aligned}
 \label{eq_filter_pred2}
 \end{equation}
-Intuitively, (\ref{eq_filter_pred2}) is the one step ahead prediction for the hidden state given all the past observations and the past and present inputs. Now we make use of Bayes' Theorem to update our view of $x_t$ given the current observation as shown in (\ref{eq_filter_update}).
+Intuitively, (\ref{eq_filter_pred2}) is the one step ahead prediction for the hidden state given all the past observations and the past and present inputs. Now we make use of Theorem \ref{thrm_bayes} (Bayes' Theorem) to update our view of $x_t$ given the current observation as shown in (\ref{eq_filter_update}).
 \begin{equation}
 \begin{aligned}
-p(x_t|y_{1:t},u_{1:t-1}) &= p(x_t|y_{t},y_{1:t-1},u_{1:t-1}) \\
-&= \frac{p(y_t|x_t,y_{1:t-1},u_{1:t-1})p(x_t|y_{1:t-1},u_{1:t-2}, u_{t-1})}{p(y_t|y_{1:t-1},u_{1:t-1})} \\
-&= \frac{p(y_t|x_t)p(x_t|y_{1:t-1},u_{1:t-1})}{p(y_t|y_{1:t-1},u_{1:t-1})} \\
-&\propto p(y_t|x_t)p(x_t|y_{1:t-1},u_{1:t-1})\\
+p(x_t|y_{0:t},u_{0:t-1}) &= p(x_t|y_{t},y_{0:t-1},u_{0:t-1}) \\
+&= \frac{p(y_t|x_t,y_{0:t-1},u_{0:t-1})p(x_t|y_{0:t-1},u_{0:t-2}, u_{t-1})}{p(y_t|y_{0:t-1},u_{0:t-1})} \\
+&= \frac{p(y_t|x_t)p(x_t|y_{0:t-1},u_{0:t-1})}{p(y_t|y_{0:t-1},u_{0:t-1})} \\
+&\propto p(y_t|x_t)p(x_t|y_{0:t-1},u_{0:t-1})\\
 &= p(y_t|x_t)\mathcal{N}(x_t|A\mu_{t-1}+Bu_{t-1
 }, W+ A^T\Sigma_{t-1}A) \\
 &= \mathcal{N}(y_{t}|Cx_{t}, V)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})
 \end{aligned}
 \label{eq_filter_update}
 \end{equation}
-Now we again make use of Bayes' Theorem for Linear Gaussian Models to evaluate the conditional expression as shown in (\ref{eq_filter_update2}).
+Now we again make use of Theorem \ref{thrm_bayes_lin_gauss_mod} to evaluate the conditional expression as shown in (\ref{eq_filter_update2}).
 \begin{equation}
 \begin{aligned}
-p(x_t|y_{1:t},u_{1:t-1}) &=\mathcal{N}(y_{t}|Cx_{t}, V)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})\\ 
+p(x_t|y_{0:t},u_{0:t-1}) &=\mathcal{N}(y_{t}|Cx_{t}, V)\mathcal{N}(x_t|\mu_{t|t-1},\Sigma_{t|t-1})\\ 
 &= \mathcal{N}(x_t|\Gamma(C^TV^{-1}y + \Sigma_{t|t-1}^{-1}\mu_{t|t-1}), \Gamma) \\
 &\text{with } \Gamma = (\Sigma_{t|t-1}^{-1}+C^TV^{-1}C)^{-1} 
 \end{aligned}
@@ -108,14 +134,36 @@ Intuitively, the Kalman Filter equations use the state space model to predict th
 
 \subsection{Prediction}
 \label{sec_lin_prediction}
-The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{1:t}, u_{1:t+h-1})$ and $p(y_{t+h}|y_{1:t}, u_{1:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). 
+The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{0:t}, u_{0:t+h-1})$ and $p(y_{t+h}|y_{0:t}, u_{0:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). The graphical model corresponding to state prediction is shown in Figure \ref{fig_gm_linmods_prediction}.
+\begin{figure}[H] 
+\centering
+\begin{tikzpicture}
 
+  % Define nodes
+  \node[obs] (ya) {$y_{t}$};
+  \node[latent, above=of ya] (xa) {$x_{t}$};
+  \node[latent, right=of xa] (xb) {$x_{t+1}$};
+  \node[latent, right=of xb]  (xc) {$x_{t+2}$};
+  \node[det, above=of xa] (da) {$u_{t}$};
+  \node[det, above=of xb] (db) {$u_{t+1}$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  
+\end{tikzpicture}
+\caption{Graphical Model for Prediction}
+\label{fig_gm_linmods_prediction}
+\end{figure} 
 We start the derivation by considering the one step ahead state prediction in (\ref{eq_pred_state}).
 \begin{equation}
 \begin{aligned}
-p(x_{t+1}|y_{1:t}, u_{1:t}) &= \int_{x_t} p(x_{t+1},x_t|y_{1:t}, u_{1:t}) \\
-&= \int_{x_t} p(x_t|y_{1:t}, u_{1:t-1}) p(x_{t+1}|x_t,y_{1:t}, u_{1:t}) \\
-&= \int_{x_t} p(x_t|y_{1:t}, u_{1:t-1}) p(x_{t+1}|x_t, u_{t}) \\
+p(x_{t+1}|y_{0:t}, u_{0:t}) &= \int_{x_t} p(x_{t+1},x_t|y_{0:t}, u_{0:t}) \\
+&= \int_{x_t} p(x_t|y_{0:t}, u_{0:t-1}) p(x_{t+1}|x_t,y_{0:t}, u_{0:t}) \\
+&= \int_{x_t} p(x_t|y_{0:t}, u_{0:t-1}) p(x_{t+1}|x_t, u_{t}) \\
 &= \int_{x_t} \alpha(x_t) p(x_{t+1}|x_t, u_{t}) \\
 &= \int_{x_t} \mathcal{N}(x_t|\mu_t, \Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t, W) \\
 &= \mathcal{N}(x_{t+1}|Ax_t+Bu_t, W+A\Sigma_t A^T) \\
@@ -123,12 +171,12 @@ p(x_{t+1}|y_{1:t}, u_{1:t}) &= \int_{x_t} p(x_{t+1},x_t|y_{1:t}, u_{1:t}) \\
 \end{aligned}
 \label{eq_pred_state}
 \end{equation}
-Note that $\mu_t$ and $\Sigma_t$ is the filtered mean and covariance. We have again relied upon Bayes' Theorem for Linear Gaussian Models to evaluate the marginal integral. We now consider the two step ahead state prediction in (\ref{eq_pred_state2}).
+Note that $\mu_t$ and $\Sigma_t$ is the filtered mean and covariance found by the Kalman Filter. We have again relied upon Theorem \ref{thrm_bayes_lin_gauss_mod} to evaluate the marginal integral. We now consider the two step ahead state prediction in (\ref{eq_pred_state2}).
 \begin{equation}
 \begin{aligned}
-p(x_{t+2}|y_{1:t}, u_{1:t+1}) &= \int_{x_{t+1}} p(x_{t+2},x_{t+1}|y_{1:t}, u_{1:t+1}) \\
-&= \int_{x_{t+1}} p(x_{t+1}|y_{1:t}, u_{1:t}) p(x_{t+2}|x_{t+1},y_{1:t}, u_{1:t+1}) \\
-&= \int_{x_{t+1}} p(x_{t+1}|y_{1:t}, u_{1:t}) p(x_{t+2}|x_{t+1}, u_{t+1}) \\
+p(x_{t+2}|y_{0:t}, u_{0:t+1}) &= \int_{x_{t+1}} p(x_{t+2},x_{t+1}|y_{0:t}, u_{0:t+1}) \\
+&= \int_{x_{t+1}} p(x_{t+1}|y_{0:t}, u_{0:t}) p(x_{t+2}|x_{t+1},y_{0:t}, u_{0:t+1}) \\
+&= \int_{x_{t+1}} p(x_{t+1}|y_{0:t}, u_{0:t}) p(x_{t+2}|x_{t+1}, u_{t+1}) \\
 &= \int_{x_t} \mathcal{N}(x_{t+1}|\mu_{t+1|t}, \Sigma_{t+1|t})\mathcal{N}(x_{t+2}|Ax_{t+1}+Bu_{t+1}, W) \\
 &= \mathcal{N}(x_{t+2}|A\mu_{t+1|t}+Bu_{t+1}, W+A\Sigma_{t+1|t} A^T) \\
 &= \mathcal{N}(x_{t+2}|\mu_{t+2|t}, \Sigma_{t+2|t})
@@ -138,7 +186,7 @@ p(x_{t+2}|y_{1:t}, u_{1:t+1}) &= \int_{x_{t+1}} p(x_{t+2},x_{t+1}|y_{1:t}, u_{1:
 It is clear that we have derived a recursive algorithm to estimate the $h^{th}$-step ahead state prediction as shown in (\ref{eq_pred_state_recur}).
 \begin{equation}
 \begin{aligned}
-&p(x_{t+h}|y_{1:t}, u_{1:t+h}) = \mathcal{N}(x_{t+h}|\mu_{t+h|t}, \Sigma_{t+h|t}) \\
+&p(x_{t+h}|y_{0:t}, u_{0:t+h}) = \mathcal{N}(x_{t+h}|\mu_{t+h|t}, \Sigma_{t+h|t}) \\
 &\text{with } \mu_{t+h|t} = A\mu_{t+h-1|t}+Bu_{t+h-1} \\
 &\text{and } \Sigma_{t+h|t} = W+A\Sigma_{t+h-1|t} A^T \\
 &\text{and } \mu_{t+1|t} = A\mu_t+Bu_{t} \\
@@ -146,24 +194,24 @@ It is clear that we have derived a recursive algorithm to estimate the $h^{th}$-
 \end{aligned}
 \label{eq_pred_state_recur}
 \end{equation}
-Inspecting (\ref{eq_pred_state_recur}) we see that the predictive distribution is just the forward projection, using the transition function, of the filtered distribution. Note that it is possible for $\Sigma_{t+h|t}$ to become smaller for increasing $h$ (obviously bounded by $Q$ below). For, if the eigenvalues of $A$ are less than one we have that $A\Sigma_{t+h|t}A^T \leq A\Sigma_{t+h-1|t}A^T$.
+Inspecting (\ref{eq_pred_state_recur}) we see that the predictive distribution is just the forward projection, using the transition function, of the filtered distribution. Note that it is possible for $\Sigma_{t+h|t}$ to become smaller, in some normed $|\cdot|$ sense, for increasing $h$ (obviously bounded by $Q$ below). For, if the eigenvalues of $A$ are less than unity we have that $|A\Sigma_{t+h|t}A^T| \leq |A\Sigma_{t+h-1|t}A^T|$.
 
-Next we consider the observation prediction, $p(y_{t+h}|y_{1:t}, u_{1:t+h-1})$. Again consider the one step ahead prediction as shown in (\ref{eq_pred_obs}).
+Next we consider the observation prediction, $p(y_{t+h}|y_{0:t}, u_{0:t+h-1})$. Again consider the one step ahead prediction as shown in (\ref{eq_pred_obs}).
 \begin{equation}
 \begin{aligned}
-p(y_{t+1}|y_{1:t}, u_{1:t}) &= \int_{x_t, x_{t+1}} p(y_{t+1},x_{t+1},x_t|y_{1:t}, u_{1:t}) \\
-&= \int_{x_t, x_{t+1}} p(x_t|y_{1:t}, u_{1:t-1})p(y_{t+1},x_{t+1}|x_t, y_{1:t}, u_{1:t}) \\
-&= \int_{x_t, x_{t+1}} p(x_t|y_{1:t}, u_{1:t-1}) p(x_{t+1}|x_t, y_{1:t}, u_{1:t})p(y_{t+1}|x_{t+1}, x_t, y_{1:t}, u_{1:t}) \\
+p(y_{t+1}|y_{0:t}, u_{0:t}) &= \int_{x_t, x_{t+1}} p(y_{t+1},x_{t+1},x_t|y_{0:t}, u_{0:t}) \\
+&= \int_{x_t, x_{t+1}} p(x_t|y_{0:t}, u_{0:t-1})p(y_{t+1},x_{t+1}|x_t, y_{0:t}, u_{0:t}) \\
+&= \int_{x_t, x_{t+1}} p(x_t|y_{0:t}, u_{0:t-1}) p(x_{t+1}|x_t, y_{0:t}, u_{0:t})p(y_{t+1}|x_{t+1}, x_t, y_{0:t}, u_{0:t}) \\
 &= \int_{x_t, x_{t+1}} \alpha(x_t) p(x_{t+1}|x_t, u_{t}) p(y_{t+1}|x_{t+1}) \\
 &= \int_{x_t, x_{t+1}} \mathcal{N}(x_t|\mu_t,\Sigma_t) \mathcal{N}(x_{t+1}|Ax_t+Bu_t, W) \mathcal{N}(y_{t+1}|Cx_{t+1}, V) \\
 &= \mathcal{N}(y_{t+1}|C\mu_{t+1|t}, V+C\Sigma_{t+1|t}C^T)
 \end{aligned}
 \label{eq_pred_obs}
 \end{equation}
-We have again used Bayes' Theorem for Linear Gaussian Models and used the nomenclature of the one step ahead state prediction derivation. For the sake of brevity we trust that the reader will see the similarity between the two derivations and allow us to conclude, without proof, that the $h^{th}$-step ahead observation prediction is given by (\ref{eq_pred_obs_recur}).
+We have again used Theorem \ref{thrm_bayes_lin_gauss_mod} and used the nomenclature of the one step ahead state prediction derivation. For the sake of brevity we trust that the reader will see the similarity between the two derivations and allow us to conclude, without proof, that the $h^{th}$-step ahead observation prediction is given by (\ref{eq_pred_obs_recur}).
 \begin{equation}
 \begin{aligned}
-&p(y_{t+h}|y_{1:t}, u_{1:t+h-1}) = \mathcal{N}(y_{t+h}|C\mu_{t+h|t}, R+C\Sigma_{t+h|t}C^T) \\
+&p(y_{t+h}|y_{0:t}, u_{0:t+h-1}) = \mathcal{N}(y_{t+h}|C\mu_{t+h|t}, R+C\Sigma_{t+h|t}C^T) \\
 \end{aligned}
 \label{eq_pred_obs_recur}
 \end{equation}
@@ -172,9 +220,9 @@ It is reassuring to note that the observation prediction is just the state predi
 \subsection{Smoothing and Viterbi Decoding}
 For the sake of completeness we state the Kalman Smoothing equations and briefly discuss Viterbi Decoding within the context of conditional linear Gaussian systems. 
 
-The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we again make use of Bayes' Theorem for Linear Gaussian Models. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the focus of this dissertation.
+The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we make use of Theorem \ref{thrm_bayes_lin_gauss_mod} to simplify the algebra. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the focus of this dissertation.
 
-The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{1:T},u_{1:T-1})$ is also a Gaussian distribution of the form $\mathcal{N}(\hat{\mu}_t, \hat{\Sigma}_t)$. The recursion expressions for the posterior mean and covariance are shown in (\ref{eq_smooth2}).
+The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{0:T},u_{0:T-1})$ is also a Gaussian distribution of the form $\mathcal{N}(\hat{\mu}_t, \hat{\Sigma}_t)$. The recursion expressions for the posterior mean and covariance are shown in (\ref{eq_smooth2}).
 \begin{equation}
 \begin{aligned}
 &\hat{\mu}_t = \mu_t + J_t\left(\hat{\mu}_{t+1}-(A\mu_t+Bu_{t-1})\right) \\
@@ -187,10 +235,11 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 \label{eq_smooth2}
 \end{equation}
 
-Finally, we know from the Chain Rule for Bayesian Networks and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{1:T},y_{1:T}, u_{1:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same because the mean and the mode of a Gaussian distribution coincide \cite{barber}.
+Finally, we know from the Definition \ref{def_chain_rule_bayes} (Chain Rule for Bayesian Networks) and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{0:T},y_{0:T}, u_{0:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same because the mean and the mode of a Gaussian distribution coincide \cite{barber}. This implies that Viterbi decoding is just the sequence of means found by the smoothing algorithm.
 
 \subsection{Filtering the CSTR}
-In this section we apply the Kalman Filter to the CSTR introduced earlier. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that we only measure temperature for now.
+\label{sec_filtering_linmods}
+In this section we apply the Kalman Filter to the CSTR introduced in Section \ref{sec_cstr}. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that we only measure temperature for now.
 \begin{equation}
 \begin{aligned}
 &A = \begin{pmatrix}
@@ -214,43 +263,45 @@ V = \begin{pmatrix}
 \end{equation}
 The system noise $W$ indicates that the standard deviation of the concentration component of the model is 0.001 kmol/m$^{-3}$ and the temperature component is 0.32 K. While these variances may seem small, bear in mind that noise is added at each time step which compounds its effect. The measurement noise implies that 68\% of the measurements will fall between $\pm\sqrt{10}$ of the actual state. We use an initial state with mean at the initial condition and covariance $W$.
 
-In Figure \ref{fig_kftimeseries} we illustrate the strengths and weaknesses of the Kalman Filter. Since we derived the recursion equations analytically it is computationally efficient to use, the biggest cost is a matrix inversion which needs to be computed at each time step. During the initial part of the simulation the filter very accurately estimates the current system states because the model is accurate in this region. Thus the filter is able to infer the true state in the presence of noisy measurements. 
+In Figure \ref{fig_kftimeseries} we illustrate the strengths and weaknesses of the Kalman Filter. Since we derived the recursion equations analytically it is computationally efficient to use, the biggest cost is a matrix inversion which needs to be computed at each time step\footnote{It is even possible to avoid this step by noticing that the posterior covariance quickly converges to a constant covariance.}. During the initial part of the simulation the filter very accurately estimates the current system states because the model is accurate in this region. Thus the filter is able to infer the true state in the presence of noisy measurements. 
 
 Unfortunately the recursion equations assumed the system can be described by a linear model. With time the trajectories move away from the linearisation point (because the linearisation point is unstable) and thus the linear model becomes less accurate. This has a detrimental effect on the quality of the Kalman filter estimate as the filter effectively starts to solely rely on the measurements to infer the states. This works reasonably well for the measured states ($T_R$), but since we do not measure concentration the filter is forced to incorporate the linear model prediction which is grossly inaccurate. 
+
+The average concentration estimation error\footnote{We define the average estimation error by $\frac{1}{N}\sum^N_{t=0}|\frac{\hat{x}_t-x_t}{x_t}|$ where $\hat{x}_t$ is the inferred state and and $x_t$ the true underlying state at time $t$.} throughout the run is 22.73\% while the average temperature estimation error is 0.47\%. Clearly there is a significant benefit to measuring the state one wishes to infer. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.30]{kalman_filter_timeseries_M1.pdf}
+\includegraphics[scale=0.25]{kalman_filter_timeseries_M1.pdf}
 \caption{Kalman Filter superimposed on the time series evolution of the CSTR with initial condition $(0.50, 400)$ and measuring only temperature.}
 \label{fig_kftimeseries}
 \end{figure}
-In Figure \ref{fig_kfphase} we see another interesting property of Kalman Filters. The posterior covariance quickly converges to a constant value (the error ellipses quickly stop changing shape) which is independent of the observations. This is a general property of linear Gaussian systems \cite{barber} and is evident from the recursion expression. The modelled system dynamics and noise are the only factors affecting the covariance. If the model is accurate this is not a problem but we see that as the model becomes less accurate the filter maintains the same level of confidence in its estimate. This is quite undesirable behaviour because the confidence in the estimate is not a function of the observations. 
+In Figure \ref{fig_kfphase} we see another interesting property of Kalman Filters. The posterior covariance quickly converges to a constant value (the confidence region quickly stops changing shape) which is independent of the observations. This is a general property of linear Gaussian systems \cite{barber} and is evident from the recursion expression. The modelled system dynamics and noise are the only factors affecting the covariance. If the model is accurate this is not a problem but we see that as the model becomes less accurate the filter maintains the same level of confidence in its estimate. This is quite undesirable behaviour because the confidence in the estimate is not a function of the observations. 
 
-It is also interesting to consider the shape of the error ellipses. Notice how they are short vertically - indicating less uncertainty in the temperature state dimension but wide horizontally - indicating more uncertainty in the concentration state dimension. Intuitively this is plausible because, since we do not measure concentration, we are less sure about the underlying state. 
+It is also interesting to consider the shape of the confidence region. Notice that it is short vertically - indicating less uncertainty in the temperature state dimension but wide horizontally - indicating more uncertainty in the concentration state dimension. Intuitively this is plausible because, since we do not measure concentration, we are less sure about the underlying state. 
 
-In Figure \ref{fig_kfphase} we see that while the temperature estimate is still trustworthy (the black crosses line up horizontally with the red crosses) the concentration estimate diverges.
+In Figure \ref{fig_kfphase} we see that while the temperature estimate is still trustworthy (the temperature mean estimate lines up horizontally with the true underlying state) the concentration estimate diverges.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.30]{kalman_filter_phase_M1.pdf}
-\caption{Phase plane of the hidden states of the CSTR with mean and one-sigma ellipses superimposed thereupon. Only temperature is measured.}
+\includegraphics[scale=0.25]{kalman_filter_phase_M1.pdf}
+\caption{State space diagram of the CSTR with mean and 90\% confidence region superimposed thereupon. Only temperature is measured.}
 \label{fig_kfphase}
 \end{figure}
 The root of the problem lies in the unsuitability of the model rather than our inference technique. It can be shown that for linear systems with Gaussian noise the Kalman Filter is the optimal state estimator \cite{shalom}. 
 
-Based on our discussion where the CSTR example was introduced we know that the linear models will not always be very accurate. We therefore modify (\ref{eq_linmodel}) to also incorporate concentration measurements. In this case we have that $C = \begin{pmatrix}
+Based on our discussion in Section \ref{sec_cstr} where the CSTR example was introduced we know that the linear models will not always be very accurate. We therefore modify (\ref{eq_linmodel}) to also incorporate concentration measurements. In this case we have that $C = \begin{pmatrix}
 1 & 0\\0 &1
 \end{pmatrix}$ and $V = \begin{pmatrix}
 1\times 10^{-3} & 0\\0 & 10
 \end{pmatrix}$ with everything else the same. The time evolution of the states is shown in Figure \ref{fig_kftime2} and the state space representation is shown in Figure \ref{fig_kfphase2}. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.30]{kalman_filter_timeseries_M2.pdf}
+\includegraphics[scale=0.25]{kalman_filter_timeseries_M2.pdf}
 \caption{Kalman Filter superimposed on the time series evolution of the CSTR with initial condition $(0.50, 400)$ and measuring both temperature and concentration.}
 \label{fig_kftime2}
 \end{figure}
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.30]{kalman_filter_phase_M2.pdf}
-\caption{State space diagram of the CSTR with mean and one-sigma ellipses superimposed thereupon. Both concentration and temperature are measured.}
+\includegraphics[scale=0.25]{kalman_filter_phase_M2.pdf}
+\caption{State space diagram of the CSTR with mean and 90\% confidence region superimposed thereupon. Both concentration and temperature are measured.}
 \label{fig_kfphase2}
 \end{figure}
-Comparing Figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorporating the state measurement the state estimation is much more accurate. It is not necessary to directly measure concentration as we have done: any measurement which depends on $C_A$ (or even both $C_A$ and $T_R$) would suffice. The second measurement reduces our uncertainty in the concentration state estimate because we have more to base our inference on than just a bad model.  
+Comparing Figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorporating the state measurement the state estimation is much more accurate. The average concentration and temperature estimation error is only 4.09\% and 0.45\% respectively. It is not necessary to directly measure concentration as we have done: any measurement which depends on $C_A$ (or even both $C_A$ and $T_R$) would suffice. The second measurement reduces our uncertainty in the concentration state estimate because we have more to base our inference on than just a bad model.  

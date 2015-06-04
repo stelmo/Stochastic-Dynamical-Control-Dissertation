@@ -348,7 +348,7 @@ Figure \ref{fig_lin_mod_lqg} shows that the system does indeed converge, noisily
 \caption{Unconstrained LQG regulator tracking with initial condition $(0.55, 450)$ and measuring both states.}
 \label{fig_lin_mod_lqg}
 \end{figure}
-The average heat energy usage (controller input) over the simulation run is 214 kJ/min. The average set point error is 2.38\% over the same 40 min time period.
+The average heat energy usage (controller input) over the simulation run is 214 kJ/min. The average set point error is 2.38\% over the same 40 min time period\footnote{We define the average energy input by $\frac{h}{N}\sum^N_{t=0}|u_t-u_s|$ and the average concentration error by $\frac{1}{N}\sum^N_{t=0}|\frac{{C_A}_t-y_{sp}}{y_{sp}}|$}.
  
 Next we illustrate the approach of using conventional deterministic MPC to control the stochastic system. The MPC formulation is shown in (\ref{eq_mpc_constrained_det1}). Using MPC allows us to easily add state and input constraints; this is a significant improvement over conventional LQG as discussed previously.
 \begin{equation}
@@ -575,6 +575,4 @@ As before we need to investigate the normal assumption underpinning the theory b
 \caption{Kullback-Leibler Divergence between the assumed Gaussian distribution and actual distribution using 5000 particles. The underlying model is non-linear.}
 \label{fig_nonlin_mod_kl}
 \end{figure}
-It is a relief that the normal assumption seems to hold almost as well in the non-linear underlying system case. The Gaussian approximation is within a factor of 3 of the baseline. It is not surprising that the non-linearity reduced the normality of the distributions but it did not do so significantly enough to warrant concern.
-
-\section{Discussion}
+It is a relief that the normal assumption seems to hold almost as well in the non-linear underlying system case. The Gaussian approximation is within a factor of 3 of the baseline. It is not surprising that the non-linearity reduced the degree of normality of the distributions but it did not do so significantly enough to warrant concern.

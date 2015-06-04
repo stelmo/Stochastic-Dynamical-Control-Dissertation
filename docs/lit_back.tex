@@ -202,6 +202,7 @@ p(y) = \mathcal{N}(y|A\mu + b, L^{-1}+A\Lambda^{-1}A^T)
 \end{equation}
 \label{thrm_bayes_gaussians}
 Note that $b$ is a known vector. Given a deterministic function $u$ we can also write $b = Bu + e$ where $B$ is some conforming matrix and $e$ is some constant vector. 
+\label{thrm_bayes_lin_gauss_mod}
 \end{thrm}
 \begin{proof}
 We begin our proof by noticing that for a general Gaussian $\mathcal{N}(\gamma|\alpha, \beta)$ we can write the exponent as in (\ref{eq_bg1}), note $const$ is some real number which does not depend on $\gamma$.
@@ -350,6 +351,7 @@ Suppose $P$ is the joint distribution of some set of random variables we require
 Let $G$ be a Bayesian Network graph over the random variables $X_1, X_2,...,X_n$ where each random variable is a node. We say that the distribution $P$ factorises over the same space if $P$ can be expressed as the product defined by the chain rule for Bayesian Networks.
 \begin{defn}
 \textbf{Chain Rule for Bayesian Networks} The chain rule for Bayesian Networks specifies that the joint factorises according to $P(X_1,...,X_n) = \Pi_{i=1}^n P(X_i | \text{Parents}(X_i))$.
+\label{def_chain_rule_bayes}
 \end{defn}
 Each of the individual factors of $P$, as factorised by the chain rule for Bayesian Networks, represents the conditional probability distributions required to parametrise the Bayesian Network. It can be shown that a Bayesian Network graph $G$ over which $P$ factorises is not unique. However, if the graph explicitly models the causality inherent in the system being modelled the representation is often much sparser \cite{koller}. A Bayesian network is then defined as the tuple $(G, P)$ such that the joint $P$ factorises over the graph $G$. We state without proof Theorem \ref{thrm_bayesnetsiff}. 
 \begin{thrm}
