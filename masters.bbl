@@ -227,6 +227,11 @@ A.T. Schwarm and Nikolaou.
 \newblock Technical report, University of Houston and Texas A\&M University,
   1999.
 
+\bibitem{snyder}
+C.~Snyder, T.~Bengtsson, P.~Bickel, and J.~Anderson.
+\newblock Obstacles to high-dimensional particle filtering.
+\newblock {\em Mathematical Advances in Data Assimilation}, 2008.
+
 \bibitem{streicher}
 S.J. Streicher, S.E. Wilken, and C.~Sandrock.
 \newblock Eigenvector analysis for the ranking of control loop importance.

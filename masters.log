@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  4 JUN 2015 13:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  4 JUN 2015 15:02
 entering extended mode
 **masters.tex
 
@@ -715,6 +715,126 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
  [2]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
+docs\linear_models.tex"
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [45
+
+
+
+
+
+]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [46]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [47] [48] [49]
+Overfull \hbox (2.23401pt too wide) in paragraph at lines 238--239
+\OT1/cmr/m/n/10.95 that the joint dis-tri-bu-tion for $\OML/cmm/m/it/10.95 p\OT
+1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]; y[]; u[]\OT1/cmr/m/n/10.95 ) = \OML/c
+mm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 )\
+OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10
+.95 j\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 )[]\OML/cmm/m/it/10.95 p\OT1/cm
+r/m/n/10.95 (\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 x[
+]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.
+95 x[]\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 x[]; u[]\OT1/cmr/m/n/10.95 )$.
+ []
+
+[50] <./imgs/kalman_filter_timeseries_M1.pdf, id=46, 1445.4pt x 708.24597pt>
+File: ./imgs/kalman_filter_timeseries_M1.pdf Graphic file (type pdf)
+
+<use ./imgs/kalman_filter_timeseries_M1.pdf>
+Package pdftex.def Info: ./imgs/kalman_filter_timeseries_M1.pdf used on input l
+ine 273.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [51]
+<./imgs/kalman_filter_phase_M1.pdf, id=54, 1445.4pt x 708.24597pt>
+File: ./imgs/kalman_filter_phase_M1.pdf Graphic file (type pdf)
+
+<use ./imgs/kalman_filter_phase_M1.pdf>
+Package pdftex.def Info: ./imgs/kalman_filter_phase_M1.pdf used on input line 2
+84.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [52 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/kalman_filter_timeseries_M1.pdf>] <./imgs/kalman_filter_timeseries_M2.
+pdf, id=81, 1445.4pt x 708.24597pt>
+File: ./imgs/kalman_filter_timeseries_M2.pdf Graphic file (type pdf)
+
+<use ./imgs/kalman_filter_timeseries_M2.pdf>
+Package pdftex.def Info: ./imgs/kalman_filter_timeseries_M2.pdf used on input l
+ine 297.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/kalman_filter_phase_M2.pdf, id=82, 1445.4pt x 708.24597pt>
+File: ./imgs/kalman_filter_phase_M2.pdf Graphic file (type pdf)
+
+<use ./imgs/kalman_filter_phase_M2.pdf>
+Package pdftex.def Info: ./imgs/kalman_filter_phase_M2.pdf used on input line 3
+03.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [53 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/kalman_filter_phase_M1.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stocha
+stic-Dynamical-Control-Dissertation/imgs/kalman_filter_timeseries_M2.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/kalman_filter_timeseries_M2.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>]) [54 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Disser
+tation/imgs/kalman_filter_phase_M2.pdf>]
+("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\nonlinear_models.tex"
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -740,31 +860,27 @@ Missing character: There is no ; in font nullfont!
  [55
 
 
-
-
-
-
 ] [56] [57] [58] [59] [60]
-<./imgs/pf_m1_time.pdf, id=43, 1445.4pt x 708.24597pt>
+<./imgs/pf_m1_time.pdf, id=155, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m1_time.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m1_time.pdf>
 Package pdftex.def Info: ./imgs/pf_m1_time.pdf used on input line 235.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [61]
-<./imgs/pf_m1_phase.pdf, id=47, 1445.4pt x 708.24597pt>
+<./imgs/pf_m1_phase.pdf, id=160, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m1_phase.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m1_phase.pdf>
 Package pdftex.def Info: ./imgs/pf_m1_phase.pdf used on input line 242.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
 
-<./imgs/pf_m2_time.pdf, id=48, 1445.4pt x 708.24597pt>
+<./imgs/pf_m2_time.pdf, id=161, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m2_time.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m2_time.pdf>
 Package pdftex.def Info: ./imgs/pf_m2_time.pdf used on input line 249.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [62 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
 ion/imgs/pf_m1_time.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamic
 al-Control-Dissertation/imgs/pf_m1_phase.pdf
@@ -772,19 +888,19 @@ al-Control-Dissertation/imgs/pf_m1_phase.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/pf_m1_phase.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
->] <./imgs/pf_m2_phase.pdf, id=90, 1445.4pt x 708.24597pt>
+>] <./imgs/pf_m2_phase.pdf, id=195, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m2_phase.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m2_phase.pdf>
 Package pdftex.def Info: ./imgs/pf_m2_phase.pdf used on input line 256.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
 
-<./imgs/pf_kf_time.pdf, id=91, 1445.4pt x 708.24597pt>
-File: ./imgs/pf_kf_time.pdf Graphic file (type pdf)
+<./imgs/pf_kf_phase1.pdf, id=196, 1445.4pt x 708.24597pt>
+File: ./imgs/pf_kf_phase1.pdf Graphic file (type pdf)
 
-<use ./imgs/pf_kf_time.pdf>
-Package pdftex.def Info: ./imgs/pf_kf_time.pdf used on input line 263.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
+<use ./imgs/pf_kf_phase1.pdf>
+Package pdftex.def Info: ./imgs/pf_kf_phase1.pdf used on input line 263.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [63 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
 ion/imgs/pf_m2_time.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamic
 al-Control-Dissertation/imgs/pf_m2_phase.pdf
@@ -792,18 +908,236 @@ al-Control-Dissertation/imgs/pf_m2_phase.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/pf_m2_phase.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
->] <./imgs/pf_kf_phase.pdf, id=125, 1445.4pt x 708.24597pt>
-File: ./imgs/pf_kf_phase.pdf Graphic file (type pdf)
+>] <./imgs/pf_kf_phase2.pdf, id=230, 1445.4pt x 708.24597pt>
+File: ./imgs/pf_kf_phase2.pdf Graphic file (type pdf)
 
-<use ./imgs/pf_kf_phase.pdf>
-Package pdftex.def Info: ./imgs/pf_kf_phase.pdf used on input line 270.
-(pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
+<use ./imgs/pf_kf_phase2.pdf>
+Package pdftex.def Info: ./imgs/pf_kf_phase2.pdf used on input line 272.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
  [64 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
-ion/imgs/pf_kf_time.pdf>]) [65 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-D
-ynamical-Control-Dissertation/imgs/pf_kf_phase.pdf>]
+ion/imgs/pf_kf_phase1.pdf>]) [65 <C:/Users/St. Elmo/Documents/GitHub/Stochastic
+-Dynamical-Control-Dissertation/imgs/pf_kf_phase2.pdf>]
+("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
+docs\linear_control.tex" [66
+
+
+] [67]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [68] [69] [70] [71] [72] [73] [74] [75]
+<./imgs/lin_mod_lqg.pdf, id=304, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_lqg.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_lqg.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_lqg.pdf used on input line 347.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [76]
+<./imgs/lin_mod_kf_mean_track.pdf, id=308, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_mean_track.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_mean_track.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_mean_track.pdf used on input line 37
+2.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [77 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_lqg.pdf>]
+<./imgs/lin_mod_kf_mean_ss.pdf, id=327, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_mean_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_mean_ss.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_mean_ss.pdf used on input line 381.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [78 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_kf_mean_track.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochas
+tic-Dynamical-Control-Dissertation/imgs/lin_mod_kf_mean_ss.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/lin_mod_kf_mean_ss.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>] <./imgs/lin_mod_kf_var90_track.pdf, id=361, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_var90_track.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_var90_track.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_var90_track.pdf used on input line 4
+03.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/lin_mod_kf_var90_ss.pdf, id=362, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_var90_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_var90_ss.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_var90_ss.pdf used on input line 410.
+
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [79 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_kf_var90_track.pdf>]
+<./imgs/lin_mod_kf_var999_track.pdf, id=382, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_var999_track.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_var999_track.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_var999_track.pdf used on input line 
+421.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [80 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_kf_var90_ss.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochasti
+c-Dynamical-Control-Dissertation/imgs/lin_mod_kf_var999_track.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/lin_mod_kf_var999_track.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>] <./imgs/lin_mod_kf_var999_ss.pdf, id=416, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kf_var999_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_var999_ss.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_var999_ss.pdf used on input line 430
+.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/lin_mod_kl.pdf, id=417, 1445.4pt x 708.24597pt>
+File: ./imgs/lin_mod_kl.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kl.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kl.pdf used on input line 443.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [81 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_kf_var999_ss.pdf>]
+<./imgs/nonlin_mod_lqg.pdf, id=437, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_lqg.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_lqg.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_lqg.pdf used on input line 460.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [82 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/lin_mod_kl.pdf>]
+File: ./imgs/lin_mod_kf_mean_track.pdf Graphic file (type pdf)
+
+<use ./imgs/lin_mod_kf_mean_track.pdf>
+Package pdftex.def Info: ./imgs/lin_mod_kf_mean_track.pdf used on input line 48
+3.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [83 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/nonlin_mod_lqg.pdf>]
+<./imgs/nonlin_mod_kf_mean_ss.pdf, id=467, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_kf_mean_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_kf_mean_ss.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_kf_mean_ss.pdf used on input line 49
+0.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/nonlin_mod_pf_mean_track.pdf, id=468, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_pf_mean_track.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_pf_mean_track.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_pf_mean_track.pdf used on input line
+ 499.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [84 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/nonlin_mod_kf_mean_ss.pdf>]
+<./imgs/nonlin_mod_pf_mean_ss.pdf, id=487, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_pf_mean_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_pf_mean_ss.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_pf_mean_ss.pdf used on input line 50
+6.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [85 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/nonlin_mod_pf_mean_track.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stoc
+hastic-Dynamical-Control-Dissertation/imgs/nonlin_mod_pf_mean_ss.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/nonlin_mod_pf_mean_ss.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>] <./imgs/nonlin_mod_kf_var90_track.pdf, id=522, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_kf_var90_track.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_kf_var90_track.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_kf_var90_track.pdf used on input lin
+e 526.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/nonlin_mod_kf_var90_ss.pdf, id=523, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_kf_var90_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_kf_var90_ss.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_kf_var90_ss.pdf used on input line 5
+33.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [86 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/nonlin_mod_kf_var90_track.pdf>] <./imgs/nonlin_mod_kf_var999_track.pdf
+, id=542, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_kf_var999_track.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_kf_var999_track.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_kf_var999_track.pdf used on input li
+ne 542.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/nonlin_mod_kf_var999_ss.pdf, id=543, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_kf_var999_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_kf_var999_ss.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_kf_var999_ss.pdf used on input line 
+549.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [87 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/nonlin_mod_kf_var90_ss.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stocha
+stic-Dynamical-Control-Dissertation/imgs/nonlin_mod_kf_var999_track.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/nonlin_mod_kf_var999_track.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>] <./imgs/nonlin_mod_pf_var90_track.pdf, id=577, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_pf_var90_track.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_pf_var90_track.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_pf_var90_track.pdf used on input lin
+e 558.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/nonlin_mod_pf_var90_ss.pdf, id=578, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_pf_var90_ss.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_pf_var90_ss.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_pf_var90_ss.pdf used on input line 5
+67.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [88 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertat
+ion/imgs/nonlin_mod_kf_var999_ss.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stoch
+astic-Dynamical-Control-Dissertation/imgs/nonlin_mod_pf_var90_track.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/nonlin_mod_pf_var90_track.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>] <./imgs/nonlin_mod_kl.pdf, id=612, 1445.4pt x 708.24597pt>
+File: ./imgs/nonlin_mod_kl.pdf Graphic file (type pdf)
+
+<use ./imgs/nonlin_mod_kl.pdf>
+Package pdftex.def Info: ./imgs/nonlin_mod_kl.pdf used on input line 574.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+) [89 <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Disserta
+tion/imgs/nonlin_mod_pf_var90_ss.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stoch
+astic-Dynamical-Control-Dissertation/imgs/nonlin_mod_kl.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/nonlin_mod_kl.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 masters.bbl" [112
-
 
 
 
@@ -837,33 +1171,43 @@ docs\switching_linear_control.aux")
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\conclusion.aux")) ) 
 Here is how much of TeX's memory you used:
- 15732 strings out of 493921
- 333313 string characters out of 3144868
- 390644 words of memory out of 3000000
- 18648 multiletter control sequences out of 15000+200000
- 11851 words of font info for 46 fonts, out of 3000000 for 9000
+ 15876 strings out of 493921
+ 337937 string characters out of 3144868
+ 398691 words of memory out of 3000000
+ 18756 multiletter control sequences out of 15000+200000
+ 15252 words of font info for 58 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,12n,78p,1022b,810s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,15n,78p,1368b,810s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-mi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on masters.pdf (17 pages, 1899387 bytes).
+nts/cm/cmbx8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+mextra/cmex9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmmi12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
+i6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.
+pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on masters.pdf (51 pages, 13040508 bytes).
 PDF statistics:
- 308 PDF objects out of 1000 (max. 8388607)
+ 730 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
 
