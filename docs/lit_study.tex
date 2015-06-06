@@ -1,0 +1,82 @@
+\section{Literature Study}
+This dissertation deals primarily with stochastic Model Predictive Control (MPC) but applied within the context of Probabilistic Graphical Models. In Section \ref{sec_stoch_mpc_lit} we briefly discuss some recents developments in stochastic MPC literature. In Section \ref{sec_switch_mpc_lit} we briefly discuss control schemes where the model control is based upon is automatically adjusted based on plant measurements. The latter section is more vague than the former because the underlying literature is less well developed.
+
+\subsection{Stochastic MPC}
+\label{sec_stoch_mpc_lit}
+Linear unconstrained stochastic control subject to white additive Gaussian noise is well studied in literature. The Linear Quadratic Gaussian (LQG) controller, for which the problem is shown in (\ref{eq_lit_lqg}), is one of the most fundamental results in stochastic Optimal Control Theory \cite{lqg}. We use boldface to denote a vector of vectors over time e.g. $\mathbf{u}=(u_0, u_1,...)$.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t~\text{with } w_t \sim \mathcal{N}(0, W)~\text{(Latent)} \\
+& \text{and } y_{t}= Cx_t + v_t ~\text{with } v_t \sim \mathcal{N}(0, V)~\text{(Observed)}\\
+\end{aligned}
+\label{eq_lit_lqg}
+\end{equation}
+Using stochastic Dynamic Programming it is possible to show that the solution of (\ref{eq_lit_lqg}) is merely the solution of the corresponding fully observed deterministic system, called the Linear Quadratic Regulator (LQR), given the mean of the current state estimate $x_0$. A significant drawback of the LQG controller, and by extension the LQR controller, is that it is inherently linear and unconstrained.
+
+Conventional deterministic MPC is very well studied in literature \cite{raw} and can be seen as the constrained generalisation of the LQR controller as shown in (\ref{eq_lit_mpc}) for one constraint with prediction/control horizon length $N$. The multiple constraint generalisation is straightforward.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
+& \text{subject to } x_{t+1} = Ax_t+Bu_t \\
+& \text{and } d^Tx_t + e \geq 0 ~\forall~t=1, 2,...,N \\
+\end{aligned}
+\label{eq_lit_mpc}
+\end{equation}
+A further generalisation of deterministic MPC is stochastic MPC whereby either the variables, the constraints or both have stochastic elements. In current literature the trend is to convert all the stochastic elements of the control problem into deterministic ones. This usually makes the problem somewhat more tractable from an analytic and computational point of view.
+
+This conversion is usually achieved via two distinct approaches. In the first approach, which is also the one we employ, the probability distributions are assumed Gaussian and the systems linear. This allows one to greatly simplify the problem at the cost of those relatively strong assumptions. The second approach is to use a particle/sampling approach. Here the probability distributions are approximated by particles/samples and no assumptions are made of form of the distributions. It is also not necessary to assume linear dynamics. The major practical drawback of this approach is that it can quickly become computationally intractable for large problems.
+
+Indeed, this is the approach taken by \cite{blackmore}. They attempt to solve the stochastic MPC problem shown in (\ref{eq_lit_chance_mpc_state}) with stochastic (chance) constraints and variables by approximating the current and predicted distributions with particles. Note that $w_t$ is some stochastic variable with known parametrisation.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
+& \text{and } \mathbb{E}[d^Tx_t + e] \geq 0 ~\forall ~t=1,...,N \\
+& \text{and } \text{Pr}(d^Tx_t + e \geq 0) \geq p ~\forall ~t=1,...,N\\
+\end{aligned}
+\label{eq_lit_chance_mpc_state}
+\end{equation}
+In their approach a Particle Filter is used as the state estimator; the current state distribution is approximated by particles of equal weight. An integer variable is then introduced for each particle at each predicted time step. The chance constraint is then enforced by requiring that at least a certain number of particles satisfy the constraint. It is not clearly stated but this approach is only valid for particles after re-sampling. 
+
+By using the particle approach to model distributions it is possible to convert the stochastic optimisation problem into a deterministic one. In the case where linear dynamics are used this becomes a Mixed Integer Linear or Quadratic Programming problem depending on the objective function. The chance constraint becomes an integer constraint. Their algorithm is appealing because it is not necessary to assume Gaussian distributions or linearity. However, it is possible that the algorithm can become computationally intractable due to the integer constraints which are used to approximate the chance constraints. Since it is necessary to include an integer variable for each particle at each time step in the prediction horizon the number of variables can become large. For large problems with long prediction horizons this can be problematic.  
+
+The approach taken by \cite{li} is related to the sampling approach. They convert the stochastic chance constrained optimisation problem into a deterministic nonlinear optimisation problem. They then use a simulation approach to ensure that the chance constraints are satisfied. Their approach is numerically intensive due to the sampling and gradient estimation techniques. The approach taken by \cite{batina} uses a randomized optimisation algorithm in concert with the empirical mean of the variables. When the states approach a constraint a penalty method is used to heavily penalise the system to steer it away from the constraint. This causes the system to conservatively satisfy the constraints.
+
+In \cite{li2} the stochastic variables are assumed to be Gaussian and the stochastic optimisation problem is transformed into a nonlinear optimisation problem. Using the Gaussian assumption they are able to ensure feasibility and constraint satisfaction albeit conservatively. In \cite{masahiro} the feasibility of stochastically constrained predictive control is considered. Feasibility becomes a problem when predicting under uncertainty. Since the current state estimate is not precisely known and the evolution of the system is stochastic, the certainty of the predicted states often decreases with the prediction horizon. Ensuring constraint satisfaction can become problematic in such situations because of the large predicted uncertainty in the future. In \cite{masahiro} an algorithm enforcing joint chance constraints and recursive feasibility is discussed using a risk allocation approach. While \cite{schwarm} mainly concerns stochastic parameters in the optimisation problem it is shown that chance constraints can, in theory, be rewritten as deterministic constraints if the probability distributions are known and affine constraints are used. 
+
+In \cite{vanhessem2} and \cite{vanhessem1} an ellipsoidal approximation technique is used to ensure constraint satisfaction for the problem shown in (\ref{eq_lit_chance_mpc_vanhessem}). The authors use the expected value of the stochastic variables in the objective function and system dynamics. The randomness introduced by the stochastic variables is only addressed in the chance constraint. 
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} f(\mathbf{x}) \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t \\
+& \text{and } \text{Pr}(d^Tx_t + e \geq 0) \geq p ~\forall ~t=1,...,N\\
+\end{aligned}
+\label{eq_lit_chance_mpc_vanhessem}
+\end{equation}
+If one assumes that each $x_t$ is Gaussian with sufficient statistics $(\mu_t, \Sigma_t)$ and dimension $n$, then the chance constraint can be satisfied by ensuring that the area of each ellipse $(x-\mu_t)^T\Sigma_t^{-1}(x-\mu_t)=k^2$ for $t=1,...,N$ is contained in the feasible region. We have that $k^2$ is chosen by solving the integral equation of the Chi Squared distribution as shown in (\ref{eq_lit_chi_squared}).
+\begin{equation}
+\frac{1}{2^{\frac{n}{2}}\Gamma(\frac{n}{2})}\int_0^{k^2}\mathcal{X}^{\frac{n}{2}-1}e^{-\frac{\mathcal{X}}{2}}d\mathcal{X} = p
+\label{eq_lit_chi_squared}
+\end{equation} 
+Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a second order conic optimisation problem. The authors ensure that each ellipse is contained in the feasible region by ensuring there exists sufficient ``back-off" between the predicted ellipses and the constraints. \textbf{Insert figure 1}
+
+While this breakthrough is important - we build on it in our approach - the authors do not realise that they are in fact using a form of the Mahalanobis distance to enforce their chance constraints. The approach of using confidence ellipsoids is further refined in \cite{cannon}. The ellipsoidal approximation technique is also further investigated in \cite{blackmore2}; they show that is is possible to reformulate joint chance constraints using univariate Gaussian distributions.
+
+Although \cite{yan1} and \cite{yan2} primarily deal with univariate problems they show that if the underlying system is linear and Gaussian, it is possible to manipulate the constrained stochastic problem shown in (\ref{eq_lit_chance_mpc_state}) into a deterministic problem. Their analysis allows the stochastic objective function to be transformed into its deterministic equivalent using the properties of Gaussian integrals. This development is quite important because it allows one to directly evaluate the stochastic objective function. The constraints are handled by directly evaluating the Gaussian integral corresponding to the chance constraint in the univariate case. The authors allude to the fact that this becomes computationally intractable in higher dimensions and suggest that the approach in \cite{vanhessem2} be used. The authors also suggest a way to handle the situation where covariance matrix grows without bound in unstable systems. This is related to the feasibility problems discussed earlier.
+
+In this dissertation we illustrate the benefits gained by designing MPC within the framework of Probabilistic Graphical Models. We investigate and show the following:
+\begin{enumerate}
+\item
+Under the assumption of normality and linearity it is possible to convert the stochastic objective function of (\ref{eq_lit_lqg}) into its deterministic equivalent. The analysis is closely related to the work of  \cite{yan1} and \cite{yan2} but we show that these results are immediately obvious from within the framework of Probabilistic Graphical Models. Thus it is possible to solve the LQG problem without resorting to stochastic Dynamic Programming.
+\item
+We generalise our analysis to stochastic MPC and show that by using the statistically important metric, the Mahalanobis Distance, we arrive at a technique for enforcing chance constraints which is very closely related to the approach by \cite{vanhessem2} and \cite{vanhessem1}. Under the assumption of linearity and normality we show that the constraint satisfaction is ensured. Due to the use of the Mahalanobis Distance metric we provide some theoretical support for the use of the ``ellipsoidal approximation" technique if the underlying system is non-linear or not exactly Gaussian.
+\item
+Combining the previous results we show that it is possible to write the joint chance constrained stochastic MPC problem as a deterministic MPC problem. Additionally we show that the joint chance constraints can be written in a linear format. The entire optimisation problem can then be written in the standard form for Quadratic Programming optimisation. Standard deterministic MPC solution techniques can then be used to solve the stochastic problem.
+\item
+We compare the effect different inference techniques have on the quality of the MPC.
+\end{enumerate}
+Lastly, measurement and system noise is ubiquitous in real life systems. Therefore most modern MPC systems use an inference (filtering) technique to estimate the current system state. By using a filter the MPC system is implicitly using a Probabilistic Graphical Model; therefore we are not actually introducing anything exotic but rather highlighting a connection between two rich fields. 
+
+\subsection{Switching MPC}
+\label{sec_switch_mpc_lit}
