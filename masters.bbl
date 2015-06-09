@@ -220,6 +220,12 @@ K.P. Murphy.
 \newblock {\em {Machine Learning: A Probabilistic Perspective}}.
 \newblock MIT Press, 2012.
 
+\bibitem{nandola}
+N.~Nandola and S.~Bhartiya.
+\newblock A multiple model approach for predictive control of nonlinear hybrid
+  systems.
+\newblock {\em Journal of Process Control}, 18(2):131--148, 2008.
+
 \bibitem{ozkan}
 L.~Ozkan, M.~V. Kothare, and C.~Georgakis.
 \newblock Model predictive control of nonlinear systems using piecewise linear

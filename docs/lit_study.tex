@@ -1,7 +1,7 @@
 \section{Literature Study}
 This dissertation deals primarily with stochastic Model Predictive Control (MPC) but applied within the context of Probabilistic Graphical Models. In Section \ref{sec_stoch_mpc_lit} we briefly discuss some recents developments in stochastic MPC literature. In Section \ref{sec_switch_mpc_lit} we briefly discuss control schemes, primarily MPC based, where the model control is based upon is automatically adjusted based on plant measurements or manual control laws.
 
-\subsection{Stochastic MPC}
+\subsection{Stochastic Model Predictive Control}
 \label{sec_stoch_mpc_lit}
 Linear unconstrained stochastic control subject to white additive Gaussian noise is well studied in literature. The Linear Quadratic Gaussian (LQG) controller, for which the problem is shown in (\ref{eq_lit_lqg}), is one of the most fundamental results in stochastic Optimal Control Theory \cite{lqg}. We use boldface to denote a vector of vectors over time e.g. $\mathbf{u}=(u_0, u_1,...)$.
 \begin{equation}
@@ -78,7 +78,7 @@ We compare the effect different inference techniques have on the quality of the 
 \end{enumerate}
 Lastly, measurement and system noise is ubiquitous in real life systems. Therefore most modern MPC systems use an inference (filtering) technique to estimate the current system state. By using a filter the MPC system is implicitly using a Probabilistic Graphical Model; therefore we are not actually introducing anything exotic but rather highlighting a connection between two rich fields. 
 
-\subsection{Switching MPC}
+\subsection{Switching Model Predictive Control}
 \label{sec_switch_mpc_lit}
 In MPC the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model (\ref{eq_mpc_nodisturbance_obs}) is linear and time invariant; this assumption allows for the use of advanced constrained optimisation algorithms, typically Quadratic Programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
 \begin{equation}
@@ -121,12 +121,9 @@ The binary variable $\delta_i \in [0, 1]$ selects which linear model to use at e
 
 The work by \cite{du} and \cite{sakakura} elaborate on this approach. Both papers deal with the control of Continuously Stirred Tank Reactors (CSTRs) throughout different operating regimes. CSTRs are a good case study because they often have multiple steady states, constraints and can be quite non-linear. The approach of \cite{du} and \cite{sakakura} is to linearise the underlying non-linear CSTR model about different operating points and use those models to approximate the true non-linear dynamics. Computational difficulties are reported because the complexity of the MIQP problem scales exponentially with the number of variables.
 
-The approach by \cite{ozkan} is similar except that they use ellipsoidal regions to develop a multiple model MPC. Again the approach by \cite{kvasnica} is similar except that they attempt to reduce the complexity of the MIQP problem by providing guidelines on selecting the number of linear models used. More linear models leads to better control but the optimisation problem becomes correspondingly more difficult.
+The approach by \cite{ozkan} is similar except that they use ellipsoidal regions to develop a multiple model MPC. Again the approach by \cite{kvasnica} is similar except that they attempt to reduce the complexity of the MIQP problem by providing guidelines on selecting the number of linear models used. More linear models leads to better control but the optimisation problem becomes correspondingly more difficult. Finally, \cite {nandola} also investigates hybrid systems but uses Bayes' Theorem to assign weights to the different models as opposed to only having one model active in each region. In their approach $\delta_i$ is a continuous variable in the range $[0, 1]$ and $\sum_{i=1}^I \delta_i = 1$. While their approach is also computationally intensive, a mixed integer non-linear optimisation problem needs to be solved, an effort is made to take advantage of the problem structure to attenuate this problem.
 
- 
-
-
-
+In this dissertation 
 
 
 

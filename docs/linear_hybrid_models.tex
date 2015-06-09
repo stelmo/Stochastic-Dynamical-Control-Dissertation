@@ -2,7 +2,36 @@
 In this section we generalise the graphical models of the previous sections as shown in Figure \ref{fig_hybridmod1}. We include the discrete random variables, $s_1, s_2,...$ where each variable has $N$ states, which we will call the switching variables. The goal of adding switching variables is to allow our graphical models to switch (or more precisely, choose based on the observation) between $N$ different dynamical models. For the moment we restrict ourselves to linear transition functions i.e. we use linear state space models. The other variables retain their meaning as before. Models of this form are usually called Switching Kalman Filter models \cite{murphy1}. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=1.0]{hybrid_model.pdf}
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$y_0$};
+  \node[obs, right=of ya] (yb) {$y_1$};
+  \node[obs, right=of yb] (yc) {$y_2$};
+  \node[latent, above=of ya]  (xa) {$x_0$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_2$};
+  \node[det, above=of xa, xshift=0.7cm] (da) {$u_0$};
+  \node[det, above=of xb, xshift=0.7cm] (db) {$u_1$};
+  \node[latent, above=of xa, yshift=1.1cm] (sa) {$s_0$};
+  \node[latent, above=of xb, yshift=1.1cm] (sb) {$s_1$};
+  \node[latent, above=of xc, yshift=1.1cm] (sc) {$s_2$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  \edge {sa} {sb};
+  \edge {sb} {sc};
+  \edge {sa} {xa};
+  \edge {sb} {xb};
+  \edge {sc} {xc};
+  
+\end{tikzpicture}
 \caption{Graphical model of this section}
 \label{fig_hybridmod1}
 \end{figure}
