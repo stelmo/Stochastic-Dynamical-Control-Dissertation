@@ -30,7 +30,7 @@ Our first goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) gi
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} J_{LQG}(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
 & \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
-& \text{and } y_{t}= Cx_t + v_t \\
+& \text{and } y_{t}= Cx_t + v_t \text{ (Observed)}\\
 \end{aligned}
 \label{eq_mpc_unconstrained_linmod}
 \end{equation}
@@ -83,10 +83,11 @@ Now we are in a position to show the equivalence between the LQR control problem
 \begin{thrm}
 \textbf{LQR and LQG Objective Function Difference} Consider the LQR and LQG Objective Functions in (\ref{eq_lqr_obj_func}) and (\ref{eq_lqg_obj_func}) respectively. 
 \begin{align}
-J_{LQR}(x_0, \mathbf{u}) &= \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \label{eq_lqr_obj_func}\\
-\text{with } x_{t+1} &= Ax_t +Bu_t \nonumber\\
-J_{LQG}(x_0, \mathbf{u}) &=  \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \label{eq_lqg_obj_func} \\
-\text{with } x_{t+1} &= Ax_t +Bu_t + w_{t+1} \nonumber
+&J_{LQR}(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \label{eq_lqr_obj_func} \\
+& \text{with } x_{t+1} = Ax_t +Bu_t \text{ (Observed)} \nonumber\\
+& J_{LQG}(x_0, \mathbf{u}) =  \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \label{eq_lqg_obj_func} \\
+& \text{with } x_{t+1} = Ax_t +Bu_t + w_{t+1} \nonumber \\
+& \text{and } y_{t} = Cx_t + v_t \text{ (Observed)} \nonumber
 \end{align}
 Suppose $x_0$ is the state estimate supplied by the Kalman Filter given the latest observation in the stochastic case. In the deterministic case we have that $x_0 = \mathbb{E}[x_0] = \mu_0$ because we exactly observe the state. Given any input sequence $\mathbf{u} \in \mathcal{U}$, where $\mathcal{U}$ is the shared admissible input space, we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ where $ \Sigma_{t+1} = W+A\Sigma_t A^T$ and $\Sigma_0$ is the covariance matrix of the current state given by the Kalman Filter.
 \label{thrm_lqr_lqg_diff}
@@ -128,7 +129,7 @@ Finally we combine Theorem \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} to pr
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
 & \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
-& \text{and } y_{t}= Cx_t + v_t \\
+& \text{and } y_{t}= Cx_t + v_t \text{ (Observed)}\\
 \end{aligned}
 \label{eq_lqg_problem_full}
 \end{equation}
@@ -149,12 +150,12 @@ To clarify why it is important that the linear system, i.e. the matrix $A$, is s
 
 
 \subsection{Constrained Stochastic Control}
-The goal of this section is to solve the stochastic constrained optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian\footnote{From the results of Section \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible.}. We also restrict our analysis to affine constraints.
+The goal of this section is to solve the stochastic constrained optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian\footnote{From the results of Section \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible.}. We also restrict our analysis to affine constraints. Note that we only include one constraint in the succeeding analysis however, additional constraints are handled in exactly the same way as we will show.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
 & \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
-& \text{and } y_{t}= Cx_t + v_t \\
+& \text{and } y_{t}= Cx_t + v_t \text{ (Observed)}\\
 & \text{and } \mathbb{E}[d^Tx_t + e] \geq 0 ~\forall ~t=1,...,N \\
 & \text{and } \text{Pr}(d^Tx_t + e \geq 0) \geq p ~\forall ~t=1,...,N\\
 \end{aligned}
@@ -170,6 +171,27 @@ Theorem \ref{thrm_affine_expected_const} succinctly shows that it is simple to c
 \begin{proof}
 We know that $x$ is a Gaussian stochastic variable. By the results of Section \ref{thrm_gaussian_identities} we know that $\mathbb{E}[d^Tx + e] =d^T\mu + e$. This immediately implies the Theorem.
 \end{proof}
+It is interesting to pause here for a moment and consider Theorem \ref{thrm_lqg_sol} and Theorem \ref{thrm_affine_expected_const} applied to a problem of the form (\ref{eq_mpc_constrained_linmod_noprob}). We assume that the current state estimate is available at each time step and that $\mathbb{E}[x_0]=\mu_0$.
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
+& \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t \\
+& \text{and } y_{t}= Cx_t + v_t \text{ (Observed)}\\
+& \text{and } \mathbb{E}[d^Tx_t + e] \geq 0 ~\forall ~t=1,...,N \\
+\end{aligned}
+\label{eq_mpc_constrained_linmod_noprob}
+\end{equation}
+It is clear that by applying those two theorems it is possible to rewrite (\ref{eq_mpc_constrained_linmod_noprob}) as (\ref{eq_mpc_constrained_linmod_deter_noprob}).
+\begin{equation}
+\begin{aligned}
+&\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
+& \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
+& \text{and } d^T\mu_t + e \geq 0 ~\forall ~t=1,...,N\\
+\end{aligned}
+\label{eq_mpc_constrained_linmod_deter_noprob}
+\end{equation}
+This implies that the standard deterministic MPC problem (\ref{eq_mpc_constrained_linmod_deter_noprob}) is equivalent to the stochastic MPC problem with affine expected value constraints (\ref{eq_mpc_constrained_linmod_noprob}) under the assumptions of linearity and normality. This suggests that if probability constraints are not required that standard deterministic MPC will be sufficient for control.
+
 Theorem \ref{thrm_mahala_dist} is a necessary step before we can convert the last stochastic inequality constraint of (\ref{eq_mpc_constrained_linmod}) into a nonlinear deterministic constraint.
 \begin{thrm}
 \textbf{Shortest Squared Mahalanobis Distance between a Hyperplane and a Point} Suppose we are given a symmetric positive semi-definite matrix $S$ and a point $y$. The shortest squared Mahalanobis Distance between $y$ and the hyperplane $b^Tx+c=0$ is given by $\frac{(b^Ty+c)^2}{b^TSb}$.
@@ -429,12 +451,12 @@ Figure \ref{fig_lin_mod_kl} shows the degree to which the underlying distributio
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{lin_mod_kl.pdf}
-\caption{Kullback-Leibler Divergence between the assumed Gaussian distribution and actual distribution using 5000 particles. The underlying model is linear.}
+\caption{Kullback-Leibler Divergence between the assumed Gaussian distribution and different sampled distributions using 5000 particles. The underlying model is linear. A log scale is used because the uniform curve differs by more than an order of magnitude from the other curves.}
 \label{fig_lin_mod_kl}
 \end{figure}
-The approximation curve in Figure \ref{fig_lin_mod_kl} shows how much the samples diverge from the Gaussian distribution approximated using the samples. The baseline curve shows how much the Gaussian distribution diverges from samples of the same distribution. One would expect the baseline curve to tend to zero as the number of particles tends to infinity. Sampling error causes divergence from zero for the baseline curve. Thus we can use the baseline curve as a crude measure of the  error introduced by sampling.
+The approximation curve in Figure \ref{fig_lin_mod_kl} shows how much the samples diverge from the Gaussian distribution approximated using the samples. The baseline curve shows how much the Gaussian distribution diverges from samples of the same distribution. The uniform curve shows how much a Gaussian approximation of a Uniform distribution drawn in the interval $(\mu_i-\sigma_i, \mu_i-\sigma_i)$ (for each $i$ in the dimension of the underlying distribution) diverges; this serves to illustrate the divergence one would expect if attempting to model a distribution which is decidedly not normal. One would expect the baseline curve to tend to zero as the number of particles tends to infinity. Sampling error causes divergence from zero for the baseline curve. Thus we can use the baseline and uniform curves as a crude measure of normality.
 
-In Figure \ref{fig_lin_mod_kl} we see that the approximation is relatively close, within a factor of 2. This implies that even though we are using a non-linear control technique the posterior state distributions are still approximately Gaussian. 
+In Figure \ref{fig_lin_mod_kl} we see that the approximation is relatively close to the baseline. Additionally it is far removed from the uniform curve. The average divergence for the baseline, approximation and uniform curve (in nats) is: $0.035$, $0.066$ and $34.57$ respectively. This implies that even though we are using a non-linear control technique the posterior state distributions are still approximately Gaussian. 
 
 
 \subsection{Nonlinear System}
@@ -565,7 +587,7 @@ As before we need to investigate the normal assumption underpinning the theory b
 \caption{Kullback-Leibler Divergence between the assumed Gaussian distribution and actual distribution using 5000 particles. The underlying model is non-linear.}
 \label{fig_nonlin_mod_kl}
 \end{figure}
-It is a relief that the normal assumption seems to hold almost as well in the non-linear underlying system case. The Gaussian approximation is within a factor of 3 of the baseline. It is not surprising that the non-linearity reduced the degree of normality of the distributions but it did not do so significantly enough to warrant concern.
+It is a relief that the normal assumption seems to hold almost as well in the non-linear underlying system case. The average divergence for the baseline, approximation and uniform curves are: $0.035$, $0.071$ and $110.11$. It is not surprising that the non-linearity reduced the degree of normality of the distributions although it did not do so significantly. Therefore we can conclude that the normal assumption holds approximately.
 
 \subsection{Conclusion}
 We have illustrated the benefits gained by designing MPC within the framework of Probabilistic Graphical Models by showing:

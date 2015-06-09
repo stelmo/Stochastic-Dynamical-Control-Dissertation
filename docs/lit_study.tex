@@ -1,5 +1,5 @@
 \section{Literature Study}
-This dissertation deals primarily with stochastic Model Predictive Control (MPC) but applied within the context of Probabilistic Graphical Models. In Section \ref{sec_stoch_mpc_lit} we briefly discuss some recents developments in stochastic MPC literature. In Section \ref{sec_switch_mpc_lit} we briefly discuss control schemes where the model control is based upon is automatically adjusted based on plant measurements. The latter section is more vague than the former because the underlying literature is less well developed.
+This dissertation deals primarily with stochastic Model Predictive Control (MPC) but applied within the context of Probabilistic Graphical Models. In Section \ref{sec_stoch_mpc_lit} we briefly discuss some recents developments in stochastic MPC literature. In Section \ref{sec_switch_mpc_lit} we briefly discuss control schemes, primarily MPC based, where the model control is based upon is automatically adjusted based on plant measurements or manual control laws.
 
 \subsection{Stochastic MPC}
 \label{sec_stoch_mpc_lit}
@@ -45,7 +45,7 @@ The approach taken by \cite{li} is related to the sampling approach. They conver
 
 In \cite{li2} the stochastic variables are assumed to be Gaussian and the stochastic optimisation problem is transformed into a nonlinear optimisation problem. Using the Gaussian assumption they are able to ensure feasibility and constraint satisfaction albeit conservatively. In \cite{masahiro} the feasibility of stochastically constrained predictive control is considered. Feasibility becomes a problem when predicting under uncertainty. Since the current state estimate is not precisely known and the evolution of the system is stochastic, the certainty of the predicted states often decreases with the prediction horizon. Ensuring constraint satisfaction can become problematic in such situations because of the large predicted uncertainty in the future. In \cite{masahiro} an algorithm enforcing joint chance constraints and recursive feasibility is discussed using a risk allocation approach. While \cite{schwarm} mainly concerns stochastic parameters in the optimisation problem it is shown that chance constraints can, in theory, be rewritten as deterministic constraints if the probability distributions are known and affine constraints are used. 
 
-In \cite{vanhessem2} and \cite{vanhessem1} an ellipsoidal approximation technique is used to ensure constraint satisfaction for the problem shown in (\ref{eq_lit_chance_mpc_vanhessem}). The authors use the expected value of the stochastic variables in the objective function and system dynamics. The randomness introduced by the stochastic variables is only addressed in the chance constraint. 
+In \cite{vanhessem2} and \cite{vanhessem1} an ellipsoidal approximation technique is used to ensure constraint satisfaction for the problem shown in (\ref{eq_lit_chance_mpc_vanhessem}). The authors use the expected value of the stochastic variables in the objective function and system dynamics. They also only consider deterministic linear objective functions. The randomness introduced by the stochastic variables is only addressed in the chance constraint. 
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} f(\mathbf{x}) \\
@@ -80,3 +80,56 @@ Lastly, measurement and system noise is ubiquitous in real life systems. Therefo
 
 \subsection{Switching MPC}
 \label{sec_switch_mpc_lit}
+In MPC the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model (\ref{eq_mpc_nodisturbance_obs}) is linear and time invariant; this assumption allows for the use of advanced constrained optimisation algorithms, typically Quadratic Programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
+\begin{equation}
+\begin{aligned}
+&x_{t+1} = Ax_t + Bu_t + w_t~\text{(Latent)} \\
+&y_t = Cx_t + v_t~\text{(Observed)}
+\end{aligned}
+\label{eq_mpc_nodisturbance_obs}
+\end{equation}
+Unfortunately modelling errors or omissions often cause poor controller performance within the context of MPC. This is often observed as steady state offset i.e. the controller takes no more action and the system is not at the set point. In certain cases it is possible to account, remove steady state offset, for plant/model mismatch or asymptotic disturbances by incorporating a disturbance model within the MPC framework. This is classically called zero offset regulation \cite{raw} and is achieved by augmenting the system models as shown in (\ref{eq_mpc_disturbance_obs}).
+\begin{equation}
+\begin{aligned}
+&x_{t+1} = Ax_t + Bu_t + B_d d_t + w_t~\text{(Latent)} \\
+&d_{t+1} = d_t ~\text{(Latent)}\\
+&y_t = Cx_t + C_d d_t + v_t~\text{(Observed)}
+\end{aligned}
+\label{eq_mpc_disturbance_obs}
+\end{equation}
+The noise terms retain their meaning from Section \ref{sec_stoch_mpc_lit}. An observer (state estimator) is used to estimate an integrating disturbance $d$ which is effectively used to modify the objective function as shown in (\ref{eq_mpc_disturbance_obj}). Typically only the mean estimate $\hat{d}$ of the disturbance estimate is used.
+\begin{equation}
+\begin{aligned}
+&\frac{1}{2}\sum_{k=0}^{N-1} \left( (x_k-y_{sp}^*)^TQ(x_k-y_{sp}^*) + (u_k-u_{sp})^TR(u_k-u_{sp}) \right) + \frac{1}{2}(x_N-y_{sp}^*)^TP_f(x_N-y_{sp}^*) \\
+&y_{sp}^* = y_{sp}-C_d \hat{d}
+\end{aligned}
+\label{eq_mpc_disturbance_obj}
+\end{equation}
+The controller minimising (\ref{eq_mpc_disturbance_obj}), optionally subject to some user supplied constraints, will attempt to drive the system to $(y_{sp}, u_{sp})$. See \cite{raw} and \cite{maeder} for mode details. The problem with this approach is that it assumes that the model $(A, B)$ is at least somewhat representative of the underlying dynamics.
+
+Linear models $(A, B)$ are often derived by linearising non-linear models about a single operating point. These models are traditionally used in MPC design; a drawback with this approach is that linear models are fundamentally only accurate in a small region around the point of linearisation. The further the system moves away from the linearisation point the worse the accuracy of the model becomes because the model is no longer a good approximation of the underlying system dynamics. A possible solution to this problem is Non-linear MPC (NMPC). In NMPC the full non-linear model is used for controller design; it is hoped that this more complicated model is accurate over the entire problem domain. Unfortunately this approach is often computationally intensive, especially for large problems, because it inherently requires non-linear ,perhaps even non-convex, optimisation. This is a subject of much current research \cite{diehl}. 
+
+Another approach is to approximate a potentially complex non-linear system by a set of linear functions which are valid in certain ranges. An early attempt at this idea \cite{bemporad} integrated logical rules for switching between different system dynamics and constraints. Using that approach a set of logical rules were integrated into the optimisation problem to yield, in the setting of standard MPC, a Mixed Integer Quadratic Program (MIQP) with linear constraints. This approach is called Mixed Logical Dynamical Modelling (MLD) in literature; the system dynamics are then specified by (\ref{eq_mld_system}) where $i=1,2,..., I$ are the indices of the models approximating the underlying problem.
+\begin{equation}
+\begin{aligned}
+&x_{t+1} = \sum_{i=1}^I \delta_i A_i x_t + \sum_{i=1}^I \delta_i B_i u_t \\
+&y_t = \sum_{i=1}^I \delta_i C_i x_t 
+\end{aligned}
+\label{eq_mld_system}
+\end{equation}
+The binary variable $\delta_i \in [0, 1]$ selects which linear model to use at each step in the prediction horizon within the framework of MPC. Constraints on $\delta_i$ allow the optimisation algorithm to switch between models based on its position in the state space.  The drawbacks with this approach is that the ``IF-THEN-ELSE" rules need to be fully specified and MIQP can become computationally intractable. 
+
+The work by \cite{du} and \cite{sakakura} elaborate on this approach. Both papers deal with the control of Continuously Stirred Tank Reactors (CSTRs) throughout different operating regimes. CSTRs are a good case study because they often have multiple steady states, constraints and can be quite non-linear. The approach of \cite{du} and \cite{sakakura} is to linearise the underlying non-linear CSTR model about different operating points and use those models to approximate the true non-linear dynamics. Computational difficulties are reported because the complexity of the MIQP problem scales exponentially with the number of variables.
+
+The approach by \cite{ozkan} is similar except that they use ellipsoidal regions to develop a multiple model MPC. Again the approach by \cite{kvasnica} is similar except that they attempt to reduce the complexity of the MIQP problem by providing guidelines on selecting the number of linear models used. More linear models leads to better control but the optimisation problem becomes correspondingly more difficult.
+
+ 
+
+
+
+
+
+
+
+
+
