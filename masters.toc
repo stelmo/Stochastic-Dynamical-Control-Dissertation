@@ -52,15 +52,15 @@
 \contentsline {subsection}{\numberline {9.3}Rao-Blackwellised Particle Prediction}{102}
 \contentsline {subsection}{\numberline {9.4}Smoothing and Viterbi Decoding}{102}
 \contentsline {subsection}{\numberline {9.5}Filtering the CSTR}{103}
-\contentsline {section}{\numberline {10}Stochastic Switching Linear Control using Non-linear Hybrid Models}{107}
-\contentsline {subsection}{\numberline {10.1}Unconstrained}{107}
-\contentsline {subsection}{\numberline {10.2}Constrained}{107}
-\contentsline {section}{\numberline {11}Inference using Nonlinear Hybrid Models}{108}
-\contentsline {subsection}{\numberline {11.1}Exact Inference}{108}
-\contentsline {subsection}{\numberline {11.2}Approximate Inference}{109}
-\contentsline {subsection}{\numberline {11.3}Particle Prediction}{110}
-\contentsline {subsection}{\numberline {11.4}Filtering the CSTR}{110}
-\contentsline {section}{\numberline {12}Stochastic Switching Control using Non-linear Hybrid Models}{114}
-\contentsline {subsection}{\numberline {12.1}Unconstrained}{114}
-\contentsline {subsection}{\numberline {12.2}Constrained}{114}
-\contentsline {section}{\numberline {13}Conclusion}{115}
+\contentsline {section}{\numberline {10}Stochastic Switching Linear Control using Non-linear Hybrid Models}{111}
+\contentsline {subsection}{\numberline {10.1}Unconstrained}{111}
+\contentsline {subsection}{\numberline {10.2}Constrained}{111}
+\contentsline {section}{\numberline {11}Inference using Nonlinear Hybrid Models}{112}
+\contentsline {subsection}{\numberline {11.1}Exact Inference}{112}
+\contentsline {subsection}{\numberline {11.2}Approximate Inference}{113}
+\contentsline {subsection}{\numberline {11.3}Particle Prediction}{114}
+\contentsline {subsection}{\numberline {11.4}Filtering the CSTR}{114}
+\contentsline {section}{\numberline {12}Stochastic Switching Control using Non-linear Hybrid Models}{118}
+\contentsline {subsection}{\numberline {12.1}Unconstrained}{118}
+\contentsline {subsection}{\numberline {12.2}Constrained}{118}
+\contentsline {section}{\numberline {13}Conclusion}{119}

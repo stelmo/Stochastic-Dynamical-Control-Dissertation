@@ -159,6 +159,8 @@ Like in Section \ref{sec_inf_nonlin_mods} we do not investigate the effect incre
 
 It should be noted that in all the succeeding investigations only the most probably particle was used to estimate the current state. The reason for this will become clear in Section \ref{sec_rbpf_control} and \ref{sec_spf_control}. It is possible that more accurate state estimates could be reached by using a weighted average of the particles - this approach should be investigated further.
 
+Note that we use the same parameters (e.g. noise covariances etc.) unless otherwise noted as used in Section \ref{sec_inf_lin_mods}.
+
 We begin our investigation by only measuring temperature and using 3 linear models, derived by linearising the non-linear CSTR model at each nominal operating point. Since the CSTR has 3 nominal operating points we have 3 linear models. We compare the use of 2 different switch transition matrices $P_1$ and $P_2$ as shown in (\ref{eq_switch_trans}). The first index corresponds to the high temperature operating point ($M_1$), the second index to the unstable operating point ($M_2$) and the third index to the low temperature operating point ($M_3$).
 \begin{equation}
 \begin{aligned}
@@ -195,7 +197,7 @@ Figure \ref{fig_3m_vage_switch} shows the state of the corresponding switching v
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{rbpf_3m_vague_switch.pdf}
-\caption{State of the switching variable $s_t$ over time.}
+\caption{State of the switching variable $s_t$ over time. The weight indicates the sum of the particle weights per model.}
 \label{fig_3m_vage_switch}
 \end{figure}
 From Figure \ref{fig_3m_vage_track} we see that the filtering error is quite large in the unmeasured state. This has been the trend when performing inference on an unmeasured state, however the magnitude of the error does not justify the use of the more complicated Graphical Model. Additionally, we see that there is no clear switching point in Figure \ref{fig_3m_vage_switch} - the filter relies on both $M_2$ an $M_3$ to estimate the state throughout the simulation. This is contrary to what we expected based on Figure \ref{fig_3m_models}.
@@ -211,14 +213,14 @@ Figure \ref{fig_3m_switch} shows the state of the corresponding switching variab
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{rbpf_3m_switch.pdf}
-\caption{State of the switching variable $s_t$ over time.}
+\caption{State of the switching variable $s_t$ over time. The weight indicates the sum of the particle weights per model.}
 \label{fig_3m_switch}
 \end{figure}
 Unlike Figure \ref{fig_3m_vage_switch} we do see a clear model transition around the 20 minute mark in Figure \ref{fig_3m_switch}. This is the behaviour we expected - as the system moves away from the unstable operating point the corresponding Graphical Model becomes less important.
 
 These results suggest that the switch transition matrix sets how ``sticky" the model transitions are. The more vague they are, as in the case of $P_1$, the more unsure the filter is about which model is probably generating the observations. On the other hand, in the case of $P_2$, once the filter switched to the higher probability model it stayed there. This behaviour is desirable because it is easier to base a control strategy off of one model than multiple models. However, the immediate drawback of the ``sticky" approach is that the filter may be over confident. Additionally if a machine learning approach is not used to infer the values of $P$ it could become a tedious task to set $P$ for a large system. Clearly the values used in $P_2$ were set my hand - more investigation is necessary to determine proper heuristics if this approach should be adopted in practice.
 
-Next we investigate the effect of using more models has on the filter. We use the same 3 model filter as before (using $P_2$) but compare it to a 7 model filter. The state transition matrix for the 7 model filter is shown in (\ref{eq_state_trans7}).
+Next we investigate the effect using more models has on the filter. We use the same 3 model filter as before (using $P_2$) but compare it to a 7 model filter. The state transition matrix for the 7 model filter is shown in (\ref{eq_state_trans7}).
 \begin{equation}
 P_3 = \begin{pmatrix}
 0.98 & 0.00 & 0.00 & 0.00 & 0.00 & 0.01 & 0.00 \\
@@ -231,11 +233,54 @@ P_3 = \begin{pmatrix}
 \end{pmatrix}
 \label{eq_state_trans7}
 \end{equation}
-The values of $P_3$ were set using the same reasoning as before. Figure \ref{fig_7m_models} show state trajectory of the system (like Figure \ref{fig_3m_models}) but with the additional models superimposed thereupon.
+The values of $P_3$ were set using the same reasoning as before. Figure \ref{fig_7m_models} show state trajectory of the system (like Figure \ref{fig_3m_models}) but with the additional models superimposed thereupon. Clearly $M_5$, $M_6$ and $M_7$ correspond to high temperature, unstable and low temperature operating points. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{rbpf_7m_models.pdf}
 \caption{State space of the CSTR problem with the position of the 3 linear models superimposed thereupon. The trajectory followed by the system is also shown, the dot is the initial point and the cross the final point.}
-\label{fig_7m_model}
+\label{fig_7m_models}
 \end{figure}
+Figure \ref{fig_7m_track} shows the effectiveness of the filter over the simulation window. The average concentration and temperature error is 5.36\% and 0.36\% respectively. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{rbpf_7m_track.pdf}
+\caption{Filtering with the RBPF using 7 linear models and 500 particles. Switch transition matrix $P_3$ was used.}
+\label{fig_7m_track}
+\end{figure}
+Interestingly enough we actually observe worse tracking performance when more models are used compared to the 3 model case with $P_2$. We expected the additional models to increase the effectiveness of the filter. Figure \ref{fig_7m_switch} shows the state of the corresponding switching variable $s_t$ over time. A possible explanation for the performance degradation is evident here.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{rbpf_7m_switch.pdf}
+\caption{State of the switching variable $s_t$ over time. The weight indicates the sum of the particle weights per model.}
+\label{fig_7m_switch}
+\end{figure}
+We certainly expected $M_7$ to be the dominant model near the end of the simulation; however $M_3$, while close to the low temperature operating point, played a significant role in the state estimate throughout the simulation. While we only used the most likely model (clearly a particle using $M_7$) to estimate the current state it is evident that there were a non-negligible number of particles which maintained the $M_3$ hypothesis. This implies that less particles were available to use the $M_7$ model and thus we see worse performance.
 
+The crux of the problem is model overlap. While it is clear to a human that the system should only use $M_7$ near the end of the simulation the algorithm has no way of knowing this. It infers this based on the predictive ability of the models. Clearly $M_7$, $M_3$ and to a lesser extent $M_1$ and $M_6$ were all able to accurately predict future behaviour. For this reason they have non-negligible weights in Figure \ref{fig_7m_switch}. 
+
+We have in fact already come across this problem in Figures \ref{fig_3m_vage_track} and \ref{fig_3m_vage_switch}. We saw that it is possible to attenuate this problem by making the switching transition matrix more ``sticky". Unfortunately this does not solve the underlying problem - the models are not different enough. Using more models would only make this problem worse.
+
+Finally we investigate the effect of measuring both states has on the accuracy of the filter. Due to the work in Sections \ref{sec_inf_lin_mods} and \ref{sec_inf_nonlin_mods} we expect that by measuring concentration we will increase the filter accuracy. We use the 3 model filter with $P_2$ to demonstrate that this is the case.
+
+In Figure \ref{fig_3m_track_m2} we see the filtering performance of the RBPF measuring both states. The average concentration and temperature error is 0.88\% and 0.31\%. This is a significant improvement over the tracking we saw in Figure \ref{fig_3m_track}.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{rbpf_3m_track_m2.pdf}
+\caption{Filtering with the RBPF using 3 linear models and 500 particles. Switch transition matrix $P_3$ was used.}
+\label{fig_3m_track_m2}
+\end{figure}
+In Figure \ref{fig_3m_switch_m2} we see the state of the switching variable over the simulation run. Like Figure \ref{fig_3m_switch} we also see a clear switch occurring at approximately 15 minutes (actually at 20 minutes when measuring only one state). However, comparing Figures \ref{fig_3m_switch} and \ref{fig_3m_switch_m2} closely we see less ``switching noise" in the latter. The second measurement allows the filter to compare two state predictions to discern between models. This is clearly beneficial.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{rbpf_3m_switch_m2.pdf}
+\caption{State of the switching variable $s_t$ over time. The weight indicates the sum of the particle weights per model.}
+\label{fig_3m_switch_m2}
+\end{figure}
+Finally, in Figure \ref{fig_3m_maxswitch} we see only the most likely model at each time step. This is simply derived from Figure \ref{fig_3m_switch_m2} by selecting the particle with the highest weighted switching index.
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.25]{rbpf_3m_maxswitch_m2.pdf}
+\caption{State of the switching variable $s_t$ over time. The weight indicates the sum of the particle weights per model.}
+\label{fig_3m_maxswitch}
+\end{figure}
+Since we only base our state estimate on the most likely particle Figure \ref{fig_3m_maxswitch} indicates from which model our state estimate is derived. Ideally one would like very little ``switching noise" i.e. as soon as the system moves into territory where $M_3$ is accurate no particles should have high $M_1$ or $M_2$ weight. We see that this is mostly the case in Figure \ref{fig_3m_maxswitch}. 
