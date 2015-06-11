@@ -228,7 +228,9 @@ In the context of nonlinear transition and emission functions smoothing and Vite
 
 \subsection{Filtering the CSTR}
 \label{sec_nonlinmods_filtering}
-In this section we apply the Particle Filter to the nonlinear CSTR problem introduce in Section \ref{sec_cstr}. We first demonstrate the effectiveness of the Particle Filter by performing inference using the full nonlinear CSTR model measuring only temperature. Next we use the full nonlinear model again but measure both temperature and concentration. Finally, we compare the Particle Filter and the Kalman Filter measuring both states.
+In this section we apply the Particle Filter to the nonlinear CSTR problem introduce in Section \ref{sec_cstr}. We first demonstrate the effectiveness of the Particle Filter by performing inference using the full nonlinear CSTR model measuring only temperature. Next we use the full nonlinear model again but measure both temperature and concentration. Finally, we compare the Particle Filter and the Kalman Filter measuring both states. These investigations are by no means thorough but serve to illustrate important aspects of Probabilistic Graphical Models which will affect control.
+
+We do not investigate the effect the number of particles used for inference has on the Particle Filter. It is well known that increasing the number of particles increases the accuracy of Particle based methods \cite{murphy1} but at the cost of increased computational complexity. The number of particles used in this dissertation reflects this trade-off i.e. we use a relatively small number of particles so that the simulations run quickly but are still accurate enough for practical purposes. 
 
 Although it is not necessary we assume that the process and measurement noise is Gaussian with the same distributions as in Section \ref{sec_filtering_linmods}. Unless otherwise noted we use the same parameters (e.g. $h=0.1$) as before. We have used 200 particles to represent the state posterior. In Figure \ref{fig_pf_m1_time} we see the state estimates as a function of time.
 \begin{figure}[H] 

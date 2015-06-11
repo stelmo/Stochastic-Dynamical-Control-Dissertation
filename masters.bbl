@@ -113,6 +113,11 @@ The Economist.
 \newblock In praise of bayes.
 \newblock Article in Magazine, September 2000.
 
+\bibitem{edwards}
+C.~Edwards, S.K. Spurgeon, and R.J. Patton.
+\newblock Sliding mode observers for fault detection and isolation.
+\newblock {\em Automatica}, 36:541--553, 200.
+
 \bibitem{edwardsandpenny}
 H.C. Edwards and D.E. Penny.
 \newblock {\em Elementary Differential Equations}.
@@ -132,6 +137,12 @@ O.R. Gonzalez and A.G. Kelkar.
 N.J. Gordon, D.J. Salmond, and A.F.M. Smith.
 \newblock Novel approach to nonlinear/non-gaussian bayesian state estimation.
 \newblock {\em IEE Proceedings-F}, 140(2):107--113, 1993.
+
+\bibitem{isermann}
+R.~Isermann and P.~Balle.
+\newblock Trends in the application of model based fault detection and
+  diagnosis of technical processes.
+\newblock {\em Control Engineering Practice}, 5(5):709--719, 1997.
 
 \bibitem{gsf1}
 K.~Ito and K.~Xiong.
@@ -283,6 +294,17 @@ D.H. van Hessem, C.W. Scherer, and O.H. Bosgra.
   operation under state and input constraints.
 \newblock In {\em Proceedings of the 40th IEEE Conference on Decision and
   Control}, 2001.
+
+\bibitem{veerar}
+H.~Veeraraghavan, P.~Schrater, and N.~Papanikolopoulos.
+\newblock Switching kalman filter based approach for tracking and event
+  detection at traffic intersections.
+\newblock {\em Intelligent Control}, 2005.
+
+\bibitem{wang}
+D.~Wang, W.~Wang, and P.~Shi.
+\newblock Robust fault detection for switched linear systems with state delays.
+\newblock {\em Systems, Man and Cybernetics}, 39(3):800--805, 2009.
 
 \bibitem{google}
 R.S. Wills.

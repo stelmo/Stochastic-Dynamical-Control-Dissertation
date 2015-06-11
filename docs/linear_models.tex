@@ -247,7 +247,7 @@ Finally, we know from the Definition \ref{def_chain_rule_bayes} (Chain Rule for 
 
 \subsection{Filtering the CSTR}
 \label{sec_filtering_linmods}
-In this section we apply the Kalman Filter to the CSTR introduced in Section \ref{sec_cstr}. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that we only measure temperature for now.
+In this section we apply the Kalman Filter to the CSTR introduced in Section \ref{sec_cstr}. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that $V$ indicates that we only measure temperature for now.
 \begin{equation}
 \begin{aligned}
 &A = \begin{pmatrix}
@@ -270,6 +270,8 @@ V = \begin{pmatrix}
 \label{eq_linmodel}
 \end{equation}
 The system noise $W$ indicates that the standard deviation of the concentration component of the model is 0.001 kmol/m$^{-3}$ and the temperature component is 0.32 K. While these variances may seem small, bear in mind that noise is added at each time step which compounds its effect. The measurement noise implies that 68\% of the measurements will fall between $\pm\sqrt{10}$ of the actual state. We use an initial state with mean at the initial condition and covariance $W$.
+
+The focus of this dissertation is on the application of Probabilistic Graphical Models to control, therefore our investigation into the various aspects which improve or degrade filtering performance will be relatively superficial and will target factors which are most relevant only. In this section we will primarily only investigate the benefit gained by including more state measurements.
 
 In Figure \ref{fig_kftimeseries} we illustrate the strengths and weaknesses of the Kalman Filter. Since we derived the recursion equations analytically it is computationally efficient to use, the biggest cost is a matrix inversion which needs to be computed at each time step\footnote{It is even possible to avoid this step by noticing that the posterior covariance quickly converges to a constant covariance.}. During the initial part of the simulation the filter very accurately estimates the current system states because the model is accurate in this region. Thus the filter is able to infer the true state in the presence of noisy measurements. 
 

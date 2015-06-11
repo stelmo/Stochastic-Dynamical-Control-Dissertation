@@ -9,8 +9,9 @@ A level-1 auxiliary file: ./docs/linear_models.aux
 A level-1 auxiliary file: ./docs/nonlinear_models.aux
 A level-1 auxiliary file: ./docs/linear_control.aux
 A level-1 auxiliary file: ./docs/linear_hybrid_models.aux
+A level-1 auxiliary file: ./docs/rbpf_linear_control.aux
 A level-1 auxiliary file: ./docs/nonlinear_hybrid_models.aux
-A level-1 auxiliary file: ./docs/switching_linear_control.aux
+A level-1 auxiliary file: ./docs/spf_linear_control.aux
 A level-1 auxiliary file: ./docs/conclusion.aux
 The style file: plain.bst
 Database file #1: ./docs/research.bib

@@ -105,9 +105,9 @@ The noise terms retain their meaning from Section \ref{sec_stoch_mpc_lit}. An ob
 \end{aligned}
 \label{eq_mpc_disturbance_obj}
 \end{equation}
-The controller minimising (\ref{eq_mpc_disturbance_obj}), optionally subject to some user supplied constraints, will attempt to drive the system to $(y_{sp}, u_{sp})$. See \cite{raw} and \cite{maeder} for mode details. The problem with this approach is that it assumes that the model $(A, B)$ is at least somewhat representative of the underlying dynamics.
+The controller minimising (\ref{eq_mpc_disturbance_obj}), optionally subject to some user supplied constraints, will attempt to drive the system to its set point $(y_{sp}, u_{sp})$. See \cite{raw} and \cite{maeder} for mode details. The problem with this approach is that it assumes that the model $(A, B)$ is at least somewhat representative of the underlying dynamics.
 
-Linear models $(A, B)$ are often derived by linearising non-linear models about a single operating point. These models are traditionally used in MPC design; a drawback with this approach is that linear models are fundamentally only accurate in a small region around the point of linearisation. The further the system moves away from the linearisation point the worse the accuracy of the model becomes because the model is no longer a good approximation of the underlying system dynamics. A possible solution to this problem is Non-linear MPC (NMPC). In NMPC the full non-linear model is used for controller design; it is hoped that this more complicated model is accurate over the entire problem domain. Unfortunately this approach is often computationally intensive, especially for large problems, because it inherently requires non-linear ,perhaps even non-convex, optimisation. This is a subject of much current research \cite{diehl}. 
+Linear models $(A, B)$ are often derived by linearising non-linear models about a single operating point. These models are traditionally used in MPC design; a drawback with this approach is that linear models are fundamentally only accurate in a small region around the point of linearisation. The further the system moves away from the linearisation point the worse the accuracy of the model becomes because the model is no longer a good approximation of the underlying system dynamics. A possible solution to this problem is Non-linear MPC (NMPC). In NMPC the full non-linear model is used for controller design; it is hoped that this more complicated model is accurate over the entire problem domain. Unfortunately this approach is often computationally intensive, especially for large problems, because it inherently requires non-linear, usually non-convex, optimisation. This is a subject of much current research \cite{diehl}. 
 
 Another approach is to approximate a potentially complex non-linear system by a set of linear functions which are valid in certain ranges. An early attempt at this idea \cite{bemporad} integrated logical rules for switching between different system dynamics and constraints. Using that approach a set of logical rules were integrated into the optimisation problem to yield, in the setting of standard MPC, a Mixed Integer Quadratic Program (MIQP) with linear constraints. This approach is called Mixed Logical Dynamical Modelling (MLD) in literature; the system dynamics are then specified by (\ref{eq_mld_system}) where $i=1,2,..., I$ are the indices of the models approximating the underlying problem.
 \begin{equation}
@@ -122,6 +122,42 @@ The binary variable $\delta_i \in [0, 1]$ selects which linear model to use at e
 The work by \cite{du} and \cite{sakakura} elaborate on this approach. Both papers deal with the control of Continuously Stirred Tank Reactors (CSTRs) throughout different operating regimes. CSTRs are a good case study because they often have multiple steady states, constraints and can be quite non-linear. The approach of \cite{du} and \cite{sakakura} is to linearise the underlying non-linear CSTR model about different operating points and use those models to approximate the true non-linear dynamics. Computational difficulties are reported because the complexity of the MIQP problem scales exponentially with the number of variables.
 
 The approach by \cite{ozkan} is similar except that they use ellipsoidal regions to develop a multiple model MPC. Again the approach by \cite{kvasnica} is similar except that they attempt to reduce the complexity of the MIQP problem by providing guidelines on selecting the number of linear models used. More linear models leads to better control but the optimisation problem becomes correspondingly more difficult. Finally, \cite {nandola} also investigates hybrid systems but uses Bayes' Theorem to assign weights to the different models as opposed to only having one model active in each region. In their approach $\delta_i$ is a continuous variable in the range $[0, 1]$ and $\sum_{i=1}^I \delta_i = 1$. While their approach is also computationally intensive, a mixed integer non-linear optimisation problem needs to be solved, an effort is made to take advantage of the problem structure to attenuate this problem.
+
+Loosely related to the idea of model switching is model based fault detection. In \cite{isermann} it is found that almost 70\% of the reviewed papers dealing with fault detection use observer or parameter estimation methods. The basic idea behind this approach is to estimate the system outputs using an observer and to compare this to some model of the system. The difference, often called the residual, is then used to estimate the probability of a fault in the process \cite{edwards}. The approach followed in \cite{wang} combines elements of model switching and state observations. They use a filter to construct a residual generator which is used to evaluate whether or not the system has a fault. The filter can switch between the different linear system models based on the current regime of the system. 
+
+Related to this class of model based fault detection algorithms is the Switching Particle Filter or Switching Kalman Filter if the underlying system is linear and Gaussian. The corresponding Probabilistic Graphical Model is shown in Figure \ref{fig_spf_skf}.
+\begin{figure}[H] 
+\centering
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$y_0$};
+  \node[obs, right=of ya] (yb) {$y_1$};
+  \node[obs, right=of yb] (yc) {$y_2$};
+  \node[latent, above=of ya]  (xa) {$x_0$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_2$};
+  \node[latent, above=of xa] (sa) {$s_0$};
+  \node[latent, above=of xb] (sb) {$s_1$};
+  \node[latent, above=of xc] (sc) {$s_2$};
+  
+  % Connect the nodes
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  \edge {sa} {sb};
+  \edge {sb} {sc};
+  \edge {sa} {xa};
+  \edge {sb} {xb};
+  \edge {sc} {xc};
+  
+\end{tikzpicture}
+\caption{Switching Filter Graphical Model}
+\label{fig_spf_skf}
+\end{figure}
+Classically these types of models are used to infer the current state  estimate (called filtering) given a set of models. Intuitively, the model which best describes the current observation ($y_t$) is assigned the most weight in the state estimate. This allows for the modelling of non-linear and multi-modal distributions by combining models based on the inferred switching variable ($s$) \cite{murphy1}. These models may be used for both filtering and event detection (see \cite{veerar} for an example) which, in the setting of control, can be interpreted as fault detection.
 
 In this dissertation 
 

@@ -2,7 +2,36 @@
 In this section we generalise the graphical model (shown in Figure \ref{fig_hybridmod2} for convenience) of the previous section by dropping the assumption that the dynamic models are linear. The variables retain their meaning as before.     
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=1.0]{hybrid_model.pdf}
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$y_0$};
+  \node[obs, right=of ya] (yb) {$y_1$};
+  \node[obs, right=of yb] (yc) {$y_2$};
+  \node[latent, above=of ya]  (xa) {$x_0$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_2$};
+  \node[det, above=of xa, xshift=0.7cm] (da) {$u_0$};
+  \node[det, above=of xb, xshift=0.7cm] (db) {$u_1$};
+  \node[latent, above=of xa, yshift=1.1cm] (sa) {$s_0$};
+  \node[latent, above=of xb, yshift=1.1cm] (sb) {$s_1$};
+  \node[latent, above=of xc, yshift=1.1cm] (sc) {$s_2$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  \edge {sa} {sb};
+  \edge {sb} {sc};
+  \edge {sa} {xa};
+  \edge {sb} {xb};
+  \edge {sc} {xc};
+  
+\end{tikzpicture}
 \caption{Graphical model of this section}
 \label{fig_hybridmod2}
 \end{figure}
