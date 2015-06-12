@@ -1,6 +1,10 @@
 \chapter{Stochastic Switching Linear Control using Non-linear Hybrid Models}
 \label{sec_rbpf_control}
-In Section \ref{sec_linear_control} we developed an efficient stochastic MPC algorithm.
+In Section \ref{sec_switch_mpc_lit} model switching MPC was discussed. In short, a set of models with corresponding binary integer variables are incorporated into the MPC optimisation problem. The optimisation algorithm changes the model it uses for prediction based on the location of the previous predicted state. In this way a number of models can potentially be used for prediction. It is desirable to change models if the system states move away from the linearisation point of current linear model. It is hoped that the significant computational burden this introduces is offset by the increased predictive accuracy of the controller.
+
+In Section \ref{sec_linear_control} we developed an efficient stochastic MPC algorithm which uses a single linear model for control. While it is possible to attempt to extend that algorithm to the aforementioned approach, the computational problems will persist because Mixed Integer Programming is fundamentally more difficult than Quadratic Programming \cite{forst}. From a practical perspective one would like to reduce computational complexity because, especially for large problems, on-line optimisation can become problematic.
+
+In Section \ref{sec_inf_lin_hybrid}
 
 \section{Unconstrained}
 
