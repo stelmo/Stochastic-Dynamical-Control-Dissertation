@@ -734,7 +734,7 @@ The full LQG control problem is stated in (\ref{eq_lqg_problem}). Note that we o
 
 It is indeed possible to solve this controller analytically using stochastic Dynamic Programming but the derivation is tedious. We rather employ the Separation Principle \cite{lqg}. We do however re-derive the optimal controller in a later section.
 \begin{defn}
-\textbf{Separation Principle} The solution of the LQG problem is obtained by combining the solution of the deterministic LQR problem and the optimal state estimation problem. The optimal current state estimate is used as the current deterministic state within the framework of the LQR controller. 
+\textbf{Separation Principle} The solution of the LQG problem is obtained by combining the solution of the deterministic LQR problem and the optimal state estimation problem. The optimal current state estimate is used as the current deterministic state within the framework of the LQR controller. This is also sometimes called Certainty Equivalence. 
 \end{defn}
 The optimal state estimate of linear systems under Gaussian noise is known as the Kalman Filter. In later sections we devote much time to its derivation but for now we merely introduce it loosely.
 \begin{defn}
