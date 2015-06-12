@@ -1,4 +1,4 @@
-\section{Inference using Nonlinear Hybrid Models}
+\chapter{Inference using Nonlinear Hybrid Models}
 In this section we generalise the graphical model (shown in Figure \ref{fig_hybridmod2} for convenience) of the previous section by dropping the assumption that the dynamic models are linear. The variables retain their meaning as before.     
 \begin{figure}[H] 
 \centering
@@ -47,12 +47,12 @@ y_{t+1} &= g_i(x_{t+1}, v_{t+1}) \text{ with } v_{t+1} \backsim \mathcal{N}(0,V_
 \end{equation}
 In this dissertation we assume that the the noise distributions are Gaussian but there is no fundamental reason why they cannot be arbitrary. To fully specify the system we again require the prior distributions $p(s_1)$ and $p(x_1|s_1)$ as well as the stochastic matrix $P$. In this section we manually specify the matrix $P$. 
 
-\subsection{Exact Inference}
+\section{Exact Inference}
 By extending the model to incorporate nonlinear models it becomes even more difficult to perform inference. It is clear that for the type of systems we consider here no exact inference algorithm which is computationally feasible exists. We again turn to approximate inference algorithms.
 
 Note that we cannot apply Rao-Blackwellisation (i.e. analytically evaluate the stochastic dynamical system) as before because the dynamic models are no longer linear. We use the adaptive Sequential Importance Resampling (i.e. the bootstrap) Particle Filter algorithm as discussed in the Nonlinear Models section.
 
-\subsection{Approximate Inference}
+\section{Approximate Inference}
 We cannot analytically evaluate any part of the desired posterior distribution $p(s_{1:t}, x_{1:t}|y_{1:t})$ in a computationally feasible manner, so we must apply the adaptive Sequential Importance Resampling algorithm to the entire state space of Figure \ref{fig_hybridmod2}. The algorithm follows straightforwardly from our previous discussion \cite{murphy1}. We merely state the incremental weight function and proposal distribution we sample from in (\ref{eq_nonpf}). 
 \begin{equation}
 \begin{aligned}
@@ -83,10 +83,10 @@ Compute the weights $\alpha_t(S_t^i, X_t^i) = p(Y^*_t|S_t^i, X_t^i)$ where $Y^*_
 If the number of effective particles is below some threshold apply resampling with roughening $(W^i_1, S^i_t, X^i_t)$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{S}^i_t, \bar{X}^i_t)$ and set $(\bar{W}^i_t, \bar{S}^i_t,\bar{X}^i_t) \leftarrow (\frac{1}{N}, \bar{S}^i_t, \bar{X}^i_t)$ otherwise set $(\bar{W}^i_t,\bar{S}^i_t, \bar{X}^i_t) \leftarrow ({W}^i_t, S_t^i, {X}^i_t)$
 \end{enumerate} 
 
-\subsection{Particle Prediction}
+\section{Particle Prediction}
 The prediction of the hybrid nonlinear states follows in an analogous manner to the prediction of the Nonlinear Models seen in the previous sections. We do not supply an algorithm because it is a straightforward simplification of the Switching Particle Filter algorithm seen above (effectively there is no weight update step).  
 
-\subsection{Filtering the CSTR}
+\section{Filtering the CSTR}
 In this section we illustrate the use of the Switching Particle Filter using nonlinear dynamical models. We assume a scenario where the rate constant of the CSTR decreases by an order of magnitude. This could be caused by catalyst degradation due to some environmental factor. It is our aim to infer when this happens and to be able to track the states accurately despite the significant model change. 
 
 We use 500 particles during all runs and use the stochastic matrix $P=\begin{pmatrix}

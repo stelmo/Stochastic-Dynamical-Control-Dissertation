@@ -1,4 +1,4 @@
-\documentclass[11pt,fleqn]{article}
+\documentclass[11pt,fleqn]{report}
 \linespread{1.3}
 \usepackage{parskip}
 \setlength{\parindent}{0pt} %no paragraph indentation
@@ -30,10 +30,10 @@
   {0.5em} % Space after theorem head
   {} % Theorem head spec (can be left empty, meaning `normal')
 \theoremstyle{defstyle}
-\newtheorem{defn}{Definition}[section]
-\newtheorem{rmrk}{Remark}[section]
-\newtheorem{thrm}{Theorem}[section]
-\newtheorem{ax}{Axiom}[section]
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{rmrk}{Remark}[chapter]
+\newtheorem{thrm}{Theorem}[chapter]
+\newtheorem{ax}{Axiom}[chapter]
 
 \usepackage{comment}
 
@@ -63,13 +63,16 @@
 \include{./docs/title_page_mod}
 \tableofcontents
 \include{./docs/introduction}
+\part{Literature, Theory and Background Material}
 \include{./docs/lit_study}
 \include{./docs/back_theory}
 \include{./docs/hmm}
 \include{./docs/cstr_model}
+\part{Single Model Systems}
 \include{./docs/linear_models}
 \include{./docs/nonlinear_models}
 \include{./docs/linear_control}
+\part{Multiple Model Systems}
 \include{./docs/linear_hybrid_models}
 \include{./docs/rbpf_linear_control}
 \include{./docs/nonlinear_hybrid_models}

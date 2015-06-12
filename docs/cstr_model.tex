@@ -1,4 +1,4 @@
-\section{CSTR Model}
+\chapter{CSTR Model}
 \label{sec_cstr}
 In this section we introduce the model we will use to illustrate the techniques we develop in this dissertation. The model is a simple continuously stirred tank reactor (CSTR) undergoing an exothermic, irreversible first order reaction where $A \rightarrow B$. A schematic diagram of the reactor is shown in Figure \ref{fig_cstr_diagram}. The model is taken from literature \cite{cstrmodel}.
 \begin{figure}[H] 
@@ -33,7 +33,7 @@ $F$ & $~100\times 10^{-3}~\frac{m^3}{min}$ \\
 \end{table}
 The CSTR model is a familiar control example. Similar models may be found in \cite{du}\cite{cervantes}\cite{pan}\cite{yazdi}. We use this model because it is low dimensional yet complex enough to illustrate the principles we investigate. Note that we have increased the volume of the reactor and reduced the rate constant from the reactor we quoted in literature. This is primarily to adjust the time scale of the transient response to be in the order of minutes and not milliseconds.
 
-\subsection{Qualitative Analysis}
+\section{Qualitative Analysis}
 In this section we use standard mathematical tools, as found in \cite{edwardsandpenny}, to analyse the qualitative behaviour of the CSTR. By inspecting (\ref{eq_cstrmodel}) we see that the model is coupled and non-linear. By solving (\ref{eq_cstr_statpoints}) we see that for nominal operating conditions ($Q = 0$) there exist 3 operating points (critical points) as shown in Table \ref{tab_nominalstats}.
 \begin{equation}
 \begin{aligned}
@@ -95,7 +95,7 @@ $Q > 1145$ kJ/min & $\backsim$ & $\backsim$ & Stable Improper Node \\
 \end{table}
 The multiple stable critical points for $Q\in [-906, 1145]$ kJ/min makes control of this system challenging. For example consider a situation where one starts at some point on the black line, below the green line in Figure \ref{fig_cstr_op_curve}. If one wishes to move to the high temperature low concentration stable operating point large, non-smooth, controller action will be required. By slowly heating up the CSTR the green line will gradually move to the right and this will push the system, somewhat counter-intuitively, towards the low temperature high concentration critical point. It is necessary to quickly heat up the CSTR so that the green line is below the current operating point on the black line. The self-regulatory nature of the CSTR will then move the system to the desired operating point.   
 
-\subsection{Nonlinear Model}
+\section{Nonlinear Model}
 In this section we evaluate the transient response of the CSTR. The nonlinear differential equation shown in (\ref{eq_cstrmodel}) is intractably difficult to solve analytically. For this reason we will use a numerical method, specifically the Runge-Kutta method \cite{edwardsandpenny}, to simulate the transient response. We chose the Runge-Kutta method because it is an explicit, fourth order accurate method which is easy to implement. The explicit nature of the method will also be useful later when it is necessary to discretise the system in the standard linear state space form.
 
 For completeness we show the method here. Suppose we have an autonomous ordinary differential equation as shown in (\ref{eq_ode}) and we require its solution over $[t_a, t_b]$. This is an initial value problem; for the sake of brevity we assume that a unique solution always exists.
@@ -136,7 +136,7 @@ Based on Figure \ref{fig_cstr_nl_1}, where the dynamics are fast, we can venture
 
 On the other hand, based on Figure \ref{fig_cstr_nl_2}, we can venture a guess that linearisation will be a fair approximation of plant behaviour for a meaningful period of time because the dynamics are slow.
 
-\subsection{Linearised Models}
+\section{Linearised Models}
 The approach of using piecewise affine (linear) functions for control, based on linearisation around critical points, has been investigated in literature \cite{du}\cite{kvasnica}. Typically the state domain is discretised into regimes and the linear approximation of the model in each regime is used for control. The benefit of this approach is that the non-linear problem  can then be handled by linear methods for which efficient algorithms exist. Drawbacks of this approach are computational complexity \cite{du} and poor control performance because the models are inaccurate.
 
 We will also attempt to use linear models for the purposes of control. First we present a general linearisation technique. Consider an arbitrary point in the state space $(C_A^*, T_R^*)$. Then (\ref{eq_lin}) is the general linearised model around $(C_A^*, T_R^*)$.

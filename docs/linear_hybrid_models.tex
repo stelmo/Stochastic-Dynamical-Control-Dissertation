@@ -1,4 +1,4 @@
-\section{Inference using Linear Hybrid Models}
+\chapter{Inference using Linear Hybrid Models}
 In this section we generalise the Probabilistic Graphical Models of the previous sections as shown in Figure \ref{fig_hybridmod1}. We include the discrete random variables, $(s_0,s_1, s_2,...)$ where each variable has $M$ states, which we will call the switching variables. The goal of adding switching variables is to allow our graphical models to switch (or more precisely, choose based on the observation) between $M$ different dynamical models. For the moment we restrict ourselves to linear transition functions i.e. we use linear state space models. The other variables retain their meaning as before. Models of this form are usually called Switching Kalman Filter models \cite{murphy1}. 
 \begin{figure}[H] 
 \centering
@@ -47,14 +47,14 @@ y_{t+1} &= C_ix_{t+1} + v_{t+1}  \text{ with } \mathcal{N}(v_{t+1}|0,V_i)
 \end{equation}
 To fully specify the system we also require the prior distributions $p(s_0)$ and $p(x_0|s_0)$ as well as the switch transition matrix $P$. For the purposes of this dissertation we assumed that the switch transition matrix is available. This matrix can be inferred using the Baum-Welch Algorithm or it can be set using operator expertise as we will show later.
 
-\subsection{Exact Filtering}
+\section{Exact Filtering}
 The switching variables ($s_0, s_1, s_2,...$) are discrete random variables exactly like the ones seen in Section \ref{sec_hmm}. There we derived recursive analytic expressions for inference which were computationally inexpensive. The structure of the stochastic variables ($x_0, x_1,x_2,...$) and ($y_0,y_1, y_2,...$) are exactly the same as those found Section \ref{sec_inf_lin_mods}. There we derived the famous Kalman Filter equations which were also analytic, recursive and computationally inexpensive. Taking this into consideration, it seems plausible to believe that inference, specifically filtering, for hybrid systems like (\ref{eq_smodel}) can be formulated in a computationally feasible manner. 
 
 Unfortunately, it can be shown that this is not possible in general \cite{lerner}\cite{murphy3} because the memory requirements scale exponentially with time. Loosely speaking one can see this by noting that at the first time step the system is described by a weighted set of $M$ Kalman Filter models (due to the linear assumption and the $M$ switching indices). At time step two the system is described by a weighted set of $M^2$ Kalman Filter models. Continuing in this manner we see that at time step $t$ the memory requirement is $M^t$. Clearly this is computationally infeasible and calls for approximate methods to be used. 
 
 In literature many approximate filtering algorithms exist and it is not clear which is best. Two of the more popular methods include Gaussian Sum Filtering \cite{barber2} and Particle Filtering based methods (specifically the Rao-Blackwellisation approach, see \cite{chen}\cite{doucet}). Both of these methods take advantage of the Gaussian structure of the system and operate in a fixed memory space making them computationally attractive. We focus on Particle based methods because it can be extended to nonlinear systems with ease.   
 
-\subsection{Rao-Blackwellised Particle Filter}
+\section{Rao-Blackwellised Particle Filter}
 It is our objective to find the joint posterior distribution $p(s_{0:t}, x_{0:t}|y_{0:t})$. This joint posterior admits filtering of Figure \ref{fig_hybridmod1} if we discard the trajectory and focus only on $s_t,x_t$. By the chain rule (Definition \ref{def_chain_rule_bayes}) we immediately have that $p(s_{0:t}, x_{0:t}|y_{0:t}) = p(s_{0:t}|y_{0:t})p(x_{0:t}|y_{0:t}, s_{0:t})$. Given $s_{0:t}$ we see that $p(x_{0:t}|y_{0:t}, s_{0:t})$ can be evaluated using the Kalman Filter equations (see Section \ref{sec_inf_lin_mods}) and thus we are only concerned with finding some approximation for $p(s_{0:t}|y_{0:t})$. This is the essence of the Rao-Blackwellised Particle Filter - taking advantage of the conditionally linear Gaussian nature of the system to analytically evaluate a part of the posterior distribution \cite{doucet}.
 
 Using the formulation of the adaptive Sequential Importance Sampling algorithm discussed in Section \ref{sec_inf_nonlin_mods} we can apply it to find an approximation of $p(s_{0:t}|y_{0:t})$. We set $\gamma_t(s_{0:t})=p(s_{0:t},y_{0:t})$ and $Z_t=p(y_{0:t})$ and then have that $\frac{\gamma_t(s_{0:t})}{Z_t} = p(s_{0:t}|y_{0:t})$ as desired. We then choose our proposal distribution $q_t(s_{0:t}|y_{0:t})$ to be recursive and follow the same procedure as before, shown in (\ref{eq_rbweight1}).
@@ -106,7 +106,7 @@ Apply the Kalman Filter algorithm to $\mu_{t-1}$ and $\Sigma_{t-1}$ for each par
 If the number of effective particles is below some threshold apply resampling with roughening $(W^i_t, {S}^i_t,{\mu}^i_t, {\Sigma}^i_t)$ to obtain $N$ equally weighted particles $(\frac{1}{N}, \bar{S}^i_t, \bar{\mu}^i_t, \bar{\Sigma}^i_t)$ and set $(\bar{W}^i_t, \bar{S}^i_t, \bar{\mu}^i_t, \bar{\Sigma}^i_t) \leftarrow (\frac{1}{N}, \bar{S}^i_t, \bar{\mu}^i_t, \bar{\Sigma}^i_t)$ otherwise set $(\bar{W}^i_t, \bar{S}^i_t, \bar{\mu}^i_t, \bar{\Sigma}^i_t) \leftarrow ({W}^i_t, {S}^i_t, \mu^i_t, \Sigma_t^i)$
 \end{enumerate} 
 
-\subsection{Rao-Blackwellised Particle Prediction}
+\section{Rao-Blackwellised Particle Prediction}
 Like the Particle Predictor studied in the previous section, performing prediction using Rao-Blackwellisation is straightforward because there is no weighting (updating the particles based on the observation) step. Each particle's switching state is merely propagated forward using the proposal distribution (the transition matrix $P$) and the Kalman prediction algorithm is used to evaluate the predicted mean and covariance. For the sake of brevity we do not supply an algorithm because it is a straightforward simplification of the Rao-Blackwellised Particle Filter Algorithm as shown above. The corresponding Probabilistic Graphical Model is shown in Figure \ref{fig_hybridmod1_prediction}.
 \begin{figure}[H] 
 \centering
@@ -140,12 +140,12 @@ Like the Particle Predictor studied in the previous section, performing predicti
 \label{fig_hybridmod1_prediction}
 \end{figure}
 
-\subsection{Smoothing and Viterbi Decoding}
+\section{Smoothing and Viterbi Decoding}
 It is also possible to take advantage of the Gaussian structure in Figure \ref{fig_hybridmod1} to derive a so-called Rao-Blackwellised Smoothing Algorithm. We do not include it here because it is not necessary for the purposes of this dissertation. We refer the reader to the relevant literature \cite{chen}\cite{doucet}. 
 
 Viterbi decoding is likewise not within the scope of this dissertation and as such we refer the reader to \cite{murphy1} for more information. Suffice to say, by increasing the complexity of Figure \ref{fig_hybridmod1} we increase the difficulty of inference in general.
 
-\subsection{Filtering the CSTR}
+\section{Filtering the CSTR}
 We now apply the Rao-Blackwellised Particle Filter (RBPF) to the CSTR introduced in Section \ref{sec_cstr}. The focus of this dissertation is on the application of Probabilistic Graphical Models to control, therefore our investigation into the various aspects which improve or degrade filtering performance will be relatively superficial and will target factors which are most relevant only. We will briefly investigate 3 aspects influencing the accuracy of the filter:
 \begin{enumerate}
 \item

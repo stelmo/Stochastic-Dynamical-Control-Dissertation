@@ -1,4 +1,4 @@
-\section{Inference using Linear Models}
+\chapter{Inference using Linear Models}
 \label{sec_inf_lin_mods}
 In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in Section \ref{sec_hmm}. We now assume that the states ($x_0,x_1,x_2,...$) and observations ($y_0,y_1,y_2,...$) are continuous random variables but the inputs ($u_0,u_1,u_2,...$) are continuous deterministic variables. Models of this form are called Latent Dynamical Systems (the famous Kalman Filter model falls into this category).
 \begin{figure}[H] 
@@ -50,7 +50,7 @@ We have implicitly assumed that the noise is Gaussian and white\footnote{The noi
 
 To fully specify the system we require the transition and emission probability density functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution of $x_0$.
 
-\subsection{Filtering}
+\section{Filtering}
 The goal of filtering is to find the posterior distribution $p(x_{t}|y_{0:t}, u_{0:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in the Hidden Markov Model section albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. The Graphical Model corresponding to filtering is shown in Figure \ref{fig_gm_linmods_filtering}.
 \begin{figure}[H] 
 \centering
@@ -140,7 +140,7 @@ Note that for the first time step only the update expression is evaluated as the
 
 Intuitively, the Kalman Filter equations use the state space model to predict the new state distribution and then adjust it by a correction factor $K_t(y_t - C\mu_{t|t-1})$. This factor depends on the difference between the actual observation and the predicted observation. The Kalman gain, $K_t$, represents the inferred confidence of the model. If the model is deemed accurate then the predictions make up most of $\mu_t$ but if the model is bad at predicting the observations then the observations play a bigger part in the next mean estimate \cite{bishop}. 
 
-\subsection{Prediction}
+\section{Prediction}
 \label{sec_lin_prediction}
 The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{0:t}, u_{0:t+h-1})$ and $p(y_{t+h}|y_{0:t}, u_{0:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). The graphical model corresponding to  the two step ahead state prediction is shown in Figure \ref{fig_gm_linmods_prediction}.
 \begin{figure}[H] 
@@ -225,7 +225,7 @@ We have again used Theorem \ref{thrm_bayes_lin_gauss_mod} and used the nomenclat
 \end{equation}
 It is reassuring to note that the observation prediction is just the state prediction transformed by the observation function.
 
-\subsection{Smoothing and Viterbi Decoding}
+\section{Smoothing and Viterbi Decoding}
 For the sake of completeness we state the Kalman Smoothing equations and briefly discuss Viterbi Decoding within the context of conditional linear Gaussian systems. 
 
 The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the Hidden Markov Model smoothing algorithm except that we make use of Theorem \ref{thrm_bayes_lin_gauss_mod} to simplify the algebra. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the focus of this dissertation.
@@ -245,7 +245,7 @@ The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorith
 
 Finally, we know from the Definition \ref{def_chain_rule_bayes} (Chain Rule for Bayesian Networks) and Figure \ref{fig_linmod2} that the joint distribution for $p(x_{0:T},y_{0:T}, u_{0:T-1}) = p(x_1)p(y_1|x_1)\Pi^T_{t=2} p(y_t|x_t)p(x_{t}|x_{t-1},u_{t-1})$. Since Gaussian distributions are closed under multiplication this joint distribution is also a Gaussian distribution. It can be shown that maximising with respect to all latent variables jointly or maximising with respect to the marginal distributions of the latent variables is the same because the mean and the mode of a Gaussian distribution coincide \cite{barber}. This implies that Viterbi decoding is just the sequence of means found by the smoothing algorithm.
 
-\subsection{Filtering the CSTR}
+\section{Filtering the CSTR}
 \label{sec_filtering_linmods}
 In this section we apply the Kalman Filter to the CSTR introduced in Section \ref{sec_cstr}. We use the linear model around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}). Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that $V$ indicates that we only measure temperature for now.
 \begin{equation}

@@ -171,6 +171,11 @@ M.~Kvasnica, M.~Herceg, L.~Cirka, and M.~Fikar.
 \newblock Model predictive control of a cstr: a hybrid modeling approach.
 \newblock {\em Chemical Papers}, 64(3):301--309, 2010.
 
+\bibitem{lee}
+J.H. Lee, M.~Morari, and C.E. Garcia.
+\newblock {\em Model Predictive Control}.
+\newblock Prentice Hall, 2004.
+
 \bibitem{lerner}
 U.N. Lerner.
 \newblock {\em Hybrid Bayesian Networks for Reasoning about Complex Systems}.
@@ -197,11 +202,6 @@ W.L. Luyben.
 J.M. Maciejowski.
 \newblock {\em Predictive Control with constraints}.
 \newblock Prentice-Hall, 2002.
-
-\bibitem{maeder}
-U.~Maeder, F.~Borrelli, and M.~Morari.
-\newblock Linear offset-free model predictive control.
-\newblock {\em Automatica}, 45:2214--2222, 2009.
 
 \bibitem{masahiro}
 O.~Masahiro.

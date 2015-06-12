@@ -1,7 +1,7 @@
-\section{Literature Study}
+\chapter{Literature Study}
 This dissertation deals primarily with stochastic Model Predictive Control (MPC) but applied within the context of Probabilistic Graphical Models. In Section \ref{sec_stoch_mpc_lit} we briefly discuss some recents developments in stochastic MPC literature. In Section \ref{sec_switch_mpc_lit} we briefly discuss control schemes, primarily MPC based, where the model control is based upon is automatically adjusted based on plant measurements or manual control laws.
 
-\subsection{Stochastic Model Predictive Control}
+\section{Stochastic Model Predictive Control}
 \label{sec_stoch_mpc_lit}
 Linear unconstrained stochastic control subject to white additive Gaussian noise is well studied in literature. The Linear Quadratic Gaussian (LQG) controller, for which the problem is shown in (\ref{eq_lit_lqg}), is one of the most fundamental results in stochastic Optimal Control Theory \cite{lqg}. We use boldface to denote a vector of vectors over time e.g. $\mathbf{u}=(u_0, u_1,...)$.
 \begin{equation}
@@ -78,9 +78,9 @@ We compare the effect different inference techniques have on the quality of the 
 \end{enumerate}
 Lastly, measurement and system noise is ubiquitous in real life systems. Therefore most modern MPC systems use an inference (filtering) technique to estimate the current system state. By using a filter the MPC system is implicitly using a Probabilistic Graphical Model; therefore we are not actually introducing anything exotic but rather highlighting a connection between two rich fields. 
 
-\subsection{Switching Model Predictive Control}
+\section{Switching Model Predictive Control}
 \label{sec_switch_mpc_lit}
-In MPC the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model (\ref{eq_mpc_nodisturbance_obs}) is linear and time invariant; this assumption allows for the use of advanced constrained optimisation algorithms, typically Quadratic Programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
+In MPC the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model is linear and time invariant. An example of such a model is shown in (\ref{eq_mpc_nodisturbance_obs}); since it includes system and measurement noise a state estimator would typically be used to infer $x_t$. The mean of the current state, $\mathbb{E}[x_t]$ together with the deterministic state model $x_{t+1} = Ax_t + Bu_t$ would then be used for prediction \cite{raw}. This assumption allows for the use of advanced constrained optimisation algorithms, typically Quadratic Programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
 \begin{equation}
 \begin{aligned}
 &x_{t+1} = Ax_t + Bu_t + w_t~\text{(Latent)} \\
@@ -88,7 +88,7 @@ In MPC the model of the plant is used to predict the future behaviour of the pla
 \end{aligned}
 \label{eq_mpc_nodisturbance_obs}
 \end{equation}
-Unfortunately modelling errors or omissions often cause poor controller performance within the context of MPC. This is often observed as steady state offset i.e. the controller takes no more action and the system is not at the set point. In certain cases it is possible to account, remove steady state offset, for plant/model mismatch or asymptotic disturbances by incorporating a disturbance model within the MPC framework. This is classically called zero offset regulation \cite{raw} and is achieved by augmenting the system models as shown in (\ref{eq_mpc_disturbance_obs}).
+Unfortunately modelling errors or omissions often cause poor controller performance within the context of MPC. This is often observed as steady state offset i.e. the controller takes no more action and the system is not at the set point. In certain cases it is possible to account for plant/model mismatch or asymptotically constant disturbances by incorporating a disturbance model within the MPC framework. This is classically called zero offset regulation \cite{raw} and is achieved by augmenting the system models as shown in (\ref{eq_mpc_disturbance_obs}).
 \begin{equation}
 \begin{aligned}
 &x_{t+1} = Ax_t + Bu_t + B_d d_t + w_t~\text{(Latent)} \\
@@ -97,15 +97,7 @@ Unfortunately modelling errors or omissions often cause poor controller performa
 \end{aligned}
 \label{eq_mpc_disturbance_obs}
 \end{equation}
-The noise terms retain their meaning from Section \ref{sec_stoch_mpc_lit}. An observer (state estimator) is used to estimate an integrating disturbance $d$ which is effectively used to modify the objective function as shown in (\ref{eq_mpc_disturbance_obj}). Typically only the mean estimate $\hat{d}$ of the disturbance estimate is used.
-\begin{equation}
-\begin{aligned}
-&\frac{1}{2}\sum_{k=0}^{N-1} \left( (x_k-y_{sp}^*)^TQ(x_k-y_{sp}^*) + (u_k-u_{sp})^TR(u_k-u_{sp}) \right) + \frac{1}{2}(x_N-y_{sp}^*)^TP_f(x_N-y_{sp}^*) \\
-&y_{sp}^* = y_{sp}-C_d \hat{d}
-\end{aligned}
-\label{eq_mpc_disturbance_obj}
-\end{equation}
-The controller minimising (\ref{eq_mpc_disturbance_obj}), optionally subject to some user supplied constraints, will attempt to drive the system to its set point $(y_{sp}, u_{sp})$. See \cite{raw} and \cite{maeder} for mode details. The problem with this approach is that it assumes that the model $(A, B)$ is at least somewhat representative of the underlying dynamics.
+By using a state estimator the integrating disturbance $d_t$ can be estimated. The model used for prediction is then augmented to incorporate this disturbance $x_{t+1} = Ax_t + Bu_t + \mathbb{E}[d_t]$ \cite{lee}. The problem with this approach is that it assumes that the model $(A, B)$ is at least somewhat representative of the underlying dynamics.
 
 Linear models $(A, B)$ are often derived by linearising non-linear models about a single operating point. These models are traditionally used in MPC design; a drawback with this approach is that linear models are fundamentally only accurate in a small region around the point of linearisation. The further the system moves away from the linearisation point the worse the accuracy of the model becomes because the model is no longer a good approximation of the underlying system dynamics. A possible solution to this problem is Non-linear MPC (NMPC). In NMPC the full non-linear model is used for controller design; it is hoped that this more complicated model is accurate over the entire problem domain. Unfortunately this approach is often computationally intensive, especially for large problems, because it inherently requires non-linear, usually non-convex, optimisation. This is a subject of much current research \cite{diehl}. 
 

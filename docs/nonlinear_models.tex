@@ -1,4 +1,4 @@
-\section{Inference using Nonlinear Models}
+\chapter{Inference using Nonlinear Models}
 \label{sec_inf_nonlin_mods}
 In this section we consider probabilistic Graphical Models of the form shown in Figure \ref{fig_nlmod}. These models have exactly the same form as the models in Section \ref{sec_inf_lin_mods}. The variables retain their meaning as before but we generalise the model by dropping the linearity assumption. Unfortunately, this generalisation, although allowing us to expand our investigation to a much more expressive class of models, makes closed form solutions to the inference problem intractable in general.   
 \begin{figure}[H] 
@@ -38,7 +38,7 @@ y_{t+1} &= g(x_{t+1}, v_{t+1})
 \end{equation}
 Note that we make no assumption about the functional form of the noise terms $w_t,v_t$. In practice it is customary to assume that they have zero mean but otherwise are not restricted. Additionally, to simplify notation we will omit the dependence on $u$ of $f$ and $g$ and their associated distributions. Since $u$ is a deterministic variable, by assumption, it is straightforward to incorporate it into later analysis. 
 
-\subsection{Sequential Monte Carlo Methods}
+\section{Sequential Monte Carlo Methods}
 Many approximate inference techniques exist in literature, the most notable ones include Gaussian Sum Filters \cite{gsf1} and Particle based methods. We shall focus only on Sequential Monte Carlo (SMC) methods, of which Particle based methods are a subset, because it is simple to implement and generalises well (and easily) to more complex graphical models. 
 
 SMC methods are a general class of Monte Carlo methods which sample sequentially from the growing target distribution $\pi_t(x_{0:t})$. By only requiring that $\gamma_t$ be known point-wise we have the framework of SMC methods as shown in (\ref{eq_SMC1}). Note that $Z_t$ is some normalisation constant \cite{pftut}.
@@ -158,7 +158,7 @@ If the resample criterion is satisfied then resample $(W^i_t, X^i_{0:t})$ to obt
 
 Numerous convergence results exist for the SMC methods we have discussed but the fundamental problem with this scheme is that of sample impoverishment. It is fundamentally impossibly to accurately represent a distribution on a space of arbitrarily high dimension with a finite set of samples \cite{pftut}. We attempt to mitigate this problem by using resampling but degeneracy inevitably occurs for large enough $t$. Fortunately, for our purposes we will not be dealing with arbitrarily large dimensional problems because of the Markov assumption.
 
-\subsection{Particle Filter}
+\section{Particle Filter}
 We now apply the adaptive SIR algorithm in the setting of filtering. We set $\pi_t(x_{0:t}) = p(x_{0:t}|y_{0:t})$, $\gamma_t(x_{0:t}) = p(x_{0:t}, y_{0:t})$ and consequently $Z_t = p(y_{0:t})$. We use the recursive proposal distribution $q_t(x_{0:t}|y_{0:t}) = q(x_t|x_{0:t-1}, y_{0:t})q_{t-1}(x_{0:t-1}|y_{0:t-1})$. We then have the unnormalised weights as shown in (\ref{eq_pf_weights}).
 \begin{equation}
 \begin{aligned}
@@ -206,7 +206,7 @@ The algorithm presented above is a slight generalisation of the bootstrap Partic
 
 Intuitively the algorithm may be summarised like this: Particle Filters predict the next hidden state by projecting all the current particles forward using the transition function. For each particle the likelihood of the observation is calculated given the particle and measurement noise. This likelihood is related to the weight of each particle. Particles with a relatively high weight are then deemed to more accurately represent the posterior distribution and thus we infer the posterior state estimate based on the relative weights of each particle. The Graphical Model of Particle Filtering is exactly the same as that of the Kalman Filter Graphical Model as shown in Figure \ref{fig_gm_linmods_filtering}. This should not come as a surprise because the general Graphical Model of this section, Figure \ref{fig_nlmod}, is exactly the same as the general Graphical Model of Section \ref{sec_inf_lin_mods} as shown in Figure \ref{fig_linmod2}. 
 
-\subsection{Particle Prediction}
+\section{Particle Prediction}
 \label{sec_particle_prediction}
 We are primarily interested in predicting the future hidden states but we also show how the future visible states may be predicted within the framework of particle based methods. Recalling the prediction derivations of Section \ref{sec_hmm} and Section \ref{sec_inf_lin_mods} we expect the hidden state prediction to merely be an $n$ step ahead projection of the current filtered particles. Likewise, we expect the visible state prediction to just be transformation of the predicted hidden states under the emission function. 
 
@@ -223,10 +223,10 @@ Project $Y_{t+2}^i = g(X_{t+2}^i, v_{t+2}) \backsim p(y_{t+2}^i|y_t, X_{t:t+1}^i
 \end{enumerate}
 Once again, the Graphical Model depicting this situation is exactly the same as Figure \ref{fig_gm_linmods_prediction} for the same reasons as mentioned above.
 
-\subsection{Smoothing and Viterbi Decoding}
+\section{Smoothing and Viterbi Decoding}
 In the context of nonlinear transition and emission functions smoothing and Viterbi decoding are much more difficult than before. For the purposes of this dissertation it is not important to consider inferences of that type and thus we merely refer the reader to literature where this is discussed \cite{barber}\cite{pftut}\cite{gsf1}\cite{murphy1}\cite{murphy2}.
 
-\subsection{Filtering the CSTR}
+\section{Filtering the CSTR}
 \label{sec_nonlinmods_filtering}
 In this section we apply the Particle Filter to the nonlinear CSTR problem introduce in Section \ref{sec_cstr}. We first demonstrate the effectiveness of the Particle Filter by performing inference using the full nonlinear CSTR model measuring only temperature. Next we use the full nonlinear model again but measure both temperature and concentration. Finally, we compare the Particle Filter and the Kalman Filter measuring both states. These investigations are by no means thorough but serve to illustrate important aspects of Probabilistic Graphical Models which will affect control.
 

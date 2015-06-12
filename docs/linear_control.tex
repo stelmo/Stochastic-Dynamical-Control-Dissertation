@@ -1,4 +1,4 @@
-\section{Stochastic Linear Control}
+\chapter{Stochastic Linear Control}
 \label{sec_linear_control}
 In this section we consider the stochastic reference tracking problem. It is required to move the states and manipulated variables of the system, shown in (\ref{eq_lin_system}), to the set point $(x_{sp}, u_{sp})$ by manipulating the input variables $u$.
 \begin{equation}
@@ -25,7 +25,7 @@ y_{t+1} &= Cx_{t+1} + v_{t+1}
 \end{equation}
 We will endeavour to develop predictive controllers using the Graphical Models of Section \ref{sec_inf_lin_mods} and \ref{sec_inf_nonlin_mods}.
 
-\subsection{Unconstrained Stochastic Control}
+\section{Unconstrained Stochastic Control}
 Our first goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$. If the system is controllable then solving (\ref{eq_mpc_unconstrained_linmod}) will satisfy the linear unconstrained Stochastic Reference Tracking Goal.
 \begin{equation}
 \begin{aligned}
@@ -150,7 +150,7 @@ Under some circumstances it is also possible to extend the result of Theorem \re
 To clarify why it is important that the linear system, i.e. the matrix $A$, is stable, consider the quantity $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$. If it is unbounded the optimisation minimum will tend to infinity. Inspecting $\Sigma_{t+1} = W+A\Sigma_t A^T$ we see that $||\Sigma_{\infty}||$ will be unbounded if $||A\Sigma_t A^T||$ becomes unbounded ($W$ is a constant). Note that $||\cdot||$ is some matrix norm. It can be shown that if the eigenvalues of $A$ are less than unity i.e. the linear model is stable, then $||A\Sigma_{t+1}A^T|| \leq ||A\Sigma_{t+1}A^T||$ which implies that $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$ is bounded and the optimisation is reasonable.
 
 
-\subsection{Constrained Stochastic Control}
+\section{Constrained Stochastic Control}
 The goal of this section is to solve the stochastic constrained optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian\footnote{From the results of Section \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible.}. We also restrict our analysis to affine constraints. Note that we only include one constraint in the succeeding analysis however, additional constraints are handled in exactly the same way as we will show.
 \begin{equation}
 \begin{aligned}
@@ -301,10 +301,10 @@ The first line of (\ref{eq_chance_to_lin}) follows because $S$ is positive semi-
 The beauty of Theorem \ref{thrm_mpc_stoch_to_det} is that no new theory is necessary to analyse the stability and convergence results of the new MPC. This is highly desirable because it allows one to merely ``add" the last inequality constraint to your existing MPC formulation. Most practical MPCs will have some form of state estimation and thus no new parameters are introduced either. Since the problem is in standard QP form it is straightforward to implement and, even more importantly, it is computationally fast because the problem is trivially convex.
 
 In the work by \cite{yan1} and \cite{yan2} it is found that feasibility problems might arise if one uses the predicted covariance estimates in the controller. If the system is unstable the uncertainty in the estimates can grow with time as discussed in Theorem \ref{thrm_lqg_sol_inf}. This can cause the ellipses used in Theorem \ref{thrm_chance_cons} to become too large to fit inside the feasible region. The approach adopted by \cite{yan1} and \cite{yan2} is to only use the one step ahead predicted covariance ($\Sigma_1$) over the entire prediction horizon. This does not ensure feasibility but restricts the growth associated with infeasibility. The drawback of this approach is that it might cause constraint violation because the controller will be more aggressive.  
-\subsection{Reference Tracking}
+\section{Reference Tracking}
 So far we have only dealt with controllers which would drive the system to the origin. The more general situation we are interested in is arbitrary reference point tracking. Fortunately, Section \ref{sec_lit_ref_track} applies without modification because we managed to cast the Stochastic MPC problem into a deterministic MPC problem. 
 
-\subsection{Linear System}
+\section{Linear System}
 \label{sec_lin_sys_cont}
 In this section we consider the problem of controlling a linear system using the stochastic MPC formulation of Theorem \ref{thrm_mpc_stoch_to_det}. More precisely, we assume the linear model linearised about the unsteady operating point of our CSTR example from Section \ref{sec_cstr} accurately represents the underlying system. For the purposes of illustration we will only use the (somewhat unrealistic) system where both states are measured. However, there is no theoretical reason why we cannot use the system where only temperature is measured. The drawback of using the latter system is that inference, as discussed previously, will be worse. The control goal is to steer the concentration, in the sense of Definition \ref{def_stoch_ref_track_goal}, to the unsteady operating point ($C_A = 0.49$ kmol.m$^{-3}$) about which the system was linearised. See Section \ref{sec_cstr} for more details.
 
@@ -460,7 +460,7 @@ The approximation curve in Figure \ref{fig_lin_mod_kl} shows how much the sample
 In Figure \ref{fig_lin_mod_kl} we see that the approximation is relatively close to the baseline. Additionally it is far removed from the uniform curve. The average divergence for the baseline, approximation and uniform curve (in nats) is: $0.035$, $0.066$ and $34.57$ respectively. This implies that even though we are using a non-linear control technique the posterior state distributions are still approximately Gaussian. 
 
 
-\subsection{Nonlinear System}
+\section{Nonlinear System}
 In this section we consider the problem of controlling the full non-linear system with a linear model linearised around the unsteady operating point. The control goal is the same as before; the only difference between this section and Section \ref{sec_lin_sys_cont} is that the underlying plant is non-linear.
 
 The linear control model and noise parameters are the same as (\ref{eq_linmod_params}). The control tuning parameters are the same as (\ref{eq_mpc_tuning}).
@@ -590,7 +590,7 @@ As before we need to investigate the normal assumption underpinning the theory b
 \end{figure}
 It is a relief that the normal assumption seems to hold almost as well in the non-linear underlying system case. The average divergence for the baseline, approximation and uniform curves are: $0.035$, $0.071$ and $110.11$. It is not surprising that the non-linearity reduced the degree of normality of the distributions although it did not do so significantly. Therefore we can conclude that the normal assumption holds approximately.
 
-\subsection{Conclusion}
+\section{Conclusion}
 We have illustrated the benefits gained by designing MPC within the framework of Probabilistic Graphical Models by showing:
 \begin{enumerate}
 \item
