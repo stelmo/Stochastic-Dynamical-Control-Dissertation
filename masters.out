@@ -1,5 +1,53 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [-1][-]{part.1}{I Literature, Theory and Background Material}{}% 2
+\BOOKMARK [0][-]{chapter.2}{Literature Study}{part.1}% 3
+\BOOKMARK [1][-]{section.2.1}{Stochastic Model Predictive Control}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Switching Model Predictive Control}{chapter.2}% 5
+\BOOKMARK [0][-]{chapter.3}{Background Theory}{part.1}% 6
+\BOOKMARK [1][-]{section.3.1}{Probability Theory}{chapter.3}% 7
+\BOOKMARK [2][-]{subsection.3.1.1}{Discrete Random Variables}{section.3.1}% 8
+\BOOKMARK [2][-]{subsection.3.1.2}{Continuous Random Variables}{section.3.1}% 9
+\BOOKMARK [1][-]{section.3.2}{Graph Theory}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.3}{Probabilistic Graphical Models}{chapter.3}% 11
+\BOOKMARK [2][-]{subsection.3.3.1}{Bayesian Networks}{section.3.3}% 12
+\BOOKMARK [2][-]{subsection.3.3.2}{Dynamic Bayesian Networks}{section.3.3}% 13
+\BOOKMARK [1][-]{section.3.4}{Control}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.4.1}{Linear Quadratic Regulator Control}{section.3.4}% 15
+\BOOKMARK [2][-]{subsection.3.4.2}{Reference Tracking}{section.3.4}% 16
+\BOOKMARK [2][-]{subsection.3.4.3}{Linear Quadratic Gaussian Control}{section.3.4}% 17
+\BOOKMARK [2][-]{subsection.3.4.4}{Model Predictive Control}{section.3.4}% 18
+\BOOKMARK [1][-]{section.3.5}{Matrix Identities}{chapter.3}% 19
+\BOOKMARK [0][-]{chapter.4}{Hidden Markov Models}{part.1}% 20
+\BOOKMARK [1][-]{section.4.1}{Markov Models}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.2}{Hidden Markov Models}{chapter.4}% 22
+\BOOKMARK [2][-]{subsection.4.2.1}{Filtering}{section.4.2}% 23
+\BOOKMARK [2][-]{subsection.4.2.2}{Smoothing}{section.4.2}% 24
+\BOOKMARK [2][-]{subsection.4.2.3}{Viterbi Decoding}{section.4.2}% 25
+\BOOKMARK [2][-]{subsection.4.2.4}{Prediction}{section.4.2}% 26
+\BOOKMARK [1][-]{section.4.3}{Burglar Localisation Problem}{chapter.4}% 27
+\BOOKMARK [0][-]{chapter.5}{CSTR Model}{part.1}% 28
+\BOOKMARK [1][-]{section.5.1}{Qualitative Analysis}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.2}{Nonlinear Model}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.3}{Linearised Models}{chapter.5}% 31
 \BOOKMARK [-1][-]{part.2}{II Single Model Systems}{}% 32
+\BOOKMARK [0][-]{chapter.6}{Inference using Linear Models}{part.2}% 33
+\BOOKMARK [1][-]{section.6.1}{Filtering}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.2}{Prediction}{chapter.6}% 35
+\BOOKMARK [1][-]{section.6.3}{Smoothing and Viterbi Decoding}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.4}{Filtering the CSTR}{chapter.6}% 37
+\BOOKMARK [0][-]{chapter.7}{Inference using Nonlinear Models}{part.2}% 38
+\BOOKMARK [1][-]{section.7.1}{Sequential Monte Carlo Methods}{chapter.7}% 39
+\BOOKMARK [1][-]{section.7.2}{Particle Filter}{chapter.7}% 40
+\BOOKMARK [1][-]{section.7.3}{Particle Prediction}{chapter.7}% 41
+\BOOKMARK [1][-]{section.7.4}{Smoothing and Viterbi Decoding}{chapter.7}% 42
+\BOOKMARK [1][-]{section.7.5}{Filtering the CSTR}{chapter.7}% 43
+\BOOKMARK [0][-]{chapter.8}{Stochastic Linear Control}{part.2}% 44
+\BOOKMARK [1][-]{section.8.1}{Unconstrained Stochastic Control}{chapter.8}% 45
+\BOOKMARK [1][-]{section.8.2}{Constrained Stochastic Control}{chapter.8}% 46
+\BOOKMARK [1][-]{section.8.3}{Reference Tracking}{chapter.8}% 47
+\BOOKMARK [1][-]{section.8.4}{Linear System}{chapter.8}% 48
+\BOOKMARK [1][-]{section.8.5}{Nonlinear System}{chapter.8}% 49
+\BOOKMARK [1][-]{section.8.6}{Conclusion}{chapter.8}% 50
 \BOOKMARK [-1][-]{part.3}{III Multiple Model Systems}{}% 51
 \BOOKMARK [0][-]{chapter.9}{Inference using Linear Hybrid Models}{part.3}% 52
 \BOOKMARK [1][-]{section.9.1}{Exact Filtering}{chapter.9}% 53
@@ -7,3 +55,16 @@
 \BOOKMARK [1][-]{section.9.3}{Rao-Blackwellised Particle Prediction}{chapter.9}% 55
 \BOOKMARK [1][-]{section.9.4}{Smoothing and Viterbi Decoding}{chapter.9}% 56
 \BOOKMARK [1][-]{section.9.5}{Filtering the CSTR}{chapter.9}% 57
+\BOOKMARK [0][-]{chapter.10}{Stochastic Switching Linear Control using Linear Hybrid Models}{part.3}% 58
+\BOOKMARK [1][-]{section.10.1}{Unconstrained Switching Control}{chapter.10}% 59
+\BOOKMARK [1][-]{section.10.2}{Conclusion}{chapter.10}% 60
+\BOOKMARK [0][-]{chapter.11}{Inference using Nonlinear Hybrid Models}{part.3}% 61
+\BOOKMARK [1][-]{section.11.1}{Exact Inference}{chapter.11}% 62
+\BOOKMARK [1][-]{section.11.2}{Approximate Inference}{chapter.11}% 63
+\BOOKMARK [1][-]{section.11.3}{Particle Prediction}{chapter.11}% 64
+\BOOKMARK [1][-]{section.11.4}{Filtering the CSTR}{chapter.11}% 65
+\BOOKMARK [0][-]{chapter.12}{Stochastic Switching Control using Non-linear Hybrid Models}{part.3}% 66
+\BOOKMARK [1][-]{section.12.1}{Unconstrained}{chapter.12}% 67
+\BOOKMARK [1][-]{section.12.2}{Constrained}{chapter.12}% 68
+\BOOKMARK [1][-]{section.12.3}{Conclusion}{chapter.12}% 69
+\BOOKMARK [0][-]{chapter.13}{Conclusion}{part.3}% 70

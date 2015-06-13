@@ -108,6 +108,7 @@ If the number of effective particles is below some threshold apply resampling wi
 \end{enumerate} 
 
 \section{Rao-Blackwellised Particle Prediction}
+\label{sec_inf_rbpf_pred}
 Like the Particle Predictor studied in the Section \ref{sec_inf_nonlin_mods}, performing prediction using Rao-Blackwellisation is straightforward because there is no weighting (updating the particles based on the observation) step. Each particle's switching state is merely propagated forward using the proposal distribution (the transition matrix $P$) and the Kalman prediction algorithm is used to evaluate the predicted mean and covariance. For the sake of brevity we do not supply an algorithm because it is a straightforward simplification of the Rao-Blackwellised Particle Filter Algorithm as shown above. The corresponding Probabilistic Graphical Model is shown in Figure \ref{fig_hybridmod1_prediction}.
 \begin{figure}[H] 
 \centering
@@ -147,6 +148,7 @@ It is also possible to take advantage of the Gaussian structure in Figure \ref{f
 Viterbi decoding is likewise not within the scope of this dissertation and as such we refer the reader to \cite{murphy1} for more information. Suffice to say, by increasing the complexity of Figure \ref{fig_hybridmod1} we increase the difficulty of inference in general.
 
 \section{Filtering the CSTR}
+\label{sec_rbpf_filtering_cstr}
 We now apply the Rao-Blackwellised Particle Filter (RBPF) to the CSTR introduced in Section \ref{sec_cstr}. The focus of this dissertation is on the application of Probabilistic Graphical Models to control, therefore our investigation into the various aspects which improve or degrade filtering performance will be relatively superficial and will target factors which are most relevant only. We will briefly investigate 3 aspects influencing the accuracy of the filter:
 \begin{enumerate}
 \item
@@ -162,7 +164,7 @@ It should be noted that in all the succeeding investigations only the most proba
 
 Note that we use the same parameters (e.g. noise covariances etc.) unless otherwise noted as used in Section \ref{sec_inf_lin_mods}.
 
-We begin our investigation by only measuring temperature and using 3 linear models, derived by linearising the non-linear CSTR model at each nominal operating point. Since the CSTR has 3 nominal operating points we have 3 linear models. We compare the use of 2 different switch transition matrices $P_1$ and $P_2$ as shown in (\ref{eq_switch_trans}). The first index corresponds to the high temperature operating point ($M_1$), the second index to the unstable operating point ($M_2$) and the third index to the low temperature operating point ($M_3$).
+We begin our investigation by only measuring temperature and using 3 linear models, derived by linearising the non-linear CSTR model at each nominal operating point. Since the CSTR has 3 nominal operating points we have 3 linear models. We compare the use of 2 different switch transition matrices $P_1$ and $P_2$ as shown in (\ref{eq_switch_trans}). The first index corresponds to the high temperature operating point ($M_1=(A_1, B_1)$), the second index to the unstable operating point ($M_2=(A_2, B_2)$) and the third index to the low temperature operating point ($M_3=(A_3, B_3)$). Note that we assume $C_1=C_2=C_3$ because we do not change the way we measure the states between models; additionally we assume that the state and measurement noise is common to all models i.e. $W_1=W_2=W_3$ and $V_1=V_2=V_3$.
 \begin{equation}
 \begin{aligned}
 P_1 = \begin{pmatrix}
@@ -219,9 +221,9 @@ Figure \ref{fig_3m_switch} shows the state of the corresponding switching variab
 \end{figure}
 Unlike Figure \ref{fig_3m_vage_switch} we do see a clear model transition around the 20 minute mark in Figure \ref{fig_3m_switch}. This is the behaviour we expected - as the system moves away from the unstable operating point the corresponding Graphical Model becomes less important.
 
-These results suggest that the switch transition matrix sets how ``sticky" the model transitions are. The more vague they are, as in the case of $P_1$, the more unsure the filter is about which model is probably generating the observations. On the other hand, in the case of $P_2$, once the filter switched to the higher probability model it stayed there. This behaviour is desirable because it is easier to base a control strategy off of one model than multiple models. However, the immediate drawback of the ``sticky" approach is that the filter may be over confident. Additionally if a machine learning approach is not used to infer the values of $P$ it could become a tedious task to set $P$ for a large system. Clearly the values used in $P_2$ were set my hand - more investigation is necessary to determine proper heuristics if this approach should be adopted in practice.
+These results suggest that the switch transition matrix sets how ``sticky" the model transitions are. The more vague they are, as in the case of $P_1$, the more unsure the filter is about which model is probably generating the observations. On the other hand, in the case of $P_2$, once the filter switched to the higher probability model it stayed there. This behaviour is desirable because it is easier to base a control strategy off of one model than multiple models. However, the immediate drawback of the ``sticky" approach is that the filter may be over confident or slow to switch models. Additionally if a machine learning approach is not used to infer the values of $P$ it could become a tedious task to set $P$ for a large system. Clearly the values used in $P_2$ were set by hand - more investigation is necessary to determine proper heuristics if this approach should be adopted in practice.
 
-Next we investigate the effect using more models has on the filter. We use the same 3 model filter as before (using $P_2$) but compare it to a 7 model filter. The state transition matrix for the 7 model filter is shown in (\ref{eq_state_trans7}).
+Next we investigate the effect using more models has on the filter. We use the same 3 model filter as before (using $P_2$) but compare it to a 7 model filter. The state transition matrix for the 7 model filter is shown in (\ref{eq_state_trans7}). We again assume that the state and measurement noise is common to all models and that they all share the same observation  matrix $C$.
 \begin{equation}
 P_3 = \begin{pmatrix}
 0.98 & 0.00 & 0.00 & 0.00 & 0.00 & 0.01 & 0.00 \\
@@ -281,7 +283,7 @@ Finally, in Figure \ref{fig_3m_maxswitch} we see only the most likely model at e
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{rbpf_3m_maxswitch_m2.pdf}
-\caption{State of the switching variable $s_t$ over time. The weight indicates the sum of the particle weights per model.}
+\caption{State of the switching variable $s_t$ over time. The most likely model at each time step is highlighted in white. Black indicates the model is inactive.}
 \label{fig_3m_maxswitch}
 \end{figure}
 Since we only base our state estimate on the most likely particle Figure \ref{fig_3m_maxswitch} indicates from which model our state estimate is derived. Ideally one would like very little ``switching noise" i.e. as soon as the system moves into territory where $M_3$ is accurate no particles should have high $M_1$ or $M_2$ weight. We see that this is mostly the case in Figure \ref{fig_3m_maxswitch}. 

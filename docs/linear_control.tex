@@ -26,6 +26,7 @@ y_{t+1} &= Cx_{t+1} + v_{t+1}~\text{(Observed)}
 We will endeavour to develop predictive controllers using the Graphical Models of Section \ref{sec_inf_lin_mods} and \ref{sec_inf_nonlin_mods}.
 
 \section{Unconstrained Stochastic Control}
+\label{sec_uncon_lin_control}
 Our first goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$. If the system is controllable then solving (\ref{eq_mpc_unconstrained_linmod}) will satisfy the linear unconstrained Stochastic Reference Tracking Goal.
 \begin{equation}
 \begin{aligned}
@@ -162,7 +163,7 @@ The goal of this section is to solve the stochastic constrained optimisation pro
 \end{aligned}
 \label{eq_mpc_constrained_linmod}
 \end{equation}
-It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$.
+It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$. For navigational convenience we supply a link to Theorem \ref{thrm_mpc_stoch_to_det} - when the reader reaches that point the reason will become obvious.
 
 Theorem \ref{thrm_affine_expected_const} succinctly shows that it is simple to convert the first stochastic constraint in (\ref{eq_mpc_constrained_linmod}) to a linear deterministic constraint.
 \begin{thrm}
@@ -272,18 +273,7 @@ Intuitively Theorem \ref{thrm_chance_cons} posits that if the shortest squared M
 \end{proof}
 It is interesting to note the striking similarity between the work in \cite{vanhessem1} and \cite{vanhessem2} and Theorem \ref{thrm_chance_cons} given that we started analysing the problem within the framework of Graphical Models. The additional benefit of Theorem \ref{thrm_chance_cons} is that it formulates the stochastic constraint as a function of the statistical Mahalanobis Distance measure. This is useful because it lends a statistical interpretation to Theorem \ref{thrm_chance_cons} even if the underlying distribution is non-Gaussian.
 
-In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \cite{yan1}, \cite{vanhessem1} to yield a QP MPC which exactly satisfies the stochastic MPC in (\ref{eq_mpc_constrained_linmod}) given the assumptions of linearity and normality. Note that the dimensionality of the problem is arbitrary. We restate (\ref{eq_mpc_constrained_linmod}) below for convenience.
-
-\textbf{Equation \ref{eq_mpc_constrained_linmod}}
-\begin{equation*}
-\begin{aligned}
-&\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
-& \text{subject to } x_{t+1}=Ax_t+Bu_t + w_t~\text{(Latent)} \\
-& \text{and } y_{t}= Cx_t + v_t \text{ (Observed)}\\
-& \text{and } \mathbb{E}[d^Tx_t + e] \geq 0 ~\forall ~t=1,...,N \\
-& \text{and } \text{Pr}(d^Tx_t + e \geq 0) \geq p ~\forall ~t=1,...,N\\
-\end{aligned}
-\end{equation*}
+In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \cite{yan1}, \cite{vanhessem1} to yield a QP MPC which exactly satisfies the stochastic MPC in (\ref{eq_mpc_constrained_linmod}) given the assumptions of linearity and normality. Note that the dimensionality of the problem is arbitrary.
 \begin{thrm}
 \textbf{Conversion of the Stochastic MPC formulation to the standard deterministic QP MPC formulation} Under the assumptions of linearity and Gaussian distributions we can reformulate the stochastic MPC problem shown in (\ref{eq_mpc_constrained_linmod}) as a standard deterministic QP MPC problem shown in (\ref{eq_mpc_constrained_linmod_deter}).
 \begin{equation}
@@ -299,7 +289,7 @@ In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \
 Other deterministic constraints, e.g. on the input, can be added as usual. Note that we have assumed that the initial state estimate $x_0$ is available in the form of its mean, $\mu_0$,  and covariance, $\Sigma_0$. It is straightforward to include more chance constraints. Since each chance constraint is reduced to an inequality constraint which measures the Mahalanobis Distance between the predicted distributions, the resultant feasible points will jointly satisfy all chance constraints.  
 \end{thrm}
 \begin{proof}
-Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Furthermore, let the current state estimate $x_0$ be given. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the first inequality constraint in (\ref{eq_mpc_constrained_linmod}) can be reformulated to require that $d^T\mu + e \geq 0$. The last inequality constraint in (\ref{eq_mpc_constrained_linmod}) follows from Theorem \ref{thrm_chance_cons} as shown in (\ref{eq_chance_to_lin}).
+Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Furthermore, let the current state estimate $x_0$ be given. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the first inequality constraint in (\ref{eq_mpc_constrained_linmod}) can be reformulated to require that $d^T\mu_t + e \geq 0$ for each $t=1, 2,..., N$. The last inequality constraint in (\ref{eq_mpc_constrained_linmod}) follows from Theorem \ref{thrm_chance_cons} as shown in (\ref{eq_chance_to_lin}).
 \begin{equation}
 \begin{aligned}
 \frac{(d^T\mu_t+e)^2}{d^T \Sigma_t d} \geq k^2 &\implies (d^T\mu_t+e)^2 \geq k^2 {d^T \Sigma_t d} \\

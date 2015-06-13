@@ -55,16 +55,16 @@
 \contentsline {section}{\numberline {9.3}Rao-Blackwellised Particle Prediction}{109}{section.9.3}
 \contentsline {section}{\numberline {9.4}Smoothing and Viterbi Decoding}{110}{section.9.4}
 \contentsline {section}{\numberline {9.5}Filtering the CSTR}{110}{section.9.5}
-\contentsline {chapter}{\numberline {10}Stochastic Switching Linear Control using Non-linear Hybrid Models}{119}{chapter.10}
-\contentsline {section}{\numberline {10.1}Unconstrained}{119}{section.10.1}
-\contentsline {section}{\numberline {10.2}Conclusion}{119}{section.10.2}
-\contentsline {chapter}{\numberline {11}Inference using Nonlinear Hybrid Models}{120}{chapter.11}
-\contentsline {section}{\numberline {11.1}Exact Inference}{121}{section.11.1}
-\contentsline {section}{\numberline {11.2}Approximate Inference}{121}{section.11.2}
-\contentsline {section}{\numberline {11.3}Particle Prediction}{122}{section.11.3}
-\contentsline {section}{\numberline {11.4}Filtering the CSTR}{122}{section.11.4}
-\contentsline {chapter}{\numberline {12}Stochastic Switching Control using Non-linear Hybrid Models}{126}{chapter.12}
-\contentsline {section}{\numberline {12.1}Unconstrained}{126}{section.12.1}
-\contentsline {section}{\numberline {12.2}Constrained}{126}{section.12.2}
-\contentsline {section}{\numberline {12.3}Conclusion}{126}{section.12.3}
-\contentsline {chapter}{\numberline {13}Conclusion}{127}{chapter.13}
+\contentsline {chapter}{\numberline {10}Stochastic Switching Linear Control using Linear Hybrid Models}{119}{chapter.10}
+\contentsline {section}{\numberline {10.1}Unconstrained Switching Control}{121}{section.10.1}
+\contentsline {section}{\numberline {10.2}Conclusion}{125}{section.10.2}
+\contentsline {chapter}{\numberline {11}Inference using Nonlinear Hybrid Models}{126}{chapter.11}
+\contentsline {section}{\numberline {11.1}Exact Inference}{127}{section.11.1}
+\contentsline {section}{\numberline {11.2}Approximate Inference}{127}{section.11.2}
+\contentsline {section}{\numberline {11.3}Particle Prediction}{128}{section.11.3}
+\contentsline {section}{\numberline {11.4}Filtering the CSTR}{128}{section.11.4}
+\contentsline {chapter}{\numberline {12}Stochastic Switching Control using Non-linear Hybrid Models}{132}{chapter.12}
+\contentsline {section}{\numberline {12.1}Unconstrained}{132}{section.12.1}
+\contentsline {section}{\numberline {12.2}Constrained}{132}{section.12.2}
+\contentsline {section}{\numberline {12.3}Conclusion}{132}{section.12.3}
+\contentsline {chapter}{\numberline {13}Conclusion}{133}{chapter.13}
