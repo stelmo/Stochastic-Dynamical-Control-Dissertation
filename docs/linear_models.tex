@@ -50,7 +50,7 @@ We have implicitly assumed that the noise is Gaussian and white\footnote{The noi
 
 To fully specify the system we require the transition and emission probability density functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution of $x_0$.
 
-\section{Filtering}
+\section{Kalman Filter}
 The goal of filtering is to find the posterior distribution $p(x_{t}|y_{0:t}, u_{0:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in the Hidden Markov Model section albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. The Graphical Model corresponding to filtering is shown in Figure \ref{fig_gm_linmods_filtering}.
 \begin{figure}[H] 
 \centering
@@ -140,7 +140,7 @@ Note that for the first time step only the update expression is evaluated as the
 
 Intuitively, the Kalman Filter equations use the state space model to predict the new state distribution and then adjust it by a correction factor $K_t(y_t - C\mu_{t|t-1})$. This factor depends on the difference between the actual observation and the predicted observation. The Kalman gain, $K_t$, represents the inferred confidence of the model. If the model is deemed accurate then the predictions make up most of $\mu_t$ but if the model is bad at predicting the observations then the observations play a bigger part in the next mean estimate \cite{bishop}. 
 
-\section{Prediction}
+\section{Kalman Prediction}
 \label{sec_lin_prediction}
 The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{0:t}, u_{0:t+h-1})$ and $p(y_{t+h}|y_{0:t}, u_{0:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did for the Hidden Markov Models. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). The graphical model corresponding to  the two step ahead state prediction is shown in Figure \ref{fig_gm_linmods_prediction}.
 \begin{figure}[H] 

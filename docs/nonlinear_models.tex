@@ -39,6 +39,7 @@ y_{t+1} &= g(x_{t+1}, v_{t+1})
 Note that we make no assumption about the functional form of the noise terms $w_t,v_t$. In practice it is customary to assume that they have zero mean but otherwise are not restricted. Additionally, to simplify notation we will omit the dependence on $u$ of $f$ and $g$ and their associated distributions. Since $u$ is a deterministic variable, by assumption, it is straightforward to incorporate it into later analysis. 
 
 \section{Sequential Monte Carlo Methods}
+\label{sec_asir}
 Many approximate inference techniques exist in literature, the most notable ones include Gaussian Sum Filters \cite{gsf1} and Particle based methods. We shall focus only on Sequential Monte Carlo (SMC) methods, of which Particle based methods are a subset, because it is simple to implement and generalises well (and easily) to more complex graphical models. 
 
 SMC methods are a general class of Monte Carlo methods which sample sequentially from the growing target distribution $\pi_t(x_{0:t})$. By only requiring that $\gamma_t$ be known point-wise we have the framework of SMC methods as shown in (\ref{eq_SMC1}). Note that $Z_t$ is some normalisation constant \cite{pftut}.
@@ -159,6 +160,7 @@ If the resample criterion is satisfied then resample $(W^i_t, X^i_{0:t})$ to obt
 Numerous convergence results exist for the SMC methods we have discussed but the fundamental problem with this scheme is that of sample impoverishment. It is fundamentally impossibly to accurately represent a distribution on a space of arbitrarily high dimension with a finite set of samples \cite{pftut}. We attempt to mitigate this problem by using resampling but degeneracy inevitably occurs for large enough $t$. Fortunately, for our purposes we will not be dealing with arbitrarily large dimensional problems because of the Markov assumption.
 
 \section{Particle Filter}
+\label{sec_bootstrap}
 We now apply the adaptive SIR algorithm in the setting of filtering. We set $\pi_t(x_{0:t}) = p(x_{0:t}|y_{0:t})$, $\gamma_t(x_{0:t}) = p(x_{0:t}, y_{0:t})$ and consequently $Z_t = p(y_{0:t})$. We use the recursive proposal distribution $q_t(x_{0:t}|y_{0:t}) = q(x_t|x_{0:t-1}, y_{0:t})q_{t-1}(x_{0:t-1}|y_{0:t-1})$. We then have the unnormalised weights as shown in (\ref{eq_pf_weights}).
 \begin{equation}
 \begin{aligned}

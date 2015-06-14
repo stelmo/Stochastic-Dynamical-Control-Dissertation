@@ -297,7 +297,7 @@ Let the admissible set of controller inputs $\mathcal{U}$ be the same for both t
 \end{aligned}
 \label{eq_chance_to_lin}
 \end{equation}
-The first line of (\ref{eq_chance_to_lin}) follows because $\Sigma_t$ is positive semi-definite for all $t=1, 2,..., N$ and $d \neq 0$ (otherwise it would not be a constraint), therefore it can be multiplied over the inequality sign like a positive number. By Theorem \ref{thrm_lqg_sol} we have that $\Sigma_{t+1} = W + A\Sigma_tA^T$, therefore the predicted covariance matrices used in (\ref{eq_chance_to_lin}) are well defined. The second line follows because of the first inequality constraint: we know that $d^T\mu_T+e \geq 0 ~\forall~t=1,2,..., N$ and therefore we can square root both sides of the inequality constraint. Thus we have the two inequality constraints $d^T\mu_t+e \geq 0$ and $d^T\mu_t+e \geq k \sqrt{d^T \Sigma_t d}$ for each $t=1,2,...,N$. Since $k > 0$ (otherwise we do not have a meaningful chance constraint) we can condense the two inequality constraints into a single constraint: $d^T\mu_t+e \geq k \sqrt{d^T \Sigma_t d} > 0$ for each $t=1,2,...,N$ from which the conclusion follows.  
+The first line of (\ref{eq_chance_to_lin}) follows because $\Sigma_t$ is positive semi-definite for all $t=1, 2,..., N$ and $d \neq 0$ (otherwise it would not be a constraint), therefore it can be multiplied over the inequality sign like a positive number. By Theorem \ref{thrm_lqg_sol} we have that $\Sigma_{t+1} = W + A\Sigma_tA^T$, therefore the predicted covariance matrices used in (\ref{eq_chance_to_lin}) are well defined. The second line follows because of the first inequality constraint: we know that $d^T\mu_t+e \geq 0 ~\forall~t=1,2,..., N$ and therefore we can square root both sides of the inequality constraint. Thus we have the two inequality constraints $d^T\mu_t+e \geq 0$ and $d^T\mu_t+e \geq k \sqrt{d^T \Sigma_t d}$ for each $t=1,2,...,N$. Since $k > 0$ (otherwise we do not have a meaningful chance constraint) we can condense the two inequality constraints into a single constraint: $d^T\mu_t+e \geq k \sqrt{d^T \Sigma_t d} > 0$ for each $t=1,2,...,N$ from which the conclusion follows.  
 \end{proof}
 The beauty of Theorem \ref{thrm_mpc_stoch_to_det} is that no new theory is necessary to analyse the stability and convergence results of the new MPC. This is highly desirable because it allows one to merely ``add" the last inequality constraint to your existing MPC formulation. Most practical MPCs will have some form of state estimation and thus no new parameters are introduced either. Since the problem is in standard QP form it is straightforward to implement and, even more importantly, it is computationally fast because the problem is trivially convex.
 
@@ -353,7 +353,7 @@ Firstly we illustrate the approach of using only the result of Theorem \ref{thrm
 \end{aligned}
 \label{eq_lqg_linmod}
 \end{equation}
-Figure \ref{fig_lin_mod_lqg} shows that the system does indeed converge, noisily, to the set point. The primary drawback of this method is that there is no easy way to constrain the system. From a practical perspective this can be problematic. 
+Figure \ref{fig_lin_mod_lqg} shows that the system does indeed converge, noisily, to the set point. This is not surprising because we have effectively just implemented the very well studied LQG controller. The primary drawback of this method is that there is no easy way to constrain the system. From a practical perspective this can be problematic. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{lin_mod_lqg.pdf}
@@ -388,13 +388,20 @@ In Figure \ref{fig_lin_mod_kf_mean_track} we see the reference tracking and cont
 Like the LQG controller, it is clear that we have noisy convergence to the set point. As mentioned previously we will never be able to achieve zero set point offset because of the noise term in the system dynamics (\ref{eq_lin_system}). Note that we have constrained the maximum magnitude of the inputs such that $|u_t| \leq 10000$ kJ/min. In the unconstrained case the controller required a maximum absolute input magnitude of over $12000$ kJ/min; the ability to naturally constrain the input can be practically very useful. The benefit of MPC is apparent here.
 
 In Figure \ref{fig_lin_mod_kf_mean_ss} we see the corresponding state space trajectory of the system together with the state constraint.
-\begin{figure}[H] 
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.25]{lin_mod_kf_mean_ss.pdf}
 \caption{Deterministic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states.}
 \label{fig_lin_mod_kf_mean_ss}
 \end{figure}
-While the predicted mean state estimates do not violate the constraint (due to the optimisation constraints) the actual underlying system does.  This is clearly seen if one inspects the confidence region around the lower state estimates. The confidence region is deeply violated by the constraint which implies that it is likely that the underlying system might. This is clearly a problem from a control point of view; the deterministic MPC cannot ensure that the constraint is satisfied.
+While the predicted mean state estimates do not violate the constraint (due to the optimisation constraints) the actual underlying system does.  This is clearly seen if one inspects the confidence region around the lower state estimates. The confidence region is deeply violated by the constraint which implies that it is likely that the underlying system might. This is clearly a problem from a control point of view; the deterministic MPC cannot ensure that the constraint is satisfied. Since Figures \ref{fig_lin_mod_kf_mean_track} and \ref{fig_lin_mod_kf_mean_ss} only depict a single simulation to justify our conclusion, we include Figure \ref{fig_lin_mod_kf_mean_mc} which shows the cumulative probability distribution of the shortest Mahalanobis Distance between each state, after control action, and the constraint based on 1000 simulations.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{lin_mod_kf_mean_mc.pdf}
+\caption{Cumulative probability distribution of the shortest Mahalanobis Distance of each state to the constraint based on 1000 simulations. Negative distances imply the constraint was violated.}
+\label{fig_lin_mod_kf_mean_mc}
+\end{figure}
+Closer inspection reveals that the constraint was violated over 2.8\% of the time. This equates to over 11.2 constraint violations per run\footnote{Note that each run comprised of 401 points in state space.}. Depending on the application this could be problematic.
 
 We remedy this situation by introducing the stochastic MPC as discussed in Theorem \ref{thrm_mpc_stoch_to_det} and shown in (\ref{eq_mpc_linmod_kf_cons}) for convenience. Note that $d^T = (10, 1)$ and $e=411$ as before. By consulting a Chi-Squared Distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$.
 \begin{equation}
@@ -423,7 +430,14 @@ However, the benefit of adding the stochastic constraint is apparent in Figure \
 \caption{Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman Filter is used for inference and the chance constraint is set at 90\%.}
 \label{fig_lin_mod_kf_var90_ss}
 \end{figure}
-Since the stochastic constraint is only enforced with probability 90\% it is possible that the underlying system can come ``close" to the constraint. This then has the consequence that the posterior confidence region marginally violates (spills over) the constraint as seen in the lower regions of Figure \ref{fig_lin_mod_kf_var90_ss}.
+Since the stochastic constraint is only enforced with probability 90\% it is possible that the underlying system can come ``close" to the constraint. This then has the consequence that the posterior confidence region marginally violates (spills over) the constraint as seen in the lower regions of Figure \ref{fig_lin_mod_kf_var90_ss}. To support the conclusion that the stochastic MPC, as implemented here, can successfully satisfy the chance constraint we again show the cumulative probability distribution of the shortest Mahalanobis Distance of each state to the constraint based on 1000 simulations in Figure \ref{fig_lin_mod_kf_var_conf_90_mc}.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{lin_mod_kf_var_conf_90_mc.pdf}
+\caption{Cumulative probability distribution of the shortest Mahalanobis Distance of each state to the constraint based on 1000 simulations. Negative distances imply the constraint was violated.}
+\label{fig_lin_mod_kf_var_conf_90_mc}
+\end{figure}
+Closer inspection reveals that the constraint was violated over 0.49\% of the time. This equates to just under 2 constraint violations per run. This is an almost 700\% improvement over the deterministic MPC. Clearly the stochastic MPC is effective.
 
 It is interesting to investigate what effect increasing the probability that the chance constraint is satisfied will have on the system. To this end we modify the chance constraint of (\ref{eq_mpc_linmod_kf_cons}) such that $k^2 = 13.8155$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 99.9\% ~\forall ~t=1,...,N$. We expect that the underlying system will be moved further away from constraint due to this added level of conservativeness.
 
@@ -492,7 +506,7 @@ As before we first investigate the deterministic MPC. The control problem is sho
 In Figure \ref{fig_nonlin_mod_kf_mean_track} we see that the deterministic MPC using the Kalman Filter for state inference does converge to the set point. The ability to naturally constrain the system is again highlighted in the input: as opposed to the -25 000 kJ/min required by the LQG controller the MPC manages to control the system while never requiring more than $|20000|$ kJ/min. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{lin_mod_kf_mean_track.pdf}
+\includegraphics[scale=0.25]{nonlin_mod_kf_mean_track.pdf}
 \caption{Deterministic constrained MPC reference tracking with initial condition $(0.55, 450)$ and measuring both states. The Kalman Filter is used for inference.}
 \label{fig_nonlin_mod_kf_mean_track}
 \end{figure} 
