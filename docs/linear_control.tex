@@ -152,6 +152,7 @@ To clarify why it is important that the linear system, i.e. the matrix $A$, is s
 
 
 \section{Constrained Stochastic Control}
+\label{sec_lin_mpc_constained}
 The goal of this section is to solve the stochastic constrained optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian\footnote{From the results of Section \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible.}. We also restrict our analysis to affine constraints. Note that we only include one constraint in the succeeding analysis however, additional constraints are handled in exactly the same way as we will show.
 \begin{equation}
 \begin{aligned}
@@ -476,6 +477,7 @@ In Figure \ref{fig_lin_mod_kl} we see that the approximation is relatively close
 
 
 \section{Nonlinear System}
+\label{sec_nonlinear_control}
 In this section we consider the problem of controlling the full non-linear system with a linear model linearised around the unsteady operating point. The control goal is the same as before; the only difference between this section and Section \ref{sec_lin_sys_cont} is that the underlying plant is non-linear.
 
 The linear control model and noise parameters are the same as (\ref{eq_linmod_params}). The control tuning parameters are the same as (\ref{eq_mpc_tuning}).

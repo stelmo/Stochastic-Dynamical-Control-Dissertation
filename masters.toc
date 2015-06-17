@@ -64,8 +64,12 @@
 \contentsline {section}{\numberline {11.3}Switching Particle Prediction}{129}{section.11.3}
 \contentsline {section}{\numberline {11.4}Smoothing and Viterbi Decoding}{129}{section.11.4}
 \contentsline {section}{\numberline {11.5}Filtering the CSTR}{130}{section.11.5}
-\contentsline {chapter}{\numberline {12}Stochastic Switching Control using Non-linear Hybrid Models}{133}{chapter.12}
-\contentsline {section}{\numberline {12.1}Unconstrained}{133}{section.12.1}
-\contentsline {section}{\numberline {12.2}Constrained}{133}{section.12.2}
-\contentsline {section}{\numberline {12.3}Conclusion}{133}{section.12.3}
-\contentsline {chapter}{\numberline {13}Conclusion}{134}{chapter.13}
+\contentsline {chapter}{\numberline {12}Stochastic Switching Control using Non-linear Hybrid Models}{135}{chapter.12}
+\contentsline {section}{\numberline {12.1}Unconstrained Switching Control}{136}{section.12.1}
+\contentsline {section}{\numberline {12.2}Constrained Switching Control}{138}{section.12.2}
+\contentsline {section}{\numberline {12.3}Conclusion}{144}{section.12.3}
+\contentsline {chapter}{\numberline {13}Future Work}{142}{chapter.13}
+\contentsline {section}{\numberline {13.1}Parameter Optimisation}{142}{section.13.1}
+\contentsline {section}{\numberline {13.2}Augmented Switching Graphical Model}{142}{section.13.2}
+\contentsline {section}{\numberline {13.3}Stochastic Inputs Graphical Model}{142}{section.13.3}
+\contentsline {chapter}{\numberline {14}Conclusion}{143}{chapter.14}

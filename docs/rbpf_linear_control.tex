@@ -85,7 +85,8 @@ We are not using the Graphical Model associated with Rao-Blackwellised Particle 
 
 For the remainder of this section we assume that we have a bank of $M=3$ linear models and that we measure both states. Each model is derived by linearising the non-linear CSTR model, found in Section \ref{sec_cstr}, around the nominal operating points discussed in the same section as well as Section \ref{sec_rbpf_filtering_cstr}. We also use the switching transition matrix $P_2$ found in (\ref{eq_switch_trans}).
 \section{Unconstrained Switching Control}
-Due to the analysis of Section \ref{sec_uncon_lin_control} we know that is is possible to convert the stochastic optimisation problem (\ref{eq_rbpf_lqg}) into the deterministic optimisation problem (\ref{eq_rbpf_lqr}) for each linear model $(M_1, M_2, M_3)$ given that we have the state estimate of the initial value $x_0$, the dynamics are linear and the underlying distributions are Gaussian. Throughout this section we make these assumptions. As before, we also denote $\mathbb{E}[x_0]=\mu_0$ and $\text{var}[x_0]=\Sigma_0$.
+\label{sec_rbpf_control_uncon}
+Due to the analysis of Section \ref{sec_uncon_lin_control} we know that is is possible to convert the stochastic optimisation problem (\ref{eq_rbpf_lqg}) into the deterministic optimisation problem (\ref{eq_rbpf_lqr}) for each linear model $(M_1, M_2, M_3)$ given that we have the state estimate of the initial value $x_0$, the dynamics are linear and the underlying distributions are Gaussian. Throughout this section we make these assumptions. As before, we also denote the mean and covariance of the current state estimate $x_0$ by $\mathbb{E}[x_0]=\mu_0$ and $\text{var}[x_0]=\Sigma_0$.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\

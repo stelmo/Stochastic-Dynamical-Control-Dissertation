@@ -18,7 +18,7 @@
 \usepackage{amsthm}
 \usepackage{float}
 \usepackage[bottom]{footmisc}
-
+\usepackage{bookmark}
 % Theorems, definitions etc.
 \newtheoremstyle{defstyle}
   {10pt} % Space above
@@ -55,8 +55,9 @@
 %\includeonly{./docs/linear_hybrid_models}
 %\includeonly{./docs/linear_hybrid_models,./docs/rbpf_linear_control}
 %\includeonly{./docs/rbpf_linear_control}
-\includeonly{./docs/nonlinear_hybrid_models}
-%\includeonly{./docs/nonlinear_hybrid_models, ./docs/spf_control}
+%\includeonly{./docs/nonlinear_hybrid_models}
+%\includeonly{./docs/nonlinear_hybrid_models, ./docs/spf_linear_control}
+\includeonly{./docs/spf_linear_control}
 
 
 \begin{document}
@@ -80,6 +81,7 @@
 \include{./docs/rbpf_linear_control}
 \include{./docs/nonlinear_hybrid_models}
 \include{./docs/spf_linear_control}
+\bookmarksetup{startatroot}
 \include{./docs/conclusion}
 
 %References
