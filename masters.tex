@@ -58,7 +58,9 @@
 %\includeonly{./docs/nonlinear_hybrid_models}
 %\includeonly{./docs/nonlinear_hybrid_models, ./docs/spf_linear_control}
 %\includeonly{./docs/spf_linear_control}
-\includeonly{./docs/conclusion}
+%\includeonly{./docs/conclusion}
+%\includeonly{./docs/introduction}
+
 
 \begin{document}
 \graphicspath{{./imgs/}{../imgs/}} %look for images
@@ -68,15 +70,18 @@
 \tableofcontents
 \include{./docs/introduction}
 \part{Literature, Theory and Background Material}
+\label{part_one}
 \include{./docs/lit_study}
 \include{./docs/back_theory}
 \include{./docs/hmm}
 \include{./docs/cstr_model}
 \part{Single Model Systems}
+\label{part_two}
 \include{./docs/linear_models}
 \include{./docs/nonlinear_models}
 \include{./docs/linear_control}
 \part{Multiple Model Systems}
+\label{part_three}
 \include{./docs/linear_hybrid_models}
 \include{./docs/rbpf_linear_control}
 \include{./docs/nonlinear_hybrid_models}

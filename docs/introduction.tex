@@ -1,3 +1,90 @@
 \chapter{Introduction}
-To do.
+This dissertation deals with the development of Predictive Controllers within the framework of Probabilistic Graphical Models, specifically Dynamic Bayesian Networks. Dynamic Bayesian Networks are well suited to the study of stochastic processes i.e. processes where there is noise in both the state evolution and state measurements. By leveraging the natural formulation of stochastic processes within Dynamic Bayesian Networks we develop stochastic Predictive Controllers, focussing specifically on the LQG\footnote{Linear Quadratic Gaussian.} and chance constrained MPC\footnote{Model Predictive Control.} controllers.
+
+The dissertation primarily deals with the two Graphical Models\footnote{Clear circular nodes represent latent variables, shaded circular nodes represent observed variables and diamond nodes are deterministic variables.} shown in Figures \ref{fig_linear} and \ref{fig_switch_linear}. Inference is discussed in general, but we focus on filtering and prediction because they are important for control. 
+\begin{figure}[H]
+ \centering
+\begin{minipage}[b]{0.45\textwidth}
+ \centering
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$y_0$};
+  \node[obs, right=of ya] (yb) {$y_1$};
+  \node[obs, right=of yb] (yc) {$y_2$};
+  \node[latent, above=of ya]  (xa) {$x_0$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_2$};
+  \node[det, above=of xa] (da) {$u_0$};
+  \node[det, above=of xb] (db) {$u_1$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  
+\end{tikzpicture}
+\caption{Single Model Probabilistic Graphical Model}
+\label{fig_linear}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.45\textwidth}
+ \centering
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$y_0$};
+  \node[obs, right=of ya] (yb) {$y_1$};
+  \node[obs, right=of yb] (yc) {$y_2$};
+  \node[latent, above=of ya]  (xa) {$x_0$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_1$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_2$};
+  \node[det, above=of xa, xshift=0.7cm] (da) {$u_0$};
+  \node[det, above=of xb, xshift=0.7cm] (db) {$u_1$};
+  \node[latent, above=of xa, yshift=1.1cm] (sa) {$s_0$};
+  \node[latent, above=of xb, yshift=1.1cm] (sb) {$s_1$};
+  \node[latent, above=of xc, yshift=1.1cm] (sc) {$s_2$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  \edge {sa} {sb};
+  \edge {sb} {sc};
+  \edge {sa} {xa};
+  \edge {sb} {xb};
+  \edge {sc} {xc};
+\end{tikzpicture}
+\caption{Model Switching Probabilistic Graphical Model}
+\label{fig_switch_linear}
+\end{minipage}
+\end{figure}
+The dissertation is structured in 3 parts, each composed of self contained chapters dealing with a specific issue. Part \ref{part_one} contains the Literature Review (Chapter \ref{sec_lit_study}) and Background Theory (Chapter \ref{sec_back_theory}). Additionally, it also contains Chapter \ref{sec_hmm} which deals with Hidden Markov Models. The goal of this chapter is to gently introduce the uninformed reader to the power of Graphical Models. Finally, Part \ref{part_one} also introduces the CSTR example (Chapter \ref{sec_cstr}) which is used to illustrate the techniques investigated throughout the rest of the dissertation. If the reader is familiar with Graphical Models, Predictive Control and CSTR design Part \ref{part_one} may safely be skipped.
+
+Parts \ref{part_two} and \ref{part_three} each follow the same pattern: a Graphical Model is introduced and studied after which a control scheme is implemented using the tenets of the preceding work. We detail the content and results of these two parts next.
+
+In Part \ref{part_two} the Dynamic Bayesian Network, shown in Figure \ref{fig_linear}, is investigated within the context of the Kalman Filter Model (linear dynamics and Gaussian noise) and the Particle Filter Model (no assumptions about the dynamics and noise). Using the techniques endemic to the aforementioned Probabilistic Graphical Models we show:
+\begin{enumerate}
+\item
+That the LQG controller reduces to LQR controller under the assumptions of normality and linearity \footnote{This result is not new but the derivation using Probabilistic Graphical Models is both instructive and, more importantly, intuitive.}.
+\item
+That a chance constrained MPC problem can be reduced to the standard form MPC\footnote{A deterministic optimisation problem with linear constraints and a quadratic objective function.} problem under the assumptions of linearity and normality. Furthermore, since the Mahalanobis Distance, statistically important measure, is used to reduce the chance constraints to linear constraints it supports the use of the aforementioned techniques to systems which are non-linear and non-Gaussian. 
+\end{enumerate}
+
+In Part \ref{part_three} the Dynamic Bayesian Network shown in Figure \ref{fig_switch_linear} is investigated within the context of the Switching Kalman Filter Model and the Switching Particle Filter Model\footnote{Both of these Probabilistic Graphical Models use a set of models to perform inference. The stochastic switching variables $(s_0, s_1,...)$ are used to weight the likelihood of each model supporting the observations.}. The same assumptions about the state dynamics and noise distributions apply respectively. The benefit of generalising Figure \ref{fig_linear} is that it allows one to infer which model is likely to be generating the observations. This allows us to extend the stochastic MPC discussed previously to incorporate model switching. We investigate the following:
+\begin{enumerate}
+\item
+Using a Rao-Blackwellised Particle Filter to isolate the most likely linear model generating observations from a non-linear system model. The most likely linear model is then used by the Predictive Controller. This process repeats at each time step. It was found that the algorithm was not robust enough against switching noise i.e. the filter jumped between models which caused controller instability.
+\item
+Using a Switching Particle Filter for fault detection and controller model switching. The dynamics of the healthy and broken system were sufficiently different for the filter to robust identify when a fault occurred. The same switching algorithm was then employed to successfully keep the system at set point even in the event of a fault.  
+\end{enumerate}
+
+Perhaps most usefully, the dissertation illustrates the advantage of designing Model Predictive Controllers from within the framework of Probabilistic Graphical Models. While it may seem that the two fields are not related, most modern control solutions perform filtering on system measurements which is a natural result of Probabilistic Graphical Models. Therefore, the motivation for this study is not purely esoteric but demonstrates a tacit relationship between the fields.   
 
