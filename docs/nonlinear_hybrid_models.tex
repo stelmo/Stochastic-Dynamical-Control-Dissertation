@@ -1,6 +1,6 @@
 \chapter{Inference using Nonlinear Hybrid Models}
 \label{sec_inf_spf}
-In this section we study the same graphical model as Section \ref{sec_inf_lin_hybrid}, shown in Figure \ref{fig_hybridmod2} for convenience, but we drop the assumption that the dynamic models are linear. The variables retain their meaning as before.     
+In this section we study the same graphical model as Chapter \ref{sec_inf_lin_hybrid}, shown in Figure \ref{fig_hybridmod2} for convenience, but we drop the assumption that the dynamic models are linear. The variables retain their meaning as before.     
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -38,7 +38,7 @@ In this section we study the same graphical model as Section \ref{sec_inf_lin_hy
 \end{figure}
 Intuitively we are now using the switching variables to decide which nonlinear model (or combination of) better describes the observed system behaviour. At each point in time we desire a weighted set of nonlinear models with the weight proportional to the ability of the model to explain the plant behaviour. Such a system could be used to describe significant model changes e.g. catalyst degradation in our CSTR or a reactor which breaks suddenly etc... 
 
-We model this system as follows. Let $s_t \in (1,2,..., M)$ denote a discrete $M$ state first order Markov chain with transition matrix $P$ as discussed in Section \ref{sec_inf_lin_hybrid}. Let each state $s_t=i$ be associated with a model set $\left(f_i, g_i, W_i, V_i \right)$ used to evaluate the dynamical model shown in (\ref{eq_smodel2}).
+We model this system as follows. Let $s_t \in (1,2,..., M)$ denote a discrete $M$ state first order Markov chain with transition matrix $P$ as discussed in Chapter \ref{sec_inf_lin_hybrid}. Let each state $s_t=i$ be associated with a model set $\left(f_i, g_i, W_i, V_i \right)$ used to evaluate the dynamical model shown in (\ref{eq_smodel2}).
 \begin{equation}
 \begin{aligned}
 x_{t+1} &= f_i(x_t, u_t, w_{t+1}) \text{ with } w_{t+1} \backsim \mathcal{N}(0, W_i)\\
@@ -50,9 +50,9 @@ In this dissertation we assume that the the noise distributions are Gaussian but
 \section{Exact Filtering}
 By extending the model to incorporate nonlinear models it becomes even more difficult to perform inference. It is clear that for the type of systems we consider here no exact inference algorithm, which is computationally feasible, exists \cite{murphy1}. We again turn to approximate inference algorithms.
 
-Note that we cannot apply Rao-Blackwellisation (i.e. analytically evaluate the stochastic dynamical system component and approximate the switching component) as before because the dynamic models are no longer linear. We use the adaptive Sequential Importance Resampling, i.e. the bootstrap Particle Filter, algorithm as discussed in Section \ref{sec_inf_nonlin_mods}.
+Note that we cannot apply Rao-Blackwellisation (i.e. analytically evaluate the stochastic dynamical system component and approximate the switching component) as before because the dynamic models are no longer linear. We use the adaptive Sequential Importance Resampling, i.e. the bootstrap Particle Filter, algorithm as discussed in Chapter \ref{sec_inf_nonlin_mods}.
 \section{Switching Particle Filter}
-We cannot analytically evaluate any part of the desired posterior distribution $p(s_{0:t}, x_{0:t}|y_{0:t})$ in a computationally feasible manner, so we must apply the adaptive Sequential Importance Resampling algorithm to the entire state space of Figure \ref{fig_hybridmod2}. The algorithm follows straightforwardly from our discussion in Section \ref{sec_asir} \cite{murphy1}. We merely state the incremental weight function and proposal distribution we sample from in (\ref{eq_nonpf}). 
+We cannot analytically evaluate any part of the desired posterior distribution $p(s_{0:t}, x_{0:t}|y_{0:t})$ in a computationally feasible manner, so we must apply the adaptive Sequential Importance Resampling algorithm to the entire state space of Figure \ref{fig_hybridmod2}. The algorithm follows straightforwardly from our discussion in Chapter \ref{sec_asir} \cite{murphy1}. We merely state the incremental weight function and proposal distribution we sample from in (\ref{eq_nonpf}). 
 \begin{equation}
 \begin{aligned}
 &q_t(s_t,x_t|s_{0:t-1},x_{0:t-1,}y_{0:t}) = p(s_t|s_{t-1})p(x_t|s_t,x_{t-1}) \\
@@ -60,7 +60,7 @@ We cannot analytically evaluate any part of the desired posterior distribution $
 \end{aligned}
 \label{eq_nonpf}
 \end{equation}  
-Applying the algorithm is a straightforward extension of the bootstrap Particle Filter introduced in Section \ref{sec_bootstrap} given the weighting function and proposal distribution as shown below.
+Applying the algorithm is a straightforward extension of the bootstrap Particle Filter introduced in Chapter \ref{sec_bootstrap} given the weighting function and proposal distribution as shown below.
 
 \textbf{Switching Particle Filter Algorithm}\\
 For $t=0$:
@@ -83,7 +83,7 @@ If the number of effective particles is below some threshold apply resampling wi
 \end{enumerate} 
 
 \section{Switching Particle Prediction}
-The prediction of the hybrid non-linear states follows in an analogous manner to the prediction algorithm found in Section \ref{sec_particle_prediction}. We do not supply an algorithm because it is a straightforward simplification of the Switching Particle Filter algorithm seen above: effectively there is no weight update step because there is no observation. The corresponding Graphical Model is shown in Figure \ref{fig_hybridmod2_prediction}.
+The prediction of the hybrid nonlinear states follows in an analogous manner to the prediction algorithm found in Chapter \ref{sec_particle_prediction}. We do not supply an algorithm because it is a straightforward simplification of the Switching Particle Filter algorithm seen above: effectively there is no weight update step because there is no observation. The corresponding Graphical Model is shown in Figure \ref{fig_hybridmod2_prediction}.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -117,44 +117,44 @@ The prediction of the hybrid non-linear states follows in an analogous manner to
 \end{figure}  
 
 \section{Smoothing and Viterbi Decoding}
-Like Section \ref{sec_inf_lin_hybrid} we refer the reader elsewhere for a detailed discussion on both smoothing and Viterbi Decoding \cite{murphy1}. It suffices to say that given the non-linear dynamics the aforementioned inference will be beyond the scope of this dissertation. 
+Like Chapter \ref{sec_inf_lin_hybrid} we refer the reader elsewhere for a detailed discussion on both smoothing and Viterbi Decoding \cite{murphy1}. It suffices to say that given the nonlinear dynamics the aforementioned inference will be beyond the scope of this dissertation. 
 
 \section{Filtering the CSTR}
 \label{sec_spf_filtering}
-In this section we illustrate the use of the Switching Particle Filter (SPF) using  two non-linear dynamical model derived from the familiar CSTR example of Section \ref{sec_cstr}. Since the Graphical Model of Section \ref{sec_inf_lin_hybrid} is identical to that of Figure \ref{fig_hybridmod2} we expect, and assume, that the general trends discussed in Section \ref{sec_rbpf_filtering_cstr} hold here as well.
+In this section we illustrate the use of the Switching Particle Filter using  two nonlinear dynamical model derived from the familiar CSTR example of Chapter \ref{sec_cstr}. Since the Graphical Model of Chapter \ref{sec_inf_lin_hybrid} is identical to that of Figure \ref{fig_hybridmod2} we expect that the general trends discussed in Chapter \ref{sec_rbpf_filtering_cstr} to hold here as well.
 
-For the purposes of illustration we assume a scenario where the rate constant of the CSTR decreases by an order of magnitude. This scenario is not completely arbitrary, for example, this could be caused by catalyst degradation due to some environmental factor. It is our aim to infer when this happens and to be able to track the states accurately despite the significant model change. Therefore we will have one non-linear model of the healthy plant $M_1$ and one non-linear model of the faulty plant $M_2$. 
+For the purposes of illustration we assume a scenario where the rate constant of the CSTR decreases by an order of magnitude. This scenario is not completely arbitrary, for example, this could be caused by catalyst degradation due to some environmental factor. It is our aim to infer when this happens and to be able to track the states accurately despite the significant model change. Therefore we will have one nonlinear model of the healthy plant $M_1$ and one nonlinear model of the faulty plant $M_2$. 
 
-We use 500 particles during all runs for the SPF and use the switching transition matrix $P=\begin{pmatrix}
+We use 500 particles during all runs for the Switching Particle Filter and use the switching transition matrix $P=\begin{pmatrix}
 0.99 & 0.01 \\ 0.01 & 0.99
-\end{pmatrix}$. For the Particle Filter we use 200 particles. We spent much time in Section \ref{sec_rbpf_filtering_cstr} discussing the effect the switch transition matrix has on model selection. The form of the matrix is motivated by physical considerations as well: once the catalyst denatures it is unlikely to fix itself. Thus, once the model breaks, switches from $M_1$ to $M_2$, it is unlikely to switch back. In all the simulations the catalyst denatures at 50 minutes into the run.
+\end{pmatrix}$. For the Particle Filter we use 200 particles. We spent much time in Chapter \ref{sec_rbpf_filtering_cstr} discussing the effect the switch transition matrix has on model selection. The form of the matrix is motivated by physical considerations as well: once the catalyst denatures it is unlikely to fix itself. Thus, once the model breaks, switches from $M_1$ to $M_2$, it is unlikely to switch back. In all the simulations the catalyst denatures at 50 minutes into the run.
 
-We conduct two brief, but illustrative, investigations comparing the effectiveness of the SPF and the Particle Filter (PF). In both cases the PF uses the healthy system model - the benefit of the additional complexity of the SPF model is to be highlighted here. In the first investigation we measure only temperature and in the second we measure both concentration and temperature. 
+We conduct two brief, but illustrative, investigations comparing the effectiveness of the Switching Particle Filter and the Particle Filter. In both cases the Particle Filter uses the healthy system model - the benefit of the additional complexity of the Switching Particle Filter model is to be highlighted here. In the first investigation we measure only temperature and in the second we measure both concentration and temperature. 
 
-In Figure \ref{fig_pf_m1_compspf} we illustrate the tracking performance\footnote{Unfortunately we cannot use the average tracking performance measures used previously. Since the filter approaches a concentration of 0 $\text{kmol.m}^{-3}$ the average error estimates are not accurate (there is division by very small numbers). We thus rely on a visual comparison.} of the PF on the system. Note that the simulation window is very long - 600 minutes.
+In Figure \ref{fig_pf_m1_compspf} we illustrate the tracking performance\footnote{Unfortunately we cannot use the average tracking performance measures used previously. Since the filter approaches a concentration of 0 $\text{kmol.m}^{-3}$ the average error estimates are not accurate (there is division by very small numbers). We thus rely on a visual comparison.} of the Particle Filter on the system. Note that the simulation window is very long - 600 minutes.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{pf_m1_compspf.pdf}
 \caption{Particle Filter using 200 particles tracking the CSTR where the catalyst denatures at 50 minutes.}
 \label{fig_pf_m1_compspf}
 \end{figure}
-It is clear that the PF tracks the temperature well, because it is measured, but tracks the concentration very poorly. It takes almost 300 minutes before the PF estimates the concentration somewhat reliably. Clearly the model mismatch causes the filter's poor performance - compare this to the excellent tracking in Section \ref{sec_nonlinmods_filtering}.
+It is clear that the Particle Filter tracks the temperature well, because it is measured, but tracks the concentration very poorly. It takes almost 300 minutes before the Particle Filter estimates the concentration somewhat reliably. Clearly the model mismatch causes the filter's poor performance - compare this to the excellent tracking in Chapter \ref{sec_nonlinmods_filtering}.
 
-In Figure \ref{fig_spf_m1_track} we see the tracking performance of the SPF measuring only temperature.
+In Figure \ref{fig_spf_m1_track} we see the tracking performance of the Switching Particle Filter measuring only temperature.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{spf_m1_track.pdf}
 \caption{Switching Particle Filter using 500 particles tracking the CSTR where the catalyst denatures at 50 minutes.}
 \label{fig_spf_m1_track}
 \end{figure}
-It is clear that the SPF tracks the states very well. However, Figure \ref{fig_spf_m1_switch} indicates that we have the same switching noise problems as discussed in Section \ref{sec_rbpf_filtering_cstr}.
+It is clear that the Switching Particle Filter tracks the states very well. However, Figure \ref{fig_spf_m1_switch} indicates that we have the same switching noise problems as discussed in Chapter \ref{sec_rbpf_filtering_cstr}.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{spf_m1_switch.pdf}
 \caption{Switching Particle Filter measuring only temperature. The switching weight of each particle is shown per time step.}
 \label{fig_spf_m1_switch}
 \end{figure} 
-It is not surprising that there is switching noise: the Graphical Models of this and Section \ref{sec_inf_lin_hybrid} are the same. However, we do see that the SPF switches models at about 50 minutes. This indicates that the filter effectively identifies when the process fault occurs. It seems that after the fault has been identified both models are equally likely from about 130 minutes onwards. It seems there is a regime near the unstable operating point where the models are maximally different. Conversely, near the low temperature operating point the models are quite similar. This is physically believable because both those operating points correspond to a system where almost no conversion occurs; therefore broken or not the models would generate the similar predictions.
+It is not surprising that there is switching noise: the Graphical Models of this and Chapter \ref{sec_inf_lin_hybrid} are the same. However, we do see that the Switching Particle Filter switches models at about 50 minutes. This indicates that the filter effectively identifies when the process fault occurs. It seems that after the fault has been identified both models are equally likely from about 130 minutes onwards. It seems there is a regime near the unstable operating point where the models are maximally different. Conversely, near the low temperature operating point the models are quite similar. This is physically believable because both those operating points correspond to a system where almost no conversion occurs; therefore broken or not the models would generate the similar predictions.
 
 Figure \ref{fig_pf_m2_compspf} illustrates the filtering performance of the Particle Filter using both state measurements.
 \begin{figure}[H] 
@@ -179,4 +179,11 @@ Again the performance is very good - the filter accurately tracks the underlying
 \caption{Switching Particle Filter measuring both concentration and temperature. The switching weight of each particle is shown per time step.}
 \label{fig_spf_m2_switch}
 \end{figure} 
-It is clear that the second measurement helps the filter differentiate between the regimes of the healthy and broken plant when the system is near the high temperature and unstable operating points. However, we see the same behaviour near the low temperature operating point - the models are clearly similar here and we again have the problem of model overlap.
+It is clear that the second measurement helps the filter differentiate between the regimes of the healthy and broken plant when the system is near the high temperature and unstable operating points. However, we see the same behaviour near the low temperature operating point - the models are clearly similar here and we again have the problem of model overlap. Finally, Figure \ref{fig_spf_m2_switchmax} shows which model is the most likely at each time step over the simulation window. 
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.3]{spf_m2_switchmax.pdf}
+\caption{The most likely model per time step of the Switching Particle Filter measuring both states.}
+\label{fig_spf_m2_switchmax}
+\end{figure} 
+Figure \ref{fig_spf_m2_switchmax} confirms the observations of Figure \ref{fig_spf_m2_switch}. In the next chapter we implement control using the most likely model. 

@@ -271,13 +271,13 @@ Finally we compare the Particle Filter to the Kalman filter using both temperatu
 \end{figure}
 The average concentration and temperature estimation errors for the Particle Filter is 0.93\% and 0.23\% respectively while the corresponding estimation errors for the Kalman Filter is 0.97\% and 0.23\% respectively. Since the confidence region overlaps throughout the entire simulation it is clear that if the underlying model is linear there is no great difference between the two filters from an accuracy point of view. It does however makes sense, from a computational point of view, to use the Kalman Filter: it is well known that the Particle Filter does not perform well in high dimensional problems\cite{snyder}. 
 
-Next we consider the same comparison but change the underlying model to the full non-linear CSTR as shown in Figure \ref{fig_pf_kf_phase2}. The average concentration and temperature estimation errors for the Particle Filter is 0.83\% and 0.19\% respectively while the corresponding estimation errors for the Kalman Filter is 4.50\% and 0.41\% respectively.
+Next we consider the same comparison but change the underlying model to the full nonlinear CSTR as shown in Figure \ref{fig_pf_kf_phase2}. The average concentration and temperature estimation errors for the Particle Filter is 0.83\% and 0.19\% respectively while the corresponding estimation errors for the Kalman Filter is 4.50\% and 0.41\% respectively.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{pf_kf_phase2.pdf}
-\caption{State space evolution of the Particle Filter and the Kalman Filter on the non-linear CSTR model with initial condition $(0.5, 400)$ and measuring both temperature and concentration. The Particle Filter uses 500 particles.}
+\caption{State space evolution of the Particle Filter and the Kalman Filter on the nonlinear CSTR model with initial condition $(0.5, 400)$ and measuring both temperature and concentration. The Particle Filter uses 500 particles.}
 \label{fig_pf_kf_phase2}
 \end{figure}
 Inspecting Figure \ref{fig_pf_kf_phase2} we see that throughout the simulation the Particle Filter's confidence region is smaller. Since we are using a significantly more accurate model for the Particle Filter this is not surprising. Additionally we see that the Kalman Filter state estimates diverge from the true states as the model moves away from the region where the linear model is accurate. The same weakness in the Kalman Filter was discussed in Section \ref{sec_inf_lin_mods} concerning the usage of the linear model.
 
-Therefore, while the Particle Filter may be computationally more expensive to use it is a better filter if the system exhibits non-linearity or non-Gaussian distributions. But, if the system is linear one is better off using the standard Kalman Filter.
+Therefore, while the Particle Filter may be computationally more expensive to use it is a better filter if the system exhibits nonlinearity or non-Gaussian distributions. But, if the system is linear one is better off using the standard Kalman Filter.

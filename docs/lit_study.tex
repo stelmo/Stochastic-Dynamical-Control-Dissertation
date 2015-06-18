@@ -65,7 +65,7 @@ While this breakthrough is important - we build on it in our approach - the auth
 
 Although \cite{yan1} and \cite{yan2} primarily deal with univariate problems they show that if the underlying system is linear and Gaussian, it is possible to manipulate the constrained stochastic problem shown in (\ref{eq_lit_chance_mpc_state}) into a deterministic problem. Their analysis allows the stochastic objective function to be transformed into its deterministic equivalent using the properties of Gaussian integrals. This development is quite important because it allows one to directly evaluate the stochastic objective function. The constraints are handled by directly evaluating the Gaussian integral corresponding to the chance constraint in the univariate case. The authors allude to the fact that this becomes computationally intractable in higher dimensions and suggest that the approach in \cite{vanhessem2} be used. The authors also suggest a way to handle the situation where covariance matrix grows without bound in unstable systems. This is related to the feasibility problems discussed earlier.
 
-In this dissertation we illustrate the benefits gained by designing MPC within the framework of Probabilistic Graphical Models. We investigate and show the following:
+In this dissertation we illustrate the benefits gained by designing controllers within the framework of Probabilistic Graphical Models. We investigate and show the following:
 \begin{enumerate}
 \item
 Under the assumption of normality and linearity it is possible to convert the stochastic objective function of (\ref{eq_lit_lqg}) into its deterministic equivalent. The analysis is closely related to the work of  \cite{yan1} and \cite{yan2} but we show that these results are immediately obvious from within the framework of Probabilistic Graphical Models. Thus it is possible to solve the LQG problem without resorting to stochastic Dynamic Programming.
@@ -151,10 +151,16 @@ Related to this class of model based fault detection algorithms is the Switching
 \end{figure}
 Classically these types of models are used to infer the current state  estimate (called filtering) given a set of models. Intuitively, the model which best describes the current observation ($y_t$) is assigned the most weight in the state estimate. This allows for the modelling of non-linear and multi-modal distributions by combining models based on the inferred switching variable ($s$) \cite{murphy1}. These models may be used for both filtering and event detection (see \cite{veerar} for an example) which, in the setting of control, can be interpreted as fault detection.
 
-In this dissertation 
-
-
-
+In this dissertation we also illustrate the potential benefits gained by designing controllers using non-standard Probabilistic Graphical Models, specifically Figure \ref{fig_spf_skf}. We investigate and show the following:
+\begin{enumerate}
+\item
+Using the Rao-Blackwellised Particle Filter it is possible to accurately estimate the current state using linear models. The state estimate can then be used within the controller framework alluded to in Chapter \ref{sec_stoch_mpc_lit}. Using this approach it is also possible to change the model control is based upon. The linear model which best describes the current observations is used for control purposes. In this way we gain the benefit of model switching but do not incur the significant computational cost when it is incorporated into the optimisation problem. We call this approach the Switching Controller Algorithm.
+\item
+Using the Switching Particle Filter it is possible to accurately estimate the current state using non-linear models. The same Switching Controller Algorithm is used but implemented using the Switching Particle Filter. In this setting the filter discerns between a healthy and faulty system and uses the best model to effect control.
+\item
+In both cases the Switching Controller Algorithm is not robust enough against model selection (switching) noise. However, the results indicate that the approach is promising.
+\end{enumerate}
+More so than Chapter \ref{sec_stoch_mpc_lit}, the approach used here relies on the application of Probabilistic Graphical Models to controller design.  
 
 
 
