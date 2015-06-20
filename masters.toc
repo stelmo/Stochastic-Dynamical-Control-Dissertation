@@ -47,8 +47,8 @@
 \contentsline {section}{\numberline {8.3}Reference tracking}{92}{section.8.3}
 \contentsline {section}{\numberline {8.4}Linear system}{92}{section.8.4}
 \contentsline {section}{\numberline {8.5}Nonlinear system}{101}{section.8.5}
-\contentsline {section}{\numberline {8.6}Conclusion}{109}{section.8.6}
-\contentsline {part}{III\hspace {1em}Multiple Model Systems}{110}{part.3}
+\contentsline {section}{\numberline {8.6}Conclusion}{112}{section.8.6}
+\contentsline {part}{III\hspace {1em}Multiple Model Systems}{114}{part.3}
 \contentsline {chapter}{\numberline {9}Inference using Linear Hybrid Models}{111}{chapter.9}
 \contentsline {section}{\numberline {9.1}Exact Filtering}{112}{section.9.1}
 \contentsline {section}{\numberline {9.2}Rao-Blackwellised Particle Filter}{113}{section.9.2}

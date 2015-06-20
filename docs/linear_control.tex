@@ -248,7 +248,7 @@ Therefore, the arguments which minimise (\ref{eq_mahala_optim}) are $x^* = S(I-\
 \end{equation}
 We can conclude that the shortest squared Mahalanobis distance between a point $y$ and the constraint of (\ref{eq_mahala_optim}) is $\frac{(b^Ty+c)^2}{b^TSb}$.
 \end{proof}
-In Theorem \ref{thrm_chance_cons} we apply Theorem \ref{thrm_mahala_dist} to convert the stochastic constraints into nonlinear deterministic constraints.
+In Theorem \ref{thrm_chance_cons} we apply Theorem \ref{thrm_mahala_dist} to convert the chance constraints into nonlinear deterministic constraints.
 \begin{thrm}
 \textbf{Gaussian affine chance constraints} If the underlying distribution of a random variable $x$ is Gaussian then the chance constraint $\text{Pr}(d^Tx + e \geq 0) \geq p$ can be rewritten as the deterministic constraint $\frac{(d^T\mu+e)^2}{d^TSd} \geq k^2$ where $k^2$ is the (constant) critical value of the inverse cumulative Chi Squared distribution with the degrees of freedom equal to the dimensionality of $x$ such that $\text{Pr}(\mathcal{X} \leq k^2) = p$ with $\mathcal{X}$ a Chi Squared random variable. 
 \label{thrm_chance_cons}
@@ -260,7 +260,7 @@ Since the distribution of $x$ up to a certain confidence level is required to be
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.7]{ellipse.pdf}
-\caption{The ellipse centred around $\mu_1$ intersects the constraint while the ellipse centred around $\mu_2$ is wholly above (satisfies) the constraint.}
+\caption{The ellipse centred around $\mu_1$ intersects the constraint while the ellipse centred around $\mu_2$ is wholly above (satisfies) the constraint. The shortest Mahalanobis distance will not necessarily be perpendicular to the constraint.}
 \label{fig_mahala_ellipse}
 \end{figure}
 \begin{figure}[H] 
@@ -269,7 +269,7 @@ Since the distribution of $x$ up to a certain confidence level is required to be
 \caption{Illustration of the fact that Theorem \ref{thrm_chance_cons} holds jointly for multiple constraints. The ellipse centred around $\mu_1$ must lie wholly within the feasible region. This is guaranteed if the Mahalanobis constraint is satisfied.}
 \label{fig_mahala_ellipse_joint}
 \end{figure}
-It is interesting to note the striking similarity between the work in \cite{vanhessem1} and \cite{vanhessem2} and Theorem \ref{thrm_chance_cons} given that we started analysing the problem within the framework of graphical models. The additional benefit of Theorem \ref{thrm_chance_cons} is that it formulates the stochastic constraint as a function of the statistical Mahalanobis distance measure. This is useful because it lends a statistical interpretation to Theorem \ref{thrm_chance_cons} even if the underlying distribution is non-Gaussian.
+It is interesting to note the striking similarity between the work in \cite{vanhessem1} and \cite{vanhessem2} and Theorem \ref{thrm_chance_cons} given that we started analysing the problem within the framework of graphical models. The additional benefit of Theorem \ref{thrm_chance_cons} is that it formulates the chance constraint as a function of the statistical Mahalanobis distance measure. This is useful because it lends a statistical interpretation to Theorem \ref{thrm_chance_cons} even if the underlying distribution is non-Gaussian.
 
 In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \cite{yan1}, \cite{vanhessem1} to yield a QP MPC which exactly satisfies the stochastic MPC in (\ref{eq_mpc_constrained_linmod}) given the assumptions of linearity and normality. Note that the dimensionality of the problem is arbitrary.
 \begin{thrm}
@@ -344,7 +344,7 @@ Q = P_f = \begin{pmatrix}
 \end{equation}
 We assume that a Kalman filter supplies the initial state estimate $x_0$ and that the mean $\mu_0$ of that estimate is used for control. Additionally, we assume a zero order hold of 1 min between controller inputs.
 
-It is useful to introduce the measures we will use to quantify the effectiveness of the control techniques used in this and the following chapters. We define the average energy input by $\frac{h}{N}\sum^N_{t=0}|u_t-u_s|$ and the average concentration error by $\frac{1}{N}\sum^N_{t=0}|\frac{{C_A}_t-y_{sp}}{y_{sp}}|$.
+It is useful to introduce the measures we will use to quantify the effectiveness of the control techniques used in this and the following chapters. We define the average energy input by $\frac{1}{N}\sum^N_{t=0}|u_t-u_s|$ and the average concentration error by $\frac{1}{N}\sum^N_{t=0}|\frac{{C_A}_t-y_{sp}}{y_{sp}}|$. Additionally, to confirm that the results hold true over multiple simulations we will, at the end of Chapters \ref{sec_lin_sys_cont} and \ref{sec_nonlinear_control}, include a Monte-Carlo simulation. The metrics we use will be the time each simulation spent in violation of the constraints and the total state space area (measured within the context of the Mahalanobis distance) in violation of the constraint. 
 
 First we illustrate the approach of using only the result of Theorem \ref{thrm_lqg_sol} i.e. we apply the LQG regulator to the system. Based on our previous results we know that given the Kalman filter state estimate mean $\mu_0$ we only need to solve the LQR as shown in (\ref{eq_lqg_linmod}) to solve the LQG problem. 
 \begin{equation}
@@ -357,11 +357,11 @@ First we illustrate the approach of using only the result of Theorem \ref{thrm_l
 Figure \ref{fig_lin_mod_lqg} shows that the system does indeed converge, noisily, to the set point. This is not surprising because we have effectively just implemented the very well studied LQG controller. The primary drawback of this method is that there is no easy way to constrain the system. From a practical perspective this can be problematic. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{lin_mod_lqg.pdf}
+\includegraphics[width=\textwidth]{lin_mod_lqg.pdf}
 \caption{Unconstrained LQG regulator tracking with initial condition $(0.55, 450)$ and measuring both states.}
 \label{fig_lin_mod_lqg}
 \end{figure}
-The average heat energy usage (controller input) over the simulation run is 214 kJ/min. The average set point error is 2.38\% over the same 40 min time period.
+The average heat energy usage (controller input) over the simulation run is 25.29 kW. The average set point error is 2.23\% over the same 80 min time period.
  
 Next we illustrate the approach of using conventional deterministic MPC to control the stochastic system. The MPC formulation is shown in (\ref{eq_mpc_constrained_det1}). Using MPC allows us to easily add state and input constraints; this is a significant improvement over conventional LQG as discussed previously.
 \begin{equation}
@@ -370,95 +370,81 @@ Next we illustrate the approach of using conventional deterministic MPC to contr
 & \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
 &\text{and } \begin{pmatrix}
 10 \\ 1
-\end{pmatrix}^T \mu_t + 411 \geq 0 ~\forall ~t=1,...,N\\
-& \text{and } |u_t| \leq 10000 ~\forall ~t=0,...,N-1\\
+\end{pmatrix}^T \mu_t + 412 \geq 0 ~\forall ~t=1,...,N\\
+& \text{and } |u_t| \leq 165 ~\forall ~t=0,...,N-1\\
 \end{aligned}
 \label{eq_mpc_constrained_det1}
 \end{equation}
 We only use a single state constraint in this dissertation but the extension to multiple constraints is straightforward. The prediction and control horizon are equal to each other and set at 150 time steps i.e. 15 minutes into the future. We additionally constrain the magnitude of the inputs.
 
-Since we have assumed normality the deterministic state inequality constraint can also be seen as an affine expected value constraint as shown in Theorem \ref{thrm_affine_expected_const}.
+Due to assumption of normality and linearity and by Theorem \ref{thrm_lqg_sol} and \ref{thrm_affine_expected_const} we can also interpret the deterministic MPC as a stochastic MPC with an affine expected value constraint. Therefore the controller in (\ref{eq_mpc_constrained_det1}) is not inappropriate for control of stochastic CSTR processes under consideration.
 
-In Figure \ref{fig_lin_mod_kf_mean_track} we see the reference tracking and controller input for the deterministic MPC. The average heat energy input and set point error over the simulation run is 2.70\% and 222 kJ/min. Interestingly the average error is not much different but the controller requires more energy to track the setpoint without violating the constraints. This is reasonable because the additional constraints make problem (\ref{eq_mpc_constrained_det1}) a harder problem than (\ref{eq_lqg_linmod}).
+In Figure \ref{fig_lin_mod_kf_mean_track} we see the reference tracking and controller input for the deterministic MPC. The average heat energy input and set point error over the simulation run is 28.22 kW and 2.43\% respectively. Interestingly the average error is not much different but the controller requires more energy to track the set point. This is reasonable because the additional constraints make problem (\ref{eq_mpc_constrained_det1}) a harder problem than (\ref{eq_lqg_linmod}).
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{lin_mod_kf_mean_track.pdf}
+\includegraphics[width=\textwidth]{lin_mod_kf_mean_track.pdf}
 \caption{Deterministic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states.}
 \label{fig_lin_mod_kf_mean_track}
 \end{figure}
-Like the LQG controller, it is clear that we have noisy convergence to the set point. As mentioned previously we will never be able to achieve zero set point offset because of the noise term in the system dynamics (\ref{eq_lin_system}). Note that we have constrained the maximum magnitude of the inputs such that $|u_t| \leq 10000$ kJ/min. In the unconstrained case the controller required a maximum absolute input magnitude of over $12000$ kJ/min; the ability to naturally constrain the input can be practically very useful. The benefit of MPC is apparent here.
+Like the LQG controller, it is clear that we have noisy convergence to the set point. As mentioned previously we will never be able to achieve zero set point offset because of the noise term in the system dynamics (\ref{eq_lin_system}). Note that we have constrained the maximum magnitude of the inputs such that $|u_t| \leq 165$ kW. In the unconstrained case the controller required a maximum absolute input magnitude of over $200$ kW; the ability to naturally constrain the input can be practically very useful. The benefit of MPC is apparent here.
 
 In Figure \ref{fig_lin_mod_kf_mean_ss} we see the corresponding state space trajectory of the system together with the state constraint.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.25]{lin_mod_kf_mean_ss.pdf}
+\includegraphics[width=\textwidth]{lin_mod_kf_mean_ss.pdf}
 \caption{Deterministic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states.}
 \label{fig_lin_mod_kf_mean_ss}
 \end{figure}
-While the predicted mean state estimates do not violate the constraint (due to the optimisation constraints) the actual underlying system does.  This is clearly seen if one inspects the confidence region around the lower state estimates. The confidence region is deeply violated by the constraint which implies that it is likely that the underlying system might. This is clearly a problem from a control point of view; the deterministic MPC cannot ensure that the constraint is satisfied. Since Figures \ref{fig_lin_mod_kf_mean_track} and \ref{fig_lin_mod_kf_mean_ss} only depict a single simulation to justify our conclusion, we include Figure \ref{fig_lin_mod_kf_mean_mc} which shows the cumulative probability distribution of the shortest Mahalanobis distance between each state, after control action, and the constraint based on 1000 simulations.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.25]{lin_mod_kf_mean_mc.pdf}
-\caption{Cumulative probability distribution of the shortest Mahalanobis distance of each state to the constraint based on 1000 simulations. Negative distances imply the constraint was violated.}
-\label{fig_lin_mod_kf_mean_mc}
-\end{figure}
-Closer inspection reveals that the constraint was violated over 2.8\% of the time. This equates to over 11.2 constraint violations per run\footnote{Note that each run comprised of 401 points in state space.}. Depending on the application this could be problematic.
+While the predicted mean state estimates do not violate the constraint (due to the optimisation constraints) the actual underlying system does.  This is clearly seen if one inspects the confidence region around the lower state estimates. The confidence region is deeply violated by the constraint which implies that it is likely that the underlying system might. This is clearly a problem from a control point of view; the deterministic MPC cannot ensure that the constraint is satisfied.
 
-We remedy this situation by introducing the stochastic MPC as discussed in Theorem \ref{thrm_mpc_stoch_to_det} and shown in (\ref{eq_mpc_linmod_kf_cons}) for convenience. Note that $d^T = (10, 1)$ and $e=411$ as before. By consulting a Chi-Squared Distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$.
+We remedy this situation by introducing the stochastic MPC as discussed in Theorem \ref{thrm_mpc_stoch_to_det} and shown in (\ref{eq_mpc_linmod_kf_cons}) for convenience. Note that $d^T = (10, 1)$ and $e=412$ as before. By consulting a Chi Squared distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
 & \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
 & \text{and } \Sigma_{t+1} = W+A\Sigma_t A^T \\
 & \text{and } d^T\mu_t + e \geq k\sqrt{d^T \Sigma_t d} ~\forall ~t=1,...,N\\
-& \text{and } |u_t| \leq 10000 ~\forall ~t=0,...,N-1\\
+& \text{and } |u_t| \leq 165 ~\forall ~t=0,...,N-1\\
 \end{aligned}
 \label{eq_mpc_linmod_kf_cons}
 \end{equation}
 Note that problem (\ref{eq_mpc_linmod_kf_cons}) is harder than (\ref{eq_mpc_constrained_det1}) due to the added constraint and thus we expect that the system will require greater controller input to satisfy the constraint. 
 
-In Figure \ref{fig_lin_mod_kf_var90_track} we see that the stochastic MPC is able to track the set point in a similar manner as the LQG controller and deterministic MPC. The total average heat input and set point error over the simulation run is 290 kJ/min and 2.95\% respectively. This problem is harder than the preceding one due to the additional constraint and thus more energy is required. 
+In Figure \ref{fig_lin_mod_kf_var90_track} we see that the stochastic MPC is able to track the set point in a similar manner as the LQG controller and deterministic MPC. The total average heat input and set point error over the simulation run is  38.58 kW and 2.58\% respectively. This problem is harder than the preceding one due to the additional constraint and thus more energy is required. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{lin_mod_kf_var90_track.pdf}
-\caption{Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 90\%.}
+\includegraphics[width=\textwidth]{lin_mod_kf_var90_track.pdf}
+\caption{Chance constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 90\%.}
 \label{fig_lin_mod_kf_var90_track}
 \end{figure}
-However, the benefit of adding the stochastic constraint is apparent in Figure \ref{fig_lin_mod_kf_var90_ss}. It is clear that the constraint on the underlying state is not violated.
+However, the benefit of adding the chance constraint is apparent in Figure \ref{fig_lin_mod_kf_var90_ss}. It is clear that the constraint on the underlying state is not violated.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{lin_mod_kf_var90_ss.pdf}
-\caption{Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 90\%.}
+\includegraphics[width=\textwidth]{lin_mod_kf_var90_ss.pdf}
+\caption{Chance constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 90\%.}
 \label{fig_lin_mod_kf_var90_ss}
 \end{figure}
-Since the stochastic constraint is only enforced with probability 90\% it is possible that the underlying system can come ``close" to the constraint. This then has the consequence that the posterior confidence region marginally violates (spills over) the constraint as seen in the lower regions of Figure \ref{fig_lin_mod_kf_var90_ss}. To support the conclusion that the stochastic MPC, as implemented here, can successfully satisfy the chance constraint we again show the cumulative probability distribution of the shortest Mahalanobis distance of each state to the constraint based on 1000 simulations in Figure \ref{fig_lin_mod_kf_var_conf_90_mc}.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.25]{lin_mod_kf_var_conf_90_mc.pdf}
-\caption{Cumulative probability distribution of the shortest Mahalanobis distance of each state to the constraint based on 1000 simulations. Negative distances imply the constraint was violated.}
-\label{fig_lin_mod_kf_var_conf_90_mc}
-\end{figure}
-Closer inspection reveals that the constraint was violated over 0.49\% of the time. This equates to just under 2 constraint violations per run. This is an almost 700\% improvement over the deterministic MPC. Clearly the stochastic MPC is effective.
+Since the chance constraint is only enforced with probability 90\% it is possible that the underlying system can come ``close" to the constraint. This then has the consequence that the posterior confidence region marginally violates (spills over) the constraint as seen in the lower regions of Figure \ref{fig_lin_mod_kf_var90_ss}.
+ 
+It is interesting to investigate what effect increasing the probability that the chance constraint is satisfied will have on the system. To this end we modify the chance constraint of (\ref{eq_mpc_linmod_kf_cons}) such that $k^2 = 13.8155$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 99\% ~\forall ~t=1,...,N$. We expect that the underlying system will be moved further away from constraint due to this added level of conservativeness.
 
-It is interesting to investigate what effect increasing the probability that the chance constraint is satisfied will have on the system. To this end we modify the chance constraint of (\ref{eq_mpc_linmod_kf_cons}) such that $k^2 = 13.8155$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 99.9\% ~\forall ~t=1,...,N$. We expect that the underlying system will be moved further away from constraint due to this added level of conservativeness.
-
-In Figure \ref{fig_lin_mod_kf_var999_track} we see that the stochastic MPC still tracks the set point and Figure \ref{fig_lin_mod_kf_var999_ss} shows that the expected behaviour is realised. 
+In Figure \ref{fig_lin_mod_kf_var99_track} we see that the stochastic MPC still tracks the set point and Figure \ref{fig_lin_mod_kf_var99_ss} shows that the expected behaviour is realised. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{lin_mod_kf_var999_track.pdf}
-\caption{Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 99.9\%.}
-\label{fig_lin_mod_kf_var999_track}
+\includegraphics[width=\textwidth]{lin_mod_kf_var99_track.pdf}
+\caption{Chance constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 99\%.}
+\label{fig_lin_mod_kf_var99_track}
 \end{figure}
-The average heat input and average set point error is 3.73\% and 351 kJ/min. The added conservativeness of the MPC prevents it from attempting to get to the set point as fast as the previous stochastic MPC; this causes the higher average error but the constraints are satisfied more robustly. As before, the control problem is harder and thus requires more energy.
+The average heat input and average set point error is 3.49\% and  58.39 kW. The added conservativeness of the MPC prevents it from attempting to get to the set point as fast as the previous stochastic MPC; consequently there is no set point overshoot in Figure \ref{fig_lin_mod_kf_var99_track}. This causes the higher average error but the constraints are satisfied more robustly. As before, the control problem is harder and thus requires more energy.
 
-In Figure \ref{fig_lin_mod_kf_var999_ss} we see the 90\% confidence region is above the constraint. Since the probability that the predicted states are close to the constraint is much lower than before we see that the confidence region satisfies the constraint everywhere.
+In Figure \ref{fig_lin_mod_kf_var99_ss} we see the 90\% confidence region is above the constraint. Since the probability that the predicted states are close to the constraint is much lower than before we see that the confidence region satisfies the constraint everywhere.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{lin_mod_kf_var999_ss.pdf}
-\caption{Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 99.9\%.}
-\label{fig_lin_mod_kf_var999_ss}
+\includegraphics[width=\textwidth]{lin_mod_kf_var99_ss.pdf}
+\caption{Chance constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 99\%.}
+\label{fig_lin_mod_kf_var99_ss}
 \end{figure}
-It would also be correct to infer that $k$ can be used as an empirical measure of the inherent stochastic conservativeness of the resulting controller. That is, lower values of $k$ indicate a more aggressive controller which may violate the chance constraints and higher values of $k$ indicate a more conservative controller. This can be useful for systems where the normal assumption is not valid but one would still like to enforce stochastic constraints in some empirical sense. 
+It would also be correct to infer that $k$ can be used as an empirical measure of the inherent stochastic conservativeness of the resulting controller. That is, lower values of $k$ indicate a more aggressive controller which may violate the chance constraints and higher values of $k$ indicate a more conservative controller. This can be useful for systems where the normal assumption is not valid but one would still like to enforce chance constraints in some empirical sense. 
 
 We have made the strong assumption that the system dynamics remain linear and Gaussian even under the MPC control law which is not necessarily linear \cite{mac}. Clearly if the system is far from Gaussian the Gaussian approach to simplifying the chance constraint will not be valid. Fortunately this is relatively simple to check and serves as a good way of measuring controller health. That is, the more Gaussian the filtered distributions are, the better the linear stochastic controller will work. 
 
@@ -467,29 +453,39 @@ Kullback-Leibler Divergence was introduced in Theorem \ref{thrm_kl_sample} to es
 Figure \ref{fig_lin_mod_kl} shows the degree to which the underlying distribution is Gaussian. Since we cannot use an infinite amount of particles we compare the sampled Gaussian distribution approximation to a baseline.   
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{lin_mod_kl.pdf}
-\caption{Kullback-Leibler Divergence between the assumed Gaussian distribution and different sampled distributions using 5000 particles. The underlying model is linear. A log scale is used because the uniform curve differs by more than an order of magnitude from the other curves.}
+\includegraphics[width=\textwidth]{lin_mod_kl.pdf}
+\caption{Kullback-Leibler Divergence between the assumed Gaussian distribution and different sampled distributions using 5000 particles. The underlying model is linear.}
 \label{fig_lin_mod_kl}
 \end{figure}
-The approximation curve in Figure \ref{fig_lin_mod_kl} shows how much the samples diverge from the Gaussian distribution approximated using the samples. The baseline curve shows how much the Gaussian distribution diverges from samples of the same distribution. The uniform curve shows how much a Gaussian approximation of a Uniform distribution drawn in the interval $(\mu_i-\sigma_i, \mu_i-\sigma_i)$ (for each $i$ in the dimension of the underlying distribution) diverges; this serves to illustrate the divergence one would expect if attempting to model a distribution which is decidedly not normal. One would expect the baseline curve to tend to zero as the number of particles tends to infinity. Sampling error causes divergence from zero for the baseline curve. Thus we can use the baseline and uniform curves as a crude measure of normality.
+The approximation curve in Figure \ref{fig_lin_mod_kl} shows how much the samples diverge from the Gaussian distribution approximated using the samples. The baseline curve shows how much the Gaussian distribution diverges from samples of the same distribution. The uniform curve shows how much a Gaussian approximation of a Uniform distribution drawn in the interval $(\mu_i-2\sigma_i, \mu_i+2\sigma_i)$ (for each $i$ in the dimension of the underlying distribution) diverges; this serves to illustrate the divergence one would expect if attempting to model a distribution which is decidedly not normal. One would expect the baseline curve to tend to zero as the number of particles tends to infinity. Sampling error causes divergence from zero for the baseline curve. Thus we can use the baseline and uniform curves as a crude measure of normality.
 
-In Figure \ref{fig_lin_mod_kl} we see that the approximation is relatively close to the baseline. Additionally it is far removed from the uniform curve. The average divergence for the baseline, approximation and uniform curve (in nats) is: $0.035$, $0.066$ and $34.57$ respectively. This implies that even though we are using a non-linear control technique the posterior state distributions are still approximately Gaussian. 
+In Figure \ref{fig_lin_mod_kl} we see that the approximation is relatively close to the baseline. Additionally it is far removed from the uniform curve. The average divergence for the baseline, approximation and uniform curve (in nats) is: $0.035$, $0.069$ and $0.322$ respectively. This implies that even though we are using a non-linear control technique the posterior state distributions are still approximately Gaussian. 
 
+Finally, in Figure \ref{fig_lin_mod_kf_mc} we investigate the effect $k^2$ has on the chance constraint. We expect that by increasing $k^2$ the system becomes more conservative and less likely to violate the constraint. Under the assumptions of linearity and normality we are assured of this behaviour due to Theorem \ref{thrm_mpc_stoch_to_det}. However, as Figure \ref{fig_lin_mod_kl} indicates our assumptions do not  strictly hold. In Figures \ref{fig_lin_mod_kf_var90_ss} and \ref{fig_lin_mod_kf_var99_ss} we reached the conclusion that the chance constraint was effective by only considering a single simulation. In Figure \ref{fig_lin_mod_kf_mc} we show the compilation of over 2000 runs to illustrate the veracity of the claim that the chance constraints are effective.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{lin_mod_kf_mc.pdf}
+\caption{Monte-Carlo simulation to investigate the effect increasing $k^2$ has on the constraint violation characteristics of the MPC controllers. Each region indicates where 90\% of the simulations scored. The mean is indicated by a solid point.}
+\label{fig_lin_mod_kf_mc}
+\end{figure}
+The Mahalanobis area dimension indicates the degree to which the constraint was violated: larger numbers imply the constraint was deeply violated in state space. The time in violation dimension indicates the length of time the system violated the constraint. It is clear that the chance constraints dramatically reduce the violation characteristics of the system. 
+
+Interestingly, there seems to be diminishing returns on increasing $k^2$ beyond the 99\% chance interval. Feasibility issues plague the system under the more conservative chance constraint levels. Intuitively the predicted ellipses become too big to fit inside the feasible region - especially when projected forward in time. Given that the controller input - the only way to move them inside the feasible region - is constrained the system reaches a performance deadlock. In the work by \cite{yan1} they also noted this problem and solved it by not letting the confidence ellipses grow as they were projected into the future (see the discussion after Theorem \ref{thrm_lqg_sol_inf} and in Chapter \ref{sec_switch_mpc_lit}). For this system the issue is not severe enough to warrant further concern.   
 
 \section{Nonlinear system}
 \label{sec_nonlinear_control}
-In this section we consider the problem of controlling the full non-linear system with a linear model linearised around the unsteady operating point. The control goal is the same as before; the only difference between this section and Chapter \ref{sec_lin_sys_cont} is that the underlying plant is non-linear.
+In this section we consider the problem of controlling the full non-linear system with a linear model linearised around the unsteady operating point. The control goal is the same as before; the only difference between this section and section \ref{sec_lin_sys_cont} is that the underlying plant is non-linear.
 
 The linear control model and noise parameters are the same as (\ref{eq_linmod_params}). The control tuning parameters are the same as (\ref{eq_mpc_tuning}).
 
-As before we first investigate the LQG controller. The control problem is the same as (\ref{eq_lqg_linmod}) but this time the underlying system is non-linear. Figure \ref{fig_nonlin_lqg} shows the unconstrained reference tracking results.
+As before we first investigate the LQG controller. Figure \ref{fig_nonlin_lqg} shows the unconstrained reference tracking results.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_lqg.pdf}
+\includegraphics[width=\textwidth]{nonlin_mod_lqg.pdf}
 \caption{LQG regulator tracking with initial condition (0.55, 450) and measuring both states.}
 \label{fig_nonlin_lqg}
 \end{figure}
-The average energy usage and concentration error was 302 kJ/min and 10.94\% respectively over the 80 min simulation time. Comparing Figures \ref{fig_lin_mod_lqg} and \ref{fig_nonlin_lqg} we see that the maximum absolute input energy is much greater with the non-linear underlying dynamics. This is not unexpected because the controller in both cases is linear: one expects that the plant-model mismatch to have a detrimental effect on control.
+The average energy usage and concentration error was 50.27 kW and 10.94\% respectively over the 80 min simulation time. Comparing Figures \ref{fig_lin_mod_lqg} and \ref{fig_nonlin_lqg} we see that the maximum absolute input energy is much greater with the non-linear underlying dynamics. This is not unexpected because the controller in both cases is linear: one expects that the plant-model mismatch to have a detrimental effect on control.
 
 In the previous section we had a linear underlying model and linear control. Figure \ref{fig_lin_mod_kl} also demonstrated that the posterior state distributions were approximately Gaussian. Thus there was no reason to use non-linear inference algorithms like the particle filter introduced in Chapter \ref{sec_inf_nonlin_mods}. However, in this section we are using a non-linear underlying model and it might be advantageous to use a more sophisticated inference tool. We investigate using both a Kalman filter and a particle filter for inference. In the setting of the particle filter we approximate the samples as Gaussian and use that for control.
 
@@ -500,22 +496,22 @@ As before we first investigate the deterministic MPC. The control problem is sho
 & \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
 &\text{and } \begin{pmatrix}
 10 \\ 1
-\end{pmatrix}^T \mu_t + 400 \geq 0 ~\forall ~t=1,...,N\\
-& \text{and } |u_t| \leq 20000 ~\forall ~t=0,...,N-1\\
+\end{pmatrix}^T \mu_t + 406 \geq 0 ~\forall ~t=1,...,N\\
+& \text{and } |u_t| \leq 330 ~\forall ~t=0,...,N-1\\
 \end{aligned}
 \label{eq_mpc_constrained_det2}
 \end{equation}
-In Figure \ref{fig_nonlin_mod_kf_mean_track} we see that the deterministic MPC using the Kalman filter for state inference does converge to the set point. The ability to naturally constrain the system is again highlighted in the input: as opposed to the -25 000 kJ/min required by the LQG controller the MPC manages to control the system while never requiring more than $|20000|$ kJ/min. 
+In Figure \ref{fig_nonlin_mod_kf_mean_track} we see that the deterministic MPC using the Kalman filter for state inference does converge to the set point. The ability to naturally constrain the system is again highlighted in the input: as opposed to the peak $|420|$ kW required by the LQG controller the MPC manages to control the system while never requiring more than $|330|$ kW. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_kf_mean_track.pdf}
+\includegraphics[width=\textwidth]{nonlin_mod_kf_mean_track.pdf}
 \caption{Deterministic constrained MPC reference tracking with initial condition $(0.55, 450)$ and measuring both states. The Kalman filter is used for inference.}
 \label{fig_nonlin_mod_kf_mean_track}
 \end{figure} 
-In Figure \ref{fig_nonlin_mod_kf_mean_ss} we see that the state constraint is violated just like Figure \ref{fig_lin_mod_kf_mean_ss}. We also see a somewhat unrealistic jagged state trajectory but this is just a numerical artefact. The average energy input and concentration error over the simulation run is 413 kJ/min and 14.53\% respectively. Once again the added constraints explain why the performance is degraded when compared to the LQG controller.
+In Figure \ref{fig_nonlin_mod_kf_mean_ss} we see that the state constraint is violated just like Figure \ref{fig_lin_mod_kf_mean_ss}. We also see a somewhat unrealistic jagged state trajectory but this is just a numerical artefact. The average energy input and concentration error over the simulation run is 88.68 kW and 16.11\% respectively. The added constraints explain why the performance is degraded when compared to the LQG controller.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_kf_mean_ss.pdf}
+\includegraphics[width=\textwidth]{nonlin_mod_kf_mean_ss.pdf}
 \caption{Deterministic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. The Kalman filter is used for inference.}
 \label{fig_nonlin_mod_kf_mean_ss}
 \end{figure}
@@ -524,91 +520,107 @@ Since we are not using a stochastic MPC the state constraint violation is not su
 We can remedy this situation by using a more sophisticated inference algorithm. In Figure \ref{fig_nonlin_mod_pf_mean_track} we see the deterministic MPC using a particle filter with 200 particles for inference. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_pf_mean_track.pdf}
+\includegraphics[width=\textwidth]{nonlin_mod_pf_mean_track.pdf}
 \caption{Deterministic constrained MPC reference tracking with initial condition $(0.55, 450)$ and measuring both states. A particle filter with 200 particles is used for inference.}
 \label{fig_nonlin_mod_pf_mean_track}
 \end{figure} 
-The average energy input and concentration error is 218 kJ/min and 4.80\% respectively. This is a vast improvement over the same controller where the Kalman filter was used for inference. The benefit of accurate state estimation is apparent here and also in Figure \ref{fig_nonlin_mod_pf_mean_ss}.
+The average energy input and concentration error is 38.83 kW and 5.81\% respectively. This is a vast improvement over the same controller where the Kalman filter was used for inference. The benefit of accurate state estimation is apparent here and also in Figure \ref{fig_nonlin_mod_pf_mean_ss}.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_pf_mean_ss.pdf}
+\includegraphics[width=\textwidth]{nonlin_mod_pf_mean_ss.pdf}
 \caption{Deterministic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A particle filter with 200 particles is used for inference.}
 \label{fig_nonlin_mod_pf_mean_ss}
 \end{figure}
 In Figure \ref{fig_nonlin_mod_kf_mean_ss} we saw significant estimation deviation from the true underlying state, while in Figure \ref{fig_nonlin_mod_pf_mean_ss} the deviation is negligible. We still have that the state constraint is violated but this is due to the stochastic nature of the underlying system. It is clear that the particle filter MPC combination is superior to the Kalman filter MPC combination in this case. However, the benefit of using the particle filter should be weighed against the cost of the algorithm especially in higher dimensions where it is known that the particle filter does not perform well (recall the discussion following Figure \ref{fig_pf_kf_phase2}).
 
-Now we introduce the stochastically constrained MPC in (\ref{eq_mpc_nonlin_mod_cons}). Note that the constraints are different than (\ref{eq_mpc_linmod_kf_cons}) for the same reason as (\ref{eq_mpc_constrained_det2}). We have $d^T = (10, 1)$ and $e=400$ as before. By consulting a Chi-Squared Distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$ exactly as in the previous section.
+Now we introduce the chance constrained MPC in (\ref{eq_mpc_nonlin_mod_cons}). Note that the constraints are different than (\ref{eq_mpc_linmod_kf_cons}) for the same reason as (\ref{eq_mpc_constrained_det2}). We have $d^T = (10, 1)$ and $e=406$ as before. By consulting the Chi Squared distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$ exactly as in the previous section.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
 & \text{subject to } \mu_{t+1}=A\mu_t + Bu_t \\
 & \text{and } \Sigma_{t+1} = W+A\Sigma_t A^T \\
 & \text{and } d^T\mu_t + e \geq k\sqrt{d^T \Sigma_t d} ~\forall ~t=1,...,N\\
-& \text{and } |u_t| \leq 20000 ~\forall ~t=0,...,N-1\\
+& \text{and } |u_t| \leq 330 ~\forall ~t=0,...,N-1\\
 \end{aligned}
 \label{eq_mpc_nonlin_mod_cons}
 \end{equation}
-As with the deterministic case we first investigate the system where a Kalman filter is used for inference. Figure \ref{fig_nonlin_mod_kf_var90_track} illustrates that the stochastically constrained system does indeed converge to the set point. The average energy input and concentration error is 384 kJ/min and 12.33\%. The average energy usage and average concentration error is reduced compared to the deterministic system. 
+As with the deterministic case we first investigate the system where a Kalman filter is used for inference. Figure \ref{fig_nonlin_mod_kf_var90_track} illustrates that the chance constrained system does indeed converge to the set point. The average energy input and concentration error is 80.75 kW and 14.12\%. The average energy usage and average concentration error is reduced compared to the deterministic system. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_kf_var90_track.pdf}
-\caption{Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 90\%.}
+\includegraphics[width=\textwidth]{nonlin_mod_kf_var90_track.pdf}
+\caption{Chance constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 90\%.}
 \label{fig_nonlin_mod_kf_var90_track}
 \end{figure}
-Again the benefit of adding the stochastic constraint is apparent in Figure \ref{fig_nonlin_mod_kf_var90_ss}. It is clear that the constraint on the underlying state is not violated although the confidence region is. The margin of safety in rather small. 
+The benefit of adding the chance constraint is apparent in Figure \ref{fig_nonlin_mod_kf_var90_ss}. It is clear that the constraint on the underlying state is not violated as much as in Figure \ref{fig_nonlin_mod_kf_mean_ss}. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_kf_var90_ss.pdf}
-\caption{Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 90\%.}
+\includegraphics[width=\textwidth]{nonlin_mod_kf_var90_ss.pdf}
+\caption{Chance constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 90\%.}
 \label{fig_nonlin_mod_kf_var90_ss}
 \end{figure}
-It is clear that the non-linearity of the underlying system makes stochastic control difficult. By increasing $k^2=13.8155$ which corresponds to changing the chance constraint such that $\text{Pr}(d^Tx_t + e \geq 0) \geq 99.9\% ~\forall ~t=1,...,N$ we hope to increase the minimum distance between the constraint and the underlying state.
+It is clear that the non-linearity of the underlying system makes stochastic control difficult. By increasing $k^2=9.21$ which corresponds to changing the chance constraint such that $\text{Pr}(d^Tx_t + e \geq 0) \geq 99\% ~\forall ~t=1,...,N$ we hope to increase the minimum distance between the constraint and the underlying state.
 
-Figure \ref{fig_nonlin_mod_kf_var999_track} shows the tracking of the modified system. The average energy input and average concentration error is 358 kJ/min and 11.31\% respectively. It is quite interesting that the more conservative system performs better with regard to these to metrics than the less conservative system.
+Figure \ref{fig_nonlin_mod_kf_var99_track} shows the tracking of the modified system. The average energy input and average concentration error is 69.67 kW and 12.44\% respectively. It is quite interesting that the more conservative system performs better with regard to these to metrics than the less conservative system.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_kf_var999_track.pdf}
-\caption{Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 99.9\%.}
-\label{fig_nonlin_mod_kf_var999_track}
+\includegraphics[width=\textwidth]{nonlin_mod_kf_var99_track.pdf}
+\caption{Chance constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 99\%.}
+\label{fig_nonlin_mod_kf_var99_track}
 \end{figure}
-In Figure \ref{fig_lin_mod_kf_var999_ss} we see that the margin of safety is increased although the confidence region still spills over the constraint.
+In Figure \ref{fig_nonlin_mod_kf_var99_ss} we see that the margin of safety is increased although the confidence region still spills over the constraint. However, there is no constraint violation in this case.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_kf_var999_ss.pdf}
-\caption{Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 99.9\%.}
-\label{fig_nonlin_mod_kf_var999_ss}
+\includegraphics[width=\textwidth]{nonlin_mod_kf_var99_ss.pdf}
+\caption{Chance constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A Kalman filter is used for inference and the chance constraint is set at 99\%.}
+\label{fig_nonlin_mod_kf_var99_ss}
 \end{figure}
 The ability of $k$ to increase or decrease the conservativeness of the constraint lends credibility to its value, at the very least if the system is non-normal, as an empirical measure to include stochastic robustness to the MPC in an efficient way.
 
-Figures \ref{fig_nonlin_mod_kf_var90_track} to \ref{fig_nonlin_mod_kf_var999_ss} all display the undesirable property originally seen in Figure \ref{fig_nonlin_mod_kf_mean_track}: the poor state estimation and associated control problems. We attempt to rectify this situation by using a more sophisticated filter with the stochastic MPC. We use the MPC as shown in (\ref{eq_mpc_nonlin_mod_cons}) with a particle filter using 200 particles. The tracking results are shown in Figure \ref{fig_nonlin_mod_pf_mean_track}. 
+Finally, Figure \ref{fig_lin_mod_kf_mc} illustrates the effect increasing $k^2$ (i.e. the threshold for the chance constraint) has on the system. Over 2000 simulations were used to illustrate that these tendencies hold not just for a specific realisation. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_pf_var90_track.pdf}
-\caption{Stochastic constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A particle filter with 200 particles is used for inference and the chance constraint is set at 90\%.}
+\includegraphics[width=\textwidth]{nonlin_mod_kf_mc.pdf}
+\caption{Monte-Carlo simulation to investigate the effect increasing $k^2$ has on the constraint violation characteristics of the MPC controllers. Each region indicates where 90\% of the simulations scored. The mean is indicated by a solid point.}
+\label{fig_nonlin_mod_kf_mc}
+\end{figure}
+It is clear that increasing $k^2$ causes the constraints to be violated less. It is also clear that the expected value constrained MPC (i.e. the deterministic MPC) performed significantly worse with the nonlinear underlying model when compared to Figure \ref{fig_lin_mod_kf_mc}. The value of the chance constrained MPC is apparent here. Unlike Figure \ref{fig_lin_mod_kf_mc} there seems to be more value in increasing the chance threshold above the 99\% interval.
+
+Figures \ref{fig_nonlin_mod_kf_var90_track} to \ref{fig_nonlin_mod_kf_var99_ss} all display the undesirable property originally seen in Figure \ref{fig_nonlin_mod_kf_mean_track}: the poor state estimation and associated control problems. We attempt to rectify this situation by using a more sophisticated filter with the chance constrained MPC. We use the MPC as shown in (\ref{eq_mpc_nonlin_mod_cons}) with a particle filter using 200 particles. The tracking results are shown in Figure \ref{fig_nonlin_mod_pf_mean_track}. 
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{nonlin_mod_pf_var90_track.pdf}
+\caption{Chance constrained MPC tracking with initial condition $(0.55, 450)$ and measuring both states. A particle filter with 200 particles is used for inference and the chance constraint is set at 90\%.}
 \label{fig_nonlin_mod_pf_var90_track}
 \end{figure}
 One could see the discussion in Chapter \ref{sec_nonlinmods_filtering} as a justification for using the particle filter instead of the Kalman filter for state estimation. Since the underlying model is non-linear we expect the particle filter to outperform the Kalman filter (recall the discussion following Figure \ref{fig_pf_kf_phase2}).
 
-The average input energy and average concentration error is 178 kJ/min and 2.98\% over the course of the simulation. This is a vast improvement over the Kalman filter MPC combination. Clearly the more accurate state estimation is immensely beneficial for control.
-
-Figure \ref{fig_nonlin_mod_pf_var90_ss} also illustrates that the stochastic constraint is easily satisfied using the more accurate estimator.
+The average input energy and average concentration error is 24.26 kW and 2.34\% over the course of the simulation. This is a vast improvement over the Kalman filter MPC combination. Clearly the more accurate state estimation is immensely beneficial for control. Figure \ref{fig_nonlin_mod_pf_var90_ss} also illustrates that the chance constraint is easily satisfied using the more accurate state estimator.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_pf_var90_ss.pdf}
-\caption{Stochastic constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A particle filter with 200 particles is used for inference and the chance constraint is set at 90\%.}
+\includegraphics[width=\textwidth]{nonlin_mod_pf_var90_ss.pdf}
+\caption{Chance constrained MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. A particle filter with 200 particles is used for inference and the chance constraint is set at 90\%.}
 \label{fig_nonlin_mod_pf_var90_ss}
 \end{figure}
+In Figure \ref{fig_nonlin_mod_pf_mc} we compare the constraint violation characteristics of the Kalman filter and particle filter based MPCs using over 2000 simulations. 
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{nonlin_mod_kf_pf_mc.pdf}
+\caption{Monte-Carlo simulation to investigate the effect increasing $k^2$ has on the constraint violation characteristics of the MPC controllers. Each region indicates where 90\% of the simulations scored. The mean is indicated by a solid point. KF indicates the Kalman Filter MPC and PF indicates the particle filter MPC.}
+\label{fig_nonlin_mod_pf_mc}
+\end{figure}
+It is clear that the particle filter based MPC outperforms the Kalman filter based MPC. This is not surprising because, as we discussed for the single realisation results, the state estimation ability of the Kalman filter is inferior due to the nonlinear underlying system.
+
 As before we need to investigate the normal assumption underpinning the theory behind the chance constraint simplification. We investigate it in exactly the same manner as Figure \ref{fig_lin_mod_kl} using Kullback-Leibler Divergence. To this end, Figure \ref{fig_nonlin_mod_kl} shows the degree to which the underlying posterior state distributions are Gaussian given the non-linear underlying system.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.25]{nonlin_mod_kl.pdf}
+\includegraphics[width=\textwidth]{nonlin_mod_kl.pdf}
 \caption{Kullback-Leibler Divergence between the assumed Gaussian distribution and actual distribution using 5000 particles. The underlying model is non-linear.}
 \label{fig_nonlin_mod_kl}
 \end{figure}
-It is a relief that the normal assumption seems to hold almost as well in the non-linear underlying system case. The average divergence for the baseline, approximation and uniform curves are: $0.035$, $0.071$ and $110.11$. It is not surprising that the non-linearity reduced the degree of normality of the distributions although it did not do so significantly. Therefore we can conclude that the normal assumption holds approximately.
+It is a relief that the normal assumption seems to hold almost as well in the non-linear underlying system case. The average divergence for the baseline, approximation and uniform curves are: $0.035$, $0.071$ and $0.324$. It is not surprising that the nonlinearity reduced the degree of normality of the distributions. However, the distribution were not significantly non-Gaussian to raise any concern - the difference between Figures \ref{fig_lin_mod_kl} and \ref{fig_nonlin_mod_kl} is almost negligible.
 
 \section{Conclusion}
-We have illustrated the benefits gained by designing MPC within the framework of Probabilistic graphical models by showing:
+We have illustrated the benefits gained by designing model predictive controllers within the framework of probabilistic graphical models by showing:
 \begin{enumerate}
 \item
 Under the assumption of normality and linearity it is possible to convert stochastic objective functions into their deterministic equivalents. The analysis is closely related to the work of \cite{yan1} and \cite{yan2} but we have shown that these results are immediately obvious from within the framework of Probabilistic graphical models. Thus it is possible to solve LQG objective type problems without resorting to stochastic Dynamic Programming.
