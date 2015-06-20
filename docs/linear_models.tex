@@ -1,6 +1,6 @@
 \chapter{Inference using linear models}
 \label{sec_inf_lin_mods}
-In this section we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in Section \ref{sec_hmm}. We now assume that the states ($x_0,x_1,x_2,...$) and observations ($y_0,y_1,y_2,...$) are continuous random variables but the inputs ($u_0,u_1,u_2,...$) are continuous deterministic variables. Models of this form are called latent dynamical systems - the famous Kalman filter model falls into this category if one assumes linearity and normality.
+In this chapter we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in Chapter \ref{sec_hmm}. We now assume that the states ($x_0,x_1,x_2,...$) and observations ($y_0,y_1,y_2,...$) are continuous random variables but the inputs ($u_0,u_1,u_2,...$) are continuous deterministic variables. Models of this form are called latent dynamical systems - the famous Kalman filter model falls into this category if one assumes linearity and normality.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -25,10 +25,10 @@ In this section we consider probabilistic graphical models of the form shown in 
   \edge {xb} {xc};
   
 \end{tikzpicture}
-\caption{Graphical model considered in this section.}
+\caption{Graphical model considered in this chapter.}
 \label{fig_linmod2}
 \end{figure}
-In the previous section we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous systems. The reason is that one would invariably need to discretise the domain of the continuous random variable under consideration. This would result in intractably large discrete systems if one requires fine resolution. To address this issue we extend the previous model to include both continuous states and observations. 
+In the previous chapter we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous systems. The reason is that one would invariably need to discretise the domain of the continuous random variable under consideration. This would result in intractably large discrete systems if one requires fine resolution. To address this issue we extend the previous model to include both continuous states and observations. 
 
 In this chapter we assume linearity and that all the random variables are Gaussian. While these are strong assumptions they form the building blocks of much more expressive models as we will discover in the next chapter. We also assume that the transition and observation functions are time invariant and that the state space model is of the form (\ref{eq_statespace}). From the graphical model in Figure \ref{fig_linmod2} we know that the latent variable $x_t$ is observed through $y_t$.
 \begin{equation}
@@ -247,7 +247,7 @@ Finally, we know from the Definition \ref{def_chain_rule_bayes} (chain rule for 
 
 \section{Filtering the CSTR}
 \label{sec_filtering_linmods}
-In this section we apply the Kalman filter to the CSTR introduced in Section \ref{sec_cstr}. We use the linear model linearised around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}) to describe the nonlinear underlying model. Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that $V$ indicates that we only measure temperature for now.
+In this chapter we apply the Kalman filter to the CSTR introduced in Chapter \ref{sec_cstr}. We use the linear model linearised around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}) to describe the nonlinear underlying model. Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that $V$ indicates that we only measure temperature for now.
 \begin{equation}
 \begin{aligned}
 &A = \begin{pmatrix}
@@ -273,11 +273,13 @@ The system noise $W$ indicates that the standard deviation of the concentration 
 
 The focus of this dissertation is on the application of probabilistic graphical models to control, therefore our investigation into the various aspects which improve or degrade filtering performance will be relatively superficial and will target factors which are most relevant only. In this chapter we will primarily only investigate the benefit gained by including more state measurements.
 
+Before we begin it is prudent to introduce the metric we will use to quantify filter performance. We define the average estimation error by $\frac{1}{N}\sum^N_{t=0}|\frac{\hat{x}_t-x_t}{x_t}|$ where $\hat{x}_t$ is the inferred state and and $x_t$ the true underlying state at time $t$.
+
 In Figure \ref{fig_kftimeseries} we illustrate the strengths and weaknesses of the Kalman filter. Since we derived the recursion equations analytically it is computationally efficient to use, the biggest cost is a matrix inversion which needs to be computed at each time step\footnote{It is even possible to avoid this step by noticing that the posterior covariance quickly converges to a constant covariance which can be precomputed off line.}. During the initial part of the simulation the filter very accurately estimates the current system states because the model is accurate in this region. Thus the filter is able to infer the true state in the presence of noisy measurements. 
 
-Unfortunately the recursion equations assumed the system can be described by a linear model. With time the trajectories move away from the linearisation point (because the linearisation point is unstable) and thus the linear model becomes less accurate. This has a detrimental effect on the quality of the Kalman filter estimate as the filter effectively starts to solely rely on the measurements to infer the states. This works reasonably well for the measured states ($T_R$), but since we do not measure concentration the filter is forced to incorporate the linear model prediction which is grossly inaccurate. 
+Unfortunately the recursion equations assumed that the system can be described by a linear model throughout the state space. With time the trajectories move away from the linearisation point (because the linearisation point is unstable) and thus the linear model becomes less accurate. This has a detrimental effect on the quality of the Kalman filter estimate as the filter effectively starts to solely rely on the measurements to infer the states. This works reasonably well for the measured states ($T_R$), but since we do not measure concentration the filter is forced to incorporate the linear model prediction which is grossly inaccurate. 
 
-The average concentration estimation error\footnote{We define the average estimation error by $\frac{1}{N}\sum^N_{t=0}|\frac{\hat{x}_t-x_t}{x_t}|$ where $\hat{x}_t$ is the inferred state and and $x_t$ the true underlying state at time $t$.} throughout the run is 22.73\% while the average temperature estimation error is 0.47\%. Clearly there is a significant benefit to measuring the state one wishes to infer. 
+The average concentration estimation error throughout the run is 22.73\% while the average temperature estimation error is 0.47\%. Clearly there is a significant benefit to measuring the state one wishes to infer. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{kalman_filter_timeseries_M1.pdf}

@@ -35,20 +35,20 @@
 \contentsline {section}{\numberline {6.2}Kalman prediction}{64}{section.6.2}
 \contentsline {section}{\numberline {6.3}Smoothing and Viterbi decoding}{66}{section.6.3}
 \contentsline {section}{\numberline {6.4}Filtering the CSTR}{67}{section.6.4}
-\contentsline {chapter}{\numberline {7}Inference using Nonlinear Models}{71}{chapter.7}
-\contentsline {section}{\numberline {7.1}Sequential Monte Carlo Methods}{72}{section.7.1}
-\contentsline {section}{\numberline {7.2}Particle Filter}{75}{section.7.2}
-\contentsline {section}{\numberline {7.3}Particle Prediction}{77}{section.7.3}
-\contentsline {section}{\numberline {7.4}Smoothing and Viterbi Decoding}{77}{section.7.4}
-\contentsline {section}{\numberline {7.5}Filtering the CSTR}{78}{section.7.5}
-\contentsline {chapter}{\numberline {8}Stochastic linear control}{82}{chapter.8}
-\contentsline {section}{\numberline {8.1}Unconstrained stochastic control}{83}{section.8.1}
-\contentsline {section}{\numberline {8.2}Constrained stochastic control}{86}{section.8.2}
-\contentsline {section}{\numberline {8.3}Reference tracking}{92}{section.8.3}
-\contentsline {section}{\numberline {8.4}Linear system}{92}{section.8.4}
-\contentsline {section}{\numberline {8.5}Nonlinear system}{101}{section.8.5}
-\contentsline {section}{\numberline {8.6}Conclusion}{112}{section.8.6}
-\contentsline {part}{III\hspace {1em}Multiple Model Systems}{114}{part.3}
+\contentsline {chapter}{\numberline {7}Inference using nonlinear models}{72}{chapter.7}
+\contentsline {section}{\numberline {7.1}Sequential Monte Carlo methods}{73}{section.7.1}
+\contentsline {section}{\numberline {7.2}Particle filter}{76}{section.7.2}
+\contentsline {section}{\numberline {7.3}Particle prediction}{78}{section.7.3}
+\contentsline {section}{\numberline {7.4}Smoothing and Viterbi decoding}{78}{section.7.4}
+\contentsline {section}{\numberline {7.5}Filtering the CSTR}{79}{section.7.5}
+\contentsline {chapter}{\numberline {8}Stochastic linear control}{84}{chapter.8}
+\contentsline {section}{\numberline {8.1}Unconstrained stochastic control}{85}{section.8.1}
+\contentsline {section}{\numberline {8.2}Constrained stochastic control}{88}{section.8.2}
+\contentsline {section}{\numberline {8.3}Reference tracking}{95}{section.8.3}
+\contentsline {section}{\numberline {8.4}Linear system}{95}{section.8.4}
+\contentsline {section}{\numberline {8.5}Nonlinear system}{104}{section.8.5}
+\contentsline {section}{\numberline {8.6}Conclusion}{115}{section.8.6}
+\contentsline {part}{III\hspace {1em}Multiple Model Systems}{117}{part.3}
 \contentsline {chapter}{\numberline {9}Inference using Linear Hybrid Models}{115}{chapter.9}
 \contentsline {section}{\numberline {9.1}Exact Filtering}{116}{section.9.1}
 \contentsline {section}{\numberline {9.2}Rao-Blackwellised Particle Filter}{117}{section.9.2}

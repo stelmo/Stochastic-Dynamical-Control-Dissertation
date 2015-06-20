@@ -1,6 +1,6 @@
 \chapter{Stochastic linear control}
 \label{sec_linear_control}
-In this section we consider the stochastic reference tracking problem. It is required to move the states and manipulated variables of the system, shown in (\ref{eq_lin_system}), to the set point $(x_{sp}, u_{sp})$ by manipulating the input variables $u$. It is assumed that $x_t$ is a latent stochastic variable and $y_t$ is an observed stochastic variable.
+In this chapter we consider the stochastic reference tracking problem. It is required to move the states and manipulated variables of the system, shown in (\ref{eq_lin_system}), to the set point $(x_{sp}, u_{sp})$ by manipulating the input variables $u$. It is assumed that $x_t$ is a latent stochastic variable and $y_t$ is an observed stochastic variable.
 \begin{equation}
 \begin{aligned}
 x_{t+1} &= f(x_t, u_t) + w_{t+1}  \\
@@ -15,7 +15,7 @@ We assume uncorrelated zero mean additive Gaussian noise ($w_t$ and $v_t$) in bo
 \end{defn}
 While Definition \ref{def_stoch_ref_track_goal} is pleasing from a theoretical point of view, it is not easy to design a controller to specifically satisfy a given $\delta$. We again simplify our goal somewhat: we will be content if the controller we design (without a specific $\delta$ in mind) can satisfy Definition \ref{def_stoch_ref_track_goal} for some suitably small resultant  $\delta$. Intuitively, we would like the mean of the states and inputs to be ``close enough" to the set points. 
 
-In this section we limit ourselves by only considering controllers developed using a single linear model of the underlying, possibly nonlinear, system functions $f$ and $g$. The linearised model control is based upon is shown in (\ref{eq_lin_system_control}) and is subject to the same noise as (\ref{eq_lin_system}).
+In this chapter we limit ourselves by only considering controllers developed using a single linear model of the underlying, possibly nonlinear, system functions $f$ and $g$. The linearised model control is based upon is shown in (\ref{eq_lin_system_control}) and is subject to the same noise as (\ref{eq_lin_system}).
 \begin{equation}
 \begin{aligned}
 x_{t+1} &= Ax_t + Bu_t + w_{t+1} \\
@@ -27,7 +27,7 @@ We will endeavour to develop predictive controllers using the graphical models o
 
 \section{Unconstrained stochastic control}
 \label{sec_uncon_lin_control}
-Our first goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$. If the system is controllable then solving (\ref{eq_mpc_unconstrained_linmod}) will satisfy the linear unconstrained stochastic reference tracking goal.
+Our first goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) given the current state estimate $x_0$\footnote{It is customary to assign $x_0 \leftarrow x_t$ at each time step to simplify the controller optimisation problem's notation.}. If the system is controllable then solving (\ref{eq_mpc_unconstrained_linmod}) will satisfy the linear unconstrained stochastic reference tracking goal.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} J_{LQG}(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -65,7 +65,7 @@ Inspecting Figure \ref{fig_gm_mpc} we note that the state prediction equations d
 
 Before we proceed we prove a very intuitive result in Theorem \ref{thrm_optim_eq}. We will use this to link the predictive controller derived using the results of Chapter \ref{sec_inf_lin_mods} to the LQR controller derived in Chapter \ref{sec_lqr_lit}.
 \begin{thrm}
-\textbf{Optimisation Equivalence} Suppose we have two real valued convex objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them with respect to $\mathbf{u}$ over the same space where they are both defined: $\mathbf{u}\in \mathcal{U}$ and $x_0 \in \mathcal{X}$. Furthermore, suppose there exists a real number $k \geq 0$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ is also the global minimiser of $f(x_0, \mathbf{u})$.
+\textbf{Optimisation Equivalence} Suppose we have two real valued convex objective functions $f(x_0,\mathbf{u})$ and $g(x_0, \mathbf{u})$ and we are required to minimise them with respect to $\mathbf{u}$ over the same space where they are both defined: $\mathbf{u}\in \mathcal{U}$ and $x_0 \in \mathcal{X}$. Furthermore, suppose there exists a real number $k$ such that $\forall \mathbf{u} \in \mathcal{U}$ we have that $g(x_0, \mathbf{u}) + k = f(x_0, \mathbf{u})$. Finally, assume the existence and uniqueness of the global minimiser for each problem. Then the global minimiser $\mathbf{u}^*$ of $g(x_0, \mathbf{u})$ is also the global minimiser of $f(x_0, \mathbf{u})$.
 \label{thrm_optim_eq}
 \end{thrm}
 \begin{proof}
@@ -115,7 +115,7 @@ Now note that except for the last term $J_{LQG}(x_0, \mathbf{u})$ is exactly the
 \end{proof}
 Finally we combine Theorem \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} to produce Theorem \ref{thrm_lqg_sol}.
 \begin{thrm}
-\textbf{Solution of the finite horizon LQG control problem} We wish to solve the LQG control problem within the framework of graphical models. The full problem is shown in (\ref{eq_lqg_problem_full}).
+\textbf{Solution of the finite horizon LQG control problem} We wish to solve the LQG control problem within the framework of graphical models. The full problem is shown in (\ref{eq_lqg_problem_full}). We assume that $x_0$ is the current posterior state estimate supplied by the Kalman filter.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -127,20 +127,20 @@ The solution of (\ref{eq_lqg_problem_full}) is equivalent to solving the LQR pro
 \label{thrm_lqg_sol}
 \end{thrm}
 \begin{proof}
-We assume that we have the Kalman filter state estimate for $x_0$. We use Theorem \ref{thrm_lqr_lqg_diff} to prove that given $x_0$ and $\forall \mathbf{u} \in \mathcal{U}$ we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ with $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \in \mathbb{R}$ a constant depending only on $x_0$. Thus we can use Theorem \ref{thrm_optim_eq} to prove that we only need to solve for the optimal controller input $\mathbf{u}^0$ using the LQR objective function. Thus we can use Theorem \ref{thrm_lqr_sol} to find $\mathbf{u}$. 
+We assume that we have the Kalman filter posterior state estimate for $x_0$. We use Theorem \ref{thrm_lqr_lqg_diff} to prove that given $x_0$ and $\forall \mathbf{u} \in \mathcal{U}$ we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ with $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \in \mathbb{R}$ a constant depending only on $x_0$. Thus we can use Theorem \ref{thrm_optim_eq} to prove that we only need to solve for the optimal controller input $\mathbf{u}$ using the LQR objective function to solve (\ref{eq_lqg_problem_full}). 
 \end{proof}
 
-As we have mentioned before, the separation Theorem implies that the solution of the LQG control problem is achieved by using the Kalman filter to optimally estimate the current state and then using that state estimate in the optimal LQR controller. It is reassuring that Theorem \ref{thrm_lqg_sol} is confirmed by this result. The primary benefit of the graphical model approach is clear: we have solved the LQG problem without resorting to stochastic dynamical programming.
+As we have mentioned before, the separation theorem (sometimes called certainty equivalence) implies that the solution of the LQG control problem is achieved by using the Kalman filter to optimally estimate the current state and then using that state estimate in the optimal LQR controller. It is reassuring that Theorem \ref{thrm_lqg_sol} is confirmed by this result. The primary benefit of the graphical model approach is clear: we have solved the LQG problem without resorting to stochastic dynamical programming.
 
 Under some circumstances it is also possible to extend the result of Theorem \ref{thrm_lqg_sol} to the infinite horizon case as shown in Theorem \ref{thrm_lqg_sol_inf}.
 \begin{thrm}
-\textbf{Solution of the infinite horizon LQG control problem} If the linear model of (\ref{eq_lin_system_control}) is stable then, using, with some minor adjustments, Theorems \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} it is possible to show that the infinite horizon LQG problem is solved in a similar manner: the Kalman filter state estimate is used in conjunction with the infinite horizon LQR solution. This result can also be obtained by using the eparation Theorem. \label{thrm_lqg_sol_inf}
+\textbf{Solution of the infinite horizon LQG control problem} If the linear model of (\ref{eq_lin_system_control}) is stable then, using, with some minor adjustments, Theorems \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} it is possible to show that the infinite horizon LQG problem is solved in a similar manner: the Kalman filter state estimate is used in conjunction with the infinite horizon LQR solution. This result can also be obtained by using the separation theorem. \label{thrm_lqg_sol_inf}
 \end{thrm}
-To clarify why it is important that the linear system (i.e. the matrix $A$) is stable, consider the quantity $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$. If it is unbounded the optimisation problem will be ill posed because the minimum will tend to infinity. Inspecting $\Sigma_{t+1} = W+A\Sigma_t A^T$ we see that $||\Sigma_{\infty}||$ will be unbounded if $||A\Sigma_t A^T||$ becomes unbounded ($W$ is a constant). Note that $||\cdot||$ is some matrix norm. It can be shown that if the eigenvalues of $A$ are less than unity i.e. the linear model is stable, then $||A\Sigma_{t+1}A^T|| \leq ||A\Sigma_{t+1}A^T||$ which implies that $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$ is bounded and the optimisation is reasonable.
+To clarify why it is important that the linear system (i.e. the matrix $A$) is stable, consider the quantity $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$. If it is unbounded the optimisation problem will be ill posed because the minimum will tend to infinity. Inspecting $\Sigma_{t+1} = W+A\Sigma_t A^T$ we see that $||\Sigma_{\infty}||$ will be unbounded if $||A\Sigma_t A^T||$ becomes unbounded ($W$ is a constant) as $t \rightarrow \infty$. Note that $||\cdot||$ is some matrix norm. It can be shown that only if the eigenvalues of $A$ are less than unity i.e. the linear model is stable, then $||A\Sigma_{t+1}A^T|| \leq ||A\Sigma_{t}A^T||$ which implies that $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$ is bounded and the optimisation is reasonable.
 
 \section{Constrained stochastic control}
 \label{sec_lin_mpc_constained}
-The goal of this section is to solve the stochastic constrained optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian. From the results of Chapter \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible. We also restrict our analysis to affine constraints. Note that we only include one constraint in the succeeding analysis however, additional constraints are handled in exactly the same way as we will show. Furthermore, we assume that the current state estimate $x_0$ is known.
+The goal of this chapter is to solve the stochastically constrained MPC optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian. From the results of Chapter \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible. We also restrict our analysis to affine constraints. Note that we only include one constraint in the succeeding analysis however, additional constraints are handled in exactly the same way as we will show. Furthermore, we assume that the current state estimate $x_0$ is supplied by some observer.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -150,11 +150,15 @@ The goal of this section is to solve the stochastic constrained optimisation pro
 \end{aligned}
 \label{eq_mpc_constrained_linmod}
 \end{equation}
-It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$. For navigational convenience we supply a link to Theorem \ref{thrm_mpc_stoch_to_det} - when the reader reaches that point the reason will become obvious.
+It might seem that the last constraint is a duplicate of the preceding one. Closer inspection reveals their different character. The first inequality constraint requires that the predicted states satisfy the constraint ``on average" while the second inequality constraint requires that the predicted states jointly satisfy the constraint with at least some probability $p$. 
 
-Theorem \ref{thrm_affine_expected_const} succinctly shows that it is simple to convert the first stochastic constraint in (\ref{eq_mpc_constrained_linmod}) to a linear deterministic constraint.
+For navigational convenience we supply a link to Theorem \ref{thrm_mpc_stoch_to_det} - when the reader reaches that point the reason will become obvious.
+
+Theorem \ref{thrm_affine_expected_const} succinctly shows that it is simple to convert the expected value constraint in (\ref{eq_mpc_constrained_linmod}) to a linear deterministic constraint.
 \begin{thrm}
-\textbf{Affine expected value constraints} Suppose we have a stochastic variable $x$ with a known Gaussian distribution. Then the stochastic constraint $\mathbb{E}[d^Tx + e] \geq 0$ simplifies to the deterministic constraint $d^T\mu + e \geq 0$ where $\mathbb{E}[x]= \mu$ is the mean of the stochastic variable. Furthermore, suppose we have the set of stochastic constraints $\mathbb{E}[Dx + e] \geq 0$. Then $\mathbb{E}[Dx + e] \geq 0$ simplifies to $D\mu + e \geq 0$.  
+\textbf{Affine expected value constraints} Suppose we have a stochastic variable $x$ with a known Gaussian distribution. Then the stochastic constraint $\mathbb{E}[d^Tx + e] \geq 0$ simplifies to the deterministic constraint $d^T\mu + e \geq 0$ (with $d \in \mathbb{R}^{n}$ and $e \in \mathbb{R}$) where $\mathbb{E}[x]= \mu$ is the mean of the stochastic variable. 
+
+Furthermore, suppose we have the set of stochastic constraints $\mathbb{E}[Dx + e] \geq 0$ (with $D \in \mathbb{R}^{n \times m}$ and $e \in \mathbb{R}^n$). Then $\mathbb{E}[Dx + e] \geq 0$ simplifies to $D\mu + e \geq 0$.  
 \label{thrm_affine_expected_const}
 \end{thrm}
 \begin{proof}
@@ -178,9 +182,9 @@ It is clear that by applying Theorems \ref{thrm_lqg_sol} and \ref{thrm_affine_ex
 \end{aligned}
 \label{eq_mpc_constrained_linmod_deter_noprob}
 \end{equation}
-This implies that the standard deterministic MPC problem (\ref{eq_mpc_constrained_linmod_deter_noprob}) is equivalent to the stochastic MPC problem with affine expected value constraints (\ref{eq_mpc_constrained_linmod_noprob}) under the assumptions of linearity and normality. This suggests that if chance constraints are not required that the standard deterministic MPC will be sufficient for the control of stochastic processes.
+This implies that the standard deterministic MPC problem (\ref{eq_mpc_constrained_linmod_deter_noprob}) is equivalent to the stochastic MPC problem with affine expected value constraints (\ref{eq_mpc_constrained_linmod_noprob}) under the assumptions of linearity and normality. This suggests that if chance constraints are not required the standard deterministic MPC will be sufficient for the control of stochastic processes. The generalisation of (\ref{eq_mpc_constrained_linmod_noprob}) to multiple expected value constraints is straightforward due to the second part of Theorem \ref{thrm_affine_expected_const}. 
 
-Theorem \ref{thrm_mahala_dist} is a necessary step before we can convert the last stochastic inequality constraint of (\ref{eq_mpc_constrained_linmod}) into a nonlinear deterministic constraint.
+Theorem \ref{thrm_mahala_dist} is a necessary step before we can convert the chance constraint of (\ref{eq_mpc_constrained_linmod}) into a nonlinear deterministic constraint.
 \begin{thrm}
 \textbf{Shortest squared Mahalanobis distance between a hyperplane and a point} Suppose we are given a symmetric positive semi-definite matrix $S$ and a point $y$. The shortest squared Mahalanobis distance between $y$ and the hyperplane $b^Tx+c=0$ is given by $\frac{(b^Ty+c)^2}{b^TSb}$.
 \label{thrm_mahala_dist}
@@ -193,7 +197,7 @@ It is natural to formulate Theorem \ref{thrm_mahala_dist} as an optimisation pro
 \end{aligned}
 \label{eq_mahala_optim}
 \end{equation}
-Note that $S$ and therefore also $S^{-1}$ is symmetric. Using conventional calculus we have $\nabla f(x) = (S^{-1} + {S^{-1}}^T)x - 2S^{-1}y = 2S^{-1}x - 2S^{-1}y$ and $\nabla g(x) = b^T$. Using the method of Lagrangian Multipliers \cite{forst} we have the system of equations (\ref{eq_lagrange_eqs})
+Note that $S$ and therefore also $S^{-1}$ is symmetric. Using conventional calculus we have $\nabla f(x) = (S^{-1} + {S^{-1}}^T)x - 2S^{-1}y = 2S^{-1}x - 2S^{-1}y$ and $\nabla g(x) = b^T$. Using the method of Lagrangian multipliers \cite{forst} we have the system of equations (\ref{eq_lagrange_eqs})
 \begin{equation}
 \begin{aligned}
 2S^{-1}x - 2S^{-1}y + \lambda b = 0 \\
@@ -250,25 +254,34 @@ We can conclude that the shortest squared Mahalanobis distance between a point $
 \end{proof}
 In Theorem \ref{thrm_chance_cons} we apply Theorem \ref{thrm_mahala_dist} to convert the chance constraints into nonlinear deterministic constraints.
 \begin{thrm}
-\textbf{Gaussian affine chance constraints} If the underlying distribution of a random variable $x$ is Gaussian then the chance constraint $\text{Pr}(d^Tx + e \geq 0) \geq p$ can be rewritten as the deterministic constraint $\frac{(d^T\mu+e)^2}{d^TSd} \geq k^2$ where $k^2$ is the (constant) critical value of the inverse cumulative Chi Squared distribution with the degrees of freedom equal to the dimensionality of $x$ such that $\text{Pr}(\mathcal{X} \leq k^2) = p$ with $\mathcal{X}$ a Chi Squared random variable. 
+\textbf{Gaussian affine chance constraints} Suppose the underlying distribution of a random variable $x$ is Gaussian with sufficient statistics ($\mu, \Sigma$) and we have that $d \in \mathbb{R}^{n}$ and $e \in \mathbb{R}$. Also, suppose that $d^T\mu+e>0$ is ensured.
+
+Then the chance constraint $\text{Pr}(d^Tx + e \geq 0) \geq p$ can be rewritten as the deterministic constraint $\frac{(d^T\mu+e)^2}{d^T \Sigma d} \geq k^2$ where $k^2$ is the (constant) critical value of the inverse cumulative Chi Squared distribution with the degrees of freedom equal to the dimensionality of $x$ such that $\text{Pr}(\mathcal{X} \leq k^2) = p$ with $\mathcal{X}$ a Chi Squared random variable. Note that $p > 0.5$ due to the fact that $d^T\mu+e>0$ is ensured.
+
+Furthermore, suppose $D \in \mathbb{R}^{n\times m}$, $e \in \mathbb{R}^n$ and $D\mu + e >0$ which, again, implies that $p > 0.5$. Then joint chance constraint $\text{Pr}(Dx + e \geq 0) \geq p$ can be written $\frac{(d^T_i\mu+e_i)^2}{d_i^T \Sigma d_i} \geq k^2$ for all $i=1,...,n$. Note $d_i$ is each row in $D$ and $e_i$ each corresponding element in $e$.
 \label{thrm_chance_cons}
 \end{thrm}
 \begin{proof}
-Intuitively Theorem \ref{thrm_chance_cons} posits that if the shortest squared Mahalanobis distance is further away than some threshold $k^2$ the chance constraint $\text{Pr}(dx + e \geq 0) \geq p$ will be satisfied. Figure \ref{fig_mahala_ellipse} depicts the idea that the minimum Mahalanobis distance must be greater than $k^2$ i.e. $\epsilon > 0$. The use of the Mahalanobis distance is important because it takes into account the uncertainty associated with each component of the random variable $x$. Since $x$ is a Gaussian stochastic variable we have that $\mathbb{E}[x] =\mu$ and $\text{var}[x]=\Sigma$. Let $\Omega = \{x \in \mathbb{R}^n~|~(x-\mu)^T\Sigma^{-1}(x-\mu) \leq k^2\}$ and $k^2$ be the critical value such that for the Chi-Squared Distribution with degrees of freedom equal to the dimension of $x$ we have that $\text{Pr}(\mathcal{X} \leq k^2) = p$. Then it is well known \cite{mahala2} that $\int_{\Omega}p(x|\mu, \Sigma)dx = p$ where $p(\cdot|\mu, \Sigma)$ is the multivariate Gaussian probability distribution function of $x$. If the shortest squared Mahalanobis distance from the mean of $x$ is further away from the affine constraint $d^Tz+e=0$ than $k^2$ it implies that the curve of the function $h(z) = (z-\mu)^T\Sigma^{-1}(z-\mu) = k^2$ does not intersect with the constraint (positive $\epsilon$ in the context of Figure \ref{fig_mahala_ellipse}). This implies, with at least a probability of $p$, that the chance constraint will not be violated because the ``confidence ellipse" does not intersect the constraint. The generalisation of this Theorem to more than one constraint is shown in Figure \ref{fig_mahala_ellipse_joint}.
-Since the distribution of $x$ up to a certain confidence level is required to be wholly contained in the feasible region (in the setting of multiple constraints like Figure \ref{fig_mahala_ellipse_joint}) the chance constraint will be jointly satisfied.
-\end{proof}
+Intuitively Theorem \ref{thrm_chance_cons} posits that if the shortest squared Mahalanobis distance is further away than some threshold $k^2$ the chance constraint $\text{Pr}(d^Tx + e \geq 0) \geq p$ will be satisfied. Figure \ref{fig_mahala_ellipse} depicts the idea that the minimum squared Mahalanobis distance must be greater than $k^2$ i.e. $\epsilon > 0$. The use of the Mahalanobis distance is important because it takes into account the uncertainty associated with each component of the random variable $x$.  
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.7]{ellipse.pdf}
+\includegraphics[scale=0.7]{ellipse2.pdf}
 \caption{The ellipse centred around $\mu_1$ intersects the constraint while the ellipse centred around $\mu_2$ is wholly above (satisfies) the constraint. The shortest Mahalanobis distance will not necessarily be perpendicular to the constraint.}
 \label{fig_mahala_ellipse}
 \end{figure}
+Since $x$ is a Gaussian stochastic variable we have that $\mathbb{E}[x] =\mu$ and $\text{var}[x]=\Sigma$. Let $\Omega = \{x \in \mathbb{R}^n~|~(x-\mu)^T\Sigma^{-1}(x-\mu) \leq k^2\}$ and $k^2$ be the critical value such that for the Chi Squared distribution with degrees of freedom equal to the dimension of $x$ we have that $\text{Pr}(\mathcal{X} \leq k^2) = p$. Then it is well known \cite{mahala2} that $\int_{\Omega}p(x|\mu, \Sigma)dx = p$ where $p(\cdot|\mu, \Sigma)$ is the multivariate Gaussian probability distribution function of $x$. If the shortest squared Mahalanobis distance from the mean of $x$ is further away from the affine constraint $d^Tz+e=0$ than $k^2$ it implies that the curve of the function $h(z) = (z-\mu)^T\Sigma^{-1}(z-\mu) = k^2$ does not intersect with the constraint - a positive $\epsilon$ in the context of Figure \ref{fig_mahala_ellipse}. Therefore $\Omega$ is wholly contained within the feasible region because $d^T\mu+e> 0 $. This implies, with at least a probability of $p$, that the chance constraint will not be violated because the ``confidence ellipse" is contained in the feasible region. Therefore, by applying Theorem \ref{thrm_mahala_dist} to find the shortest squared Mahalanobis distance we have that $\frac{(d^T\mu+e)^2}{d^T \Sigma d} \geq k^2 \implies \text{Pr}(d^Tx + e \geq 0) \geq p$.
+
+The generalisation to more than one constraint, which should be jointly satisfied, is shown in Figure \ref{fig_mahala_ellipse_joint}. It is required that the ellipse, up to confidence level $p$, is wholly contained in the feasible region $Dx +e >0$. If this requirement is satisfied we will satisfy the joint chance constraint by the same reasoning as before.  
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.8]{multiple.pdf}
-\caption{Illustration of the fact that Theorem \ref{thrm_chance_cons} holds jointly for multiple constraints. The ellipse centred around $\mu_1$ must lie wholly within the feasible region. This is guaranteed if the Mahalanobis constraint is satisfied.}
+\caption{Illustration of the fact that Theorem \ref{thrm_chance_cons} holds jointly for multiple constraints. The ellipse centred around $\mu$ must lie wholly within the feasible region. This is guaranteed if the Mahalanobis constraint is satisfied.}
 \label{fig_mahala_ellipse_joint}
 \end{figure}
+By ensuring that $D\mu + e > 0$ and that the shortest squared Mahalanobis distance between $\mu$ and the constraints is bigger than $k^2$ this is guaranteed. This implies that if for all $i=1,...,n$ $\frac{(d^T_i\mu+e_i)^2}{d_i^T \Sigma d_i} \geq k^2$ then $\text{Pr}(Dx + e \geq 0) \geq p$ will be satisfied.
+\end{proof}
+In Theorem \ref{thrm_chance_cons} it is important that $\mu$ lie within the feasible region. If that is not required then it is possible for the ellipse to be wholly outside the feasible region while still satisfying the requirement that the shortest squared Mahalanobis distance between $\mu$ and the constraints is at least $k^2$. Clearly the chance constraint will then not be satisfied. 
+
 It is interesting to note the striking similarity between the work in \cite{vanhessem1} and \cite{vanhessem2} and Theorem \ref{thrm_chance_cons} given that we started analysing the problem within the framework of graphical models. The additional benefit of Theorem \ref{thrm_chance_cons} is that it formulates the chance constraint as a function of the statistical Mahalanobis distance measure. This is useful because it lends a statistical interpretation to Theorem \ref{thrm_chance_cons} even if the underlying distribution is non-Gaussian.
 
 In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \cite{yan1}, \cite{vanhessem1} to yield a QP MPC which exactly satisfies the stochastic MPC in (\ref{eq_mpc_constrained_linmod}) given the assumptions of linearity and normality. Note that the dimensionality of the problem is arbitrary.
@@ -287,7 +300,7 @@ In Theorem \ref{thrm_mpc_stoch_to_det} we combine and elaborate on the work of \
 Other deterministic constraints, e.g. on the input, can be added as usual. Note that we have assumed that the initial state estimate $x_0$ is available in the form of its mean, $\mu_0$,  and covariance, $\Sigma_0$. It is straightforward to include more chance constraints. Since each chance constraint is reduced to an inequality constraint which measures the Mahalanobis distance between the predicted distributions, the resultant feasible points will jointly satisfy all chance constraints.  
 \end{thrm}
 \begin{proof}
-Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Furthermore, let the current state estimate $x_0$ be given. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the first inequality constraint in (\ref{eq_mpc_constrained_linmod}) can be reformulated to require that $d^T\mu_t + e \geq 0$ for each $t=1, 2,..., N$. The last inequality constraint in (\ref{eq_mpc_constrained_linmod}) follows from Theorem \ref{thrm_chance_cons} as shown in (\ref{eq_chance_to_lin}).
+Let the admissible set of controller inputs $\mathcal{U}$ be the same for both the stochastic MPC and the deterministic MPC formulations. Furthermore, let the current state estimate $x_0$ be given. Then by Theorem \ref{thrm_lqr_lqg_diff} the objective function and equality constraints follow. By Theorem \ref{thrm_affine_expected_const} the expected value inequality constraint in (\ref{eq_mpc_constrained_linmod}) can be reformulated to require that $d^T\mu_t + e \geq 0$ for each $t=1, 2,..., N$. The chance constraint in (\ref{eq_mpc_constrained_linmod}) follows from Theorem \ref{thrm_chance_cons} as shown in (\ref{eq_chance_to_lin}).
 \begin{equation}
 \begin{aligned}
 \frac{(d^T\mu_t+e)^2}{d^T \Sigma_t d} \geq k^2 &\implies (d^T\mu_t+e)^2 \geq k^2 {d^T \Sigma_t d} \\
@@ -306,7 +319,7 @@ So far we have only dealt with controllers which drive the system to the origin.
 
 \section{Linear system}
 \label{sec_lin_sys_cont}
-In this section we consider the problem of controlling a linear system using the stochastic MPC formulation of Theorem \ref{thrm_mpc_stoch_to_det}. More precisely, we assume the linear model linearised about the unsteady operating point of our CSTR example from Chapter \ref{sec_cstr} accurately represents the underlying system. For the purposes of illustration we will only use the (somewhat unrealistic) system where both states are measured. However, there is no theoretical reason why we cannot use the system where only temperature is measured. The drawback of using the latter system is that inference, as discussed previously, will be worse. The control goal is to steer the concentration, in the sense of Definition \ref{def_stoch_ref_track_goal}, to the unsteady operating point ($C_A = 0.49$ kmol.m$^{-3}$) about which the system was linearised. See Chapter \ref{sec_cstr} for more details.
+In this chapter we consider the problem of controlling a linear system using the stochastic MPC formulation of Theorem \ref{thrm_mpc_stoch_to_det}. More precisely, we assume the linear model linearised about the unsteady operating point of our CSTR example from Chapter \ref{sec_cstr} accurately represents the underlying system. For the purposes of illustration we will only use the (somewhat unrealistic) system where both states are measured. However, there is no theoretical reason why we cannot use the system where only temperature is measured. The drawback of using the latter system is that inference, as discussed previously, will be worse. The control goal is to steer the concentration, in the sense of Definition \ref{def_stoch_ref_track_goal}, to the unsteady operating point ($C_A = 0.49$ kmol.m$^{-3}$) about which the system was linearised. See Chapter \ref{sec_cstr} for more details.
 
 We repeat the relevant system dynamics in (\ref{eq_linmod_params}) using a time step $h=0.1$. 
 \begin{equation}
@@ -330,7 +343,7 @@ V = \begin{pmatrix}
 \end{aligned}
 \label{eq_linmod_params}
 \end{equation}
-The tuning parameters used in this and all subsequent sections are shown in (\ref{eq_mpc_tuning}). Note that the magnitude difference between the components of $Q$, $P_f$ and $R$ is necessary because the units of concentration and heat input are not scaled. 
+The tuning parameters used in this and all subsequent chapters are shown in (\ref{eq_mpc_tuning}). Note that the magnitude difference between the components of $Q$, $P_f$ and $R$ is necessary because the units of concentration and heat input are not scaled. 
 \begin{equation}
 \begin{aligned}
 Q = P_f = \begin{pmatrix}
@@ -474,7 +487,7 @@ Interestingly, there seems to be diminishing returns on increasing $k^2$ beyond 
 
 \section{Nonlinear system}
 \label{sec_nonlinear_control}
-In this section we consider the problem of controlling the full non-linear system with a linear model linearised around the unsteady operating point. The control goal is the same as before; the only difference between this section and section \ref{sec_lin_sys_cont} is that the underlying plant is non-linear.
+In this chapter we consider the problem of controlling the full non-linear system with a linear model linearised around the unsteady operating point. The control goal is the same as before; the only difference between this chapter and chapter \ref{sec_lin_sys_cont} is that the underlying plant is non-linear.
 
 The linear control model and noise parameters are the same as (\ref{eq_linmod_params}). The control tuning parameters are the same as (\ref{eq_mpc_tuning}).
 
@@ -487,7 +500,7 @@ As before we first investigate the LQG controller. Figure \ref{fig_nonlin_lqg} s
 \end{figure}
 The average energy usage and concentration error was 50.27 kW and 10.94\% respectively over the 80 min simulation time. Comparing Figures \ref{fig_lin_mod_lqg} and \ref{fig_nonlin_lqg} we see that the maximum absolute input energy is much greater with the non-linear underlying dynamics. This is not unexpected because the controller in both cases is linear: one expects that the plant-model mismatch to have a detrimental effect on control.
 
-In the previous section we had a linear underlying model and linear control. Figure \ref{fig_lin_mod_kl} also demonstrated that the posterior state distributions were approximately Gaussian. Thus there was no reason to use non-linear inference algorithms like the particle filter introduced in Chapter \ref{sec_inf_nonlin_mods}. However, in this section we are using a non-linear underlying model and it might be advantageous to use a more sophisticated inference tool. We investigate using both a Kalman filter and a particle filter for inference. In the setting of the particle filter we approximate the samples as Gaussian and use that for control.
+In the previous chapter we had a linear underlying model and linear control. Figure \ref{fig_lin_mod_kl} also demonstrated that the posterior state distributions were approximately Gaussian. Thus there was no reason to use non-linear inference algorithms like the particle filter introduced in Chapter \ref{sec_inf_nonlin_mods}. However, in this chapter we are using a non-linear underlying model and it might be advantageous to use a more sophisticated inference tool. We investigate using both a Kalman filter and a particle filter for inference. In the setting of the particle filter we approximate the samples as Gaussian and use that for control.
 
 As before we first investigate the deterministic MPC. The control problem is shown in (\ref{eq_mpc_constrained_det2}). Note that the constraints are different due to the expected extra difficulty introduced by the non-linear underlying model. 
 \begin{equation}
@@ -533,7 +546,7 @@ The average energy input and concentration error is 38.83 kW and 5.81\% respecti
 \end{figure}
 In Figure \ref{fig_nonlin_mod_kf_mean_ss} we saw significant estimation deviation from the true underlying state, while in Figure \ref{fig_nonlin_mod_pf_mean_ss} the deviation is negligible. We still have that the state constraint is violated but this is due to the stochastic nature of the underlying system. It is clear that the particle filter MPC combination is superior to the Kalman filter MPC combination in this case. However, the benefit of using the particle filter should be weighed against the cost of the algorithm especially in higher dimensions where it is known that the particle filter does not perform well (recall the discussion following Figure \ref{fig_pf_kf_phase2}).
 
-Now we introduce the chance constrained MPC in (\ref{eq_mpc_nonlin_mod_cons}). Note that the constraints are different than (\ref{eq_mpc_linmod_kf_cons}) for the same reason as (\ref{eq_mpc_constrained_det2}). We have $d^T = (10, 1)$ and $e=406$ as before. By consulting the Chi Squared distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$ exactly as in the previous section.
+Now we introduce the chance constrained MPC in (\ref{eq_mpc_nonlin_mod_cons}). Note that the constraints are different than (\ref{eq_mpc_linmod_kf_cons}) for the same reason as (\ref{eq_mpc_constrained_det2}). We have $d^T = (10, 1)$ and $e=406$ as before. By consulting the Chi Squared distribution table we set $k^2 = 4.6052$ which corresponds to the chance constraint $\text{Pr}(d^Tx_t + e \geq 0) \geq 90\% ~\forall ~t=1,...,N$ exactly as in the previous chapter.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \frac{1}{2}\sum_{k=0}^{N-1} \left( \mu_k^TQ\mu_k + u_k^TRu_k \right) + \frac{1}{2}\mu_N^TP_f\mu_N + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \\
