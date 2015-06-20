@@ -471,6 +471,7 @@ For the purposes of this dissertation we will assume that the state space model 
 We will assume that all the systems we model satisfy the first order Markov assumption.
 \begin{defn}
 \textbf{N\textsuperscript{th}-order Markov assumption} A system satisfies the N\textsuperscript{th} Markov assumption if $P(x_t|x_{0:t})=P(x_t|x_{t-n:t-1})$. For example, a first order Markov system satisfies  $P(x_t|x_{0:t})=P(x_t|x_{t-1})$. Similarly with the observation function.
+\label{def_order_markov}
 \end{defn}
 This is not as restrictive as it may seem at first. It is always possible to transform an N\textsuperscript{th}-order Markov system into a first order Markov system by modifying the state space \cite{murphy1}. We also assume that the state and observation functions remain the same for all time i.e. they are time invariant or homogeneous or stationary.
 
