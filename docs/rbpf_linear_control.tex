@@ -130,7 +130,9 @@ We have that (\ref{eq_rbpf_lqg}) is equivalent to (\ref{eq_rbpf_lqr}) under the 
 \end{equation}
 Given this we apply the switching controller algorithm within the context of the LQG controller i.e. given a model $M_i$ from the filter we solve the LQG problem and implement that input. In light of our analysis in Chapter \ref{sec_linear_control} it is clear that the switching controller algorithm is straightforward to implement because it simplifies to $M$ deterministic LQR controllers.
 
-As mentioned before we only use the most likely model for control purposes. By only selecting one model to use for control we dramatically simplify the control problem. It allows us to use the controllers of Chapter \ref{sec_linear_control} directly. We study 4 control problems using the switching controller algorithm in this chapter. Problems 1 and 2 allow the controller to switch between 3 linear models and problems 3 and 4 allow the controller to switch between 7 linear models. Furthermore, problems 1 and 3 seek to drive the system to the low temperature operating point i.e. a concentration set point of $0.998~\text{kmol.m}^{-3}$ while problems 2 and 4 seek to drive the CSTR to a concentration set point of $0.90~\text{kmol.m}^{-3}$. In all cases we use the switching LQG controller as shown in (\ref{eq_rbpf_lqg}).
+As mentioned before we only use the most likely model for control purposes. By only selecting one model to use for control we dramatically simplify the control problem. It allows us to use the controllers of Chapter \ref{sec_linear_control} directly. 
+
+We study 4 control problems using the switching controller algorithm in this chapter. Problems 1 and 2 allow the controller to switch between 3 linear models and problems 3 and 4 allow the controller to switch between 7 linear models. Furthermore, problems 1 and 3 seek to drive the system to the low temperature operating point i.e. a concentration set point of $0.998~\text{kmol.m}^{-3}$ while problems 2 and 4 seek to drive the CSTR to a concentration set point of $0.90~\text{kmol.m}^{-3}$. In all cases we use the switching LQG controller as shown in (\ref{eq_rbpf_lqg}).
 
 We investigate the first problem in Figures \ref{fig_rbpf_control_state} to \ref{fig_rbpf_control_track}. In Figure \ref{fig_rbpf_control_state} we see the state space trajectory of the system under control. We expect $M_2$ to be active initially after which only $M_3$ should be active.
 \begin{figure}[H] 
@@ -146,16 +148,14 @@ Figure \ref{fig_rbpf_control_switch} confirms the behaviour we expected: initial
 \caption{Most likely model used for control at each time step over the simulation. Black indicates the model is active.}
 \label{fig_rbpf_control_switch}
 \end{figure}
-However, it is clear that there are some problems in Figure \ref{fig_rbpf_control_switch}. There does seem to be some slight switching noise. Given that we are using the sticky switching transition matrix $P_2$ it is clear that model overlap is causing problems. The same problem was identified in Chapter \ref{sec_rbpf_filtering_cstr}.
-
-In Figure \ref{fig_rbpf_control_track} we see the set point tracking performance of the switching controller. It is clear that the controller tracks the set point.
+However, it is clear that there are some problems in Figure \ref{fig_rbpf_control_switch}. There does seem to be some slight switching noise. Given that we are using the sticky switching transition matrix $P_2$ it is clear that model overlap is causing problems. The same problem was identified in Chapter \ref{sec_rbpf_filtering_cstr}. In Figure \ref{fig_rbpf_control_track} we see the set point tracking performance of the switching controller. It is clear that the controller tracks the set point.
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{rbpf_control_track.pdf}
-\caption{Set point tracking and controller input for the LQG switching controller algorithm. The initial point was $(0.49, 412)$.}
+\caption{Set point tracking and controller input for the LQG 3 model switching controller algorithm. The initial point was $(0.49, 412)$.}
 \label{fig_rbpf_control_track}
 \end{figure}
-Based on Figures \ref{fig_rbpf_control_switch} and \ref{fig_rbpf_control_track} it would be too easy to surmise that the controller algorithm works. Unfortunately this is not the case in general. In Figures \ref{fig_rbpf_control_switch2} and \ref{fig_rbpf_control_track2} we study problem 2: the concentration set point is $0.90~\text{kmol.m}^{-3}$. In Figure \ref{fig_rbpf_control_switch2} we see significant model switching noise.
+Based on Figures \ref{fig_rbpf_control_switch} and \ref{fig_rbpf_control_track} it would be too easy to surmise that the controller algorithm works. Unfortunately this is not the case in general. In Figures \ref{fig_rbpf_control_switch2} and \ref{fig_rbpf_control_track2} we study problem 2: tracking the concentration set point is $0.90~\text{kmol.m}^{-3}$. In Figure \ref{fig_rbpf_control_switch2} we see significant model switching noise.
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{rbpf_control_switch2.pdf}
@@ -166,65 +166,56 @@ In Figure \ref{fig_rbpf_control_track2} the detrimental consequence of the switc
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{rbpf_control_track2.pdf}
-\caption{Set point tracking and controller input for the LQG switching controller algorithm. The initial point was $(0.49, 412)$.}
+\caption{Set point tracking and controller input for the LQG 3 model switching controller algorithm. The initial point was $(0.49, 412)$.}
 \label{fig_rbpf_control_track2}
 \end{figure}
-It is clear that the oscillations are caused by the filter's inability to stick to a model. 
-
-
-
-
-
-
-There are two major problems with the switching controller algorithm as adopted in this chapter:
+It is clear that the oscillations are caused by the filter's inability to stick to a model. There are two major problems with the switching controller algorithm as adopted in this chapter:
 \begin{enumerate}
 \item
-
+Fundamentally we are using an inappropriate model for controller prediction during the initial period of the simulation. If we stayed near the current position in state space then the most likely model would predict the future well and thus result in good control. However, we are projecting the controlled states into regions where the current model control is based upon may not a good approximation at all. This is a fundamental problem of our approach - it would be better to incorporate the model switching within the controller prediction (optimisation) process, but this is exactly what we want to avoid due to the computational burden this introduces!
 \item
-
+The switching noise is problematic because it can cause the controller to use a model which is good locally but inappropriate with regard to the true underlying position of the system in state space. However, from an inference perspective the noise is not undesirable. Switching noise can improve the state estimate accuracy - especially in regions between models. It is also important in allowing the filter to switch punctually: making the switching transition matrix too static retards the sensitivity the filter has to model changes.  
 \end{enumerate}
-
-
+We attempt to ameliorate these problems by extending the number of models available to the filter. We use more models to bridge the gap between the current most likely model and where it projects the states during prediction. In Figure \ref{fig_rbpf_control_state3} we illustrate the state space trajectory followed by the system when it has 7 models available for inference and control.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{rbpf_control_state3.pdf}
+\caption{State space trajectory of the non-linear CSTR under control of the LQG 7 model switching controller algorithm. The initial point was $(0.49, 412)$}
+\label{fig_rbpf_control_state3}
+\end{figure}
+In Figures \ref{fig_rbpf_control_switch3} and \ref{fig_rbpf_control_track3} we again attempt to steer the system from the unstable operating point to the low temperature operating point. Figure \ref{fig_rbpf_control_switch3} shows which models were active over the simulation window.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{rbpf_control_switch3.pdf}
+\caption{Most likely model used for control at each time step over the simulation. Black indicates the model is active.}
+\label{fig_rbpf_control_switch3}
+\end{figure}
+While there is slight switching noise the model selection is exactly what one would expect. Figure \ref{fig_rbpf_control_track3} shows the controller set point tracking performance over the simulation window.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{rbpf_control_track3.pdf}
+\caption{Set point tracking and controller input for the LQG 7 model switching controller algorithm. The initial point was $(0.49, 412)$.}
+\label{fig_rbpf_control_track3}
+\end{figure}
+Like Figure \ref{fig_rbpf_control_track} we also have a stable, reference tracking controller. This is not surprising because the model switching/selection was reasonable. In Figure \ref{fig_rbpf_control_switch4} and \ref{fig_rbpf_control_track4} we again attempt to steer the system to a concentration set point of $0.9$ kmol.m$^{-3}$. Since we introduced $M_3$ to serve as a bridge between $M_6$ and $M_7$ (since the set point is between these two models) we expect better performance than in Figure \ref{fig_rbpf_control_switch2} and \ref{fig_rbpf_control_track2}. Unfortunately this is not the case as may be seen in Figures \ref{fig_rbpf_control_switch4} and \ref{fig_rbpf_control_track4}.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{rbpf_control_switch4.pdf}
+\caption{Most likely model used for control at each time step over the simulation. Black indicates the model is active.}
+\label{fig_rbpf_control_switch4}
+\end{figure}
+The same oscillating switching noise and unstable control is present here as there was in Figures \ref{fig_rbpf_control_switch2} and \ref{fig_rbpf_control_track2}.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{rbpf_control_track4.pdf}
+\caption{Set point tracking and controller input for the LQG 7 model switching controller algorithm. The initial point was $(0.49, 412)$.}
+\label{fig_rbpf_control_track4}
+\end{figure}
+The underlying reasons for the instability are the same: we are using models to predict into regions where they are inaccurate and the filter does not robustly enough isolate the model closest to the current system location in state space. The combination of these two problems make effective control impossible.
 
 \subsection{Model averaging approach}
 \label{sec_ma_rbpf}
+The fundamental problem with the switching controllers of Chapter \ref{sec_rbpf_control_uncon} is that an inappropriate model was used for prediction. Unfortunately using a weighted average of all the models, based on their probability with respect to the switching variable $s_t$, will exacerbate this problem. For this reason we do not explore this approach.
 
 \section{Conclusion}
-\begin{figure}[H] 
-\centering
-\begin{tikzpicture}
-
-  % Define nodes
-  \node[obs] (ya) {$y_{0}$};
-  \node[obs, right=of ya] (yb) {$y_{1}$};
-  \node[obs, right=of yb] (yc) {$y_{2}$};
-  \node[latent, above=of ya]  (xa) {$x_{0}$};
-  \node[latent, above=of yb, right=of xa]  (xb) {$x_{1}$};
-  \node[latent, above=of yc, right=of xb]  (xc) {$x_{2}$};
-  \node[det, below=of xa, xshift=0.7cm, yshift=0.9cm] (da) {$u_{0}$};
-  \node[det, below=of xb, xshift=0.7cm, yshift=0.9cm] (db) {$u_{1}$};
-  \node[latent, above=of xa, yshift=1.1cm] (sa) {$s_{0}$};
-  \node[latent, above=of xb, yshift=1.1cm] (sb) {$s_{1}$};
-  \node[latent, above=of xc, yshift=1.1cm] (sc) {$s_{2}$};
-  
-  % Connect the nodes
-  \edge {da} {xb};
-  \edge {db} {xc};
-  \edge {xa} {ya};
-  \edge {xb} {yb};
-  \edge {xc} {yc};
-  \edge {xa} {xb};
-  \edge {xb} {xc};
-  \edge {sa} {sb};
-  \edge {sb} {sc};
-  \edge {sa} {xa};
-  \edge {sb} {xb};
-  \edge {sc} {xc};
-  \edge {xa} {sb};
-  \edge {xb} {sc};
-    
-\end{tikzpicture}
-\caption{Augmented Switching Kalman filter graphical model.}
-\label{fig_gm_augmented}
-\end{figure}
-Using this model it is possible to specify the effect the state variables $(x_0,x_1,...)$ have on the switching variables $(s_0, s_1,...)$. Plausibly this could ameliorate the problem however, since this would require that we modify the graphical model we leave this for future work.  
+The goal of the switching controller algorithm was to 

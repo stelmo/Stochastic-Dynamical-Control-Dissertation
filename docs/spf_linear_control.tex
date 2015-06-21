@@ -158,3 +158,43 @@ Since Figure \ref{fig_spf_mpc_state2} only illustrates that the constraint is no
 
 \section{Conclusion}
 In this section we implemented the Switching Controller Algorithm using the Switching Particle Filter. Both the LQG and stochastic MPC were used in conjunction with the Switching Particle Filter. While the controllers successfully regulated the system the controller/filter combination was not robust against switching noise. Since this noise has the potential to destabilise control more research needs to be done to investigate effective methods to assure stability. The Augmented Switching Filter Model discussed in Chapter \ref{sec_rbpf_control} (for the linear ``Kalman" case) could be a potential candidate. While stability issues plagued the implementation of the system, the fault detection and superior state estimation ability of the Switching Particle Filter was found to be useful.
+
+
+\begin{figure}[H] 
+\centering
+\begin{tikzpicture}
+
+  % Define nodes
+  \node[obs] (ya) {$y_{0}$};
+  \node[obs, right=of ya] (yb) {$y_{1}$};
+  \node[obs, right=of yb] (yc) {$y_{2}$};
+  \node[latent, above=of ya]  (xa) {$x_{0}$};
+  \node[latent, above=of yb, right=of xa]  (xb) {$x_{1}$};
+  \node[latent, above=of yc, right=of xb]  (xc) {$x_{2}$};
+  \node[det, below=of xa, xshift=0.7cm, yshift=0.9cm] (da) {$u_{0}$};
+  \node[det, below=of xb, xshift=0.7cm, yshift=0.9cm] (db) {$u_{1}$};
+  \node[latent, above=of xa, yshift=1.1cm] (sa) {$s_{0}$};
+  \node[latent, above=of xb, yshift=1.1cm] (sb) {$s_{1}$};
+  \node[latent, above=of xc, yshift=1.1cm] (sc) {$s_{2}$};
+  
+  % Connect the nodes
+  \edge {da} {xb};
+  \edge {db} {xc};
+  \edge {xa} {ya};
+  \edge {xb} {yb};
+  \edge {xc} {yc};
+  \edge {xa} {xb};
+  \edge {xb} {xc};
+  \edge {sa} {sb};
+  \edge {sb} {sc};
+  \edge {sa} {xa};
+  \edge {sb} {xb};
+  \edge {sc} {xc};
+  \edge {xa} {sb};
+  \edge {xb} {sc};
+    
+\end{tikzpicture}
+\caption{Augmented Switching Kalman filter graphical model.}
+\label{fig_gm_augmented}
+\end{figure}
+Using this model it is possible to specify the effect the state variables $(x_0,x_1,...)$ have on the switching variables $(s_0, s_1,...)$. Plausibly this could ameliorate the problem however, since this would require that we modify the graphical model we leave this for future work.  

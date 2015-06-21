@@ -58,8 +58,8 @@
 \contentsline {chapter}{\numberline {10}Stochastic switching linear control using linear hybrid models}{131}{chapter.10}
 \contentsline {section}{\numberline {10.1}Unconstrained switching control}{134}{section.10.1}
 \contentsline {subsection}{\numberline {10.1.1}Most likely model approach}{134}{subsection.10.1.1}
-\contentsline {subsection}{\numberline {10.1.2}Model averaging approach}{138}{subsection.10.1.2}
-\contentsline {section}{\numberline {10.2}Conclusion}{138}{section.10.2}
+\contentsline {subsection}{\numberline {10.1.2}Model averaging approach}{141}{subsection.10.1.2}
+\contentsline {section}{\numberline {10.2}Conclusion}{141}{section.10.2}
 \contentsline {chapter}{\numberline {11}Inference using Nonlinear Hybrid Models}{139}{chapter.11}
 \contentsline {section}{\numberline {11.1}Exact Filtering}{140}{section.11.1}
 \contentsline {section}{\numberline {11.2}Switching Particle Filter}{140}{section.11.2}

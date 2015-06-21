@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  21 JUN 2015 17:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  21 JUN 2015 19:54
 entering extended mode
 **masters.tex
 
@@ -861,215 +861,276 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\rbpf_linear_control.tex"
-Chapter 10.
-[131
+docs\linear_hybrid_models.tex"
+Chapter 9.
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+[118
 
 
-
-] [132]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [133pdfTeX warning (ext4): destination with the same identifier (name{figure.1
-0.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9.1}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.110 \section
-              {Unconstrained switching control}pdfTeX warning (ext4): destinati
-on with the same identifier (name{figure.10.2}) has been already used, duplicat
-e ignored
+l.42 \begin{equation}
+                     ] [119] [120]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [121] [122pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.9.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.110 \section
-              {Unconstrained switching control}] [134]
-<./imgs/rbpf_control_state.pdf, id=278, 1445.4pt x 708.24597pt>
-File: ./imgs/rbpf_control_state.pdf Graphic file (type pdf)
+l.164 
+      ] <./imgs/rbpf_3m_models.pdf, id=288, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_3m_models.pdf Graphic file (type pdf)
 
-<use ./imgs/rbpf_control_state.pdf>
-Package pdftex.def Info: ./imgs/rbpf_control_state.pdf used on input line 138.
-(pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
+<use ./imgs/rbpf_3m_models.pdf>
+Package pdftex.def Info: ./imgs/rbpf_3m_models.pdf used on input line 188.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [123]
+<./imgs/rbpf_3m_vague_track.pdf, id=297, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_3m_vague_track.pdf Graphic file (type pdf)
 
-<./imgs/rbpf_control_switch.pdf, id=280, 1445.4pt x 708.24597pt>
-File: ./imgs/rbpf_control_switch.pdf Graphic file (type pdf)
+<use ./imgs/rbpf_3m_vague_track.pdf>
+Package pdftex.def Info: ./imgs/rbpf_3m_vague_track.pdf used on input line 195.
 
-<use ./imgs/rbpf_control_switch.pdf>
-Package pdftex.def Info: ./imgs/rbpf_control_switch.pdf used on input line 145.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
 
-(pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [135pdfTeX warning (ext4): destination with the same identifier (name{figure.1
-0.3}) has been already used, duplicate ignored
+<./imgs/rbpf_3m_vague_switch.pdf, id=299, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_3m_vague_switch.pdf Graphic file (type pdf)
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.149 H
-       owever, it is clear that there are some problems in Figure \ref{fig_r...
- <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/rbpf_control_state.pdf>]
-<./imgs/rbpf_control_track.pdf, id=314, 1445.4pt x 708.24597pt>
-File: ./imgs/rbpf_control_track.pdf Graphic file (type pdf)
-
-<use ./imgs/rbpf_control_track.pdf>
-Package pdftex.def Info: ./imgs/rbpf_control_track.pdf used on input line 154.
-(pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
-
-<./imgs/rbpf_control_switch2.pdf, id=320, 1445.4pt x 708.24597pt>
-File: ./imgs/rbpf_control_switch2.pdf Graphic file (type pdf)
-
-<use ./imgs/rbpf_control_switch2.pdf>
-Package pdftex.def Info: ./imgs/rbpf_control_switch2.pdf used on input line 161
+<use ./imgs/rbpf_3m_vague_switch.pdf>
+Package pdftex.def Info: ./imgs/rbpf_3m_vague_switch.pdf used on input line 202
 .
-(pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [136pdfTeX warning (ext4): destination with the same identifier (name{figure.1
-0.4}) has been already used, duplicate ignored
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [124pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.164 \end{figure}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{figure.10.5}) has been already used, duplicate ignored
+l.206 F
+       rom Figure \ref{fig_3m_vage_track} we see that the filtering error is...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9.4}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.164 \end{figure}
-                   <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
-trol-Dissertation/imgs/rbpf_control_switch.pdf> <C:/Users/St. Elmo/Documents/Gi
-tHub/Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_control_track.pdf
+l.206 F
+       rom Figure \ref{fig_3m_vage_track} we see that the filtering error is...
+ <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
+imgs/rbpf_3m_models.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamic
+al-Control-Dissertation/imgs/rbpf_3m_vague_track.pdf
 
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
-namical-Control-Dissertation/imgs/rbpf_control_track.pdf): PDF inclusion: multi
-ple pdfs with page group included in a single page
->] <./imgs/rbpf_control_track2.pdf, id=351, 1445.4pt x 708.24597pt>
-File: ./imgs/rbpf_control_track2.pdf Graphic file (type pdf)
-
-<use ./imgs/rbpf_control_track2.pdf>
-Package pdftex.def Info: ./imgs/rbpf_control_track2.pdf used on input line 168.
-
-(pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [137pdfTeX warning (ext4): destination with the same identifier (name{figure.1
-0.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.173 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-10.7}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.173 
-       <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
-ation/imgs/rbpf_control_switch2.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stocha
-stic-Dynamical-Control-Dissertation/imgs/rbpf_control_track2.pdf
-
-pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
-namical-Control-Dissertation/imgs/rbpf_control_track2.pdf): PDF inclusion: mult
+namical-Control-Dissertation/imgs/rbpf_3m_vague_track.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
->]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-) [138pdfTeX warning (ext4): destination with the same identifier (name{figure.
-10.8}) has been already used, duplicate ignored
+>] <./imgs/rbpf_3m_track.pdf, id=348, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_3m_track.pdf Graphic file (type pdf)
+
+<use ./imgs/rbpf_3m_track.pdf>
+Package pdftex.def Info: ./imgs/rbpf_3m_track.pdf used on input line 211.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/rbpf_3m_switch.pdf, id=350, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_3m_switch.pdf Graphic file (type pdf)
+
+<use ./imgs/rbpf_3m_switch.pdf>
+Package pdftex.def Info: ./imgs/rbpf_3m_switch.pdf used on input line 218.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [125pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.86 \include{./docs/rbpf_linear_control}
-                                         ]
+l.222 U
+       nlike Figure \ref{fig_3m_vage_switch} we do see a clear model transit...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9.6}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.222 U
+       nlike Figure \ref{fig_3m_vage_switch} we do see a clear model transit...
+ <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
+imgs/rbpf_3m_vague_switch.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-D
+ynamical-Control-Dissertation/imgs/rbpf_3m_track.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/rbpf_3m_track.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>] [126pdfTeX warning (ext4): destination with the same identifier (name{figure
+.9.7}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.240 \end{equation}
+                     <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-C
+ontrol-Dissertation/imgs/rbpf_3m_switch.pdf>]
+<./imgs/rbpf_7m_models.pdf, id=939, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_7m_models.pdf Graphic file (type pdf)
+
+<use ./imgs/rbpf_7m_models.pdf>
+Package pdftex.def Info: ./imgs/rbpf_7m_models.pdf used on input line 244.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/rbpf_7m_track.pdf, id=941, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_7m_track.pdf Graphic file (type pdf)
+
+<use ./imgs/rbpf_7m_track.pdf>
+Package pdftex.def Info: ./imgs/rbpf_7m_track.pdf used on input line 251.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [127pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+.8}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.255 I
+       nterestingly enough we actually observe worse tracking performance wh...
+ <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
+imgs/rbpf_7m_models.pdf>]
+<./imgs/rbpf_7m_switch.pdf, id=964, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_7m_switch.pdf Graphic file (type pdf)
+
+<use ./imgs/rbpf_7m_switch.pdf>
+Package pdftex.def Info: ./imgs/rbpf_7m_switch.pdf used on input line 258.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [128pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+.9}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.265 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+9.10}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.265 
+       <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
+ation/imgs/rbpf_7m_track.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/rbpf_7m_switch.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/rbpf_7m_switch.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+>] <./imgs/rbpf_3m_track_m2.pdf, id=1286, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_3m_track_m2.pdf Graphic file (type pdf)
+
+<use ./imgs/rbpf_3m_track_m2.pdf>
+Package pdftex.def Info: ./imgs/rbpf_3m_track_m2.pdf used on input line 273.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+
+<./imgs/rbpf_3m_switch_m2.pdf, id=1291, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_3m_switch_m2.pdf Graphic file (type pdf)
+
+<use ./imgs/rbpf_3m_switch_m2.pdf>
+Package pdftex.def Info: ./imgs/rbpf_3m_switch_m2.pdf used on input line 280.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+ [129pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+.11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.284 F
+       inally, in Figure \ref{fig_3m_maxswitch} we see only the most likely ...
+ <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
+imgs/rbpf_3m_track_m2.pdf>]
+<./imgs/rbpf_3m_maxswitch_m2.pdf, id=1315, 1445.4pt x 708.24597pt>
+File: ./imgs/rbpf_3m_maxswitch_m2.pdf Graphic file (type pdf)
+
+<use ./imgs/rbpf_3m_maxswitch_m2.pdf>
+Package pdftex.def Info: ./imgs/rbpf_3m_maxswitch_m2.pdf used on input line 287
+.
+(pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
+) [130pdfTeX warning (ext4): destination with the same identifier (name{figure.
+9.12}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.85 \include{./docs/linear_hybrid_models}
+                                          pdfTeX warning (ext4): destination wi
+th the same identifier (name{figure.9.13}) has been already used, duplicate ign
+ored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.85 \include{./docs/linear_hybrid_models}
+                                           <C:/Users/St. Elmo/Documents/GitHub/
+Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_3m_switch_m2.pdf> <C:/Users
+/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_
+3m_maxswitch_m2.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
+namical-Control-Dissertation/imgs/rbpf_3m_maxswitch_m2.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 masters.bbl" [159
+
 
 
 
@@ -1114,21 +1175,15 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 97.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 97.
  ) 
 Here is how much of TeX's memory you used:
- 20018 strings out of 493921
- 399519 string characters out of 3144868
- 506619 words of memory out of 3000000
- 22698 multiletter control sequences out of 15000+200000
- 16156 words of font info for 61 fonts, out of 3000000 for 9000
+ 20043 strings out of 493921
+ 400247 string characters out of 3144868
+ 509126 words of memory out of 3000000
+ 22711 multiletter control sequences out of 15000+200000
+ 13063 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,14n,78p,949b,822s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.14} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.9.5.4} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.13} has been referenced but does not exis
-t, replaced by a fixed one
+ 55i,15n,78p,950b,820s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{defn.3.19} has been referenced but does not exist
+, replaced by a fixed one
 
 pdfTeX warning (dest): name{section.13.4} has been referenced but does not exis
 t, replaced by a fixed one
@@ -1175,23 +1230,20 @@ t, replaced by a fixed one
 pdfTeX warning (dest): name{chapter.11} has been referenced but does not exist,
  replaced by a fixed one
 
-pdfTeX warning (dest): name{section.9.5} has been referenced but does not exist
-, replaced by a fixed one
+pdfTeX warning (dest): name{section.10.2} has been referenced but does not exis
+t, replaced by a fixed one
 
-pdfTeX warning (dest): name{section.9.4} has been referenced but does not exist
-, replaced by a fixed one
+pdfTeX warning (dest): name{subsection.10.1.2} has been referenced but does not
+ exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{section.9.3} has been referenced but does not exist
-, replaced by a fixed one
+pdfTeX warning (dest): name{subsection.10.1.1} has been referenced but does not
+ exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{section.9.2} has been referenced but does not exist
-, replaced by a fixed one
+pdfTeX warning (dest): name{section.10.1} has been referenced but does not exis
+t, replaced by a fixed one
 
-pdfTeX warning (dest): name{section.9.1} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{chapter.9} has been referenced but does not exist, 
-replaced by a fixed one
+pdfTeX warning (dest): name{chapter.10} has been referenced but does not exist,
+ replaced by a fixed one
 
 pdfTeX warning (dest): name{section.8.6} has been referenced but does not exist
 , replaced by a fixed one
@@ -1339,30 +1391,24 @@ replaced by a fixed one
 
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
-symbols/msbm10.pfb>
-Output written on masters.pdf (19 pages, 560954 bytes).
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/symbols/msam10.pfb>
+Output written on masters.pdf (24 pages, 1020136 bytes).
 PDF statistics:
- 601 PDF objects out of 1000 (max. 8388607)
- 181 named destinations out of 1000 (max. 500000)
- 102 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1817 PDF objects out of 2073 (max. 8388607)
+ 195 named destinations out of 1000 (max. 500000)
+ 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 
