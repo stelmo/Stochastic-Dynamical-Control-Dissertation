@@ -49,27 +49,29 @@
 \contentsline {section}{\numberline {8.5}Nonlinear system}{104}{section.8.5}
 \contentsline {section}{\numberline {8.6}Conclusion}{115}{section.8.6}
 \contentsline {part}{III\hspace {1em}Multiple Model Systems}{117}{part.3}
-\contentsline {chapter}{\numberline {9}Inference using Linear Hybrid Models}{115}{chapter.9}
-\contentsline {section}{\numberline {9.1}Exact Filtering}{116}{section.9.1}
-\contentsline {section}{\numberline {9.2}Rao-Blackwellised Particle Filter}{117}{section.9.2}
-\contentsline {section}{\numberline {9.3}Rao-Blackwellised Particle Prediction}{118}{section.9.3}
-\contentsline {section}{\numberline {9.4}Smoothing and Viterbi Decoding}{119}{section.9.4}
-\contentsline {section}{\numberline {9.5}Filtering the CSTR}{119}{section.9.5}
-\contentsline {chapter}{\numberline {10}Stochastic Switching Linear Control using Linear Hybrid Models}{128}{chapter.10}
-\contentsline {section}{\numberline {10.1}Unconstrained Switching Control}{130}{section.10.1}
-\contentsline {section}{\numberline {10.2}Conclusion}{134}{section.10.2}
-\contentsline {chapter}{\numberline {11}Inference using Nonlinear Hybrid Models}{135}{chapter.11}
-\contentsline {section}{\numberline {11.1}Exact Filtering}{136}{section.11.1}
-\contentsline {section}{\numberline {11.2}Switching Particle Filter}{136}{section.11.2}
-\contentsline {section}{\numberline {11.3}Switching Particle Prediction}{137}{section.11.3}
-\contentsline {section}{\numberline {11.4}Smoothing and Viterbi Decoding}{138}{section.11.4}
-\contentsline {section}{\numberline {11.5}Filtering the CSTR}{138}{section.11.5}
-\contentsline {chapter}{\numberline {12}Stochastic Switching Linear Control using Nonlinear Hybrid Models}{143}{chapter.12}
-\contentsline {section}{\numberline {12.1}Unconstrained Switching Control}{144}{section.12.1}
-\contentsline {section}{\numberline {12.2}Constrained Switching Control}{146}{section.12.2}
-\contentsline {section}{\numberline {12.3}Conclusion}{152}{section.12.3}
-\contentsline {chapter}{\numberline {13}Future Work and Conclusion}{153}{chapter.13}
-\contentsline {section}{\numberline {13.1}Parameter Optimisation}{153}{section.13.1}
-\contentsline {section}{\numberline {13.2}Augmented Switching Graphical Model}{153}{section.13.2}
-\contentsline {section}{\numberline {13.3}Generalised Graphical Models}{153}{section.13.3}
-\contentsline {section}{\numberline {13.4}Conclusion}{154}{section.13.4}
+\contentsline {chapter}{\numberline {9}Inference using Linear Hybrid Models}{118}{chapter.9}
+\contentsline {section}{\numberline {9.1}Exact Filtering}{119}{section.9.1}
+\contentsline {section}{\numberline {9.2}Rao-Blackwellised Particle Filter}{120}{section.9.2}
+\contentsline {section}{\numberline {9.3}Rao-Blackwellised Particle Prediction}{121}{section.9.3}
+\contentsline {section}{\numberline {9.4}Smoothing and Viterbi Decoding}{122}{section.9.4}
+\contentsline {section}{\numberline {9.5}Filtering the CSTR}{122}{section.9.5}
+\contentsline {chapter}{\numberline {10}Stochastic switching linear control using linear hybrid models}{131}{chapter.10}
+\contentsline {section}{\numberline {10.1}Unconstrained switching control}{134}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Most likely model approach}{134}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}Model averaging approach}{138}{subsection.10.1.2}
+\contentsline {section}{\numberline {10.2}Conclusion}{138}{section.10.2}
+\contentsline {chapter}{\numberline {11}Inference using Nonlinear Hybrid Models}{139}{chapter.11}
+\contentsline {section}{\numberline {11.1}Exact Filtering}{140}{section.11.1}
+\contentsline {section}{\numberline {11.2}Switching Particle Filter}{140}{section.11.2}
+\contentsline {section}{\numberline {11.3}Switching Particle Prediction}{141}{section.11.3}
+\contentsline {section}{\numberline {11.4}Smoothing and Viterbi Decoding}{142}{section.11.4}
+\contentsline {section}{\numberline {11.5}Filtering the CSTR}{142}{section.11.5}
+\contentsline {chapter}{\numberline {12}Stochastic Switching Linear Control using Nonlinear Hybrid Models}{147}{chapter.12}
+\contentsline {section}{\numberline {12.1}Unconstrained Switching Control}{148}{section.12.1}
+\contentsline {section}{\numberline {12.2}Constrained Switching Control}{150}{section.12.2}
+\contentsline {section}{\numberline {12.3}Conclusion}{156}{section.12.3}
+\contentsline {chapter}{\numberline {13}Future Work and Conclusion}{157}{chapter.13}
+\contentsline {section}{\numberline {13.1}Parameter Optimisation}{157}{section.13.1}
+\contentsline {section}{\numberline {13.2}Augmented Switching Graphical Model}{157}{section.13.2}
+\contentsline {section}{\numberline {13.3}Generalised Graphical Models}{157}{section.13.3}
+\contentsline {section}{\numberline {13.4}Conclusion}{158}{section.13.4}

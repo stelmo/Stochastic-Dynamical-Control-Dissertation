@@ -247,7 +247,7 @@ Finally, we know from the Definition \ref{def_chain_rule_bayes} (chain rule for 
 
 \section{Filtering the CSTR}
 \label{sec_filtering_linmods}
-In this chapter we apply the Kalman filter to the CSTR introduced in Chapter \ref{sec_cstr}. We use the linear model linearised around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}) to describe the nonlinear underlying model. Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that $V$ indicates that we only measure temperature for now.
+In this chapter we apply the Kalman filter to the nonlinear CSTR introduced in Chapter \ref{sec_cstr}. We use the linear model linearised around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}) to describe the nonlinear underlying model. Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that $V$ indicates that we only measure temperature for now.
 \begin{equation}
 \begin{aligned}
 &A = \begin{pmatrix}
