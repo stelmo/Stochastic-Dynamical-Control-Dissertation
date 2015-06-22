@@ -1,17 +1,17 @@
-\chapter{Future Work and Conclusion}
+\chapter{Future work and conclusion}
 In this chapter we briefly comment on extensions and future research possibilities within the context of \textit{Stochastic Dynamical Control using Probabilistic Graphical Models}. Finally we conclude the dissertation with a brief summary of the major results.
 
-\section{Parameter Optimisation}
+\section{Parameter optimisation}
 In Chapters \ref{sec_linear_control}, \ref{sec_rbpf_control} and \ref{sec_spf_control} the control tuning parameters were not changed. It could be argued that the control comparisons (LQG vs. expected value MPC vs. chance constrained MPC) were unfair because the set of tuning parameters might have favoured one of them disproportionately. It should be investigated what effect parameter optimisation has on the results. It could also be interesting to view the tuning parameters as so-called hyper-parameters within the context of Bayesian Optimisation. 
 
-\section{Augmented Switching Graphical Model}
+\section{Augmented switching graphical model}
 In Chapters \ref{sec_rbpf_control} and \ref{sec_spf_control} it was found that switching noise has the potential to destabilise control. It is highly desirable to develop a Switching Controller Algorithm which is robust against this feature of model switching control/filtering. It was suggested that the Augmented Switching (Kalman) Filter Model be investigated. Such Graphical Models naturally allow the current state to have an effect on the switching variables. This could reduce, hopefully eliminate, switching noise. 
 
-\section{Generalised Graphical Models}
+\section{Generalised graphical models}
 Finally, the motivation for this dissertation was the work by \cite{devilliers} and \cite{dabrowski}. In the former paper the author pioneers work on using Dynamic Bayesian Networks within the context of MPC. The authors use Graphical Models similar to that of Chapter \ref{sec_inf_lin_mods} and \ref{sec_inf_nonlin_mods} but do not assume the inputs are deterministic. It would be interesting to extend the current approach to this case. In the latter paper the authors use contextual variables to identify anomalies. The Graphical Model employed by them is significantly more complex but allows for much greater expressivity. Within the context of fault detecting and controller model modification this could be quite interesting as well.
 
 \section{Conclusion}
-The primary goal of this dissertation was to illustrate the relationship between Dynamic Bayesian Networks and model based Predictive Control. The most important results were:
+The primary goal of this dissertation was to illustrate the relationship between dynamic Bayesian Nnetworks and model based Predictive Control. The most important results were:
 \begin{enumerate}
 \item
 Assuming linearity and normality it is possible to reformulate the stochastic, chance constrained MPC problem as a linearly constrained deterministic MPC problem. The holistic approach adopted here, due to the Probabilistic Graphical Model framework, makes the proof and derivation both simple and intuitive. The approach is extended to systems which are nonlinear and not exactly Gaussian. Even in these cases the techniques are successful.
