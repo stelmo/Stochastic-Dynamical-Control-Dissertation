@@ -1,6 +1,6 @@
-\chapter{CSTR Model}
+\chapter{CSTR model}
 \label{sec_cstr}
-In this section we introduce the model we will use to illustrate the techniques we develop in this dissertation. The model is a simple continuously stirred tank reactor (CSTR) undergoing an exothermic, irreversible first order reaction where $A \rightarrow B$. A schematic diagram of the reactor is shown in Figure \ref{fig_cstr_diagram}. The model is taken from literature \cite{cstrmodel}.
+In this chapter we introduce the model we will use to illustrate the techniques we develop in this dissertation. The model is a simple continuously stirred tank reactor (CSTR) undergoing an exothermic, irreversible first order reaction where $A \rightarrow B$. A schematic diagram of the reactor is shown in Figure \ref{fig_cstr_diagram}. The model is taken from literature \cite{cstrmodel}.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.8]{cstr_diagram.pdf}
@@ -31,13 +31,13 @@ $F$ & $~100\times 10^{-3}~\frac{m^3}{min}$ \\
 \label{tab_params}
 \end{center}
 \end{table}
-The CSTR model is a familiar control example. Similar models may be found in \cite{du}\cite{cervantes}\cite{pan}\cite{yazdi}. We use this model because it is low dimensional yet complex enough to illustrate the principles we investigate. Note that we have increased the volume of the reactor and reduced the rate constant from the reactor we quoted in literature. This is primarily to adjust the time scale of the transient response to be in the order of minutes and not milliseconds.
+The CSTR model is a familiar control example. Similar models may be found in \cite{du}\cite{cervantes}\cite{pan}\cite{yazdi}. We use this model because it is low dimensional yet complex enough to illustrate the principles we investigate. CSTR models are also very popular examples to illustrate control techniques because they invariable have nonlinear dynamics and multiple steady states. Note that we have increased the volume of the reactor and reduced the rate constant from the reactor we quoted in literature. This is primarily to adjust the time scale of the transient response to be in the order of minutes and not milliseconds when moving to high temperature regions of operation.
 
-\section{Qualitative Analysis}
-In this section we use standard mathematical tools, as found in \cite{edwardsandpenny}, to analyse the qualitative behaviour of the CSTR. By inspecting (\ref{eq_cstrmodel}) we see that the model is coupled and non-linear. By solving (\ref{eq_cstr_statpoints}) we see that for nominal operating conditions ($Q = 0$) there exist 3 operating points (critical points) as shown in Table \ref{tab_nominalstats}.
+\section{Qualitative analysis}
+In this chapter we use standard mathematical tools, as found in \cite{edwardsandpenny}, to analyse the qualitative behaviour of the CSTR. By inspecting (\ref{eq_cstrmodel}) we see that the model is coupled and nonlinear. By solving (\ref{eq_cstr_statpoints}) we see that for nominal operating conditions ($Q = 0$) there exist 3 operating points (critical points) as shown in Table \ref{tab_nominalstats}.
 \begin{equation}
 \begin{aligned}
-0&= \frac{F}{V}\left( C_{A0}-C_A \right) - k_0e^{\frac{-E}{RT_R}}C_A \\
+0 &= \frac{F}{V}\left( C_{A0}-C_A \right) - k_0e^{\frac{-E}{RT_R}}C_A \\
 0 &= \frac{F}{V}\left(T_{A0}-T_A\right) + \frac{-\triangle H}{\rho C_p}k_0e^{\frac{-E}{RT_R}}C_A + \frac{Q}{\rho C_p V}
 \end{aligned}
 \label{eq_cstr_statpoints}
@@ -57,7 +57,7 @@ $\left(C_A^3, T_R^3 \right)$ & 0.9996 & 310.0709 & Stable Improper Node \\
 \label{tab_nominalstats}
 \end{center}
 \end{table}
-The stability of the operating points were found by linearising (\ref{eq_cstrmodel}) and computing the eigenvalues of the Jacobian, shown in (\ref{eq_jacobian}), at each critical point.
+The stability of the operating points were found by linearising (\ref{eq_cstrmodel}) and computing the eigenvalues of the jacobian, shown in (\ref{eq_jacobian}), at each critical point.
 \begin{equation}
 J(C_A, T_R) = \begin{pmatrix}
 -\frac{F}{V} - k_0e^{\frac{-E}{RT_R}} & - k_0e^{\frac{-E}{RT_R}}C_A\left(\frac{E}{RT_R^2}\right) \\
@@ -70,7 +70,7 @@ In Figure \ref{fig_cstr_op_curve} we see the operating curve for the CSTR. The c
 Also note that the obvious bifurcation parameter for this system is the heat input $Q$. For $Q = -906$ kJ/min we see that we no longer have three critical points but only two, and for $Q < -906$ kJ/min we only have one critical point. Likewise, for $Q = 1145$ kJ/min we see that we only have two critical points and for $Q > 1145$ kJ/min we only have one critical point. The stability of these points are shown in Table \ref{tab_bifurc}.  
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.3]{cstr_model_op_curve.pdf}
+\includegraphics[width=\textwidth]{cstr_model_op_curve.pdf}
 \caption{CSTR operating curve with different input curves. Nominal operating conditions are $Q=0$ kJ/min.}
 \label{fig_cstr_op_curve}
 \end{figure}
@@ -82,21 +82,23 @@ Heat Input & $C_A$ & $T_R$ & Stability\\
 \hline
 $Q = -906$ kJ/min & 0.1089 & 450.3531 & Stable Improper Node\\
 $Q = -906$ kJ/min & 0.9999 & 272.1346 & Stable Improper Node \\
+\hline
 $Q < -906$ kJ/min & $\backsim$ & $\backsim$ & Stable Improper Node \\
 \hline
 $Q = 1145$ kJ/min & 0.0017 & 557.5243 & Stable Improper Node\\
 $Q = 1145$ kJ/min & 0.9263 & 372.5959 & Stable Improper Node \\
+\hline
 $Q > 1145$ kJ/min & $\backsim$ & $\backsim$ & Stable Improper Node \\
 \hline
 \end{tabular}
-\caption{Bifurcation analysis of the CSTR at different heat input values.}
+\caption{Bifurcation analysis of the CSTR at different heat input values. The $\backsim$ notation indicates that the operating point depends on the precise value of $Q$.}
 \label{tab_bifurc}
 \end{center}
 \end{table}
-The multiple stable critical points for $Q\in [-906, 1145]$ kJ/min makes control of this system challenging. For example consider a situation where one starts at some point on the black line, below the green line in Figure \ref{fig_cstr_op_curve}. If one wishes to move to the high temperature low concentration stable operating point large, non-smooth, controller action will be required. By slowly heating up the CSTR the green line will gradually move to the right and this will push the system, somewhat counter-intuitively, towards the low temperature high concentration critical point. It is necessary to quickly heat up the CSTR so that the green line is below the current operating point on the black line. The self-regulatory nature of the CSTR will then move the system to the desired operating point.   
+The multiple stable critical points for $Q\in [-906, 1145]$ kJ/min make control of this system challenging. For example consider a situation where one starts at some point on the black line but below the green line in Figure \ref{fig_cstr_op_curve}. If one wishes to move to the high temperature low concentration stable operating point large, non-smooth, controller action will be required. By slowly heating up the CSTR the green line will gradually move to the right and this will push the system, somewhat counter-intuitively, towards the low temperature high concentration critical point. The instability of the middle operating point causes this behaviour. It is necessary to quickly heat up the CSTR so that the green line jumps below the current operating point on the black line. The self-regulatory nature of the CSTR will then move the system to the desired operating point.   
 
-\section{Nonlinear Model}
-In this section we evaluate the transient response of the CSTR. The nonlinear differential equation shown in (\ref{eq_cstrmodel}) is intractably difficult to solve analytically. For this reason we will use a numerical method, specifically the Runge-Kutta method \cite{edwardsandpenny}, to simulate the transient response. We chose the Runge-Kutta method because it is an explicit, fourth order accurate method which is easy to implement. The explicit nature of the method will also be useful later when it is necessary to discretise the system in the standard linear state space form.
+\section{Nonlinear model}
+In this chapter we evaluate the transient response of the CSTR. The nonlinear differential equation shown in (\ref{eq_cstrmodel}) is intractably difficult to solve analytically. For this reason we will use a numerical method, specifically the Runge-Kutta method \cite{edwardsandpenny}, to simulate the transient response. We chose the Runge-Kutta method because it is an explicit, fourth order accurate method which is easy to implement.
 
 For completeness we show the method here. Suppose we have an autonomous ordinary differential equation as shown in (\ref{eq_ode}) and we require its solution over $[t_a, t_b]$. This is an initial value problem; for the sake of brevity we assume that a unique solution always exists.
 \begin{equation}
@@ -106,7 +108,7 @@ For completeness we show the method here. Suppose we have an autonomous ordinary
 \end{aligned}
 \label{eq_ode}
 \end{equation}
-Furthermore, suppose we discretise the time domain such that $[t_a, t_b] = [t_0=t_a, t_1= t_a+ h, t_2=t_a+ 2h,...,t_T = t_b]$. Then the scheme shown in (\ref{eq_rk}) is called the Runge-Kutta method. We assume that for sufficiently small time steps, $h$, the method is stable and convergent.
+Furthermore, suppose we discretise the time domain such that $[t_a, t_b] = [t_0=t_a, t_1= t_a+ h, t_2=t_a+ 2h,...,t_T = t_b]$. Then the scheme shown in (\ref{eq_rk}) is called the Runge-Kutta method. For sufficiently small time steps, $h$, the method is stable and convergent.
 \begin{equation}
 \begin{aligned}
 x_{t+1} &= x_{t} + \frac{h}{6}\left(k_1 + 2k_2 + 2k_3 +k4\right) \\
@@ -120,26 +122,26 @@ k_4 &= f(x_t+ hk_3) \\
 By applying the Runge-Kutta method to the CSTR we have Figures \ref{fig_cstr_nl_1} and \ref{fig_cstr_nl_2}. It is clear that the dynamics are faster (almost two orders of magnitude) when moving to the higher temperature operating point than they are when moving to the lower temperature operating point. The impact of the nonlinear kinetics is seen here. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.3]{cstr_nl_1.pdf}
-\caption{Transient response of the CSTR under nominal operating conditions with initial condition $(0.5, 450)$ and $h=0.001$.}
+\includegraphics[width=\textwidth]{cstr_nl_1.pdf}
+\caption{Transient response of the CSTR under nominal operating conditions with initial condition $(0.5, 450)$ and $h=0.1$.}
 \label{fig_cstr_nl_1}
 \end{figure}
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.3]{cstr_nl_2.pdf}
-\caption{Transient response of the CSTR under nominal operating conditions with initial condition $(0.5, 400)$ and $h=0.001$.}
+\includegraphics[width=\textwidth]{cstr_nl_2.pdf}
+\caption{Transient response of the CSTR under nominal operating conditions with initial condition $(0.5, 400)$ and $h=0.1$.}
 \label{fig_cstr_nl_2}
 \end{figure}
-It is often desirable to linearise a nonlinear system about some point, usually the operating point, to simplify the model. Computationally this is advantageous because many control techniques have been designed specifically for linear systems. Practically linearisation is only valid in a small region around the point of linearisation. If the system moves away from the linearisation point the linear approximation can become grossly inaccurate. 
+It is often desirable to linearise a nonlinear system about some point, usually the operating point, to simplify the model. Computationally this is advantageous because linear techniques (e.g. linear optimisation) is usually significantly faster than nonlinear techniques. Practically linearisation is only valid in a small region around the point of linearisation. If the system moves away from the linearisation point the linear approximation can become grossly inaccurate. 
 
 Based on Figure \ref{fig_cstr_nl_1}, where the dynamics are fast, we can venture a guess that linearisation will be a bad approximation, except for a very small time period, of plant behaviour because the states will rapidly move away from the point of linearisation.
 
 On the other hand, based on Figure \ref{fig_cstr_nl_2}, we can venture a guess that linearisation will be a fair approximation of plant behaviour for a meaningful period of time because the dynamics are slow.
 
-\section{Linearised Models}
-The approach of using piecewise affine (linear) functions for control, based on linearisation around critical points, has been investigated in literature \cite{du}\cite{kvasnica}. Typically the state domain is discretised into regimes and the linear approximation of the model in each regime is used for control. The benefit of this approach is that the non-linear problem  can then be handled by linear methods for which efficient algorithms exist. Drawbacks of this approach are computational complexity \cite{du} and poor control performance because the models are inaccurate.
+\section{Linearised models}
+Linear approximations used for modelling and control are very common both in practice and literature \cite{luyben}. Furthermore, the approach of using multiple piecewise affine (linear) functions for control, based on linearisation around critical points, has also been investigated in literature \cite{du}\cite{kvasnica}. Typically the state domain is discretised into regimes and the linear approximation of the model in each regime is used for control. We will also use linear models for the purposes of control.  It is therefore prudent to investigate linearisation techniques.
 
-We will also attempt to use linear models for the purposes of control. First we present a general linearisation technique. Consider an arbitrary point in the state space $(C_A^*, T_R^*)$. Then (\ref{eq_lin}) is the general linearised model around $(C_A^*, T_R^*)$.
+First we present a linearisation technique. Consider an arbitrary point in the state space $(C_A^*, T_R^*)$. Then (\ref{eq_lin}) is the general linearised model around $(C_A^*, T_R^*)$ using the notation of (\ref{eq_cstrmodel}).
 \begin{equation}
 \begin{pmatrix}
 \dot{C_A} \\ \dot{T_R}
@@ -176,7 +178,7 @@ f(C_A^*, T_R^*) \\ g(C_A^*, T_R^*)
 \end{pmatrix} + B(C_A^*, T_R^*)Q
 \label{eq_lin2}
 \end{equation}
-We now use the Bilinear Transform (also known as Tustin's Transform) to convert (\ref{eq_lin2}) into the discrete equation (\ref{eq_rkss}). Note that (\ref{eq_rkss}) implicitly depends on the sampling time.
+We now use the bilinear transform (also known as Tustin's transform) to convert (\ref{eq_lin2}) into the discrete equation (\ref{eq_rkss}). Note that (\ref{eq_rkss}) implicitly depends on the sampling time.
 \begin{equation}
 \begin{pmatrix}
 \tilde{C}_A \\ \tilde{T}_R
@@ -185,12 +187,14 @@ We now use the Bilinear Transform (also known as Tustin's Transform) to convert 
 \end{pmatrix}_{t} + B(C_A^*, T_R^*)Q 
 \label{eq_rkss}
 \end{equation}
-Where $Q$ is the heat input to the system. Note that we need to add back the offset we removed in the change of variables step (\ref{eq_change_vars}) when we want to inspect the results of applying (\ref{eq_rkss}).
- 
+Note that $Q$ is the heat input to the system. Note that we need to add back the offset we removed in the change of variables step (\ref{eq_change_vars}) when we want to physically interpret the results of applying (\ref{eq_rkss}).
+
+Next we briefly investigate the accuracy of the linear models. In all the subsequent figures the first subplot illustrates the accuracy of the linear model if the initial value is close to the point of linearisation and the second subplot illustrates the accuracy when the initial value is further away from the point of linearisation.
+
 Figure \ref{fig_cstr_lin_1} shows the state space response of the linear model which was linearised around the high temperature, low concentration stable operating point $(C_A^1,T_R^1)$ as defined in Table \ref{tab_nominalstats}.
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.3]{cstr_lin_1.pdf}
+\includegraphics[width=\textwidth]{cstr_lin_1.pdf}
 \caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^1,T_R^1)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
 \label{fig_cstr_lin_1}
 \end{figure}
@@ -199,7 +203,7 @@ We see that the linear approximation is quite accurate if the initial condition 
 In Figure \ref{fig_cstr_lin_2} we see the state space response of the CSTR using the linear model linearised around the unstable operating point. Clearly this approximation is less accurate because the system tend to move away from operating point rather than towards it. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.3]{cstr_lin_2.pdf}
+\includegraphics[width=\textwidth]{cstr_lin_2.pdf}
 \caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^2,T_R^2)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
 \label{fig_cstr_lin_2}
 \end{figure}
@@ -208,47 +212,13 @@ If we want to use the linear model around the unstable operating point we will n
 In Figure \ref{fig_cstr_lin_3} we have the state space response of the CSTR under nominal conditions, like before, except that we have now linearised around the low temperature high concentration operating point. 
 \begin{figure}[H] 
 \centering
-\includegraphics[scale=0.3]{cstr_lin_3.pdf}
+\includegraphics[width=\textwidth]{cstr_lin_3.pdf}
 \caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^3,T_R^3)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
 \label{fig_cstr_lin_3}
 \end{figure}
-Out of the 3 linear models we have considered so far, this one seems to be the most accurate for initial conditions near it. This could possibly be because the system dynamics are quite slow and thus more linear. However, we do not expect this linear model to be accurate in regions of the state space where the dynamics are faster e.g. near the high temperature operating point. This is shown in Figure \ref{fig_cstr_lin_4}. 
-\begin{figure}[H] 
-\centering
-\includegraphics[scale=0.3]{cstr_lin_4.pdf}
-\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^3,T_R^3)$ with initial condition far away from the linearisation point.}
-\label{fig_cstr_lin_4}
-\end{figure}
-Based on the general linearisation formula in (\ref{eq_lin}) there is no reason why one cannot linearise about an arbitrary point in the state space. It stands to reason that the more linear models at different linearisation points one has, the better one will be able to model the reactor. For example, suppose one has 3 linear models. Each model will be more accurate in different regions of the state space. By selecting a model to use based on some metric taking into account the current location in the state space, it is reasonable to suppose that one will be able to more accurately model the system. 
+Like Figure \ref{fig_cstr_lin_1}, the linear model is quite accurate. The slow dynamics and stability of the operating point cause this desirable behaviour.
 
-In later sections we make precise which metric we will use in this dissertation. For now we merely illustrate this idea as shown in Figure \ref{fig_cstr_many}. Here we have 10 different linear models with linearisation points chosen at random in the state space. We also include the 3 linear models with linearisation points at the nominal critical points of the system. 
-\begin{figure}[H] 
-\centering
-\includegraphics[scale=0.3]{cstr_lin_many.pdf}
-\caption{State space response of the CSTR under nominal operating conditions with 13 different linear models. Each linear model has an different initial condition located near the point of linearisation.}
-\label{fig_cstr_many}
-\end{figure}
-Based on Figure \ref{fig_cstr_many} we can see that, at least initially, the linear models describe the nonlinear evolution well (the red and black lines overlap). Inevitably they diverge but we suppose that it is possible to switch linear models when this happens. Ideally we would then switch to a linear model which better describes the dynamics. 
+Based on the general linearisation formula in (\ref{eq_lin}) there is no reason why one cannot linearise about an arbitrary point in the state space. It stands to reason that the more linear models at different linearisation points one has, the better one will be able to model the reactor. For example, suppose one has 3 linear models. Each model will be more accurate in different regions of the state space. By selecting a model to use based on some metric (taking into account the current location in the state space) it is reasonable to suppose that one will be able to model the system more accurately than if only one linear model was available. In Part \ref{part_three} we take this idea further.
 
-However, Figure \ref{fig_cstr_many} is misleading in the sense that we do not show the rate at which the linear models diverge from the nonlinear model. Overlap of the black and red lines do not indicate a one to one correspondence with respect to the time evolution of the two systems. The linear models in the upper half of the state space (the high temperature region)``move" much faster than the nonlinear system. In Figure \ref{fig_cstr_many} we see that these models rapidly become unbounded. We expect this to be problematic if we are to use linear models for prediction (i.e. control) of the system.
+However, in Part \ref{part_two} we restrict our attention to systems where one linear model is sufficient for our purposes.  
 
-To illustrate this divergence we plot the maximum absolute relative difference between the linear models and the nonlinear model at $t = 0.5$ min in Figure \ref{fig_cstr_regions1}, at $t = 5$ min in Figure \ref{fig_cstr_regions2} and $t = 50$ min in Figure \ref{fig_cstr_regions3} . 
-\begin{figure}[H] 
-\centering
-\includegraphics[scale=0.3]{cstr_regions1.pdf}
-\caption{Maximum absolute relative difference between the linear models and the nonlinear model at $t=0.5$ min. Each value in the state space serves as the linearisation point for the respective linear model. The linearisation points was also used as the respective initial conditions.}
-\label{fig_cstr_regions1}
-\end{figure}
-\begin{figure}[H] 
-\centering
-\includegraphics[scale=0.3]{cstr_regions3.pdf} % correct order!
-\caption{Maximum absolute relative difference between the linear models and the nonlinear model at $t=5$ min.}
-\label{fig_cstr_regions2}
-\end{figure}
-\begin{figure}[H] 
-\centering
-\includegraphics[scale=0.3]{cstr_regions2.pdf} % correct order!
-\caption{Maximum absolute relative difference between the linear models and the nonlinear model at $t=50$ min.}
-\label{fig_cstr_regions3}
-\end{figure}
-We see that in both figures the high temperature region of the state space has the worst linear model accuracy. This could be attributed to the exponential term in (\ref{eq_cstrmodel}) which is more pronounced in this area and consequently the model is more nonlinear. We also see that the high temperature linear models quickly become much less accurate with time when compared to the low temperature models.

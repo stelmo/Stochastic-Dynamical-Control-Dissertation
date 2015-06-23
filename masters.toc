@@ -1,52 +1,52 @@
 \contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}
 \contentsline {part}{I\hspace {1em}Literature, theory and background material}{7}{part.1}
-\contentsline {chapter}{\numberline {2}Literature Review}{8}{chapter.2}
-\contentsline {section}{\numberline {2.1}Stochastic Model Predictive Control}{8}{section.2.1}
-\contentsline {section}{\numberline {2.2}Switching Model Predictive Control}{12}{section.2.2}
-\contentsline {chapter}{\numberline {3}Background Theory}{16}{chapter.3}
-\contentsline {section}{\numberline {3.1}Probability Theory}{16}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Discrete Random Variables}{17}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Continuous Random Variables}{20}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Graph Theory}{24}{section.3.2}
-\contentsline {section}{\numberline {3.3}Probabilistic Graphical Models}{25}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Bayesian Networks}{26}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Dynamic Bayesian Networks}{28}{subsection.3.3.2}
+\contentsline {chapter}{\numberline {2}Literature review}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}Stochastic model predictive control}{8}{section.2.1}
+\contentsline {section}{\numberline {2.2}Switching model predictive control}{12}{section.2.2}
+\contentsline {chapter}{\numberline {3}Background theory}{16}{chapter.3}
+\contentsline {section}{\numberline {3.1}Probability theory}{16}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Discrete random variables}{17}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Continuous random variables}{20}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Graph theory}{24}{section.3.2}
+\contentsline {section}{\numberline {3.3}Probabilistic graphical models}{25}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Bayesian networks}{26}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Dynamic Bayesian networks}{28}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Control}{30}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Linear Quadratic Regulator Control}{30}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Reference Tracking}{34}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Linear Quadratic Gaussian Control}{34}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Model Predictive Control}{36}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}Matrix Identities}{37}{section.3.5}
-\contentsline {chapter}{\numberline {4}Hidden Markov Models}{38}{chapter.4}
-\contentsline {section}{\numberline {4.1}Markov Models}{38}{section.4.1}
-\contentsline {section}{\numberline {4.2}Hidden Markov Models}{39}{section.4.2}
+\contentsline {subsection}{\numberline {3.4.1}Linear quadratic regulator control}{30}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Reference tracking}{34}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Linear quadratic Gaussian control}{34}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Model predictive control}{36}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}Matrix identities}{37}{section.3.5}
+\contentsline {chapter}{\numberline {4}Hidden Markov models}{38}{chapter.4}
+\contentsline {section}{\numberline {4.1}Markov models}{38}{section.4.1}
+\contentsline {section}{\numberline {4.2}Hidden Markov models}{39}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Filtering}{40}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Smoothing}{41}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Viterbi Decoding}{43}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Prediction}{44}{subsection.4.2.4}
-\contentsline {section}{\numberline {4.3}Burglar Localisation Problem}{45}{section.4.3}
-\contentsline {chapter}{\numberline {5}CSTR Model}{48}{chapter.5}
-\contentsline {section}{\numberline {5.1}Qualitative Analysis}{49}{section.5.1}
-\contentsline {section}{\numberline {5.2}Nonlinear Model}{51}{section.5.2}
-\contentsline {section}{\numberline {5.3}Linearised Models}{53}{section.5.3}
-\contentsline {part}{II\hspace {1em}Single model systems}{60}{part.2}
-\contentsline {chapter}{\numberline {6}Inference using linear models}{61}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kalman filter}{62}{section.6.1}
-\contentsline {section}{\numberline {6.2}Kalman prediction}{64}{section.6.2}
-\contentsline {section}{\numberline {6.3}Smoothing and Viterbi decoding}{66}{section.6.3}
-\contentsline {section}{\numberline {6.4}Filtering the CSTR}{67}{section.6.4}
-\contentsline {chapter}{\numberline {7}Inference using nonlinear models}{72}{chapter.7}
-\contentsline {section}{\numberline {7.1}Sequential Monte Carlo methods}{73}{section.7.1}
-\contentsline {section}{\numberline {7.2}Particle filter}{76}{section.7.2}
-\contentsline {section}{\numberline {7.3}Particle prediction}{78}{section.7.3}
-\contentsline {section}{\numberline {7.4}Smoothing and Viterbi decoding}{78}{section.7.4}
-\contentsline {section}{\numberline {7.5}Filtering the CSTR}{79}{section.7.5}
-\contentsline {chapter}{\numberline {8}Stochastic linear control}{84}{chapter.8}
-\contentsline {section}{\numberline {8.1}Unconstrained stochastic control}{85}{section.8.1}
-\contentsline {section}{\numberline {8.2}Constrained stochastic control}{88}{section.8.2}
-\contentsline {section}{\numberline {8.3}Reference tracking}{95}{section.8.3}
-\contentsline {section}{\numberline {8.4}Linear system}{95}{section.8.4}
-\contentsline {section}{\numberline {8.5}Nonlinear system}{104}{section.8.5}
+\contentsline {subsection}{\numberline {4.2.3}Viterbi decoding}{42}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Prediction}{43}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Burglar localisation problem}{45}{section.4.3}
+\contentsline {chapter}{\numberline {5}CSTR model}{48}{chapter.5}
+\contentsline {section}{\numberline {5.1}Qualitative analysis}{49}{section.5.1}
+\contentsline {section}{\numberline {5.2}Nonlinear model}{51}{section.5.2}
+\contentsline {section}{\numberline {5.3}Linearised models}{53}{section.5.3}
+\contentsline {part}{II\hspace {1em}Single model systems}{57}{part.2}
+\contentsline {chapter}{\numberline {6}Inference using linear models}{58}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kalman filter}{59}{section.6.1}
+\contentsline {section}{\numberline {6.2}Kalman prediction}{61}{section.6.2}
+\contentsline {section}{\numberline {6.3}Smoothing and Viterbi decoding}{63}{section.6.3}
+\contentsline {section}{\numberline {6.4}Filtering the CSTR}{64}{section.6.4}
+\contentsline {chapter}{\numberline {7}Inference using nonlinear models}{69}{chapter.7}
+\contentsline {section}{\numberline {7.1}Sequential Monte Carlo methods}{70}{section.7.1}
+\contentsline {section}{\numberline {7.2}Particle filter}{73}{section.7.2}
+\contentsline {section}{\numberline {7.3}Particle prediction}{75}{section.7.3}
+\contentsline {section}{\numberline {7.4}Smoothing and Viterbi decoding}{75}{section.7.4}
+\contentsline {section}{\numberline {7.5}Filtering the CSTR}{76}{section.7.5}
+\contentsline {chapter}{\numberline {8}Stochastic linear control}{81}{chapter.8}
+\contentsline {section}{\numberline {8.1}Unconstrained stochastic control}{82}{section.8.1}
+\contentsline {section}{\numberline {8.2}Constrained stochastic control}{85}{section.8.2}
+\contentsline {section}{\numberline {8.3}Reference tracking}{92}{section.8.3}
+\contentsline {section}{\numberline {8.4}Linear system}{92}{section.8.4}
+\contentsline {section}{\numberline {8.5}Nonlinear system}{102}{section.8.5}
 \contentsline {section}{\numberline {8.6}Conclusion}{115}{section.8.6}
 \contentsline {part}{III\hspace {1em}Multiple model systems}{117}{part.3}
 \contentsline {chapter}{\numberline {9}Inference using linear hybrid models}{118}{chapter.9}
@@ -70,8 +70,8 @@
 \contentsline {section}{\numberline {12.1}Unconstrained switching control}{153}{section.12.1}
 \contentsline {section}{\numberline {12.2}Constrained switching control}{157}{section.12.2}
 \contentsline {section}{\numberline {12.3}Conclusion}{164}{section.12.3}
-\contentsline {chapter}{\numberline {13}Future work and conclusion}{164}{chapter.13}
-\contentsline {section}{\numberline {13.1}Parameter optimisation}{164}{section.13.1}
-\contentsline {section}{\numberline {13.2}Augmented switching graphical model}{164}{section.13.2}
-\contentsline {section}{\numberline {13.3}Generalised graphical models}{164}{section.13.3}
-\contentsline {section}{\numberline {13.4}Conclusion}{165}{section.13.4}
+\contentsline {chapter}{\numberline {13}Future work and conclusion}{166}{chapter.13}
+\contentsline {section}{\numberline {13.1}Parameter optimisation}{166}{section.13.1}
+\contentsline {section}{\numberline {13.2}Generalised graphical models}{166}{section.13.2}
+\contentsline {section}{\numberline {13.3}Advanced filtering techniques}{167}{section.13.3}
+\contentsline {section}{\numberline {13.4}Conclusion}{167}{section.13.4}

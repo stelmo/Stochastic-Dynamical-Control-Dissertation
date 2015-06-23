@@ -1,8 +1,8 @@
-\chapter{Literature Review}
+\chapter{Literature review}
 \label{sec_lit_study}
 This dissertation deals primarily with stochastic model predictive control but applied within the context of probabilistic graphical models. In Section \ref{sec_stoch_mpc_lit} we briefly discuss some recent developments in stochastic model predictive control literature. In Section \ref{sec_switch_mpc_lit} we briefly discuss control schemes, primarily  based on model predictive control, where the model control is based upon is automatically adjusted based on plant measurements or manual control laws.
 
-\section{Stochastic Model Predictive Control}
+\section{Stochastic model predictive control}
 \label{sec_stoch_mpc_lit}
 Linear unconstrained stochastic control subject to white additive Gaussian noise is well studied in literature. The solution of the linear quadratic gaussian (LQG) controller, for which the problem is shown in (\ref{eq_lit_lqg}), is one of the most fundamental results in stochastic optimal control theory \cite{lqg}. Please note, for stochastic processes it is customary to denote the current time step $x_t$ by $x_0$ within the control optimisation problem. Also, $x_t$ is a latent variable observable only through $y_t \sim \mathcal{N}(Cx_t, V)$. We use boldface to denote a vector of vectors over time e.g. $\mathbf{u}=(u_0, u_1,...)$.
 \begin{equation}
@@ -62,7 +62,7 @@ If one assumes that each $x_t$ is Gaussian with sufficient statistics $(\mu_t, \
 Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a second order conic optimisation problem. The authors ensure that each ellipse is contained in the feasible region by ensuring there exists sufficient ``back-off" (the distances $z_1$, $z_2$, $z_3$ and $z_4$) between the predicted ellipses and the constraints as shown in Figure \ref{fig_vanhessem}.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=1.0]{vanhess.pdf}
+\includegraphics[scale=0.8]{vanhess.pdf}
 \caption{Ellipsoidal approximation to ensure chance constraint satisfaction as used by \cite{vanhessem2} and \cite{vanhessem1}.}
 \label{fig_vanhessem}
 \end{figure}
@@ -83,9 +83,9 @@ We compare the effect different inference techniques have on the quality of the 
 \end{enumerate}
 Lastly, measurement and system noise is ubiquitous in real life systems. Therefore most modern model predictive control systems use an inference (filtering) technique to estimate the current system state. By using a filter the control system is implicitly using a probabilistic graphical model; therefore we are not actually introducing anything exotic but rather highlighting a connection between two rich fields. 
 
-\section{Switching Model Predictive Control}
+\section{Switching model predictive control}
 \label{sec_switch_mpc_lit}
-In MPC the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model is linear and time invariant. An example of such a model is shown in (\ref{eq_mpc_nodisturbance_obs}); since it includes system and measurement noise a state estimator would typically be used to infer $x_t$. The mean of the current state, $\mathbb{E}[x_t]$ together with the deterministic state model $x_{t+1} = Ax_t + Bu_t$ would then be used for prediction \cite{raw}. This assumption allows for the use of advanced constrained optimisation algorithms, typically Quadratic Programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
+In model predictive control the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model is linear and time invariant. An example of such a model is shown in (\ref{eq_mpc_nodisturbance_obs}); since it includes system and measurement noise a state estimator would typically be used to infer $x_t$. The mean of the current state, $\mathbb{E}[x_t]$ together with the deterministic state model $x_{t+1} = Ax_t + Bu_t$ would then be used for prediction \cite{raw}. This assumption allows for the use of advanced constrained optimisation algorithms, typically Quadratic Programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
 \begin{equation}
 \begin{aligned}
 &x_{t+1} = Ax_t + Bu_t + w_t~\text{(Latent)} \\

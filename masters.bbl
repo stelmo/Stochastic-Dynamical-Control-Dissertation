@@ -74,16 +74,16 @@ B.N. Datta.
   Analysis}.
 \newblock Elsevier, 2004.
 
+\bibitem{daum}
+F.~Daum and J.~Huang.
+\newblock Particle flow for nonlinear filters.
+\newblock In {\em Acoustics, Speech and Signal Processing (ICASSP), 2011 IEEE
+  International Conference on}, pages 5920--5923, May 2011.
+
 \bibitem{davidian}
 M.~Davidian.
 \newblock Applied longitudinal data analysis.
 \newblock North Carolina State University, 2005.
-
-\bibitem{mahala1}
-R.~De~Maesschalck, D.~Jouan-Rimbaus, and D.L. Massart.
-\newblock Tutorial: The mahalanobis distance.
-\newblock {\em Chemometrics and Intelligent Laboratory Systems}, 50:1--18,
-  2000.
 
 \bibitem{devilliers}
 J.P. de~Villiers, S.J. Godsill, and S.S. Singh.

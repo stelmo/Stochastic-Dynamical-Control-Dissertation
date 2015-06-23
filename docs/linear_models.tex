@@ -1,6 +1,6 @@
 \chapter{Inference using linear models}
 \label{sec_inf_lin_mods}
-In this chapter we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in Chapter \ref{sec_hmm}. We now assume that the states ($x_0,x_1,x_2,...$) and observations ($y_0,y_1,y_2,...$) are continuous random variables but the inputs ($u_0,u_1,u_2,...$) are continuous deterministic variables. Models of this form are called latent dynamical systems - the famous Kalman filter model falls into this category if one assumes linearity and normality.
+In this chapter we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in Chapter \ref{sec_hmm}. We now assume that the states ($x_0,x_1,x_2,...$) and observations ($y_0,y_1,y_2,...$) are continuous random variables but the inputs ($u_0,u_1,u_2,...$) are continuous deterministic variables. Models of this form are called latent dynamical systems - if one assumes linearity and normality the famous Kalman filter model falls into this category.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -28,7 +28,7 @@ In this chapter we consider probabilistic graphical models of the form shown in 
 \caption{Graphical model considered in this chapter.}
 \label{fig_linmod2}
 \end{figure}
-In the previous chapter we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous systems. The reason is that one would invariably need to discretise the domain of the continuous random variable under consideration. This would result in intractably large discrete systems if one requires fine resolution. To address this issue we extend the previous model to include both continuous states and observations. 
+In Chapter \ref{sec_hmm} we developed inference algorithms but assumed that the transition and observation functions were discrete. We also noted that this assumption is not appropriate for continuous systems. The reason is that one would invariably need to discretise the domain of the continuous random variable under consideration. This would result in intractably large discrete systems if one requires fine resolution. To address this issue we extend the previous model to include both continuous states and observations. 
 
 In this chapter we assume linearity and that all the random variables are Gaussian. While these are strong assumptions they form the building blocks of much more expressive models as we will discover in the next chapter. We also assume that the transition and observation functions are time invariant and that the state space model is of the form (\ref{eq_statespace}). From the graphical model in Figure \ref{fig_linmod2} we know that the latent variable $x_t$ is observed through $y_t$.
 \begin{equation}
@@ -51,6 +51,7 @@ We have implicitly assumed that the noise is Gaussian and white\footnote{The noi
 To fully specify the system we require the transition and observation probability density functions (these implicitly depend on the internal structure of the graphical model in Figure \ref{fig_linmod2}) as well as the prior (initial) distribution $p(x_0)$.
 
 \section{Kalman filter}
+\label{sec_kalman_filter_deriv}
 The goal of filtering is to find the posterior distribution $p(x_{t}|y_{0:t}, u_{0:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in Chapter \ref{sec_hmm} albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. The graphical model corresponding to filtering is shown in Figure \ref{fig_gm_linmods_filtering}.
 \begin{figure}[H] 
 \centering
@@ -318,4 +319,4 @@ Based on our discussion in Chapter \ref{sec_cstr}, where the CSTR example was in
 \end{figure}
 Comparing Figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorporating the state measurement the state estimation is much more accurate. The average concentration and temperature estimation error is only 4.09\% and 0.45\% respectively. It is not necessary to directly measure concentration as we have done: any measurement which depends on $C_A$ (or even both $C_A$ and $T_R$) would suffice. The second measurement reduces our uncertainty in the concentration state estimate because we have more to base our inference on than just a bad model.  
 
-In the next chapter we drop the linearity and normality assumptions at the cost of the closed form, exact inference solutions. Chapters \ref{sec_filtering_linmods} and \ref{sec_lin_prediction} form the basis of Chapter \ref{sec_linear_control} and we encourage the reader to familiarise themselves with it. 
+In the next chapter we drop the linearity and normality assumptions at the cost of the closed form, exact inference solutions. Chapters \ref{sec_kalman_filter_deriv} and \ref{sec_lin_prediction} form the basis of Chapter \ref{sec_linear_control} and we encourage the reader to familiarise themselves with it. 

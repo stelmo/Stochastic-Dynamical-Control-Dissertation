@@ -84,7 +84,7 @@ Since there is less switching noise there are less controller spikes in Figure \
 
 The results here lend further credibility to our claim that the instability seen in Chapter \ref{sec_rbpf_control} is rooted in the inappropriateness of the model used for prediction rather than the switching noise. Figure \ref{fig_spf_lqg_switch} had significant switching noise yet the controller was not unstable. While reducing the amount of switching noise certainly improved control, as Figure \ref{fig_spf_lqg_track2} shows, fundamentally we are not using an inappropriate model for control prediction. This difference is was causes the significantly better stability properties seen here.
 
-Motivated by the success of the switching LQG controller we incorporate the constraints in the sequel.
+Motivated by the success of the switching LQG controller we incorporate constraints in the sequel.
 
 \section{Constrained switching control} 
 In this chapter we extend the switching controller algorithm of Chapter \ref{sec_spf_uncon} to the deterministic and stochastic MPCs introduced in Chapter \ref{sec_lin_mpc_constained}. We use the same parameters as before.
@@ -189,7 +189,11 @@ Like in Chapter \ref{sec_linear_control} we see a clear benefit in increasing th
 \end{figure}
 In Figure \ref{fig_spf_mc2} we clearly see a concentration tracking bump after about 100 minutes - when the controller breaks. After that it is clear that the controller has switched because we again have set point tracking. The Monte Carlo absolute set point error over the last 10 minutes of each simulation is 1.30\%, 1.64\%, 1.47\% and 1.42\% for the LQG controller, the expected value-, 90\% chance- and 99\% chance constrained MPC controllers. 
 
-It is interesting that the same trends observed in Chapter \ref{sec_linear_control} are evident here. The chance constrained MPC controllers show better tracking error than the expected value controller. Again the aggressiveness of the expected value controller causes the higher error. In all cases we have set point tracking despite the plant fault.
+It is interesting that the same trends observed in Chapter \ref{sec_linear_control} are evident here. The chance constrained MPC controllers show better tracking error than the expected value controller. Again the aggressiveness of the expected value controller causes the higher error. In all cases we have set point tracking (a small $\delta$ as per Definition \ref{def_stoch_ref_track_goal}) despite the plant fault.
 
 \section{Conclusion}
-In this chapter we developed a switching controller algorithm which intelligently detects when a process fault has occurred by using a switching particle filter. The controller uses this knowledge to adapt the model used for control. The switching particle filter was found to robustly identify when the modelled fault occurred. Furthermore, the switching controller algorithms were able to stabilise and control the system to set point despite the plant fault.
+In this chapter we have developed a switching controller algorithm which detects when a process fault has occurred by using noisy measurement data in conjunction with a switching particle filter. The controller uses this knowledge to adapt the model used for control. The switching particle filter successfully identified when the modelled fault occurred in all the simulations.
+
+The LQG controller, expected value- and chance constrained MPC controllers were all implemented within the switching controller algorithm framework. It was found that they were able to stabilise and control the system to set point despite the plant fault. This is was confirmed using Monte Carlo analysis. Furthermore, the scheme is computationally efficient because the controllers can be formulated as deterministic, linearly constrained quadratic programming optimisation problems. 
+
+The bottleneck in the switching controller algorithm is inference. Since it is essentially a particle filter it is reasonable to suppose that there might be problems in higher dimensional spaces. However, recent work \cite{daum} on particle filters looks extremely promising in reducing the computational problems associated with filters of this kind.

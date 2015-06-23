@@ -37,7 +37,7 @@ Our first goal is to solve the problem in (\ref{eq_mpc_unconstrained_linmod}) gi
 \end{equation}
 Note that the future inputs $\mathbf{u}=(u_0, u_1,...,u_{T-1})$ are denoted in boldface to emphasise that it could be a vector of vectors. Inspecting (\ref{eq_mpc_unconstrained_linmod}) we see that this is none other than the LQG control problem of Chapter \ref{sec_lqg_lit}. Therefore we know what the optimal solution should look like.
 
-We start our analysis using the results of Chapter \ref{sec_inf_lin_mods}. We immediately realise that the optimal linear state estimator is the Kalman filter. We assume that at every sequential time step we have the current state estimate, supplied by the Kalman filter, and denote this by $x_0$. Since we are using the Kalman filter the mean and covariance of the state estimate is well defined. 
+We start our analysis using the results of Chapter \ref{sec_inf_lin_mods}. We assume that at every sequential time step we have the current state estimate, which is assumed to be Gaussian, and denote this by $x_0$. 
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -58,7 +58,7 @@ We start our analysis using the results of Chapter \ref{sec_inf_lin_mods}. We im
   \edge {xb} {xc};
   
 \end{tikzpicture}
-\caption{graphical model for state prediction}
+\caption{Graphical model for state prediction.}
 \label{fig_gm_mpc}
 \end{figure}
 Inspecting Figure \ref{fig_gm_mpc} we note that the state prediction equations derived in Chapter \ref{sec_lin_prediction} are applicable. Thus we can predict the state distributions given the future inputs $\mathbf{u}$.
@@ -80,7 +80,7 @@ Now we are in a position to show the equivalence between the LQR control problem
 & J_{LQG}(x_0, \mathbf{u}) =  \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \label{eq_lqg_obj_func} \\
 & \text{with } x_{t+1} = Ax_t +Bu_t + w_{t+1} \nonumber \\
 \end{align}
-Suppose $x_0$ is the state estimate supplied by the Kalman filter given the latest observation in the stochastic case. In the deterministic case we have that $x_0 = \mathbb{E}[x_0] = \mu_0$ because we exactly observe the state. Given any input sequence $\mathbf{u} \in \mathcal{U}$, where $\mathcal{U}$ is the shared admissible input space, we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ where $ \Sigma_{t+1} = W+A\Sigma_t A^T$ and $\Sigma_0$ is the covariance matrix of the current state given by the Kalman filter.
+Suppose $x_0$ is the state estimate, assumed to be Gaussian, given the latest observation in the stochastic case. In the deterministic case we have that $x_0 = \mathbb{E}[x_0] = \mu_0$ because we exactly observe the state. Given any input sequence $\mathbf{u} \in \mathcal{U}$, where $\mathcal{U}$ is the shared admissible input space, we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ where $ \Sigma_{t+1} = W+A\Sigma_t A^T$ and $\Sigma_0$ is the covariance matrix of the current state given by the observer.
 \label{thrm_lqr_lqg_diff}
 \end{thrm}
 \begin{proof}
@@ -92,7 +92,7 @@ J_{LQG}(x_0, \mathbf{u}) &= \frac{1}{2} \mathbb{E}\left[x_0^TQx_0 + u_0^TRu_0 \r
 \end{aligned}
 \label{eq_expanded_obj}
 \end{equation}
-We know that $x_0\sim \mathcal{N}(\mu_0, \Sigma_0)$ because the current state estimate comes from the Kalman filter. This means that we can evaluate the first expected value in (\ref{eq_expanded_obj}) using Theorem \ref{thrm_gaussian_identities} as shown in (\ref{eq_exp1}).
+We know that $x_0\sim \mathcal{N}(\mu_0, \Sigma_0)$ because the current state estimate was assumed to be Gaussian. This means that we can evaluate the first expected value in (\ref{eq_expanded_obj}) using Theorem \ref{thrm_gaussian_identities} as shown in (\ref{eq_exp1}).
 \begin{equation}
 \mathbb{E}\left[x_0^TQx_0\right] = \text{tr}(Q\Sigma_0) + \mu_0^TQ\mu_0
 \label{eq_exp1}
@@ -115,7 +115,7 @@ Now note that except for the last term $J_{LQG}(x_0, \mathbf{u})$ is exactly the
 \end{proof}
 Finally we combine Theorem \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} to produce Theorem \ref{thrm_lqg_sol}.
 \begin{thrm}
-\textbf{Solution of the finite horizon LQG control problem} We wish to solve the LQG control problem within the framework of graphical models. The full problem is shown in (\ref{eq_lqg_problem_full}). We assume that $x_0$ is the current posterior state estimate supplied by the Kalman filter.
+\textbf{Solution of the finite horizon LQG control problem} We wish to solve the LQG control problem within the framework of graphical models. The full problem is shown in (\ref{eq_lqg_problem_full}). We assume that $x_0$ is the current posterior state estimate, which is Gaussian, supplied by some observer.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -123,24 +123,24 @@ Finally we combine Theorem \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} to pr
 \end{aligned}
 \label{eq_lqg_problem_full}
 \end{equation}
-The solution of (\ref{eq_lqg_problem_full}) is equivalent to solving the LQR problem with initial state equal to the mean of the initial state estimate from the Kalman filter.
+The solution of (\ref{eq_lqg_problem_full}) is equivalent to solving the LQR problem with initial state equal to the mean of the initial state estimate supplied by some observer.
 \label{thrm_lqg_sol}
 \end{thrm}
 \begin{proof}
-We assume that we have the Kalman filter posterior state estimate for $x_0$. We use Theorem \ref{thrm_lqr_lqg_diff} to prove that given $x_0$ and $\forall \mathbf{u} \in \mathcal{U}$ we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ with $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \in \mathbb{R}$ a constant depending only on $x_0$. Thus we can use Theorem \ref{thrm_optim_eq} to prove that we only need to solve for the optimal controller input $\mathbf{u}$ using the LQR objective function to solve (\ref{eq_lqg_problem_full}). 
+We assume that we have a Gaussian posterior state estimate for $x_0$. We use Theorem \ref{thrm_lqr_lqg_diff} to prove that given $x_0$ and $\forall \mathbf{u} \in \mathcal{U}$ we have that $J_{LQR}(x_0, \mathbf{u}) + \frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) = J_{LQG}(x_0, \mathbf{u})$ with $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k) \in \mathbb{R}$ a constant depending only on $x_0$. Thus we can use Theorem \ref{thrm_optim_eq} to prove that we only need to solve for the optimal controller input $\mathbf{u}$ using the LQR objective function to solve (\ref{eq_lqg_problem_full}). 
 \end{proof}
 
-As we have mentioned before, the separation theorem (sometimes called certainty equivalence) implies that the solution of the LQG control problem is achieved by using the Kalman filter to optimally estimate the current state and then using that state estimate in the optimal LQR controller. It is reassuring that Theorem \ref{thrm_lqg_sol} is confirmed by this result. The primary benefit of the graphical model approach is clear: we have solved the LQG problem without resorting to stochastic dynamical programming.
+As we have mentioned before, the separation theorem (sometimes called certainty equivalence) implies that the solution of the LQG control problem is achieved by using the Kalman filter to optimally estimate the current state and then using that state estimate in the optimal LQR controller. It is reassuring that Theorem \ref{thrm_lqg_sol} is confirmed by this result if we use the Kalman filter as the observer. The primary benefit of the graphical model approach is clear: we have solved the LQG problem without resorting to stochastic dynamical programming.
 
 Under some circumstances it is also possible to extend the result of Theorem \ref{thrm_lqg_sol} to the infinite horizon case as shown in Theorem \ref{thrm_lqg_sol_inf}.
 \begin{thrm}
-\textbf{Solution of the infinite horizon LQG control problem} If the linear model of (\ref{eq_lin_system_control}) is stable then, using, with some minor adjustments, Theorems \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} it is possible to show that the infinite horizon LQG problem is solved in a similar manner: the Kalman filter state estimate is used in conjunction with the infinite horizon LQR solution. This result can also be obtained by using the separation theorem. \label{thrm_lqg_sol_inf}
+\textbf{Solution of the infinite horizon LQG control problem} If the linear model of (\ref{eq_lin_system_control}) is stable then, using, with some minor adjustments, Theorems \ref{thrm_optim_eq} and \ref{thrm_lqr_lqg_diff} it is possible to show that the infinite horizon LQG problem is solved in a similar manner: a Gaussian state estimate is used in conjunction with the infinite horizon LQR solution. This result can also be obtained by using the separation theorem. \label{thrm_lqg_sol_inf}
 \end{thrm}
-To clarify why it is important that the linear system (i.e. the matrix $A$) is stable, consider the quantity $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$. If it is unbounded the optimisation problem will be ill posed because the minimum will tend to infinity. Inspecting $\Sigma_{t+1} = W+A\Sigma_t A^T$ we see that $||\Sigma_{\infty}||$ will be unbounded if $||A\Sigma_t A^T||$ becomes unbounded ($W$ is a constant) as $t \rightarrow \infty$. Note that $||\cdot||$ is some matrix norm. It can be shown that only if the eigenvalues of $A$ are less than unity i.e. the linear model is stable, then $||A\Sigma_{t+1}A^T|| \leq ||A\Sigma_{t}A^T||$ which implies that $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$ is bounded and the optimisation is reasonable.
+To clarify why it is important that the linear system (i.e. the matrix $A$) is stable, consider the quantity $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$. If it is unbounded the optimisation problem will be ill posed because the minimum will tend to some infinity. Inspecting $\Sigma_{t+1} = W+A\Sigma_t A^T$ we see that $||\Sigma_{\infty}||$ will be unbounded if $||A\Sigma_t A^T||$ becomes unbounded ($W$ is a constant) as $t \rightarrow \infty$. Note that $||\cdot||$ is some matrix norm. It can be shown that only if the eigenvalues of $A$ are less than unity i.e. the linear model is stable, then $||A\Sigma_{t+1}A^T|| \leq ||A\Sigma_{t}A^T||$ which implies that $\frac{1}{2}\sum_{k=0}^N \text{tr}(Q\Sigma_k)$ is bounded and the optimisation is reasonable.
 
 \section{Constrained stochastic control}
 \label{sec_lin_mpc_constained}
-The goal of this chapter is to solve the stochastically constrained MPC optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian. From the results of Chapter \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible. We also restrict our analysis to affine constraints. Note that we only include one affine constraint in the succeeding examples however, additional constraints are handled in exactly the same way as we will show. Furthermore, we assume that the current state estimate $x_0$ is supplied by some observer.
+The goal of this chapter is to solve the stochastically constrained MPC optimisation problem shown in (\ref{eq_mpc_constrained_linmod}). We assume that the underlying system is linear and the probability distributions are Gaussian. From the results of Chapter \ref{sec_inf_lin_mods} the probability distributions will be Gaussian if the system dynamics are linear. However, it is well known \cite{mac} that MPC is not in general a linear controller. From an analytical point of view this is problematic. We assume that the nonlinearity introduced by the MPC is negligible. We also restrict our analysis to affine constraints. Note that we only include one affine constraint in the succeeding examples however, the multiple constraint generalisation is addressed in the theory and are handled in exactly the same way as the examples using a single constraint. Furthermore, we assume that the current state estimate $x_0$ is supplied by some observer.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -156,15 +156,15 @@ For navigational convenience we supply a link to Theorem \ref{thrm_mpc_stoch_to_
 
 Theorem \ref{thrm_affine_expected_const} succinctly shows that it is simple to convert the expected value constraint in (\ref{eq_mpc_constrained_linmod}) to a linear deterministic constraint.
 \begin{thrm}
-\textbf{Affine expected value constraints} Suppose we have a stochastic variable $x$ with a known Gaussian distribution with $d \in \mathbb{R}^{n}$ and $e \in \mathbb{R}$. Then the stochastic constraint $\mathbb{E}[d^Tx + e] \geq 0$ simplifies to the deterministic constraint $d^T\mu + e \geq 0$ where $\mathbb{E}[x]= \mu$ is the mean of the stochastic variable. 
+\textbf{Affine expected value constraints} Suppose we have a stochastic variable $x$ with a known Gaussian distribution and we also have $d \in \mathbb{R}^{n}$ and $e \in \mathbb{R}$. Then the stochastic constraint $\mathbb{E}[d^Tx + e] \geq 0$ simplifies to the deterministic constraint $d^T\mu + e \geq 0$ where $\mathbb{E}[x]= \mu$ is the mean of the stochastic variable. 
 
-Furthermore, suppose we have the set of stochastic constraints $\mathbb{E}[Dx + e] \geq 0$. In this case $D \in \mathbb{R}^{n \times m}$ and $e \in \mathbb{R}^n$. Then $\mathbb{E}[Dx + e] \geq 0$ simplifies to $D\mu + e \geq 0$.  
+Furthermore, suppose we have the set of $n$ stochastic constraints $\mathbb{E}[Dx + e] \geq 0$. In this case $D \in \mathbb{R}^{n \times m}$ and $e \in \mathbb{R}^n$. Then $\mathbb{E}[Dx + e] \geq 0$ simplifies to $D\mu + e \geq 0$.  
 \label{thrm_affine_expected_const}
 \end{thrm}
 \begin{proof}
 We know that $x$ is a Gaussian stochastic variable. By Theorem \ref{thrm_gaussian_identities} we know that $\mathbb{E}[d^Tx + e] =d^T\mu + e$ and $\mathbb{E}[Dx + e] = D\mu + e$. This immediately implies the result.
 \end{proof}
-It is interesting to pause here for a moment and consider Theorem \ref{thrm_lqg_sol} and Theorem \ref{thrm_affine_expected_const} applied to a problem of the form (\ref{eq_mpc_constrained_linmod_noprob}). We assume that the current state estimate is available at each time step and that $\mathbb{E}[x_0]=\mu_0$.
+It is interesting to pause here for a moment and consider Theorem \ref{thrm_lqg_sol} and Theorem \ref{thrm_affine_expected_const} applied to a problem of the form (\ref{eq_mpc_constrained_linmod_noprob}). We assume that the current state estimate is available at each time step, that it is Gaussian and that $\mathbb{E}[x_0]=\mu_0$.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -357,7 +357,7 @@ Q = P_f = \begin{pmatrix}
 \end{equation}
 We assume that a Kalman filter supplies the current posterior state estimate $x_0$ at each time step. Additionally, we assume a zero order hold of 1 min between controller inputs.
 
-It is useful to introduce the measures we will use to quantify the effectiveness of the control techniques used in this and the following chapters. We define the average energy input by $\frac{1}{N}\sum^N_{t=0}|u_t-u_s|$ and the average concentration error by $\frac{1}{N}\sum^N_{t=0}|\frac{{C_A}_t-y_{sp}}{y_{sp}}|$. Additionally, to confirm that the results hold true over multiple simulations we will, at the end of Chapters \ref{sec_lin_sys_cont} and \ref{sec_nonlinear_control}, include a Monte-Carlo simulation. The metrics we use for the Monte Carlo simulations will be the time each simulation spent in violation of the constraints and the total state space area (measured within the context of the Mahalanobis distance) in violation of the constraint. 
+It is useful to introduce the measures we will use to quantify the effectiveness of the control techniques used in this and the following chapters. We define the average energy input by $\frac{1}{N}\sum^N_{t=0}|u_t-u_s|$ and the average concentration error by $\frac{1}{N}\sum^N_{t=0}|\frac{{C_A}_t-y_{sp}}{y_{sp}}|$. Additionally, to confirm that the results hold true over multiple simulations we will, at the end of Chapters \ref{sec_lin_sys_cont} and \ref{sec_nonlinear_control}, include a Monte-Carlo simulation. The metrics we use for the Monte Carlo simulations will be the time each simulation spent in violation of the constraints and the total state space area (measured within the context of the Mahalanobis distance) in violation of the constraint.  
 
 First we illustrate the approach of using only the result of Theorem \ref{thrm_lqg_sol} i.e. we apply the LQG regulator to the system. Based on our previous results we know that given the Kalman filter's current posterior state estimate mean, $\mu_0$, we only need to solve the LQR as shown in (\ref{eq_lqg_linmod}) to solve the LQG problem. The prediction horizon $N$ is set at 150 time steps i.e. 15 minutes into the future. 
 \begin{equation}
@@ -405,7 +405,7 @@ In Figure \ref{fig_lin_mod_kf_mean_ss} we see the corresponding state space traj
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{lin_mod_kf_mean_ss.pdf}
-\caption{Deterministic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states.}
+\caption{Deterministic MPC state space trajectory with initial condition $(0.55, 450)$ and measuring both states. The red line is the constraint.}
 \label{fig_lin_mod_kf_mean_ss}
 \end{figure}
 While the predicted mean state estimates do not violate the constraint (due to the optimisation constraints) the actual underlying system does.  This is clearly seen if one inspects the confidence region around the lower state estimates in Figure \ref{fig_lin_mod_kf_mean_ss}. The confidence region is deeply violated by the constraint which implies that it is likely that the underlying system might. This is clearly a problem from a control point of view; the deterministic MPC cannot ensure that the constraint is satisfied.
@@ -474,7 +474,7 @@ The approximation curve in Figure \ref{fig_lin_mod_kl} shows how much the sample
 
 In Figure \ref{fig_lin_mod_kl} we see that the approximation is relatively close to the baseline. Additionally it is far removed from the uniform curve. The average divergence for the baseline, approximation and uniform curve (in nats) is: $0.035$, $0.069$ and $0.322$ respectively. This implies that even though we are using a non-linear control technique the posterior state distributions are still approximately Gaussian. 
 
-Finally, in Figure \ref{fig_lin_mod_kf_mc} we investigate the effect $k^2$ has on the chance constraint. We expect that by increasing $k^2$ the system becomes more conservative and less likely to violate the constraint. Under the assumptions of linearity and normality we are assured of this behaviour due to Theorem \ref{thrm_mpc_stoch_to_det}. However, as Figure \ref{fig_lin_mod_kl} indicates our assumptions do not  strictly hold. In Figures \ref{fig_lin_mod_kf_var90_ss} and \ref{fig_lin_mod_kf_var99_ss} we reached the conclusion that the chance constraint was effective by only considering a single simulation. In Figure \ref{fig_lin_mod_kf_mc} we show the compilation of over 2000 runs to illustrate the veracity of the claim that the chance constraints are effective.
+In Figure \ref{fig_lin_mod_kf_mc} we investigate the effect $k^2$ has on the chance constraint. We expect that by increasing $k^2$ the system becomes more conservative and less likely to violate the constraint. Under the assumptions of linearity and normality we are assured of this behaviour due to Theorem \ref{thrm_mpc_stoch_to_det}. However, as Figure \ref{fig_lin_mod_kl} indicates our assumptions do not  strictly hold. In Figures \ref{fig_lin_mod_kf_var90_ss} and \ref{fig_lin_mod_kf_var99_ss} we reached the conclusion that the chance constraint was effective by only considering a single simulation. In Figure \ref{fig_lin_mod_kf_mc} we show the compilation of over 2000 runs to illustrate the veracity of the claim that the chance constraints are effective.
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{lin_mod_kf_mc.pdf}
@@ -484,6 +484,15 @@ Finally, in Figure \ref{fig_lin_mod_kf_mc} we investigate the effect $k^2$ has o
 The Mahalanobis area dimension indicates the degree to which the constraint was violated: larger numbers imply the constraint was deeply violated in state space. The time in violation dimension indicates the length of time the system violated the constraint. It is clear that the chance constraints dramatically reduce the violation characteristics of the system. 
 
 Interestingly, there seems to be diminishing returns on increasing $k^2$ beyond the 99\% chance interval. Feasibility issues plague the system under the more conservative chance constraint levels. Intuitively the predicted ellipses become too big to fit inside the feasible region - especially when projected forward in time. Given that the controller input - the only way to move them inside the feasible region - is constrained the system reaches a performance deadlock. In the work by \cite{yan1} they also noted this problem and solved it by not letting the confidence ellipses grow as they were projected into the future (see the discussion after Theorem \ref{thrm_lqg_sol_inf} and in Chapter \ref{sec_switch_mpc_lit}). For this system the issue is not severe enough to warrant further concern.   
+
+Finally, we illustrate that the MPC controllers we developed, using the linear underlying model, actually drive the system to the set point for many runs - not just the single realisation we considered so far. In Figure \ref{fig_lin_mod_kf_mc2} a Monte Carlo simulation was conducted using 50 runs per controller.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{lin_mod_kf_mc2.pdf}
+\caption{Monte-Carlo simulation showing the set point tracking of the MPC controllers developed in this chapter. Subplot (I) corresponds to the expected value constrained MPC, subplots (II), (III) and (IV) correspond to the 90\%, 99\% and 99.9\% chance constrained MPC controllers. The green line is the set point.}
+\label{fig_lin_mod_kf_mc2}
+\end{figure}
+It is clear that each controller causes the system to approach set point. However, the more conservative the systems become (i.e. 99\% and 99.9\% chance constrained) the longer they take to reach the set point. We did not include the LQG controller in this analysis because the theory supporting its convergence is very well studied in literature. The Monte Carlo absolute average set point errors over the last 10 minutes for each controller are: 1.54\%, 1.73\%, 2.15\% and 3.5\% respectively. The controllers come close enough to the set point to suggest they work (a small $\delta$ as per Definition \ref{def_stoch_ref_track_goal}). The increasing average error is caused by the conservativeness of the system - at the end of the simulation the controllers have not yet come as close to their set point as the more aggressive controllers. 
 
 \section{Nonlinear system}
 \label{sec_nonlinear_control}
@@ -589,14 +598,23 @@ In Figure \ref{fig_nonlin_mod_kf_var99_ss} we see that the margin of safety is i
 \end{figure}
 The ability of $k$ to increase or decrease the conservativeness of the constraint lends credibility to its value, if the system is non-normal, at the very least as an empirical measure to include stochastic robustness to the MPC in an efficient way.
 
-Finally, Figure \ref{fig_lin_mod_kf_mc} illustrates the effect increasing $k^2$ (i.e. the threshold for the chance constraint) has on the system. Over 2000 simulations were used to illustrate that these tendencies hold not just for a specific realisation. 
+Figure \ref{fig_lin_mod_kf_mc} illustrates the effect increasing $k^2$ (i.e. the threshold for the chance constraint) has on the system. Over 2000 simulations were used to illustrate that these tendencies hold not just for a specific realisation. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{nonlin_mod_kf_mc.pdf}
-\caption{Monte-Carlo simulation to investigate the effect increasing $k^2$ has on the constraint violation characteristics of the MPC controllers. Each region indicates where 90\% of the simulations scored. The mean is indicated by a solid point.}
+\caption{Monte-Carlo simulation to investigate the effect increasing $k^2$ has on the constraint violation characteristics of the MPC controllers. Each region indicates where 90\% of the simulations scored. The mean is indicated by a solid point. A Kalman filter was used for inference.}
 \label{fig_nonlin_mod_kf_mc}
 \end{figure}
-It is clear that increasing $k^2$ causes the constraints to be violated less. It is also clear that the expected value constrained MPC (i.e. the deterministic MPC) performed significantly worse with the nonlinear underlying model when compared to Figure \ref{fig_lin_mod_kf_mc}. The value of the chance constrained MPC is apparent here. Unlike Figure \ref{fig_lin_mod_kf_mc} there seems to be more value in increasing the chance threshold above the 99\% interval.
+It is clear that increasing $k^2$ causes the constraints to be violated less (as per the theory). It is also clear that the expected value constrained MPC (i.e. the deterministic MPC in Figure \ref{fig_lin_mod_kf_mc}) performed significantly worse with the nonlinear underlying model when compared to Figure \ref{fig_nonlin_mod_kf_mc}. The value of the chance constrained MPC is apparent here. Unlike Figure \ref{fig_lin_mod_kf_mc} there seems to be more value in increasing the chance threshold above the 99\% interval.
+
+Figure \ref{fig_lin_mod_kf_mc2} illustrates that the controllers we developed in this chapter, using the Kalman filter on the nonlinear underlying system, do indeed drive the system to the set point for many runs (not just the single realisation of our earlier examples). We again do not include a Monte Carlo simulation for the LQG controller because it is very well studied in literature.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{nonlin_mod_kf_mc2.pdf}
+\caption{Monte-Carlo simulation showing the set point tracking of the MPC controllers developed in this chapter. Subplot (I) corresponds to the expected value constrained MPC, subplots (II), (III) and (IV) correspond to the 90\%, 99\% and 99.9\% chance constrained MPC controllers. The green line is the set point. A Kalman filter was used for inference.}
+\label{fig_nonlin_mod_kf_mc2}
+\end{figure}
+The Monte Carlo simulations (50 per controller) indicated that all the controllers tracked the set point. The Monte Carlo absolute average set point error over the last 10 minutes for each controller are: 1.56\%, 1.47\%, 1.70\% and 2.24\% respectively. The controllers come close enough to the set point to suggest they work (a small $\delta$ as per Definition \ref{def_stoch_ref_track_goal}). We again see that the more conservative controllers have larger errors because they take longer to reach set point. However, this tendency is much less pronounced here than in Figure \ref{fig_lin_mod_kf_mc2}.
 
 Figures \ref{fig_nonlin_mod_kf_var90_track} to \ref{fig_nonlin_mod_kf_var99_ss} all display the undesirable property originally seen in Figure \ref{fig_nonlin_mod_kf_mean_track}: the poor state estimation and associated control problems. We attempt to rectify this situation by using a more sophisticated filter with the chance constrained MPC. We use the MPC as shown in (\ref{eq_mpc_nonlin_mod_cons}) with a particle filter using 200 particles. The tracking results are shown in Figure \ref{fig_nonlin_mod_pf_mean_track}. 
 \begin{figure}[H] 
@@ -617,11 +635,20 @@ The average input energy and average concentration error is 24.26 kW and 2.34\% 
 In Figure \ref{fig_nonlin_mod_pf_mc} we compare the constraint violation characteristics of the Kalman filter and particle filter based MPCs using over 2000 simulations. 
 \begin{figure}[H] 
 \centering
-\includegraphics[width=\textwidth]{nonlin_mod_kf_pf_mc.pdf}
+\includegraphics[width=\textwidth]{nonlin_mod_pf_mc.pdf}
 \caption{Monte-Carlo simulation to investigate the effect increasing $k^2$ has on the constraint violation characteristics of the MPC controllers. Each region indicates where 90\% of the simulations scored. The mean is indicated by a solid point. KF indicates the Kalman Filter MPC and PF indicates the particle filter MPC.}
 \label{fig_nonlin_mod_pf_mc}
 \end{figure}
-It is clear that the particle filter based MPC outperforms the Kalman filter based MPC. This is not surprising because, as we discussed for the single realisation results, the state estimation ability of the Kalman filter is inferior due to the nonlinear underlying system.
+It is clear that the particle filter based MPC outperforms the Kalman filter based MPC in terms of constraint violation characteristics. This is not surprising because, as we discussed for the single realisation results, the state estimation ability of the Kalman filter is inferior due to the nonlinear underlying system.
+
+In Figure \ref{fig_nonlin_mod_pf_mc2} we illustrate that the particle filter based stochastic MPC controllers we developed track the set point.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{nonlin_mod_pf_mc2.pdf}
+\caption{Monte-Carlo simulation showing the set point tracking of the MPC controllers developed in this chapter. Subplot (I) corresponds to the expected value constrained MPC and subplot (II) corresponds to the 90\% chance constrained MPC controller. The green line is the set point. A particle filter was used for inference.}
+\label{fig_nonlin_mod_pf_mc2}
+\end{figure}
+The Monte Carlo average set point error over the last 10 minutes of each controller (50 simulations per controller) are: 1.51\% and 1.59\% respectively. The controllers come close enough to the set point to suggest they work (a small $\delta$ as per Definition \ref{def_stoch_ref_track_goal}).
 
 As before we need to investigate the normal assumption underpinning the theory behind the chance constraint simplification. We investigate it in exactly the same manner as Figure \ref{fig_lin_mod_kl} using Kullback-Leibler Divergence. To this end, Figure \ref{fig_nonlin_mod_kl} shows the degree to which the underlying posterior state distributions are Gaussian given the non-linear underlying system.
 \begin{figure}[H] 
@@ -642,5 +669,6 @@ We have generalised our analysis to stochastic MPC and shown that by using the s
 \item
 Combining the previous results we have shown that it is possible to write the joint chance constrained stochastic quadratic MPC problem as a deterministic quadratic MPC problem. Additionally we show that the joint chance constraints can be written in a linear format. The entire optimisation problem can then be written in the standard form for quadratic programming optimisation. Standard deterministic MPC solution and analysis techniques can then be used to solve the stochastic problem.
 \item
-We have compared the effect different inference techniques have on the quality of the MPC. If the system is linear and Gaussian the Kalman filter is adequate. If there is significant departure from linearity or normality it can be beneficial to use the particle filter.
+We have compared the effect different inference techniques have on the quality of the MPC. If the system is linear and Gaussian the Kalman filter is adequate. If there is significant departure from linearity or normality it can be beneficial to use the particle filter. The computational burden of the inference technique must also be taken into account when designing a controller.
 \end{enumerate}
+In Part \ref{part_two} we generalise our graphical models to incorporate switching states. This allows us to design switching model predictive controllers.
