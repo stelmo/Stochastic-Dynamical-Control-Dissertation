@@ -21,7 +21,7 @@ A coincidental benefit of this approach is that the filter/controller combinatio
 
 Since the underlying graphical model in Chapter \ref{sec_inf_lin_hybrid} and Chapter \ref{sec_inf_spf} is the same, we expect the filtering trends to be the same as those found in Chapter \ref{sec_inf_lin_hybrid}. For the sake of illustration we exclusively use both state measurements. There is no fundamental reason why one cannot use only one state measurement except that the filter performance will be worse.
 
-For the remainder of this chapter we assume the control goal is to keep the the system at the unsteady concentration operating point of the healthy model, even in the presence of the denatured catalyst. In all the simulations the catalyst denatures at 100 minutes. This allows us to demonstrate that the switching controller is able to regulate both the healthy and faulty plant. 
+For the remainder of this chapter we assume the control goal is to keep the system at the unsteady concentration operating point of the healthy model, even in the presence of the denatured catalyst. In all the simulations the catalyst denatures at 100 minutes. This allows us to demonstrate that the switching controller is able to regulate both the healthy and faulty plant. 
 
 \section{Unconstrained switching control}
 \label{sec_spf_uncon}
@@ -42,7 +42,7 @@ In Figure \ref{fig_spf_pf_lqg_track} we see the performance of the LQG controlle
 \caption{Standard LQG controller applied to the CSTR where the catalyst denatures at 100 minutes. The bootstrap particle filter was used for inference and the Gaussian approximation of the particles was used.}
 \label{fig_spf_pf_lqg_track}
 \end{figure}
-The average concentration error is 11.83\% and the average controller input is 17.08 kW over the course of the simulation. We can clearly see that there is non-zero set point offset and control is bad in the sense of Definition \ref{def_stoch_ref_track_goal}. Clearly the LQG controller is ineffective in this scenario.
+The average concentration error is 6.79\% and the average controller input is 17.08 kW over the course of the simulation. We can clearly see that there is non-zero set point offset and control is bad in the sense of Definition \ref{def_stoch_ref_track_goal}. Clearly the LQG controller is ineffective in this scenario.
 
 We used a constant disturbance model to infer the plant/model mismatch\footnote{The results of this chapter implement the constant disturbance model to achieve zero set point offset. To keep notation the same we do not explicitly show it in (\ref{eq_spf_mpc_expected}) but mention it here.}. This was used to accordingly adjust the controller predictions as discussed in Chapter \ref{sec_switch_mpc_lit}. It is interesting to note that the state estimator infers that the plant reaches set point but in reality there is non-zero offset. This is a consequence of using an inappropriate model in the controller. 
 
@@ -80,7 +80,7 @@ The average concentration error is 2.38\% and the average controller input is 19
 \caption{Most likely model identified using the particle filter within the context of the switching LQG controller algorithm. Switch transition matrix $P_2$ was used.}
 \label{fig_spf_lqg_switch2}
 \end{figure}
-Since there is less switching noise there are less controller spikes in Figure \ref{fig_spf_lqg_track2} and thus less controller energy is wasted.    Finally, a Monte Carlo simulation was performed (using 100 runs) to illustrate that the switching controller works as desired for not just the realisations shown in this chapter. The Monte Carlo average concentration error from set point was 2.58\%. This indicates that the controller works as desired.
+Since there is less switching noise there are less controller spikes in Figure \ref{fig_spf_lqg_track2} and thus less controller energy is wasted. Finally, a Monte Carlo simulation was performed (using 50 runs) to illustrate that the switching controller works as desired for not just the realisations shown in this chapter. The Monte Carlo absolute average concentration error from set point was 1.30\% taken over the last 10 minutes of each simulation. This indicates that the controller works as desired. We defer further Monte Carlo analysis to the next chapter.
 
 The results here lend further credibility to our claim that the instability seen in Chapter \ref{sec_rbpf_control} is rooted in the inappropriateness of the model used for prediction rather than the switching noise. Figure \ref{fig_spf_lqg_switch} had significant switching noise yet the controller was not unstable. While reducing the amount of switching noise certainly improved control, as Figure \ref{fig_spf_lqg_track2} shows, fundamentally we are not using an inappropriate model for control prediction. This difference is was causes the significantly better stability properties seen here.
 
@@ -103,7 +103,7 @@ Like in Chapter \ref{sec_lin_sys_cont} we first illustrate the performance of th
 \end{equation} 
 Using the results of Chapter \ref{sec_lin_mpc_constained} we know that (\ref{eq_spf_mpc_expected}) can be reformulated as a deterministic problem given the (Gaussian) current state estimate $x_0$. The state estimate is derived from either the particle filter or switching particle filter using 200 and 500 particles respectively. For the switching particle filter we use the switch transition matrix $P_2$ due to the results in Chapter \ref{sec_spf_uncon}.
 
-In Figure \ref{fig_spf_pf_mpc_track} we see the set point tracking performance of the (\ref{eq_spf_mpc_expected}) using the same particle filter as used in Chapter \ref{sec_spf_uncon}. Since the particle filter only uses the healthy plant model we only use $M_1$. 
+In Figure \ref{fig_spf_pf_mpc_track} we see the set point tracking performance of (\ref{eq_spf_mpc_expected}) using the same particle filter as used in Chapter \ref{sec_spf_uncon}. Since the particle filter only uses the healthy plant model we only use $M_1$. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{spf_pf_mpc_track.pdf}
@@ -119,14 +119,16 @@ In Figure \ref{fig_spf_mpc_track} we see the switching controller algorithm appl
 \caption{The switching MPC controller algorithm applied to the CSTR with catalyst which denatures at 100 minutes.}
 \label{fig_spf_mpc_track}
 \end{figure}
-The average concentration error is 3.19\% and the average controller input is 22.61 kW over the simulation time span. The performance of the switching controller is significantly better than the non-switching case. This is not surprising because, as Figure \ref{fig_spf_mpc_switch} shows, the filter correctly identifies when the plant breaks.
+The average concentration error is 3.19\% and the average controller input is 22.61 kW over the simulation time span. The performance of the switching controller is significantly better than the non-switching case. This is not surprising because, as Figure \ref{fig_spf_mpc_switch} shows, the filter correctly identifies when the plant breaks. The tell tale controller spike is also evident after 100 minutes indicating that the controller switched.
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{spf_mpc_switch.pdf}
 \caption{Most likely model identified using the particle filter within the context of the switching MPC controller algorithm.}
 \label{fig_spf_mpc_switch}
 \end{figure}
-There is almost no switching noise in Figure \ref{fig_spf_lqg_switch} due to the static nature of the switch transition matrix $P_2$. If $P_1$ were used we would expect more noise. As mentioned in Chapter \ref{sec_inf_lin_hybrid} switching noise is not necessarily bad for inference. We do see that the filter does not immediately notice that the underlying model has changed. The stickier the switch transition matrix is the longer it will take for the controller to adjust the model. Depending on the application this delay could be problematic. In Figure \ref{fig_spf_mpc_state} we see the state space trajectory of the expected value constraint MPC.
+There is almost no switching noise in Figure \ref{fig_spf_lqg_switch} due to the static nature of the switch transition matrix $P_2$. If $P_1$ were used we would expect more noise. As mentioned in Chapter \ref{sec_inf_lin_hybrid} switching noise is not necessarily bad for inference. We do see that the filter does not immediately notice that the underlying model has changed. The stickier the switch transition matrix is the longer it will take for the controller to adjust the model. Depending on the application this delay could be problematic. On the other hand, the switching noise causes controller input spikes which could also be bad for control. 
+
+In Figure \ref{fig_spf_mpc_state} we see the state space trajectory of the expected value constraint MPC. It is clear that the operating temperature associated with the set point moves when the catalyst denatures.
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{spf_mpc_state.pdf}
@@ -171,6 +173,23 @@ Finally, in Figure \ref{fig_spf_mpc_state2} we see that the constraint is not vi
 \caption{State space trajectory of the chance constrained stochastic MPC using the switching controller algorithm.}
 \label{fig_spf_mpc_state2}
 \end{figure}
-Since Figure \ref{fig_spf_mpc_state2} only illustrates that the constraint is not violated for a single run we again use a Monte-Carlo technique to justify the assertion that, for this example, the stochastic controller can successfully reduce the constraint violation probability. By simulating 100 runs it was found that the expected value stochastic MPC violated the constraint 156.9 times per run of 300 minutes. The chance constrained stochastic MPC violated the constraint 14.8 times per run of the same length. If the robustness of the switching controller can be improved there is significant upside to its implementation.
+Since Figure \ref{fig_spf_mpc_state2} only illustrates that the constraint is not violated for a single run we again use a Monte Carlo technique to justify the assertion that, for this example, the stochastic controller can successfully reduce the constraint violation probability. In Figure \ref{fig_spf_mc} we have used the data of over 500 simulations to illustrate the benefit, in terms of constraint violation characteristics, of using the switching controller algorithm with the stochastic MPC controllers developed in Chapter \ref{sec_linear_control}.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{spf_mc.pdf}
+\caption{Monte Carlo analysis of the switching controller algorithm applied within the context of the expected value and chance constrained MPCs developed in Chapter \ref{sec_linear_control}. Each shaded region is where 90\% of the simulations scored.}
+\label{fig_spf_mc}
+\end{figure}
+Like in Chapter \ref{sec_linear_control} we see a clear benefit in increasing the chance constraint threshold: the higher the threshold the less the constraint is violated both in time and in severity. Figure \ref{fig_spf_mc2} illustrates that we also have set point tracking. A Monte Carlo simulation using 50 runs each is plotted for each switching controller to illustrate their effectiveness.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=\textwidth]{spf_mc2.pdf}
+\caption{Monte Carlo set point tracking for the switching controllers. Subplot (I) shows the set point tracking of the switching LQG controller. Suplots (II), (III) and (IV) show the set point tracking of the expected value, 90\% chance and 99\% chance constrained switching MPC controllers. The green line is the set point.}
+\label{fig_spf_mc2}
+\end{figure}
+In Figure \ref{fig_spf_mc2} we clearly see a concentration tracking bump after about 100 minutes - when the controller breaks. After that it is clear that the controller has switched because we again have set point tracking. The Monte Carlo absolute set point error over the last 10 minutes of each simulation is 1.30\%, 1.64\%, 1.47\% and 1.42\% for the LQG controller, the expected value-, 90\% chance- and 99\% chance constrained MPC controllers. 
+
+It is interesting that the same trends observed in Chapter \ref{sec_linear_control} are evident here. The chance constrained MPC controllers show better tracking error than the expected value controller. Again the aggressiveness of the expected value controller causes the higher error. In all cases we have set point tracking despite the plant fault.
 
 \section{Conclusion}
+In this chapter we developed a switching controller algorithm which intelligently detects when a process fault has occurred by using a switching particle filter. The controller uses this knowledge to adapt the model used for control. The switching particle filter was found to robustly identify when the modelled fault occurred. Furthermore, the switching controller algorithms were able to stabilise and control the system to set point despite the plant fault.

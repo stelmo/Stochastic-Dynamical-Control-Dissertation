@@ -27,9 +27,9 @@ The noise terms retain their meaning from Chapter \ref{sec_linear_control}. It i
 As mentioned before, it becomes desirable to have a mechanism to switch the underlying controller model if the system states move far away from the linearisation point of the current model. However, it is computationally difficult to perform this switching within the framework of the optimisation algorithm because it invariably necessitates the introduction of integer variables. We propose an algorithm which uses the Rao-Blackwellised particle filter to estimate the current state as well as the models which best describe the current observation. Based on the results of Chapter \ref{sec_inf_lin_hybrid} we expect the weight assigned to each model to skew in favour of the models which were linearised closest to the current state. Now we have two options to implement control at each time step\footnote{Note that $A^*$ is the model used for control in this explanation.}:
 \begin{enumerate}
 \item
-Use only the most likely model (the model with the highest switch weight) for controller prediction i.e. use $A^* = A_{\text{indmax}[s_t]}$.
+Use only the most likely model (the model with the highest switch weight) for controller prediction i.e. use $A^* = A_{\text{indmax}[s_t]}$. See Chapter \ref{sec_rbpf_control_uncon}.
 \item
-Use the weighted average (from the switch weight) of the models for controller prediction i.e. use $A^* = \sum_{i=1}^M s_t^i A_i$.
+Use the weighted average (from the switch weight) of the models for controller prediction i.e. use $A^* = \sum_{i=1}^M s_t^i A_i$. See Chapter \ref{sec_ma_rbpf}.
 \end{enumerate}
 Since it is not clear which approach is best we investigate both. This ``best current model" is then used in the single model controller algorithms discussed in Chapter \ref{sec_linear_control}. This approach falls squarely between the purely single model controllers, as discussed in Chapter \ref{sec_linear_control}, and the switching model controllers, where the model switching occurs inside the optimisation problem, as discussed in Chapter \ref{sec_switch_mpc_lit}. By switching models outside the optimisation problem the scheme will necessarily be more computationally efficient than those found in Chapter \ref{sec_switch_mpc_lit}. 
 
