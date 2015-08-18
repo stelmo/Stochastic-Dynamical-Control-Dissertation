@@ -108,12 +108,12 @@ Arguably the most well known continuous probability density distribution is the 
 
 Since the probability of a specific value is not meaningful in the setting of continuous probability functions we abuse our notation and interchangeably denote the random variable $X$ by $x$. We also do not indicate vector quantities in boldface; it can be assumed that all numbers are vectors unless otherwise noted. We will concern ourselves mostly with vector quantities and it will be obvious when we deal with scalar valued variables. 
 \begin{defn}
-\textbf{Gaussian distribution} The univariate Gaussian or normal distribution of a random variable $x$ is
+\textbf{Gaussian distribution} The univariate Gaussian or normal distribution of a random variable $x$ is defined by
 \begin{equation}
 \mathcal{N}(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right).
 \label{eq_norm_uni}
 \end{equation}
-We call $\mu$ the mean and $\sigma^2$ the variance of the distribution. The multivariate Gaussian distribution is 
+We call $\mu$ the mean and $\sigma^2$ the variance of the distribution. The multivariate Gaussian distribution is defined by
 \begin{equation}
 \mathcal{N}(x|\mu, \Sigma) = \frac{1}{\sqrt{2\pi^{\frac{D}{2}}}}\frac{1}{|\Sigma|^{\frac{1}{2}}}\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)
 \label{eq_norm_multi}
@@ -219,7 +219,7 @@ x \\ y
 \begin{equation}
 \begin{aligned}
 \log(z) &= \log(p(x)) + \log(p(y|x))\\
-&=  -\frac{1}{2}(x-\mu)^T\Lambda(x-\mu) -\frac{1}{2}(y-Ax-b)^T L(y-Ax-b) + const
+&=  -\frac{1}{2}(x-\mu)^T\Lambda(x-\mu) -\frac{1}{2}(y-Ax-b)^T L(y-Ax-b) + \text{const}
 \end{aligned}
 \label{eq_log_gauss_joint}
 \end{equation}
@@ -712,7 +712,7 @@ y_t &= Cx_t +v_t \\
 \end{aligned}
 \label{eq_lqg_ss}
 \end{equation}
-was developed to handle these problems. Additionally  $w_t \sim \mathcal{N}(0, W)$ and $v_t \sim \mathcal{N}(0, V)$ which are independent white noise terms. Because the states and measurements are stochastic variables we cannot use the LQR objective function as before. Instead we use the LQG objective function which is a generalisation of the former as shown in definition \ref{def_lqg_obj}.
+was developed to handle these problems. Additionally we assume  $w_t \sim \mathcal{N}(0, W)$ and $v_t \sim \mathcal{N}(0, V)$ which are independent white noise terms. Because the states and measurements are stochastic variables we cannot use the LQR objective function as before. Instead we use the LQG objective function which is a generalisation of the former as shown in definition \ref{def_lqg_obj}.
 \begin{defn}
 \textbf{Linear quadratic Gaussian (LQG) objective function} The controller minimising the quadratic objective function 
 \begin{equation}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  18 AUG 2015 21:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  18 AUG 2015 22:53
 entering extended mode
 **masters.tex
 
@@ -847,128 +847,87 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2])
 \tf@toc=\write5
- [3] [7
-
-
-]
+ [3]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\back_theory.tex"
-Chapter 3.
-[16
+docs\introduction.tex"
+Chapter 1.
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+[4
 
 
-
-] [17] [18] [19] [20] [21] [22] [23]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [24] [25pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.3.1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.343 A
-        graph depicting local independence relationships.]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [26]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [27pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
-2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.451 U
-       sing d-separation we can efficiently reason about the conditional ind...
-] [28pdfTeX warning (ext4): destination with the same identifier (name{figure.3
-.3}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.468 A
-       n observation function: $P(y_t|x_{0:t}, u_{0:t-1})$] [29]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [30pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
-4}) has been already used, duplicate ignored
+l.70 
+     pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.544 \end{equation}
-                    ] [31] [32] [33] [34]
-<./imgs/no_selector.pdf, id=478, 512.66531pt x 235.63031pt>
-File: ./imgs/no_selector.pdf Graphic file (type pdf)
+l.70 
+     ] [5]) [6] [7
 
-<use ./imgs/no_selector.pdf>
-Package pdftex.def Info: ./imgs/no_selector.pdf used on input line 744.
-(pdftex.def)             Requested size: 358.86327pt x 164.94008pt.
- [35pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
-5}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.749 \subsection
-                 {Model predictive control} <C:/Users/St. Elmo/Documents/GitHub
-/Stochastic-Dynamical-Control-Dissertation/imgs/no_selector.pdf>] [36])
-[37] [57
+] [57
+
 
 
 
@@ -1030,17 +989,20 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 91.
  ) 
 Here is how much of TeX's memory you used:
- 20175 strings out of 493921
- 400725 string characters out of 3144868
- 515040 words of memory out of 3000000
- 22760 multiletter control sequences out of 15000+200000
- 16156 words of font info for 61 fonts, out of 3000000 for 9000
+ 19962 strings out of 493921
+ 398381 string characters out of 3144868
+ 509156 words of memory out of 3000000
+ 22669 multiletter control sequences out of 15000+200000
+ 14003 words of font info for 54 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,15n,78p,1546b,816s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exi
+ 55i,12n,78p,931b,874s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
 st, replaced by a fixed one
 
-pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
 pdfTeX warning (dest): name{section.13.4} has been referenced but does not exis
@@ -1211,6 +1173,48 @@ pdfTeX warning (dest): name{section.4.1} has been referenced but does not exist
 pdfTeX warning (dest): name{chapter.4} has been referenced but does not exist, 
 replaced by a fixed one
 
+pdfTeX warning (dest): name{section.3.5} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.4.4} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.4.3} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.4.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.4.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.3.4} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.3.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.3.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.3.3} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.3.2} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.1.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.1.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.3.1} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.3} has been referenced but does not exist, 
+replaced by a fixed one
+
 pdfTeX warning (dest): name{section.2.2} has been referenced but does not exist
 , replaced by a fixed one
 
@@ -1220,34 +1224,19 @@ pdfTeX warning (dest): name{section.2.1} has been referenced but does not exist
 pdfTeX warning (dest): name{chapter.2} has been referenced but does not exist, 
 replaced by a fixed one
 
-pdfTeX warning (dest): name{chapter.1} has been referenced but does not exist, 
-replaced by a fixed one
-
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/am
-sfonts/symbols/msbm10.pfb>
-Output written on masters.pdf (33 pages, 539910 bytes).
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on masters.pdf (14 pages, 195368 bytes).
 PDF statistics:
- 773 PDF objects out of 1000 (max. 8388607)
- 280 named destinations out of 1000 (max. 500000)
- 154 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 401 PDF objects out of 1000 (max. 8388607)
+ 164 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
