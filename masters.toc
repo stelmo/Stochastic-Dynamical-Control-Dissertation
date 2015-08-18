@@ -58,8 +58,8 @@
 \contentsline {chapter}{\numberline {10}Stochastic switching linear control using linear hybrid models}{131}{chapter.10}
 \contentsline {section}{\numberline {10.1}Unconstrained switching control}{134}{section.10.1}
 \contentsline {subsection}{\numberline {10.1.1}Most likely model approach}{134}{subsection.10.1.1}
-\contentsline {subsection}{\numberline {10.1.2}Model averaging approach}{142}{subsection.10.1.2}
-\contentsline {section}{\numberline {10.2}Conclusion}{142}{section.10.2}
+\contentsline {subsection}{\numberline {10.1.2}Model averaging approach}{141}{subsection.10.1.2}
+\contentsline {section}{\numberline {10.2}Conclusion}{141}{section.10.2}
 \contentsline {chapter}{\numberline {11}Inference using nonlinear hybrid models}{143}{chapter.11}
 \contentsline {section}{\numberline {11.1}Exact filtering}{144}{section.11.1}
 \contentsline {section}{\numberline {11.2}Switching particle filter}{144}{section.11.2}
@@ -73,5 +73,5 @@
 \contentsline {chapter}{\numberline {13}Future work and conclusion}{166}{chapter.13}
 \contentsline {section}{\numberline {13.1}Parameter optimisation}{166}{section.13.1}
 \contentsline {section}{\numberline {13.2}Generalised graphical models}{166}{section.13.2}
-\contentsline {section}{\numberline {13.3}Advanced filtering techniques}{167}{section.13.3}
+\contentsline {section}{\numberline {13.3}Filtering techniques}{167}{section.13.3}
 \contentsline {section}{\numberline {13.4}Conclusion}{167}{section.13.4}

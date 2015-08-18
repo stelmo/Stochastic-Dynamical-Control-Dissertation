@@ -7,8 +7,12 @@ In Chapters \ref{sec_linear_control}, \ref{sec_rbpf_control} and \ref{sec_spf_co
 \section{Generalised graphical models}
 The motivation for this dissertation was the work by \cite{devilliers} and \cite{dabrowski}. In the former paper the author pioneers work on using dynamic Bayesian networks within the context of particle predictive MPC. The authors use graphical models similar to that of Chapter \ref{sec_inf_lin_mods} and \ref{sec_inf_nonlin_mods} but do not assume that the inputs are deterministic. It would be interesting to extend the current approach to this case. In the latter paper the authors use contextual variables in their graphical models to identify anomalies within the context of maritime piracy. The graphical model employed by them is significantly more complex but allows for much greater expressivity. Within the context of fault detecting and controller model modification this could be quite interesting as well.
 
-\section{Advanced filtering techniques}
+Furthermore, while Chapter \ref{sec_spf_control} only dealt with a single modelled process fault there is no fundamental reason why more process faults cannot be incorporated. However, the model overlap problem might become more pronounced in such a setting. It is not physically realistic to use the augmented switching filter model (see Chapter \ref{sec_rbpf_control} because the current state would not reliably inform the filter of a process fault. The aforementioned contextual variables could become useful in such a setting.
+
+\section{Filtering techniques}
 The particle filters used throughout this dissertation can become problematic when applied to high dimensional problems. Recent work in \cite{daum} pioneers using a particle flow technique which, by all accounts, greatly reduces the computational burden particle methods usually introduce. The degree to which the inference techniques bottleneck the control systems should be investigated and an effort should be made to incorporate particle flow techniques. 
+
+Furthermore, there is no fundamental reason why the switching particle filter could not be replaced by the Rao-Blackwellised particle filter in Chapter \ref{sec_spf_control}. This possibility should be investigated because the latter filter, due to its partly analytic nature, is computationally more efficient than the former. The obvious drawback of such an approach is that the linear model used to detect the process fault might not be as sensitive as the nonlinear model currently used.
 
 \section{Conclusion}
 The primary goal of this dissertation was to illustrate the relationship between dynamic Bayesian networks and model based predictive control. The two most important results were:

@@ -1,7 +1,7 @@
 \chapter{Introduction}
-This dissertation deals with the development of Predictive Controllers within the framework of Probabilistic Graphical Models, specifically Dynamic Bayesian Networks. Dynamic Bayesian Networks are well suited to the study of stochastic processes i.e. processes where there is noise in both the state evolution and state measurements. By leveraging the natural formulation of stochastic processes within Dynamic Bayesian Networks we develop stochastic Predictive Controllers, focussing specifically on the LQG\footnote{Linear Quadratic Gaussian.} and chance constrained MPC\footnote{Model Predictive Control.} controllers.
+This dissertation deals with the development of predictive controllers within the framework of probabilistic graphical models, specifically dynamic Bayesian networks. Dynamic Bayesian networks are well suited to the study of stochastic processes i.e. processes where there is noise in both the state evolution and state measurements. By leveraging the natural formulation of stochastic processes within dynamic Bayesian networks we develop stochastic predictive controllers, focussing specifically on linear quadratic Gaussian (LQG) and chance constrained model predictive control (MPC).
 
-The dissertation primarily deals with the two Graphical Models\footnote{Clear circular nodes represent latent variables, shaded circular nodes represent observed variables and diamond nodes are deterministic variables.} shown in Figures \ref{fig_linear} and \ref{fig_switch_linear}. Inference is discussed in general, but we focus on filtering and prediction because they are important for control. 
+The dissertation primarily deals with the two graphical models\footnote{Clear circular nodes represent latent variables, shaded circular nodes represent observed variables and diamond nodes are deterministic variables.} shown in Figures \ref{fig_linear} and \ref{fig_switch_linear}. Inference is discussed in general, but we focus on filtering and prediction because they are important for control. 
 \begin{figure}[H]
  \centering
 \begin{minipage}[b]{0.45\textwidth}
@@ -28,7 +28,7 @@ The dissertation primarily deals with the two Graphical Models\footnote{Clear ci
   \edge {xb} {xc};
   
 \end{tikzpicture}
-\caption{Single Model Probabilistic Graphical Model}
+\caption{Single model probabilistic graphical model.}
 \label{fig_linear}
 \end{minipage}\hfill
 \begin{minipage}[b]{0.45\textwidth}
@@ -62,29 +62,26 @@ The dissertation primarily deals with the two Graphical Models\footnote{Clear ci
   \edge {sb} {xb};
   \edge {sc} {xc};
 \end{tikzpicture}
-\caption{Model Switching Probabilistic Graphical Model}
+\caption{Model switching probabilistic graphical model.}
 \label{fig_switch_linear}
 \end{minipage}
 \end{figure}
-The dissertation is structured in 3 parts, each composed of self contained chapters dealing with a specific issue. Part \ref{part_one} contains the Literature Review (Chapter \ref{sec_lit_study}) and Background Theory (Chapter \ref{sec_back_theory}). Additionally, it also contains Chapter \ref{sec_hmm} which deals with Hidden Markov Models. The goal of this chapter is to gently introduce the uninformed reader to the power of Graphical Models. Finally, Part \ref{part_one} also introduces the CSTR example (Chapter \ref{sec_cstr}) which is used to illustrate the techniques investigated throughout the rest of the dissertation. If the reader is familiar with Graphical Models, Predictive Control and CSTR design Part \ref{part_one} may safely be skipped.
+The dissertation is structured in 3 parts, each composed of self contained chapters dealing with a specific problem area. Part \ref{part_one} contains Chapters \ref{sec_lit_study} to \ref{sec_cstr}. The literature review, Chapter \ref{sec_lit_study}, deals with current papers on topics related to this dissertation. Chapter \ref{sec_back_theory} mainly deals with background theory found in reference materials (e.g. books). Chapter \ref{sec_hmm} deals with hidden Markov models. The goal of this chapter is to gently introduce the uninformed reader to the power of graphical models. Finally, Chapter \ref{sec_cstr} introduces the CSTR example which is used to illustrate the techniques investigated throughout the rest of the dissertation. If the reader is familiar with graphical models, predictive control and CSTR design Part \ref{part_one} may be safely skipped.
 
-Parts \ref{part_two} and \ref{part_three} each follow the same pattern: a Graphical Model is introduced and studied after which a control scheme is implemented using the tenets of the preceding work. We detail the content and results of these two parts next.
+Parts \ref{part_two} and \ref{part_three} each follow the same pattern: a graphical model is introduced and studied after which a control scheme is implemented using the tenets of the preceding work. We detail the content and results of these two parts next.
 
-In Part \ref{part_two} the Dynamic Bayesian Network, shown in Figure \ref{fig_linear}, is investigated within the context of the Kalman Filter Model (linear dynamics and Gaussian noise) and the Particle Filter Model (no assumptions about the dynamics and noise). Using the techniques endemic to the aforementioned Probabilistic Graphical Models we show:
+In Part \ref{part_two} the dynamic Bayesian network, shown in Figure \ref{fig_linear}, is investigated within the context of the Kalman filter model (linear dynamics and Gaussian noise) and the particle filter model (no assumptions about the dynamics and noise). Using the techniques endemic to the aforementioned probabilistic graphical models we show:
 \begin{enumerate}
 \item
-That the LQG controller reduces to LQR controller under the assumptions of normality and linearity \footnote{This result is not new but the derivation using Probabilistic Graphical Models is both instructive and, more importantly, intuitive.}.
+That the LQG controller reduces to the linear quadratic regulator under the assumptions of normality and linearity \footnote{This result is not new but the derivation using probabilistic graphical models is both instructive and, more importantly, intuitive.}.
 \item
-That a chance constrained MPC problem can be reduced to the standard form MPC\footnote{A deterministic optimisation problem with linear constraints and a quadratic objective function.} problem under the assumptions of linearity and normality. Furthermore, since the Mahalanobis Distance, statistically important measure, is used to reduce the chance constraints to linear constraints it supports the use of the aforementioned techniques to systems which are non-linear and non-Gaussian. 
+That a chance constrained MPC problem can be reduced to the standard form MPC problem (a deterministic optimisation problem with linear constraints and a quadratic objective function) under the assumptions of linearity and normality. Furthermore, since the Mahalanobis distance, a statistically important measure, is used to reduce the chance constraints to linear constraints it supports the application of the aforementioned techniques to systems which are nonlinear and non-Gaussian. 
 \end{enumerate}
-
-In Part \ref{part_three} the Dynamic Bayesian Network shown in Figure \ref{fig_switch_linear} is investigated within the context of the Switching Kalman Filter Model and the Switching Particle Filter Model\footnote{Both of these Probabilistic Graphical Models use a set of models to perform inference. The stochastic switching variables $(s_0, s_1,...)$ are used to weight the likelihood of each model supporting the observations.}. The same assumptions about the state dynamics and noise distributions apply respectively. The benefit of generalising Figure \ref{fig_linear} is that it allows one to infer which model is likely to be generating the observations. This allows us to extend the stochastic MPC discussed previously to incorporate model switching. We investigate the following:
+In Part \ref{part_three} the switching model filter, based on the dynamic Bayesian network shown in Figure \ref{fig_switch_linear}, is investigated\footnote{This probabilistic graphical model uses a set of models to perform inference. The stochastic switching variables $(s_0, s_1,...)$ are used to weight the likelihood of each model supporting the observations.}. The benefit of generalising Figure \ref{fig_linear} is that it allows one to infer which model, from a set of possible models, is likely to be generating the observations. This allows us to extend the stochastic MPC discussed previously to incorporate model switching. We investigate the following:
 \begin{enumerate}
 \item
-Using a Rao-Blackwellised Particle Filter to isolate the most likely linear model generating observations from a non-linear system model. The most likely linear model is then used by the Predictive Controller. This process repeats at each time step. It was found that the algorithm was not robust enough against switching noise i.e. the filter jumped between models which caused controller instability.
+Using the Rao-Blackwellised particle filter as the switching model filter. In this context the resultant most likely linear model is used to move the underlying system to different regions in state space. It was found that the approach caused controller instability because the current most likely model is often not accurate enough to steer the system to the target.
 \item
-Using a Switching Particle Filter for fault detection and controller model switching. The dynamics of the healthy and broken system were sufficiently different for the filter to robust identify when a fault occurred. The same switching algorithm was then employed to successfully keep the system at set point even in the event of a fault.  
+Using a switching particle filter as the switching model filter. In this context the filter was used to identify when a process fault occurred and, based on this event, switch the model control is based upon. It was found that the algorithm successfully stabilised and regulated the nonlinear underlying system.
 \end{enumerate}
-
-Perhaps most usefully, the dissertation illustrates the advantage of designing Model Predictive Controllers from within the framework of Probabilistic Graphical Models. While it may seem that the two fields are not related, most modern control solutions perform filtering on system measurements which is a natural result of Probabilistic Graphical Models. Therefore, the motivation for this study is not purely esoteric but demonstrates a tacit relationship between the fields.   
-
+Perhaps most usefully, the dissertation illustrates the advantage of designing model predictive controllers from within the framework of probabilistic graphical models. While it may seem that the two fields are not related, most modern control systems perform filtering on system measurements which is a natural result of the application of probabilistic graphical models. Therefore, the motivation for this study is not purely esoteric but demonstrates a tacit relationship between the fields.   

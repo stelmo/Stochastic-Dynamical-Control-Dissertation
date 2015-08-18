@@ -174,7 +174,7 @@ It is clear that the oscillations are caused by the filter's inability to stick 
 \item
 Fundamentally we are using an inappropriate model for controller prediction during the initial period of the simulation. If we stayed near the current position in state space then the most likely model would predict the future well and thus result in good control. However, we are projecting the controlled states into regions where the current model control is based upon may not a good approximation at all. This is a fundamental problem of our approach - it would be better to incorporate the model switching within the controller prediction (optimisation) process, but this is exactly what we want to avoid due to the computational burden this introduces!
 \item
-The switching noise is problematic because it can cause the controller to use a model which is good locally (for the current observation) but inappropriate with regard to the true underlying position of the system in state space. However, from an inference perspective the noise is not necessarily undesirable. Switching noise can improve the state estimate accuracy - especially in regions between models. It is also important in allowing the filter to switch punctually: making the switching transition matrix too static retards the sensitivity the filter has to model changes. It is possible to address the issue of switching noise without making the switch transition matrix too static. The augmented switching Kalman filter model, shown in Figure \ref{fig_gm_augmented}, is a candidate for this.
+The switching noise is problematic because it can cause the controller to use a model which is good locally (for the current observation) but inappropriate with regard to the true underlying position of the system in state space. However, from an inference perspective the noise is not necessarily undesirable. Switching noise can improve the state estimate accuracy - especially in regions between models. It is also important in allowing the filter to switch punctually: making the switching transition matrix too static retards the sensitivity the filter has to model changes. It is possible to address the issue of switching noise without making the switch transition matrix too static. The augmented switching filter model, shown in Figure \ref{fig_gm_augmented}, is a candidate for this.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -209,7 +209,7 @@ The switching noise is problematic because it can cause the controller to use a 
   \edge {xb} {sc};
     
 \end{tikzpicture}
-\caption{Augmented switching Kalman filter graphical model.}
+\caption{Augmented switching filter graphical model.}
 \label{fig_gm_augmented}
 \end{figure}
 Using this model it is possible to model the influence the state variables $(x_0,x_1,...)$ have on the switching variables $(s_0, s_1,...)$. Plausibly this could ameliorate switching noise while not making the switching transition matrix too sticky. For example, the switch transition matrix could, in this case, be a function of the location of the current system state. However, since this would require that we modify the graphical model of Figure \ref{fig_gm_filter} we leave it for future work.

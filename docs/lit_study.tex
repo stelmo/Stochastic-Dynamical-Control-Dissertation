@@ -1,6 +1,6 @@
 \chapter{Literature review}
 \label{sec_lit_study}
-This dissertation deals primarily with stochastic model predictive control but applied within the context of probabilistic graphical models. In Section \ref{sec_stoch_mpc_lit} we briefly discuss some recent developments in stochastic model predictive control literature. In Section \ref{sec_switch_mpc_lit} we briefly discuss control schemes, primarily  based on model predictive control, where the model control is based upon is automatically adjusted based on plant measurements or manual control laws.
+This dissertation deals primarily with stochastic model predictive control but applied within the context of probabilistic graphical models. In Chapter \ref{sec_stoch_mpc_lit} we briefly discuss some recent developments in stochastic model predictive control literature. In Chapter \ref{sec_switch_mpc_lit} we briefly discuss control schemes, primarily  based on model predictive control, where the model control is based upon is automatically adjusted based on plant measurements or manual control laws.
 
 \section{Stochastic model predictive control}
 \label{sec_stoch_mpc_lit}
@@ -12,9 +12,9 @@ Linear unconstrained stochastic control subject to white additive Gaussian noise
 \end{aligned}
 \label{eq_lit_lqg}
 \end{equation}
-Using stochastic Dynamic Programming it is possible to show that the solution of (\ref{eq_lit_lqg}) is merely the solution of the corresponding fully observed deterministic system, called the linear quadratic regulator (LQR), given the mean of the current state estimate $x_0$. A significant drawback of the LQG controller, and by extension the LQR controller, is that it is inherently linear and unconstrained.
+Using stochastic dynamic programming it is possible to show that the solution of (\ref{eq_lit_lqg}) is merely the solution of the corresponding fully observed deterministic system, called the linear quadratic regulator (LQR), given the mean of the current state estimate $x_0$. A significant drawback of the LQG controller, and by extension the LQR controller, is that it is inherently linear and unconstrained.
 
-Conventional deterministic MPC is very well studied in literature \cite{raw} and can be seen as the constrained deterministic generalisation of the LQG controller as shown in (\ref{eq_lit_mpc}) for one constraint with prediction and control horizon length $N$. The multiple constraint generalisation is straightforward.
+Conventional deterministic model predictive control (MPC) is very well studied in literature \cite{raw} and can be seen as the constrained deterministic generalisation of the LQR controller as shown in (\ref{eq_lit_mpc}) for one constraint with prediction and control horizon length $N$. The multiple constraint generalisation is straightforward.
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
@@ -75,55 +75,54 @@ In this dissertation we illustrate the benefits gained by designing controllers 
 \item
 Under the assumption of normality and linearity it is possible to convert the stochastic objective function of (\ref{eq_lit_lqg}) into its deterministic equivalent. The analysis is closely related to the work of  \cite{yan1} and \cite{yan2} but we show that these results are immediately obvious from within the framework of probabilistic graphical models. Thus it is possible to solve the LQG problem without resorting to stochastic dynamic programming.
 \item
-We generalise our analysis to stochastic MPC and show that by using the statistically important metric, the Mahalanobis distance, we arrive at a technique for enforcing chance constraints which is very closely related to the approach by \cite{vanhessem2} and \cite{vanhessem1}. Under the assumption of linearity and normality we show that the constraint satisfaction is ensured. Due to the use of the Mahalanobis Distance metric we provide some theoretical support for the use of the ``ellipsoidal approximation" technique if the underlying system is non-linear or not exactly Gaussian.
+We generalise our analysis to stochastic MPC and show that by using the statistically important metric, the Mahalanobis distance, we arrive at a technique for enforcing chance constraints which is very closely related to the approach by \cite{vanhessem2} and \cite{vanhessem1}. Under the assumption of linearity and normality we show that the constraint satisfaction is ensured. Due to the use of the Mahalanobis distance metric we provide some theoretical support for the use of the ``ellipsoidal approximation" technique if the underlying system is nonlinear or not exactly Gaussian.
 \item
-Combining the previous results we show that it is possible to write the joint chance constrained stochastic MPC problem as a deterministic MPC problem. Additionally we show that the joint chance constraints can be written in a linear format. The entire optimisation problem can then be written in the standard form for auadratic programming optimisation. Standard deterministic MPC solution techniques can then be used to solve the stochastic problem.
+Combining the previous results we show that it is possible to write the joint chance constrained stochastic MPC problem as a deterministic MPC problem. Additionally we show that the joint chance constraints can be written in a linear format. The entire optimisation problem can then be written in the standard form for quadratic programming optimisation. Standard deterministic MPC solution techniques can then be used to solve the stochastic problem.
 \item
-We compare the effect different inference techniques have on the quality of the MPC.
+We compare the effect different inference techniques have on the quality of the MPC. Specifically, if the underlying system is nonlinear it can be beneficial to use nonlinear particle filtering techniques as opposed to inherently linear techniques like the Kalman filter.
 \end{enumerate}
 Lastly, measurement and system noise is ubiquitous in real life systems. Therefore most modern model predictive control systems use an inference (filtering) technique to estimate the current system state. By using a filter the control system is implicitly using a probabilistic graphical model; therefore we are not actually introducing anything exotic but rather highlighting a connection between two rich fields. 
 
 \section{Switching model predictive control}
 \label{sec_switch_mpc_lit}
-In model predictive control the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model is linear and time invariant. An example of such a model is shown in (\ref{eq_mpc_nodisturbance_obs}); since it includes system and measurement noise a state estimator would typically be used to infer $x_t$. The mean of the current state, $\mathbb{E}[x_t]$ together with the deterministic state model $x_{t+1} = Ax_t + Bu_t$ would then be used for prediction \cite{raw}. This assumption allows for the use of advanced constrained optimisation algorithms, typically Quadratic Programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
+In model predictive control the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model is linear and time invariant. An example of such a model is shown in (\ref{eq_mpc_nodisturbance_obs}). 
 \begin{equation}
 \begin{aligned}
-&x_{t+1} = Ax_t + Bu_t + w_t~\text{(Latent)} \\
-&y_t = Cx_t + v_t~\text{(Observed)}
+&x_{t+1} = Ax_t + Bu_t + w_t \\
+&y_t = Cx_t + v_t
 \end{aligned}
 \label{eq_mpc_nodisturbance_obs}
 \end{equation}
-Unfortunately modelling errors or omissions often cause poor controller performance within the context of MPC. This is often observed as steady state offset i.e. the controller takes no more action and the system is not at the set point. In certain cases it is possible to account for plant/model mismatch or asymptotically constant disturbances by incorporating a disturbance model within the MPC framework. This is classically called zero offset regulation \cite{raw} and is achieved by augmenting the system models as shown in (\ref{eq_mpc_disturbance_obs}).
+Since the model includes system and measurement noise a state estimator would typically be used to infer $x_t$ from some observation $y_t$. The mean of the current state, $\mathbb{E}[x_t]$ together with the deterministic state model $x_{t+1} = Ax_t + Bu_t$ would then be used for prediction \cite{raw}. This assumption allows for the use of advanced constrained optimisation algorithms, typically quadratic programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
+
+Unfortunately modelling errors or omissions often cause poor controller performance within the context of MPC. This is often observed as steady state offset i.e. the controller takes no more action and the system is not at the set point. In certain cases it is possible to account for plant/model mismatch or asymptotically constant disturbances by incorporating a latent disturbance model within the MPC framework. This is classically called zero offset regulation \cite{raw} and is achieved by augmenting the system models as shown in (\ref{eq_mpc_disturbance_obs}).
 \begin{equation}
 \begin{aligned}
-&x_{t+1} = Ax_t + Bu_t + B_d d_t + w_t~\text{(Latent)} \\
-&d_{t+1} = d_t ~\text{(Latent)}\\
-&y_t = Cx_t + C_d d_t + v_t~\text{(Observed)}
+&x_{t+1} = Ax_t + Bu_t + B_d d_t + w_t \\
+&d_{t+1} = d_t\\
+&y_t = Cx_t + C_d d_t + v_t
 \end{aligned}
 \label{eq_mpc_disturbance_obs}
 \end{equation}
-By using a state estimator the integrating disturbance $d_t$ can be estimated. The model used for prediction is then augmented to incorporate this disturbance $x_{t+1} = Ax_t + Bu_t + \mathbb{E}[d_t]$ \cite{lee}. The problem with this approach is that it assumes that the model $(A, B)$ is at least somewhat representative of the underlying dynamics.
+By using a state estimator the latent integrating disturbance $d_t$ can be estimated. The model used for prediction is then augmented to incorporate this disturbance $x_{t+1} = Ax_t + Bu_t + \mathbb{E}[d_t]$ \cite{lee}. The problem with this approach is that it assumes that the model $(A, B)$ is at least somewhat representative of the underlying dynamics.
 
-Linear models $(A, B)$ are often derived by linearising non-linear models about a single operating point. These models are traditionally used in MPC design; a drawback with this approach is that linear models are fundamentally only accurate in a small region around the point of linearisation. The further the system moves away from the linearisation point the worse the accuracy of the model becomes because the model is no longer a good approximation of the underlying system dynamics. A possible solution to this problem is Non-linear MPC (NMPC). In NMPC the full non-linear model is used for controller design; it is hoped that this more complicated model is accurate over the entire problem domain. Unfortunately this approach is often computationally intensive, especially for large problems, because it inherently requires non-linear, usually non-convex, optimisation. This is a subject of much current research \cite{diehl}. 
+Linear models $(A, B)$ are often derived by linearising nonlinear models about a single operating point. These models are traditionally used in MPC design; a drawback with this approach is that linear models are fundamentally only accurate in a small region around the point of linearisation. The further the system moves away from the linearisation point the worse the accuracy of the model becomes because the model is no longer a good approximation of the underlying system dynamics. A possible solution to this problem is nonlinear MPC. In nonlinear MPC the full nonlinear model is used for controller design; it is hoped that this more complicated model is accurate over the entire problem domain (or a larger part thereof than the corresponding linear model). Unfortunately this approach is often computationally intensive, especially for large problems, because it inherently requires nonlinear, usually non-convex, optimisation. This is a subject of much current research \cite{diehl}. 
 
-Another approach is to approximate a potentially complex non-linear system by a set of linear functions which are valid in certain ranges. An early attempt at this idea \cite{bemporad} integrated logical rules for switching between different system dynamics and constraints. Using that approach a set of logical rules were integrated into the optimisation problem to yield, in the setting of standard MPC, a Mixed Integer Quadratic Program (MIQP) with linear constraints. This approach is called Mixed Logical Dynamical Modelling (MLD) in literature; the system dynamics are then specified by (\ref{eq_mld_system}) where $i=1,2,..., I$ are the indices of the models approximating the underlying problem.
+Another approach is to approximate a potentially complex nonlinear system by a set of linear functions which are valid in certain ranges. An early attempt at this idea \cite{bemporad} integrated logical rules for switching between different system dynamics and constraints. Using that approach a set of logical rules were integrated into the optimisation problem to yield, in the setting of standard MPC, a mixed integer quadratic program with linear constraints. This approach is called mixed logical dynamical modelling (MLD) in literature; the system dynamics are then specified by (\ref{eq_mld_system}) where $i=1,2,..., I$ are the indices of the models approximating the underlying problem.
 \begin{equation}
-\begin{aligned}
-&x_{t+1} = \sum_{i=1}^I \delta_i A_i x_t + \sum_{i=1}^I \delta_i B_i u_t \\
-&y_t = \sum_{i=1}^I \delta_i C_i x_t 
-\end{aligned}
+x_{t+1} = \sum_{i=1}^I \delta_i A_i x_t + \sum_{i=1}^I \delta_i B_i u_t
 \label{eq_mld_system}
 \end{equation}
-The binary variable $\delta_i \in [0, 1]$ selects which linear model to use at each step in the prediction horizon within the framework of MPC. Constraints on $\delta_i$ allow the optimisation algorithm to switch between models based on its position in the state space.  The drawbacks with this approach is that the ``IF-THEN-ELSE" rules need to be fully specified and MIQP can become computationally intractable. 
+The binary variable $\delta_i \in [0, 1]$ selects which linear model to use at each step in the prediction horizon within the framework of MPC. Constraints on $\delta_i$ allow the optimisation algorithm to switch between models based on its position in the state space.  The drawbacks with this approach is that the ``IF-THEN-ELSE" rules need to be fully specified before hand and the mixed integer optimisation problem can become computationally intractable. 
 
-The work by \cite{du} and \cite{sakakura} elaborate on this approach. Both papers deal with the control of Continuously Stirred Tank Reactors (CSTRs) throughout different operating regimes. CSTRs are a good case study because they often have multiple steady states, constraints and can be quite non-linear. The approach of \cite{du} and \cite{sakakura} is to linearise the underlying non-linear CSTR model about different operating points and use those models to approximate the true non-linear dynamics. Computational difficulties are reported because the complexity of the MIQP problem scales exponentially with the number of variables.
+The work by \cite{du} and \cite{sakakura} elaborate on this approach. Both papers deal with the control of continuously stirred tank reactors (CSTRs) throughout different operating regimes. CSTRs are a good case study because they often have multiple steady states, constraints and can be quite nonlinear. The approach of \cite{du} and \cite{sakakura} is to linearise the underlying nonlinear CSTR model about different operating points and use those models to approximate the true nonlinear dynamics. Computational difficulties are reported because the complexity of the mixed integer quadratic problem scales exponentially with the number of variables.
 
-The approach by \cite{ozkan} is similar except that they use ellipsoidal regions to develop a multiple model MPC. Again the approach by \cite{kvasnica} is similar except that they attempt to reduce the complexity of the MIQP problem by providing guidelines on selecting the number of linear models used. More linear models leads to better control but the optimisation problem becomes correspondingly more difficult. Finally, \cite {nandola} also investigates hybrid systems but uses Bayes' Theorem to assign weights to the different models as opposed to only having one model active in each region. In their approach $\delta_i$ is a continuous variable in the range $[0, 1]$ and $\sum_{i=1}^I \delta_i = 1$. While their approach is also computationally intensive, a mixed integer non-linear optimisation problem needs to be solved, an effort is made to take advantage of the problem structure to attenuate this problem.
+The approach by \cite{ozkan} is similar except that they use ellipsoidal regions to develop a multiple model MPC. Again the approach by \cite{kvasnica} is similar except that they attempt to reduce the complexity of the mixed integer quadratic problem by providing guidelines on selecting the number of linear models used. More linear models leads to better control but the optimisation problem becomes correspondingly more difficult. Finally, \cite {nandola} also investigates hybrid systems but uses Bayes' theorem to assign weights to the different models as opposed to only having one model active in each region. In their approach $\delta_i$ is a continuous variable in the range $[0, 1]$ and $\sum_{i=1}^I \delta_i = 1$. While their approach is also computationally intensive, a nonlinear optimisation problem needs to be solved, an effort is made to take advantage of the problem structure to attenuate this problem.
 
 Loosely related to the idea of model switching is model based fault detection. In \cite{isermann} it is found that almost 70\% of the reviewed papers dealing with fault detection use observer or parameter estimation methods. The basic idea behind this approach is to estimate the system outputs using an observer and to compare this to some model of the system. The difference, often called the residual, is then used to estimate the probability of a fault in the process \cite{edwards}. The approach followed in \cite{wang} combines elements of model switching and state observations. They use a filter to construct a residual generator which is used to evaluate whether or not the system has a fault. The filter can switch between the different linear system models based on the current regime of the system. 
 
-Related to this class of model based fault detection algorithms is the Switching Particle Filter or Switching Kalman Filter if the underlying system is linear and Gaussian. The corresponding Probabilistic Graphical Model is shown in Figure \ref{fig_spf_skf}.
-\begin{figure}[H] 
+Related to this class of model based fault detection algorithms is the switching model filter. The corresponding probabilistic graphical model is shown in Figure \ref{fig_spf_skf}.
+\begin{figure}[ht] 
 \centering
 \begin{tikzpicture}
 
@@ -151,21 +150,18 @@ Related to this class of model based fault detection algorithms is the Switching
   \edge {sc} {xc};
   
 \end{tikzpicture}
-\caption{Switching Filter Graphical Model}
+\caption{Switching filter graphical model.}
 \label{fig_spf_skf}
 \end{figure}
-Classically these types of models are used to infer the current state  estimate (called filtering) given a set of models. Intuitively, the model which best describes the current observation ($y_t$) is assigned the most weight in the state estimate. This allows for the modelling of non-linear and multi-modal distributions by combining models based on the inferred switching variable ($s$) \cite{murphy1}. These models may be used for both filtering and event detection (see \cite{veerar} for an example) which, in the setting of control, can be interpreted as fault detection.
+Classically these types of models are used to infer the current state  estimate (called filtering) given a set of models. Intuitively, the model which best describes the current observation ($y_t$) is assigned the most weight in the state estimate. This allows for the modelling of nonlinear and multi-modal distributions by combining models based on the inferred switching variable ($s$) \cite{murphy1}. These models may be used for both filtering and event detection (see \cite{veerar} for an example) which, in the setting of control, can be interpreted as fault detection.
 
-In this dissertation we also illustrate the potential benefits gained by designing controllers using non-standard probabilistic graphical models, specifically Figure \ref{fig_spf_skf}. We investigate and show the following:
+In this dissertation we also illustrate the potential control benefits gained by designing predictive controllers using the switching model probabilistic graphical model of Figure \ref{fig_spf_skf}. We investigate and show the following:
 \begin{enumerate}
 \item
-Using the Rao-Blackwellised Particle Filter it is possible to accurately estimate the current state using linear models. The state estimate can then be used within the controller framework alluded to in Chapter \ref{sec_stoch_mpc_lit}. Using this approach it is also possible to change the model control is based upon. The linear model which best describes the current observations is used for control purposes. In this way we gain the benefit of model switching but do not incur the significant computational cost when it is incorporated into the optimisation problem. We call this approach the Switching Controller Algorithm.
+Using switching model filters it is possible to accurately estimate the current state as well as estimate the probability of each model supporting the current observation. The state estimate can then be used within the controller framework alluded to in Chapter \ref{sec_stoch_mpc_lit}. Using this approach it is also possible to change the model control is based upon. The linear model which best describes the current observations is used for control purposes. In this way we gain the benefit of model switching but do not incur the significant computational cost when it is incorporated into the optimisation problem as is the trend in current literature. We call this approach the switching controller algorithm.
 \item
-Using the Switching Particle Filter it is possible to accurately estimate the current state using non-linear models. The same Switching Controller Algorithm is used but implemented using the Switching Particle Filter. In this setting the filter discerns between a healthy and faulty system and uses the best model to effect control.
+We investigate using the Rao-Blackwellised particle filter as the switching model filter. In this context the resultant most likely linear model is used to move the underlying system to different regions in state space. It was found that the approach caused controller instability because the current most likely model is often not accurate enough to steer the system to the target.
 \item
-In both cases the Switching Controller Algorithm is not robust enough against model selection (switching) noise. However, the results indicate that the approach is promising.
+We also investigate using the switching particle filter as the switching model filter. In this context the filter was used to identify when a process fault occurred and, based on this event, switch the model control is based upon. It was found that the algorithm successfully stabilised and regulated the nonlinear underlying system. Furthermore, since the controllers of Chapter \ref{sec_stoch_mpc_lit} were used the scheme was computationally efficient.
 \end{enumerate}
 Even more so than Chapter \ref{sec_stoch_mpc_lit}, the approach used here relies on the application of probabilistic graphical models to controller design.  
-
-
-
