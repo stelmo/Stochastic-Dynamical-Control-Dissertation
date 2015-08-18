@@ -1,6 +1,6 @@
 \chapter{Hidden Markov models}
 \label{sec_hmm}
-In this chapter we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. We assume that  $(X_0, X_1,...)$ are each $n$ state discrete random variables and that $(Y_0, Y_1,...)$ are each $m$ state discrete random variables. Models of this form are classically called hidden Markov models.
+In this chapter we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. We assume that  $(X_0, X_1,\hdots)$ are each $n$ state discrete random variables and that $(Y_0, Y_1,\hdots)$ are each $m$ state discrete random variables. Models of this form are classically called hidden Markov models.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -68,7 +68,7 @@ We define the stationary distribution, in matrix notation, by \begin{equation}
 Recalling the definition of the eigenvalue problem we see that the stationary distribution is just the eigenvector corresponding to the unit eigenvalue of $\mathbf{A}$. While this model may seem simplistic it is the foundation of Google's PageRank algorithm \cite{google}.  Intuitively $\mathbf{p}_\infty$ represents the steady state probability distribution of the random variable $X$ as it is propagated through time by the transition function $A$. See the work in \cite{streicher} for an application specifically geared towards chemical engineering.
 
 \section{Hidden Markov models}
-Hidden Markov models extend Markov models by incorporating the observed random variables $(Y_0, Y_1,...)$ as shown in Figure \ref{fig_linmod}. At each time step it is now possible to observe the random variable $Y_t$ which gives more information about the state of $X_t$. We are still in the setting of discrete random variables. It is not necessary to restrict $(Y_0, Y_1,...)$ to be discrete but we do so for the sake of simplicity here. In later chapters we will model both hybrid and purely continuous systems. 
+Hidden Markov models extend Markov models by incorporating the observed random variables $(Y_0, Y_1,\hdots)$ as shown in Figure \ref{fig_linmod}. At each time step it is now possible to observe the random variable $Y_t$ which gives more information about the state of $X_t$. We are still in the setting of discrete random variables. It is not necessary to restrict $(Y_0, Y_1,\hdots)$ to be discrete but we do so for the sake of simplicity here. In later chapters we will model both hybrid and purely continuous systems. 
 
 In general a hidden Markov model is just a specific case of the general dynamic Bayesian network class of graphical models. As such we already know that to fully specify the model we only require a prior state distribution $P(X_0)$, the transition probability function $P(X_t|X_{t-1})$, the observation (or sometimes called the emission) probability function $P(Y_t|X_t)$ and the Bayesian network graphs of the initial time step and the next two time steps. We assume that the model's structure repeats at each time step and thus we only require the graph as shown in Figure \ref{fig_linmod}.
 
@@ -114,7 +114,7 @@ P(X_t| y_{0:t-1}) &= \sum_{x_{t-1}} P(X_t, x_{t-1}| y_{0:t-1})\\
 \end{aligned}
 \label{eq_forward_no_recur}
 \end{equation}
-Where the expansion followed from the chain rule of Bayesian networks (Definition \ref{def_chain_rule_bayes}) and the cancellation followed from the conditional independence assumption of the transition function. Now we define $\alpha(X_t) \equiv P(X_t | y_{0:t})$. Then
+The expansion followed from the chain rule of Bayesian networks (Definition \ref{def_chain_rule_bayes}) and the cancellation followed from the conditional independence assumption of the transition function. Next we define $\alpha(X_t) \equiv P(X_t | y_{0:t})$; then
 \begin{equation}
 \begin{aligned}
 \alpha(X_t) &= \frac{P(y_t|X_t, y_{0:t-1})P(X_t|y_{0:t-1})}{P(y_t|y_{0:t-1})} \\
