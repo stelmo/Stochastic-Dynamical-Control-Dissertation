@@ -20,14 +20,14 @@ In this chapter we consider probabilistic graphical models of the form shown in 
 \caption{Graphical model used in this chapter.}
 \label{fig_linmod}
 \end{figure}
-Intuitively, this model represents the situation where we are not sure about the state of the world but we can observe some facet of it. At each time step our state changes stochastically according to the transition function. A new observation is (stochastically) generated from our new state. Generally, we attempt to infer the state of the world given the observations. Note that at each new time step we create two new random variables $X_t, Y_t$.
+Intuitively, this model represents the situation where we are not sure about the state of the world but we can observe some facet of it. At each time step our state changes stochastically according to the transition function. A new observation is (stochastically) generated from our new state. Generally, we attempt to infer the state of the world given the observations. Clearly two new random variables $X_t, Y_t$ are created at each time step.
 
 In this chapter we briefly describe Markov models because they link back to previous work done by the chemical engineering department at the University of Pretoria. We focus on hidden Markov models for the remainder of the chapter because the techniques we develop here generalise to linear latent dynamical systems which we discuss in chapter \ref{sec_inf_lin_mods}. 
 
 \section{Markov models}
-A first order Markov model (sometimes called a Markov chain) is shown in Figure \ref{fig_markov_chain}. Using the chain rule for Bayesian networks (Definition \ref{def_chain_rule_bayes}) we can immediately write down the joint probability distribution as shown in (\ref{eq_markov_chain_joint}).
+A first order Markov model (sometimes called a Markov chain) is shown in Figure \ref{fig_markov_chain}. Using the chain rule for Bayesian networks (Definition \ref{def_chain_rule_bayes}) we can immediately write down the joint probability distribution
 \begin{equation}
-P(X_{0:T}) = \Pi_{t=0}^T P(X_t|X_{t-1}) \text{ with } P(X_0|X_{-1}) = P(X_0)
+P(X_{0:T}) = \Pi_{t=0}^T P(X_t|X_{t-1}) \text{ with } P(X_0|X_{-1}) = P(X_0).
 \label{eq_markov_chain_joint}
 \end{equation}  
 \begin{figure}[H] 
@@ -49,21 +49,20 @@ P(X_{0:T}) = \Pi_{t=0}^T P(X_t|X_{t-1}) \text{ with } P(X_0|X_{-1}) = P(X_0)
 \caption{First order markov chain.}
 \label{fig_markov_chain}
 \end{figure}
-This model describes the forward propagation of a discrete random variable through time. It is interesting to study the marginal distribution of $P(X_T)$ as it evolves through time. By d-separation we know that $X_t \indep X_{0:t-2} | X_{t-1}$. Thus, we only have to marginalise out the previous time step to compute the required distribution as shown in (\ref{eq_markov_chain_marg}).
+This model describes the forward propagation of a discrete random variable through time. It is interesting to study the marginal distribution of $P(X_T)$ as it evolves through time. By d-separation we know that $X_t \indep X_{0:t-2} | X_{t-1}$. Thus, we only have to marginalise out the previous time step to compute the required distribution 
 \begin{equation}
-P(X_T) = \sum_{x_{T-1}} P(X_T, x_{T-1}) = \sum_{x_{T-1}} P(x_{T-1})P(X_T|x_{T-1})
+P(X_T) = \sum_{x_{T-1}} P(X_T, x_{T-1}) = \sum_{x_{T-1}} P(x_{T-1})P(X_T|x_{T-1}).
 \label{eq_markov_chain_marg}
 \end{equation}
-Since we know that the transition function is a row stochastic $n \times n$ matrix (the random variable has $n$ discrete states) we can write (\ref{eq_markov_chain_marg}) in vector notation (\ref{eq_markov_chain_marg_vec}). Note that $P(X_T)$ is a discrete random variable and can thus be expressed as a stochastic column vector i.e. $\sum_i P(x_t=i) = 1$.
+Since we know that the transition function is a row stochastic $n \times n$ matrix (the random variable has $n$ discrete states) we can write (\ref{eq_markov_chain_marg}) in vector notation 
 \begin{equation}
-P(X_t) = \mathbf{p}_t = \mathbf{A}\mathbf{p}_{t-1} = \mathbf{M}^{t-1}\mathbf{p}_1
+P(X_t) = \mathbf{p}_t = \mathbf{A}\mathbf{p}_{t-1} = \mathbf{M}^{t-1}\mathbf{p}_1.
 \label{eq_markov_chain_marg_vec}
 \end{equation}
-We have implicitly rewritten (\ref{eq_markov_chain_marg_vec}) in recursive format. Thus, we have a recursive expression for the marginal distribution of $X$. If, as $T \rightarrow \infty$, we have that $\mathbf{p}_{t \rightarrow \infty} = \mathbf{p}_{\infty}$ exists and is independent of $\mathbf{p}_0$ we call $\mathbf{p}_{\infty}$ the equilibrium distribution of the chain. 
+Note that $P(X_T)$ is a discrete random variable and can thus be expressed as a stochastic column vector i.e. $\sum_i P(x_t=i) = 1$. We have implicitly rewritten (\ref{eq_markov_chain_marg_vec}) in recursive format. Thus, we have a recursive expression for the marginal distribution of $X$. If, as $T \rightarrow \infty$, we have that $\mathbf{p}_{t \rightarrow \infty} = \mathbf{p}_{\infty}$ exists and is independent of $\mathbf{p}_0$ we call $\mathbf{p}_{\infty}$ the equilibrium distribution of the chain. 
 
-We define the stationary distribution, in matrix notation, by (\ref{eq_markov_chain_stationary}).
-\begin{equation}
-\mathbf{p}_{\infty} = \mathbf{A}\mathbf{p}_{\infty}
+We define the stationary distribution, in matrix notation, by \begin{equation}
+\mathbf{p}_{\infty} = \mathbf{A}\mathbf{p}_{\infty}.
 \label{eq_markov_chain_stationary}
 \end{equation}
 Recalling the definition of the eigenvalue problem we see that the stationary distribution is just the eigenvector corresponding to the unit eigenvalue of $\mathbf{A}$. While this model may seem simplistic it is the foundation of Google's PageRank algorithm \cite{google}.  Intuitively $\mathbf{p}_\infty$ represents the steady state probability distribution of the random variable $X$ as it is propagated through time by the transition function $A$. See the work in \cite{streicher} for an application specifically geared towards chemical engineering.
@@ -75,7 +74,7 @@ In general a hidden Markov model is just a specific case of the general dynamic 
 
 We assume that the transition and observation probability functions are stationary. Consequently they may be represented by the row stochastic square matrices $P(x_t=i|x_{t-1}=j) = A$ and $P(y_t=i|x_t=j) = B$. Intuitively this means that the probability of state $x_{t-1}=j$ going to state $x_{t} = i$ is $A_{ij}$. Similarly, $B_{ij}$ is the probability of observing $y_t=i$ if the underlying state is $x_t=j$.
 
-For the purposes of this dissertation we will always assume that the model parameters are known. In chapter \ref{sec_dbns_lit} the four primary inference techniques were briefly mentioned. We now derive recursive expressions for each inference technique for discrete models of the form shown in Figure \ref{fig_linmod}. The tools and techniques we develop here will be useful in the following chapters. 
+For the purposes of this dissertation we will always assume that the model parameters are known. In section \ref{sec_dbns_lit} the four primary inference techniques were briefly mentioned. We now derive recursive expressions for each inference technique for discrete models of the form shown in Figure \ref{fig_linmod}. The tools and techniques we develop here will be useful in the following chapters. 
 
 \subsection{Filtering}
 The goal of filtering is to find $P(X_t|y_{0:t})$: the distribution of the current state given all the past observations. The corresponding graphical model is shown in Figure \ref{fig_linmod_filter_hmm}.
@@ -106,16 +105,16 @@ The goal of filtering is to find $P(X_t|y_{0:t})$: the distribution of the curre
 \caption{Filtering graphical model.}
 \label{fig_linmod_filter_hmm}
 \end{figure}
-We start the derivation by noting that $X_{t-1}$ d-separates $X_t$ from $X_{0:t-2}$. Thus $X_{t-1}$ contains all the hidden state information of the system up to and including $t-1$. This is not surprising since we have assumed a first order Markov system. This is why we only marginalise over the reduced state joint $P(X_t, X_{t-1}|y_{0:t})$.
+We start the derivation by noting that $X_{t-1}$ d-separates $X_t$ from $X_{0:t-2}$. Thus $X_{t-1}$ contains all the hidden state information of the system up to and including $t-1$. This is not surprising since we have assumed a first order Markov system. This is why we only marginalise over the reduced state joint $P(X_t, X_{t-1}|y_{0:t})$ in
 \begin{equation}
 \begin{aligned}
 P(X_t| y_{0:t-1}) &= \sum_{x_{t-1}} P(X_t, x_{t-1}| y_{0:t-1})\\
 &= \sum_{x_{t-1}} P(x_{t-1}|y_{0:t-1})P(X_t|y_{0:t-1}, x_{t-1})\\  
-& = \sum_{x_{t-1}} P(x_{t-1}|y_{0:t-1})P(X_t|x_{t-1}) \\
+& = \sum_{x_{t-1}} P(x_{t-1}|y_{0:t-1})P(X_t|x_{t-1}).
 \end{aligned}
 \label{eq_forward_no_recur}
 \end{equation}
-Where the expansion followed from the chain rule of Bayesian networks (Definition \ref{def_chain_rule_bayes} and the cancellation followed from the conditional independence assumption of the transition function. Now we define $\alpha(X_t) \equiv P(X_t | y_{0:t})$. Then (\ref{eq_forward_recur}) follows from (\ref{eq_forward_no_recur}) and by application of Bayes' theorem (Theorem \ref{thrm_bayes}).
+Where the expansion followed from the chain rule of Bayesian networks (Definition \ref{def_chain_rule_bayes}) and the cancellation followed from the conditional independence assumption of the transition function. Now we define $\alpha(X_t) \equiv P(X_t | y_{0:t})$. Then
 \begin{equation}
 \begin{aligned}
 \alpha(X_t) &= \frac{P(y_t|X_t, y_{0:t-1})P(X_t|y_{0:t-1})}{P(y_t|y_{0:t-1})} \\
@@ -125,9 +124,9 @@ Where the expansion followed from the chain rule of Bayesian networks (Definitio
 \end{aligned}
 \label{eq_forward_recur}
 \end{equation}
-Note that it is not actually necessary to calculate $p(y_t|y_{0:t-1})$ as it is only a normalisation constant. We thus have a recursion relation for the filtered posterior distribution $X_t$ with initial condition $\alpha(X_1) = P(X_1, y_1) = P(X_1)P(y_1|X_1)$ as shown in (\ref{eq_forward_approx}).
+follows from (\ref{eq_forward_no_recur}) and by application of Bayes' theorem (Theorem \ref{thrm_bayes}). It is not actually necessary to calculate $p(y_t|y_{0:t-1})$ as it is only a normalisation constant. We thus have a recursion relation for the filtered posterior distribution $X_t$ with initial condition $\alpha(X_1) = P(X_1, y_1) = P(X_1)P(y_1|X_1)$ by
 \begin{equation}
-\alpha(X_t) \propto P(y_t|X_t) \sum_{x_{t-1}} \alpha(x_{t-1})P(X_t|x_{t-1})
+\alpha(X_t) \propto P(y_t|X_t) \sum_{x_{t-1}} \alpha(x_{t-1})P(X_t|x_{t-1}).
 \label{eq_forward_approx}
 \end{equation}
 One often uses logarithms to perform the filter calculations as machine precision errors become a problem for large $t$ due to the multiplication of small fractions. The recursive filtering algorithm we derived is often called the forwards algorithm in literature \cite{barber}.
@@ -165,38 +164,38 @@ The goal of smoothing is to find $P(X_t|y_{0:T})$ for $t\leq T$: the distributio
 \caption{Smoothing graphical model.}
 \label{fig_linmod_smooth_hmm}
 \end{figure}
-We start by splitting the joint $P(X_t, y_{0:T}) = P(X_t, y_{0:t})P(y_{t+1:T}|X_t,y_{0:t})$ by the chain rule and using d-separation to reduce it further $P(X_t, y_{0:T}) = P(X_t, y_{0:t})P(y_{t+1:T}|X_t)$. Effectively the last step implies that future observations are independent of past observations given the current state. We defined $\beta(X_t)\equiv P(y_{t+1:T}|X_t)$ and continue the derivation in (\ref{eq_backwards_no_recur}).
+We start by splitting the joint $P(X_t, y_{0:T}) = P(X_t, y_{0:t})P(y_{t+1:T}|X_t,y_{0:t})$ by the chain rule and using d-separation to reduce it further $P(X_t, y_{0:T}) = P(X_t, y_{0:t})P(y_{t+1:T}|X_t)$. Effectively the last step implies that future observations are independent of past observations given the current state. We defined $\beta(X_t)\equiv P(y_{t+1:T}|X_t)$ and continue
 \begin{equation}
 \begin{aligned}
 P(y_{t:T}|X_{t-1}) &= \sum_{x_t} P(y_t, y_{t+1:T}, x_t|X_{t-1}) \\
 &= \sum_{x_t} P(y_{t+1:T}, x_t | X_{t-1})P(y_t| y_{t+1:T}, x_t, X_{t-1}) \\
 &= \sum_{x_t} P(y_{t+1:T}, x_t | X_{t-1})P(y_t| x_t) \\
 &= \sum_{x_t} P(x_t | X_{t-1})P(y_{t+1:T}| x_t,X_{t-1})P(y_t| x_t) \\
-&= \sum_{x_t} P(x_t | X_{t-1})P(y_{t+1:T}| x_t)P(y_t| x_t) \\
+&= \sum_{x_t} P(x_t | X_{t-1})P(y_{t+1:T}| x_t)P(y_t| x_t).
 \end{aligned}
 \label{eq_backwards_no_recur}
 \end{equation}
-We have made judicious use of the implied independence assertions (via d-separation) of Figure \ref{fig_linmod}. Making use of the definition of $\beta$ we have (\ref{eq_backwards_recur}).
+We have made judicious use of the implied independence assertions (via d-separation) of Figure \ref{fig_linmod}. Making use of the definition of $\beta$ we have
 \begin{equation}
 \begin{aligned}
 &\beta(X_{t-1}) = \sum_{x_t} P(x_t | X_{t-1})\beta(x_t)P(y_t| x_t) \text{ for } 1 \leq t \leq T \\
-&\text{with } \beta(X_T) = 1
+&\text{with } \beta(X_T) = 1.
 \end{aligned}
 \label{eq_backwards_recur}
 \end{equation}
-The recursion initial condition $\beta(X_T) = 1$ stems from Bayes' theorem (Theorem \ref{thrm_bayes}) and the definition of $\alpha$ as shown in (\ref{eq_backwards_recur_initial}). Note that $\beta$ is not a probability function.
+The recursion initial condition $\beta(X_T) = 1$ stems from Bayes' theorem (Theorem \ref{thrm_bayes}) and the definition of $\alpha$ as illustrated by
 \begin{equation}
 \begin{aligned}
 P(X_T|y_{0:T}) &= \frac{P(X_T, y_{0:T})}{P(y_{0:T})} \\
 &= \alpha(X_T) \beta(X_T)\\
 &= P(X_T| y_{0:T}) \beta(X_T)\\
-&\implies \beta(X_T) = 1
+&\implies \beta(X_T) = 1.
 \end{aligned}
 \label{eq_backwards_recur_initial}
 \end{equation}
-The smoothed posterior is given by applying Bayes' theorem as shown in (\ref{eq_smooth}).
+Note that $\beta$ is not a probability function. The smoothed posterior is given by applying Bayes' theorem
 \begin{equation}
-P(X_t|y_{0:T}) = \frac{\alpha(X_t)\beta(X_t)}{\sum_{x_t}\alpha(x_t)\beta(x_t)}
+P(X_t|y_{0:T}) = \frac{\alpha(X_t)\beta(X_t)}{\sum_{x_t}\alpha(x_t)\beta(x_t)}.
 \label{eq_smooth}
 \end{equation}
 Together the $\alpha - \beta$ recursions are called the forwards-backwards algorithm and find extensive use in general purpose exact inference of dynamic Bayesian networks \cite{murphy1}.
@@ -206,34 +205,35 @@ Numerical issues may also become problematic due to the multiplication of small 
 \subsection{Viterbi decoding}
 The goal of Viterbi decoding is to find $x_{0:T}^* = \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$: finding the most likely sequence of states which best describe the observations by  attempting to find the sequence $x_{0:T}$ such that the joint probability function $P(x_{0:T}, y_{0:T})$ is maximised. This is equivalent to finding $ \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$ because, if one uses the chain rule on the joint, the observations will just be a constant factor. The graphical model used here is similar to that of Figure \ref{fig_linmod_smooth_hmm}.
 
-Intuitively we first attempt to find the maximum of the joint and then determine which sequence of states led to this maximal joint. By using the chain rule for Bayesian networks we can rewrite the joint maximisation problem as in (\ref{eq_viterbi_joint}).
+Intuitively we first attempt to find the maximum of the joint and then determine which sequence of states led to this maximal joint. By using the chain rule for Bayesian networks we can rewrite the joint maximisation problem as
 \begin{equation}
 \begin{aligned}
 \underset{x_{0:T}}{\text{max }} P(x_{0:T}, y_{0:T}) &= \underset{x_{0:T}}{\text{max }} \Pi_{t=1}^T P(y_t|x_t) P(x_t|x_{t-1})\\
-&= \left(\underset{x_{0:T-1}}{\text{max }} \Pi_{t=1}^{T-1} P(y_t|x_t) P(x_t|x_{t-1}) \right) \underset{x_{T}}{\text{max }} P(y_T|x_T) P(x_T|x_{T-1})
+&= \left(\underset{x_{0:T-1}}{\text{max }} \Pi_{t=1}^{T-1} P(y_t|x_t) P(x_t|x_{t-1}) \right) \underset{x_{T}}{\text{max }} P(y_T|x_T) P(x_T|x_{T-1}).
 \end{aligned}
 \label{eq_viterbi_joint}
 \end{equation}
-Defining $\mu(X_{t-1}) \equiv \underset{x_{t}}{\text{max }} P(y_t|x_t) P(x_t|x_{t-1})$ we can rewrite (\ref{eq_viterbi_joint}) as (\ref{eq_viterbi_max_factor_mu}).
-\begin{equation}
-\underset{x_{0:T}}{\text{max }} P(x_{0:T}, y_{0:T}) =\underset{x_{0:T-1}}{\text{max }} \Pi_{t=1}^{T-1} P(y_t|x_t) P(x_t|x_{t-1}) \mu(x_{T-1})
+Defining $\mu(X_{t-1}) \equiv \underset{x_{t}}{\text{max }} P(y_t|x_t) P(x_t|x_{t-1})$ we can rewrite (\ref{eq_viterbi_joint}) as \begin{equation}
+\underset{x_{0:T}}{\text{max }} P(x_{0:T}, y_{0:T}) =\underset{x_{0:T-1}}{\text{max }} \Pi_{t=1}^{T-1} P(y_t|x_t) P(x_t|x_{t-1}) \mu(x_{T-1}).
 \label{eq_viterbi_max_factor_mu}
 \end{equation}
-Thus we have a recursive expression to find the value of the joint under the most likely sequence of states given the observations as shown in (\ref{eq_viterbi_recur}).
+Thus we have a recursive expression,
 \begin{equation}
 \begin{aligned}
 &\mu(x_{t-1}) = \underset{x_{t}}{\text{max }} P(y_t|x_t) P(x_t|x_{t-1}) \mu(x_t) \text{ for } 2 \leq t \leq T \\
-&\text{with } \mu(x_T) = 1 
+&\text{with } \mu(x_T) = 1, 
 \end{aligned}
 \label{eq_viterbi_recur}
 \end{equation}
-The recursive expression in (\ref{eq_viterbi_recur}) implies that the effect of maximising over over the previous time step can be compressed into a message (a function) of the current time step. Effectively we pass theses messages backward in time to find the maximum joint in terms of $x_0$. We then find the state which maximises this joint and pass this message forward.  Continuing in this way, we have (\ref{eq_viterbi_recur_forward}).
+to find the value of the joint under the most likely sequence of states given the observations.
+
+The recursive expression in (\ref{eq_viterbi_recur}) implies that the effect of maximising over over the previous time step can be compressed into a message (a function) of the current time step. Effectively we pass theses messages backward in time to find the maximum joint in terms of $x_0$. We then find the state which maximises this joint and pass this message forward.  Continuing in this way we have
 \begin{equation}
 \begin{aligned}
 x_1^* &= \underset{x_{1}}{\text{arg max }}P(y_1|x_1)P(x_1)\mu(x_1) \\
 x_2^* &= \underset{x_{2}}{\text{arg max }}P(y_2|x_2)P(x_2|x_1^*)\mu(x_2) \\
 &~~\vdots \\
-x_t^* &= \underset{x_{t}}{\text{arg max }}P(y_t|x_t)P(x_t|x_{t-1}^*)\mu(x_t)
+x_t^* &= \underset{x_{t}}{\text{arg max }}P(y_t|x_t)P(x_t|x_{t-1}^*)\mu(x_t).
 \end{aligned}
 \label{eq_viterbi_recur_forward}
 \end{equation}
@@ -268,26 +268,24 @@ The goal of prediction is to find $P(X_{t+1}|y_{0:t})$ and $P(Y_{t+1}|y_{0:t})$:
 \end{figure}
 We again start by noticing that given all the observations  up to time $t$ the current state d-separates  all previous states. Thus, to infer information about the next state we only need to marginalise out the current state $X_t$. Furthermore, the next state d-separates the next observation from all the previous states. Thus, to infer information about the next observation we additionally only need to marginalise out $X_{t+1}$.
 
-We start with predicting the next state distribution. We have applied the chain rule, the independence assertions and used the definition of $\alpha$ to derive (\ref{eq_prediction_state}).
+We start with predicting the next state distribution. We have applied the chain rule, the independence assertions and used the definition of $\alpha$ to write
 \begin{equation}
 \begin{aligned}
 P(X_{t+1}|y_{0:t}) &= \sum_{x_t} P(X_{t+1}, x_t|y_{0:t}) \\
 &= \sum_{x_t} P(x_t|y_{0:t})P(X_{t+1}|x_t, y_{0:t}) \\
 &= \sum_{x_t} P(x_t|y_{0:t})P(X_{t+1}|x_t) \\
-&= \sum_{x_t} \alpha(x_t)P(X_{t+1}|x_t) \\
+&= \sum_{x_t} \alpha(x_t)P(X_{t+1}|x_t).
 \end{aligned}
 \label{eq_prediction_state}
 \end{equation}
-Clearly the state prediction uses the filtered state estimate and projects that forward using the transition function.
-
-Next we derive the observation prediction. Again we apply the chain rule, use the independence assertions and use the definition of $\alpha$ to derive (\ref{eq_prediction_observation}).
+Clearly the state prediction uses the filtered state estimate and projects that forward using the transition function. Next we derive the observation prediction. Again we apply the chain rule, use the independence assertions and use the definition of $\alpha$ to write
 \begin{equation}
 \begin{aligned}
 P(Y_{t+1}|y_{0:t}) &= \sum_{x_t, x_{t+1}} P(x_{t+1}, x_t, Y_{t+1}|y_{0:t})\\
 &= \sum_{x_t, x_{t+1}} P(x_t|y_{0:t})P(x_{t+1}, Y_{t+1}|y_{0:t}, x_t) \\
 &= \sum_{x_t, x_{t+1}} P(x_t|y_{0:t})P(x_{t+1}|y_{0:t}, x_t)P(Y_{t+1}|y_{0:t}, x_t, x_{t+1}) \\
 &= \sum_{x_t, x_{t+1}} P(x_t|y_{0:t})P(x_{t+1}|x_t)P(Y_{t+1}|x_{t+1}) \\
-&= \sum_{x_t, x_{t+1}} \alpha(x_t)P(x_{t+1}|x_t)P(Y_{t+1}|x_{t+1}) \\
+&= \sum_{x_t, x_{t+1}} \alpha(x_t)P(x_{t+1}|x_t)P(Y_{t+1}|x_{t+1}).
 \end{aligned}
 \label{eq_prediction_observation}
 \end{equation}
@@ -320,4 +318,4 @@ It is also interesting to note that the prediction algorithm is very much depend
 
 Finally, it is important to understand the benefit of using this approach as opposed to the exhaustive ``if this then that" approach. Firstly, the latter approach scales exponentially with the number of variables because one would need to fully consider all the possibilities to infer any sort of belief. Secondly, the former approach has an associated probability distribution: the certainty of our inferred belief is automatically quantified e.g. the darker the blocks the more sure we are about our inference. Thus, the techniques we developed make room for uncertainty about the correctness of the answer.
 
-Hidden Markov models are very powerful and have found many uses e.g. speech recognition, object tracking and bio-informatics \cite{barber}. Many extensions of the basic model (see Figure \ref{fig_linmod}) exist which are much more expressive. However, we are interested in modelling and reasoning about continuous random variables. For such applications the hidden Markov model, due to the discrete assumption, is inappropriate. Fortunately, the techniques investigated in this chapter carry over to the continuous case as we will see in Chapter \ref{sec_inf_lin_mods}.  
+Hidden Markov models are very powerful and have found many uses e.g. speech recognition, object tracking and bio-informatics \cite{barber}. Many extensions of the basic model (see Figure \ref{fig_linmod}) exist which are much more expressive. However, we are interested in modelling and reasoning about continuous random variables. For such applications the hidden Markov model, due to the discrete assumption, is inappropriate. Fortunately, the techniques investigated in this chapter carry over to the continuous case as we will see in chapter \ref{sec_inf_lin_mods}.  
