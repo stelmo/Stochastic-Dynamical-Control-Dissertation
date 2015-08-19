@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  18 AUG 2015 14:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  19 AUG 2015 13:16
 entering extended mode
 **lit_study.tex
 
@@ -7165,7 +7165,7 @@ Missing character: There is no w in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no F in font nullfont!
+Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no u in font nullfont!
@@ -7174,7 +7174,7 @@ Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
 <write> ...rence `fig_vanhessem' on page \thepage 
                                                   \space undefined\on@line .
-l.70 ...nts as shown in Figure \ref{fig_vanhessem}
+l.70 ...nts as shown in figure \ref{fig_vanhessem}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -12311,7 +12311,7 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
-l.115 ...turbance $x_{t+1} = Ax_t + Bu_t + \mathbb
+l.115 ...bance $x_{t+1} = Ax_t + Bu_t + B_d\mathbb
                                                   {E}[d_t]$ \cite{lee}. The ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -12324,7 +12324,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.115 ...Ax_t + Bu_t + \mathbb{E}[d_t]$ \cite{lee}
+l.115 ...t + Bu_t + B_d\mathbb{E}[d_t]$ \cite{lee}
                                                   . The problem with this ap...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -12466,8 +12466,8 @@ $\OML/cmm/m/it/10 Bu[] \OT1/cmr/m/n/10 +$
  []
 
 
-Overfull \hbox (22.2396pt too wide) in paragraph at lines 114--116
-$\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]$
+Overfull \hbox (34.48755pt too wide) in paragraph at lines 114--116
+$\OML/cmm/m/it/10 B[]E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 d[]\OT1/cmr/m/n/10 ]$
  []
 
 
@@ -16540,7 +16540,7 @@ Missing character: There is no w in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no F in font nullfont!
+Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no u in font nullfont!
@@ -16549,7 +16549,7 @@ Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
 <write> ...ference `fig_spf_skf' on page \thepage 
                                                   \space undefined\on@line .
-l.134 ...odel is shown in Figure \ref{fig_spf_skf}
+l.134 ...odel is shown in figure \ref{fig_spf_skf}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -17971,7 +17971,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no f in font nullfont!
-Missing character: There is no F in font nullfont!
+Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no u in font nullfont!
@@ -17981,7 +17981,7 @@ Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
 <write> ...ference `fig_spf_skf' on page \thepage 
                                                   \space undefined\on@line .
-l.168 ...aphical model of Figure \ref{fig_spf_skf}
+l.168 ...aphical model of figure \ref{fig_spf_skf}
                                                   . We investigate and show ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -18250,7 +18250,7 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no S in font nullfont!
+Missing character: There is no s in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no t in font nullfont!
@@ -18260,7 +18260,7 @@ Missing character: There is no n in font nullfont!
 ! Undefined control sequence.
 <write> ...e `sec_stoch_mpc_lit' on page \thepage 
                                                   \space undefined\on@line .
-l.171 ...ded to in Section \ref{sec_stoch_mpc_lit}
+l.171 ...ded to in section \ref{sec_stoch_mpc_lit}
                                                   . Using this approach it i...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -19274,7 +19274,7 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no f in font nullfont!
-Missing character: There is no S in font nullfont!
+Missing character: There is no s in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no t in font nullfont!
@@ -19284,7 +19284,7 @@ Missing character: There is no n in font nullfont!
 ! Undefined control sequence.
 <write> ...e `sec_stoch_mpc_lit' on page \thepage 
                                                   \space undefined\on@line .
-l.175 ...ollers of Section \ref{sec_stoch_mpc_lit}
+l.175 ...ollers of section \ref{sec_stoch_mpc_lit}
                                                    were used the control sch...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -19367,7 +19367,7 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no S in font nullfont!
+Missing character: There is no s in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no t in font nullfont!
@@ -19377,7 +19377,7 @@ Missing character: There is no n in font nullfont!
 ! Undefined control sequence.
 <write> ...e `sec_stoch_mpc_lit' on page \thepage 
                                                   \space undefined\on@line .
-l.177 ...e so than Section \ref{sec_stoch_mpc_lit}
+l.177 ...e so than section \ref{sec_stoch_mpc_lit}
                                                   , the approach used here r...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have

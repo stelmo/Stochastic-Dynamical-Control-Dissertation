@@ -67,7 +67,7 @@ If one assumes that each $x_t$ is Gaussian with sufficient statistics $(\mu_t, \
 \frac{1}{2^{\frac{n}{2}}\Gamma(\frac{n}{2})}\int_0^{k^2}\mathcal{X}^{\frac{n}{2}-1}e^{-\frac{\mathcal{X}}{2}}d\mathcal{X} = p.
 \label{eq_lit_chi_squared}
 \end{equation} 
-Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a second order conic optimisation problem. The authors ensure that each ellipse is contained in the feasible region by ensuring there exists sufficient ``back-off" (the distances $z_1$, $z_2$, $z_3$ and $z_4$) between the predicted ellipses and the constraints as shown in Figure \ref{fig_vanhessem}.
+Using the ellipsoidal approximations the stochastic optimisation problem can transformed into a second order conic optimisation problem. The authors ensure that each ellipse is contained in the feasible region by ensuring there exists sufficient ``back-off" (the distances $z_1$, $z_2$, $z_3$ and $z_4$) between the predicted ellipses and the constraints as shown in figure \ref{fig_vanhessem}.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{vanhess.pdf}
@@ -131,7 +131,7 @@ The approach by \cite{ozkan} is similar except that they use ellipsoidal regions
 
 Loosely related to the idea of model switching is model based fault detection. In \cite{isermann} it is found that almost 70\% of the reviewed papers dealing with fault detection use observer or parameter estimation methods. The basic idea behind this approach is to estimate the system outputs using an observer and to compare this to some model of the system. The difference, often called the residual, is then used to estimate the probability of a fault in the process \cite{edwards}. The approach followed in \cite{wang} combines elements of model switching and state observations. They use a filter to construct a residual generator which is used to evaluate whether or not the system has a fault. The filter can switch between the different linear system models based on the current regime of the system. 
 
-Related to this class of model based fault detection algorithms is the switching model filter. The corresponding probabilistic graphical model is shown in Figure \ref{fig_spf_skf}.
+Related to this class of model based fault detection algorithms is the switching model filter. The corresponding probabilistic graphical model is shown in figure \ref{fig_spf_skf}.
 \begin{figure}[ht] 
 \centering
 \begin{tikzpicture}
@@ -165,13 +165,13 @@ Related to this class of model based fault detection algorithms is the switching
 \end{figure}
 Classically these types of models are used to infer the current state  estimate (called filtering) given a set of models. Intuitively, the model which best describes the current observation ($y_t$) is assigned the most weight in the state estimate. This allows for the modelling of nonlinear and multi-modal distributions by combining models based on the inferred switching variable ($s$) \cite{murphy1}. These models may be used for both filtering and event detection (see \cite{veerar} for an example) which, in the setting of control, can be interpreted as fault detection.
 
-In this dissertation we also illustrate the potential control benefits gained by designing predictive controllers using the switching model probabilistic graphical model of Figure \ref{fig_spf_skf}. We investigate and show the following:
+In this dissertation we also illustrate the potential control benefits gained by designing predictive controllers using the switching model probabilistic graphical model of figure \ref{fig_spf_skf}. We investigate and show the following:
 \begin{enumerate}
 \item
-Using switching model filters it is possible to accurately estimate the current state as well as estimate the probability of each model supporting the current observation. The state estimate can then be used within the controller framework alluded to in Section \ref{sec_stoch_mpc_lit}. Using this approach it is also possible to change the model control is based upon. The linear model which best describes the current observations is used for control purposes. In this way we gain the benefit of model switching but do not incur the significant computational cost when it is incorporated into the optimisation problem as is the trend in current literature. We call this approach the switching controller algorithm.
+Using switching model filters it is possible to accurately estimate the current state as well as estimate the probability of each model supporting the current observation. The state estimate can then be used within the controller framework alluded to in section \ref{sec_stoch_mpc_lit}. Using this approach it is also possible to change the model control is based upon. The linear model which best describes the current observations is used for control purposes. In this way we gain the benefit of model switching but do not incur the significant computational cost when it is incorporated into the optimisation problem as is the trend in current literature. We call this approach the switching controller algorithm.
 \item
 We investigate using the Rao-Blackwellised particle filter as the switching model filter. In this context the resultant most likely linear model is used to move the underlying system to different regions in state space. It was found that the approach caused controller instability because the current most likely model is often not accurate enough to steer the system to the target.
 \item
-We also investigate using the switching particle filter as the switching model filter. In this context the filter was used to identify when a process fault occurred and, based on this event, switch the model control is based upon. It was found that the algorithm successfully stabilised and regulated the nonlinear underlying system. Furthermore, since the controllers of Section \ref{sec_stoch_mpc_lit} were used the control scheme was computationally efficient.
+We also investigate using the switching particle filter as the switching model filter. In this context the filter was used to identify when a process fault occurred and, based on this event, switch the model control is based upon. It was found that the algorithm successfully stabilised and regulated the nonlinear underlying system. Furthermore, since the controllers of section \ref{sec_stoch_mpc_lit} were used the control scheme was computationally efficient.
 \end{enumerate}
-Even more so than Section \ref{sec_stoch_mpc_lit}, the approach used here relies on the application of probabilistic graphical models to controller design.  
+Even more so than section \ref{sec_stoch_mpc_lit}, the approach used here relies on the application of probabilistic graphical models to controller design.  

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  18 AUG 2015 11:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  19 AUG 2015 15:13
 entering extended mode
 **introduction.tex
 
@@ -639,7 +639,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \@footnotetext ...tins {\reset@font \footnotesize 
                                                   \interlinepenalty \interfo...
 l.4 ...diamond nodes are deterministic variables.}
-                                                   shown in Figures \ref{fig...
+                                                   shown in figures \ref{fig...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -650,7 +650,7 @@ and I'll forget about whatever was undefined.
 \@footnotetext ...}\color@begingroup \@makefntext 
                                                   {\rule \z@ \footnotesep \i...
 l.4 ...diamond nodes are deterministic variables.}
-                                                   shown in Figures \ref{fig...
+                                                   shown in figures \ref{fig...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -849,7 +849,7 @@ Missing character: There is no w in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no F in font nullfont!
+Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no u in font nullfont!
@@ -859,7 +859,7 @@ Missing character: There is no s in font nullfont!
 ! Undefined control sequence.
 <write> ...eference `fig_linear' on page \thepage 
                                                   \space undefined\on@line .
-l.4 ...riables.} shown in Figures \ref{fig_linear}
+l.4 ...riables.} shown in figures \ref{fig_linear}
                                                    and \ref{fig_switch_linea...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2234,7 +2234,7 @@ Missing character: There is no t in font nullfont!
 <write> ... Reference `part_one' on page \thepage 
                                                   \space undefined\on@line .
 l.69 ...specific problem area. Part \ref{part_one}
-                                                   contains Chapters \ref{se...
+                                                   contains chapters \ref{se...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2252,7 +2252,7 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no s in font nullfont!
-Missing character: There is no C in font nullfont!
+Missing character: There is no c in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no p in font nullfont!
@@ -2263,7 +2263,7 @@ Missing character: There is no s in font nullfont!
 ! Undefined control sequence.
 <write> ...rence `sec_lit_study' on page \thepage 
                                                   \space undefined\on@line .
-l.69 ...one} contains Chapters \ref{sec_lit_study}
+l.69 ...one} contains chapters \ref{sec_lit_study}
                                                    to \ref{sec_cstr}. The li...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2280,7 +2280,7 @@ Missing character: There is no o in font nullfont!
 <write> ... Reference `sec_cstr' on page \thepage 
                                                   \space undefined\on@line .
 l.69 ...ters \ref{sec_lit_study} to \ref{sec_cstr}
-                                                  . The literature review, C...
+                                                  . The literature review, c...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2311,7 +2311,7 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no w in font nullfont!
 Missing character: There is no , in font nullfont!
-Missing character: There is no C in font nullfont!
+Missing character: There is no c in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no p in font nullfont!
@@ -2321,7 +2321,7 @@ Missing character: There is no r in font nullfont!
 ! Undefined control sequence.
 <write> ...rence `sec_lit_study' on page \thepage 
                                                   \space undefined\on@line .
-l.69 ...rature review, Chapter \ref{sec_lit_study}
+l.69 ...rature review, chapter \ref{sec_lit_study}
                                                   , deals with current paper...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2622,7 +2622,7 @@ Missing character: There is no l in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no y in font nullfont!
 Missing character: There is no , in font nullfont!
-Missing character: There is no C in font nullfont!
+Missing character: There is no c in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no p in font nullfont!
@@ -2632,7 +2632,7 @@ Missing character: There is no r in font nullfont!
 ! Undefined control sequence.
 <write> ... Reference `sec_cstr' on page \thepage 
                                                   \space undefined\on@line .
-l.69 ...al models. Finally, Chapter \ref{sec_cstr}
+l.69 ...al models. Finally, chapter \ref{sec_cstr}
                                                    introduces the CSTR examp...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2821,14 +2821,14 @@ Missing character: There is no s in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no P in font nullfont!
+Missing character: There is no p in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 ! Undefined control sequence.
 <write> ... Reference `part_one' on page \thepage 
                                                   \space undefined\on@line .
-l.69 ...ontrol and CSTR design Part \ref{part_one}
+l.69 ...ontrol and CSTR design part \ref{part_one}
                                                    may be safely skipped.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3180,22 +3180,22 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.73 I
-      n Part \ref{part_two} the dynamic Bayesian network, shown in Figure \r...
+      n part \ref{part_two} the dynamic Bayesian network, shown in figure \r...
 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no I in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no P in font nullfont!
+Missing character: There is no p in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 ! Undefined control sequence.
 <write> ... Reference `part_two' on page \thepage 
                                                   \space undefined\on@line .
-l.73 In Part \ref{part_two}
-                            the dynamic Bayesian network, shown in Figure \r...
+l.73 In part \ref{part_two}
+                            the dynamic Bayesian network, shown in figure \r...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3238,7 +3238,7 @@ Missing character: There is no w in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no F in font nullfont!
+Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no u in font nullfont!
@@ -3247,7 +3247,7 @@ Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
 <write> ...eference `fig_linear' on page \thepage 
                                                   \space undefined\on@line .
-l.73 ... network, shown in Figure \ref{fig_linear}
+l.73 ... network, shown in figure \ref{fig_linear}
                                                   , is investigated within t...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4219,14 +4219,14 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no I in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no P in font nullfont!
+Missing character: There is no p in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 ! Undefined control sequence.
 <write> ...eference `part_three' on page \thepage 
                                                   \space undefined\on@line .
-l.80 In Part \ref{part_three}
+l.80 In part \ref{part_three}
                               the switching model filter, based on the dynam...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4300,7 +4300,7 @@ Missing character: There is no w in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no F in font nullfont!
+Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no u in font nullfont!
@@ -4309,7 +4309,7 @@ Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
 <write> ...e `fig_switch_linear' on page \thepage 
                                                   \space undefined\on@line .
-l.80 ...rk shown in Figure \ref{fig_switch_linear}
+l.80 ...rk shown in figure \ref{fig_switch_linear}
                                                   , is investigated\footnote...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4623,7 +4623,7 @@ Missing character: There is no s in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no g in font nullfont!
-Missing character: There is no F in font nullfont!
+Missing character: There is no f in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no u in font nullfont!
@@ -4632,7 +4632,7 @@ Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
 <write> ...eference `fig_linear' on page \thepage 
                                                   \space undefined\on@line .
-l.80 ...it of generalising Figure \ref{fig_linear}
+l.80 ...it of generalising figure \ref{fig_linear}
                                                    is that it allows one to ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have

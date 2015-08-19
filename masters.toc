@@ -64,14 +64,14 @@
 \contentsline {section}{\numberline {11.1}Exact filtering}{144}{section.11.1}
 \contentsline {section}{\numberline {11.2}Switching particle filter}{144}{section.11.2}
 \contentsline {section}{\numberline {11.3}Switching particle prediction}{145}{section.11.3}
-\contentsline {section}{\numberline {11.4}Smoothing and Viterbi decoding}{146}{section.11.4}
+\contentsline {section}{\numberline {11.4}Smoothing and Viterbi decoding}{145}{section.11.4}
 \contentsline {section}{\numberline {11.5}Filtering the CSTR}{146}{section.11.5}
-\contentsline {chapter}{\numberline {12}Stochastic switching linear control using nonlinear hybrid models}{152}{chapter.12}
-\contentsline {section}{\numberline {12.1}Unconstrained switching control}{153}{section.12.1}
-\contentsline {section}{\numberline {12.2}Constrained switching control}{157}{section.12.2}
-\contentsline {section}{\numberline {12.3}Conclusion}{164}{section.12.3}
-\contentsline {chapter}{\numberline {13}Future work and conclusion}{166}{chapter.13}
-\contentsline {section}{\numberline {13.1}Parameter optimisation}{166}{section.13.1}
-\contentsline {section}{\numberline {13.2}Generalised graphical models}{166}{section.13.2}
-\contentsline {section}{\numberline {13.3}Filtering techniques}{167}{section.13.3}
-\contentsline {section}{\numberline {13.4}Conclusion}{167}{section.13.4}
+\contentsline {chapter}{\numberline {12}Stochastic switching linear control using nonlinear hybrid models}{151}{chapter.12}
+\contentsline {section}{\numberline {12.1}Unconstrained switching control}{152}{section.12.1}
+\contentsline {section}{\numberline {12.2}Constrained switching control}{156}{section.12.2}
+\contentsline {section}{\numberline {12.3}Conclusion}{163}{section.12.3}
+\contentsline {chapter}{\numberline {13}Future work and conclusion}{165}{chapter.13}
+\contentsline {section}{\numberline {13.1}Parameter optimisation}{165}{section.13.1}
+\contentsline {section}{\numberline {13.2}Generalised graphical models}{165}{section.13.2}
+\contentsline {section}{\numberline {13.3}Filtering techniques}{166}{section.13.3}
+\contentsline {section}{\numberline {13.4}Conclusion}{166}{section.13.4}

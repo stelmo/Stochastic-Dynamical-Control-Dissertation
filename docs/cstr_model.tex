@@ -1,6 +1,6 @@
 \chapter{CSTR model}
 \label{sec_cstr}
-In this chapter we introduce the model we will use to illustrate the techniques we develop in this dissertation. The model is a simple continuously stirred tank reactor (CSTR) undergoing an exothermic, irreversible first order reaction where $A \rightarrow B$. A schematic diagram of the reactor is shown in Figure \ref{fig_cstr_diagram}. The model is taken from literature \cite{cstrmodel}.
+In this chapter we introduce the model we will use to illustrate the techniques we develop in this dissertation. The model is a simple continuously stirred tank reactor (CSTR) undergoing an exothermic, irreversible first order reaction where $A \rightarrow B$. A schematic diagram of the reactor is shown in figure \ref{fig_cstr_diagram}. The model is taken from literature \cite{cstrmodel}.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.8]{cstr_diagram.pdf}
@@ -15,7 +15,7 @@ The state space equations describing the reactor are
 \end{aligned}
 \label{eq_cstrmodel}
 \end{equation}
-with parameters shown in Table \ref{tab_params}. The meaning of the variables is what one would expect from an intuitive understanding: $C_A$ is the concentration of species $A$, $T_R$ is the temperature of the CSTR and $Q$ is the heat added (or removed for negative $Q$) from the CSTR.
+with parameters shown in table \ref{tab_params}. The meaning of the variables is what one would expect from an intuitive understanding: $C_A$ is the concentration of species $A$, $T_R$ is the temperature of the CSTR and $Q$ is the heat added (or removed for negative $Q$) from the CSTR.
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{c c c c}
@@ -43,7 +43,7 @@ In this section we use standard mathematical tools, as found in \cite{edwardsand
 \end{aligned}
 \label{eq_cstr_statpoints}
 \end{equation}
-we see that for nominal operating conditions ($Q = 0$) there exist 3 operating points (critical points) as shown in Table \ref{tab_nominalstats}.
+we see that for nominal operating conditions ($Q = 0$) there exist 3 operating points (critical points) as shown in table \ref{tab_nominalstats}.
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{c c c c}
@@ -67,9 +67,9 @@ J(C_A, T_R) = \begin{pmatrix}
 \end{pmatrix},
 \label{eq_jacobian}
 \end{equation}
-at each critical point. In Figure \ref{fig_cstr_op_curve} we see the operating curve for the CSTR. The curve resembles the classical CSTR operating curve with all the associated potential control complexity e.g. it is possible for one set of control inputs to result in two stable operating points. This occurs due to the two stable critical points (for $Q\in [-906, 1145]$) of the system and is called input multiplicity \cite{luyben}. 
+at each critical point. In figure \ref{fig_cstr_op_curve} we see the operating curve for the CSTR. The curve resembles the classical CSTR operating curve with all the associated potential control complexity e.g. it is possible for one set of control inputs to result in two stable operating points. This occurs due to the two stable critical points (for $Q\in [-906, 1145]$) of the system and is called input multiplicity \cite{luyben}. 
 
-Also note that the obvious bifurcation parameter for this system is the heat input $Q$. For $Q = -906$ kJ/min we see that we no longer have three critical points but only two, and for $Q < -906$ kJ/min we only have one critical point. Likewise, for $Q = 1145$ kJ/min we see that we only have two critical points and for $Q > 1145$ kJ/min we only have one critical point. The stability of these points are shown in Table \ref{tab_bifurc}.  
+Also note that the obvious bifurcation parameter for this system is the heat input $Q$. For $Q = -906$ kJ/min we see that we no longer have three critical points but only two, and for $Q < -906$ kJ/min we only have one critical point. Likewise, for $Q = 1145$ kJ/min we see that we only have two critical points and for $Q > 1145$ kJ/min we only have one critical point. The stability of these points are shown in table \ref{tab_bifurc}.  
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{cstr_model_op_curve.pdf}
@@ -123,7 +123,7 @@ k_4 &= f(x_t+ hk_3) \\
 \end{equation}
 is called the Runge-Kutta method. For sufficiently small time steps, $h$, the method is stable and convergent.
   
-By applying the Runge-Kutta method to the CSTR we have Figures \ref{fig_cstr_nl_1} and \ref{fig_cstr_nl_2}. It is clear that the dynamics are faster (almost two orders of magnitude) when moving to the higher temperature operating point than they are when moving to the lower temperature operating point. The impact of the nonlinear kinetics is seen here. 
+By applying the Runge-Kutta method to the CSTR we have figures \ref{fig_cstr_nl_1} and \ref{fig_cstr_nl_2}. It is clear that the dynamics are faster (almost two orders of magnitude) when moving to the higher temperature operating point than they are when moving to the lower temperature operating point. The impact of the nonlinear kinetics is seen here. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{cstr_nl_1.pdf}
@@ -138,9 +138,9 @@ By applying the Runge-Kutta method to the CSTR we have Figures \ref{fig_cstr_nl_
 \end{figure}
 It is often desirable to linearise a nonlinear system about some point, usually the operating point, to simplify the model. Computationally this is advantageous because linear techniques (e.g. linear optimisation) are usually significantly faster than nonlinear techniques. Practically linearisation is only valid in a small region around the point of linearisation. If the system moves away from the linearisation point the linear approximation can become grossly inaccurate. 
 
-Based on Figure \ref{fig_cstr_nl_1}, where the dynamics are fast, we can venture a guess that linearisation will be a bad approximation, except for a very small time period, of plant behaviour because the states will rapidly move away from the point of linearisation.
+Based on figure \ref{fig_cstr_nl_1}, where the dynamics are fast, we can venture a guess that linearisation will be a bad approximation, except for a very small time period, of plant behaviour because the states will rapidly move away from the point of linearisation.
 
-On the other hand, based on Figure \ref{fig_cstr_nl_2}, we can venture a guess that linearisation will be a fair approximation of plant behaviour for a meaningful period of time because the dynamics are slow.
+On the other hand, based on figure \ref{fig_cstr_nl_2}, we can venture a guess that linearisation will be a fair approximation of plant behaviour for a meaningful period of time because the dynamics are slow.
 
 \section{Linearised models}
 Linear approximations used for modelling and control are very common both in practice and literature \cite{luyben}. Furthermore, the approach of using multiple piecewise affine (linear) functions for control, based on linearisation around critical points, has also been investigated in literature \cite{du}, \cite{kvasnica}. Typically the state domain is discretised into regimes and the linear approximation of the model in each regime is used for control. We will also use linear models for the purposes of control.  It is therefore prudent to investigate linearisation techniques.
@@ -195,7 +195,7 @@ Observe that (\ref{eq_rkss}) implicitly depends on the sampling time. Recall tha
 
 Next we briefly investigate the accuracy of the linear models. In all the subsequent figures the first subplot illustrates the accuracy of the linear model if the initial value is close to the point of linearisation and the second subplot illustrates the accuracy when the initial value is further away from the point of linearisation.
 
-Figure \ref{fig_cstr_lin_1} shows the state space response of the linear model which was linearised around the high temperature, low concentration stable operating point $(C_A^1,T_R^1)$ as defined in Table \ref{tab_nominalstats}.
+Figure \ref{fig_cstr_lin_1} shows the state space response of the linear model which was linearised around the high temperature, low concentration stable operating point $(C_A^1,T_R^1)$ as defined in table \ref{tab_nominalstats}.
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{cstr_lin_1.pdf}
@@ -204,7 +204,7 @@ Figure \ref{fig_cstr_lin_1} shows the state space response of the linear model w
 \end{figure}
 We see that the linear approximation is quite accurate if the initial condition is close to the linearisation point (as expected). If the initial condition is further away the approximation is less accurate.
 
-In Figure \ref{fig_cstr_lin_2} we see the state space response of the CSTR using the linear model linearised around the unstable operating point. Clearly this approximation is less accurate because the system tend to move away from operating point rather than towards it. 
+In figure \ref{fig_cstr_lin_2} we see the state space response of the CSTR using the linear model linearised around the unstable operating point. Clearly this approximation is less accurate because the system tend to move away from operating point rather than towards it. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{cstr_lin_2.pdf}
@@ -213,15 +213,15 @@ In Figure \ref{fig_cstr_lin_2} we see the state space response of the CSTR using
 \end{figure}
 If we want to use the linear model around the unstable operating point we will need to effect control to keep it within some region where the model is accurate.
 
-In Figure \ref{fig_cstr_lin_3} we have the state space response of the CSTR under nominal conditions, like before, except that we have now linearised around the low temperature high concentration operating point. 
+In figure \ref{fig_cstr_lin_3} we have the state space response of the CSTR under nominal conditions, like before, except that we have now linearised around the low temperature high concentration operating point. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{cstr_lin_3.pdf}
 \caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^3,T_R^3)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
 \label{fig_cstr_lin_3}
 \end{figure}
-Like Figure \ref{fig_cstr_lin_1}, the linear model is quite accurate. The slow dynamics and stability of the operating point cause this desirable behaviour.
+Like figure \ref{fig_cstr_lin_1}, the linear model is quite accurate. The slow dynamics and stability of the operating point cause this desirable behaviour.
 
-Based on the general linearisation formula in (\ref{eq_lin}) there is no reason why one cannot linearise about an arbitrary point in the state space. It stands to reason that the more linear models at different linearisation points one has, the better one will be able to model the reactor. By selecting a model to use based on some metric (taking into account the current observation) it is reasonable to suppose that one will be able to model the system more accurately than if only one linear model was available. In Part \ref{part_three} we take this idea further.
+Based on the general linearisation formula in (\ref{eq_lin}) there is no reason why one cannot linearise about an arbitrary point in the state space. It stands to reason that the more linear models at different linearisation points one has, the better one will be able to model the reactor. By selecting a model to use based on some metric (taking into account the current observation) it is reasonable to suppose that one will be able to model the system more accurately than if only one linear model was available. In part \ref{part_three} we take this idea further.
 
-However, in Part \ref{part_two} we restrict our attention to systems where one linear model is sufficient for our purposes.  
+However, in part \ref{part_two} we restrict our attention to systems where one linear model is sufficient for our purposes.  

@@ -1,6 +1,6 @@
 \chapter{Hidden Markov models}
 \label{sec_hmm}
-In this chapter we consider probabilistic graphical models of the form shown in Figure \ref{fig_linmod}. We assume that  $(X_0, X_1,\hdots)$ are each $n$ state discrete random variables and that $(Y_0, Y_1,\hdots)$ are each $m$ state discrete random variables. Models of this form are classically called hidden Markov models.
+In this chapter we consider probabilistic graphical models of the form shown in figure \ref{fig_linmod}. We assume that  $(X_0, X_1,\hdots)$ are each $n$ state discrete random variables and that $(Y_0, Y_1,\hdots)$ are each $m$ state discrete random variables. Models of this form are classically called hidden Markov models.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -25,7 +25,7 @@ Intuitively, this model represents the situation where we are not sure about the
 In this chapter we briefly describe Markov models because they link back to previous work done by the chemical engineering department at the University of Pretoria. We focus on hidden Markov models for the remainder of the chapter because the techniques we develop here generalise to linear latent dynamical systems which we discuss in chapter \ref{sec_inf_lin_mods}. 
 
 \section{Markov models}
-A first order Markov model (sometimes called a Markov chain) is shown in Figure \ref{fig_markov_chain}. Using the chain rule for Bayesian networks (Definition \ref{def_chain_rule_bayes}) we can immediately write down the joint probability distribution
+A first order Markov model (sometimes called a Markov chain) is shown in figure \ref{fig_markov_chain}. Using the chain rule for Bayesian networks (definition \ref{def_chain_rule_bayes}) we can immediately write down the joint probability distribution
 \begin{equation}
 P(X_{0:T}) = \Pi_{t=0}^T P(X_t|X_{t-1}) \text{ with } P(X_0|X_{-1}) = P(X_0).
 \label{eq_markov_chain_joint}
@@ -68,16 +68,16 @@ We define the stationary distribution, in matrix notation, by \begin{equation}
 Recalling the definition of the eigenvalue problem we see that the stationary distribution is just the eigenvector corresponding to the unit eigenvalue of $\mathbf{A}$. While this model may seem simplistic it is the foundation of Google's PageRank algorithm \cite{google}.  Intuitively $\mathbf{p}_\infty$ represents the steady state probability distribution of the random variable $X$ as it is propagated through time by the transition function $A$. See the work in \cite{streicher} for an application specifically geared towards chemical engineering.
 
 \section{Hidden Markov models}
-Hidden Markov models extend Markov models by incorporating the observed random variables $(Y_0, Y_1,\hdots)$ as shown in Figure \ref{fig_linmod}. At each time step it is now possible to observe the random variable $Y_t$ which gives more information about the state of $X_t$. We are still in the setting of discrete random variables. It is not necessary to restrict $(Y_0, Y_1,\hdots)$ to be discrete but we do so for the sake of simplicity here. In later chapters we will model both hybrid and purely continuous systems. 
+Hidden Markov models extend Markov models by incorporating the observed random variables $(Y_0, Y_1,\hdots)$ as shown in figure \ref{fig_linmod}. At each time step it is now possible to observe the random variable $Y_t$ which gives more information about the state of $X_t$. We are still in the setting of discrete random variables. It is not necessary to restrict $(Y_0, Y_1,\hdots)$ to be discrete but we do so for the sake of simplicity here. In later chapters we will model both hybrid and purely continuous systems. 
 
-In general a hidden Markov model is just a specific case of the general dynamic Bayesian network class of graphical models. As such we already know that to fully specify the model we only require a prior state distribution $P(X_0)$, the transition probability function $P(X_t|X_{t-1})$, the observation (or sometimes called the emission) probability function $P(Y_t|X_t)$ and the Bayesian network graphs of the initial time step and the next two time steps. We assume that the model's structure repeats at each time step and thus we only require the graph as shown in Figure \ref{fig_linmod}.
+In general a hidden Markov model is just a specific case of the general dynamic Bayesian network class of graphical models. As such we already know that to fully specify the model we only require a prior state distribution $P(X_0)$, the transition probability function $P(X_t|X_{t-1})$, the observation (or sometimes called the emission) probability function $P(Y_t|X_t)$ and the Bayesian network graphs of the initial time step and the next two time steps. We assume that the model's structure repeats at each time step and thus we only require the graph as shown in figure \ref{fig_linmod}.
 
 We assume that the transition and observation probability functions are stationary. Consequently they may be represented by the row stochastic square matrices $P(x_t=i|x_{t-1}=j) = A$ and $P(y_t=i|x_t=j) = B$. Intuitively this means that the probability of state $x_{t-1}=j$ going to state $x_{t} = i$ is $A_{ij}$. Similarly, $B_{ij}$ is the probability of observing $y_t=i$ if the underlying state is $x_t=j$.
 
-For the purposes of this dissertation we will always assume that the model parameters are known. In section \ref{sec_dbns_lit} the four primary inference techniques were briefly mentioned. We now derive recursive expressions for each inference technique for discrete models of the form shown in Figure \ref{fig_linmod}. The tools and techniques we develop here will be useful in the following chapters. 
+For the purposes of this dissertation we will always assume that the model parameters are known. In section \ref{sec_dbns_lit} the four primary inference techniques were briefly mentioned. We now derive recursive expressions for each inference technique for discrete models of the form shown in figure \ref{fig_linmod}. The tools and techniques we develop here will be useful in the following chapters. 
 
 \subsection{Filtering}
-The goal of filtering is to find $P(X_t|y_{0:t})$: the distribution of the current state given all the past observations. The corresponding graphical model is shown in Figure \ref{fig_linmod_filter_hmm}.
+The goal of filtering is to find $P(X_t|y_{0:t})$: the distribution of the current state given all the past observations. The corresponding graphical model is shown in figure \ref{fig_linmod_filter_hmm}.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -114,7 +114,7 @@ P(X_t| y_{0:t-1}) &= \sum_{x_{t-1}} P(X_t, x_{t-1}| y_{0:t-1})\\
 \end{aligned}
 \label{eq_forward_no_recur}
 \end{equation}
-The expansion followed from the chain rule of Bayesian networks (Definition \ref{def_chain_rule_bayes}) and the cancellation followed from the conditional independence assumption of the transition function. Next we define $\alpha(X_t) \equiv P(X_t | y_{0:t})$; then
+The expansion followed from the chain rule of Bayesian networks (definition \ref{def_chain_rule_bayes}) and the cancellation followed from the conditional independence assumption of the transition function. Next we define $\alpha(X_t) \equiv P(X_t | y_{0:t})$; then
 \begin{equation}
 \begin{aligned}
 \alpha(X_t) &= \frac{P(y_t|X_t, y_{0:t-1})P(X_t|y_{0:t-1})}{P(y_t|y_{0:t-1})} \\
@@ -124,7 +124,7 @@ The expansion followed from the chain rule of Bayesian networks (Definition \ref
 \end{aligned}
 \label{eq_forward_recur}
 \end{equation}
-follows from (\ref{eq_forward_no_recur}) and by application of Bayes' theorem (Theorem \ref{thrm_bayes}). It is not actually necessary to calculate $p(y_t|y_{0:t-1})$ as it is only a normalisation constant. We thus have a recursion relation for the filtered posterior distribution $X_t$ with initial condition $\alpha(X_1) = P(X_1, y_1) = P(X_1)P(y_1|X_1)$ by
+follows from (\ref{eq_forward_no_recur}) and by application of Bayes' theorem (theorem \ref{thrm_bayes}). It is not actually necessary to calculate $p(y_t|y_{0:t-1})$ as it is only a normalisation constant. We thus have a recursion relation for the filtered posterior distribution $X_t$ with initial condition $\alpha(X_1) = P(X_1, y_1) = P(X_1)P(y_1|X_1)$ by
 \begin{equation}
 \alpha(X_t) \propto P(y_t|X_t) \sum_{x_{t-1}} \alpha(x_{t-1})P(X_t|x_{t-1}).
 \label{eq_forward_approx}
@@ -132,7 +132,7 @@ follows from (\ref{eq_forward_no_recur}) and by application of Bayes' theorem (T
 One often uses logarithms to perform the filter calculations as machine precision errors become a problem for large $t$ due to the multiplication of small fractions. The recursive filtering algorithm we derived is often called the forwards algorithm in literature \cite{barber}.
 
 \subsection{Smoothing}
-The goal of smoothing is to find $P(X_t|y_{0:T})$ for $t\leq T$: the distribution of the state at $t$ given all the past and future observations to $T$. The smoothing algorithm we study here is called the parallel smoothing algorithm. The recursion expression we derive is often called the backwards algorithm in literature \cite{murphy1}. The graphical model corresponding to this situation is shown in Figure \ref{fig_linmod_smooth_hmm}.
+The goal of smoothing is to find $P(X_t|y_{0:T})$ for $t\leq T$: the distribution of the state at $t$ given all the past and future observations to $T$. The smoothing algorithm we study here is called the parallel smoothing algorithm. The recursion expression we derive is often called the backwards algorithm in literature \cite{murphy1}. The graphical model corresponding to this situation is shown in figure \ref{fig_linmod_smooth_hmm}.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -175,7 +175,7 @@ P(y_{t:T}|X_{t-1}) &= \sum_{x_t} P(y_t, y_{t+1:T}, x_t|X_{t-1}) \\
 \end{aligned}
 \label{eq_backwards_no_recur}
 \end{equation}
-We have made judicious use of the implied independence assertions (via d-separation) of Figure \ref{fig_linmod}. Making use of the definition of $\beta$ we have
+We have made judicious use of the implied independence assertions (via d-separation) of figure \ref{fig_linmod}. Making use of the definition of $\beta$ we have
 \begin{equation}
 \begin{aligned}
 &\beta(X_{t-1}) = \sum_{x_t} P(x_t | X_{t-1})\beta(x_t)P(y_t| x_t) \text{ for } 1 \leq t \leq T \\
@@ -183,7 +183,7 @@ We have made judicious use of the implied independence assertions (via d-separat
 \end{aligned}
 \label{eq_backwards_recur}
 \end{equation}
-The recursion initial condition $\beta(X_T) = 1$ stems from Bayes' theorem (Theorem \ref{thrm_bayes}) and the definition of $\alpha$ as illustrated by
+The recursion initial condition $\beta(X_T) = 1$ stems from Bayes' theorem (theorem \ref{thrm_bayes}) and the definition of $\alpha$ as illustrated by
 \begin{equation}
 \begin{aligned}
 P(X_T|y_{0:T}) &= \frac{P(X_T, y_{0:T})}{P(y_{0:T})} \\
@@ -203,7 +203,7 @@ Together the $\alpha - \beta$ recursions are called the forwards-backwards algor
 Numerical issues may also become problematic due to the multiplication of small positive numbers. In practice it is often necessary to work in the log space to attenuate these problems \cite{barber}. 
 
 \subsection{Viterbi decoding}
-The goal of Viterbi decoding is to find $x_{0:T}^* = \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$: finding the most likely sequence of states which best describe the observations by  attempting to find the sequence $x_{0:T}$ such that the joint probability function $P(x_{0:T}, y_{0:T})$ is maximised. This is equivalent to finding $ \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$ because, if one uses the chain rule on the joint, the observations will just be a constant factor. The graphical model used here is similar to that of Figure \ref{fig_linmod_smooth_hmm}.
+The goal of Viterbi decoding is to find $x_{0:T}^* = \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$: finding the most likely sequence of states which best describe the observations by  attempting to find the sequence $x_{0:T}$ such that the joint probability function $P(x_{0:T}, y_{0:T})$ is maximised. This is equivalent to finding $ \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$ because, if one uses the chain rule on the joint, the observations will just be a constant factor. The graphical model used here is similar to that of figure \ref{fig_linmod_smooth_hmm}.
 
 Intuitively we first attempt to find the maximum of the joint and then determine which sequence of states led to this maximal joint. By using the chain rule for Bayesian networks we can rewrite the joint maximisation problem as
 \begin{equation}
@@ -240,7 +240,7 @@ x_t^* &= \underset{x_{t}}{\text{arg max }}P(y_t|x_t)P(x_t|x_{t-1}^*)\mu(x_t).
 This algorithm is called the Viterbi algorithm. It is computationally efficient since the optimisations occur only on a single variable. Readers familiar with dynamic programming will recognise that we have effectively performed a variant of dynamic programming in the preceding derivation.
 
 \subsection{Prediction}
-The goal of prediction is to find $P(X_{t+1}|y_{0:t})$ and $P(Y_{t+1}|y_{0:t})$: the predicted hidden and observed state given all the previous observations. The one step ahead prediction expression for both the states and observations is derived here. The graphical model corresponding to the state prediction is shown in Figure \ref{fig_linmod_pred_hmm}. 
+The goal of prediction is to find $P(X_{t+1}|y_{0:t})$ and $P(Y_{t+1}|y_{0:t})$: the predicted hidden and observed state given all the previous observations. The one step ahead prediction expression for both the states and observations is derived here. The graphical model corresponding to the state prediction is shown in figure \ref{fig_linmod_pred_hmm}. 
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -296,14 +296,14 @@ It is pleasing that the prediction expressions are closely related to each other
 \section{Burglar localisation problem}
 While the focus of this dissertation is not on hidden Markov model type problems it is nevertheless instructive to consider a simple example to build some intuition about inference of random variables. Thus, it is desirable to conduct a numerical experiment using the previously derived inference techniques. The type of problem we consider here is a localisation problem. This type of problem (and its extensions) has many applications in robotics and object tracking.
 
-The problem is taken from Chapter 23 in Barber's book \textit{Bayesian Reasoning and Machine Learning} \cite{barber}. Briefly, it is necessary to infer the location of a burglar in your house given observations (noises) you perceive from an adjoining room. You discretise the room the burglar is in into $n^2$ blocks. The room is then the discrete random variable $X$. You observe two distinct types of noises: creaks and bumps. From the knowledge of your house you know which blocks are likely to creak and which are likely to bump if the burglar is on that block i.e. if the random variable $X$ is in a specific state. This is shown in Figure \ref{fig_burlgar_observations}: a dark block indicates it is likely to emit a noise with probility 0.9 and a light block will emit a noise with probability 0.01 if the burglar is on that block. The noises are independent of each other.
+The problem is taken from Chapter 23 in Barber's book \textit{Bayesian Reasoning and Machine Learning} \cite{barber}. Briefly, it is necessary to infer the location of a burglar in your house given observations (noises) you perceive from an adjoining room. You discretise the room the burglar is in into $n^2$ blocks. The room is then the discrete random variable $X$. You observe two distinct types of noises: creaks and bumps. From the knowledge of your house you know which blocks are likely to creak and which are likely to bump if the burglar is on that block i.e. if the random variable $X$ is in a specific state. This is shown in figure \ref{fig_burlgar_observations}: a dark block indicates it is likely to emit a noise with probility 0.9 and a light block will emit a noise with probability 0.01 if the burglar is on that block. The noises are independent of each other.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{burglar_observations.pdf}
 \caption{Burglar problem observations.}
 \label{fig_burlgar_observations}
 \end{figure}
-The burglar moves up, down, left and right with equal probability where appropriate. See Barber for more details on the example. It is necessary to perform inference to determine the path of the burglar both in real time and with the benefit of hindsight. Applying the inference techniques we developed earlier results in Figure \ref{fig_burglar_inference}. 
+The burglar moves up, down, left and right with equal probability where appropriate. See Barber for more details on the example. It is necessary to perform inference to determine the path of the burglar both in real time and with the benefit of hindsight. Applying the inference techniques we developed earlier results in figure \ref{fig_burglar_inference}. 
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.3]{burglar_inference.pdf}
@@ -318,4 +318,4 @@ It is also interesting to note that the prediction algorithm is very much depend
 
 Finally, it is important to understand the benefit of using this approach as opposed to the exhaustive ``if this then that" approach. Firstly, the latter approach scales exponentially with the number of variables because one would need to fully consider all the possibilities to infer any sort of belief. Secondly, the former approach has an associated probability distribution: the certainty of our inferred belief is automatically quantified e.g. the darker the blocks the more sure we are about our inference. Thus, the techniques we developed make room for uncertainty about the correctness of the answer.
 
-Hidden Markov models are very powerful and have found many uses e.g. speech recognition, object tracking and bio-informatics \cite{barber}. Many extensions of the basic model (see Figure \ref{fig_linmod}) exist which are much more expressive. However, we are interested in modelling and reasoning about continuous random variables. For such applications the hidden Markov model, due to the discrete assumption, is inappropriate. Fortunately, the techniques investigated in this chapter carry over to the continuous case as we will see in chapter \ref{sec_inf_lin_mods}.  
+Hidden Markov models are very powerful and have found many uses e.g. speech recognition, object tracking and bio-informatics \cite{barber}. Many extensions of the basic model (see figure \ref{fig_linmod}) exist which are much more expressive. However, we are interested in modelling and reasoning about continuous random variables. For such applications the hidden Markov model, due to the discrete assumption, is inappropriate. Fortunately, the techniques investigated in this chapter carry over to the continuous case as we will see in chapter \ref{sec_inf_lin_mods}.  
