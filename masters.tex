@@ -42,13 +42,13 @@
 \usepackage{tikz}
 \usetikzlibrary{bayesnet}
 
-%\includeonly{./docs/introduction} 
-%\includeonly{./docs/lit_study} 
+%\includeonly{./docs/introduction} % DONE!!!
+\includeonly{./docs/lit_study} 
 %\includeonly{./docs/back_theory} 
 %\includeonly{./docs/hmm} 
-%\includeonly{./docs/cstr_model} % <= checked
-%\includeonly{./docs/linear_models} % <= checked
-%\includeonly{./docs/nonlinear_models} % <= checked
+%\includeonly{./docs/cstr_model} 
+%\includeonly{./docs/linear_models}
+%\includeonly{./docs/nonlinear_models}
 %\includeonly{./docs/linear_control}
 %\includeonly{./docs/linear_hybrid_models}
 %\includeonly{./docs/rbpf_linear_control}
@@ -61,7 +61,7 @@
 
 %Title page
 \include{./docs/title_page_mod}
-\tableofcontents
+%\tableofcontents % <= UNDO ME!!!!!!!!!!!!!!!!!
 \include{./docs/introduction}
 \part{Literature, theory and background material}
 \label{part_one}
@@ -69,13 +69,13 @@
 \include{./docs/back_theory}
 \include{./docs/hmm}
 \include{./docs/cstr_model}
-\part{Single model systems}
+\part{Single model systems} 
 \label{part_two}
 \include{./docs/linear_models}
 \include{./docs/nonlinear_models} 
 \include{./docs/linear_control}
-\part{Multiple model systems}
-\label{part_three}
+\part{Multiple model systems} 
+\label{part_three} 
 \include{./docs/linear_hybrid_models}
 \include{./docs/rbpf_linear_control}
 \include{./docs/nonlinear_hybrid_models}
