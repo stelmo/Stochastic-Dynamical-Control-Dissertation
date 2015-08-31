@@ -1,6 +1,6 @@
 \chapter{Inference using linear models}
 \label{sec_inf_lin_mods}
-In this chapter we consider probabilistic graphical models of the form shown in figure \ref{fig_linmod2}. This model is a generalisation of the graphical model seen in chapter \ref{sec_hmm}. We now assume that the states ($x_0,x_1,x_2,\hdots$) and observations ($y_0,y_1,y_2,\hdots$) are continuous random variables but the inputs ($u_0,u_1,u_2,\hdots$) are continuous deterministic variables. Models of this form are called latent dynamical systems - if one assumes linearity and normality the famous Kalman filter model falls into this category.
+In this chapter we consider probabilistic graphical models of the form shown in figure~\ref{fig_linmod2}. This model is a generalisation of the graphical model seen in chapter \ref{sec_hmm}. We now assume that the states ($x_0,x_1,x_2,\hdots$) and observations ($y_0,y_1,y_2,\hdots$) are continuous random variables but the inputs ($u_0,u_1,u_2,\hdots$) are continuous deterministic variables. Models of this form are called latent dynamical systems - if one assumes linearity and normality the famous Kalman filter model falls into this category.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -48,11 +48,11 @@ p(y_{t+1}|x_t+1) &= \mathcal{N}(y_{t+1}|Cx_{t+1}, V).
 \end{equation}
 We also assume that the system is first order Markov (see definition \ref{def_order_markov}). We have implicitly assumed that the noise is Gaussian and white\footnote{The noise is temporally independent, has zero mean and finite variance.}. Intuitively one can think of $V$ as the noise associated with state measurements and $W$ being a form of the uncertainty associated with the linear model of the plant. Additionally, $W$ can also model any zero mean unmeasured disturbances which may influence the system\footnote{Note that for the purposes of this dissertation plant is a synonym for the system.}. Thus, larger $V$ and $W$ indicate more uncertainty in the system. 
 
-To fully specify the system we require the transition and observation probability density functions (these implicitly depend on the internal structure of the graphical model in figure \ref{fig_linmod2}) as well as the prior (initial) distribution $p(x_0)$.
+To fully specify the system we require the transition and observation probability density functions (these implicitly depend on the internal structure of the graphical model in figure~\ref{fig_linmod2}) as well as the prior (initial) distribution $p(x_0)$.
 
 \section{Kalman filter}
 \label{sec_kalman_filter_deriv}
-The goal of filtering is to find the posterior distribution $p(x_{t}|y_{0:t}, u_{0:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in chapter \ref{sec_hmm} albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. The graphical model corresponding to filtering is shown in figure \ref{fig_gm_linmods_filtering}.
+The goal of filtering is to find the posterior distribution $p(x_{t}|y_{0:t}, u_{0:t-1})$. It is pleasing to note that this derivation will follow in an analogous manner to the filtering derivation in section~\ref{sec_hmm_filter} albeit with continuous Gaussian distributions. The motivation for taking the joint of only the preceding hidden time step is the same as before. The graphical model corresponding to filtering is shown in figure \ref{fig_gm_linmods_filtering}.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -147,7 +147,7 @@ Intuitively, the Kalman filter equations use the state space model to predict th
 
 \section{Kalman prediction}
 \label{sec_lin_prediction}
-The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{0:t}, u_{0:t+h-1})$ and $p(y_{t+h}|y_{0:t}, u_{0:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did in chapter \ref{sec_hmm} given the current posterior state estimate of $x_0$. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). The graphical model corresponding to  the two step ahead state prediction is shown in figure \ref{fig_gm_linmods_prediction}.
+The goal of prediction is to find an expression for the distributions $p(x_{t+h}|y_{0:t}, u_{0:t+h-1})$ and $p(y_{t+h}|y_{0:t}, u_{0:t+h-1})$ with $h\geq 1$. Note that these derivations follow in exactly the same way as the prediction derivations did in section~\ref{sec_hmm_prediction} given the current posterior state estimate of $x_0$. The reason for this is because the graphical models are the same (the deterministic inputs don't change the structure of the underlying random variable network). The graphical model corresponding to  the two step ahead state prediction is shown in figure \ref{fig_gm_linmods_prediction}.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -233,9 +233,9 @@ It is reassuring to note that the observation prediction is just the state predi
 \section{Smoothing and Viterbi decoding}
 For the sake of completeness we state the Kalman smoothing equations and briefly discuss Viterbi decoding within the context of conditional linear Gaussian systems. 
 
-The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the hidden Markov model smoothing algorithm except that we make use of theorem \ref{thrm_bayes_lin_gauss_mod} to simplify the algebra. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the focus of this dissertation.
+The reason we do not go into detail with the smoothing algorithm is because it follows much the same structure as the hidden Markov model smoothing algorithm (see section~\ref{sec_hmm_smoothing}) except that we make use of theorem \ref{thrm_bayes_lin_gauss_mod} to simplify the algebra. We are also primarily only interested in filtering and prediction because they are important for the purposes of control which is the focus of this dissertation.
 
-The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm for $p(x_t|y_{0:T},u_{0:T-1})$ is also a Gaussian distribution of the form $\mathcal{N}(\hat{\mu}_t, \hat{\Sigma}_t)$. The recursion expressions for the posterior mean and covariance are 
+The smoothing algorithm, also called the Rauch, Tung and Striebel (RTS) algorithm, for $p(x_t|y_{0:T},u_{0:T-1})$ is also a Gaussian distribution of the form $\mathcal{N}(\hat{\mu}_t, \hat{\Sigma}_t)$. The recursion expressions for the posterior mean and covariance are 
 \begin{equation}
 \begin{aligned}
 &\hat{\mu}_t = \mu_t + J_t\left(\hat{\mu}_{t+1}-(A\mu_t+Bu_{t-1})\right) \\
@@ -251,7 +251,7 @@ Finally, we know from the definition \ref{def_chain_rule_bayes} (chain rule for 
 
 \section{Filtering the CSTR}
 \label{sec_filtering_linmods}
-In this chapter we apply the Kalman filter to the nonlinear CSTR introduced in chapter \ref{sec_cstr}. We use the linear model linearised around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}) to describe the nonlinear underlying model. Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that $V$ indicates that we only measure temperature for now.
+In this chapter we apply the Kalman filter to the nonlinear CSTR introduced in chapter~\ref{sec_cstr}. We use the linear model linearised around the unstable operating point $(C_A^2, T_R^2)$ as shown in (\ref{eq_linmodel}) to describe the nonlinear underlying model. Note that the matrix $A$ and vectors $B, b$ depend on the step size and should be recalculated for different $h$. To make things concrete we have used $h=0.1$ here. Note that $V$ indicates that we only measure temperature for now.
 \begin{equation}
 \begin{aligned}
 &A = \begin{pmatrix}
@@ -322,4 +322,4 @@ Based on our discussion in chapter \ref{sec_cstr}, where the CSTR example was in
 \end{figure}
 Comparing figures \ref{fig_kfphase} and \ref{fig_kfphase2} we see that by incorporating the state measurement the state estimation is much more accurate. The average concentration and temperature estimation error is only 4.09\% and 0.45\% respectively. It is not necessary to directly measure concentration as we have done: any measurement which depends on $C_A$ (or even both $C_A$ and $T_R$) would suffice. The second measurement reduces our uncertainty in the concentration state estimate because we have more to base our inference on than just a bad model.  
 
-In the next chapter we drop the linearity and normality assumptions at the cost of the closed form, exact inference solutions. Chapters \ref{sec_kalman_filter_deriv} and \ref{sec_lin_prediction} form the basis of chapter \ref{sec_linear_control} and we encourage the reader to familiarise themselves with it. 
+In the next chapter we drop the linearity and normality assumptions at the cost of the closed form, exact inference solutions. Sections \ref{sec_kalman_filter_deriv} and \ref{sec_lin_prediction} form the basis of chapter \ref{sec_linear_control} and we encourage the reader to familiarise themselves with it. 

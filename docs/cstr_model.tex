@@ -32,7 +32,7 @@ $F$ & $~100\times 10^{-3}~\frac{m^3}{min}$ \\
 \label{tab_params}
 \end{center}
 \end{table}
-The CSTR model is a familiar control example. Similar models may be found in \cite{du}, \cite{cervantes}, \cite{pan}, \cite{yazdi}. We use this model because it is low dimensional yet complex enough to illustrate the principles we investigate. CSTR models are also very popular examples to illustrate control techniques because they invariably have nonlinear dynamics and multiple steady states. Note that we have increased the volume of the reactor and reduced the rate constant from the reactor we quoted in literature. This is primarily to adjust the time scale of the transient response to be in the order of minutes and not milliseconds when moving to high temperature regions of operation.
+The CSTR model is a familiar control example. Similar models may be found in \cite{du}, \cite{cervantes}, \cite{pan} and~\cite{yazdi}. We use this model because it is low dimensional yet complex enough to illustrate the principles we investigate. CSTR models are also very popular examples to illustrate control techniques because they invariably have nonlinear dynamics and multiple steady states. Note that we have increased the volume of the reactor and reduced the rate constant from the reactor we quoted in literature. This is primarily to adjust the time scale of the transient response to be in the order of minutes and not milliseconds when moving to high temperature regions of operation.
 
 \section{Qualitative analysis}
 In this section we use standard mathematical tools, as found in \cite{edwardsandpenny}, to analyse the qualitative behaviour of the CSTR. By inspecting (\ref{eq_cstrmodel}) we see that the model is coupled and nonlinear. By solving
@@ -50,9 +50,9 @@ we see that for nominal operating conditions ($Q = 0$) there exist 3 operating p
 \hline
 Critical Point & $C_A$ & $T_R$ & Stability\\
 \hline
-$\left(C_A^1, T_R^1\right)$ & 0.0097 & 508.0562 & Stable Improper Node\\
-$\left(C_A^2, T_R^2\right)$ & 0.4893 & 412.1302 & Unstable Saddle Point \\
-$\left(C_A^3, T_R^3 \right)$ & 0.9996 & 310.0709 & Stable Improper Node \\
+$\left(C_A^1, T_R^1\right)$ & 0.0097 & 508 & Stable Improper Node\\
+$\left(C_A^2, T_R^2\right)$ & 0.4893 & 412 & Unstable Saddle Point \\
+$\left(C_A^3, T_R^3 \right)$ & 0.9996 & 310 & Stable Improper Node \\
 \hline
 \end{tabular}
 \caption{Nominal operating points for  the CSTR}
@@ -82,13 +82,13 @@ Also note that the obvious bifurcation parameter for this system is the heat inp
 \hline
 Heat Input & $C_A$ & $T_R$ & Stability\\
 \hline
-$Q = -906$ kJ/min & 0.1089 & 450.3531 & Stable Improper Node\\
-$Q = -906$ kJ/min & 0.9999 & 272.1346 & Stable Improper Node \\
+$Q = -906$ kJ/min & 0.1089 & 450 & Stable Improper Node\\
+$Q = -906$ kJ/min & 0.9999 & 272 & Stable Improper Node \\
 \hline
 $Q < -906$ kJ/min & $\backsim$ & $\backsim$ & Stable Improper Node \\
 \hline
-$Q = 1145$ kJ/min & 0.0017 & 557.5243 & Stable Improper Node\\
-$Q = 1145$ kJ/min & 0.9263 & 372.5959 & Stable Improper Node \\
+$Q = 1145$ kJ/min & 0.0017 & 558 & Stable Improper Node\\
+$Q = 1145$ kJ/min & 0.9263 & 373 & Stable Improper Node \\
 \hline
 $Q > 1145$ kJ/min & $\backsim$ & $\backsim$ & Stable Improper Node \\
 \hline
@@ -199,7 +199,7 @@ Figure \ref{fig_cstr_lin_1} shows the state space response of the linear model w
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{cstr_lin_1.pdf}
-\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^1,T_R^1)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
+\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^1,T_R^1)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished. Total simulation time was 30 seconds.}
 \label{fig_cstr_lin_1}
 \end{figure}
 We see that the linear approximation is quite accurate if the initial condition is close to the linearisation point (as expected). If the initial condition is further away the approximation is less accurate.
@@ -208,7 +208,7 @@ In figure \ref{fig_cstr_lin_2} we see the state space response of the CSTR using
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{cstr_lin_2.pdf}
-\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^2,T_R^2)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
+\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^2,T_R^2)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished. Total simulation time was 5 minutes.}
 \label{fig_cstr_lin_2}
 \end{figure}
 If we want to use the linear model around the unstable operating point we will need to effect control to keep it within some region where the model is accurate.
@@ -217,7 +217,7 @@ In figure \ref{fig_cstr_lin_3} we have the state space response of the CSTR unde
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{cstr_lin_3.pdf}
-\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^3,T_R^3)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished.}
+\caption{State space response of the CSTR under nominal operating conditions linearised around $(C_A^3,T_R^3)$ with different initial conditions. The dot indicates where the simulation started and the cross where it finished. Total simulation time was 50 minutes.}
 \label{fig_cstr_lin_3}
 \end{figure}
 Like figure \ref{fig_cstr_lin_1}, the linear model is quite accurate. The slow dynamics and stability of the operating point cause this desirable behaviour.

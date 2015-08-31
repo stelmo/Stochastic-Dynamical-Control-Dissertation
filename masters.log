@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  31 AUG 2015 15:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  31 AUG 2015 16:06
 entering extended mode
 **masters.tex
 
@@ -871,18 +871,24 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 
 
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [54
+
+
+
+
+
+]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-docs\cstr_model.tex"
-Chapter 5.
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+docs\nonlinear_models.tex"
+Chapter 7.
+LaTeX Font Info:    Try loading font information for U+msa on input line 9.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-msa.cfg"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+LaTeX Font Info:    Try loading font information for U+msb on input line 9.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -890,124 +896,128 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-msb.cfg"
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-<./imgs/cstr_diagram.pdf, id=16, 261.44621pt x 246.80322pt>
-File: ./imgs/cstr_diagram.pdf Graphic file (type pdf)
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [66
 
-<use ./imgs/cstr_diagram.pdf>
-Package pdftex.def Info: ./imgs/cstr_diagram.pdf used on input line 6.
-(pdftex.def)             Requested size: 209.15724pt x 197.44284pt.
- [45
 
 
-
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.35 T
-      he CSTR model is a familiar control example. Similar models may be fou...
- <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/cstr_diagram.pdf>] [46]
-<./imgs/cstr_model_op_curve.pdf, id=69, 1445.4pt x 708.24597pt>
-File: ./imgs/cstr_model_op_curve.pdf Graphic file (type pdf)
+l.44 
+     ] [67] [68] [69] [70] [71] [72]
+<./imgs/pf_m1_time.pdf, id=141, 1445.4pt x 708.24597pt>
+File: ./imgs/pf_m1_time.pdf Graphic file (type pdf)
 
-<use ./imgs/cstr_model_op_curve.pdf>
-Package pdftex.def Info: ./imgs/cstr_model_op_curve.pdf used on input line 75.
+<use ./imgs/pf_m1_time.pdf>
+Package pdftex.def Info: ./imgs/pf_m1_time.pdf used on input line 241.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [47pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+
+<./imgs/pf_m1_phase.pdf, id=143, 1445.4pt x 708.24597pt>
+File: ./imgs/pf_m1_phase.pdf Graphic file (type pdf)
+
+<use ./imgs/pf_m1_phase.pdf>
+Package pdftex.def Info: ./imgs/pf_m1_phase.pdf used on input line 248.
+(pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
+ [73pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.104 
-       <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
-ation/imgs/cstr_model_op_curve.pdf>]
-<./imgs/cstr_nl_1.pdf, id=88, 1445.4pt x 708.24597pt>
-File: ./imgs/cstr_nl_1.pdf Graphic file (type pdf)
+l.251 \end{figure}
+                   <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
+trol-Dissertation/imgs/pf_m1_time.pdf>]
+<./imgs/pf_m2_time.pdf, id=173, 1445.4pt x 708.24597pt>
+File: ./imgs/pf_m2_time.pdf Graphic file (type pdf)
 
-<use ./imgs/cstr_nl_1.pdf>
-Package pdftex.def Info: ./imgs/cstr_nl_1.pdf used on input line 129.
+<use ./imgs/pf_m2_time.pdf>
+Package pdftex.def Info: ./imgs/pf_m2_time.pdf used on input line 255.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/cstr_nl_2.pdf, id=89, 1445.4pt x 708.24597pt>
-File: ./imgs/cstr_nl_2.pdf Graphic file (type pdf)
+<./imgs/pf_m2_phase.pdf, id=175, 1445.4pt x 708.24597pt>
+File: ./imgs/pf_m2_phase.pdf Graphic file (type pdf)
 
-<use ./imgs/cstr_nl_2.pdf>
-Package pdftex.def Info: ./imgs/cstr_nl_2.pdf used on input line 135.
+<use ./imgs/pf_m2_phase.pdf>
+Package pdftex.def Info: ./imgs/pf_m2_phase.pdf used on input line 262.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [48] [49pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.5.3}) has been already used, duplicate ignored
+ [74pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.142 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-5.4}) has been already used, duplicate ignored
+l.265 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{figure.7.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.142 
-       <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
-ation/imgs/cstr_nl_1.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynami
-cal-Control-Dissertation/imgs/cstr_nl_2.pdf
+l.265 \end{figure}
+                   <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
+trol-Dissertation/imgs/pf_m1_phase.pdf> <C:/Users/St. Elmo/Documents/GitHub/Sto
+chastic-Dynamical-Control-Dissertation/imgs/pf_m2_time.pdf
 
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
-namical-Control-Dissertation/imgs/cstr_nl_2.pdf): PDF inclusion: multiple pdfs 
-with page group included in a single page
->] [50] <./imgs/cstr_lin_1.pdf, id=153, 1445.4pt x 708.24597pt>
-File: ./imgs/cstr_lin_1.pdf Graphic file (type pdf)
+namical-Control-Dissertation/imgs/pf_m2_time.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>] <./imgs/pf_kf_phase1.pdf, id=208, 1445.4pt x 708.24597pt>
+File: ./imgs/pf_kf_phase1.pdf Graphic file (type pdf)
 
-<use ./imgs/cstr_lin_1.pdf>
-Package pdftex.def Info: ./imgs/cstr_lin_1.pdf used on input line 201.
+<use ./imgs/pf_kf_phase1.pdf>
+Package pdftex.def Info: ./imgs/pf_kf_phase1.pdf used on input line 269.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
-
-<./imgs/cstr_lin_2.pdf, id=155, 1445.4pt x 708.24597pt>
-File: ./imgs/cstr_lin_2.pdf Graphic file (type pdf)
-
-<use ./imgs/cstr_lin_2.pdf>
-Package pdftex.def Info: ./imgs/cstr_lin_2.pdf used on input line 210.
-(pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [51pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+ [75pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
 5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.214 I
-       f we want to use the linear model around the unstable operating point...
+l.273 T
+       he average concentration and temperature estimation errors for the pa...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/cstr_lin_1.pdf>] <./imgs/cstr_lin_3.pdf, id=175, 1445.4pt x 708.24597pt>
-File: ./imgs/cstr_lin_3.pdf Graphic file (type pdf)
+imgs/pf_m2_phase.pdf>]
+<./imgs/pf_kf_phase2.pdf, id=229, 1445.4pt x 708.24597pt>
+File: ./imgs/pf_kf_phase2.pdf Graphic file (type pdf)
 
-<use ./imgs/cstr_lin_3.pdf>
-Package pdftex.def Info: ./imgs/cstr_lin_3.pdf used on input line 219.
+<use ./imgs/pf_kf_phase2.pdf>
+Package pdftex.def Info: ./imgs/pf_kf_phase2.pdf used on input line 278.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [52pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+ [76pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
 6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.224 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-5.7}) has been already used, duplicate ignored
+l.282 I
+       nspecting figure \ref{fig_pf_kf_phase2} we see that throughout the si...
+ <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
+imgs/pf_kf_phase1.pdf>]) [77pdfTeX warning (ext4): destination with the same id
+entifier (name{figure.7.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.224 
-       <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
-ation/imgs/cstr_lin_2.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynam
-ical-Control-Dissertation/imgs/cstr_lin_3.pdf
-
-pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
-namical-Control-Dissertation/imgs/cstr_lin_3.pdf): PDF inclusion: multiple pdfs
- with page group included in a single page
->]) [53] [54
-
-
-] [114
-
+l.76 \include{./docs/nonlinear_models}
+                                       <C:/Users/St. Elmo/Documents/GitHub/Stoc
+hastic-Dynamical-Control-Dissertation/imgs/pf_kf_phase2.pdf>] [114
 
 
 
@@ -1056,34 +1066,60 @@ docs\spf_linear_control.aux")
 docs\conclusion.aux"))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 92.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 92.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
  ) 
 Here is how much of TeX's memory you used:
- 21349 strings out of 493921
- 422571 string characters out of 3144868
- 571937 words of memory out of 3000000
- 24003 multiletter control sequences out of 15000+200000
- 13214 words of font info for 82 fonts, out of 3000000 for 9000
+ 21532 strings out of 493921
+ 425557 string characters out of 3144868
+ 571239 words of memory out of 3000000
+ 24142 multiletter control sequences out of 15000+200000
+ 15476 words of font info for 96 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,12n,78p,764b,431s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on masters.pdf (17 pages, 365504 bytes).
+ 55i,12n,78p,1043b,818s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{section.6.4} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.5} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.6.3} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.4} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.6.1} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.6.2} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{chapter.6} has been referenced but does not exist, 
+replaced by a fixed one
+
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/symbols/msam10.pfb>
+Output written on masters.pdf (20 pages, 3820588 bytes).
 PDF statistics:
- 392 PDF objects out of 1000 (max. 8388607)
- 111 named destinations out of 1000 (max. 500000)
- 8296 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 459 PDF objects out of 1000 (max. 8388607)
+ 143 named destinations out of 1000 (max. 500000)
+ 11891 words of extra memory for PDF output out of 12000 (max. 10000000)
 

@@ -77,6 +77,7 @@ We assume that the transition and observation probability functions are stationa
 For the purposes of this dissertation we will always assume that the model parameters are known. In section \ref{sec_dbns_lit} the four primary inference techniques were briefly mentioned. We now derive recursive expressions for each inference technique for discrete models of the form shown in figure \ref{fig_linmod}. The tools and techniques we develop here will be useful in the following chapters. 
 
 \subsection{Filtering}
+\label{sec_hmm_filter}
 The goal of filtering is to find $P(X_t|y_{0:t})$: the distribution of the current state given all the past and current observations. The corresponding graphical model is shown in figure \ref{fig_linmod_filter_hmm}.
 \begin{figure}[H] 
 \centering
@@ -132,6 +133,7 @@ follows from (\ref{eq_forward_no_recur}) and by application of Bayes' theorem (t
 One often uses logarithms to perform the filter calculations as machine precision errors become a problem for large $t$ due to the multiplication of small fractions. The recursive filtering algorithm we derived is often called the forwards algorithm in literature \cite{barber}.
 
 \subsection{Smoothing}
+\label{sec_hmm_smoothing}
 The goal of smoothing is to find $P(X_t|y_{0:T})$ for $t\leq T$: the distribution of the state at $t$ given all the past and future observations to $T$. The smoothing algorithm we study here is called the parallel smoothing algorithm. The recursion expression we derive is often called the backwards algorithm in literature \cite{murphy1}. The graphical model corresponding to this situation is shown in figure \ref{fig_linmod_smooth_hmm}.
 \begin{figure}[H] 
 \centering
@@ -203,6 +205,7 @@ Together the $\alpha - \beta$ recursions are called the forwards-backwards algor
 Numerical issues may also become problematic due to the multiplication of small positive numbers. In practice it is often necessary to work in the log space to attenuate these problems~\cite{barber}. 
 
 \subsection{Viterbi decoding}
+\label{sec_hmm_viterbi}
 The goal of Viterbi decoding is to find $x_{0:T}^* = \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$: finding the most likely sequence of states which best describe the observations by  attempting to find the sequence $x_{0:T}$ such that the joint probability function $P(x_{0:T}, y_{0:T})$ is maximised. This is equivalent to finding $ \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$ because, if one uses the chain rule on the joint, the observations will just be a constant factor. The graphical model used here is similar to that of figure \ref{fig_linmod_smooth_hmm}.
 
 Intuitively we first attempt to find the maximum of the joint and then determine which sequence of states led to this maximal joint. By using the chain rule for Bayesian networks we can rewrite the joint maximisation problem as
@@ -240,6 +243,7 @@ x_t^* &= \underset{x_{t}}{\text{arg max }}P(y_t|x_t)P(x_t|x_{t-1}^*)\mu(x_t).
 This algorithm is called the Viterbi algorithm. It is computationally efficient since the optimisations occur only on a single variable. Readers familiar with dynamic programming will recognise that we have effectively performed a variant of dynamic programming in the preceding derivation.
 
 \subsection{Prediction}
+\label{sec_hmm_prediction}
 The goal of prediction is to find $P(X_{t+1}|y_{0:t})$ and $P(Y_{t+1}|y_{0:t})$: the predicted hidden and observed state given all the previous observations. The one step ahead prediction expression for both the states and observations is derived here. The graphical model corresponding to the state prediction is shown in figure \ref{fig_linmod_pred_hmm}. 
 \begin{figure}[H] 
 \centering
