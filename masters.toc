@@ -9,14 +9,14 @@
 \contentsline {subsection}{\numberline {3.1.2}Continuous random variables}{20}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Graph theory}{24}{section.3.2}
 \contentsline {section}{\numberline {3.3}Probabilistic graphical models}{25}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Bayesian networks}{26}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Bayesian networks}{25}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}Dynamic Bayesian networks}{28}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Control}{30}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Linear quadratic regulator control}{30}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Reference tracking}{34}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.2}Reference tracking}{33}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}Linear quadratic Gaussian control}{34}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Model predictive control}{36}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}Matrix identities}{37}{section.3.5}
+\contentsline {subsection}{\numberline {3.4.4}Model predictive control}{35}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}Matrix identities}{36}{section.3.5}
 \contentsline {chapter}{\numberline {4}Hidden Markov models}{38}{chapter.4}
 \contentsline {section}{\numberline {4.1}Markov models}{38}{section.4.1}
 \contentsline {section}{\numberline {4.2}Hidden Markov models}{39}{section.4.2}
@@ -44,34 +44,34 @@
 \contentsline {chapter}{\numberline {8}Stochastic linear control}{81}{chapter.8}
 \contentsline {section}{\numberline {8.1}Unconstrained stochastic control}{82}{section.8.1}
 \contentsline {section}{\numberline {8.2}Constrained stochastic control}{85}{section.8.2}
-\contentsline {section}{\numberline {8.3}Reference tracking}{92}{section.8.3}
-\contentsline {section}{\numberline {8.4}Linear system}{92}{section.8.4}
-\contentsline {section}{\numberline {8.5}Nonlinear system}{102}{section.8.5}
-\contentsline {section}{\numberline {8.6}Conclusion}{115}{section.8.6}
-\contentsline {part}{III\hspace {1em}Multiple model systems}{117}{part.3}
-\contentsline {chapter}{\numberline {9}Inference using linear hybrid models}{118}{chapter.9}
-\contentsline {section}{\numberline {9.1}Exact filtering}{119}{section.9.1}
-\contentsline {section}{\numberline {9.2}Rao-Blackwellised particle filter}{120}{section.9.2}
-\contentsline {section}{\numberline {9.3}Rao-Blackwellised particle prediction}{121}{section.9.3}
-\contentsline {section}{\numberline {9.4}Smoothing and Viterbi decoding}{122}{section.9.4}
-\contentsline {section}{\numberline {9.5}Filtering the CSTR}{122}{section.9.5}
-\contentsline {chapter}{\numberline {10}Stochastic switching linear control using linear hybrid models}{131}{chapter.10}
-\contentsline {section}{\numberline {10.1}Unconstrained switching control}{134}{section.10.1}
-\contentsline {subsection}{\numberline {10.1.1}Most likely model approach}{134}{subsection.10.1.1}
-\contentsline {subsection}{\numberline {10.1.2}Model averaging approach}{141}{subsection.10.1.2}
-\contentsline {section}{\numberline {10.2}Conclusion}{141}{section.10.2}
-\contentsline {chapter}{\numberline {11}Inference using nonlinear hybrid models}{143}{chapter.11}
-\contentsline {section}{\numberline {11.1}Exact filtering}{144}{section.11.1}
-\contentsline {section}{\numberline {11.2}Switching particle filter}{144}{section.11.2}
-\contentsline {section}{\numberline {11.3}Switching particle prediction}{145}{section.11.3}
-\contentsline {section}{\numberline {11.4}Smoothing and Viterbi decoding}{145}{section.11.4}
-\contentsline {section}{\numberline {11.5}Filtering the CSTR}{146}{section.11.5}
-\contentsline {chapter}{\numberline {12}Stochastic switching linear control using nonlinear hybrid models}{151}{chapter.12}
-\contentsline {section}{\numberline {12.1}Unconstrained switching control}{152}{section.12.1}
-\contentsline {section}{\numberline {12.2}Constrained switching control}{156}{section.12.2}
-\contentsline {section}{\numberline {12.3}Conclusion}{163}{section.12.3}
-\contentsline {chapter}{\numberline {13}Future work and conclusion}{165}{chapter.13}
-\contentsline {section}{\numberline {13.1}Parameter optimisation}{165}{section.13.1}
-\contentsline {section}{\numberline {13.2}Generalised graphical models}{165}{section.13.2}
-\contentsline {section}{\numberline {13.3}Filtering techniques}{166}{section.13.3}
-\contentsline {section}{\numberline {13.4}Conclusion}{166}{section.13.4}
+\contentsline {section}{\numberline {8.3}Reference tracking}{91}{section.8.3}
+\contentsline {section}{\numberline {8.4}Linear system}{91}{section.8.4}
+\contentsline {section}{\numberline {8.5}Nonlinear system}{101}{section.8.5}
+\contentsline {section}{\numberline {8.6}Conclusion}{114}{section.8.6}
+\contentsline {part}{III\hspace {1em}Multiple model systems}{116}{part.3}
+\contentsline {chapter}{\numberline {9}Inference using linear hybrid models}{117}{chapter.9}
+\contentsline {section}{\numberline {9.1}Exact filtering}{118}{section.9.1}
+\contentsline {section}{\numberline {9.2}Rao-Blackwellised particle filter}{119}{section.9.2}
+\contentsline {section}{\numberline {9.3}Rao-Blackwellised particle prediction}{120}{section.9.3}
+\contentsline {section}{\numberline {9.4}Smoothing and Viterbi decoding}{121}{section.9.4}
+\contentsline {section}{\numberline {9.5}Filtering the CSTR}{121}{section.9.5}
+\contentsline {chapter}{\numberline {10}Stochastic switching linear control using linear hybrid models}{130}{chapter.10}
+\contentsline {section}{\numberline {10.1}Unconstrained switching control}{133}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Most likely model approach}{133}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}Model averaging approach}{140}{subsection.10.1.2}
+\contentsline {section}{\numberline {10.2}Conclusion}{140}{section.10.2}
+\contentsline {chapter}{\numberline {11}Inference using nonlinear hybrid models}{142}{chapter.11}
+\contentsline {section}{\numberline {11.1}Exact filtering}{143}{section.11.1}
+\contentsline {section}{\numberline {11.2}Switching particle filter}{143}{section.11.2}
+\contentsline {section}{\numberline {11.3}Switching particle prediction}{144}{section.11.3}
+\contentsline {section}{\numberline {11.4}Smoothing and Viterbi decoding}{144}{section.11.4}
+\contentsline {section}{\numberline {11.5}Filtering the CSTR}{145}{section.11.5}
+\contentsline {chapter}{\numberline {12}Stochastic switching linear control using nonlinear hybrid models}{150}{chapter.12}
+\contentsline {section}{\numberline {12.1}Unconstrained switching control}{151}{section.12.1}
+\contentsline {section}{\numberline {12.2}Constrained switching control}{155}{section.12.2}
+\contentsline {section}{\numberline {12.3}Conclusion}{162}{section.12.3}
+\contentsline {chapter}{\numberline {13}Future work and conclusion}{164}{chapter.13}
+\contentsline {section}{\numberline {13.1}Parameter optimisation}{164}{section.13.1}
+\contentsline {section}{\numberline {13.2}Generalised graphical models}{164}{section.13.2}
+\contentsline {section}{\numberline {13.3}Filtering techniques}{165}{section.13.3}
+\contentsline {section}{\numberline {13.4}Conclusion}{165}{section.13.4}

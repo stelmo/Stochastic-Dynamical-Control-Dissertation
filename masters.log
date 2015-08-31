@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  31 AUG 2015 17:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  31 AUG 2015 18:06
 entering extended mode
 **masters.tex
 
@@ -889,6 +889,18 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}])
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
+masters.toc"pdfTeX warning (ext4): destination with the same identifier (name{p
+age.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.30 ...ine {5.2}Nonlinear model}{51}{section.5.2}
+                                                   [1
+
+
+] [2])
+\tf@toc=\write5
+ [3]
+("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\introduction.tex"
 Chapter 1.
 Missing character: There is no ; in font nullfont!
@@ -948,13 +960,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.70 
-      [1
-
+[4
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) 
@@ -969,36 +975,36 @@ l.70
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.70 
-     ] [2]
+     ] [5]
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [3] [4
+) [6] [7
 
 
 ]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\lit_study.tex"
 Chapter 2.
-[5
+[8
 
 
-] [6] [7] <./imgs/vanhess.pdf, id=138, 295.56487pt x 257.15527pt>
+] [9] [10] <./imgs/vanhess.pdf, id=295, 295.56487pt x 257.15527pt>
 File: ./imgs/vanhess.pdf Graphic file (type pdf)
 
 <use ./imgs/vanhess.pdf>
 Package pdftex.def Info: ./imgs/vanhess.pdf used on input line 73.
 (pdftex.def)             Requested size: 236.4522pt x 205.72449pt.
- [8pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
-}) has been already used, duplicate ignored
+ [11pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.84 U
       nder the assumption of normality and linearity it is possible to conve...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/vanhess.pdf>] [9] [10]
+imgs/vanhess.pdf>] [12] [13]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1029,7 +1035,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [11]) [12pdfTeX warning (ext4): destination with the same identifier (name{fig
+ [14]) [15pdfTeX warning (ext4): destination with the same identifier (name{fig
 ure.2.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1039,11 +1045,11 @@ l.69 \include{./docs/lit_study}
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\back_theory.tex"
 Chapter 3.
-[13
+[16
 
 
 
-] [14] [15] [16] [17] [18] [19] [20]
+] [17] [18] [19] [20] [21] [22] [23]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1053,13 +1059,13 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [21pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [24pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.314 \end{defn}
-                ] [22]
+                ] [25]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1072,7 +1078,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [23pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [26pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1103,13 +1109,13 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [24pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [27pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.450 
-      ] [25]
+      ] [28]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1131,27 +1137,27 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [26] [27pdfTeX warning (ext4): destination with the same identifier (name{figu
+ [29] [30pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.3.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.547 \end{defn}
-                ] [28] [29] [30] [31]
-<./imgs/no_selector.pdf, id=555, 512.66531pt x 235.63031pt>
+                ] [31] [32] [33] [34]
+<./imgs/no_selector.pdf, id=700, 512.66531pt x 235.63031pt>
 File: ./imgs/no_selector.pdf Graphic file (type pdf)
 
 <use ./imgs/no_selector.pdf>
 Package pdftex.def Info: ./imgs/no_selector.pdf used on input line 742.
 (pdftex.def)             Requested size: 358.86327pt x 164.94008pt.
- [32pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [35pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.756 \end{equation}
                      <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-C
-ontrol-Dissertation/imgs/no_selector.pdf>] [33]) [34]
+ontrol-Dissertation/imgs/no_selector.pdf>] [36]) [37]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\hmm.tex"
 Chapter 4.
@@ -1164,7 +1170,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-[35
+[38
 
 
 
@@ -1187,7 +1193,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [36pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+ [39pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1215,7 +1221,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [37pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+ [40pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1249,13 +1255,13 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [38pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+ [41pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.170 \begin{equation}
-                      ] [39]
+                      ] [42]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1274,14 +1280,14 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [40] [41pdfTeX warning (ext4): destination with the same identifier (name{figu
+ [43] [44pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.4.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.300 \section
               {Burglar localisation problem}]
-<./imgs/burglar_observations.pdf, id=680, 1445.4pt x 708.24597pt>
+<./imgs/burglar_observations.pdf, id=818, 1445.4pt x 708.24597pt>
 File: ./imgs/burglar_observations.pdf Graphic file (type pdf)
 
 <use ./imgs/burglar_observations.pdf>
@@ -1289,13 +1295,13 @@ Package pdftex.def Info: ./imgs/burglar_observations.pdf used on input line 306
 .
 (pdftex.def)             Requested size: 361.34912pt x 177.06105pt.
 
-<./imgs/burglar_inference.pdf, id=682, 1445.4pt x 708.24597pt>
+<./imgs/burglar_inference.pdf, id=820, 1445.4pt x 708.24597pt>
 File: ./imgs/burglar_inference.pdf Graphic file (type pdf)
 
 <use ./imgs/burglar_inference.pdf>
 Package pdftex.def Info: ./imgs/burglar_inference.pdf used on input line 313.
 (pdftex.def)             Requested size: 433.62335pt x 212.47542pt.
- [42pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+ [45pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1303,24 +1309,24 @@ Package pdftex.def Info: ./imgs/burglar_inference.pdf used on input line 313.
 l.317 I
        n this context filtering means we estimate the location of the burgla...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/burglar_observations.pdf>]) [43pdfTeX warning (ext4): destination with the
+imgs/burglar_observations.pdf>]) [46pdfTeX warning (ext4): destination with the
  same identifier (name{figure.4.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.71 \include{./docs/hmm}
                           <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynami
-cal-Control-Dissertation/imgs/burglar_inference.pdf>] [44]
+cal-Control-Dissertation/imgs/burglar_inference.pdf>] [47]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\cstr_model.tex"
 Chapter 5.
-<./imgs/cstr_diagram.pdf, id=840, 261.44621pt x 246.80322pt>
+<./imgs/cstr_diagram.pdf, id=976, 261.44621pt x 246.80322pt>
 File: ./imgs/cstr_diagram.pdf Graphic file (type pdf)
 
 <use ./imgs/cstr_diagram.pdf>
 Package pdftex.def Info: ./imgs/cstr_diagram.pdf used on input line 6.
 (pdftex.def)             Requested size: 209.15724pt x 197.44284pt.
- [45
+ [48
 
 
 
@@ -1332,14 +1338,14 @@ has been already used, duplicate ignored
 l.35 T
       he CSTR model is a familiar control example. Similar models may be fou...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/cstr_diagram.pdf>] [46]
-<./imgs/cstr_model_op_curve.pdf, id=882, 1445.4pt x 708.24597pt>
+imgs/cstr_diagram.pdf>] [49]
+<./imgs/cstr_model_op_curve.pdf, id=1018, 1445.4pt x 708.24597pt>
 File: ./imgs/cstr_model_op_curve.pdf Graphic file (type pdf)
 
 <use ./imgs/cstr_model_op_curve.pdf>
 Package pdftex.def Info: ./imgs/cstr_model_op_curve.pdf used on input line 75.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [47pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+ [50pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1347,20 +1353,20 @@ Package pdftex.def Info: ./imgs/cstr_model_op_curve.pdf used on input line 75.
 l.104 
        <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
 ation/imgs/cstr_model_op_curve.pdf>]
-<./imgs/cstr_nl_1.pdf, id=899, 1445.4pt x 708.24597pt>
+<./imgs/cstr_nl_1.pdf, id=1035, 1445.4pt x 708.24597pt>
 File: ./imgs/cstr_nl_1.pdf Graphic file (type pdf)
 
 <use ./imgs/cstr_nl_1.pdf>
 Package pdftex.def Info: ./imgs/cstr_nl_1.pdf used on input line 129.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/cstr_nl_2.pdf, id=900, 1445.4pt x 708.24597pt>
+<./imgs/cstr_nl_2.pdf, id=1036, 1445.4pt x 708.24597pt>
 File: ./imgs/cstr_nl_2.pdf Graphic file (type pdf)
 
 <use ./imgs/cstr_nl_2.pdf>
 Package pdftex.def Info: ./imgs/cstr_nl_2.pdf used on input line 135.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [48] [49pdfTeX warning (ext4): destination with the same identifier (name{figu
+ [51] [52pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.5.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1379,20 +1385,20 @@ cal-Control-Dissertation/imgs/cstr_nl_2.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/cstr_nl_2.pdf): PDF inclusion: multiple pdfs 
 with page group included in a single page
->] [50] <./imgs/cstr_lin_1.pdf, id=963, 1445.4pt x 708.24597pt>
+>] [53] <./imgs/cstr_lin_1.pdf, id=1096, 1445.4pt x 708.24597pt>
 File: ./imgs/cstr_lin_1.pdf Graphic file (type pdf)
 
 <use ./imgs/cstr_lin_1.pdf>
 Package pdftex.def Info: ./imgs/cstr_lin_1.pdf used on input line 201.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/cstr_lin_2.pdf, id=965, 1445.4pt x 708.24597pt>
+<./imgs/cstr_lin_2.pdf, id=1098, 1445.4pt x 708.24597pt>
 File: ./imgs/cstr_lin_2.pdf Graphic file (type pdf)
 
 <use ./imgs/cstr_lin_2.pdf>
 Package pdftex.def Info: ./imgs/cstr_lin_2.pdf used on input line 210.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [51pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+ [54pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
 5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1400,13 +1406,13 @@ Package pdftex.def Info: ./imgs/cstr_lin_2.pdf used on input line 210.
 l.214 I
        f we want to use the linear model around the unstable operating point...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/cstr_lin_1.pdf>] <./imgs/cstr_lin_3.pdf, id=985, 1445.4pt x 708.24597pt>
+imgs/cstr_lin_1.pdf>] <./imgs/cstr_lin_3.pdf, id=1119, 1445.4pt x 708.24597pt>
 File: ./imgs/cstr_lin_3.pdf Graphic file (type pdf)
 
 <use ./imgs/cstr_lin_3.pdf>
 Package pdftex.def Info: ./imgs/cstr_lin_3.pdf used on input line 219.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [52pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+ [55pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
 6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1425,7 +1431,7 @@ ical-Control-Dissertation/imgs/cstr_lin_3.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/cstr_lin_3.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
->]) [53] [54
+>]) [56] [57
 
 
 ]
@@ -1453,7 +1459,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-[55
+[58
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) 
@@ -1493,13 +1499,13 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [56pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
+ [59pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.92 \begin{equation}
-                     ] [57]
+                     ] [60]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1515,21 +1521,21 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [58pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
+ [61pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.186 \end{equation}
-                    ] [59] [60] [61]
-<./imgs/kalman_filter_timeseries_M1.pdf, id=1115, 1445.4pt x 708.24597pt>
+                    ] [62] [63] [64]
+<./imgs/kalman_filter_timeseries_M1.pdf, id=1244, 1445.4pt x 708.24597pt>
 File: ./imgs/kalman_filter_timeseries_M1.pdf Graphic file (type pdf)
 
 <use ./imgs/kalman_filter_timeseries_M1.pdf>
 Package pdftex.def Info: ./imgs/kalman_filter_timeseries_M1.pdf used on input l
 ine 289.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [62pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
+ [65pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1537,7 +1543,7 @@ ine 289.
 l.296 
        <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
 ation/imgs/kalman_filter_timeseries_M1.pdf>]
-<./imgs/kalman_filter_phase_M1.pdf, id=1136, 1445.4pt x 708.24597pt>
+<./imgs/kalman_filter_phase_M1.pdf, id=1265, 1445.4pt x 708.24597pt>
 File: ./imgs/kalman_filter_phase_M1.pdf Graphic file (type pdf)
 
 <use ./imgs/kalman_filter_phase_M1.pdf>
@@ -1545,7 +1551,7 @@ Package pdftex.def Info: ./imgs/kalman_filter_phase_M1.pdf used on input line 3
 00.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/kalman_filter_timeseries_M2.pdf, id=1142, 1445.4pt x 708.24597pt>
+<./imgs/kalman_filter_timeseries_M2.pdf, id=1271, 1445.4pt x 708.24597pt>
 File: ./imgs/kalman_filter_timeseries_M2.pdf Graphic file (type pdf)
 
 <use ./imgs/kalman_filter_timeseries_M2.pdf>
@@ -1553,21 +1559,21 @@ Package pdftex.def Info: ./imgs/kalman_filter_timeseries_M2.pdf used on input l
 ine 313.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/kalman_filter_phase_M2.pdf, id=1143, 1445.4pt x 708.24597pt>
+<./imgs/kalman_filter_phase_M2.pdf, id=1272, 1445.4pt x 708.24597pt>
 File: ./imgs/kalman_filter_phase_M2.pdf Graphic file (type pdf)
 
 <use ./imgs/kalman_filter_phase_M2.pdf>
 Package pdftex.def Info: ./imgs/kalman_filter_phase_M2.pdf used on input line 3
 19.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [63pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
+ [66pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
 5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.322 \end{figure}
                    <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
-trol-Dissertation/imgs/kalman_filter_phase_M1.pdf>]) [64pdfTeX warning (ext4): 
+trol-Dissertation/imgs/kalman_filter_phase_M1.pdf>]) [67pdfTeX warning (ext4): 
 destination with the same identifier (name{figure.6.6}) has been already used, 
 duplicate ignored
 
@@ -1588,7 +1594,7 @@ lman_filter_phase_M2.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/kalman_filter_phase_M2.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
->] [65]
+>] [68]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\nonlinear_models.tex"
 Chapter 7.
@@ -1613,7 +1619,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-[66
+[69
 
 
 
@@ -1623,21 +1629,21 @@ has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.44 
-     ] [67] [68] [69] [70] [71] [72]
-<./imgs/pf_m1_time.pdf, id=1306, 1445.4pt x 708.24597pt>
+     ] [70] [71] [72] [73] [74] [75]
+<./imgs/pf_m1_time.pdf, id=1429, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m1_time.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m1_time.pdf>
 Package pdftex.def Info: ./imgs/pf_m1_time.pdf used on input line 241.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/pf_m1_phase.pdf, id=1308, 1445.4pt x 708.24597pt>
+<./imgs/pf_m1_phase.pdf, id=1431, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m1_phase.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m1_phase.pdf>
 Package pdftex.def Info: ./imgs/pf_m1_phase.pdf used on input line 248.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [73pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+ [76pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1645,20 +1651,20 @@ Package pdftex.def Info: ./imgs/pf_m1_phase.pdf used on input line 248.
 l.251 \end{figure}
                    <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
 trol-Dissertation/imgs/pf_m1_time.pdf>]
-<./imgs/pf_m2_time.pdf, id=1330, 1445.4pt x 708.24597pt>
+<./imgs/pf_m2_time.pdf, id=1452, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m2_time.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m2_time.pdf>
 Package pdftex.def Info: ./imgs/pf_m2_time.pdf used on input line 255.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/pf_m2_phase.pdf, id=1332, 1445.4pt x 708.24597pt>
+<./imgs/pf_m2_phase.pdf, id=1454, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m2_phase.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m2_phase.pdf>
 Package pdftex.def Info: ./imgs/pf_m2_phase.pdf used on input line 262.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [74pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+ [77pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1677,13 +1683,13 @@ chastic-Dynamical-Control-Dissertation/imgs/pf_m2_time.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/pf_m2_time.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
->] <./imgs/pf_kf_phase1.pdf, id=1365, 1445.4pt x 708.24597pt>
+>] <./imgs/pf_kf_phase1.pdf, id=1487, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_kf_phase1.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_kf_phase1.pdf>
 Package pdftex.def Info: ./imgs/pf_kf_phase1.pdf used on input line 269.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [75pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+ [78pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
 5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1692,13 +1698,13 @@ l.273 T
        he average concentration and temperature estimation errors for the pa...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/pf_m2_phase.pdf>]
-<./imgs/pf_kf_phase2.pdf, id=1386, 1445.4pt x 708.24597pt>
+<./imgs/pf_kf_phase2.pdf, id=1509, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_kf_phase2.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_kf_phase2.pdf>
 Package pdftex.def Info: ./imgs/pf_kf_phase2.pdf used on input line 278.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [76pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+ [79pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
 6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1706,7 +1712,7 @@ Package pdftex.def Info: ./imgs/pf_kf_phase2.pdf used on input line 278.
 l.282 I
        nspecting figure \ref{fig_pf_kf_phase2} we see that throughout the si...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/pf_kf_phase1.pdf>]) [77pdfTeX warning (ext4): destination with the same id
+imgs/pf_kf_phase1.pdf>]) [80pdfTeX warning (ext4): destination with the same id
 entifier (name{figure.7.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1717,7 +1723,7 @@ hastic-Dynamical-Control-Dissertation/imgs/pf_kf_phase2.pdf>]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\linear_control.tex"
 Chapter 8.
-[78
+[81
 
 
 
@@ -1737,20 +1743,20 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [79pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [82pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.73 \end{thrm}
-               ] [80] [81] [82] [83] [84]
-<./imgs/ellipse2.pdf, id=1558, 346.59811pt x 296.33553pt>
+               ] [83] [84] [85] [86] [87]
+<./imgs/ellipse2.pdf, id=1678, 346.59811pt x 296.33553pt>
 File: ./imgs/ellipse2.pdf Graphic file (type pdf)
 
 <use ./imgs/ellipse2.pdf>
 Package pdftex.def Info: ./imgs/ellipse2.pdf used on input line 281.
 (pdftex.def)             Requested size: 242.61702pt x 207.43344pt.
- [85pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [88pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1758,35 +1764,35 @@ Package pdftex.def Info: ./imgs/ellipse2.pdf used on input line 281.
 l.286 
        <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
 ation/imgs/ellipse2.pdf>]
-<./imgs/multiple.pdf, id=1626, 280.32855pt x 323.4672pt>
+<./imgs/multiple.pdf, id=1746, 280.32855pt x 323.4672pt>
 File: ./imgs/multiple.pdf Graphic file (type pdf)
 
 <use ./imgs/multiple.pdf>
 Package pdftex.def Info: ./imgs/multiple.pdf used on input line 290.
 (pdftex.def)             Requested size: 224.26312pt x 258.7741pt.
- [86pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [89pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.297 
        <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
-ation/imgs/multiple.pdf>] [87] [88]
-<./imgs/lin_mod_lqg.pdf, id=1726, 1445.4pt x 708.24597pt>
+ation/imgs/multiple.pdf>] [90] [91]
+<./imgs/lin_mod_lqg.pdf, id=1845, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_lqg.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_lqg.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_lqg.pdf used on input line 386.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [89]
-<./imgs/lin_mod_kf_mean_track.pdf, id=1742, 1445.4pt x 708.24597pt>
+ [92]
+<./imgs/lin_mod_kf_mean_track.pdf, id=1860, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kf_mean_track.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_mean_track.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kf_mean_track.pdf used on input line 41
 1.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [90pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [93pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1794,13 +1800,13 @@ Package pdftex.def Info: ./imgs/lin_mod_kf_mean_track.pdf used on input line 41
 l.414 \end{figure}
                    <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
 trol-Dissertation/imgs/lin_mod_lqg.pdf>]
-<./imgs/lin_mod_kf_mean_ss.pdf, id=1764, 1445.4pt x 708.24597pt>
+<./imgs/lin_mod_kf_mean_ss.pdf, id=1881, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kf_mean_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_mean_ss.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kf_mean_ss.pdf used on input line 420.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [91pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [94pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1809,14 +1815,14 @@ l.424 W
        hile the predicted mean state estimates do not violate the constraint...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/lin_mod_kf_mean_track.pdf>]
-<./imgs/lin_mod_kf_var90_track.pdf, id=1787, 1445.4pt x 708.24597pt>
+<./imgs/lin_mod_kf_var90_track.pdf, id=1904, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kf_var90_track.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_var90_track.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kf_var90_track.pdf used on input line 4
 42.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [92pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [95pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1825,14 +1831,14 @@ l.446 H
        owever, the benefit of adding the chance constraint is apparent in fi...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/lin_mod_kf_mean_ss.pdf>]
-<./imgs/lin_mod_kf_var90_ss.pdf, id=1808, 1445.4pt x 708.24597pt>
+<./imgs/lin_mod_kf_var90_ss.pdf, id=1925, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kf_var90_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_var90_ss.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kf_var90_ss.pdf used on input line 449.
 
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [93pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [96pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1853,7 +1859,7 @@ imgs/lin_mod_kf_var90_track.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/lin_mod_kf_var90_ss.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
->] <./imgs/lin_mod_kf_var99_track.pdf, id=1842, 1445.4pt x 708.24597pt>
+>] <./imgs/lin_mod_kf_var99_track.pdf, id=1960, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kf_var99_track.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_var99_track.pdf>
@@ -1861,14 +1867,14 @@ Package pdftex.def Info: ./imgs/lin_mod_kf_var99_track.pdf used on input line 4
 60.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/lin_mod_kf_var99_ss.pdf, id=1845, 1445.4pt x 708.24597pt>
+<./imgs/lin_mod_kf_var99_ss.pdf, id=1963, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kf_var99_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_var99_ss.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kf_var99_ss.pdf used on input line 469.
 
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [94pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [97pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1877,13 +1883,13 @@ l.473 I
        t would also be correct to infer that $k$ can be used as an empirical...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/lin_mod_kf_var99_track.pdf>]
-<./imgs/lin_mod_kl.pdf, id=1869, 1445.4pt x 708.24597pt>
+<./imgs/lin_mod_kl.pdf, id=1987, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kl.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kl.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kl.pdf used on input line 482.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [95pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [98pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1892,13 +1898,13 @@ l.486 T
        he approximation curve in figure \ref{fig_lin_mod_kl} shows how much ...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/lin_mod_kf_var99_ss.pdf>]
-<./imgs/lin_mod_kf_mc.pdf, id=1896, 1445.4pt x 708.24597pt>
+<./imgs/lin_mod_kf_mc.pdf, id=2014, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kf_mc.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_mc.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kf_mc.pdf used on input line 493.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [96pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
+ [99pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
 11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1907,14 +1913,14 @@ l.497 T
        he Mahalanobis area dimension indicates the degree to which the const...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/lin_mod_kl.pdf>]
-<./imgs/lin_mod_kf_mc2.pdf, id=1915, 1445.4pt x 708.24597pt>
+<./imgs/lin_mod_kf_mc2.pdf, id=2032, 1445.4pt x 708.24597pt>
 File: ./imgs/lin_mod_kf_mc2.pdf Graphic file (type pdf)
 
 <use ./imgs/lin_mod_kf_mc2.pdf>
 Package pdftex.def Info: ./imgs/lin_mod_kf_mc2.pdf used on input line 504.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [97pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
-12}) has been already used, duplicate ignored
+ [100pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1922,14 +1928,14 @@ l.508 I
        t is clear that each controller causes the system to approach set poi...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/lin_mod_kf_mc.pdf>]
-<./imgs/nonlin_mod_lqg.pdf, id=1935, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_lqg.pdf, id=2052, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_lqg.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_lqg.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_lqg.pdf used on input line 519.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [98pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
-13}) has been already used, duplicate ignored
+ [101pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1937,29 +1943,29 @@ l.523 T
        he average energy usage and concentration error was 50.88 kW and 11.6...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/lin_mod_kf_mc2.pdf>]
-<./imgs/nonlin_mod_kf_mean_track.pdf, id=1955, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_kf_mean_track.pdf, id=2072, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kf_mean_track.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kf_mean_track.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_kf_mean_track.pdf used on input line
  542.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [99pdfTeX warning (ext4): destination with the same identifier (name{figure.8.
-14}) has been already used, duplicate ignored
+ [102pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.545 \end{figure}
                    <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
 trol-Dissertation/imgs/nonlin_mod_lqg.pdf>]
-<./imgs/nonlin_mod_kf_mean_ss.pdf, id=1976, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_kf_mean_ss.pdf, id=2094, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kf_mean_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kf_mean_ss.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_kf_mean_ss.pdf used on input line 54
 9.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [100pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [103pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1968,14 +1974,14 @@ l.553 S
        ince we are not using a chance constrained MPC the state constraint v...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/nonlin_mod_kf_mean_track.pdf>]
-<./imgs/nonlin_mod_pf_mean_track.pdf, id=1997, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_pf_mean_track.pdf, id=2115, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_pf_mean_track.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_pf_mean_track.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_pf_mean_track.pdf used on input line
  558.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [101pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [104pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .16}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1984,14 +1990,14 @@ l.562 T
        he average energy input and concentration error is 38.83 kW and 5.81\...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/nonlin_mod_kf_mean_ss.pdf>]
-<./imgs/nonlin_mod_pf_mean_ss.pdf, id=2017, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_pf_mean_ss.pdf, id=2135, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_pf_mean_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_pf_mean_ss.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_pf_mean_ss.pdf used on input line 56
 5.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [102pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [105pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .17}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2010,7 +2016,7 @@ ochastic-Dynamical-Control-Dissertation/imgs/nonlin_mod_pf_mean_ss.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/nonlin_mod_pf_mean_ss.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
->] <./imgs/nonlin_mod_kf_var90_track.pdf, id=2054, 1445.4pt x 708.24597pt>
+>] <./imgs/nonlin_mod_kf_var90_track.pdf, id=2171, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kf_var90_track.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kf_var90_track.pdf>
@@ -2018,14 +2024,14 @@ Package pdftex.def Info: ./imgs/nonlin_mod_kf_var90_track.pdf used on input lin
 e 587.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/nonlin_mod_kf_var90_ss.pdf, id=2057, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_kf_var90_ss.pdf, id=2174, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kf_var90_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kf_var90_ss.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_kf_var90_ss.pdf used on input line 5
 94.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [103pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [106pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .19}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2034,14 +2040,14 @@ l.598 I
        t is clear that the nonlinearity of the underlying system makes stoch...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/nonlin_mod_kf_var90_track.pdf>]
-<./imgs/nonlin_mod_kf_var99_track.pdf, id=2078, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_kf_var99_track.pdf, id=2195, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kf_var99_track.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kf_var99_track.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_kf_var99_track.pdf used on input lin
 e 603.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [104pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [107pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .20}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2050,7 +2056,7 @@ l.607 I
        n figure \ref{fig_nonlin_mod_kf_var99_ss} we see that the margin of s...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/nonlin_mod_kf_var90_ss.pdf>]
-<./imgs/nonlin_mod_kf_var99_ss.pdf, id=2098, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_kf_var99_ss.pdf, id=2215, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kf_var99_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kf_var99_ss.pdf>
@@ -2058,13 +2064,13 @@ Package pdftex.def Info: ./imgs/nonlin_mod_kf_var99_ss.pdf used on input line 6
 10.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/nonlin_mod_kf_mc.pdf, id=2100, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_kf_mc.pdf, id=2217, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kf_mc.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kf_mc.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_kf_mc.pdf used on input line 619.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [105pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [108pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .21}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2084,13 +2090,13 @@ s.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/nonlin_mod_kf_var99_ss.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
->] <./imgs/nonlin_mod_kf_mc2.pdf, id=2134, 1445.4pt x 708.24597pt>
+>] <./imgs/nonlin_mod_kf_mc2.pdf, id=2252, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kf_mc2.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kf_mc2.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_kf_mc2.pdf used on input line 628.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [106pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [109pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .23}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2099,14 +2105,14 @@ l.632 T
        he Monte Carlo simulations (50 per controller) indicated that all the...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/nonlin_mod_kf_mc.pdf>]
-<./imgs/nonlin_mod_pf_var90_track.pdf, id=2156, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_pf_var90_track.pdf, id=2274, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_pf_var90_track.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_pf_var90_track.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_pf_var90_track.pdf used on input lin
 e 637.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [107pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [110pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .24}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2115,14 +2121,14 @@ l.641 O
        ne could see the discussion in section \ref{sec_nonlinmods_filtering}...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/nonlin_mod_kf_mc2.pdf>]
-<./imgs/nonlin_mod_pf_var90_ss.pdf, id=2173, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_pf_var90_ss.pdf, id=2291, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_pf_var90_ss.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_pf_var90_ss.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_pf_var90_ss.pdf used on input line 6
 46.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [108pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [111pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .25}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2131,13 +2137,13 @@ l.650 I
        n figure \ref{fig_nonlin_mod_pf_mc} we compare the constraint violati...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/nonlin_mod_pf_var90_track.pdf>]
-<./imgs/nonlin_mod_pf_mc.pdf, id=2194, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_pf_mc.pdf, id=2311, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_pf_mc.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_pf_mc.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_pf_mc.pdf used on input line 653.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [109pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [112pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .26}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2156,20 +2162,20 @@ hastic-Dynamical-Control-Dissertation/imgs/nonlin_mod_pf_mc.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/nonlin_mod_pf_mc.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
->] <./imgs/nonlin_mod_pf_mc2.pdf, id=2222, 1445.4pt x 708.24597pt>
+>] <./imgs/nonlin_mod_pf_mc2.pdf, id=2339, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_pf_mc2.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_pf_mc2.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_pf_mc2.pdf used on input line 662.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/nonlin_mod_kl.pdf, id=2226, 1445.4pt x 708.24597pt>
+<./imgs/nonlin_mod_kl.pdf, id=2343, 1445.4pt x 708.24597pt>
 File: ./imgs/nonlin_mod_kl.pdf Graphic file (type pdf)
 
 <use ./imgs/nonlin_mod_kl.pdf>
 Package pdftex.def Info: ./imgs/nonlin_mod_kl.pdf used on input line 671.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [110pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+ [113pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 .28}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2177,7 +2183,7 @@ Package pdftex.def Info: ./imgs/nonlin_mod_kl.pdf used on input line 671.
 l.675 I
        t is a relief that the normal assumption seems to hold almost as well...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/nonlin_mod_pf_mc2.pdf>] [111pdfTeX warning (ext4): destination with the sa
+imgs/nonlin_mod_pf_mc2.pdf>] [114pdfTeX warning (ext4): destination with the sa
 me identifier (name{figure.8.29}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2185,7 +2191,7 @@ me identifier (name{figure.8.29}) has been already used, duplicate ignored
 l.685 C
        ombining the previous results we have shown that it is possible to wr...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/nonlin_mod_kl.pdf>]) [112] [113
+imgs/nonlin_mod_kl.pdf>]) [115] [116
 
 
 ]
@@ -2228,7 +2234,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-[114
+[117
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.9.1}) 
@@ -2237,7 +2243,7 @@ has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.42 \begin{equation}
-                     ] [115] [116]
+                     ] [118] [119]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -2268,20 +2274,20 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [117] [118pdfTeX warning (ext4): destination with the same identifier (name{fi
+ [120] [121pdfTeX warning (ext4): destination with the same identifier (name{fi
 gure.9.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.166 
-      ] <./imgs/rbpf_3m_models.pdf, id=2360, 1445.4pt x 708.24597pt>
+      ] <./imgs/rbpf_3m_models.pdf, id=2471, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_3m_models.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_3m_models.pdf>
 Package pdftex.def Info: ./imgs/rbpf_3m_models.pdf used on input line 190.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [119]
-<./imgs/rbpf_3m_vague_track.pdf, id=2369, 1445.4pt x 708.24597pt>
+ [122]
+<./imgs/rbpf_3m_vague_track.pdf, id=2480, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_3m_vague_track.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_3m_vague_track.pdf>
@@ -2289,14 +2295,14 @@ Package pdftex.def Info: ./imgs/rbpf_3m_vague_track.pdf used on input line 197.
 
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/rbpf_3m_vague_switch.pdf, id=2371, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_3m_vague_switch.pdf, id=2482, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_3m_vague_switch.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_3m_vague_switch.pdf>
 Package pdftex.def Info: ./imgs/rbpf_3m_vague_switch.pdf used on input line 204
 .
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [120pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+ [123pdfTeX warning (ext4): destination with the same identifier (name{figure.9
 .3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2315,13 +2321,13 @@ Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_3m_vague_track.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/rbpf_3m_vague_track.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
->] <./imgs/rbpf_3m_track.pdf, id=2410, 1445.4pt x 708.24597pt>
+>] <./imgs/rbpf_3m_track.pdf, id=2520, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_3m_track.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_3m_track.pdf>
 Package pdftex.def Info: ./imgs/rbpf_3m_track.pdf used on input line 213.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [121pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+ [124pdfTeX warning (ext4): destination with the same identifier (name{figure.9
 .5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2330,13 +2336,13 @@ l.217 F
        igure \ref{fig_3m_switch} shows the state of the corresponding switch...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/rbpf_3m_vague_switch.pdf>]
-<./imgs/rbpf_3m_switch.pdf, id=2694, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_3m_switch.pdf, id=2804, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_3m_switch.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_3m_switch.pdf>
 Package pdftex.def Info: ./imgs/rbpf_3m_switch.pdf used on input line 220.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [122pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+ [125pdfTeX warning (ext4): destination with the same identifier (name{figure.9
 .6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2355,20 +2361,20 @@ namical-Control-Dissertation/imgs/rbpf_3m_switch.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/rbpf_3m_switch.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
->] <./imgs/rbpf_3m_track_m2.pdf, id=2993, 1445.4pt x 708.24597pt>
+>] <./imgs/rbpf_3m_track_m2.pdf, id=3103, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_3m_track_m2.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_3m_track_m2.pdf>
 Package pdftex.def Info: ./imgs/rbpf_3m_track_m2.pdf used on input line 235.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/rbpf_3m_switch_m2.pdf, id=2998, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_3m_switch_m2.pdf, id=3108, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_3m_switch_m2.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_3m_switch_m2.pdf>
 Package pdftex.def Info: ./imgs/rbpf_3m_switch_m2.pdf used on input line 242.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [123pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+ [126pdfTeX warning (ext4): destination with the same identifier (name{figure.9
 .8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2376,13 +2382,13 @@ Package pdftex.def Info: ./imgs/rbpf_3m_switch_m2.pdf used on input line 242.
 l.245 \end{figure}
                    <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
 trol-Dissertation/imgs/rbpf_3m_track_m2.pdf>]
-<./imgs/rbpf_7m_models.pdf, id=3018, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_7m_models.pdf, id=3129, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_7m_models.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_7m_models.pdf>
 Package pdftex.def Info: ./imgs/rbpf_7m_models.pdf used on input line 262.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [124pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+ [127pdfTeX warning (ext4): destination with the same identifier (name{figure.9
 .9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2391,20 +2397,20 @@ l.266 F
        igure \ref{fig_7m_track} shows the effectiveness of the filter over t...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/rbpf_3m_switch_m2.pdf>]
-<./imgs/rbpf_7m_track.pdf, id=3303, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_7m_track.pdf, id=3414, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_7m_track.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_7m_track.pdf>
 Package pdftex.def Info: ./imgs/rbpf_7m_track.pdf used on input line 269.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/rbpf_7m_switch.pdf, id=3305, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_7m_switch.pdf, id=3416, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_7m_switch.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_7m_switch.pdf>
 Package pdftex.def Info: ./imgs/rbpf_7m_switch.pdf used on input line 276.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [125pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+ [128pdfTeX warning (ext4): destination with the same identifier (name{figure.9
 .10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2423,7 +2429,7 @@ Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_7m_track.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/rbpf_7m_track.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
->]) [126pdfTeX warning (ext4): destination with the same identifier (name{figur
+>]) [129pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.9.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2434,11 +2440,11 @@ Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_7m_switch.pdf>]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\rbpf_linear_control.tex"
 Chapter 10.
-[127
+[130
 
 
 
-] [128]
+] [131]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -2493,7 +2499,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [129pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [132pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 0.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2506,22 +2512,22 @@ e ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.110 \section
-              {Unconstrained switching control}] [130]
-<./imgs/rbpf_control_state.pdf, id=3710, 1445.4pt x 708.24597pt>
+              {Unconstrained switching control}] [133]
+<./imgs/rbpf_control_state.pdf, id=3817, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_state.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_state.pdf>
 Package pdftex.def Info: ./imgs/rbpf_control_state.pdf used on input line 143.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/rbpf_control_switch.pdf, id=3712, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_control_switch.pdf, id=3819, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_switch.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_switch.pdf>
 Package pdftex.def Info: ./imgs/rbpf_control_switch.pdf used on input line 150.
 
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [131pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [134pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 0.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2530,21 +2536,21 @@ l.154 H
        owever, it is clear that there are some problems in figure \ref{fig_r...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/rbpf_control_state.pdf>]
-<./imgs/rbpf_control_track.pdf, id=3738, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_control_track.pdf, id=3845, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_track.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_track.pdf>
 Package pdftex.def Info: ./imgs/rbpf_control_track.pdf used on input line 157.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/rbpf_control_switch2.pdf, id=3744, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_control_switch2.pdf, id=3851, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_switch2.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_switch2.pdf>
 Package pdftex.def Info: ./imgs/rbpf_control_switch2.pdf used on input line 164
 .
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [132pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [135pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 0.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2563,14 +2569,14 @@ tHub/Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_control_track.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/rbpf_control_track.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
->] <./imgs/rbpf_control_track2.pdf, id=3776, 1445.4pt x 708.24597pt>
+>] <./imgs/rbpf_control_track2.pdf, id=3882, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_track2.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_track2.pdf>
 Package pdftex.def Info: ./imgs/rbpf_control_track2.pdf used on input line 171.
 
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [133pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [136pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 0.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2634,21 +2640,21 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- <./imgs/rbpf_control_state3.pdf, id=3811, 1445.4pt x 708.24597pt>
+ <./imgs/rbpf_control_state3.pdf, id=3917, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_state3.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_state3.pdf>
 Package pdftex.def Info: ./imgs/rbpf_control_state3.pdf used on input line 223.
 
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [134pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [137pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 0.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.226 \end{figure}
                   ]
-<./imgs/rbpf_control_switch3.pdf, id=3822, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_control_switch3.pdf, id=3928, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_switch3.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_switch3.pdf>
@@ -2656,14 +2662,14 @@ Package pdftex.def Info: ./imgs/rbpf_control_switch3.pdf used on input line 230
 .
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/rbpf_control_track3.pdf, id=3824, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_control_track3.pdf, id=3930, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_track3.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_track3.pdf>
 Package pdftex.def Info: ./imgs/rbpf_control_track3.pdf used on input line 237.
 
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [135pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [138pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 0.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2682,7 +2688,7 @@ tHub/Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_control_switch3.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/rbpf_control_switch3.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
->] <./imgs/rbpf_control_switch4.pdf, id=3875, 1445.4pt x 708.24597pt>
+>] <./imgs/rbpf_control_switch4.pdf, id=3982, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_switch4.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_switch4.pdf>
@@ -2690,14 +2696,14 @@ Package pdftex.def Info: ./imgs/rbpf_control_switch4.pdf used on input line 244
 .
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/rbpf_control_track4.pdf, id=3878, 1445.4pt x 708.24597pt>
+<./imgs/rbpf_control_track4.pdf, id=3985, 1445.4pt x 708.24597pt>
 File: ./imgs/rbpf_control_track4.pdf Graphic file (type pdf)
 
 <use ./imgs/rbpf_control_track4.pdf>
 Package pdftex.def Info: ./imgs/rbpf_control_track4.pdf used on input line 251.
 
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [136pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [139pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 0.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2716,14 +2722,14 @@ tHub/Stochastic-Dynamical-Control-Dissertation/imgs/rbpf_control_switch4.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/rbpf_control_switch4.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
->] [137pdfTeX warning (ext4): destination with the same identifier (name{figure
+>] [140pdfTeX warning (ext4): destination with the same identifier (name{figure
 .10.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.265 
        <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissert
-ation/imgs/rbpf_control_track4.pdf>]) [138]
+ation/imgs/rbpf_control_track4.pdf>]) [141]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\nonlinear_hybrid_models.tex"
 Chapter 11.
@@ -2763,7 +2769,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-[139
+[142
 
 
 
@@ -2773,7 +2779,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.11.1})
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.48 \end{equation}
-                   ] [140]
+                   ] [143]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -2804,33 +2810,33 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [141pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [144pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 1.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.125 
-      ] <./imgs/pf_m1_compspf.pdf, id=3992, 1445.4pt x 708.24597pt>
+      ] <./imgs/pf_m1_compspf.pdf, id=4093, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m1_compspf.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m1_compspf.pdf>
 Package pdftex.def Info: ./imgs/pf_m1_compspf.pdf used on input line 139.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [142]
-<./imgs/spf_m1_track.pdf, id=4002, 1445.4pt x 708.24597pt>
+ [145]
+<./imgs/spf_m1_track.pdf, id=4102, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_m1_track.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_m1_track.pdf>
 Package pdftex.def Info: ./imgs/spf_m1_track.pdf used on input line 148.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/spf_m1_switch.pdf, id=4004, 1445.4pt x 708.24597pt>
+<./imgs/spf_m1_switch.pdf, id=4104, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_m1_switch.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_m1_switch.pdf>
 Package pdftex.def Info: ./imgs/spf_m1_switch.pdf used on input line 155.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [143pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [146pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 1.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2849,13 +2855,13 @@ tochastic-Dynamical-Control-Dissertation/imgs/spf_m1_track.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/spf_m1_track.pdf): PDF inclusion: multiple pd
 fs with page group included in a single page
->] <./imgs/pf_m2_compspf.pdf, id=4035, 1445.4pt x 708.24597pt>
+>] <./imgs/pf_m2_compspf.pdf, id=4135, 1445.4pt x 708.24597pt>
 File: ./imgs/pf_m2_compspf.pdf Graphic file (type pdf)
 
 <use ./imgs/pf_m2_compspf.pdf>
 Package pdftex.def Info: ./imgs/pf_m2_compspf.pdf used on input line 164.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [144pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [147pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 1.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2864,20 +2870,20 @@ l.168 C
        learly measuring both states is beneficial in terms of filter perform...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/spf_m1_switch.pdf>]
-<./imgs/spf_m2_track.pdf, id=4317, 1445.4pt x 708.24597pt>
+<./imgs/spf_m2_track.pdf, id=4416, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_m2_track.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_m2_track.pdf>
 Package pdftex.def Info: ./imgs/spf_m2_track.pdf used on input line 173.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/spf_m2_switch.pdf, id=4320, 1445.4pt x 708.24597pt>
+<./imgs/spf_m2_switch.pdf, id=4419, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_m2_switch.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_m2_switch.pdf>
 Package pdftex.def Info: ./imgs/spf_m2_switch.pdf used on input line 180.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [145pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [148pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 1.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2896,7 +2902,7 @@ tochastic-Dynamical-Control-Dissertation/imgs/spf_m2_track.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/spf_m2_track.pdf): PDF inclusion: multiple pd
 fs with page group included in a single page
->]) [146pdfTeX warning (ext4): destination with the same identifier (name{figur
+>]) [149pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.11.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2907,24 +2913,24 @@ ub/Stochastic-Dynamical-Control-Dissertation/imgs/spf_m2_switch.pdf>]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\spf_linear_control.tex"
 Chapter 12.
-[147
+[150
 
 
 
-] <./imgs/spf_pf_lqg_track.pdf, id=4651, 1445.4pt x 708.24597pt>
+] <./imgs/spf_pf_lqg_track.pdf, id=4750, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_pf_lqg_track.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_pf_lqg_track.pdf>
 Package pdftex.def Info: ./imgs/spf_pf_lqg_track.pdf used on input line 41.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [148]
-<./imgs/spf_lqg_track.pdf, id=4667, 1445.4pt x 708.24597pt>
+ [151]
+<./imgs/spf_lqg_track.pdf, id=4765, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_lqg_track.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_lqg_track.pdf>
 Package pdftex.def Info: ./imgs/spf_lqg_track.pdf used on input line 54.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [149pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [152pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2933,13 +2939,13 @@ l.58 T
       he average concentration error is 2.77\% and the average controller in...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/spf_pf_lqg_track.pdf>]
-<./imgs/spf_lqg_switch.pdf, id=4688, 1445.4pt x 708.24597pt>
+<./imgs/spf_lqg_switch.pdf, id=4786, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_lqg_switch.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_lqg_switch.pdf>
 Package pdftex.def Info: ./imgs/spf_lqg_switch.pdf used on input line 61.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [150pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [153pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2958,20 +2964,20 @@ amical-Control-Dissertation/imgs/spf_lqg_switch.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/spf_lqg_switch.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
->] <./imgs/spf_lqg_track2.pdf, id=4724, 1445.4pt x 708.24597pt>
+>] <./imgs/spf_lqg_track2.pdf, id=4821, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_lqg_track2.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_lqg_track2.pdf>
 Package pdftex.def Info: ./imgs/spf_lqg_track2.pdf used on input line 72.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/spf_lqg_switch2.pdf, id=4726, 1445.4pt x 708.24597pt>
+<./imgs/spf_lqg_switch2.pdf, id=4823, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_lqg_switch2.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_lqg_switch2.pdf>
 Package pdftex.def Info: ./imgs/spf_lqg_switch2.pdf used on input line 79.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [151pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [154pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2979,107 +2985,107 @@ Package pdftex.def Info: ./imgs/spf_lqg_switch2.pdf used on input line 79.
 l.83 S
       ince there is less switching noise there are less controller spikes in...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/spf_lqg_track2.pdf>] [152pdfTeX warning (ext4): destination with the same 
+imgs/spf_lqg_track2.pdf>] [155pdfTeX warning (ext4): destination with the same 
 identifier (name{figure.12.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.103 \end{equation}
+l.101 \end{equation}
                      <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-C
 ontrol-Dissertation/imgs/spf_lqg_switch2.pdf>]
-<./imgs/spf_pf_mpc_track.pdf, id=4775, 1445.4pt x 708.24597pt>
+<./imgs/spf_pf_mpc_track.pdf, id=4871, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_pf_mpc_track.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_pf_mpc_track.pdf>
-Package pdftex.def Info: ./imgs/spf_pf_mpc_track.pdf used on input line 109.
+Package pdftex.def Info: ./imgs/spf_pf_mpc_track.pdf used on input line 107.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [153pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [156pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.115 I
+l.113 I
        n figure \ref{fig_spf_mpc_track} we see the switching controller algo...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/spf_pf_mpc_track.pdf>]
-<./imgs/spf_mpc_track.pdf, id=4796, 1445.4pt x 708.24597pt>
+<./imgs/spf_mpc_track.pdf, id=4893, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_mpc_track.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_mpc_track.pdf>
-Package pdftex.def Info: ./imgs/spf_mpc_track.pdf used on input line 118.
+Package pdftex.def Info: ./imgs/spf_mpc_track.pdf used on input line 116.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/spf_mpc_switch.pdf, id=4798, 1445.4pt x 708.24597pt>
+<./imgs/spf_mpc_switch.pdf, id=4895, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_mpc_switch.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_mpc_switch.pdf>
-Package pdftex.def Info: ./imgs/spf_mpc_switch.pdf used on input line 125.
+Package pdftex.def Info: ./imgs/spf_mpc_switch.pdf used on input line 123.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [154pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [157pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.129 T
+l.127 T
        here is almost no switching noise in figure \ref{fig_spf_lqg_switch} ...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/spf_mpc_track.pdf>]
-<./imgs/spf_mpc_state.pdf, id=4820, 1445.4pt x 708.24597pt>
+<./imgs/spf_mpc_state.pdf, id=4917, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_mpc_state.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_mpc_state.pdf>
-Package pdftex.def Info: ./imgs/spf_mpc_state.pdf used on input line 134.
+Package pdftex.def Info: ./imgs/spf_mpc_state.pdf used on input line 132.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [155pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [158pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.138 C
+l.136 C
        learly there is a constraint violation - similar to that found in sec...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/spf_mpc_switch.pdf>]
-<./imgs/spf_mpc_track2.pdf, id=4842, 1445.4pt x 708.24597pt>
+<./imgs/spf_mpc_track2.pdf, id=4939, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_mpc_track2.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_mpc_track2.pdf>
-Package pdftex.def Info: ./imgs/spf_mpc_track2.pdf used on input line 158.
+Package pdftex.def Info: ./imgs/spf_mpc_track2.pdf used on input line 156.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [156pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [159pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.162 T
+l.160 T
        he average concentration error is 3.01\% and the average controller i...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/spf_mpc_state.pdf>]
-<./imgs/spf_mpc_switch2.pdf, id=4864, 1445.4pt x 708.24597pt>
+<./imgs/spf_mpc_switch2.pdf, id=4960, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_mpc_switch2.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_mpc_switch2.pdf>
-Package pdftex.def Info: ./imgs/spf_mpc_switch2.pdf used on input line 165.
+Package pdftex.def Info: ./imgs/spf_mpc_switch2.pdf used on input line 163.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
 
-<./imgs/spf_mpc_state2.pdf, id=4866, 1445.4pt x 708.24597pt>
+<./imgs/spf_mpc_state2.pdf, id=4962, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_mpc_state2.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_mpc_state2.pdf>
-Package pdftex.def Info: ./imgs/spf_mpc_state2.pdf used on input line 172.
+Package pdftex.def Info: ./imgs/spf_mpc_state2.pdf used on input line 170.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [157pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [160pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.176 S
+l.174 S
        ince figure \ref{fig_spf_mpc_state2} only illustrates that the constr...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.12.11}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.176 S
+l.174 S
        ince figure \ref{fig_spf_mpc_state2} only illustrates that the constr...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
 imgs/spf_mpc_track2.pdf> <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamic
@@ -3088,30 +3094,30 @@ al-Control-Dissertation/imgs/spf_mpc_switch2.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/spf_mpc_switch2.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
->] <./imgs/spf_mc.pdf, id=4899, 1445.4pt x 708.24597pt>
+>] <./imgs/spf_mc.pdf, id=4995, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_mc.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_mc.pdf>
-Package pdftex.def Info: ./imgs/spf_mc.pdf used on input line 179.
+Package pdftex.def Info: ./imgs/spf_mc.pdf used on input line 177.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- <./imgs/spf_mc2.pdf, id=4904, 1445.4pt x 708.24597pt>
+ <./imgs/spf_mc2.pdf, id=5000, 1445.4pt x 708.24597pt>
 File: ./imgs/spf_mc2.pdf Graphic file (type pdf)
 
 <use ./imgs/spf_mc2.pdf>
-Package pdftex.def Info: ./imgs/spf_mc2.pdf used on input line 186.
+Package pdftex.def Info: ./imgs/spf_mc2.pdf used on input line 184.
 (pdftex.def)             Requested size: 441.01773pt x 216.09575pt.
- [158pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+ [161pdfTeX warning (ext4): destination with the same identifier (name{figure.1
 2.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.189 \end{figure}
+l.187 \end{figure}
                   pdfTeX warning (ext4): destination with the same identifier (
 name{figure.12.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.189 \end{figure}
+l.187 \end{figure}
                    <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Con
 trol-Dissertation/imgs/spf_mpc_state2.pdf> <C:/Users/St. Elmo/Documents/GitHub/
 Stochastic-Dynamical-Control-Dissertation/imgs/spf_mc.pdf
@@ -3119,28 +3125,28 @@ Stochastic-Dynamical-Control-Dissertation/imgs/spf_mc.pdf
 pdfTeX warning: pdflatex (file C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dy
 namical-Control-Dissertation/imgs/spf_mc.pdf): PDF inclusion: multiple pdfs wit
 h page group included in a single page
->] [159pdfTeX warning (ext4): destination with the same identifier (name{figure
+>] [162pdfTeX warning (ext4): destination with the same identifier (name{figure
 .12.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.197 T
+l.195 T
        he LQG controller, expected value- and chance constrained MPC control...
  <C:/Users/St. Elmo/Documents/GitHub/Stochastic-Dynamical-Control-Dissertation/
-imgs/spf_mc2.pdf>]) [160]
+imgs/spf_mc2.pdf>]) [163]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
 docs\conclusion.tex"
 Chapter 13.
-[161
+[164
 
 
 
-]) [162]
+]) [165]
 ("C:\Users\St. Elmo\Documents\GitHub\Stochastic-Dynamical-Control-Dissertation\
-masters.bbl" [163
+masters.bbl" [166
 
 
-] [164] [165] [166]) [167]
+] [167] [168] [169]) [170]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 92.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 92.
 
@@ -3179,9 +3185,9 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 92.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
  ) 
 Here is how much of TeX's memory you used:
- 22879 strings out of 493921
- 450435 string characters out of 3144868
- 583378 words of memory out of 3000000
+ 22886 strings out of 493921
+ 450649 string characters out of 3144868
+ 584396 words of memory out of 3000000
  24745 multiletter control sequences out of 15000+200000
  26873 words of font info for 155 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -3254,9 +3260,9 @@ cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 mtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
 s/msam10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on masters.pdf (168 pages, 33183502 bytes).
+Output written on masters.pdf (171 pages, 33203784 bytes).
 PDF statistics:
- 5470 PDF objects out of 6186 (max. 8388607)
- 718 named destinations out of 1000 (max. 500000)
+ 5563 PDF objects out of 6186 (max. 8388607)
+ 722 named destinations out of 1000 (max. 500000)
  28722 words of extra memory for PDF output out of 29859 (max. 10000000)
 

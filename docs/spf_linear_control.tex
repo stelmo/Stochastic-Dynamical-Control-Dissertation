@@ -87,9 +87,7 @@ The results here lend further credibility to our claim that the instability seen
 Motivated by the success of the switching LQG controller we incorporate constraints in the sequel.
 
 \section{Constrained switching control} 
-In this section we extend the switching controller algorithm of section \ref{sec_spf_uncon} to the deterministic and stochastic MPCs introduced in section \ref{sec_lin_mpc_constained}. We use the same parameters as before.
-
-Like in section \ref{sec_lin_sys_cont} we first illustrate the performance of the stochastic MPC controller with expected value constraints,
+In this section we extend the switching controller algorithm of section \ref{sec_spf_uncon} to the deterministic and stochastic MPCs introduced in section \ref{sec_lin_mpc_constained}. We use the same parameters as before. Like in section \ref{sec_lin_sys_cont} we first illustrate the performance of the stochastic MPC controller with expected value constraints,
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -103,7 +101,7 @@ Like in section \ref{sec_lin_sys_cont} we first illustrate the performance of th
 \end{equation} 
 (for some model $M_i$) and then incorporate chance constraints later. Using the results of section \ref{sec_lin_mpc_constained} we know that (\ref{eq_spf_mpc_expected}) can be reformulated as a deterministic problem given the (Gaussian) current state estimate $x_0$. The state estimate is derived from either the particle filter or switching particle filter using 200 and 500 particles respectively. For the switching particle filter we use the switch transition matrix $P_2$ due to the results in section \ref{sec_spf_uncon}.
 
-In figure \ref{fig_spf_pf_mpc_track} we see the set point tracking performance of (\ref{eq_spf_mpc_expected}) using the same particle filter as used in chapter \ref{sec_spf_uncon}. Since the particle filter only uses the healthy plant model we only use $M_1$. 
+In figure \ref{fig_spf_pf_mpc_track} we see the set point tracking performance of (\ref{eq_spf_mpc_expected}) using the same particle filter as used in section \ref{sec_spf_uncon}. Since the particle filter only uses the healthy plant model we only use $M_1$. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{spf_pf_mpc_track.pdf}
@@ -180,7 +178,7 @@ Since figure \ref{fig_spf_mpc_state2} only illustrates that the constraint is no
 \caption{Monte Carlo analysis of the switching controller algorithm applied within the context of the expected value and chance constrained MPCs developed in chapter \ref{sec_linear_control}. Each shaded region is where 90\% of the simulations scored.}
 \label{fig_spf_mc}
 \end{figure}
-Like in chapter \ref{sec_linear_control} we see a clear benefit in increasing the chance constraint threshold: the higher the threshold the less the constraint is violated both in time and in severity. figure \ref{fig_spf_mc2} illustrates that we also have set point tracking. A Monte Carlo simulation using 50 runs each is plotted for each switching controller to illustrate their effectiveness.
+Like in chapter \ref{sec_linear_control} we see a clear benefit in increasing the chance constraint threshold: the higher the threshold the less the constraint is violated both in time and in severity. Figure~\ref{fig_spf_mc2} illustrates that we also have set point tracking. A Monte Carlo simulation using 50 runs each is plotted for each switching controller to illustrate their effectiveness.
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{spf_mc2.pdf}
