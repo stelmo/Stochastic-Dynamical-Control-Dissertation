@@ -4,7 +4,7 @@ This dissertation primarily deals with stochastic model predictive control but a
 
 \section{Stochastic model predictive control}
 \label{sec_stoch_mpc_lit}
-Linear unconstrained stochastic control subject to white additive Gaussian noise is well studied in literature. The solution of the linear quadratic gaussian (LQG) controller,
+Linear unconstrained stochastic control subject to white additive Gaussian noise is well studied in literature. The solution of the linear quadratic Gaussian (LQG) controller,
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \mathbb{E}\left[ \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \right] \\
@@ -96,12 +96,12 @@ Lastly, measurement and system noise is ubiquitous in real life systems. Therefo
 In model predictive control the model of the plant is used to predict the future behaviour of the plant given some inputs which are optimised according to some performance criterion. Classically this model is linear and time invariant. An example of such a model is 
 \begin{equation}
 \begin{aligned}
-&x_{t+1} = Ax_t + Bu_t + w_t \\
-&y_t = Cx_t + v_t.
+x_{t+1} &= Ax_t + Bu_t + w_t \\
+y_t &= Cx_t + v_t.
 \end{aligned}
 \label{eq_mpc_nodisturbance_obs}
 \end{equation} 
-Since the model includes system and measurement noise a state estimator would typically be used to infer the state, $x_t$, from some observation $y_t$. The mean of the current state, $\mathbb{E}[x_t]$ together with the deterministic state model $x_{t+1} = Ax_t + Bu_t$ would then be used for prediction \cite{raw}. This assumption allows for the use of advanced constrained optimisation algorithms, typically quadratic programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
+Since the model includes system ($w_t$) and measurement ($v_t$) noise a state estimator would typically be used to infer the state, $x_t$, from some observation $y_t$. The mean of the current state, $\mathbb{E}[x_t]$ together with the deterministic state model $x_{t+1} = Ax_t + Bu_t$ would then be used for prediction \cite{raw}. This assumption allows for the use of advanced constrained optimisation algorithms, typically quadratic programming algorithms. From a practical perspective robust and fast optimisation is crucial because it allows control inputs to be calculated on-line \cite{mac}.
 
 Unfortunately modelling errors or omissions often cause poor controller performance within the context of MPC. This is often observed as steady state offset i.e. the controller takes no more action and the system is not at the set point. In certain cases it is possible to account for plant/model mismatch or asymptotically constant disturbances by incorporating a latent disturbance model within the MPC framework. This is classically called zero offset regulation \cite{raw} and is achieved by augmenting the system model
 \begin{equation}
