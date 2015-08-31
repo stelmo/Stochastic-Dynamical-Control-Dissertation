@@ -44,7 +44,7 @@ Use the mean and covariance information from the current posterior state estimat
 \item
 Repeat for the next observation. 
 \end{enumerate} 
-The astute reader will notice that we are implicitly using the graphical model shown in figure \ref{fig_gm_filter} for state estimation (filtering) but the graphical model of figure \ref{fig_gm_prediction} for model based prediction in step 3.
+The astute reader will notice that we are implicitly using the graphical model shown in figure~\ref{fig_gm_filter} for state estimation (filtering) but the graphical model of figure \ref{fig_gm_prediction} for model based prediction in step 3.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -215,7 +215,7 @@ The switching noise is problematic because it can cause the controller to use a 
 \caption{Augmented switching filter graphical model.}
 \label{fig_gm_augmented}
 \end{figure}
-Using this model it is possible to model the influence the state variables $(x_0,x_1,...)$ have on the switching variables $(s_0, s_1,...)$. Plausibly this could ameliorate switching noise while not making the switching transition matrix too sticky. For example, the switch transition matrix could, in this case, be a function of the location of the current system state. However, since this would require that we modify the graphical model of figure \ref{fig_gm_filter} we leave it for future work.
+Using this model it is possible to model the influence the state variables $(x_0,x_1,...)$ have on the switching variables $(s_0, s_1,...)$. Plausibly this could ameliorate switching noise while not making the switching transition matrix too sticky. For example, the switch transition matrix could, in this case, be a function of the location of the current system state. However, since this would require that we modify the graphical model of figure~\ref{fig_gm_filter} we leave it for future work.
 \end{enumerate}
 We rather attempt to ameliorate these problems by extending the number of models available to the filter. We use more models to bridge the gap between the current most likely model and where it projects the states during prediction. In figure \ref{fig_rbpf_control_state3} we illustrate the state space trajectory followed by the system when it has 7 models available for inference and control.
 \begin{figure}[H] 
@@ -259,7 +259,7 @@ The underlying reasons for the instability are the same: we are using models to 
 The fundamental problem with the switching controllers of section \ref{sec_rbpf_control_uncon} is that an inappropriate model was used for prediction. Unfortunately using a weighted average of all the models, based on their probability with respect to the switching variable $s_t$, will exacerbate this problem. For this reason we do not explore this approach.
 
 \section{Conclusion}
-The goal of the switching controller algorithm was to drastically reduce the computational burden introduced by modern switching controller implementations as discussed in section \ref{sec_switch_mpc_lit}. The approach of switching the model used for control outside the optimisation algorithm, while attractive intuitively, suffers from the fundamental problem that a bad model is used to predict the future states.
+The goal of the switching controller algorithm was to drastically reduce the computational burden introduced by modern switching controller implementations as discussed in section~\ref{sec_switch_mpc_lit}. The approach of switching the model used for control outside the optimisation algorithm, while attractive intuitively, suffers from the fundamental problem that a bad model is used to predict the future states.
 
 The switching LQG controllers introduced in this chapter were not robust against this type of problem. Additionally, we also had severe switching noise which led to controller oscillation. From a fundamental point of view it seems as if the current approach of incorporating the model switching inside the optimisation algorithm has the most promise of yielding good control. 
 

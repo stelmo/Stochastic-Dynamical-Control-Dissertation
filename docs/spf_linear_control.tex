@@ -33,7 +33,7 @@ In this chapter we compare the LQG controller (discussed in sections \ref{sec_lq
 \end{aligned}
 \label{eq_spf_lqg}
 \end{equation}
-For the non-switching LQG controller we use a particle filter to estimate the current state. The same control parameters as those found in section \ref{sec_lin_sys_cont} are used. Note that the current state estimate $x_0$ is inferred from the respective observers. Note that we select the most likely model, $M_i=(A_i, B_i)$, based on the switch weight supplied by the switching particle filter at each time step. This model is then used in (\ref{eq_spf_lqg}) and solved using the techniques of section \ref{sec_uncon_lin_control}.
+For the non-switching LQG controller we use a particle filter to estimate the current state. The same control parameters as those found in section \ref{sec_lin_sys_cont} are used. Note that the current state estimate $x_0$ is inferred from the respective observers. Note that we select the most likely model, $M_i=(A_i, B_i)$, based on the switch weight supplied by the switching particle filter at each time step. This model is then used in (\ref{eq_spf_lqg}) and solved using the techniques of section~\ref{sec_uncon_lin_control}.
  
 In figure \ref{fig_spf_pf_lqg_track} we see the performance of the LQG controller applied to the CSTR system. At 100 minutes the catalyst denatures and the model used to design the controller becomes grossly inaccurate. The inappropriateness of the model also affects the particle filter's performance. 
 \begin{figure}[H] 
@@ -55,7 +55,7 @@ This motivates the use of a controller which intelligently changes the model con
 \caption{Switching LQG controller applied to the CSTR where the catalyst denatures at 100 minutes.}
 \label{fig_spf_lqg_track}
 \end{figure}
-The average concentration error is 2.77\% and the average controller input is 28.07 kW. It is clear that we have set point tracking even after the catalyst denatures. By inspecting figure \ref{fig_spf_lqg_switch} we see that this is not surprising: the filter correctly (for the most part) identifies when the underlying model changes and then uses the better model for control. 
+The average concentration error is 2.77\% and the average controller input is 28.07 kW. It is clear that we have set point tracking even after the catalyst denatures. By inspecting figure~\ref{fig_spf_lqg_switch} we see that this is not surprising: the filter correctly (for the most part) identifies when the underlying model changes and then uses the better model for control. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{spf_lqg_switch.pdf}
@@ -126,7 +126,7 @@ The average concentration error is 3.19\% and the average controller input is 22
 \caption{Most likely model identified using the particle filter within the context of the switching MPC controller algorithm.}
 \label{fig_spf_mpc_switch}
 \end{figure}
-There is almost no switching noise in figure \ref{fig_spf_lqg_switch} due to the static nature of the switch transition matrix $P_2$. If $P_1$ were used we would expect more noise. As mentioned in chapter \ref{sec_inf_lin_hybrid} switching noise is not necessarily bad for inference. We do see that the filter does not immediately notice that the underlying model has changed. The stickier the switch transition matrix is the longer it will take for the controller to adjust the model. Depending on the application this delay could be problematic. On the other hand, the switching noise causes controller input spikes which could also be bad for control. 
+There is almost no switching noise in figure \ref{fig_spf_lqg_switch} due to the static nature of the switch transition matrix $P_2$. If $P_1$ were used we would expect more noise. As mentioned in chapter~\ref{sec_inf_lin_hybrid} switching noise is not necessarily bad for inference. We do see that the filter does not immediately notice that the underlying model has changed. The stickier the switch transition matrix is the longer it will take for the controller to adjust the model. Depending on the application this delay could be problematic. On the other hand, the switching noise causes controller input spikes which could also be bad for control. 
 
 In figure \ref{fig_spf_mpc_state} we see the state space trajectory of the expected value constraint MPC. It is clear that the operating temperature associated with the set point moves when the catalyst denatures.
 \begin{figure}[H] 
