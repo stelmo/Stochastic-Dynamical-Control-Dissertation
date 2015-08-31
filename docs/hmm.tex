@@ -77,7 +77,7 @@ We assume that the transition and observation probability functions are stationa
 For the purposes of this dissertation we will always assume that the model parameters are known. In section \ref{sec_dbns_lit} the four primary inference techniques were briefly mentioned. We now derive recursive expressions for each inference technique for discrete models of the form shown in figure \ref{fig_linmod}. The tools and techniques we develop here will be useful in the following chapters. 
 
 \subsection{Filtering}
-The goal of filtering is to find $P(X_t|y_{0:t})$: the distribution of the current state given all the past observations. The corresponding graphical model is shown in figure \ref{fig_linmod_filter_hmm}.
+The goal of filtering is to find $P(X_t|y_{0:t})$: the distribution of the current state given all the past and current observations. The corresponding graphical model is shown in figure \ref{fig_linmod_filter_hmm}.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -175,7 +175,7 @@ P(y_{t:T}|X_{t-1}) &= \sum_{x_t} P(y_t, y_{t+1:T}, x_t|X_{t-1}) \\
 \end{aligned}
 \label{eq_backwards_no_recur}
 \end{equation}
-We have made judicious use of the implied independence assertions (via d-separation) of figure \ref{fig_linmod}. Making use of the definition of $\beta$ we have
+We have made judicious use of the implied independence assertions (via d-separation) of figure~\ref{fig_linmod}. Making use of the definition of $\beta$ we have
 \begin{equation}
 \begin{aligned}
 &\beta(X_{t-1}) = \sum_{x_t} P(x_t | X_{t-1})\beta(x_t)P(y_t| x_t) \text{ for } 1 \leq t \leq T \\
@@ -200,7 +200,7 @@ P(X_t|y_{0:T}) = \frac{\alpha(X_t)\beta(X_t)}{\sum_{x_t}\alpha(x_t)\beta(x_t)}.
 \end{equation}
 Together the $\alpha - \beta$ recursions are called the forwards-backwards algorithm and find extensive use in general purpose exact inference of dynamic Bayesian networks \cite{murphy1}.
 
-Numerical issues may also become problematic due to the multiplication of small positive numbers. In practice it is often necessary to work in the log space to attenuate these problems \cite{barber}. 
+Numerical issues may also become problematic due to the multiplication of small positive numbers. In practice it is often necessary to work in the log space to attenuate these problems~\cite{barber}. 
 
 \subsection{Viterbi decoding}
 The goal of Viterbi decoding is to find $x_{0:T}^* = \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$: finding the most likely sequence of states which best describe the observations by  attempting to find the sequence $x_{0:T}$ such that the joint probability function $P(x_{0:T}, y_{0:T})$ is maximised. This is equivalent to finding $ \underset{x_{0:T}}{\text{arg max }} P(x_{0:T}|y_{0:T})$ because, if one uses the chain rule on the joint, the observations will just be a constant factor. The graphical model used here is similar to that of figure \ref{fig_linmod_smooth_hmm}.
@@ -227,7 +227,7 @@ Thus we have a recursive expression,
 \end{equation}
 to find the value of the joint under the most likely sequence of states given the observations.
 
-The recursive expression in (\ref{eq_viterbi_recur}) implies that the effect of maximising over over the previous time step can be compressed into a message (a function) of the current time step. Effectively we pass theses messages backward in time to find the maximum joint in terms of $x_0$. We then find the state which maximises this joint and pass this message forward.  Continuing in this way we have
+The recursive expression in (\ref{eq_viterbi_recur}) implies that the effect of maximising over the previous time step can be compressed into a message (a function) of the current time step. Effectively we pass theses messages backward in time to find the maximum joint in terms of $x_0$. We then find the state which maximises this joint and pass this message forward.  Continuing in this way we have
 \begin{equation}
 \begin{aligned}
 x_1^* &= \underset{x_{1}}{\text{arg max }}P(y_1|x_1)P(x_1)\mu(x_1) \\
@@ -296,7 +296,7 @@ It is pleasing that the prediction expressions are closely related to each other
 \section{Burglar localisation problem}
 While the focus of this dissertation is not on hidden Markov model type problems it is nevertheless instructive to consider a simple example to build some intuition about inference of random variables. Thus, it is desirable to conduct a numerical experiment using the previously derived inference techniques. The type of problem we consider here is a localisation problem. This type of problem (and its extensions) has many applications in robotics and object tracking.
 
-The problem is taken from Chapter 23 in Barber's book \textit{Bayesian Reasoning and Machine Learning} \cite{barber}. Briefly, it is necessary to infer the location of a burglar in your house given observations (noises) you perceive from an adjoining room. You discretise the room the burglar is in into $n^2$ blocks. The room is then the discrete random variable $X$. You observe two distinct types of noises: creaks and bumps. From the knowledge of your house you know which blocks are likely to creak and which are likely to bump if the burglar is on that block i.e. if the random variable $X$ is in a specific state. This is shown in figure \ref{fig_burlgar_observations}: a dark block indicates it is likely to emit a noise with probility 0.9 and a light block will emit a noise with probability 0.01 if the burglar is on that block. The noises are independent of each other.
+The problem is taken from chapter 23 in Barber's book \textit{Bayesian Reasoning and Machine Learning} \cite{barber}. Briefly, it is necessary to infer the location of a burglar in your house given observations (noises) you perceive from an adjoining room. You discretise the room the burglar is in into $n^2$ blocks. The room is then the discrete random variable $X$. You observe two distinct types of noises: creaks and bumps. From the knowledge of your house you know which blocks are likely to creak and which are likely to bump if the burglar is on that block i.e. if the random variable $X$ is in a specific state. This is shown in figure \ref{fig_burlgar_observations}: a dark block indicates it is likely to emit a noise with probility 0.9 and a light block will emit a noise with probability 0.01 if the burglar is on that block. The noises are independent of each other.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.25]{burglar_observations.pdf}

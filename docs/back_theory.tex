@@ -1,8 +1,8 @@
 \chapter{Background theory}
 \label{sec_back_theory}
-This chapter is composed of five sections which introduce the main concepts and results used throughout the rest of the dissertation. Section \ref{sec_prob_theory} introduces probability theory. Section \ref{sec_graph_theory} very briefly introduces some useful nomenclature from graph theory. These two sections serve as an entry point for section \ref{sec_graphical_models_theory} which deals with probabilistic graphical models. Section \ref{sec_lit_control} deals with control theory and section \ref{sec_block} introduces an important result from matrix linear algebra.
+This chapter is composed of five sections which introduce the main concepts and results used throughout the rest of the dissertation. Section ~\ref{sec_prob_theory} introduces probability theory. Section ~\ref{sec_graph_theory} very briefly introduces some useful nomenclature from graph theory. These two sections serve as an entry point for section ~\ref{sec_graphical_models_theory} which deals with probabilistic graphical models. Section ~\ref{sec_lit_control} deals with control theory and section ~\ref{sec_block} introduces an important result from matrix linear algebra.
 
-It might appear as though sections \ref{sec_prob_theory} to \ref{sec_graphical_models_theory} and section \ref{sec_lit_control} are not related to each other. However, the foundational theory introduced here is expanded upon later and the relationship then becomes clear.
+It might appear as though sections ~\ref{sec_prob_theory} to ~\ref{sec_graphical_models_theory} and section ~\ref{sec_lit_control} are not related to each other. However, the foundational theory introduced here is expanded upon later and the relationship then becomes clear.
 
 \section{Probability theory}
 \label{sec_prob_theory}
@@ -18,48 +18,47 @@ $\forall \alpha \in \Omega,~P(\alpha) \geq 0$. The probability of any one (or se
 \begin{ax}
 $\forall \alpha, \beta \in \Omega,\text{ if } \alpha \cap \beta = \varnothing \text{ then } P(\alpha \cup \beta) = P(\alpha) + P(\beta)$. The probability of two mutually disjoint sets of events in $\Omega$ occurring is equal to the sum of their probabilities.
 \end{ax}
-A function $P$ which satisfies these three axioms is known as a probability function. Based on these three axioms the theory can be extended to theorem \ref{thrm_prob_union_intersect} \cite{koller}.
+A function $P$ which satisfies these three axioms is known as a probability function. Based on these three axioms the theory can be extended to theorem~\ref{thrm_prob_union_intersect} \cite{koller}.
 \begin{thrm}
 $\forall \alpha, \beta \in \Omega, P(\alpha \cup \beta) = P(\alpha) + P(\beta) + P(\alpha \cap \beta)$. The probability of two events occurring in $\Omega$ is equal to the sum of their probabilities less the probability of both occurring simultaneously.
 \label{thrm_prob_union_intersect}
 \end{thrm}
 
 \subsection{Discrete random variables}
-
 We now make precise what we mean by random variables: a random variable is a non-deterministic variable which is characterised by some uncertainty in its measurement. Semantically we indicate a specific value taken on by the random variable $X$ as $X=x$ or just denote it $x$. Thus, the function $P(X=x)=P(x) \in \mathbb{R}$ indicates the probability of event $x$ occurring with respect to the random variable $X$. We denote $P(X)$ as the probability function of the random variable $X$. Thus, for the discrete random variable $X$ we have that $P(X)=(P(x_1),P(x_2),...,P(x_n))^T$ where $x_i \in X$ for $i=1,2,..., n$ and $\sum_i P(x_i) =1$. We defer the study of the continuous case until later.
 
 Before we proceed let us briefly discuss how we can interpret the function $P$ for any random variable $X$. If $P(X=x)=1$ we are certain of event $x$ occurring, i.e. $X$ will only take on the value $x$. If $P(x)=0$ we are certain that event $x$ will not occur, i.e. $X$ will never take on the value $x$. Thus our certainty of event $x$ occurring is reflected by the magnitude of $P(x)$. Attempting to make the statement ``our certainty of event $x$ occurring" more precise leads us to two different physical interpretations of $P(x)$. The first is the frequentist interpretation: to the frequentist a probability is a long term average of the observations of event $x$ occurring in the event space. While this interpretation is satisfying if one deals with something which is easily measured e.g. the probability of a fair die rolling a 6, it fails to explain statements like: ``the probability of it raining tomorrow is 50\%". The reason the last statement is problematic is because the time span is ill defined. If we rather understand probabilities to mean subjective degrees of belief in event $x$ occurring this is no longer a problem. To ensure that these subjective beliefs are rational can be problematic. One way to ensure this is by requiring that if the probabilities were used in a betting game it is impossible to exploit them to one's advantage (or disadvantage). If this is possible then there is no difference between the interpretations described above \cite{koller}. 
 
-We will deal extensively with joint and marginal probability distributions. Consider the random variables $X$ and $Y$. The marginal probability distribution of $X$ is the function $P(X)$ and describes the probabilities of events involving only the variable $X$. The joint probability distribution of $X$ and $Y$ is the function $P(X,Y) = P(X \cap Y)$ and describes the intersection (and) of the probability space of $X$ and $Y$. We introduce, without proof, theorem \ref{thrm_marg}.
+We will deal extensively with joint and marginal probability distributions. Consider the random variables $X$ and $Y$. The marginal probability distribution of $X$ is the function $P(X)$ and describes the probabilities of events involving only the variable $X$. The joint probability distribution of $X$ and $Y$ is the function $P(X,Y) = P(X \cap Y)$ and describes the intersection (and) of the probability space of $X$ and $Y$. We introduce, without proof, theorem~\ref{thrm_marg}.
 \begin{thrm}
 \textbf{Marginalisation} By marginalising out $X$ we mean we sum out $X$ from the joint distribution $P(Y) = \sum_x P(x, Y)$. This extends to higher dimensions. 
 \label{thrm_marg}
 \end{thrm}
 We can reduce any joint distribution to a marginal one by summing (or integrating in the case of continuous random variables) out the appropriate variable. 
 
-It is now necessary to define what we mean by conditional probability. Definition \ref{defn_cond_prob} makes precise how the knowledge that event $y$ has occurred alters our view of event $x$ occurring.  
+It is now necessary to define what we mean by conditional probability. Definition~\ref{defn_cond_prob} makes precise how the knowledge that event $y$ has occurred alters our view of event $x$ occurring.  
 \begin{defn}
 \textbf{Conditional probability} $P(X|Y) = \frac{P(X \cap Y)}{P(Y)}$ 
 \label{defn_cond_prob}
 \end{defn}
-Note that if for some $y \in Y$ we have $P(Y=y) = 0$ then definition \ref{defn_cond_prob} is undefined. Additionally, the function $P(\cdot|Y)$ is a probability function. We next define what we mean by a positive probability distribution in definition \ref{defn_pos_distr}.
+Note that if for some $y \in Y$ we have $P(Y=y) = 0$ then definition~\ref{defn_cond_prob} is undefined. Additionally, the function $P(\cdot|Y)$ is a probability function. We next define what we mean by a positive probability distribution in definition~\ref{defn_pos_distr}.
 \begin{defn}
 A probability distribution is positive if $P(x) > 0~\forall~x \in X$.
 \label{defn_pos_distr}
 \end{defn}
-Clearly undefined conditional probabilities are not a problem in the setting of positive probability distributions. We also define the notion of independence, also sometimes called marginal independence, in definition \ref{defn_indep}. 
+Clearly undefined conditional probabilities are not a problem in the setting of positive probability distributions. We also define the notion of independence, also sometimes called marginal independence, in definition~\ref{defn_indep}. 
 
-As before, let $X$, $Y$ and $Z$ be random variables. Intuitively $X$ and $Y$ are independent if the outcome of $X$ does not influence the outcome of $Y$. It can be shown that independence is a symmetric property \cite{koller}.
+As before, let $X$, $Y$ and $Z$ be random variables. Intuitively $X$ and $Y$ are independent if the outcome of $X$ does not influence the outcome of $Y$. It can be shown that independence is a symmetric property~\cite{koller}.
 \begin{defn}
 \textbf{Independence} $X \indep Y \equiv P(X|Y) = P(X)$ 
 \label{defn_indep}
 \end{defn}
-Generalising the concept of independence we define conditional independence by definition \ref{defn_cond_indep}. Again this definition is symmetric \cite{koller}.
+Generalising the concept of independence we define conditional independence by definition~\ref{defn_cond_indep}. Again this definition is symmetric~\cite{koller}.
 \begin{defn}
 \textbf{Conditional independence} $X \indep Y | Z \equiv P(X|Y,Z) = P(X|Z)$
 \label{defn_cond_indep}
 \end{defn}
-Intuitively, if $X$ is conditionally independent of $Y$ given $Z$ then by observing $Z$ one gains nothing by observing $Y$. Clearly if $Z=\emptyset$ we have (marginal) independence. We also introduce theorem \ref{thrm_chain_rule} which naturally leads us to the formulation of Bayes' theorem (using definition \ref{defn_cond_prob}) as shown in theorem \ref{thrm_bayes}. 
+Intuitively, if $X$ is conditionally independent of $Y$ given $Z$ then by observing $Z$ one gains nothing by observing $Y$. Clearly if $Z=\emptyset$ we have (marginal) independence. We also introduce theorem~\ref{thrm_chain_rule} which naturally leads us to the formulation of Bayes' theorem (using definition~\ref{defn_cond_prob}) as shown in theorem~\ref{thrm_bayes}. 
 \begin{thrm}
 \label{thrm_chain_rule}  
 \textbf{Chain rule} Given the random variables $X_1$ and $X_2$ we have $P(X_1,X_2) = P(X_1)P(X_2|X_1)$. The generalisation to an arbitrary number of random variables is straightforward.
@@ -68,12 +67,12 @@ Intuitively, if $X$ is conditionally independent of $Y$ given $Z$ then by observ
 \textbf{Bayes' theorem} $P(X|Y) = \frac{P(Y|X)P(X)}{P(Y)}$
 \label{thrm_bayes}
 \end{thrm}
-Under the Bayesian interpretation of theorem \ref{thrm_bayes} we see that the posterior probability of some hypothesis $X$ given some evidence $Y$ being true is just the likelihood $P(Y|X)$ of the hypothesis supporting the evidence multiplied by the prior probability of the hypothesis $P(X)$ normalised by the prior of the evidence $P(Y)$. It is also convenient to notice that $P(Y)$ is a normalising constant and thus  $P(X|Y) \propto P(Y|X)P(X)$.
+Under the Bayesian interpretation of theorem~\ref{thrm_bayes} we see that the posterior probability of some hypothesis $X$ given some evidence $Y$ being true is just the likelihood $P(Y|X)$ of the hypothesis supporting the evidence multiplied by the prior probability of the hypothesis $P(X)$ normalised by the prior of the evidence $P(Y)$. It is also convenient to notice that $P(Y)$ is a normalising constant and thus  $P(X|Y) \propto P(Y|X)P(X)$.
 
 To fully describe a system of random variables it is only necessary to know the joint distribution $P(X_1,X_2,...,X_n)$. Given the joint probability distribution inference (reasoning about the variables under uncertainty) may be performed. Common probabilistic queries involve computing posterior beliefs $P(X|Y=y)$ i.e. the probability function of $X$ given we have some information about $Y$. Other queries involve find the most probable explanation (called a MAP query) of some evidence i.e. finding $X$ which maximises $P(X, Y=y)$. More on this later. 
 
 \textbf{Example of Bayes' theorem in action}\\
-This section will attempt to develop some intuition behind theorem \ref{thrm_bayes}. We quote an excerpt from an article in the Economist \cite{eco1} and illustrate the use of Bayes' theorem in a canonical medical example \cite{korb}.
+This section will attempt to develop some intuition behind theorem~\ref{thrm_bayes}. We quote an excerpt from an article in the Economist~\cite{eco1} and illustrate the use of Bayes' theorem in a canonical medical example~\cite{korb}.
 
 \textit{``The essence of the Bayesian approach is to provide a mathematical rule explaining how you should change your existing beliefs in the light of new evidence. In other words, it allows scientists to combine new data with their existing knowledge or expertise. The canonical example is to imagine that a precocious newborn observes his first sunset, and wonders whether the sun will rise again or not. He assigns equal prior probabilities to both possible outcomes, and represents this by placing one white and one black marble into a bag. The following day, when the sun rises, the child places another white marble in the bag. The probability that a marble plucked randomly from the bag will be white (ie, the child's degree of belief in future sunrises) has thus gone from a half to two-thirds. After sunrise the next day, the child adds another white marble, and the probability (and thus the degree of belief) goes from two-thirds to three-quarters. And so on. Gradually, the initial belief that the sun is just as likely as not to rise each morning is modified to become a near-certainty that the sun will always rise."}
 
@@ -101,10 +100,9 @@ P(D|T) &= \frac{P(T|D)P(D)}{P(T)} \\
 Clearly there is a big difference between the naive approach and the Bayesian (correct) approach. The power of Bayesian inference lies in the ability to reverse causal reasoning. That is, we know that the disease causes the test to be positive, $P(T|D)$, but we would like to reverse this reasoning to infer $P(D|T)$. This is immensely powerful as we shall soon discover.   
 
 \subsection{Continuous random variables}
-
 So far in our discussion we have implicitly only used discrete random variables; that is, our probability space consisted out of a finite number of events or states. However, it is also necessary to make precise what we mean by a continuous random variable. A continuous random variable is characterised by a density function $p$ which assigns a weight to each possible value of the variable. Intuitively this weight is \emph{related} to the probability of that value occurring\footnote{Please note that strictly speaking $P(x)=0$ for a specific point $x$ in the domain of $p$. Technically it is correct to say that the probability of $P(x \in [a,b]) = \int_a^b p(y) \text{d}y$; thus, if we want the probability of $x$ occurring we could just make $[a,b]$ small to get some approximation.}. Although the density function is itself not a probability function, if it satisfies $p(x) \geq 0~\forall x \in X$ and $\int p(x)\text{d}x = 1$, where we have implicitly integrated over the domain of $p$, then it can be used to generate one. The cumulative probability function $P(X \leq a)=\int^a_{-\infty} p(x)\text{d}x$ is one such example\footnote{We have assumed that the domain of $X$ is the entire real line.}. 
 
-Arguably the most well known continuous probability density distribution is the Gaussian or normal distribution. The Gaussian distribution arises naturally from a variety of different contexts and settings. For example, the central limit theorem, together with some mild assumptions, tells us that the sum of a set of $N$ random  variables is itself a random variable and in the limit can be described by a Gaussian distribution \cite{bishop}. The Gaussian is regularly used because it has some very appealing analytical properties (and also often because it is physically meaningful) which we will investigate in some depth. 
+Arguably the most well known continuous probability density distribution is the Gaussian or normal distribution. The Gaussian distribution arises naturally from a variety of different contexts and settings. For example, the central limit theorem, together with some mild assumptions, tells us that the sum of a set of $N$ random  variables is itself a random variable and in the limit can be described by a Gaussian distribution~\cite{bishop}. The Gaussian is regularly used because it has some very appealing analytical properties (and also often because it is physically meaningful) which we will investigate in some depth. 
 
 Since the probability of a specific value is not meaningful in the setting of continuous probability functions we abuse our notation and interchangeably denote the random variable $X$ by $x$. We also do not indicate vector quantities in boldface; it can be assumed that all numbers are vectors unless otherwise noted. We will concern ourselves mostly with vector quantities and it will be obvious when we deal with scalar valued variables. 
 \begin{defn}
@@ -121,7 +119,7 @@ We call $\mu$ the mean and $\sigma^2$ the variance of the distribution. The mult
 where $\mu$ is a $D$ dimensional mean vector and $\Sigma$ is a $D \times D$ dimensional covariance matrix. Note that we often use the inverse of the covariance matrix, called the precision matrix and define it $\Lambda \equiv \Sigma^{-1}$.
 \label{defn_gauss}
 \end{defn}
-It is also appropriate to define some functions which apply equally well to the discrete case as to the continuous case (just replace the integration with summation in the setting of discrete random variables). We define the expectation (or mean or average) in definition \ref{def_expectation}, the variance in definition \ref{def_variance} and the covariance in definition \ref{def_covariance}. 
+It is also appropriate to define some functions which apply equally well to the discrete case as to the continuous case (just replace the integration with summation in the setting of discrete random variables). We define the expectation (or mean or average) in definition~\ref{def_expectation}, the variance in definition~\ref{def_variance} and the covariance in definition~\ref{def_covariance}. 
 \begin{defn}
 \textbf{Expectation} The average value of some integrable function $f$ under the probability distribution $p$ is denoted $\mathbb{E}[f] = \int p(x)f(x)dx$.
 \label{def_expectation}
@@ -136,9 +134,9 @@ By expanding out the square we have the familiar formula $\text{var}[f] = \mathb
 \textbf{Covariance} For two random variables $x,y$ (which may be column vectors) we define the covariance matrix $\text{cov}[x,y] = \mathbb{E}[xy^T] - \mathbb{E}[x]\mathbb{E}[y]$.
 \label{def_covariance}
 \end{defn}
-Note that $\text{cov}[x,x]=\text{cov}[x]=\text{var}[x]$. Covariance is a measure of how much two random variables vary together. If $x$ is a $D$ dimensional Gaussian random variable then $\text{cov}[x] = \Sigma$ as defined in definition \ref{defn_gauss}.
+Note that $\text{cov}[x,x]=\text{cov}[x]=\text{var}[x]$. Covariance is a measure of how much two random variables vary together. If $x$ is a $D$ dimensional Gaussian random variable then $\text{cov}[x] = \Sigma$ as defined in definition~\ref{defn_gauss}.
 
-The identities in theorem \ref{thrm_gaussian_identities} will be useful in later sections. We refer the reader to \cite{davidian} for justification.
+The identities in theorem~\ref{thrm_gaussian_identities} will be useful in later sections. We refer the reader to~\cite{davidian} for justification.
 \begin{thrm}
 \textbf{Gaussian expected value identities}
 Suppose there exist constants $c \in \mathbb{R}^n$ and $C \in \mathbb{R}^{n \times n}$ and $X$ is a normal random variable with statistics $(\mu, \Sigma)$. Then the following identities hold:
@@ -152,7 +150,7 @@ $\mathbb{E}[X^TCX] = \text{tr}(C\Sigma) + \mu^TC\mu$
 \end{enumerate}
 \label{thrm_gaussian_identities}
 \end{thrm}  
-Now we are in a position to perform some manipulations assuming we are using Gaussian random variables. We state without proof theorem \ref{thrm_joint_gaussians}.
+Now we are in a position to perform some manipulations assuming we are using Gaussian random variables. We state without proof theorem~\ref{thrm_joint_gaussians}.
 \begin{thrm}
 \textbf{Partitioned joint gaussians}
 Given a Gaussian distribution $\mathcal{N}(x|\mu,\Sigma)$ with $\Lambda \equiv \Sigma^{-1}$ and $x=\begin{pmatrix}
@@ -179,7 +177,7 @@ p(x_a) = \mathcal{N}(x_a|\mu_a,\Sigma_{aa}).
 \label{thrm_joint_gaussians}
 It is often easier to work with the precision matrix when dealing with conditional distributions. 
 \end{thrm}
-Next we state and then prove theorem \ref{thrm_bayes_gaussians} which we will use extensively. The proof for theorem \ref{thrm_joint_gaussians} uses the same techniques and can be found in \cite{bishop}.
+Next we state and then prove theorem~\ref{thrm_bayes_gaussians} which we will use extensively. The proof for theorem~\ref{thrm_joint_gaussians} uses the same techniques and can be found in~\cite{bishop}.
 \begin{thrm}
 \textbf{Bayes' theorem for linear gaussian models}
 Suppose we have a marginal Gaussian distribution for $x$ and a conditional Gaussian distribution for $y$:
@@ -213,7 +211,7 @@ We begin our proof by noticing that for a general Gaussian $\mathcal{N}(\gamma|\
 -\frac{1}{2}\left(\gamma-\alpha \right)^T\beta^{-1}\left(\gamma-\alpha \right) = -\frac{1}{2}\gamma^T\beta^{-1}\gamma +\gamma^T\beta^{-1}\alpha + \text{const}
 \label{eq_bg1} 
 \end{equation} 
-where $\text{const}$ is some real number which does not depend on $\gamma$. It is known that Gaussian distributions are closed under multiplication, i.e. if one multiplies two Gaussian distributions the product is still a Gaussian distribution (of a higher dimension) \cite{bishop}. To find the joint distribution we let $z = \begin{pmatrix}
+where $\text{const}$ is some real number which does not depend on $\gamma$. It is known that Gaussian distributions are closed under multiplication, i.e. if one multiplies two Gaussian distributions the product is still a Gaussian distribution (of a higher dimension)~\cite{bishop}. To find the joint distribution we let $z = \begin{pmatrix}
 x \\ y
 \end{pmatrix}$ and consider the logarithm of the joint
 \begin{equation}
@@ -238,14 +236,14 @@ x \\ y
 \end{aligned}
 \label{eq_gauss_joint_precision}
 \end{equation}
-From this we immediately have the precision of $z$: the matrix $R$; we also use a matrix inversion formula found in \cite{bishop} to find the covariance
+From this we immediately have the precision of $z$: the matrix $R$; we also use a matrix inversion formula found in~\cite{bishop} to find the covariance
 \begin{equation}
 \text{cov}[z] = R^{-1} = \begin{pmatrix}
 \Lambda^{-1} & \Lambda^{-1}A^T \\ A\Lambda^{-1} & L^{-1}+A\Lambda^{-1}A^T
 \end{pmatrix}.
 \label{eq_gauss_covar}
 \end{equation}
-We now proceed in exactly the same way to find mean of $z$. By expanding \ref{eq_log_gauss_joint} and only considering the first order terms in $x$ and $y$ we have
+We now proceed in exactly the same way to find mean of $z$. By expanding~\ref{eq_log_gauss_joint} and only considering the first order terms in $x$ and $y$ we have
 \begin{equation}
 x^T\Lambda\mu-x^TA^TLb+y^TLb = \begin{pmatrix}
 x \\ y
@@ -256,19 +254,19 @@ x \\ y
 \end{equation}
 Again, by making use of (\ref{eq_bg1}) and the fact that the covariance of $z$ is $R^{-1}$ it is possible to show that $\mathbb{E}[z]=\begin{pmatrix}
 \mu \\ A\mu +b
-\end{pmatrix}$ as shown in \cite{bishop}. By using theorem \ref{thrm_joint_gaussians} we immediately have the marginal and conditional distributions as required.
+\end{pmatrix}$ as shown in~\cite{bishop}. By using theorem~\ref{thrm_joint_gaussians} we immediately have the marginal and conditional distributions as required.
 \end{proof}
-We also introduce a useful metric for measuring the similarity between two distributions in definition \ref{def_kl}. 
+We also introduce a useful metric for measuring the similarity between two distributions in definition~\ref{def_kl}. 
 \begin{defn}
-\textbf{Kullback-Leibler divergence} Consider some unknown distribution $p(x)$ and suppose we have modelled this distribution by $q(x)$. Kullback-Leibler divergence, also known as relative entropy, is defined $\text{KL}(p||q) = -\int p(x)\text{ln}\left(\frac{q(x)}{p(x)}\right)dx$ and measures the additional amount of information, in \emph{nats}, needed to specify the value of $x$ \cite{bishop}. 
+\textbf{Kullback-Leibler divergence} Consider some unknown distribution $p(x)$ and suppose we have modelled this distribution by $q(x)$. Kullback-Leibler divergence, also known as relative entropy, is defined $\text{KL}(p||q) = -\int p(x)\text{ln}\left(\frac{q(x)}{p(x)}\right)dx$ and measures the additional amount of information, in \emph{nats}, needed to specify the value of $x$~\cite{bishop}. 
 \label{def_kl}
 \end{defn}
-Kullback-Leibler divergence can be used to measure the dissimilarity between two distributions. If the measure is zero the distributions are identical; care needs to be taken when using Kullback-Leibler divergence because the measure is not symmetric. We introduce theorem \ref{thrm_kl_sample} to measure the dissimilarity between a known distribution and a sampled approximation thereof. See \cite{bishop} for the motivation.
+Kullback-Leibler divergence can be used to measure the dissimilarity between two distributions. If the measure is zero the distributions are identical; care needs to be taken when using Kullback-Leibler divergence because the measure is not symmetric. We introduce theorem~\ref{thrm_kl_sample} to measure the dissimilarity between a known distribution and a sampled approximation thereof. See~\cite{bishop} for the motivation.
 \begin{thrm}
 \textbf{Kullback-Leibler sample divergence} Suppose we observe a finite set of points $x_n$ for $n=1,2,..., N$ drawn from $p(x)$. Furthermore, suppose we would like to measure the information loss when $p$ is approximated by $q$. We can measure this by $\text{KL}(p||q) \approx \frac{1}{N}\sum_{n=1}^N\left(-\text{ln}(q(x_n)) + \text{ln}(p(x_n))\right)$. This measurement is bounded below by zero. If, as $N \rightarrow \infty$, the information loss is zero $p$ and $q$ are functionally equivalent.
 \label{thrm_kl_sample}
 \end{thrm}
-We also briefly introduce the Mahalanobis distance in definition \ref{def_mahala}.
+We also briefly introduce the Mahalanobis distance in definition~\ref{def_mahala}.
 \begin{defn}
 \textbf{Mahalanobis distance} The Mahalanobis distance between $x$ and a reference point $y \in \mathbb{R}^n$ given a covariance matrix $S \in \mathbb{R}^{n\times
 n}$, is defined by $D_M(x|y, S) = \sqrt{(x-y)^TS^{-1}(x-y)}$. 
@@ -289,7 +287,7 @@ We now define some basic concepts which we will rely upon to further describe th
 \begin{defn}
 \textbf{Directed acyclic graph (DAG)} A graph $G$ is a DAG if it is directed and has no directed cycles.
 \end{defn}
-In this dissertation we will only concern ourselves with DAGs. Figure \ref{fig_dag} is an example of a DAG.
+In this dissertation we will only concern ourselves with DAGs. Figure~\ref{fig_dag} is an example of a DAG.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -321,7 +319,7 @@ We also briefly define a structured approach to encoding a graph.
 \begin{defn}
 \textbf{Adjacency matrix} For a graph $G$ with $n$ nodes, the adjacency matrix $A$ is an $n \times n$ matrix where $A_{ij} = 1$ if there is an edge from node $i$ to node $j$ and $A_{ij} = 0$ otherwise. 
 \end{defn}
-The adjacency matrix A for figure \ref{fig_dag} is shown below:
+The adjacency matrix A for figure~\ref{fig_dag} is shown below:
 \begin{equation*}
 A = \begin{pmatrix}
 0 & 1 & 0 & 0 \\
@@ -331,7 +329,7 @@ A = \begin{pmatrix}
 \end{pmatrix}
 \end{equation*}
 
-A detailed analysis of graph theory may be found in \cite{deo}.
+A detailed analysis of graph theory may be found in~\cite{deo}.
 \section{Probabilistic graphical models}
 \label{sec_graphical_models_theory}
 Probabilistic graphical models are the union between probability theory and graph theory. Consider why, in general, it is infeasible to determine an arbitrary joint probability distribution. Suppose you have a set of $n$ binary random variables and wish to determine their joint. This equates to finding $P(X_1,X_2,...,X_n)$. To fully specify this model we would need to find and store $2^n-1$ probabilities. For even moderately big $n$ this is impractical, and this was for the simple case of a binary valued random variable. Clearly we require a more efficient way to represent the joint probability distribution.
@@ -355,14 +353,14 @@ Let $G$ be a Bayesian network graph over the random variables $X_1, X_2,...,X_n$
 \textbf{Chain Rule for Bayesian Networks} The chain rule for Bayesian networks specifies that the joint factorises according to $P(X_1,...,X_n) = \Pi_{i=1}^n P(X_i | \text{Parents}(X_i))$.
 \label{def_chain_rule_bayes}
 \end{defn}
-Each of the individual factors of $P$, as factorised by the chain rule for Bayesian networks, represents the conditional probability distributions required to parametrise the Bayesian network. It can be shown that a Bayesian network graph $G$ over which $P$ factorises is not unique. However, if the graph explicitly models the causality inherent in the system being modelled the representation is often much sparser \cite{koller}. A Bayesian network is then defined as the tuple $(G, P)$ such that the joint $P$ factorises over the graph $G$. We state without proof theorem \ref{thrm_bayesnetsiff}. 
+Each of the individual factors of $P$, as factorised by the chain rule for Bayesian networks, represents the conditional probability distributions required to parametrise the Bayesian network. It can be shown that a Bayesian network graph $G$ over which $P$ factorises is not unique. However, if the graph explicitly models the causality inherent in the system being modelled the representation is often much sparser~\cite{koller}. A Bayesian network is then defined as the tuple $(G, P)$ such that the joint $P$ factorises over the graph $G$. We state without proof theorem~\ref{thrm_bayesnetsiff}. 
 \begin{thrm}
 Let $G$ be a Bayesian network graph over a set of random variables $\chi$ and let $P$ be a joint distribution over the same space. If $P$ factorises according to $G$ then $G$ is an I-Map for P. Conversely, if $G$ is an I-Map for $P$ then $P$ factorises according to $G$.
 \label{thrm_bayesnetsiff}
 \end{thrm}
 Thus, the conditional independences imply factorisation of $P$. Conversely, factorisation according to $G$ implies the associated conditional independences.
 
-To illustrate computational benefit of using Bayesian networks, consider again our simple system of $n$ binary random variables $X_1,X_2,...,X_n$. Suppose the Bayesian network in figure \ref{fig_bnet} models the system.
+To illustrate computational benefit of using Bayesian networks, consider again our simple system of $n$ binary random variables $X_1,X_2,...,X_n$. Suppose the Bayesian network in figure~\ref{fig_bnet} models the system.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -384,7 +382,7 @@ To illustrate computational benefit of using Bayesian networks, consider again o
 \end{figure}
 Without knowing any structure $2^{n}-1$ parameters were needed to specify the joint. However, using the chain rule for Bayesian networks we can factorise the joint $P(X_1,...,X_n) = P(X_1)P(X_2|X_1)...P(X_n|X_{n-1})$. This implies that we only require $2n-1$ parameters. From a modelling perspective this is a significant gain.
 
-The primary reason we would want to have a model of the joint distribution of a set of random variables is to reason with. To achieve this we invariably manipulate the joint distribution by either some form of marginalisation or optimisation. To make inference computationally tractable it is desirable to leverage the independence assertions implied by the network graph. To this end we expand on the independence assertions implied by the graph. Recall theorem \ref{thrm_bayesnetsiff}: since we have that the joint factorises over the graph we also have that any independence assertions implied by the graph's connectivity also apply to the joint.
+The primary reason we would want to have a model of the joint distribution of a set of random variables is to reason with. To achieve this we invariably manipulate the joint distribution by either some form of marginalisation or optimisation. To make inference computationally tractable it is desirable to leverage the independence assertions implied by the network graph. To this end we expand on the independence assertions implied by the graph. Recall theorem~\ref{thrm_bayesnetsiff}: since we have that the joint factorises over the graph we also have that any independence assertions implied by the graph's connectivity also apply to the joint.
 
 We introduce the concept of d-separation as a method of determining whether a set of nodes $X$ are conditionally independent of another set $Y$ given the set $E$. Firstly we generalise the concept of a directed path to an undirected path between sets of variables.
 \begin{defn}
@@ -404,7 +402,7 @@ Neither $Z$ nor any descendant of $Z$ is in $E$ and both path edges lead into $Z
 \begin{defn}
 \textbf{D-separation} A set of nodes $E$ d-separates two other sets of nodes $X$ and $Y$ if every path from a node in $X$ to a node in $Y$ is blocked given $E$.
 \end{defn}
-To shed some more light on d-separation consider figure \ref{fig_dsep}. The first diagram depicts the first blocked condition, i.e. a causal chain. Node $E$ blocks relevance of $X$ to $Y$. The second diagram illustrates the second blocked condition, i.e. a common cause. Node $E$ blocks $X$ from being relevant to $Y$. Finally, the third diagram illustrates the third blocked condition or, more aptly, illustrates how lack of knowledge of the nodes in the path from $X$ to $Y$ implies that they are conditionally independent \cite{korb}.
+To shed some more light on d-separation consider figure~\ref{fig_dsep}. The first diagram depicts the first blocked condition, i.e. a causal chain. Node $E$ blocks relevance of $X$ to $Y$. The second diagram illustrates the second blocked condition, i.e. a common cause. Node $E$ blocks $X$ from being relevant to $Y$. Finally, the third diagram illustrates the third blocked condition or, more aptly, illustrates how lack of knowledge of the nodes in the path from $X$ to $Y$ implies that they are conditionally independent~\cite{korb}.
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
@@ -467,14 +465,14 @@ A state transition function: $P(x_t|x_{0:t-1}, u_{0:t-1})$
 \item
 An observation function: $P(y_t|x_{0:t}, u_{0:t-1})$
 \end{enumerate} 
-For the purposes of this dissertation we will assume that the state space model is known. If this model is not known machine learning techniques may be used find these models \cite{murphy1}. To simplify notation we will sometimes omit the dependence of the probability functions on the inputs $u_{0:t}$.
+For the purposes of this dissertation we will assume that the state space model is known. If this model is not known machine learning techniques may be used find these models~\cite{murphy1}. To simplify notation we will sometimes omit the dependence of the probability functions on the inputs $u_{0:t}$.
 
 We will assume that all the systems we model satisfy the first order Markov assumption.
 \begin{defn}
 \textbf{N\textsuperscript{th}-order Markov assumption} A system satisfies the N\textsuperscript{th} Markov assumption if $P(x_t|x_{0:t})=P(x_t|x_{t-n:t-1})$. For example, a first order Markov system satisfies  $P(x_t|x_{0:t})=P(x_t|x_{t-1})$. Similarly with the observation function.
 \label{def_order_markov}
 \end{defn}
-This is not as restrictive as it may seem at first. It is always possible to transform an N\textsuperscript{th}-order Markov system into a first order Markov system by modifying the state space \cite{murphy1}. We also assume that the state and observation functions remain the same for all time i.e. they are time invariant or homogeneous or stationary.
+This is not as restrictive as it may seem at first. It is always possible to transform an N\textsuperscript{th}-order Markov system into a first order Markov system by modifying the state space~\cite{murphy1}. We also assume that the state and observation functions remain the same for all time i.e. they are time invariant or homogeneous or stationary.
 
 Intuitively, a state space model is a model of how $x_t$ generates or causes $y_t$ and $x_{t+1}$. The goal of inference is to invert this mapping. The four types of inference we will consider in this dissertation are:
 \begin{enumerate}
@@ -489,7 +487,7 @@ Viterbi decoding: we attempt to perform $x_{1:t}^* = \underset{x_{1:t}}{\text{ar
 \end{enumerate}
 It is customary to denote hidden (latent) variables by a clear node, observed (visible) variables by a shaded node and deterministic variables by a diamond shaped node. Additionally, it is also customary to separate the input, state and observation variables from each other: $z_t = (u_t, x_t, y_t)$. 
 
-To fully specify a dynamic Bayesian network we require the pair $(B_0, B_{\rightarrow})$. The Bayesian network $B_0$ defines the prior over the random variables being modelled and $B_{\rightarrow}$ defines the transition and observation functions by means of a Bayesian network graph, typically over two time slices, see figure \ref{fig_gen_dbn} for an example. This Bayesian network graph may be factorised according to the Bayesian network chain rule such that at each time slice
+To fully specify a dynamic Bayesian network we require the pair $(B_0, B_{\rightarrow})$. The Bayesian network $B_0$ defines the prior over the random variables being modelled and $B_{\rightarrow}$ defines the transition and observation functions by means of a Bayesian network graph, typically over two time slices, see figure~\ref{fig_gen_dbn} for an example. This Bayesian network graph may be factorised according to the Bayesian network chain rule such that at each time slice
 \begin{equation}
 P(z_t|z_{t-1}) = \Pi_{i=1}^{N}P(z_t^i| \text{Parents} (z^i_t)).
 \end{equation}
@@ -547,7 +545,7 @@ is called the LQR controller.
 The optimisation of (\ref{eq_lqr_obj}) is implicitly subject to the state dynamics (\ref{eq_lqr_ss}). The matrices $Q$, $R$ and $Q_f$ are tuning parameters affecting the relative importance of the state and control inputs to the objective function respectively. We also assume that $Q, P_f$ and $R$ are real and symmetric matrices with the additional assumption that $Q, P_f$ are positive semidefinite and $R$ is positive definite.
 \label{def_lqr}
 \end{defn}
-We assume the reader is familiar with dynamic programming, and present theorem \ref{thrm_lqr_q} because it will be useful later. The proof may be found in \cite{raw} and follows from algebraic manipulations.
+We assume the reader is familiar with dynamic programming, and present theorem~\ref{thrm_lqr_q} because it will be useful later. The proof may be found in~\cite{raw} and follows from algebraic manipulations.
 \begin{thrm}
 \textbf{Sum of quadratics} Suppose two quadratic functions $V_1(x) = \frac{1}{2}(x-a)^TA(x-a)$ and $V_2(x) = \frac{1}{2}(x-b)^TB(x-b)$ are given. Then the sum $V_1(x) + V_2(x) = V(x)$ is also quadratic and $V(x) = \frac{1}{2}(x-v)^TH(x-v)+d$ with $H = A+B$, $v = H^{-1}(Aa+Bb)$ and $d = V_1(v) + V_2(v)$.
 \label{thrm_lqr_q}
@@ -569,7 +567,7 @@ and analytically solve it using backward dynamic programming. Expanding the obje
 \end{aligned}
 \label{eq_lqr_expand_obj}
 \end{equation}
-Note that given $x_0$ and the system dynamics all succeeding states are unknown only in the control input. The expansion of the objective function is recursive; this structure motivates the use of dynamic programming. By using theorem \ref{thrm_lqr_q} and the constraint $x_N=Ax_{N-1}+Bu_{N-1}$ we can simplify the last term in the separated minimisation problem of (\ref{eq_lqr_obj}) by writing
+Note that given $x_0$ and the system dynamics all succeeding states are unknown only in the control input. The expansion of the objective function is recursive; this structure motivates the use of dynamic programming. By using theorem~\ref{thrm_lqr_q} and the constraint $x_N=Ax_{N-1}+Bu_{N-1}$ we can simplify the last term in the separated minimisation problem of (\ref{eq_lqr_obj}) by writing
 \begin{equation}
 \begin{aligned}
 &\underset{u_{N-1}}{\text{min }}V_{N-1}(x_N, u_{N-1}) =\underset{u_{N-1}}{\text{min }} \frac{1}{2} \left(x_{N-1}^TQx_{N-1}+ u_{N-1}^TRu_{N-1} + x_N^TP_fx_N\right) \\ 
@@ -613,9 +611,9 @@ The recursion to go from $\Pi_{N-1}$ to $\Pi_{N-2}$ is known as backward Ricatti
 \Pi_{k-1} = Q + A^T\Pi_{k}A-A^T\Pi_{k}B(B^T\Pi_{k}B+R)^{-1}B^T\Pi_{k}A.  
 \label{eq_ricatti}
 \end{equation}
-With terminal condition $\Pi_N = P_f$. We see that to find the optimal control policy we need to continue with the backward dynamic programming recursion relationships until $k = 1$. We summarise one of the most fundamental results in optimal control theory in theorem \ref{thrm_lqr_sol}.
+With terminal condition $\Pi_N = P_f$. We see that to find the optimal control policy we need to continue with the backward dynamic programming recursion relationships until $k = 1$. We summarise one of the most fundamental results in optimal control theory in theorem~\ref{thrm_lqr_sol}.
 \begin{thrm}
-\textbf{Solution of the finite horizon LQR control problem} Given a finite horizon $N$ and a discrete linear system as shown in (\ref{eq_lqr_ss}) the optimal control policy which minimises the LQR objective function of defintion \ref{def_lqr} is given by iterating  
+\textbf{Solution of the finite horizon LQR control problem} Given a finite horizon $N$ and a discrete linear system as shown in (\ref{eq_lqr_ss}) the optimal control policy which minimises the LQR objective function of defintion~\ref{def_lqr} is given by iterating  
 \begin{equation}
 \begin{aligned}
 &u^0_{k}(x) = K_{k}x \\
@@ -626,9 +624,9 @@ With terminal condition $\Pi_N = P_f$. We see that to find the optimal control p
 backwards for $k=N-1, N-2, ..., 1$ using backward Ricatti iteration as shown in (\ref{eq_ricatti}). The optimal cost to go from time $k$ to time $N$ is $V^0_{k}(x)=\frac{1}{2}x^T\Pi_{k}x$.
 \label{thrm_lqr_sol}
 \end{thrm}
-After the optimal input $\mathbf{u}$ is found only $u_0$ is applied. For a treatment of the continuous case see \cite{robust}.
+After the optimal input $\mathbf{u}$ is found only $u_0$ is applied. For a treatment of the continuous case see~\cite{robust}.
 
-Unfortunately optimal control in the setting described above does not guarantee stable control \cite{raw}. It can be shown that the finite horizon controller is not guaranteed to be stable i.e. there exist non-trivial systems for which the controller is unstable. This problem is fixed by considering the infinite horizon LQR problem. 
+Unfortunately optimal control in the setting described above does not guarantee stable control~\cite{raw}. It can be shown that the finite horizon controller is not guaranteed to be stable i.e. there exist non-trivial systems for which the controller is unstable. This problem is fixed by considering the infinite horizon LQR problem. 
 \begin{defn}
 \textbf{Infinite horizon LQR problem} Find the optimal control sequence $\mathbf{u}$ which solves
 \begin{equation}
@@ -642,14 +640,14 @@ Unfortunately optimal control in the setting described above does not guarantee 
 The same restrictions on the tuning parameters apply as before.
 \label{def_inf_lqr}
 \end{defn}
-By assuming that the system under consideration is controllable it is possible to show that the infinite horizon LQR solution shown in theorem \ref{thrm_lqr_inf} is convergent and stabilising \cite{raw}.
+By assuming that the system under consideration is controllable it is possible to show that the infinite horizon LQR solution shown in theorem~\ref{thrm_lqr_inf} is convergent and stabilising~\cite{raw}.
 \begin{defn}
 \textbf{Controllability} A system is controllable is, for any pair of states $x,z$ in the state space, $z$ can be reached in finite time from $x$. That is, $x$ can be controlled to $z$. It is possible to characterise a controllable system further. A system with $n$ variables (which require control) is controllable if and only if $\text{rank}\begin{pmatrix}
 \lambda I- A & B
 \end{pmatrix} = n$ for all $\lambda \in \text{eig}(A)$. 
 \end{defn}
 \begin{thrm}
-\textbf{Solution of the infinite horizon LQR control problem} Given the infinite horizon LQR problem of definition \ref{def_inf_lqr} it can be shown that the optimal control is given by
+\textbf{Solution of the infinite horizon LQR control problem} Given the infinite horizon LQR problem of definition~\ref{def_inf_lqr} it can be shown that the optimal control is given by
 \begin{equation}
 \begin{aligned}
 &u^0_{k}(x) = Kx \\
@@ -658,7 +656,7 @@ By assuming that the system under consideration is controllable it is possible t
 \end{aligned}
 \label{eq_lqr_inf_opt_control}
 \end{equation}
-The optimal cost is given by $V^0(x) = \frac{1}{2}x^TKx$. The matrix $\Pi$ can be found by iterating the Ricatti equation. This solution is stabilising if the system is controllable \cite{raw}.
+The optimal cost is given by $V^0(x) = \frac{1}{2}x^TKx$. The matrix $\Pi$ can be found by iterating the Ricatti equation. This solution is stabilising if the system is controllable~\cite{raw}.
 \label{thrm_lqr_inf}
 \end{thrm}
 
@@ -682,7 +680,7 @@ The constants $x_{sp}$ and $u_{sp}$ are the state and corresponding controller s
 \end{aligned}
 \label{eq_lqr_problem_dev}
 \end{equation}
-as opposed to $x_t$ and $u_t$. The system dynamics remain the same \cite{raw} and only $\tilde{u}_0$ is used as before. We apply $u_0 = \tilde{u}_0 + u_{sp}$ to the system. All that is required is that we specify $x_{sp}$ and $u_{sp}$. This is done by solving
+as opposed to $x_t$ and $u_t$. The system dynamics remain the same~\cite{raw} and only $\tilde{u}_0$ is used as before. We apply $u_0 = \tilde{u}_0 + u_{sp}$ to the system. All that is required is that we specify $x_{sp}$ and $u_{sp}$. This is done by solving
 \begin{equation}
 \begin{pmatrix}
 I-A &- B \\ HC & 0
@@ -693,7 +691,7 @@ x_{sp}\\u_{sp}
 \end{pmatrix}.
 \label{eq_setpoints}
 \end{equation}
-Note that $H$ relates the observed variables to the controlled variables. If there are more measured outputs than manipulated variables (\ref{eq_setpoints}) cannot be solved directly. It is possible to cast (\ref{eq_setpoints}) into an optimisation problem. We refer the reader to \cite{raw} for a full treatise on the subject.
+Note that $H$ relates the observed variables to the controlled variables. If there are more measured outputs than manipulated variables (\ref{eq_setpoints}) cannot be solved directly. It is possible to cast (\ref{eq_setpoints}) into an optimisation problem. We refer the reader to~\cite{raw} for a full treatise on the subject.
  
 \subsection{Linear quadratic Gaussian control}
 \label{sec_lqg_lit}
@@ -712,7 +710,7 @@ y_t &= Cx_t +v_t \\
 \end{aligned}
 \label{eq_lqg_ss}
 \end{equation}
-was developed to handle these problems. Additionally we assume  $w_t \sim \mathcal{N}(0, W)$ and $v_t \sim \mathcal{N}(0, V)$ which are independent white noise terms. Because the states and measurements are stochastic variables we cannot use the LQR objective function as before. Instead we use the LQG objective function which is a generalisation of the former as shown in definition \ref{def_lqg_obj}.
+was developed to handle these problems. Additionally we assume  $w_t \sim \mathcal{N}(0, W)$ and $v_t \sim \mathcal{N}(0, V)$ which are independent white noise terms. Because the states and measurements are stochastic variables we cannot use the LQR objective function as before. Instead we use the LQG objective function which is a generalisation of the former as shown in definition~\ref{def_lqg_obj}.
 \begin{defn}
 \textbf{Linear quadratic Gaussian (LQG) objective function} The controller minimising the quadratic objective function 
 \begin{equation}
@@ -730,7 +728,7 @@ The full LQG control problem is
 \end{aligned}
 \label{eq_lqg_problem}
 \end{equation}
-It is indeed possible to solve this controller analytically using stochastic dynamic programming but the derivation is tedious. We rather employ the separation principle \cite{lqg}. We do however re-derive the optimal controller in a later chapter.
+It is indeed possible to solve this controller analytically using stochastic dynamic programming but the derivation is tedious. We rather employ the separation principle~\cite{lqg}. We do however re-derive the optimal controller in a later chapter.
 \begin{defn}
 \textbf{Separation principle} The solution of the LQG problem is obtained by combining the solution of the deterministic LQR problem and the optimal state estimation problem. The optimal current state estimate is used as the current deterministic state within the framework of the LQR controller. This is also sometimes called certainty equivalence. 
 \end{defn}
@@ -738,21 +736,21 @@ The optimal state estimate of linear systems under Gaussian noise is known as th
 \begin{defn}
 \textbf{Kalman filter} The optimal linear state estimator for Gaussian random variables is called the Kalman filter.
 \end{defn}
-A schematic diagram of the solution of LQG control problem is shown  in figure \ref{fig_mpc_no_selector}.
+A schematic diagram of the solution of LQG control problem is shown  in figure~\ref{fig_mpc_no_selector}.
 \begin{figure}[H] 
 \centering
 \includegraphics[scale=0.7]{no_selector.pdf}
 \caption{LQG control schematic. The estimator is the Kalman filter and the controller is the deterministic LQR.}
 \label{fig_mpc_no_selector}
 \end{figure}
-The LQR and LQG controller solutions are two of the most fundamental results in optimal control theory \cite{robust}. In the next section we discuss model predictive control which is a generalisation of the controllers we have discussed so far.
+The LQR and LQG controller solutions are two of the most fundamental results in optimal control theory~\cite{robust}. In the next section we discuss model predictive control which is a generalisation of the controllers we have discussed so far.
 \subsection{Model predictive control}
 Model predictive control (MPC) is the constrained generalisation of the LQR controller. It is widely used industry and has been the subject of a significant amount of scholarly research. We introduce the classic deterministic linear MPC  
 \begin{equation}
 \begin{aligned}
 &\underset{\mathbf{u}}{\text{min }} V(x_0, \mathbf{u}) = \frac{1}{2}\sum_{k=0}^{N-1} \left( x_k^TQx_k + u_k^TRu_k \right) + \frac{1}{2}x_N^TP_fx_N \\
 & \text{subject to } x_{t+1} = Ax_t+Bu_t \\
-& \text{and } d^Tx_t + e \geq 0 ~\forall~t=1, 2,...,N \\
+& \text{and } d^Tx_t + e \geq 0~\forall~t=1, 2,...,N \\
 \end{aligned}
 \label{eq_mpc_problem}
 \end{equation}
@@ -762,15 +760,15 @@ It is straightforward to incorporate more constraints of the form $d_i^Tx_t + e_
 
 Unfortunately there is no tractable way to analytically compute the control law offline, except in trivial cases, like the LQR controller. It is invariably necessary to use some optimisation algorithm to solve for $\mathbf{u}$ given $x_0$.
 
-Recent advances in quadratic programming algorithms, like the interior point algorithm, have made it possible to solve quadratic programming problems almost as fast as linear programming problems. These solvers typically exploit the sparseness structure inherent in problems like (\ref{eq_mpc_problem}) \cite{mac}. Thus, it is desirable to make use of these solvers wherever possible by ensuring that the underlying quadratic programming structure is not lost when modifications are made to the algorithm.
+Recent advances in quadratic programming algorithms, like the interior point algorithm, have made it possible to solve quadratic programming problems almost as fast as linear programming problems. These solvers typically exploit the sparseness structure inherent in problems like (\ref{eq_mpc_problem})~\cite{mac}. Thus, it is desirable to make use of these solvers wherever possible by ensuring that the underlying quadratic programming structure is not lost when modifications are made to the algorithm.
 
-Finally, the stability and robustness (e.g. when there is plant/model mismatch) of deterministic linear MPC is well studied and understood in modern literature. See \cite{raw} and \cite{mac} for details. Thus, it is likewise desirable to exploit this knowledge rather than attempt to derive an MPC with completely different or new characteristics.
+Finally, the stability and robustness (e.g. when there is plant/model mismatch) of deterministic linear MPC is well studied and understood in modern literature. See~\cite{raw} and~\cite{mac} for details. Thus, it is likewise desirable to exploit this knowledge rather than attempt to derive an MPC with completely different or new characteristics.
 
 We will continue our study of linear MPC in later sections.
 
 \section{Matrix identities}
 \label{sec_block}
-It will be useful in a later section to have access to a block matrix inversion formula. We state the result without proof and refer the reader to \cite{jang} for more details.
+It will be useful in a later section to have access to a block matrix inversion formula. We state the result without proof and refer the reader to~\cite{jang} for more details.
 \begin{thrm}
 \textbf{Block matrix inversion} Suppose we have a square block matrix of the form $\begin{pmatrix}
 A & b \\ c^T & d

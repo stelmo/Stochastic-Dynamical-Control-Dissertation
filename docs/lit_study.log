@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  19 AUG 2015 13:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.1.7)  31 AUG 2015 15:05
 entering extended mode
 **lit_study.tex
 
@@ -660,7 +660,7 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no c in font nullfont!
-Missing character: There is no g in font nullfont!
+Missing character: There is no G in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no u in font nullfont!
 Missing character: There is no s in font nullfont!
@@ -1605,7 +1605,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.19 ...very well studied in literature \cite{raw}
+l.19 ...very well studied in literature~\cite{raw}
                                                    and can be seen as the co...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5005,7 +5005,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.52 I
-      n \cite{li2} the stochastic variables are assumed to be Gaussian and t...
+      n~\cite{li2} the stochastic variables are assumed to be Gaussian and t...
 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5017,7 +5017,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.52 In \cite{li2}
+l.52 In~\cite{li2}
                    the stochastic variables are assumed to be Gaussian and t...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5683,7 +5683,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.52 ...ertainty in the future. In \cite{masahiro}
+l.52 ...ertainty in the future. In~\cite{masahiro}
                                                    an algorithm enforcing jo...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -6026,13 +6026,8 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 52--53
-[]
- []
-
-
-Overfull \hbox (5.43053pt too wide) in paragraph at lines 52--53
-[]
+Overfull \hbox (25.43053pt too wide) in paragraph at lines 52--53
+[] []
  []
 
 
@@ -11086,8 +11081,8 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 ! Misplaced alignment tab character &.
-l.99 &
-      x_{t+1} = Ax_t + Bu_t + w_t \\
+l.99 x_{t+1} &
+              = Ax_t + Bu_t + w_t \\
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -11096,10 +11091,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-<recently read> &
-                 
-l.100 &
-       y_t = Cx_t + v_t.
+l.100 y_t &
+           = Cx_t + v_t.
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -11154,6 +11147,8 @@ Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no m in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no d in font nullfont!
@@ -11168,6 +11163,8 @@ Missing character: There is no m in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no t in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no i in font nullfont!
@@ -11591,7 +11588,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.104 ...nputs to be calculated on-line \cite{mac}
+l.104 ...nputs to be calculated on-line~\cite{mac}
                                                   .
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -11605,8 +11602,18 @@ LaTeX Warning: Citation `mac' on page  undefined on input line 104.
 Missing character: There is no ] in font nullfont!
 Missing character: There is no . in font nullfont!
 
+Overfull \hbox (10.68001pt too wide) in paragraph at lines 103--105
+     $\OML/cmm/m/it/10 w[]$
+ []
+
+
+Overfull \hbox (8.36807pt too wide) in paragraph at lines 103--105
+$\OML/cmm/m/it/10 v[]$
+ []
+
+
 Overfull \hbox (9.23611pt too wide) in paragraph at lines 103--105
-                   $\OML/cmm/m/it/10 x[]$
+$\OML/cmm/m/it/10 x[]$
  []
 
 
@@ -12044,7 +12051,7 @@ Missing character: There is no [ in font nullfont!
 ! Undefined control sequence.
 <write> ...: Citation `\@citeb ' on page \thepage 
                                                   \space undefined\on@line .
-l.106 ... called zero offset regulation \cite{raw}
+l.106 ... called zero offset regulation~\cite{raw}
                                                    and is achieved by augmen...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -16945,6 +16952,167 @@ Overfull \hbox (9.17363pt too wide) in paragraph at lines 140--149
  $\OML/cmm/m/it/10 s[]$ 
  []
 
+
+! LaTeX Error: The font size command \normalsize is not defined:
+               there is probably something wrong with the class file.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.149 
+      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[1
+! Undefined control sequence.
+<write> \newlabel{sec_lit_study}{{}{\thepage 
+                                             }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{sec_lit_study}{{}{}}
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+! Undefined control sequence.
+<write> \newlabel{sec_stoch_mpc_lit}{{}{\thepage 
+                                                 }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{sec_stoch_mpc_lit}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{eq_lit_lqg}{{1}{\thepage 
+                                           }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq_lit_lqg}{{1}{}}
+! Undefined control sequence.
+<write> \newlabel{eq_lit_mpc}{{2}{\thepage 
+                                           }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq_lit_mpc}{{2}{}}
+! Undefined control sequence.
+<write> ...{eq_lit_chance_mpc_state}{{3}{\thepage 
+                                                  }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq_lit_chance_mpc_state}{{3}{}}
+! Undefined control sequence.
+<write> ...lit_chance_mpc_vanhessem}{{4}{\thepage 
+                                                  }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq_lit_chance_mpc_vanhessem}{{4}{}}
+! Undefined control sequence.
+<write> ...label{eq_lit_chi_squared}{{5}{\thepage 
+                                                  }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq_lit_chi_squared}{{5}{}}
+! Undefined control sequence.
+<write> \newlabel{fig_vanhessem}{{}{\thepage 
+                                             }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{fig_vanhessem}{{}{}}
+! Undefined control sequence.
+<write> \newlabel{sec_switch_mpc_lit}{{}{\thepage 
+                                                  }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{sec_switch_mpc_lit}{{}{}}
+! Undefined control sequence.
+<write> ...eq_mpc_nodisturbance_obs}{{6}{\thepage 
+                                                  }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq_mpc_nodisturbance_obs}{{6}{}}
+! Undefined control sequence.
+<write> ...l{eq_mpc_disturbance_obs}{{7}{\thepage 
+                                                  }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq_mpc_disturbance_obs}{{7}{}}
+! Undefined control sequence.
+<write> \newlabel{eq_mld_system}{{8}{\thepage 
+                                              }}
+l.149 
+      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\newlabel{eq_mld_system}{{8}{}}
+]
 ! Undefined control sequence.
 l.151   \edge
               {xa} {ya};
@@ -17660,167 +17828,6 @@ Overfull \hbox (5.43053pt too wide) in paragraph at lines 163--167
 []
  []
 
-
-! LaTeX Error: The font size command \normalsize is not defined:
-               there is probably something wrong with the class file.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.167 
-      
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[1
-! Undefined control sequence.
-<write> \newlabel{sec_lit_study}{{}{\thepage 
-                                             }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{sec_lit_study}{{}{}}
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
-! Undefined control sequence.
-<write> \newlabel{sec_stoch_mpc_lit}{{}{\thepage 
-                                                 }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{sec_stoch_mpc_lit}{{}{}}
-! Undefined control sequence.
-<write> \newlabel{eq_lit_lqg}{{1}{\thepage 
-                                           }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq_lit_lqg}{{1}{}}
-! Undefined control sequence.
-<write> \newlabel{eq_lit_mpc}{{2}{\thepage 
-                                           }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq_lit_mpc}{{2}{}}
-! Undefined control sequence.
-<write> ...{eq_lit_chance_mpc_state}{{3}{\thepage 
-                                                  }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq_lit_chance_mpc_state}{{3}{}}
-! Undefined control sequence.
-<write> ...lit_chance_mpc_vanhessem}{{4}{\thepage 
-                                                  }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq_lit_chance_mpc_vanhessem}{{4}{}}
-! Undefined control sequence.
-<write> ...label{eq_lit_chi_squared}{{5}{\thepage 
-                                                  }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq_lit_chi_squared}{{5}{}}
-! Undefined control sequence.
-<write> \newlabel{fig_vanhessem}{{}{\thepage 
-                                             }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{fig_vanhessem}{{}{}}
-! Undefined control sequence.
-<write> \newlabel{sec_switch_mpc_lit}{{}{\thepage 
-                                                  }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{sec_switch_mpc_lit}{{}{}}
-! Undefined control sequence.
-<write> ...eq_mpc_nodisturbance_obs}{{6}{\thepage 
-                                                  }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq_mpc_nodisturbance_obs}{{6}{}}
-! Undefined control sequence.
-<write> ...l{eq_mpc_disturbance_obs}{{7}{\thepage 
-                                                  }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq_mpc_disturbance_obs}{{7}{}}
-! Undefined control sequence.
-<write> \newlabel{eq_mld_system}{{8}{\thepage 
-                                              }}
-l.167 
-      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq_mld_system}{{8}{}}
-]
 Missing character: There is no I in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no t in font nullfont!
@@ -17977,7 +17984,6 @@ Missing character: There is no g in font nullfont!
 Missing character: There is no u in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
-
 ! Undefined control sequence.
 <write> ...ference `fig_spf_skf' on page \thepage 
                                                   \space undefined\on@line .
@@ -19494,5 +19500,5 @@ Here is how much of TeX's memory you used:
  3449 multiletter control sequences out of 15000+200000
  4567 words of font info for 17 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 19i,4n,21p,1188b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 19i,4n,21p,1188b,130s stack positions out of 5000i,500n,10000p,200000b,50000s
 !  ==> Fatal error occurred, no output PDF file produced!
