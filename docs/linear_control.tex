@@ -622,7 +622,7 @@ Figure \ref{fig_lin_mod_kf_mc} illustrates the effect increasing $k^2$ (i.e. the
 \end{figure}
 It is clear that increasing $k^2$ causes the constraints to be violated less (as per the theory). It is also clear that the expected value constrained MPC (i.e. the deterministic MPC in figure~\ref{fig_lin_mod_kf_mc}) performed significantly worse with the nonlinear underlying model when compared to figure \ref{fig_nonlin_mod_kf_mc}. The value of the chance constrained MPC is apparent here. Unlike figure~\ref{fig_lin_mod_kf_mc} there seems to be more value in increasing the chance threshold above the 99\% interval.
 
-Figure \ref{fig_lin_mod_kf_mc2} illustrates that the controllers we developed in this chapter, using the Kalman filter on the nonlinear underlying system, do indeed drive the system to the set point for many runs (not just the single realisation of our earlier examples). We again do not include a Monte Carlo simulation for the LQG controller because it is very well studied in literature.
+Figure \ref{fig_nonlin_mod_kf_mc2} illustrates that the controllers we developed in this chapter, using the Kalman filter on the nonlinear underlying system, do indeed drive the system to the set point for many runs (not just the single realisation of our earlier examples). We again do not include a Monte Carlo simulation for the LQG controller because it is very well studied in literature.
 \begin{figure}[H] 
 \centering
 \includegraphics[width=\textwidth]{nonlin_mod_kf_mc2.pdf}
